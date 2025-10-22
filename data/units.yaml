@@ -10,6 +10,10 @@ GMST increase:
   label: degrees Celsius
   expl_text: Not used by premise. Global mean surface temperature anomaly relative to 1850-1900. For informative purpose only.
   offset: 10
+Carbon Dioxide Removal:
+  label: million tons
+  expl_text: Annual CO2 removal (not CO2-eq.).
+  offset: 10
 Carbon Dioxide emissions:
   label: tons
   expl_text: Not used by premise. Annual CO2 emissions (not CO2-eq.). For informative purpose only.

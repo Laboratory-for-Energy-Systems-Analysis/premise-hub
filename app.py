@@ -49,7 +49,7 @@ def get_dataset(file):
 def get_all_variables():
     files = [
         "structured_data.csv",
-        "structured_data (2, 3, 0, 'dev1').csv",
+        "structured_data (2, 3, 0).csv",
     ]
     all_vars = set()
     for file in files:

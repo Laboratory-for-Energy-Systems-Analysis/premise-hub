@@ -150,12 +150,30 @@ def update_dropdowns(selected_file):
 @app.callback(
     Output("region-dropdown", "options"),
     Input("sector-dropdown", "value"),
+    Input("model-scenario-dropdown", "value"),
     State("dataset-version-dropdown", "value"),
 )
-def update_region_options(selected_sector, selected_file):
+def update_region_options(selected_sector, selected_combinations, selected_file):
+    # If nothing is selected yet, don't touch the dropdown
+    if not selected_sector or not selected_combinations:
+        raise PreventUpdate
+
     df = get_dataset(selected_file)
-    regions = df[df["sector"] == selected_sector]["region"].unique()
-    return [{"label": r, "value": r} for r in sorted(regions)]
+
+    # Filter by sector first
+    df = df[df["sector"] == selected_sector]
+
+    # Build the same "model - scenario" combined string as in the first callback
+    df = df.copy()  # avoid SettingWithCopy warnings
+    df["combined"] = df["model"].astype(str) + " - " + df["scenario"].astype(str)
+
+    # Keep only rows that match one of the selected model-scenario combos
+    df = df[df["combined"].isin(selected_combinations)]
+
+    regions = sorted(df["region"].unique())
+
+    return [{"label": r, "value": r} for r in regions]
+
 
 # Callback: generate graphs
 @app.callback(

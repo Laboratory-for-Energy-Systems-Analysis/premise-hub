@@ -97,29 +97,33 @@ app.layout = html.Div([
             ], style={"width": "32%", "display": "inline-block", "marginBottom": "20px", "marginRight": "1%"}),
 
             html.Div([
+                # Model–scenario
                 html.Div([
                     html.Label("Select Model-Scenario Combinations:"),
                     dcc.Dropdown(id="model-scenario-dropdown", multi=True)
                 ], style={"width": "32%", "display": "inline-block", "marginRight": "1%"}),
 
+                # Sector
                 html.Div([
                     html.Label("Select Sector:"),
                     dcc.Dropdown(id="sector-dropdown")
                 ], style={"width": "32%", "display": "inline-block", "marginRight": "1%"}),
 
+                # Regions
                 html.Div([
                     html.Label("Select Regions:"),
-                    dcc.Dropdown(id="region-dropdown", value=["World"], multi=True),
-                    html.Div([
-                        html.Label("Stack area plots to 100%:", style={"marginTop": "8px"}),
-                        dcc.Checklist(
-                            id="stack-mode-checklist",
-                            options=[{"label": "Show relative shares (100%)", "value": "relative"}],
-                            value=[],
-                            style={"fontSize": "12px"}
-                        ),
-                    ])
+                    dcc.Dropdown(id="region-dropdown", value=["World"], multi=True)
                 ], style={"width": "32%", "display": "inline-block"}),
+            ], style={"marginBottom": "10px"}),
+
+            # Put the 100% stacking toggle in its own clean row
+            html.Div([
+                dcc.Checklist(
+                    id="stack-mode-checklist",
+                    options=[{"label": "Show relative shares (100%)", "value": "relative"}],
+                    value=[],
+                    style={"fontSize": "12px"}
+                )
             ], style={"marginBottom": "20px"}),
         ])
     ], style={"background": "#e9e9e9", "padding": "20px", "borderRadius": "5px", "marginBottom": "20px"}),

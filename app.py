@@ -281,21 +281,61 @@ def update_graphs(selected_combinations, selected_sector, selected_regions, stac
 
         fig.update_layout(yaxis_title=yaxis_label)
 
-        scenario_details = html.Div([
-            html.H3(ssp_descriptions.get(scenario.split("-")[0], {}).get("name", ""), style={"fontSize": "10px"}),
-            html.P(ssp_descriptions.get(scenario.split("-")[0], {}).get("description", ""), style={"fontSize": "8px"}),
-            html.H3(rcp_descriptions.get(scenario.split("-")[1], {}).get("name", ""), style={"fontSize": "10px"}),
-            html.P(rcp_descriptions.get(scenario.split("-")[1], {}).get("description", ""), style={"fontSize": "8px"}),
-            dcc.Graph(figure=fig, config={"displayModeBar": False}, style={"height": "400px"})
-        ], style={"width": "50%", "display": "inline-block"})
+        scenario_details = html.Div(
+            [
+                # Text block
+                html.Div([
+                    html.H3(
+                        ssp_descriptions.get(scenario.split("-")[0], {}).get("name", ""),
+                        style={"fontSize": "10px", "marginBottom": "2px"}
+                    ),
+                    html.P(
+                        ssp_descriptions.get(scenario.split("-")[0], {}).get("description", ""),
+                        style={"fontSize": "8px", "marginTop": "0px", "marginBottom": "4px"}
+                    ),
+                    html.H3(
+                        rcp_descriptions.get(scenario.split("-")[1], {}).get("name", ""),
+                        style={"fontSize": "10px", "marginBottom": "2px"}
+                    ),
+                    html.P(
+                        rcp_descriptions.get(scenario.split("-")[1], {}).get("description", ""),
+                        style={"fontSize": "8px", "marginTop": "0px", "marginBottom": "4px"}
+                    ),
+                ], style={"flex": "0 0 auto"}),
+
+                # Plot block
+                dcc.Graph(
+                    figure=fig,
+                    config={"displayModeBar": False},
+                    style={"flex": "1 1 auto", "height": "340px"}
+                ),
+            ],
+            style={
+                "flex": "1",
+                "display": "flex",
+                "flexDirection": "column",
+                "margin": "0 5px",
+            },
+        )
 
         temp_row.append(scenario_details)
         if len(temp_row) == 2:
-            output.append(html.Div(temp_row, style={"display": "flex"}))
-            temp_row = []
+            output.append(html.Div(
+                temp_row,
+                style={
+                    "display": "flex",
+                    "alignItems": "stretch",  # make all cards same height in the row
+                },
+            ))
 
     if temp_row:
-        output.append(html.Div(temp_row, style={"display": "flex"}))
+        output.append(html.Div(
+            temp_row,
+            style={
+                "display": "flex",
+                "alignItems": "stretch",
+            },
+        ))
 
     expl_text = units.get(selected_sector, {}).get("expl_text", "")
     output.insert(0, html.Div(html.P(expl_text, style={"fontSize": "16px"})))

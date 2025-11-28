@@ -114,3 +114,7 @@ Battery:
   label: Share of battery supply in capacity terms [%]
   expl_text: Share of battery supply in capacity terms. Used to calculate the battery supply mix.
   offset: 3
+Final Energy:
+  label: Exajoules (EJ)
+  expl_text: Generated volumes of final energy, per technology, per end-consumer.
+  offset: 3

@@ -346,7 +346,13 @@ def update_graphs(selected_combinations, selected_sector, selected_regions, stac
                 yaxis_label = units.get(selected_sector, {}).get("label", "Value")
 
         fig.update_layout(yaxis_title=yaxis_label)
-        fig.update_yaxes(range=[0, global_max])
+        # Force correct Y-axis range depending on mode
+        if stack_relative:
+            # Relative view → always 0–100%
+            fig.update_yaxes(range=[0, 100])
+        else:
+            # Absolute view → global max across all scenarios
+            fig.update_yaxes(range=[0, global_max])
 
         # SSP / RCP text
         parts = scenario.split("-")

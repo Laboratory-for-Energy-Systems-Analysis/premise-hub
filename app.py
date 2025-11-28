@@ -463,20 +463,29 @@ def update_graphs(selected_combinations, selected_sector, selected_regions, stac
     prevent_initial_call=True,
 )
 def export_displayed(n_clicks, selected_combinations, selected_sector, selected_regions, selected_file):
-    if n_clicks is None:
+    # No click or missing filters → no download
+    if not n_clicks:
+        raise PreventUpdate
+    if not selected_combinations or not selected_regions or not selected_sector:
         raise PreventUpdate
 
     df = get_dataset(selected_file)
 
-    # Apply same filtering as in update_graphs
-    df = df[df["sector"] == selected_sector]
-    df["combined"] = df["model"] + " - " + df["scenario"]
+    # Same filtering logic as in update_graphs, but with safe string conversion
+    df = df[df["sector"] == selected_sector].copy()
+
+    # IMPORTANT: cast to string (model & scenario are categorical)
+    df["combined"] = df["model"].astype(str) + " - " + df["scenario"].astype(str)
+
     df = df[df["combined"].isin(selected_combinations)]
     df = df[df["region"].isin(selected_regions)]
 
+    if df.empty:
+        # Nothing to export -> don't trigger a useless download
+        raise PreventUpdate
+
     # Return CSV
     return dcc.send_data_frame(df.to_csv, "displayed_data.csv", index=False)
-
 
 @app.callback(
     Output("download-data", "data", allow_duplicate=True),

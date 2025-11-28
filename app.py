@@ -197,9 +197,14 @@ def update_region_options(selected_sector, selected_combinations, selected_file)
     State("dataset-version-dropdown", "value"),
 )
 def update_graphs(selected_combinations, selected_sector, selected_regions, stack_mode, selected_file):
-
-    if not selected_combinations or not selected_regions:
+    # If no regions -> do nothing (keeps current graphs until a region is chosen)
+    if not selected_regions:
         raise PreventUpdate
+
+    # If no model-scenario combinations -> clear graphs
+    if not selected_combinations:
+        return []  # or [html.P("Select at least one model-scenario.")] if you prefer a message
+
 
     stack_relative = stack_mode is not None and "relative" in stack_mode
 
@@ -311,7 +316,8 @@ def update_graphs(selected_combinations, selected_sector, selected_regions, stac
                 ),
             ],
             style={
-                "flex": "1",
+                "flex": "0 0 50%",  # <- always 50% width
+                "maxWidth": "50%",  # <- don't grow beyond half
                 "display": "flex",
                 "flexDirection": "column",
                 "margin": "0 5px",

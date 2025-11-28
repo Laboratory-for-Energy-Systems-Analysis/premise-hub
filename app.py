@@ -109,11 +109,18 @@ app.layout = html.Div([
 
                 html.Div([
                     html.Label("Select Regions:"),
-                    dcc.Dropdown(id="region-dropdown", value=["World"], multi=True)
+                    dcc.Dropdown(id="region-dropdown", value=["World"], multi=True),
+                    html.Div([
+                        html.Label("Stack area plots to 100%:", style={"marginTop": "8px"}),
+                        dcc.Checklist(
+                            id="stack-mode-checklist",
+                            options=[{"label": "Show relative shares (100%)", "value": "relative"}],
+                            value=[],
+                            style={"fontSize": "12px"}
+                        ),
+                    ])
                 ], style={"width": "32%", "display": "inline-block"}),
             ], style={"marginBottom": "20px"}),
-
-            html.Div(id="expl-text-box", style={"fontSize": "16px", "textAlign": "center", "marginBottom": "20px"}),
         ])
     ], style={"background": "#e9e9e9", "padding": "20px", "borderRadius": "5px", "marginBottom": "20px"}),
 
@@ -182,11 +189,15 @@ def update_region_options(selected_sector, selected_combinations, selected_file)
     Input("model-scenario-dropdown", "value"),
     Input("sector-dropdown", "value"),
     Input("region-dropdown", "value"),
+    Input("stack-mode-checklist", "value"),
     State("dataset-version-dropdown", "value"),
 )
-def update_graphs(selected_combinations, selected_sector, selected_regions, selected_file):
+def update_graphs(selected_combinations, selected_sector, selected_regions, stack_mode, selected_file):
+
     if not selected_combinations or not selected_regions:
         raise PreventUpdate
+
+    stack_relative = stack_mode is not None and "relative" in stack_mode
 
     df = get_dataset(selected_file)
     df = df[df["sector"] == selected_sector]
@@ -221,20 +232,49 @@ def update_graphs(selected_combinations, selected_sector, selected_regions, sele
         temp_df = temp_df[temp_df["val"] > 0].sort_values("year")
 
         fig_func = px.line if "efficiency" in selected_sector.lower() else px.area
-        fig = fig_func(
-            temp_df,
-            x="year",
-            y="val",
-            color="variables",
-            color_discrete_map=color_map,
-            line_group="region",
-            facet_col="region",
-            labels={"val": "Value", "year": "Year", "variables": "Variables", "region": "Region"},
-            title=f"Model: {model} | Scenario: {scenario}",
-            height=350,
-        )
 
-        yaxis_label = units.get(selected_sector, {}).get("label", "Value")
+        if fig_func is px.area and stack_relative:
+            # 100% stacked area (shares per x within each region)
+            fig = px.area(
+                temp_df,
+                x="year",
+                y="val",
+                color="variables",
+                color_discrete_map=color_map,
+                line_group="region",
+                facet_col="region",
+                groupnorm="percent",  # normalize stack to 100%
+                labels={
+                    "val": "Share (%)",
+                    "year": "Year",
+                    "variables": "Variables",
+                    "region": "Region",
+                },
+                title=f"Model: {model} | Scenario: {scenario}",
+                height=350,
+            )
+            yaxis_label = "Share (%)"
+        else:
+            # default behavior: absolute values (area or line)
+            fig = fig_func(
+                temp_df,
+                x="year",
+                y="val",
+                color="variables",
+                color_discrete_map=color_map,
+                line_group="region",
+                facet_col="region",
+                labels={
+                    "val": "Value",
+                    "year": "Year",
+                    "variables": "Variables",
+                    "region": "Region",
+                },
+                title=f"Model: {model} | Scenario: {scenario}",
+                height=350,
+            )
+            yaxis_label = units.get(selected_sector, {}).get("label", "Value")
+
         fig.update_layout(yaxis_title=yaxis_label)
 
         scenario_details = html.Div([

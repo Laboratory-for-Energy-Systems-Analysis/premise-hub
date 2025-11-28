@@ -208,6 +208,26 @@ def update_graphs(selected_combinations, selected_sector, selected_regions, stac
     df = get_dataset(selected_file)
     df = df[df["sector"] == selected_sector].copy()
 
+    # Compute global max across all selected model-scenario combinations & regions
+    global_max = 0
+
+    for combo in selected_combinations:
+        model, scenario = combo.split(" - ", 1)
+        df_ms = df[(df["model"] == model) & (df["scenario"] == scenario)]
+
+        # Filter to selected regions
+        df_ms = df_ms[df_ms["region"].isin(selected_regions)]
+
+        # Compute total value per year (summing all variables)
+        totals = df_ms.groupby("year")["val"].sum()
+
+        if not totals.empty:
+            global_max = max(global_max, totals.max())
+
+    # Edge case: no data
+    if global_max == 0:
+        global_max = 1
+
     stack_relative = bool(stack_mode and "relative" in stack_mode)
     cards = []
 
@@ -326,6 +346,7 @@ def update_graphs(selected_combinations, selected_sector, selected_regions, stac
                 yaxis_label = units.get(selected_sector, {}).get("label", "Value")
 
         fig.update_layout(yaxis_title=yaxis_label)
+        fig.update_yaxes(range=[0, global_max])
 
         # SSP / RCP text
         parts = scenario.split("-")

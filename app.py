@@ -156,6 +156,7 @@ app.layout = html.Div([
     ], style={"background": "#e9e9e9", "padding": "20px", "borderRadius": "5px", "marginBottom": "20px"}),
 
     dcc.Store(id="data-store"),
+    dcc.Download(id="download-data"),
     html.Div(id="graphs-container")
 ])
 
@@ -436,8 +437,6 @@ def update_graphs(selected_combinations, selected_sector, selected_regions, stac
         )
 
         cards.append(card)
-
-    dcc.Download(id="download-data")
 
     # Now group cards into rows of 2 — no chance of duplication
     rows = []

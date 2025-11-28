@@ -118,13 +118,40 @@ app.layout = html.Div([
 
             # Put the 100% stacking toggle in its own clean row
             html.Div([
+                # Relative view checkbox
                 dcc.Checklist(
                     id="stack-mode-checklist",
                     options=[{"label": "Show relative shares (100%)", "value": "relative"}],
                     value=[],
-                    style={"fontSize": "12px"}
-                )
-            ], style={"marginBottom": "20px"}),
+                    style={"fontSize": "12px", "marginBottom": "10px"}
+                ),
+
+                # Export displayed data
+                html.Button(
+                    "Export displayed data",
+                    id="export-displayed-btn",
+                    n_clicks=0,
+                    style={
+                        "display": "block",
+                        "width": "100%",
+                        "marginBottom": "8px"
+                    }
+                ),
+
+                # Export EVERYTHING
+                html.Button(
+                    "Export full dataset",
+                    id="export-all-btn",
+                    n_clicks=0,
+                    style={
+                        "display": "block",
+                        "width": "100%"
+                    }
+                ),
+            ], style={
+                "width": "200px",  # or match the dropdown width
+                "marginBottom": "20px",
+            })
         ])
     ], style={"background": "#e9e9e9", "padding": "20px", "borderRadius": "5px", "marginBottom": "20px"}),
 
@@ -410,6 +437,8 @@ def update_graphs(selected_combinations, selected_sector, selected_regions, stac
 
         cards.append(card)
 
+    dcc.Download(id="download-data")
+
     # Now group cards into rows of 2 — no chance of duplication
     rows = []
     for i in range(0, len(cards), 2):
@@ -423,6 +452,46 @@ def update_graphs(selected_combinations, selected_sector, selected_regions, stac
 
     expl_text = units.get(selected_sector, {}).get("expl_text", "")
     return [html.Div(html.P(expl_text, style={"fontSize": "16px"}))] + rows
+
+
+@app.callback(
+    Output("download-data", "data"),
+    Input("export-displayed-btn", "n_clicks"),
+    State("model-scenario-dropdown", "value"),
+    State("sector-dropdown", "value"),
+    State("region-dropdown", "value"),
+    State("dataset-version-dropdown", "value"),
+    prevent_initial_call=True,
+)
+def export_displayed(n_clicks, selected_combinations, selected_sector, selected_regions, selected_file):
+    if n_clicks is None:
+        raise PreventUpdate
+
+    df = get_dataset(selected_file)
+
+    # Apply same filtering as in update_graphs
+    df = df[df["sector"] == selected_sector]
+    df["combined"] = df["model"] + " - " + df["scenario"]
+    df = df[df["combined"].isin(selected_combinations)]
+    df = df[df["region"].isin(selected_regions)]
+
+    # Return CSV
+    return dcc.send_data_frame(df.to_csv, "displayed_data.csv", index=False)
+
+
+@app.callback(
+    Output("download-data", "data", allow_duplicate=True),
+    Input("export-all-btn", "n_clicks"),
+    State("dataset-version-dropdown", "value"),
+    prevent_initial_call=True,
+)
+def export_all(n_clicks, selected_file):
+    if n_clicks is None:
+        raise PreventUpdate
+
+    df = get_dataset(selected_file)
+
+    return dcc.send_data_frame(df.to_csv, "full_dataset.csv", index=False)
 
 
 if __name__ == "__main__":

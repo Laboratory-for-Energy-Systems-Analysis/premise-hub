@@ -258,7 +258,10 @@ def update_graphs(selected_combinations, selected_sector, selected_regions, stac
             & (df["scenario"] == scenario)
             & (df["region"].isin(selected_regions))
         ]
-        temp_df = temp_df[temp_df["val"] > 0].sort_values("year")
+        temp_df = (
+            temp_df[temp_df["val"] > 0]
+            .sort_values(["year", "variables"])  # <-- sort by year, then variables
+        )
 
         # Choose line vs area + relative stacking
         if "efficiency" in selected_sector.lower():

@@ -197,34 +197,49 @@ def update_region_options(selected_sector, selected_combinations, selected_file)
     State("dataset-version-dropdown", "value"),
 )
 def update_graphs(selected_combinations, selected_sector, selected_regions, stack_mode, selected_file):
-    # If no regions -> do nothing (keeps current graphs until a region is chosen)
+    # No regions -> keep current graphs until user chooses some
     if not selected_regions:
         raise PreventUpdate
 
-    # If no model-scenario combinations -> clear graphs
+    # No model–scenario -> clear graphs
     if not selected_combinations:
-        return []  # or [html.P("Select at least one model-scenario.")] if you prefer a message
-
-
-    stack_relative = stack_mode is not None and "relative" in stack_mode
+        return []
 
     df = get_dataset(selected_file)
-    df = df[df["sector"] == selected_sector]
+    df = df[df["sector"] == selected_sector].copy()
 
-    output = []
-    temp_row = []
+    stack_relative = bool(stack_mode and "relative" in stack_mode)
+    cards = []
 
     for combo in selected_combinations:
-        model, scenario = combo.split(" - ")
+        # combo looks like "model - scenario"
+        try:
+            model, scenario = combo.split(" - ", 1)
+        except ValueError:
+            # skip malformed entries just in case
+            continue
+
         temp_df = df[(df["model"] == model) & (df["scenario"] == scenario)]
 
+        # Ensure World rows exist / are non-zero if needed
         for year in temp_df["year"].unique():
-            year_df = temp_df[temp_df["year"] == year]
-            world_df = year_df[year_df["region"] == "World"]
+            year_mask = (
+                (df["model"] == model)
+                & (df["scenario"] == scenario)
+                & (df["year"] == year)
+            )
+            year_df = df[year_mask]
+
+            world_mask = year_mask & (df["region"] == "World")
+            world_df = df[world_mask]
+
+            if year_df.empty:
+                continue
+
             if world_df.empty or world_df["val"].sum() == 0:
                 total_val = year_df[year_df["region"] != "World"]["val"].sum()
                 if not world_df.empty:
-                    df.loc[(df["model"] == model) & (df["scenario"] == scenario) & (df["year"] == year) & (df["region"] == "World"), "val"] = total_val
+                    df.loc[world_mask, "val"] = total_val
                 else:
                     new_row = {
                         "region": "World",
@@ -235,37 +250,19 @@ def update_graphs(selected_combinations, selected_sector, selected_regions, stac
                         "model": model,
                         "scenario": scenario,
                     }
-                    df = pd.concat([df, pd.DataFrame([new_row])])
+                    df = pd.concat([df, pd.DataFrame([new_row])], ignore_index=True)
 
-        temp_df = df[(df["model"] == model) & (df["scenario"] == scenario) & (df["region"].isin(selected_regions))]
+        # Filter for selected regions
+        temp_df = df[
+            (df["model"] == model)
+            & (df["scenario"] == scenario)
+            & (df["region"].isin(selected_regions))
+        ]
         temp_df = temp_df[temp_df["val"] > 0].sort_values("year")
 
-        fig_func = px.line if "efficiency" in selected_sector.lower() else px.area
-
-        if fig_func is px.area and stack_relative:
-            # 100% stacked area (shares per x within each region)
-            fig = px.area(
-                temp_df,
-                x="year",
-                y="val",
-                color="variables",
-                color_discrete_map=color_map,
-                line_group="region",
-                facet_col="region",
-                groupnorm="percent",  # normalize stack to 100%
-                labels={
-                    "val": "Share (%)",
-                    "year": "Year",
-                    "variables": "Variables",
-                    "region": "Region",
-                },
-                title=f"Model: {model} | Scenario: {scenario}",
-                height=350,
-            )
-            yaxis_label = "Share (%)"
-        else:
-            # default behavior: absolute values (area or line)
-            fig = fig_func(
+        # Choose line vs area + relative stacking
+        if "efficiency" in selected_sector.lower():
+            fig = px.line(
                 temp_df,
                 x="year",
                 y="val",
@@ -284,68 +281,119 @@ def update_graphs(selected_combinations, selected_sector, selected_regions, stac
             )
             yaxis_label = units.get(selected_sector, {}).get("label", "Value")
 
+        else:
+            if stack_relative:
+                fig = px.area(
+                    temp_df,
+                    x="year",
+                    y="val",
+                    color="variables",
+                    color_discrete_map=color_map,
+                    line_group="region",
+                    facet_col="region",
+                    groupnorm="percent",
+                    labels={
+                        "val": "Share (%)",
+                        "year": "Year",
+                        "variables": "Variables",
+                        "region": "Region",
+                    },
+                    title=f"Model: {model} | Scenario: {scenario}",
+                    height=350,
+                )
+                yaxis_label = "Share (%)"
+            else:
+                fig = px.area(
+                    temp_df,
+                    x="year",
+                    y="val",
+                    color="variables",
+                    color_discrete_map=color_map,
+                    line_group="region",
+                    facet_col="region",
+                    labels={
+                        "val": "Value",
+                        "year": "Year",
+                        "variables": "Variables",
+                        "region": "Region",
+                    },
+                    title=f"Model: {model} | Scenario: {scenario}",
+                    height=350,
+                )
+                yaxis_label = units.get(selected_sector, {}).get("label", "Value")
+
         fig.update_layout(yaxis_title=yaxis_label)
 
-        scenario_details = html.Div(
-            [
-                # Text block
-                html.Div([
-                    html.H3(
-                        ssp_descriptions.get(scenario.split("-")[0], {}).get("name", ""),
-                        style={"fontSize": "10px", "marginBottom": "2px"}
-                    ),
-                    html.P(
-                        ssp_descriptions.get(scenario.split("-")[0], {}).get("description", ""),
-                        style={"fontSize": "8px", "marginTop": "0px", "marginBottom": "4px"}
-                    ),
-                    html.H3(
-                        rcp_descriptions.get(scenario.split("-")[1], {}).get("name", ""),
-                        style={"fontSize": "10px", "marginBottom": "2px"}
-                    ),
-                    html.P(
-                        rcp_descriptions.get(scenario.split("-")[1], {}).get("description", ""),
-                        style={"fontSize": "8px", "marginTop": "0px", "marginBottom": "4px"}
-                    ),
-                ], style={"flex": "0 0 auto"}),
+        # SSP / RCP text
+        parts = scenario.split("-")
+        ssp_key = parts[0] if len(parts) > 0 else ""
+        rcp_key = parts[1] if len(parts) > 1 else ""
 
-                # Plot block
+        ssp_meta = ssp_descriptions.get(ssp_key, {})
+        rcp_meta = rcp_descriptions.get(rcp_key, {})
+
+        card = html.Div(
+            [
+                html.Div(
+                    [
+                        html.H3(
+                            ssp_meta.get("name", ""),
+                            style={"fontSize": "10px", "marginBottom": "2px"},
+                        ),
+                        html.P(
+                            ssp_meta.get("description", ""),
+                            style={
+                                "fontSize": "8px",
+                                "marginTop": "0px",
+                                "marginBottom": "4px",
+                            },
+                        ),
+                        html.H3(
+                            rcp_meta.get("name", ""),
+                            style={"fontSize": "10px", "marginBottom": "2px"},
+                        ),
+                        html.P(
+                            rcp_meta.get("description", ""),
+                            style={
+                                "fontSize": "8px",
+                                "marginTop": "0px",
+                                "marginBottom": "4px",
+                            },
+                        ),
+                    ],
+                    style={"flex": "0 0 auto"},
+                ),
                 dcc.Graph(
                     figure=fig,
                     config={"displayModeBar": False},
-                    style={"flex": "1 1 auto", "height": "340px"}
+                    style={"flex": "1 1 auto", "height": "340px"},
                 ),
             ],
             style={
-                "flex": "0 0 50%",  # <- always 50% width
-                "maxWidth": "50%",  # <- don't grow beyond half
+                "flex": "0 0 50%",
+                "maxWidth": "50%",
                 "display": "flex",
                 "flexDirection": "column",
                 "margin": "0 5px",
             },
         )
 
-        temp_row.append(scenario_details)
-        if len(temp_row) == 2:
-            output.append(html.Div(
-                temp_row,
-                style={
-                    "display": "flex",
-                    "alignItems": "stretch",  # make all cards same height in the row
-                },
-            ))
+        cards.append(card)
 
-    if temp_row:
-        output.append(html.Div(
-            temp_row,
-            style={
-                "display": "flex",
-                "alignItems": "stretch",
-            },
-        ))
+    # Now group cards into rows of 2 — no chance of duplication
+    rows = []
+    for i in range(0, len(cards), 2):
+        row_cards = cards[i : i + 2]
+        rows.append(
+            html.Div(
+                row_cards,
+                style={"display": "flex", "alignItems": "stretch"},
+            )
+        )
 
     expl_text = units.get(selected_sector, {}).get("expl_text", "")
-    output.insert(0, html.Div(html.P(expl_text, style={"fontSize": "16px"})))
-    return output
+    return [html.Div(html.P(expl_text, style={"fontSize": "16px"}))] + rows
+
 
 if __name__ == "__main__":
     app.run(debug=True)

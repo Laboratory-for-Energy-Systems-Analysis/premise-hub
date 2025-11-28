@@ -493,17 +493,29 @@ def export_displayed(n_clicks, selected_combinations, selected_sector, selected_
     Output("download-data", "data", allow_duplicate=True),
     Input("export-all-btn", "n_clicks"),
     State("dataset-version-dropdown", "value"),
+    State("model-scenario-dropdown", "value"),
     prevent_initial_call=True,
 )
-def export_all(n_clicks, selected_file):
-    if n_clicks is None:
+def export_all(n_clicks, selected_file, selected_combinations):
+    if not n_clicks:
         raise PreventUpdate
 
-    df = get_dataset(selected_file)
+    df = get_dataset(selected_file).copy()
 
+    # Safety check
+    if not selected_combinations:
+        raise PreventUpdate
+
+    # Build combined key safely (model and scenario are categorical)
+    df["combined"] = df["model"].astype(str) + " - " + df["scenario"].astype(str)
+
+    # Filter by the selected model–scenario pairs
+    df = df[df["combined"].isin(selected_combinations)]
+
+    # Drop leftover helper columns
     df = df.drop(columns=[c for c in ["Unnamed: 0", "combined"] if c in df.columns])
 
-    return dcc.send_data_frame(df.to_csv, "full_dataset.csv", index=False)
+    return dcc.send_data_frame(df.to_csv, "full_dataset_filtered.csv", index=False)
 
 
 if __name__ == "__main__":

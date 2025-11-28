@@ -480,6 +480,8 @@ def export_displayed(n_clicks, selected_combinations, selected_sector, selected_
     df = df[df["combined"].isin(selected_combinations)]
     df = df[df["region"].isin(selected_regions)]
 
+    df = df.drop(columns=[c for c in ["Unnamed: 0", "combined"] if c in df.columns])
+
     if df.empty:
         # Nothing to export -> don't trigger a useless download
         raise PreventUpdate
@@ -498,6 +500,8 @@ def export_all(n_clicks, selected_file):
         raise PreventUpdate
 
     df = get_dataset(selected_file)
+
+    df = df.drop(columns=[c for c in ["Unnamed: 0", "combined"] if c in df.columns])
 
     return dcc.send_data_frame(df.to_csv, "full_dataset.csv", index=False)
 

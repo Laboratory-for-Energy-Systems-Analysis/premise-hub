@@ -87,7 +87,7 @@ app.layout = html.Div([
                 dcc.Dropdown(
                     id="dataset-version-dropdown",
                     options=[
-                        {"label": "Version 2.3.1", "value": "structured_data (2, 3, 2).csv"},
+                        {"label": "Version 2.3.2", "value": "structured_data (2, 3, 2).csv"},
                         {"label": "Version 2.3.1", "value": "structured_data (2, 3, 1).csv"},
                         {"label": "Version 2.3.0", "value": "structured_data (2, 3, 0).csv"},
                         {"label": "Version 2.2.0", "value": "structured_data.csv"},

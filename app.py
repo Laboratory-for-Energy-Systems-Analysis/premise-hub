@@ -49,7 +49,7 @@ def get_dataset(file):
 def get_all_variables():
     files = [
         "structured_data.csv",
-        "structured_data (2, 3, 6).csv",
+        "structured_data (2, 3, 7).csv",
     ]
     all_vars = set()
     for file in files:
@@ -87,13 +87,13 @@ app.layout = html.Div([
                 dcc.Dropdown(
                     id="dataset-version-dropdown",
                     options=[
-                        {"label": "Version 2.3.6", "value": "structured_data (2, 3, 6).csv"},
+                        {"label": "Version 2.3.7", "value": "structured_data (2, 3, 7).csv"},
                         {"label": "Version 2.3.2", "value": "structured_data (2, 3, 2).csv"},
                         {"label": "Version 2.3.1", "value": "structured_data (2, 3, 1).csv"},
                         {"label": "Version 2.3.0", "value": "structured_data (2, 3, 0).csv"},
                         {"label": "Version 2.2.0", "value": "structured_data.csv"},
                     ],
-                    value="structured_data (2, 3, 6).csv",
+                    value="structured_data (2, 3, 7).csv",
                     clearable=False,
                 )
             ], style={"width": "32%", "display": "inline-block", "marginBottom": "20px", "marginRight": "1%"}),

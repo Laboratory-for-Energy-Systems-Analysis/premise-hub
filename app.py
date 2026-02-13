@@ -191,11 +191,13 @@ def update_dropdowns(selected_file):
 # Callback: update regions
 @app.callback(
     Output("region-dropdown", "options"),
+    Output("region-dropdown", "value"),
     Input("sector-dropdown", "value"),
     Input("model-scenario-dropdown", "value"),
     State("dataset-version-dropdown", "value"),
+    State("region-dropdown", "value"),
 )
-def update_region_options(selected_sector, selected_combinations, selected_file):
+def update_region_options(selected_sector, selected_combinations, selected_file, current_regions):
     # If nothing is selected yet, don't touch the dropdown
     if not selected_sector or not selected_combinations:
         raise PreventUpdate
@@ -213,8 +215,17 @@ def update_region_options(selected_sector, selected_combinations, selected_file)
     df = df[df["combined"].isin(selected_combinations)]
 
     regions = sorted(df["region"].unique())
+    options = [{"label": r, "value": r} for r in regions]
 
-    return [{"label": r, "value": r} for r in regions]
+    # Default to World on first load; otherwise keep current valid selections.
+    if not current_regions:
+        next_regions = ["World"] if "World" in regions else ([regions[0]] if regions else [])
+    else:
+        next_regions = [r for r in current_regions if r in regions]
+        if not next_regions:
+            next_regions = ["World"] if "World" in regions else ([regions[0]] if regions else [])
+
+    return options, next_regions
 
 
 # Callback: generate graphs

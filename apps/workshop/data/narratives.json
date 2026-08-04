@@ -1,0 +1,46 @@
+{
+  "SSP1-L": {
+    "display_name": "Sustainability / Low",
+    "short_name": "SSP1-L",
+    "anonymous_id": "A",
+    "color": "#008A82",
+    "line_dash": "solid",
+    "storyline": "International cooperation, resource efficiency and cleaner technologies advance early, while energy and material demand grow more slowly.",
+    "pathway": "Strong early mitigation; CO₂ falls rapidly, reaches net zero late in the century and becomes net negative in this IMAGE implementation.",
+    "watch": "Coordinated action and technology diffusion are assumptions, not observed inevitabilities.",
+    "evidence_status": "awaiting_owner_signoff"
+  },
+  "SSP2-M": {
+    "display_name": "Middle of the Road / Medium",
+    "short_name": "SSP2-M",
+    "anonymous_id": "C",
+    "color": "#D99614",
+    "line_dash": "dash",
+    "storyline": "Social, economic and technological trends broadly continue along historical patterns, with uneven progress and no deep global transformation.",
+    "pathway": "A medium-emissions pathway in which CO₂ remains strongly positive through 2100.",
+    "watch": "Continuation is still a modeled choice; it is not a probability-weighted forecast.",
+    "evidence_status": "awaiting_owner_signoff"
+  },
+  "SSP3-H": {
+    "display_name": "Regional Rivalry / High",
+    "short_name": "SSP3-H",
+    "anonymous_id": "D",
+    "color": "#C44E52",
+    "line_dash": "dot",
+    "storyline": "Countries prioritise security and self-sufficiency; cooperation weakens, development slows and technology diffuses less evenly.",
+    "pathway": "A high-emissions pathway with persistent fossil use and high late-century warming in this IMAGE implementation.",
+    "watch": "High is a stress-test world, not a synonym for business as usual.",
+    "evidence_status": "awaiting_owner_signoff"
+  },
+  "SSP2-VLHO": {
+    "display_name": "Middle of the Road / Very Low, High Overshoot",
+    "short_name": "SSP2-VLHO",
+    "anonymous_id": "B",
+    "color": "#7656A8",
+    "line_dash": "longdash",
+    "storyline": "The SSP2 socioeconomic storyline is retained while very deep mitigation is imposed after delay.",
+    "pathway": "A high-overshoot pathway that reaches net-negative CO₂ and relies strongly on carbon removal to lower warming later.",
+    "watch": "The return from overshoot depends on assumed feasibility, scale and durability of removals.",
+    "evidence_status": "awaiting_owner_signoff"
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "geographic_frame": "Applied European comparison using native premise locations; mapping quality is reported, never hidden.",
+  "cases": [
+    {
+      "case": "electricity",
+      "technology": "low-voltage electricity",
+      "name": "market for electricity, low voltage",
+      "product": "electricity, low voltage",
+      "location_priority": ["CH"],
+      "functional_unit": "1 kWh low-voltage electricity",
+      "mapping_status": "exact country within R10 Europe"
+    },
+    {
+      "case": "steel",
+      "technology": "low-alloyed steel market",
+      "name": "market for steel, low-alloyed",
+      "product": "steel, low-alloyed",
+      "location_priority": ["WEU"],
+      "functional_unit": "1 kg low-alloyed steel",
+      "mapping_status": "approximate"
+    },
+    {
+      "case": "passenger_cars",
+      "technology": "passenger-car transport market",
+      "name": "market for transport, passenger car",
+      "product": "transport, passenger car",
+      "location_priority": ["WEU"],
+      "functional_unit": "1 vehicle-km passenger-car transport",
+      "mapping_status": "approximate"
+    },
+    {
+      "case": "cement",
+      "technology": "unspecified cement market",
+      "name": "market for cement, unspecified",
+      "product": "cement, unspecified",
+      "location_priority": ["CH"],
+      "functional_unit": "1 kg unspecified cement",
+      "mapping_status": "exact country within R10 Europe"
+    },
+    {
+      "case": "dac",
+      "technology": "sorbent-based DAC",
+      "name": "carbon dioxide, captured and stored, with a sorbent-based direct air capture system, 100ktCO2",
+      "product": "carbon dioxide, captured",
+      "location_priority": ["WEU"],
+      "functional_unit": "1 kg CO2 captured and durably stored",
+      "mapping_status": "approximate"
+    },
+    {
+      "case": "dac",
+      "technology": "solvent-based DAC",
+      "name": "carbon dioxide, captured and stored, with a solvent-based direct air capture system, 1MtCO2",
+      "product": "carbon dioxide, captured",
+      "location_priority": ["WEU"],
+      "functional_unit": "1 kg CO2 captured and durably stored",
+      "mapping_status": "approximate"
+    }
+  ]
+}

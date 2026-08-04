@@ -1,0 +1,42 @@
+{
+  "electricity": {
+    "iam_input": "Regional electricity generation by technology",
+    "derived_parameter": "Technology shares and scenario-specific efficiencies",
+    "inventory_change": "Regional electricity markets and power-generation datasets",
+    "downstream_effect": "Every activity consuming electricity inherits the transformed background",
+    "not_changed": "The IAM does not directly replace every exchange or foreground process",
+    "status": "validated_against_premise_2.4.6_smoke_build"
+  },
+  "dac": {
+    "iam_input": "Scenario-dependent DAC/CDR deployment and cumulative deployment",
+    "derived_parameter": "Learning-linked inventory parameters where implemented",
+    "inventory_change": "Scenario-specific solvent- and sorbent-based DAC inventories",
+    "downstream_effect": "Energy, materials and infrastructure requirements alter LCIA results",
+    "not_changed": "Deployment volume is not itself an LCIA score and missing deployment rows are not automatically zero",
+    "status": "validated_against_premise_2.4.6_smoke_build"
+  },
+  "steel": {
+    "iam_input": "Regional steel production volumes and route shares",
+    "derived_parameter": "Primary, secondary, CCS and hydrogen-route market shares",
+    "inventory_change": "Regional steel markets and route-specific production datasets",
+    "downstream_effect": "Steel-intensive products inherit scenario-specific energy and process burdens",
+    "not_changed": "The IAM route taxonomy is mapped to, rather than copied into, ecoinvent activities",
+    "status": "validated_against_premise_2.4.6_smoke_build"
+  },
+  "transport": {
+    "iam_input": "Fleet technology shares, energy use and efficiency pathways",
+    "derived_parameter": "Powertrain shares and scenario-specific vehicle performance",
+    "inventory_change": "Vehicle production, operation and fuel-supply datasets",
+    "downstream_effect": "Passenger and freight services inherit vehicle and energy-system changes",
+    "not_changed": "A fleet share is not a direct replacement for a foreground mobility demand",
+    "status": "teaching_summary"
+  },
+  "cement": {
+    "iam_input": "Cement production, kiln energy and CCS pathways",
+    "derived_parameter": "Kiln-route shares, efficiency and capture parameters",
+    "inventory_change": "Clinker and cement production datasets",
+    "downstream_effect": "Buildings and infrastructure inherit scenario-specific cement burdens",
+    "not_changed": "Foreground material quantities remain part of the LCA study definition",
+    "status": "teaching_summary"
+  }
+}

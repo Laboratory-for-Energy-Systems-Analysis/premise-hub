@@ -1,0 +1,18 @@
+- id: "2.4.4"
+  label: Version 2.4.4
+  filename: structured_data (2, 4, 4).csv
+- id: "2.3.7"
+  label: Version 2.3.7
+  filename: structured_data (2, 3, 7).csv
+- id: "2.3.2"
+  label: Version 2.3.2
+  filename: structured_data (2, 3, 2).csv
+- id: "2.3.1"
+  label: Version 2.3.1
+  filename: structured_data (2, 3, 1).csv
+- id: "2.3.0"
+  label: Version 2.3.0
+  filename: structured_data (2, 3, 0).csv
+- id: "2.2.0"
+  label: Version 2.2.0
+  filename: structured_data.csv

@@ -1,0 +1,24 @@
+{
+  "model": "IMAGE",
+  "model_version": "3.4",
+  "premise_version": "2.4.6",
+  "inventory_location": "CH",
+  "iam_region": "WEU",
+  "teaching_aggregation": ["WEU", "CEU"],
+  "regions": {
+    "WEU": ["AD", "AT", "BE", "CH", "DE", "DK", "ES", "FI", "FR", "FO", "GB", "GI", "GR", "IE", "IS", "IT", "LI", "LU", "MC", "MT", "NL", "NO", "PT", "SE", "SM", "VA"],
+    "CEU": ["AL", "BA", "BG", "CS", "CY", "CZ", "EE", "HR", "HU", "LT", "LV", "MK", "PL", "RO", "SI", "SK", "XK", "ME"],
+    "TUR": ["TR"],
+    "UKR": ["BY", "MD", "UA"],
+    "RUS": ["AM", "AZ", "GE", "RU"]
+  },
+  "iso3_regions": {
+    "WEU": ["AND", "AUT", "BEL", "CHE", "DEU", "DNK", "ESP", "FIN", "FRA", "FRO", "GBR", "GIB", "GRC", "IRL", "ISL", "ITA", "LIE", "LUX", "MCO", "MLT", "NLD", "NOR", "PRT", "SWE", "SMR", "VAT"],
+    "CEU": ["ALB", "BIH", "BGR", "CYP", "CZE", "EST", "HRV", "HUN", "LTU", "LVA", "MKD", "POL", "ROU", "SVN", "SVK", "XKX", "MNE"],
+    "TUR": ["TUR"],
+    "UKR": ["BLR", "MDA", "UKR"],
+    "RUS": ["ARM", "AZE", "GEO", "RUS"]
+  },
+  "source": "premise 2.4.6 iam_variables_mapping/topologies/image-topology.json",
+  "mapping_method": "premise Geomap ecoinvent-to-IAM geography"
+}

@@ -1,6 +1,11 @@
-# Imports
+from __future__ import annotations
+
+import json
+import os
+from pathlib import Path
+
 import dash
-from dash import dcc, html, no_update
+from dash import dcc, html
 import dash_bootstrap_components as dbc
 from dash_bootstrap_templates import load_figure_template
 from dash.dependencies import Input, Output, State
@@ -8,24 +13,53 @@ from dash.exceptions import PreventUpdate
 import plotly.express as px
 import pandas as pd
 import yaml
-import time
 from flask_caching import Cache
 
-# Load YAML files
-with open("data/units.yaml", "r", encoding="utf-8") as f:
-    units = yaml.safe_load(f)
-with open("data/ssp_descriptions.yaml", "r", encoding="utf-8") as f:
-    ssp_descriptions = yaml.safe_load(f)
-with open("data/rcp_descriptions.yaml", "r", encoding="utf-8") as f:
-    rcp_descriptions = yaml.safe_load(f)
+APP_ROOT = Path(__file__).resolve().parent
+DATA_DIR = APP_ROOT / "data"
+REQUESTS_PREFIX = os.getenv("SCENARIO_REQUESTS_PREFIX", "/")
 
-# Initialize the Dash app
-app = dash.Dash(__name__, external_stylesheets=[dbc.themes.LUX])
+with (DATA_DIR / "units.yaml").open(encoding="utf-8") as f:
+    units = yaml.safe_load(f)
+with (DATA_DIR / "ssp_descriptions.yaml").open(encoding="utf-8") as f:
+    ssp_descriptions = yaml.safe_load(f)
+with (DATA_DIR / "rcp_descriptions.yaml").open(encoding="utf-8") as f:
+    rcp_descriptions = yaml.safe_load(f)
+with (DATA_DIR / "datasets.yaml").open(encoding="utf-8") as f:
+    dataset_entries = yaml.safe_load(f)
+
+DATASETS = {str(entry["id"]): entry for entry in dataset_entries}
+DEFAULT_DATASET = "2.4.4"
+
+
+def dataset_path(dataset_id: str) -> Path:
+    try:
+        filename = DATASETS[str(dataset_id)]["filename"]
+    except KeyError as error:
+        raise ValueError(f"Unknown dataset id: {dataset_id}") from error
+    path = (DATA_DIR / str(filename)).resolve()
+    if path.parent != DATA_DIR.resolve() or not path.is_file():
+        raise FileNotFoundError(path)
+    return path
+
+app = dash.Dash(
+    __name__,
+    external_stylesheets=[dbc.themes.LUX],
+    requests_pathname_prefix=REQUESTS_PREFIX,
+    title="Premise IAM Scenario Explorer",
+    update_title=None,
+)
 load_figure_template("LUX")
 server = app.server
 
-# Set up caching
-cache = Cache(server, config={"CACHE_TYPE": "simple"})
+cache = Cache(
+    server,
+    config={
+        "CACHE_TYPE": "SimpleCache",
+        "CACHE_DEFAULT_TIMEOUT": 600,
+        "CACHE_THRESHOLD": 2,
+    },
+)
 
 # Load CSV with optimized dtypes
 column_dtypes = {
@@ -41,24 +75,14 @@ column_dtypes = {
 }
 
 @cache.memoize(timeout=600)
-def get_dataset(file):
-    print(f"[LOAD] Reading {file}")
-    return pd.read_csv(f"data/{file}", dtype=column_dtypes)
+def get_dataset(dataset_id: str):
+    path = dataset_path(dataset_id)
+    print(f"[LOAD] Reading {path.name}")
+    return pd.read_csv(path, dtype=column_dtypes)
 
-# Color map
 def get_all_variables():
-    files = [
-        "structured_data.csv",
-        "structured_data (2, 4, 4).csv",
-    ]
-    all_vars = set()
-    for file in files:
-        try:
-            df = get_dataset(file)
-            all_vars.update(df["variables"].unique())
-        except Exception as e:
-            print(f"[WARNING] Could not load {file}: {e}")
-    return sorted(all_vars)
+    with (DATA_DIR / "variable_catalog.json").open(encoding="utf-8") as stream:
+        return json.load(stream)
 
 all_variables = get_all_variables()
 colors = px.colors.qualitative.Plotly
@@ -70,14 +94,17 @@ app.layout = html.Div([
         html.Div([
             html.Div([
                 html.Div([
-                    html.A("Contact", href="mailto:romain.sacchi@psi.ch", target="_blank")
-                ], style={"width": "33%", "display": "inline-block", "fontSize": "12px", "textAlign": "left"}),
+                    html.A("← Premise resources", href="/")
+                ], style={"width": "25%", "display": "inline-block", "fontSize": "12px", "textAlign": "left"}),
                 html.Div([
-                    html.A("Documentation", href="https://premise.readthedocs.io", target="_blank")
-                ], style={"width": "33%", "display": "inline-block", "fontSize": "12px", "textAlign": "center"}),
+                    html.A("Contact", href="mailto:romain.sacchi@psi.ch")
+                ], style={"width": "25%", "display": "inline-block", "fontSize": "12px", "textAlign": "center"}),
                 html.Div([
-                    html.A("Link to premise github repo", href="https://github.com/polca/premise", target="_blank")
-                ], style={"width": "33%", "display": "inline-block", "fontSize": "12px", "textAlign": "right"}),
+                    html.A("Documentation", href="https://premise.readthedocs.io", target="_blank", rel="noopener noreferrer")
+                ], style={"width": "25%", "display": "inline-block", "fontSize": "12px", "textAlign": "center"}),
+                html.Div([
+                    html.A("Premise on GitHub", href="https://github.com/polca/premise", target="_blank", rel="noopener noreferrer")
+                ], style={"width": "25%", "display": "inline-block", "fontSize": "12px", "textAlign": "right"}),
             ], style={"marginBottom": "10px"}),
 
             html.H1("premise scenario explorer", style={"marginBottom": "20px"}),
@@ -87,14 +114,10 @@ app.layout = html.Div([
                 dcc.Dropdown(
                     id="dataset-version-dropdown",
                     options=[
-                        {"label": "Version 2.4.4", "value": "structured_data (2, 4, 4).csv"},
-                        {"label": "Version 2.3.7", "value": "structured_data (2, 3, 7).csv"},
-                        {"label": "Version 2.3.2", "value": "structured_data (2, 3, 2).csv"},
-                        {"label": "Version 2.3.1", "value": "structured_data (2, 3, 1).csv"},
-                        {"label": "Version 2.3.0", "value": "structured_data (2, 3, 0).csv"},
-                        {"label": "Version 2.2.0", "value": "structured_data.csv"},
+                        {"label": entry["label"], "value": str(entry["id"])}
+                        for entry in dataset_entries
                     ],
-                    value="structured_data (2, 4, 4).csv",
+                    value=DEFAULT_DATASET,
                     clearable=False,
                 )
             ], style={"width": "32%", "display": "inline-block", "marginBottom": "20px", "marginRight": "1%"}),
@@ -173,7 +196,7 @@ app.layout = html.Div([
 )
 def update_dropdowns(selected_file):
     df = get_dataset(selected_file)
-    model_scenarios = df.drop_duplicates(subset=["model", "scenario"])
+    model_scenarios = df.drop_duplicates(subset=["model", "scenario"]).copy()
     model_scenarios["combined"] = model_scenarios["model"].astype(str) + " - " + model_scenarios["scenario"].astype(str)
     model_options = model_scenarios["combined"].tolist()
 

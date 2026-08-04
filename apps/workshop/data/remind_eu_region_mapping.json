@@ -1,0 +1,34 @@
+{
+  "model": "REMIND-EU",
+  "premise_version": "2.4.6",
+  "inventory_location": "CH",
+  "iam_region": "NEN",
+  "regions": {
+    "DEU": ["DE"],
+    "ECE": ["CZ", "EE", "LV", "LT", "PL", "SK"],
+    "ECS": ["BG", "HR", "HU", "RO", "SI"],
+    "ENC": ["AX", "DK", "FO", "FI", "SE"],
+    "ESC": ["CY", "GR", "IT", "MT"],
+    "ESW": ["PT", "ES"],
+    "EWN": ["AT", "BE", "LU", "NL"],
+    "FRA": ["FR"],
+    "NEN": ["GL", "IS", "LI", "NO", "SJ", "CH"],
+    "NES": ["AL", "AD", "BA", "VA", "MK", "MC", "ME", "SM", "RS", "TR"],
+    "UKI": ["GI", "GG", "IE", "IM", "JE", "GB"]
+  },
+  "iso3_regions": {
+    "DEU": ["DEU"],
+    "ECE": ["CZE", "EST", "LVA", "LTU", "POL", "SVK"],
+    "ECS": ["BGR", "HRV", "HUN", "ROU", "SVN"],
+    "ENC": ["ALA", "DNK", "FRO", "FIN", "SWE"],
+    "ESC": ["CYP", "GRC", "ITA", "MLT"],
+    "ESW": ["PRT", "ESP"],
+    "EWN": ["AUT", "BEL", "LUX", "NLD"],
+    "FRA": ["FRA"],
+    "NEN": ["GRL", "ISL", "LIE", "NOR", "SJM", "CHE"],
+    "NES": ["ALB", "AND", "BIH", "VAT", "MKD", "MCO", "MNE", "SMR", "SRB", "TUR"],
+    "UKI": ["GIB", "GGY", "IRL", "IMN", "JEY", "GBR"]
+  },
+  "source": "premise 2.4.6 iam_variables_mapping/topologies/remind-eu-topology.json",
+  "mapping_method": "premise Geomap ecoinvent-to-IAM geography"
+}

@@ -1,0 +1,15 @@
+**/__pycache__/
+**/.pytest_cache/
+**/.DS_Store
+apps/scenario_explorer/dev/
+apps/workshop/build/
+apps/workshop/design/
+apps/workshop/dev/
+apps/workshop/notebooks/
+apps/workshop/references/
+apps/workshop/scripts/
+apps/workshop/slides/
+apps/workshop/tests/
+apps/workshop/data/raw/
+tests/
+requirements-dev.txt

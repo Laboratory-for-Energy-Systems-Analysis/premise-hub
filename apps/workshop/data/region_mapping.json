@@ -1,0 +1,11 @@
+{
+  "standard": "IAMC common R10 aligned with IPCC AR6 WGIII Annex II",
+  "source": "https://github.com/IAMconsortium/common-definitions/blob/main/definitions/region/common.yaml",
+  "statuses": {
+    "exact": "Native geography matches the R10 definition.",
+    "aggregated": "Complete native regions can be summed to R10.",
+    "approximate": "A native boundary crosses R10 or membership differs.",
+    "unavailable": "Source resolution cannot support a defensible mapping."
+  },
+  "workshop_use": "World is the default IAM comparison. Applied LCIA uses CH electricity and WEU steel/DAC; the native location and mapping status remain visible."
+}

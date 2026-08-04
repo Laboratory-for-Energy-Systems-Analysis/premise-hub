@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+      - run: pip install -r requirements.txt -r requirements-dev.txt
+      - run: playwright install --with-deps chromium
+      - name: Verify generated scenario catalog
+        run: |
+          python scripts/build_explorer_catalog.py
+          git diff --exit-code -- apps/scenario_explorer/data/variable_catalog.json
+      - run: pytest -q
+      - name: Browser smoke
+        run: |
+          gunicorn portal.wsgi:application --workers 1 --threads 4 --bind 127.0.0.1:8050 &
+          server_pid=$!
+          trap 'kill "$server_pid"' EXIT
+          for attempt in {1..30}; do
+            curl --fail --silent http://127.0.0.1:8050/health && break
+            sleep 1
+          done
+          python scripts/browser_smoke.py --url http://127.0.0.1:8050

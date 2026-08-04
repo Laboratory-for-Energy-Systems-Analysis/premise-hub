@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 570" role="img" aria-labelledby="title desc">
+  <title id="title">Premise in the prospective LCA software ecosystem</title>
+  <desc id="desc">Scenario and inventory sources flow into Premise; transformed inventories flow to Brightway, Activity Browser, Pathways, and exchange tools.</desc>
+  <defs>
+    <linearGradient id="networkBg" x1="0" x2="1">
+      <stop stop-color="#f1f7f8"/>
+      <stop offset="1" stop-color="#fbf8ef"/>
+    </linearGradient>
+    <filter id="nodeShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#0b3b52" flood-opacity=".10"/>
+    </filter>
+    <marker id="inArrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0 0l9 4.5L0 9z" fill="#008a82"/>
+    </marker>
+    <marker id="outArrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0 0l9 4.5L0 9z" fill="#d99614"/>
+    </marker>
+    <marker id="trailArrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0 0l9 4.5L0 9z" fill="#e56b38"/>
+    </marker>
+  </defs>
+  <rect x="5" y="5" width="1070" height="560" rx="32" fill="url(#networkBg)"/>
+
+  <g font-family="Arial" fill="#0b3b52">
+    <text x="54" y="52" font-size="14" font-weight="800" letter-spacing="2">SCENARIO + INVENTORY SOURCES</text>
+    <text x="760" y="52" font-size="14" font-weight="800" letter-spacing="2">ANALYSIS + EXCHANGE TOOLS</text>
+
+    <path d="M392 286a148 148 0 0 1 296 0" fill="none" stroke="#dce9eb" stroke-width="34" stroke-linecap="round"/>
+    <path d="M392 286a148 148 0 0 0 296 0" fill="none" stroke="#e9e4d4" stroke-width="34" stroke-linecap="round"/>
+    <circle cx="540" cy="286" r="150" fill="none" stroke="#fff" stroke-width="2" stroke-dasharray="4 9"/>
+
+    <g fill="none" stroke="#008a82" stroke-width="5" stroke-linecap="round">
+      <path d="M242 130C340 130 365 184 424 226" marker-end="url(#inArrow)"/>
+      <path d="M242 286h142" marker-end="url(#inArrow)"/>
+      <path d="M242 442c98 0 123-54 182-96" marker-end="url(#inArrow)"/>
+    </g>
+    <g fill="none" stroke="#d99614" stroke-width="5" stroke-linecap="round">
+      <path d="M656 226c63-43 86-96 182-96" marker-end="url(#outArrow)"/>
+      <path d="M696 286h142" marker-end="url(#outArrow)"/>
+      <path d="M656 346c63 43 86 96 182 96" marker-end="url(#outArrow)"/>
+    </g>
+    <path d="M540 402v78" fill="none" stroke="#7656a8" stroke-width="5" stroke-linecap="round"/>
+    <path d="M620 374c38 30 2 132 30 132" fill="none" stroke="#e56b38" stroke-width="5" stroke-linecap="round" marker-end="url(#trailArrow)"/>
+
+    <g transform="translate(58 72)" filter="url(#nodeShadow)">
+      <rect width="184" height="116" rx="24" fill="#fff" stroke="#d9e5e8" stroke-width="2"/>
+      <circle cx="42" cy="43" r="25" fill="#eaf3f6"/>
+      <path d="M23 43h38M28 32h28M28 54h28M42 18c-14 16-14 34 0 50M42 18c14 16 14 34 0 50" fill="none" stroke="#006b8f" stroke-width="2.5"/>
+      <text x="82" y="48" font-size="18" font-weight="700">IAM / ESM</text>
+      <text x="82" y="74" fill="#5b6a74" font-size="14">IAM pathways</text>
+    </g>
+
+    <g transform="translate(58 228)" filter="url(#nodeShadow)">
+      <rect width="184" height="116" rx="24" fill="#fff" stroke="#d9e5e8" stroke-width="2"/>
+      <g transform="translate(18 24)">
+        <ellipse cx="26" cy="9" rx="25" ry="8" fill="#d9edf2" stroke="#006b8f" stroke-width="3"/>
+        <path d="M1 9v39c0 6 11 11 25 11s25-5 25-11V9" fill="#fff" stroke="#006b8f" stroke-width="3"/>
+        <ellipse cx="26" cy="48" rx="25" ry="9" fill="#d9edf2" stroke="#006b8f" stroke-width="3"/>
+      </g>
+      <text x="82" y="48" font-size="20" font-weight="700">ecoinvent</text>
+      <text x="82" y="74" fill="#5b6a74" font-size="14">background LCI</text>
+    </g>
+
+    <g transform="translate(58 384)" filter="url(#nodeShadow)">
+      <rect width="184" height="116" rx="24" fill="#fff" stroke="#d9e5e8" stroke-width="2"/>
+      <path d="M24 23h39l15 15v39H24z" fill="#fff" stroke="#008a82" stroke-width="3"/>
+      <path d="M63 23v15h15M33 49h34M33 60h34" fill="none" stroke="#8fc7c1" stroke-width="3"/>
+      <text x="82" y="48" font-size="20" font-weight="700">Added LCIs</text>
+      <text x="82" y="74" fill="#5b6a74" font-size="14">sector evidence</text>
+    </g>
+
+    <g transform="translate(424 170)" filter="url(#nodeShadow)">
+      <circle cx="116" cy="116" r="112" fill="#fff" stroke="#008a82" stroke-width="6"/>
+    </g>
+
+    <g transform="translate(838 72)" filter="url(#nodeShadow)">
+      <rect width="184" height="116" rx="24" fill="#fff" stroke="#d9e5e8" stroke-width="2"/>
+    </g>
+
+    <g transform="translate(838 228)" filter="url(#nodeShadow)">
+      <rect width="184" height="116" rx="24" fill="#fff" stroke="#d9e5e8" stroke-width="2"/>
+      <circle cx="45" cy="45" r="29" fill="#fff" stroke="#008a82" stroke-width="3"/>
+      <text x="45" y="55" text-anchor="middle" font-size="27" font-weight="800"><tspan fill="#1470a8">A</tspan><tspan fill="#c33b35">B</tspan></text>
+      <text x="84" y="40" font-size="18" font-weight="700">Activity</text>
+      <text x="84" y="62" font-size="18" font-weight="700">Browser</text>
+      <text x="84" y="86" fill="#5b6a74" font-size="14">scenario explorer</text>
+    </g>
+
+    <g transform="translate(838 384)" filter="url(#nodeShadow)">
+      <rect width="184" height="116" rx="24" fill="#fff" stroke="#d9e5e8" stroke-width="2"/>
+    </g>
+
+    <g transform="translate(452 478)" filter="url(#nodeShadow)">
+      <rect width="176" height="56" rx="18" fill="#fff" stroke="#7656a8" stroke-width="3"/>
+      <text x="88" y="24" text-anchor="middle" font-size="18" font-weight="700">unfold · openLCA</text>
+      <text x="88" y="44" text-anchor="middle" fill="#5b6a74" font-size="14">exchange formats</text>
+    </g>
+
+    <g transform="translate(650 478)" filter="url(#nodeShadow)">
+      <rect width="188" height="56" rx="18" fill="#fff" stroke="#e56b38" stroke-width="3"/>
+      <text x="70" y="24" font-size="18" font-weight="700">Trails</text>
+      <text x="70" y="44" fill="#5b6a74" font-size="13">time-explicit LCA</text>
+    </g>
+  </g>
+</svg>

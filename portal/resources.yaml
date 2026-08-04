@@ -1,0 +1,64 @@
+- id: scenario-explorer
+  title: IAM Scenario Explorer
+  summary: Compare the quantified pathways distributed with different Premise releases across models, scenarios, sectors, regions, and years.
+  href: /scenarios/
+  category: Hosted tools
+  kind: hosted
+  logo: premise-logo.png
+  featured: true
+- id: iam-workshop
+  title: IAM Workshop
+  summary: An interactive presentation connecting climate objectives, IAM narratives, energy-system pathways, Premise transformations, and prospective LCA.
+  href: /workshop/
+  category: Hosted tools
+  kind: hosted
+  logo: workshop-mark.svg
+  featured: true
+- id: premise-docs
+  title: Premise documentation
+  summary: Installation, database generation, scenarios, inventories, and API guidance.
+  href: https://premise.readthedocs.io/
+  category: Premise
+  kind: external
+  logo: premise-logo.png
+  featured: false
+- id: premise-github
+  title: Premise on GitHub
+  summary: Source code, releases, examples, issue tracking, and development history.
+  href: https://github.com/polca/premise
+  category: Premise
+  kind: external
+  logo: premise-logo.png
+  featured: false
+- id: brightway
+  title: Brightway
+  summary: The open-source Python framework used to build and calculate life-cycle assessment models.
+  href: https://docs.brightway.dev/
+  category: LCA ecosystem
+  kind: external
+  logo: brightway-logo.svg
+  featured: false
+- id: activity-browser
+  title: Activity Browser
+  summary: A graphical interface for exploring Brightway projects, databases, activities, and results.
+  href: https://github.com/LCA-ActivityBrowser/activity-browser
+  category: LCA ecosystem
+  kind: external
+  logo: activity-browser-mark.svg
+  featured: false
+- id: pathways
+  title: Pathways
+  summary: Tools for handling scenario pathways and connecting them to prospective inventory workflows.
+  href: https://github.com/polca/pathways
+  category: Scenario ecosystem
+  kind: external
+  logo: pathways-logo.png
+  featured: false
+- id: trails
+  title: Trails
+  summary: Time-explicit life-cycle assessment for following changing systems through time.
+  href: https://github.com/Laboratory-for-Energy-Systems-Analysis/trails
+  category: Scenario ecosystem
+  kind: external
+  logo: trails-logo-mark.png
+  featured: false

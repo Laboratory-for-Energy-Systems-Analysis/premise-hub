@@ -22,7 +22,9 @@ env/
 build/
 dist/
 site/
+export/
+missing_classifications.csv
+unlinked.log
 
 # Large or restricted data should not be committed
 data/raw/
-

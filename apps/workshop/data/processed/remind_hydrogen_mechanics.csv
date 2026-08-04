@@ -1,0 +1,28 @@
+model,model_version,scenario,region,metric,variable,year,value,unit,source_file_id
+REMIND,REMIND 3.5,SSP2-PkBudg650,World,annual_investment,Energy Investments|Hydrogen|+|Electrolysis,2020,0.353902,billion US$2017/yr,REMIND_generic_SSP2-PkBudg650.mif
+REMIND,REMIND 3.5,SSP2-PkBudg650,World,annual_investment,Energy Investments|Hydrogen|+|Electrolysis,2025,3.450945,billion US$2017/yr,REMIND_generic_SSP2-PkBudg650.mif
+REMIND,REMIND 3.5,SSP2-PkBudg650,World,annual_investment,Energy Investments|Hydrogen|+|Electrolysis,2030,59.428016,billion US$2017/yr,REMIND_generic_SSP2-PkBudg650.mif
+REMIND,REMIND 3.5,SSP2-PkBudg650,World,annual_investment,Energy Investments|Hydrogen|+|Electrolysis,2035,115.745022,billion US$2017/yr,REMIND_generic_SSP2-PkBudg650.mif
+REMIND,REMIND 3.5,SSP2-PkBudg650,World,annual_investment,Energy Investments|Hydrogen|+|Electrolysis,2040,110.101447,billion US$2017/yr,REMIND_generic_SSP2-PkBudg650.mif
+REMIND,REMIND 3.5,SSP2-PkBudg650,World,annual_investment,Energy Investments|Hydrogen|+|Electrolysis,2045,75.204915,billion US$2017/yr,REMIND_generic_SSP2-PkBudg650.mif
+REMIND,REMIND 3.5,SSP2-PkBudg650,World,annual_investment,Energy Investments|Hydrogen|+|Electrolysis,2050,59.355826,billion US$2017/yr,REMIND_generic_SSP2-PkBudg650.mif
+REMIND,REMIND 3.5,SSP2-PkBudg650,World,annual_investment,Energy Investments|Hydrogen|+|Electrolysis,2055,64.232652,billion US$2017/yr,REMIND_generic_SSP2-PkBudg650.mif
+REMIND,REMIND 3.5,SSP2-PkBudg650,World,annual_investment,Energy Investments|Hydrogen|+|Electrolysis,2060,73.989989,billion US$2017/yr,REMIND_generic_SSP2-PkBudg650.mif
+REMIND,REMIND 3.5,SSP2-PkBudg650,World,hydrogen_output,SE|Hydrogen|+|Electricity,2020,0.000377,EJ/yr,REMIND_generic_SSP2-PkBudg650.mif
+REMIND,REMIND 3.5,SSP2-PkBudg650,World,hydrogen_output,SE|Hydrogen|+|Electricity,2025,0.015099,EJ/yr,REMIND_generic_SSP2-PkBudg650.mif
+REMIND,REMIND 3.5,SSP2-PkBudg650,World,hydrogen_output,SE|Hydrogen|+|Electricity,2030,0.747277,EJ/yr,REMIND_generic_SSP2-PkBudg650.mif
+REMIND,REMIND 3.5,SSP2-PkBudg650,World,hydrogen_output,SE|Hydrogen|+|Electricity,2035,4.581317,EJ/yr,REMIND_generic_SSP2-PkBudg650.mif
+REMIND,REMIND 3.5,SSP2-PkBudg650,World,hydrogen_output,SE|Hydrogen|+|Electricity,2040,11.520729,EJ/yr,REMIND_generic_SSP2-PkBudg650.mif
+REMIND,REMIND 3.5,SSP2-PkBudg650,World,hydrogen_output,SE|Hydrogen|+|Electricity,2045,17.406261,EJ/yr,REMIND_generic_SSP2-PkBudg650.mif
+REMIND,REMIND 3.5,SSP2-PkBudg650,World,hydrogen_output,SE|Hydrogen|+|Electricity,2050,21.297054,EJ/yr,REMIND_generic_SSP2-PkBudg650.mif
+REMIND,REMIND 3.5,SSP2-PkBudg650,World,hydrogen_output,SE|Hydrogen|+|Electricity,2055,25.422442,EJ/yr,REMIND_generic_SSP2-PkBudg650.mif
+REMIND,REMIND 3.5,SSP2-PkBudg650,World,hydrogen_output,SE|Hydrogen|+|Electricity,2060,32.087371,EJ/yr,REMIND_generic_SSP2-PkBudg650.mif
+REMIND,REMIND 3.5,SSP2-PkBudg650,World,conversion_efficiency,Tech|Hydrogen|Electricity|Efficiency,2020,61.000000,%,REMIND_generic_SSP2-PkBudg650.mif
+REMIND,REMIND 3.5,SSP2-PkBudg650,World,conversion_efficiency,Tech|Hydrogen|Electricity|Efficiency,2025,63.000000,%,REMIND_generic_SSP2-PkBudg650.mif
+REMIND,REMIND 3.5,SSP2-PkBudg650,World,conversion_efficiency,Tech|Hydrogen|Electricity|Efficiency,2030,65.000000,%,REMIND_generic_SSP2-PkBudg650.mif
+REMIND,REMIND 3.5,SSP2-PkBudg650,World,conversion_efficiency,Tech|Hydrogen|Electricity|Efficiency,2035,67.000000,%,REMIND_generic_SSP2-PkBudg650.mif
+REMIND,REMIND 3.5,SSP2-PkBudg650,World,conversion_efficiency,Tech|Hydrogen|Electricity|Efficiency,2040,69.000000,%,REMIND_generic_SSP2-PkBudg650.mif
+REMIND,REMIND 3.5,SSP2-PkBudg650,World,conversion_efficiency,Tech|Hydrogen|Electricity|Efficiency,2045,71.000000,%,REMIND_generic_SSP2-PkBudg650.mif
+REMIND,REMIND 3.5,SSP2-PkBudg650,World,conversion_efficiency,Tech|Hydrogen|Electricity|Efficiency,2050,73.000000,%,REMIND_generic_SSP2-PkBudg650.mif
+REMIND,REMIND 3.5,SSP2-PkBudg650,World,conversion_efficiency,Tech|Hydrogen|Electricity|Efficiency,2055,75.000000,%,REMIND_generic_SSP2-PkBudg650.mif
+REMIND,REMIND 3.5,SSP2-PkBudg650,World,conversion_efficiency,Tech|Hydrogen|Electricity|Efficiency,2060,75.000000,%,REMIND_generic_SSP2-PkBudg650.mif

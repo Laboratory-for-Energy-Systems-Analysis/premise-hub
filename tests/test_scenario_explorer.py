@@ -15,8 +15,16 @@ from apps.scenario_explorer.app import (
 
 
 def test_dataset_manifest_preserves_live_versions() -> None:
-    assert DEFAULT_DATASET == "2.4.4"
-    assert list(DATASETS) == ["2.4.4", "2.3.7", "2.3.2", "2.3.1", "2.3.0", "2.2.0"]
+    assert DEFAULT_DATASET == "2.4.8"
+    assert list(DATASETS) == [
+        "2.4.8",
+        "2.4.4",
+        "2.3.7",
+        "2.3.2",
+        "2.3.1",
+        "2.3.0",
+        "2.2.0",
+    ]
     assert all(dataset_path(dataset_id).is_file() for dataset_id in DATASETS)
     with pytest.raises(ValueError):
         dataset_path("../../etc/passwd")
@@ -55,4 +63,3 @@ def test_default_explorer_callbacks_render() -> None:
         DEFAULT_DATASET,
     )
     assert rendered
-

@@ -29,7 +29,7 @@ with (DATA_DIR / "datasets.yaml").open(encoding="utf-8") as f:
     dataset_entries = yaml.safe_load(f)
 
 DATASETS = {str(entry["id"]): entry for entry in dataset_entries}
-DEFAULT_DATASET = "2.4.4"
+DEFAULT_DATASET = "2.4.8"
 
 
 def dataset_path(dataset_id: str) -> Path:

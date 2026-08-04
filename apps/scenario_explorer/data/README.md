@@ -3,6 +3,8 @@
 These structured CSV files are processed IAM scenario exports distributed with
 the corresponding Premise releases. The version manifest in `datasets.yaml`
 controls which files are available in the public explorer.
+Premise 2.4.8 is the current default; earlier releases remain selectable for
+comparison and reproducibility.
 
 The files are not relicensed by the BSD license covering the portal code.
 Users must consult the originating IAM model teams and Premise documentation for

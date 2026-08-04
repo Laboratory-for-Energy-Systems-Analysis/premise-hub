@@ -2,6 +2,7 @@
 **/.pytest_cache/
 **/.DS_Store
 apps/scenario_explorer/dev/
+apps/scenario_explorer/reports/
 apps/workshop/build/
 apps/workshop/design/
 apps/workshop/dev/

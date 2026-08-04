@@ -1,2 +1,4 @@
 playwright>=1.54,<2
 pytest>=8.4,<9
+matplotlib>=3.9,<4
+python-dotenv>=1.1,<2

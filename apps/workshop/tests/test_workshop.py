@@ -3,7 +3,9 @@ from __future__ import annotations
 import unittest
 from pathlib import Path
 
-from apps.workshop.app import server
+from dash import dcc, html
+
+from apps.workshop.app import _make_print_safe, app, server
 from apps.workshop.workshop.config import (
     ANONYMOUS_ORDER,
     ANONYMOUS_SLIDE,
@@ -70,6 +72,60 @@ class WorkshopSmokeTests(unittest.TestCase):
         response = server.test_client().get("/health")
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json, {"status": "ok"})
+
+    def test_pdf_export_controls_are_present(self) -> None:
+        component_ids = set()
+
+        def collect_ids(component) -> None:
+            component_id = getattr(component, "id", None)
+            if component_id is not None:
+                component_ids.add(str(component_id))
+            children = getattr(component, "children", None)
+            if isinstance(children, (list, tuple)):
+                for child in children:
+                    collect_ids(child)
+            elif children is not None:
+                collect_ids(children)
+
+        collect_ids(app.layout)
+        self.assertTrue(
+            {"pdf-export-button", "pdf-export-trigger", "print-deck"} <= component_ids
+        )
+
+        header = next(
+            child
+            for child in app.layout.children
+            if getattr(child, "className", None) == "app-header"
+        )
+        footer = next(
+            child
+            for child in app.layout.children
+            if getattr(child, "className", None) == "app-footer"
+        )
+        self.assertFalse(
+            any(
+                getattr(child, "id", None) == "pdf-export-button"
+                for child in header.children
+            )
+        )
+        self.assertTrue(
+            any(
+                getattr(child, "id", None) == "pdf-export-button"
+                for child in footer.children
+            )
+        )
+
+    def test_print_slide_trees_do_not_duplicate_callback_ids(self) -> None:
+        tree = html.Div(
+            [
+                html.Button("Choice", id={"type": "choice", "value": "A"}),
+                dcc.Graph(id="chart"),
+            ]
+        )
+        _make_print_safe(tree)
+        self.assertIsNone(tree.children[0].id)
+        self.assertTrue(tree.children[0].disabled)
+        self.assertIsNone(tree.children[1].id)
 
     def test_core_scenario_contract(self) -> None:
         self.assertEqual(CORE_SCENARIOS, ["SSP1-L", "SSP2-VLHO", "SSP2-M", "SSP3-H"])
@@ -157,9 +213,7 @@ class WorkshopSmokeTests(unittest.TestCase):
         )
         self.assertNotIn("Mapped IAM detail varies by model and sector", SLIDE_TITLES)
         self.assertEqual(SLIDE_TITLES[29], "Can you defend why the LCA result changed?")
-        self.assertEqual(
-            SLIDE_TITLES[30], "Six IAMs divide the same world differently"
-        )
+        self.assertEqual(SLIDE_TITLES[30], "Six IAMs divide the same world differently")
         self.assertEqual(
             SLIDE_TITLES[31],
             "CH stays Swiss—but its IAM region depends on the model",

@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import os
 
-from dash import ALL, Dash, Input, Output, State, ctx, dcc, html
+from dash import ALL, ClientsideFunction, Dash, Input, Output, State, ctx, dcc, html
 from dash.exceptions import PreventUpdate
 
 from .workshop.config import (
@@ -37,6 +37,44 @@ def health():
     return {"status": "ok"}, 200
 
 
+def _make_print_safe(component):
+    """Remove callback IDs from a freshly rendered slide tree."""
+    prop_names = getattr(component, "_prop_names", ())
+    if "id" in prop_names:
+        component.id = None
+    if isinstance(component, html.Button):
+        component.disabled = True
+
+    children = getattr(component, "children", None)
+    if isinstance(children, (list, tuple)):
+        for child in children:
+            _make_print_safe(child)
+    elif children is not None:
+        _make_print_safe(children)
+    return component
+
+
+def render_pdf_deck(votes, explore, capstone, iam_map):
+    """Render every presenter state for the browser's PDF print view."""
+    return [
+        html.Section(
+            _make_print_safe(
+                render_slide(
+                    index,
+                    1,  # A static export needs the anonymous labels revealed.
+                    votes,
+                    explore,
+                    capstone,
+                    iam_map,
+                )
+            ),
+            className="print-page",
+            **{"aria-label": slide_label(index)},
+        )
+        for index in range(LAST_SLIDE + 1)
+    ]
+
+
 app.layout = html.Div(
     [
         dcc.Store(id="slide-store", data=0, storage_type="session"),
@@ -52,6 +90,8 @@ app.layout = html.Div(
             storage_type="session",
         ),
         dcc.Store(id="iam-map-store", data="image", storage_type="session"),
+        dcc.Store(id="pdf-export-trigger", data=0),
+        dcc.Store(id="pdf-export-complete", data=0),
         dcc.Store(
             id="capstone-store",
             data={
@@ -124,6 +164,19 @@ app.layout = html.Div(
                     className="nav-button reveal-button",
                     accessKey="r",
                 ),
+                html.Button(
+                    [
+                        html.Span(
+                            "↓", className="pdf-export-icon", **{"aria-hidden": "true"}
+                        ),
+                        html.Span("Export PDF", className="pdf-export-label"),
+                    ],
+                    id="pdf-export-button",
+                    n_clicks=0,
+                    className="nav-button pdf-export-button",
+                    title="Prepare all slides and open the browser's PDF print dialog",
+                    **{"aria-label": "Export the presentation as a PDF"},
+                ),
                 html.Div(id="chapter-label", className="footer-hint"),
                 html.Button(
                     "Next →",
@@ -135,8 +188,35 @@ app.layout = html.Div(
             ],
             className="app-footer",
         ),
+        html.Div(id="print-deck", className="print-deck"),
     ],
     className="app-shell",
+)
+
+
+@app.callback(
+    Output("print-deck", "children"),
+    Output("pdf-export-trigger", "data"),
+    Input("pdf-export-button", "n_clicks"),
+    State("vote-store", "data"),
+    State("explore-store", "data"),
+    State("iam-map-store", "data"),
+    State("capstone-store", "data"),
+    prevent_initial_call=True,
+    running=[(Output("pdf-export-button", "disabled"), True, False)],
+)
+def prepare_pdf_export(n_clicks, votes, explore, iam_map, capstone):
+    if not n_clicks:
+        raise PreventUpdate
+    votes = votes or {"A": 0, "B": 0, "C": 0, "D": 0}
+    return render_pdf_deck(votes, explore, capstone, iam_map), n_clicks
+
+
+app.clientside_callback(
+    ClientsideFunction(namespace="workshop", function_name="exportPdf"),
+    Output("pdf-export-complete", "data"),
+    Input("pdf-export-trigger", "data"),
+    prevent_initial_call=True,
 )
 
 

@@ -41,6 +41,9 @@ python3 -m venv .venv
 ```
 
 Open <http://127.0.0.1:8050>. Use the visible Back, Reveal, and Next controls.
+The footer's **Export PDF** button prepares all presenter states, reveals the
+anonymous scenario labels, and opens the browser print dialog with a 16:9 PDF
+layout. Interactive slides use their currently selected state in the export.
 
 For a production-like local run:
 

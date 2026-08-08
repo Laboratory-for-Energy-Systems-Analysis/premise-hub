@@ -1,5 +1,5 @@
 - id: "2.4.9"
-  label: Version 2.4.9 (pre-release)
+  label: Version 2.4.9
   filename: structured_data (2, 4, 9).csv
   source_commit: cd1011f401b64ec8476852ba2a47a3eb5bf88c1d
 - id: "2.4.8"

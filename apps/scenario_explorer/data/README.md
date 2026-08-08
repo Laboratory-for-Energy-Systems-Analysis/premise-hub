@@ -8,9 +8,9 @@ published, its manifest entry is explicitly labelled as a pre-release and
 records the upstream premise commit used to generate it. Earlier releases
 remain selectable for comparison and reproducibility.
 
-The 2.4.9 heat data are presented as three separate sectors: building heat,
-industrial heat, and the secondary/district-heating supply mix. Keeping these
-layers separate avoids stacking end-use heat demand with its upstream supply.
+The 2.4.9 heat data are presented as three separate sectors: `Heat - Buildings`,
+`Heat - Industry`, and `Heat - District heating`. Keeping these layers separate
+avoids stacking end-use heat demand with its upstream supply.
 
 The files are not relicensed by the BSD license covering the portal code.
 Users must consult the originating IAM model teams and Premise documentation for

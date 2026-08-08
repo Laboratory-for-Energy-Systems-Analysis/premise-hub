@@ -43,10 +43,12 @@ def test_default_explorer_callbacks_render() -> None:
     assert {"model", "scenario", "sector", "region", "variables", "year", "val"} <= set(
         frame.columns
     )
-    assert {"Heat - Buildings", "Heat - Industry", "District Heating Mix"} <= set(
-        frame["sector"].unique()
-    )
-    district_heat = frame.loc[frame["sector"] == "District Heating Mix"]
+    assert {
+        "Heat - Buildings",
+        "Heat - Industry",
+        "Heat - District heating",
+    } <= set(frame["sector"].unique())
+    district_heat = frame.loc[frame["sector"] == "Heat - District heating"]
     assert not district_heat.empty
     assert district_heat["variables"].str.startswith("heat, secondary,").all()
 

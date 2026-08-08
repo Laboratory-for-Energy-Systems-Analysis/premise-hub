@@ -228,7 +228,7 @@ def normalize_dataset(frame: pd.DataFrame) -> pd.DataFrame:
     heat_layers = {
         "heat, buildings,": "Heat - Buildings",
         "heat, industrial,": "Heat - Industry",
-        "heat, secondary,": "District Heating Mix",
+        "heat, secondary,": "Heat - District heating",
     }
     is_heat_sector = frame["sector"].eq("Heat")
     is_layered_heat = frame["variables"].str.startswith(tuple(heat_layers), na=False)
@@ -268,7 +268,7 @@ def main() -> None:
     dataset.to_csv(args.output, index=False)
     heat_variables = dataset.loc[
         dataset["sector"].isin(
-            ["Heat - Buildings", "Heat - Industry", "District Heating Mix"]
+            ["Heat - Buildings", "Heat - Industry", "Heat - District heating"]
         ),
         "variables",
     ].nunique()

@@ -130,7 +130,7 @@ Heat - Industry:
   label: Exajoules (EJ)
   expl_text: Delivered industrial heat by technology, based on the industrial end-use layer of the premise heat mapping.
   offset: 3
-District Heating Mix:
+Heat - District heating:
   label: Exajoules (EJ)
   expl_text: Secondary heat supplied to district and industrial heat markets, split by production technology.
   offset: 3

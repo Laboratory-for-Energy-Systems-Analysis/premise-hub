@@ -15,8 +15,9 @@ from apps.scenario_explorer.app import (
 
 
 def test_dataset_manifest_preserves_live_versions() -> None:
-    assert DEFAULT_DATASET == "2.4.8"
+    assert DEFAULT_DATASET == "2.4.9"
     assert list(DATASETS) == [
+        "2.4.9",
         "2.4.8",
         "2.4.4",
         "2.3.7",
@@ -39,9 +40,19 @@ def test_catalog_initializes_without_loading_every_dataset() -> None:
 def test_default_explorer_callbacks_render() -> None:
     frame = get_dataset(DEFAULT_DATASET)
     assert not frame.empty
-    assert {"model", "scenario", "sector", "region", "variables", "year", "val"} <= set(frame.columns)
+    assert {"model", "scenario", "sector", "region", "variables", "year", "val"} <= set(
+        frame.columns
+    )
+    assert {"Heat - Buildings", "Heat - Industry", "District Heating Mix"} <= set(
+        frame["sector"].unique()
+    )
+    district_heat = frame.loc[frame["sector"] == "District Heating Mix"]
+    assert not district_heat.empty
+    assert district_heat["variables"].str.startswith("heat, secondary,").all()
 
-    model_options, selected_models, sector_options, selected_sector = update_dropdowns(DEFAULT_DATASET)
+    model_options, selected_models, sector_options, selected_sector = update_dropdowns(
+        DEFAULT_DATASET
+    )
     assert model_options
     assert selected_models == [model_options[0]["value"]]
     assert sector_options

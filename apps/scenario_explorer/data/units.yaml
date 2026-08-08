@@ -118,3 +118,19 @@ Final Energy:
   label: Exajoules (EJ)
   expl_text: Generated volumes of final energy, per technology, per end-consumer.
   offset: 3
+Heat:
+  label: Exajoules (EJ)
+  expl_text: Heat variables from premise releases before the layered heat mapping.
+  offset: 3
+Heat - Buildings:
+  label: Exajoules (EJ)
+  expl_text: Delivered building heat by technology, based on the building end-use layer of the premise heat mapping.
+  offset: 3
+Heat - Industry:
+  label: Exajoules (EJ)
+  expl_text: Delivered industrial heat by technology, based on the industrial end-use layer of the premise heat mapping.
+  offset: 3
+District Heating Mix:
+  label: Exajoules (EJ)
+  expl_text: Secondary heat supplied to district and industrial heat markets, split by production technology.
+  offset: 3

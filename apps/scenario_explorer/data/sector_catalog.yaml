@@ -1,0 +1,83 @@
+topics:
+  - id: overview
+    label: Overview
+    sectors:
+      - GMST increase
+      - Carbon Dioxide emissions
+      - Population
+      - Gross Domestic Product
+  - id: energy
+    label: Energy supply
+    sectors:
+      - Electricity
+      - Final Energy
+      - Biomass
+      - Fuels
+      - Gas
+      - Gasoline
+      - Diesel
+      - Hydrogen
+      - Kerosene
+      - LPG
+      - Oil
+      - Battery
+  - id: heat
+    label: Heat
+    sectors:
+      - Heat - Buildings
+      - Heat - District heating
+      - Heat - Industry
+      - Heat
+  - id: industry
+    label: Industry
+    sectors:
+      - Cement
+      - Steel
+  - id: transport
+    label: Transport
+    sectors:
+      - Passenger (car)
+      - Passenger (bus)
+      - Passenger (two-wheeler)
+      - Freight (road)
+      - Freight (rail)
+      - Transport Passenger Cars
+      - Transport Bus
+      - Transport Two Wheelers
+      - Transport Road Freight
+      - Transport Rail Freight
+      - Transport Sea Freight
+  - id: carbon
+    label: Carbon management
+    sectors:
+      - Carbon Dioxide Removal
+      - Direct Air Capture
+  - id: performance
+    label: Efficiency and capture
+    sectors:
+      - Electricity efficiency
+      - Gasoline (efficiency)
+      - Diesel (efficiency)
+      - Gas (efficiency)
+      - Hydrogen (efficiency)
+      - Cement (efficiency)
+      - Cement CCS
+      - Steel (efficiency)
+      - Steel CCS
+
+sector_behavior:
+  GMST increase: {chart: indicator, relative: false}
+  Carbon Dioxide emissions: {chart: indicator, relative: false}
+  Population: {chart: indicator, relative: false}
+  Gross Domestic Product: {chart: indicator, relative: false}
+  Carbon Dioxide Removal: {chart: composition, relative: false}
+  Direct Air Capture: {chart: indicator, relative: false}
+  Electricity efficiency: {chart: indicator, relative: false}
+  Gasoline (efficiency): {chart: indicator, relative: false}
+  Diesel (efficiency): {chart: indicator, relative: false}
+  Gas (efficiency): {chart: indicator, relative: false}
+  Hydrogen (efficiency): {chart: indicator, relative: false}
+  Cement (efficiency): {chart: indicator, relative: false}
+  Cement CCS: {chart: indicator, relative: false}
+  Steel (efficiency): {chart: indicator, relative: false}
+  Steel CCS: {chart: indicator, relative: false}

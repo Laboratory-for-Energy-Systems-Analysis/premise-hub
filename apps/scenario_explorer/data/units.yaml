@@ -106,6 +106,30 @@ Transport Road Freight:
   label: Tonne-kilometers (billion)
   expl_text: Freight transport activity in billion tonne-kilometers. Used to calculate fleet-average trucks.
   offset: 7
+Freight (road):
+  label: Tonne-kilometers (billion)
+  expl_text: Freight transport activity in billion tonne-kilometers. Used to calculate fleet-average trucks.
+  offset: 7
+Transport Passenger Cars:
+  label: Vehicle-kilometers (billion)
+  expl_text: Number of vehicle-kilometers driven by passenger cars. Used to calculate fleet-average vehicles.
+  offset: 7
+Transport Bus:
+  label: Vehicle-kilometers (billion)
+  expl_text: Number of vehicle-kilometers driven by buses. Used to calculate fleet-average vehicles.
+  offset: 7
+Transport Two Wheelers:
+  label: Vehicle-kilometers (billion)
+  expl_text: Number of vehicle-kilometers driven by two-wheelers. Used to calculate fleet-average vehicles.
+  offset: 7
+Transport Rail Freight:
+  label: Tonne-kilometers (billion)
+  expl_text: Rail freight activity in billion tonne-kilometers.
+  offset: 7
+Transport Sea Freight:
+  label: Tonne-kilometers (billion)
+  expl_text: Sea freight activity in billion tonne-kilometers.
+  offset: 7
 Freight (rail):
   label: Vehicles-kilometers (billion)
   expl_text: Number of vehicle-kilometers driven by trains. Used to calculate fleet-average vehicles.
@@ -134,3 +158,19 @@ Heat - District heating:
   label: Exajoules (EJ)
   expl_text: Secondary heat supplied to district and industrial heat markets, split by production technology.
   offset: 3
+Fuels:
+  label: Exajoules (EJ)
+  expl_text: Fuel production volumes by pathway and technology.
+  offset: 5
+Kerosene:
+  label: Exajoules (EJ)
+  expl_text: Generated volumes of kerosene-like fuel, per technology.
+  offset: 5
+LPG:
+  label: Exajoules (EJ)
+  expl_text: Generated volumes of liquefied petroleum gas, per technology.
+  offset: 5
+Oil:
+  label: Exajoules (EJ)
+  expl_text: Generated volumes of oil products, per technology.
+  offset: 5

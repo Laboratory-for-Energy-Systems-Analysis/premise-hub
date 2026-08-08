@@ -13,10 +13,8 @@ import argparse
 import os
 from pathlib import Path
 
+import numpy as np
 import pandas as pd
-
-from premise import __version__
-from premise.data_collection import IAMDataCollection
 
 DEV_DIR = Path(__file__).resolve().parent
 DATA_DIR = DEV_DIR.parent / "data"
@@ -63,6 +61,8 @@ OTHER_VARIABLES = {"CO2", "gdp", "population", "GMST"}
 
 
 def version_string() -> str:
+    from premise import __version__
+
     if isinstance(__version__, tuple):
         return ".".join(map(str, __version__))
     return str(__version__)
@@ -85,7 +85,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--output",
         type=Path,
-        default=DATA_DIR / f"structured_data ({version.replace('.', ', ')}).csv",
+        default=DATA_DIR / f"structured_data ({version.replace('.', ', ')}).csv.gz",
     )
     parser.add_argument(
         "--expected-version",
@@ -110,6 +110,8 @@ def load_production_mapping(path: Path) -> pd.DataFrame:
 def scenario_frame(
     scenario: dict[str, object], mapping: pd.DataFrame, iam_dir: Path, key: bytes
 ) -> pd.DataFrame:
+    from premise.data_collection import IAMDataCollection
+
     model = str(scenario["model"])
     pathway = str(scenario["pathway"])
     print(f"[{model} / {pathway}] loading IAM data", flush=True)
@@ -238,12 +240,72 @@ def normalize_dataset(frame: pd.DataFrame) -> pd.DataFrame:
             sector
         )
 
-    frame = frame.loc[frame["val"].ne(0) & frame["val"].abs().gt(0.1)].copy()
+    # Preserve every finite, non-zero IAM value.  Display-oriented reduction
+    # belongs in the dashboard; applying a global threshold here silently
+    # changes technology mixes and can remove complete regional time series.
+    frame = frame.loc[np.isfinite(frame["val"]) & frame["val"].ne(0)].copy()
+    frame["region_source"] = "reported"
+
+    # IMAGE does not report World for every mapped variable.  Its native
+    # regions are non-overlapping, so missing World rows can be derived without
+    # double counting.  Aggregate each technology independently and never
+    # overwrite a World value supplied by the IAM.
+    image_regions = frame.loc[frame["model"].eq("image") & frame["region"].ne("World")]
+    world_keys = ["model", "scenario", "sector", "variables", "year"]
+    derived_world = image_regions.groupby(world_keys, observed=True, as_index=False)[
+        "val"
+    ].sum()
+    reported_world_keys = frame.loc[
+        frame["model"].eq("image") & frame["region"].eq("World"), world_keys
+    ].drop_duplicates()
+    if not reported_world_keys.empty:
+        derived_world = derived_world.merge(
+            reported_world_keys.assign(_reported_world=True),
+            on=world_keys,
+            how="left",
+        )
+        derived_world = derived_world.loc[derived_world["_reported_world"].isna()].drop(
+            columns="_reported_world"
+        )
+    derived_world = derived_world.loc[derived_world["val"].ne(0)].copy()
+    if not derived_world.empty:
+        derived_world["region"] = "World"
+        derived_world["region_source"] = "derived"
+        frame = pd.concat([frame, derived_world], ignore_index=True)
+
     frame["year"] = frame["year"].astype("int32")
-    frame["val"] = frame["val"].astype("float32")
+    # Keep float64 precision: several valid IAM values are smaller than the
+    # float32 subnormal range and would otherwise be serialized back as zero.
+    frame["val"] = frame["val"].astype("float64")
     return frame.sort_values(
         ["model", "scenario", "sector", "variables", "region", "year"]
     ).reset_index(drop=True)
+
+
+def validate_historical_pathway_scale(frame: pd.DataFrame) -> None:
+    """Reject any IAM pathway file with a two-order-of-magnitude scale jump."""
+    historical = frame.loc[frame["year"].le(2020)].copy()
+    historical["_magnitude"] = historical["val"].abs()
+    totals = historical.groupby(
+        ["model", "sector", "region", "year", "scenario"],
+        observed=True,
+        as_index=False,
+    )["_magnitude"].sum()
+    spreads = totals.groupby(["model", "sector", "region", "year"], observed=True)[
+        "_magnitude"
+    ].agg(["count", "min", "max"])
+    inconsistent = spreads.loc[
+        spreads["count"].ge(2)
+        & spreads["min"].gt(0)
+        & spreads["max"].div(spreads["min"]).gt(100)
+    ]
+    if not inconsistent.empty:
+        examples = ", ".join(
+            " / ".join(map(str, index)) for index in inconsistent.index[:5]
+        )
+        raise ValueError(
+            f"Inconsistent historical scale across IAM pathways for: {examples}"
+        )
 
 
 def main() -> None:
@@ -264,6 +326,7 @@ def main() -> None:
         for scenario in SCENARIOS
     ]
     dataset = normalize_dataset(pd.concat(frames, ignore_index=True))
+    validate_historical_pathway_scale(dataset)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     dataset.to_csv(args.output, index=False)
     heat_variables = dataset.loc[

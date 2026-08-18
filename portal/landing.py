@@ -3,6 +3,7 @@ from __future__ import annotations
 from flask import Flask, Response, jsonify, redirect, render_template
 
 from .catalog import resources
+from .ecosystem import ecosystem
 
 
 def create_landing_app() -> Flask:
@@ -12,10 +13,14 @@ def create_landing_app() -> Flask:
     def index():
         catalog = resources()
         featured = [item for item in catalog if item["featured"]]
-        ecosystem = [item for item in catalog if not item["featured"]]
+        ecosystem_resources = [item for item in catalog if not item["featured"]]
         return render_template(
-            "index.html", featured=featured, ecosystem=ecosystem
+            "index.html", featured=featured, ecosystem=ecosystem_resources
         )
+
+    @app.get("/ecosystem/")
+    def ecosystem_page():
+        return render_template("ecosystem.html", catalog=ecosystem())
 
     @app.get("/health")
     def health():
@@ -24,6 +29,7 @@ def create_landing_app() -> Flask:
                 "status": "ok",
                 "services": {
                     "landing": "ok",
+                    "ecosystem": "ok",
                     "scenarios": "ok",
                     "workshop": "ok",
                 },

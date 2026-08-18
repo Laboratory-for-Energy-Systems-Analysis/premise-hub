@@ -52,6 +52,40 @@ def main() -> None:
         if args.output:
             page.screenshot(path=args.output / "landing-desktop.png", full_page=True)
 
+        page.goto(f"{base}/ecosystem/", wait_until="networkidle")
+        page.get_by_role(
+            "heading", name="The Brightway ecosystem, connected."
+        ).wait_for()
+        page.locator(".ecosystem-edge").first.wait_for(state="attached")
+        all_nodes = page.locator(".ecosystem-node")
+        legacy_nodes = page.locator('.ecosystem-node[data-status="legacy"]')
+        legacy_count = legacy_nodes.count()
+        assert page.locator(".ecosystem-node:not([hidden])").count() == (
+            all_nodes.count() - legacy_count
+        )
+        premise_node = page.locator('[data-tool-id="premise"]')
+        premise_node.hover()
+        page.locator(".ecosystem-edge.is-active").first.wait_for(state="attached")
+        assert page.locator(".ecosystem-node.is-related").count() >= 3
+        premise_node.click()
+        page.get_by_role("dialog").wait_for()
+        assert page.locator("#ecosystem-detail-name").text_content() == "premise"
+        assert page.url.endswith("/ecosystem/#premise")
+        page.locator("#ecosystem-detail-close").click()
+        page.locator("#ecosystem-search").fill("pulpo")
+        assert page.locator("#ecosystem-result-count").text_content().startswith("1 of")
+        page.locator("#ecosystem-status-filter").select_option("legacy")
+        assert page.locator("#ecosystem-result-count").text_content().startswith("0 of")
+        page.locator("#ecosystem-search").fill("")
+        assert (
+            page.locator("#ecosystem-result-count")
+            .text_content()
+            .startswith(f"{legacy_count} of")
+        )
+        page.locator("#ecosystem-reset").click()
+        if args.output:
+            page.screenshot(path=args.output / "ecosystem-desktop.png", full_page=True)
+
         page.goto(f"{base}/scenarios/", wait_until="networkidle")
         page.get_by_role("heading", name="premise scenario explorer").wait_for()
         page.locator("#dataset-version-dropdown").wait_for()
@@ -150,6 +184,23 @@ def main() -> None:
         )
         if args.output:
             mobile.screenshot(path=args.output / "landing-mobile.png", full_page=True)
+
+        mobile.goto(f"{base}/ecosystem/", wait_until="networkidle")
+        mobile.get_by_role(
+            "heading", name="The Brightway ecosystem, connected."
+        ).wait_for()
+        assert mobile.locator("body").evaluate(
+            "el => el.scrollWidth <= window.innerWidth + 1"
+        )
+        assert mobile.locator("#ecosystem-connections").evaluate(
+            "el => getComputedStyle(el).display === 'none'"
+        )
+        mobile.locator('[data-tool-id="trails"]').click()
+        mobile.get_by_role("dialog").wait_for()
+        assert mobile.locator("#ecosystem-detail-name").text_content() == "TRAILS"
+        if args.output:
+            mobile.screenshot(path=args.output / "ecosystem-mobile.png", full_page=True)
+        mobile.locator("#ecosystem-detail-close").click()
 
         mobile.goto(f"{base}/scenarios/", wait_until="networkidle")
         mobile.get_by_role("heading", name="premise scenario explorer").wait_for()

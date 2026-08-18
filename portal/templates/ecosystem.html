@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Explore the open-source Brightway software ecosystem by workflow stage, project family, and relationship.">
+    <title>Open-source Brightway ecosystem · Premise Hub</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='ecosystem.css') }}">
+    <script src="{{ url_for('static', filename='ecosystem.js') }}" defer></script>
+  </head>
+  <body class="ecosystem-page">
+    <a class="skip-link" href="#ecosystem-map-section">Skip to ecosystem map</a>
+    <header class="site-header">
+      <a class="institution" href="/" aria-label="Premise resources home">
+        <img src="{{ url_for('static', filename='psi-mark.svg') }}" alt="">
+        <span><strong>PSI – Laboratory for Energy Systems Analyses</strong><small>Integrated assessment · prospective LCA</small></span>
+      </a>
+      <nav class="ecosystem-nav" aria-label="Page navigation">
+        <a href="/">Premise Hub</a>
+        <a class="contact-link" href="mailto:romain.sacchi@psi.ch">Contact</a>
+      </nav>
+    </header>
+
+    <main class="ecosystem-main">
+      <section class="ecosystem-hero" aria-labelledby="ecosystem-page-title">
+        <div class="ecosystem-hero-copy">
+          <p class="eyebrow">Open-source software map</p>
+          <h1 id="ecosystem-page-title">The Brightway ecosystem, connected.</h1>
+          <p>Explore the tools used to exchange inventories, transform data, build matrices, calculate impacts, and communicate results. Select a project to reveal its immediate relationships.</p>
+          <div class="ecosystem-facts" aria-label="Catalog overview">
+            <span><strong>{{ catalog.tools|length }}</strong> projects</span>
+            <span><strong>{{ catalog.relationships|length }}</strong> relationships</span>
+            <span>Verified <strong>{{ catalog.metadata.verified_on }}</strong></span>
+          </div>
+        </div>
+        <aside class="ecosystem-reading-note">
+          <span aria-hidden="true">↗</span>
+          <div><strong>Start with a project</strong><p>Hover, focus, or select any card. Unrelated tools fade so the workflow becomes readable.</p></div>
+        </aside>
+      </section>
+
+      <section class="ecosystem-controls" aria-labelledby="ecosystem-controls-title">
+        <div class="ecosystem-controls-heading">
+          <div><p class="eyebrow">Find your route</p><h2 id="ecosystem-controls-title">Filter the map</h2></div>
+          <p id="ecosystem-result-count" class="ecosystem-result-count" aria-live="polite"></p>
+        </div>
+        <div class="ecosystem-toolbar">
+          <label class="ecosystem-search">
+            <span>Search projects</span>
+            <input id="ecosystem-search" type="search" placeholder="Name, purpose, or tag…" autocomplete="off">
+          </label>
+          <label>
+            <span>Workflow stage</span>
+            <select id="ecosystem-stage-filter">
+              <option value="all">All stages</option>
+              {% for stage in catalog.stages %}<option value="{{ stage.id }}">{{ stage.label }}</option>{% endfor %}
+            </select>
+          </label>
+          <label>
+            <span>Project family</span>
+            <select id="ecosystem-group-filter">
+              <option value="all">All families</option>
+              {% for group in catalog.groups %}<option value="{{ group.id }}">{{ group.label }}</option>{% endfor %}
+            </select>
+          </label>
+          <label>
+            <span>Project status</span>
+            <select id="ecosystem-status-filter">
+              <option value="current">Current projects</option>
+              {% for status in catalog.statuses %}<option value="{{ status.id }}">{{ status.label }} only</option>{% endfor %}
+              <option value="all">All statuses</option>
+            </select>
+          </label>
+          <button id="ecosystem-reset" class="ecosystem-reset" type="button">Reset</button>
+        </div>
+        <noscript><p class="ecosystem-noscript">The complete catalog is shown below. Enable JavaScript to filter projects and reveal relationship paths.</p></noscript>
+      </section>
+
+      <section id="ecosystem-map-section" class="ecosystem-map-section" aria-labelledby="ecosystem-map-title">
+        <div class="ecosystem-section-heading">
+          <div><p class="eyebrow">Workflow map</p><h2 id="ecosystem-map-title">Projects and connections</h2></div>
+          <div class="ecosystem-legend" aria-label="Relationship legend">
+            {% for relationship_type in catalog.relationship_types %}
+            <span class="ecosystem-legend-item" data-relationship-type="{{ relationship_type.id }}"><i aria-hidden="true"></i>{{ relationship_type.label }}</span>
+            {% endfor %}
+          </div>
+        </div>
+
+        <div class="ecosystem-map-frame">
+          <div class="ecosystem-map-scroll" tabindex="0" aria-label="Scrollable ecosystem matrix">
+            <div id="ecosystem-map" class="ecosystem-map">
+              <svg id="ecosystem-connections" class="ecosystem-connections" aria-hidden="true">
+                <defs>
+                  <marker id="ecosystem-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="strokeWidth">
+                    <path d="M0,0 L8,4 L0,8 z" fill="context-stroke"></path>
+                  </marker>
+                </defs>
+              </svg>
+
+              <div class="ecosystem-grid-corner"><span>Project family</span><strong>Workflow stage →</strong></div>
+              {% for stage in catalog.stages %}
+              <header class="ecosystem-stage-heading" style="grid-column: {{ loop.index + 1 }}; grid-row: 1;">
+                <span>{{ "%02d"|format(loop.index) }}</span><strong>{{ stage.label }}</strong><small>{{ stage.short }}</small>
+              </header>
+              {% endfor %}
+
+              {% for group in catalog.groups %}
+                {% set group_row = loop.index + 1 %}
+                <header class="ecosystem-group-heading" data-group-heading="{{ group.id }}" style="grid-column: 1; grid-row: {{ group_row }};">
+                  <strong>{{ group.label }}</strong><small>{{ group.short }}</small>
+                </header>
+                {% for stage in catalog.stages %}
+                <div class="ecosystem-cell" data-group-cell="{{ group.id }}" data-stage-cell="{{ stage.id }}" style="grid-column: {{ loop.index + 1 }}; grid-row: {{ group_row }};">
+                  <h3 class="ecosystem-cell-title">{{ group.label }} · {{ stage.label }}</h3>
+                  {% for tool in catalog.tools|sort(attribute='order') if tool.group == group.id and tool.stage == stage.id %}
+                  <button
+                    class="ecosystem-node"
+                    type="button"
+                    data-tool-id="{{ tool.id }}"
+                    data-stage="{{ tool.stage }}"
+                    data-group="{{ tool.group }}"
+                    data-status="{{ tool.status }}"
+                    data-search="{{ ([tool.name, tool.summary, tool.description] + tool.tags)|join(' ')|lower }}"
+                    aria-pressed="false"
+                    aria-controls="ecosystem-detail"
+                    {% if tool.status == 'legacy' %}hidden{% endif %}
+                  >
+                    <span class="ecosystem-node-topline"><strong>{{ tool.name }}</strong><i class="ecosystem-status ecosystem-status-{{ tool.status }}">{{ tool.status }}</i></span>
+                    <span>{{ tool.summary }}</span>
+                  </button>
+                  {% endfor %}
+                </div>
+                {% endfor %}
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+        <p class="ecosystem-source-note">{{ catalog.metadata.source_note }} Project status describes this catalog’s editorial classification, not a guarantee of support. Legacy projects remain available through the status filter.</p>
+      </section>
+    </main>
+
+    <button id="ecosystem-detail-backdrop" class="ecosystem-detail-backdrop" type="button" aria-label="Close project details" hidden></button>
+    <aside id="ecosystem-detail" class="ecosystem-detail" role="dialog" aria-modal="true" aria-labelledby="ecosystem-detail-name" hidden>
+      <div class="ecosystem-detail-header">
+        <p class="eyebrow">Selected project</p>
+        <button id="ecosystem-detail-close" type="button" aria-label="Close project details">×</button>
+      </div>
+      <div class="ecosystem-detail-title-row">
+        <h2 id="ecosystem-detail-name"></h2>
+        <span id="ecosystem-detail-status" class="ecosystem-detail-status"></span>
+      </div>
+      <p id="ecosystem-detail-summary" class="ecosystem-detail-summary"></p>
+      <p id="ecosystem-detail-description" class="ecosystem-detail-description"></p>
+      <dl class="ecosystem-detail-meta">
+        <div><dt>Workflow stage</dt><dd id="ecosystem-detail-stage"></dd></div>
+        <div><dt>Project family</dt><dd id="ecosystem-detail-group"></dd></div>
+      </dl>
+      <div id="ecosystem-detail-tags" class="ecosystem-detail-tags" aria-label="Project tags"></div>
+      <div id="ecosystem-detail-links" class="ecosystem-detail-links"></div>
+      <section class="ecosystem-detail-relations" aria-labelledby="ecosystem-detail-relations-title">
+        <div class="ecosystem-detail-relations-heading"><h3 id="ecosystem-detail-relations-title">Immediate connections</h3><button id="ecosystem-copy-link" type="button">Copy link</button></div>
+        <div id="ecosystem-detail-relation-list"></div>
+      </section>
+    </aside>
+
+    <script id="ecosystem-data" type="application/json">{{ catalog|tojson }}</script>
+    <footer>
+      <span>Premise Hub · PSI Laboratory for Energy Systems Analyses</span>
+      <a href="https://github.com/Laboratory-for-Energy-Systems-Analysis/premise-hub" target="_blank" rel="noopener noreferrer">Source code ↗</a>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,1361 @@
+metadata:
+  title: Open-source Brightway ecosystem
+  version: "2.2"
+  verified_on: "2026-08-18"
+  source_note: Curated from official documentation and public source repositories; the main catalog includes reusable software with an explicit Brightway data or calculation path.
+
+stages:
+  - id: io
+    label: Data input & output
+    short: Import, export, download, and exchange inventory data.
+  - id: inventory
+    label: Inventory modelling
+    short: Transform, parameterize, and build inventory systems.
+  - id: database
+    label: Data & matrices
+    short: Store data and construct calculation-ready matrices.
+  - id: assessment
+    label: Assessment
+    short: Calculate, traverse, regionalize, and temporalize impacts.
+  - id: visualization
+    label: Interfaces & visualization
+    short: Explore, communicate, and interact with models and results.
+
+groups:
+  - id: core
+    label: Brightway core
+    short: Core modules and shared infrastructure maintained around Brightway.
+  - id: extensions
+    label: Brightway extensions
+    short: Tools that add formats, modelling modes, interfaces, or analysis capabilities.
+  - id: cross-framework
+    label: Cross-framework tools
+    short: Scenario, exchange, and industrial-ecology tools that connect multiple modelling frameworks.
+  - id: domain
+    label: Sector & sustainability models
+    short: Reusable models for transport, energy, buildings, social assessment, and other application domains.
+
+statuses:
+  - id: active
+    label: Active
+  - id: experimental
+    label: Experimental
+  - id: maintenance
+    label: Maintenance
+  - id: legacy
+    label: Legacy
+
+relationship_types:
+  - id: data-flow
+    label: Data flow
+  - id: depends-on
+    label: Depends on
+  - id: extends
+    label: Extends
+  - id: integrates
+    label: Integrates with
+  - id: plugin
+    label: Plugin for
+
+tools:
+  - id: ecoinvent-interface
+    name: ecoinvent_interface
+    summary: Downloads licensed ecoinvent releases for programmatic use.
+    description: Provides an unofficial Python interface for listing and downloading ecoinvent releases and files with user credentials.
+    stage: io
+    group: core
+    status: active
+    order: 10
+    tags: [ecoinvent, download, inventory]
+    links:
+      source: https://github.com/brightway-lca/ecoinvent_interface
+      package: https://pypi.org/project/ecoinvent-interface/
+
+  - id: bw2io
+    name: bw2io
+    summary: Imports, links, transforms, and exports LCI and LCIA data.
+    description: Brightway's ETL layer supports ecoinvent, Excel, SimaPro, Ecospold, and Brightway package workflows with explicit linking strategies.
+    stage: io
+    group: core
+    status: active
+    order: 20
+    tags: [ETL, Excel, Ecospold, SimaPro]
+    links:
+      source: https://github.com/brightway-lca/brightway2-io
+      docs: https://docs.brightway.dev/en/latest/content/api/bw2io/index.html
+
+  - id: bw-interface-schemas
+    name: bw_interface_schemas
+    summary: Defines shared schemas for transferring Brightway data.
+    description: Provides typed interface contracts that let independent tools exchange Brightway-compatible data without sharing internal implementations.
+    stage: io
+    group: core
+    status: active
+    order: 15
+    tags: [schemas, interfaces, data exchange]
+    links:
+      source: https://github.com/brightway-lca/bw_interface_schemas
+      package: https://pypi.org/project/bw-interface-schemas/
+
+  - id: bw2data
+    name: bw2data
+    summary: Manages projects, databases, activities, exchanges, and methods.
+    description: The persistent data-management layer for Brightway projects and the metadata needed to construct LCA calculations.
+    stage: database
+    group: core
+    status: active
+    order: 10
+    tags: [projects, databases, activities, methods]
+    links:
+      source: https://github.com/brightway-lca/brightway2-data
+      docs: https://docs.brightway.dev/en/latest/content/api/bw2data/index.html
+
+  - id: bw-processing
+    name: bw_processing
+    summary: Packages matrix data and metadata for calculations.
+    description: Creates standardized datapackages containing matrix resources used by the modern Brightway calculation stack.
+    stage: database
+    group: core
+    status: active
+    order: 20
+    tags: [datapackages, matrices, resources]
+    links:
+      source: https://github.com/brightway-lca/bw_processing
+      docs: https://docs.brightway.dev/projects/bw-processing/en/latest/
+
+  - id: matrix-utils
+    name: matrix_utils
+    summary: Builds and iterates matrices from datapackages.
+    description: Shared matrix-building infrastructure for mapped indices, stochastic data, and scenario-aware array iteration.
+    stage: database
+    group: core
+    status: active
+    order: 30
+    tags: [matrices, datapackages, arrays]
+    links:
+      source: https://github.com/brightway-lca/matrix_utils
+      docs: https://docs.brightway.dev/projects/matrix-utils/en/latest/
+
+  - id: stats-arrays
+    name: stats_arrays
+    summary: Defines and samples uncertain parameters in NumPy arrays.
+    description: Supplies the common uncertainty type system and sampling machinery used throughout the Brightway calculation stack.
+    stage: database
+    group: core
+    status: active
+    order: 40
+    tags: [uncertainty, Monte Carlo, sampling]
+    links:
+      source: https://github.com/brightway-lca/stats_arrays
+      docs: https://stats-arrays.readthedocs.io/
+
+  - id: bw2calc
+    name: bw2calc
+    summary: Performs static, stochastic, iterative, and multi-LCA calculations.
+    description: Brightway's calculation engine builds and solves technosphere, biosphere, and characterization matrices from prepared data resources.
+    stage: assessment
+    group: core
+    status: active
+    order: 10
+    tags: [LCA, LCIA, matrices, Monte Carlo]
+    links:
+      source: https://github.com/brightway-lca/brightway2-calc
+      docs: https://docs.brightway.dev/en/latest/content/api/bw2calc/index.html
+
+  - id: bw-graph-tools
+    name: bw_graph_tools
+    summary: Traverses supply-chain graphs and supports contribution analysis.
+    description: Provides graph traversal classes and utilities separated from the core matrix calculation engine.
+    stage: assessment
+    group: core
+    status: active
+    order: 20
+    tags: [graph traversal, supply chain, contributions]
+    links:
+      source: https://github.com/brightway-lca/bw_graph_tools
+      docs: https://docs.brightway.dev/projects/bw-graph-tools/en/latest/
+
+  - id: bw2analyzer
+    name: bw2analyzer
+    summary: Interprets and compares Brightway calculation results.
+    description: Adds contribution, comparative, and graph-oriented analysis helpers on top of Brightway calculations.
+    stage: assessment
+    group: core
+    status: active
+    order: 30
+    tags: [analysis, contributions, comparison]
+    links:
+      source: https://github.com/brightway-lca/brightway2-analyzer
+      docs: https://docs.brightway.dev/en/latest/content/api/bw2analyzer/index.html
+
+  - id: bw2parameters
+    name: bw2parameters
+    summary: Stores, validates, and evaluates parameters for Brightway models.
+    description: Provides formula-aware parameter groups and dependency handling for parameterized Brightway 2 inventory models.
+    stage: inventory
+    group: core
+    status: maintenance
+    order: 10
+    tags: [parameters, formulas, inventory modelling]
+    links:
+      source: https://github.com/brightway-lca/brightway2-parameters
+      package: https://pypi.org/project/bw2parameters/
+
+  - id: bw2ui
+    name: bw2ui / bw25ui
+    summary: Provides web and command-line interfaces for Brightway projects.
+    description: A lightweight user interface distributed for both Brightway 2 and Brightway 2.5 environments.
+    stage: visualization
+    group: core
+    status: active
+    order: 10
+    tags: [UI, command line, web]
+    links:
+      source: https://github.com/brightway-lca/brightway2-ui
+      docs: https://brightway2-ui.readthedocs.io/
+
+  - id: bw-simapro-csv
+    name: bw_simapro_csv
+    summary: Parses and cleans SimaPro CSV inventory and method exports.
+    description: Reads SimaPro process and method files, resolves format-specific details, and exports data structures compatible with bw2io.
+    stage: io
+    group: extensions
+    status: active
+    order: 10
+    tags: [SimaPro, CSV, import, export]
+    links:
+      source: https://github.com/brightway-lca/bw_simapro_csv
+      docs: https://docs.brightway.dev/projects/bw-simapro-csv/en/latest/
+
+  - id: pyilcd
+    name: pyilcd
+    summary: Converts ILCD XML data to and from Python objects.
+    description: Implements the ILCD data model for reading, manipulating, validating, and exporting inventory exchange data.
+    stage: io
+    group: extensions
+    status: active
+    order: 20
+    tags: [ILCD, XML, exchange]
+    links:
+      source: https://github.com/brightway-lca/pyilcd
+      package: https://pypi.org/project/pyilcd/
+
+  - id: pyecospold
+    name: pyecospold
+    summary: Converts Ecospold XML data to and from Python objects.
+    description: Implements Ecospold data structures for typed parsing, manipulation, validation, and serialization outside a database importer.
+    stage: io
+    group: extensions
+    status: active
+    order: 25
+    tags: [Ecospold, XML, exchange]
+    links:
+      source: https://github.com/brightway-lca/pyecospold
+      package: https://pypi.org/project/pyecospold/
+
+  - id: brightpath
+    name: BrightPath
+    summary: Bridges LCI data between Brightway and SimaPro.
+    description: Provides high-level conversion helpers and curated mappings for units, flows, compartments, and metadata in both directions.
+    stage: io
+    group: extensions
+    status: active
+    order: 30
+    tags: [SimaPro, conversion, mappings]
+    links:
+      source: https://github.com/romainsacchi/brightpath
+      package: https://pypi.org/project/brightpath/
+
+  - id: bw-hestia-bridge
+    name: bw_hestia_bridge
+    summary: Imports agricultural production data from Hestia into Brightway.
+    description: Searches the Hestia platform, converts agricultural cycles and their supply chains, and links them into Brightway-usable inventories.
+    stage: io
+    group: extensions
+    status: experimental
+    order: 40
+    tags: [Hestia, agriculture, import]
+    links:
+      source: https://github.com/brightway-lca/bw_hestia_bridge
+      docs: https://docs.brightway.dev/projects/hestiabridge/
+
+  - id: randonneur
+    name: Randonneur
+    summary: Applies reusable, data-driven transformations to datasets.
+    description: Defines flexible transformation recipes for migrations, correspondence mappings, and other repeatable inventory changes.
+    stage: inventory
+    group: extensions
+    status: active
+    order: 10
+    tags: [transformations, migrations, mappings]
+    links:
+      source: https://github.com/brightway-lca/randonneur
+      package: https://pypi.org/project/randonneur/
+
+  - id: ecoinvent-migrate
+    name: ecoinvent_migrate
+    summary: Generates migration data between ecoinvent releases.
+    description: Produces Randonneur-compatible migration resources for reconciling identifiers and nomenclature across ecoinvent versions.
+    stage: inventory
+    group: extensions
+    status: active
+    order: 20
+    tags: [ecoinvent, migration, correspondence]
+    links:
+      source: https://github.com/brightway-lca/ecoinvent_migrate
+      package: https://pypi.org/project/ecoinvent-migrate/
+
+  - id: multifunctional
+    name: multifunctional
+    summary: Handles multifunctional activities and allocation strategies.
+    description: Transforms multifunctional inventory systems so that they can produce square, solvable technosphere matrices.
+    stage: inventory
+    group: extensions
+    status: active
+    order: 30
+    tags: [allocation, multifunctionality, technosphere]
+    links:
+      source: https://github.com/brightway-lca/multifunctional
+      package: https://pypi.org/project/multifunctional/
+
+  - id: lca-algebraic
+    name: lca_algebraic
+    summary: Builds parameterized foreground models with symbolic calculus.
+    description: Uses symbolic expressions to define parametric inventories and supports fast Monte Carlo and global sensitivity analysis.
+    stage: inventory
+    group: extensions
+    status: active
+    order: 40
+    tags: [parameters, symbolic, sensitivity]
+    links:
+      source: https://github.com/oie-mines-paristech/lca_algebraic
+      docs: https://lca-algebraic.readthedocs.io/
+
+  - id: bw-aggregation
+    name: bw_aggregation
+    summary: Uses aggregated processes to accelerate calculations.
+    description: Builds reduced representations of background systems for faster repeated Brightway calculations.
+    stage: database
+    group: extensions
+    status: active
+    order: 10
+    tags: [aggregation, performance, databases]
+    links:
+      source: https://github.com/brightway-lca/bw_aggregation
+      package: https://pypi.org/project/bw-aggregation/
+
+  - id: edge-of-the-world
+    name: edge-of-the-world
+    summary: Experiments with richer exchange descriptions in Brightway.
+    description: An experimental backend for exchanges that cannot be represented as a simple one-to-one mapping to matrix values.
+    stage: database
+    group: extensions
+    status: experimental
+    order: 20
+    tags: [edges, backend, experimental]
+    links:
+      source: https://github.com/brightway-lca/edge-of-the-world
+
+  - id: bw-regional
+    name: bw2regional
+    summary: Performs spatially differentiated LCA calculations.
+    description: Extends Brightway with geocollections, intersections, and regionalized characterization workflows.
+    stage: assessment
+    group: extensions
+    status: active
+    order: 10
+    tags: [regionalization, GIS, spatial]
+    links:
+      source: https://github.com/brightway-lca/brightway2-regional
+      docs: https://docs.brightway.dev/projects/bw-regional/en/latest/
+
+  - id: bw-temporalis
+    name: bw_temporalis
+    summary: Traverses temporally distributed supply chains.
+    description: Adds temporal distributions and graph traversal to construct time-explicit inventories in Brightway 2.5.
+    stage: assessment
+    group: extensions
+    status: active
+    order: 20
+    tags: [temporal LCA, distributions, traversal]
+    links:
+      source: https://github.com/brightway-lca/bw_temporalis
+      docs: https://docs.brightway.dev/projects/bw-temporalis/en/latest/
+
+  - id: bw-timex
+    name: bw_timex
+    summary: Performs time-explicit LCA with evolving background systems.
+    description: Combines temporal exchanges with time-dependent databases and maps activities onto a time-explicit calculation system.
+    stage: assessment
+    group: extensions
+    status: active
+    order: 30
+    tags: [time-explicit LCA, dynamic databases, scenarios]
+    links:
+      source: https://github.com/brightway-lca/bw_timex
+      docs: https://docs.brightway.dev/projects/bw-timex/en/latest/
+
+  - id: dynamic-characterization
+    name: dynamic_characterization
+    summary: Characterizes temporally explicit life-cycle inventories.
+    description: Supplies dynamic climate characterization functions for inventories produced by tools such as bw_temporalis and bw_timex.
+    stage: assessment
+    group: extensions
+    status: active
+    order: 40
+    tags: [dynamic LCIA, climate, time]
+    links:
+      source: https://github.com/brightway-lca/dynamic_characterization
+      package: https://pypi.org/project/dynamic-characterization/
+
+  - id: presamples
+    name: presamples
+    summary: Injects pre-sampled values into matrix calculations.
+    description: Stores arrays of sampled values and replaces selected matrix entries during repeated or stochastic Brightway calculations.
+    stage: assessment
+    group: extensions
+    status: maintenance
+    order: 50
+    tags: [Monte Carlo, samples, scenarios]
+    links:
+      source: https://github.com/brightway-lca/presamples
+      docs: https://presamples.readthedocs.io/
+
+  - id: activity-browser
+    name: Activity Browser
+    summary: Provides a graphical modelling and analysis environment for Brightway.
+    description: Supports project and inventory editing, scenarios, contribution analysis, Sankey diagrams, uncertainty, and sensitivity analysis.
+    stage: visualization
+    group: extensions
+    status: active
+    order: 10
+    tags: [GUI, modelling, scenarios, analysis]
+    links:
+      source: https://github.com/LCA-ActivityBrowser/activity-browser
+      docs: https://github.com/LCA-ActivityBrowser/activity-browser/wiki
+
+  - id: brightwebapp
+    name: Brightwebapp
+    summary: Templates Brightway-enabled applications for the browser.
+    description: Combines Panel and Pyodide to create interactive web applications that can run Brightway calculations in a browser.
+    stage: visualization
+    group: extensions
+    status: experimental
+    order: 20
+    tags: [web app, Panel, Pyodide]
+    links:
+      source: https://github.com/brightway-lca/brightwebapp
+
+  - id: wurst
+    name: Wurst
+    summary: Links and modifies industrial-ecology inventory models.
+    description: Provides filter, transformation, and relinking operations used to create reproducible scenario-specific inventory databases.
+    stage: inventory
+    group: cross-framework
+    status: active
+    order: 10
+    tags: [inventory transformation, linking, scenarios]
+    links:
+      source: https://github.com/polca/wurst
+      package: https://pypi.org/project/wurst/
+
+  - id: unfold
+    name: unfold
+    summary: Shares inventory database changes as compact difference files.
+    description: Exports and reconstructs modified LCA databases relative to a source database for reproducible exchange and collaboration.
+    stage: io
+    group: cross-framework
+    status: active
+    order: 10
+    tags: [database exchange, differences, reproducibility]
+    links:
+      source: https://github.com/polca/unfold
+      package: https://pypi.org/project/unfold/
+
+  - id: premise
+    name: premise
+    summary: Builds prospective inventories from IAM scenarios.
+    description: Transforms ecoinvent databases with scenario-specific changes in energy, transport, fuels, industry, and other sectors.
+    stage: inventory
+    group: cross-framework
+    status: active
+    order: 20
+    tags: [prospective LCA, IAM, ecoinvent, scenarios]
+    links:
+      source: https://github.com/polca/premise
+      docs: https://premise.readthedocs.io/
+
+  - id: shrecc
+    name: SHRECC
+    summary: Builds time-resolved electricity-consumption inventories.
+    description: Uses historical Energy Charts data and prospective ENTSO-E TYNDP scenarios to create annual or monthly Brightway electricity databases and hourly LCIA results.
+    stage: inventory
+    group: domain
+    status: active
+    order: 25
+    tags: [electricity, hourly data, ENTSO-E, prospective LCA]
+    links:
+      source: https://git.list.lu/shrecc_project/SHRECC
+      docs: https://shrecc.readthedocs.io/en/latest/
+      package: https://pypi.org/project/shrecc/
+
+  - id: regioinvent
+    name: Regioinvent
+    summary: Regionalizes ecoinvent supply chains with international trade data.
+    description: Connects ecoinvent with BACI trade data to create national production processes, consumption markets, spatialized flows, and regionalized LCIA methods.
+    stage: inventory
+    group: cross-framework
+    status: active
+    order: 30
+    tags: [regionalization, trade, ecoinvent, BACI]
+    links:
+      source: https://github.com/CIRAIG/Regioinvent
+      package: https://pypi.org/project/regioinvent/
+
+  - id: regiopremise
+    name: Regiopremise
+    summary: Applies Regioinvent regionalization to prospective premise databases.
+    description: Adapts trade-based national supply chains and spatialized impact assessment to the additional inventories and IAM regions created by premise.
+    stage: inventory
+    group: cross-framework
+    status: active
+    order: 35
+    tags: [regionalization, prospective LCA, premise, trade]
+    links:
+      source: https://github.com/matthieu-str/Regiopremise
+
+  - id: flodym
+    name: flodym
+    summary: Builds multidimensional dynamic material-flow models.
+    description: A modern, typed material-flow analysis library based on ODYM concepts, with dimension-aware arrays and stock models.
+    stage: inventory
+    group: cross-framework
+    status: active
+    order: 30
+    tags: [MFA, stocks, materials, dynamic models]
+    links:
+      source: https://github.com/pik-piam/flodym
+      docs: https://flodym.readthedocs.io/
+
+  - id: odym
+    name: ODYM
+    summary: Models dynamic material systems and stocks.
+    description: The Open Dynamic Material Systems Model provides an object-based framework for multidimensional material-flow analysis.
+    stage: inventory
+    group: cross-framework
+    status: maintenance
+    order: 40
+    tags: [MFA, stocks, materials]
+    links:
+      source: https://github.com/IndEcol/ODYM
+
+  - id: scenario-link
+    name: ScenarioLink
+    summary: Downloads scenario-based LCA databases in Activity Browser.
+    description: An Activity Browser plugin that makes remotely distributed scenario databases available inside graphical Brightway workflows.
+    stage: database
+    group: cross-framework
+    status: active
+    order: 10
+    tags: [plugin, scenarios, database distribution]
+    links:
+      source: https://github.com/polca/ScenarioLink
+
+  - id: pathways
+    name: Pathways
+    summary: Calculates scenario-wide environmental impacts over time.
+    description: Combines scenario pathways with life-cycle inventories to assess the deployment of technologies along a time axis.
+    stage: assessment
+    group: cross-framework
+    status: active
+    order: 10
+    tags: [scenario LCA, pathways, prospective]
+    links:
+      source: https://github.com/polca/pathways
+
+  - id: edges
+    name: EDGES
+    summary: Performs exchange-level and context-sensitive LCIA.
+    description: Matches characterization factors to individual inventory exchanges, enabling regionalized, parameterized, prospective, and supplier-aware methods.
+    stage: assessment
+    group: cross-framework
+    status: active
+    order: 20
+    tags: [edge LCIA, regionalization, prospective CFs]
+    links:
+      source: https://github.com/Laboratory-for-Energy-Systems-Analysis/edges
+
+  - id: trails
+    name: TRAILS
+    summary: Routes and assesses deeply temporalized life-cycle systems.
+    description: Consumes scenario datapackages, propagates temporal exchanges through supply chains, solves year-specific systems, and aggregates impacts over time.
+    stage: assessment
+    group: cross-framework
+    status: active
+    order: 30
+    tags: [temporal LCA, routing, scenarios, datapackages]
+    links:
+      source: https://github.com/Laboratory-for-Energy-Systems-Analysis/trails
+      docs: https://trails.readthedocs.io/
+
+  - id: pulpo
+    name: PULPO
+    summary: Optimizes life-cycle production systems under constraints.
+    description: Combines Brightway inventory matrices with Pyomo to optimize technology and regional choices, impact objectives, uncertainty, and time-indexed decisions.
+    stage: assessment
+    group: cross-framework
+    status: active
+    order: 40
+    tags: [optimization, Pyomo, uncertainty, prospective LCA]
+    links:
+      source: https://github.com/flechtenberg/pulpo
+      docs: https://flechtenberg.github.io/pulpo/
+      package: https://pypi.org/project/pulpo-dev/
+
+  - id: prosperdyn
+    name: ProspeRdyn
+    summary: Models dynamic foreground transitions against prospective backgrounds.
+    description: Organizes time-specific foreground changes, imports premise backgrounds for each time step, calculates inventories in Brightway, and evaluates dynamic greenhouse-gas effects.
+    stage: assessment
+    group: cross-framework
+    status: active
+    order: 50
+    tags: [dynamic LCA, foreground, prospective LCA, climate]
+    links:
+      source: https://github.com/LadislausLQ/Prosperdyn
+
+  - id: enbios
+    name: ENBIOS
+    summary: Assesses environmental impacts of energy-system pathways.
+    description: Couples energy-system scenarios and hierarchical MuSIASEM structures with Brightway calculations, with optional premise backgrounds for prospective assessment.
+    stage: assessment
+    group: domain
+    status: active
+    order: 60
+    tags: [energy systems, scenarios, MuSIASEM, prospective LCA]
+    links:
+      source: https://github.com/LIVENlab/enbios
+      package: https://pypi.org/project/enbios/
+
+  - id: futura
+    name: Futura
+    summary: Generates shareable future background database scenarios.
+    description: An earlier graphical approach to scenario-based inventory transformation built around Wurst and Brightway.
+    stage: inventory
+    group: cross-framework
+    status: legacy
+    order: 90
+    tags: [prospective LCA, scenarios, GUI]
+    links:
+      source: https://pypi.org/project/futura/
+      docs: https://futura.readthedocs.io/
+
+  - id: ocelot
+    name: Ocelot
+    summary: Explored transparent, configurable LCI system models.
+    description: A PSI and ecoinvent project for making market construction, allocation, substitution, and linking rules explicit and modifiable.
+    stage: inventory
+    group: cross-framework
+    status: legacy
+    order: 100
+    tags: [system models, linking, allocation]
+    links:
+      source: https://ecoinvent.org/projects/ocelot-project/
+
+  - id: polyviz
+    name: Polyviz
+    summary: Produces browser-based visualizations from LCA results.
+    description: Turns Brightway result structures into interactive JavaScript-oriented charts and contribution views.
+    stage: visualization
+    group: cross-framework
+    status: active
+    order: 10
+    tags: [visualization, JavaScript, results]
+    links:
+      source: https://github.com/Laboratory-for-Energy-Systems-Analysis/polyviz
+
+  - id: brightway-ef4lca
+    name: brightway-ef4lca
+    summary: Imports ÖKOBAUDAT building-product indicators into Brightway.
+    description: Processes EN 15804 life-cycle modules and creates proxy-flow databases so ÖKOBAUDAT indicator results can participate in compatible Brightway assessments.
+    stage: io
+    group: domain
+    status: experimental
+    order: 20
+    tags: [ÖKOBAUDAT, EPD, buildings, EN 15804]
+    links:
+      source: https://github.com/Vanessa-IREES/brightway-ef4lca
+
+  - id: openlca2bw
+    name: openlca2bw
+    summary: Imports openLCA databases and methods into Brightway.
+    description: Converts data obtained through openLCA IPC or JSON-LD archives into linked Brightway flows, processes, databases, and LCIA methods.
+    stage: io
+    group: cross-framework
+    status: active
+    order: 30
+    tags: [openLCA, JSON-LD, IPC, import]
+    links:
+      source: https://github.com/cyrillefrancois/openlca2bw
+      package: https://pypi.org/project/openlca2bw/
+
+  - id: brightway-olca
+    name: brightway-olca
+    summary: Reads openLCA data through its IPC interface.
+    description: Provides lower-level access to inventory data in a running openLCA instance for conversion and use in Brightway-oriented workflows.
+    stage: io
+    group: extensions
+    status: active
+    order: 45
+    tags: [openLCA, IPC, import, interoperability]
+    links:
+      source: https://github.com/brightway-lca/brightway-olca
+
+  - id: aligned-converter
+    name: ALIGNED converter
+    summary: Converts tabular inventories to Brightway or SimaPro formats.
+    description: Reads inventories following the ALIGNED datapackage schema and produces Brightway databases, Python dictionaries, or SimaPro CSV files.
+    stage: io
+    group: cross-framework
+    status: active
+    order: 40
+    tags: [ALIGNED, tabular data, SimaPro, conversion]
+    links:
+      source: https://github.com/massimopizzol/aligned-converter
+
+  - id: fauldier
+    name: FAULDIER
+    summary: Turns heterogeneous spreadsheets into Brightway inventories.
+    description: Combines deterministic mappings with optional language-model assistance to normalize inventory tables, map units and flows, and create Brightway-compatible data.
+    stage: io
+    group: cross-framework
+    status: experimental
+    order: 50
+    tags: [spreadsheets, LLM, inventory mapping, interoperability]
+    links:
+      source: https://github.com/ljlazar/fauldier
+
+  - id: pylcaio
+    name: pyLCAIO
+    summary: Builds hybrid LCA databases from ecoinvent and EXIOBASE.
+    description: Hybridizes process inventories with multiregional input-output data, filling economy-wide service and supply-chain coverage for use inside Brightway.
+    stage: inventory
+    group: cross-framework
+    status: active
+    order: 45
+    tags: [hybrid LCA, EXIOBASE, MRIO, ecoinvent]
+    links:
+      source: https://github.com/MaximeAgez/pylcaio
+      package: https://pypi.org/project/pylcaio/
+
+  - id: simodin
+    name: SiModIn
+    summary: Connects process simulation outputs to Brightway inventories.
+    description: Translates simulation-model results into parameterized life-cycle datasets, calculates impacts, and exports reusable Brightway databases.
+    stage: inventory
+    group: cross-framework
+    status: experimental
+    order: 50
+    tags: [process simulation, inventory generation, parameters, TESPy]
+    links:
+      source: https://github.com/HaSchneider/SiModIn
+      package: https://pypi.org/project/simodin/
+
+  - id: pandarus
+    name: Pandarus
+    summary: Precomputes GIS intersections for regionalized LCA.
+    description: Overlays vector and raster geometries, calculates spatial intersections and statistics, and prepares data used by Brightway regionalization workflows.
+    stage: assessment
+    group: extensions
+    status: active
+    order: 60
+    tags: [GIS, regionalization, intersections, raster]
+    links:
+      source: https://github.com/cmutel/pandarus
+      docs: https://pandarus.readthedocs.io/
+      package: https://pypi.org/project/pandarus/
+
+  - id: moca
+    name: MOCA
+    summary: Runs parallel Monte Carlo uncertainty analysis in Brightway.
+    description: Provides efficient, reproducible uncertainty propagation around Brightway calculations, including parallel execution and structured result handling.
+    stage: assessment
+    group: extensions
+    status: experimental
+    order: 70
+    tags: [Monte Carlo, uncertainty, parallel computing, reproducibility]
+    links:
+      source: https://github.com/DLR-MO/moca_uncertainty_lca
+      docs: https://dlr-mo.github.io/moca_uncertainty_lca/
+      package: https://pypi.org/project/moca-uncertainty-lca/
+
+  - id: optimex
+    name: Optimex
+    summary: Optimizes time-explicit life-cycle systems.
+    description: Couples temporalized Brightway product systems with Pyomo to optimize technologies and decisions while accounting for evolving backgrounds and dynamic characterization.
+    stage: assessment
+    group: cross-framework
+    status: active
+    order: 55
+    tags: [optimization, time-explicit LCA, Pyomo, prospective LCA]
+    links:
+      source: https://github.com/RWTH-LTT/optimex
+      docs: https://optimex.readthedocs.io/
+      package: https://pypi.org/project/optimex/
+
+  - id: pbaesa
+    name: pbaesa
+    summary: Evaluates absolute sustainability against planetary boundaries.
+    description: Derives planetary-boundary-based thresholds with multiregional input-output data, registers corresponding Brightway methods, and compares life-cycle impacts with safe operating spaces.
+    stage: assessment
+    group: cross-framework
+    status: active
+    order: 60
+    tags: [planetary boundaries, absolute sustainability, MRIO, LCIA]
+    links:
+      source: https://github.com/RWTH-LTT/pbaesa
+      package: https://pypi.org/project/pbaesa/
+
+  - id: iwp-reborn
+    name: IWP Reborn
+    summary: Generates IMPACT World+ methods for multiple LCA platforms.
+    description: Reconstructs IMPACT World+ characterization resources from open inputs and exports packages for Brightway alongside openLCA, SimaPro, and EXIOBASE formats.
+    stage: assessment
+    group: cross-framework
+    status: active
+    order: 65
+    tags: [IMPACT World+, LCIA methods, open data, interoperability]
+    links:
+      source: https://github.com/CIRAIG/IWP_Reborn
+      website: https://zenodo.org/records/14041258
+
+  - id: premise-gwp
+    name: premise_gwp
+    summary: Adds premise-ready IPCC climate methods to Brightway.
+    description: Registers IPCC 2013 and 2021 global-warming methods, including hydrogen and explicit biogenic carbon uptake and release flows used in prospective inventories.
+    stage: assessment
+    group: cross-framework
+    status: active
+    order: 70
+    tags: [IPCC, GWP, biogenic carbon, premise]
+    links:
+      source: https://github.com/polca/premise_gwp
+      package: https://pypi.org/project/premise-gwp/
+
+  - id: lcpy
+    name: LcPy
+    summary: Models parametric and dynamic LCA and life-cycle costs.
+    description: Supports time-dependent scenarios, uncertainty, cost modelling, and parameter sweeps while deriving unit impacts from Brightway projects and databases.
+    stage: assessment
+    group: cross-framework
+    status: experimental
+    order: 75
+    tags: [dynamic LCA, life-cycle cost, parameters, uncertainty]
+    links:
+      source: https://github.com/spirdgk/lcpy
+
+  - id: relics
+    name: RELICS
+    summary: Adds metal resource-extraction indicators to Brightway.
+    description: Provides additional characterization methods for quantifying metal resource extraction and depletion in Brightway assessments.
+    stage: assessment
+    group: cross-framework
+    status: active
+    order: 80
+    tags: [metals, resource extraction, LCIA methods]
+    links:
+      source: https://github.com/Laboratory-for-Energy-Systems-Analysis/relics
+      package: https://pypi.org/project/relics/
+
+  - id: bw-matchbox
+    name: bw_matchbox
+    summary: Matches activities across Brightway databases in a web app.
+    description: Supports source-to-target matching, proxy allocation, mapping review, and database flattening for Brightway 2.5 inventory integration.
+    stage: visualization
+    group: extensions
+    status: experimental
+    order: 30
+    tags: [database matching, proxies, web app, inventory linking]
+    links:
+      source: https://github.com/cauldron/bw_matchbox
+      package: https://pypi.org/project/bw-matchbox/
+
+  - id: firefly
+    name: Firefly
+    summary: Provides a modern web and desktop interface for Brightway.
+    description: Uses React, FastAPI, and Tauri to browse and edit projects, databases, activities, and exchanges and to run calculations across Brightway 2.4 and 2.5 backends.
+    stage: visualization
+    group: extensions
+    status: active
+    order: 40
+    tags: [web UI, desktop UI, inventory editing, dual backend]
+    links:
+      source: https://gitlab.com/eaternity/firefly
+      docs: https://gitlab.com/eaternity/firefly/-/blob/main/DOCUMENTATION.md
+
+  - id: lcopt
+    name: lcopt
+    summary: Built parameterized foreground models in a browser interface.
+    description: A historical Brightway-based foreground modelling application with parameter editing, scenario analysis, disclosure export, and an interactive supply-chain view.
+    stage: visualization
+    group: extensions
+    status: legacy
+    order: 90
+    tags: [foreground modelling, web UI, parameters, scenarios]
+    links:
+      source: https://github.com/pjamesjoyce/lcopt
+      docs: https://lcopt.readthedocs.io/
+
+  - id: carculator
+    name: carculator
+    summary: Models present and future passenger-car life cycles.
+    description: Builds fully parameterized vehicle inventories across technologies, sizes, years, and scenarios and exports them for calculation in Brightway and other LCA software.
+    stage: inventory
+    group: domain
+    status: active
+    order: 30
+    tags: [passenger cars, mobility, prospective LCA, parameterization]
+    links:
+      source: https://github.com/Laboratory-for-Energy-Systems-Analysis/carculator
+      docs: https://carculator.readthedocs.io/
+      package: https://pypi.org/project/carculator/
+
+  - id: carculator-truck
+    name: carculator_truck
+    summary: Models present and future freight-truck life cycles.
+    description: Generates parameterized truck inventories and impacts across powertrains, sizes, duty cycles, years, and scenario-specific background systems.
+    stage: inventory
+    group: domain
+    status: active
+    order: 35
+    tags: [freight, trucks, mobility, prospective LCA]
+    links:
+      source: https://github.com/Laboratory-for-Energy-Systems-Analysis/carculator_truck
+      docs: https://carculator-truck.readthedocs.io/
+      package: https://pypi.org/project/carculator-truck/
+
+  - id: carculator-bus
+    name: carculator_bus
+    summary: Models present and future urban-bus life cycles.
+    description: Generates technology- and year-specific urban-bus inventories, including vehicle production, energy supply, use, maintenance, and end of life.
+    stage: inventory
+    group: domain
+    status: active
+    order: 40
+    tags: [buses, public transport, mobility, prospective LCA]
+    links:
+      source: https://github.com/Laboratory-for-Energy-Systems-Analysis/carculator_bus
+      docs: https://carculator-bus.readthedocs.io/
+      package: https://pypi.org/project/carculator-bus/
+
+  - id: carculator-two-wheeler
+    name: carculator_two_wheeler
+    summary: Models present and future two-wheeler life cycles.
+    description: Creates parameterized inventories for bicycles, scooters, and motorcycles across powertrains, sizes, use patterns, years, and background scenarios.
+    stage: inventory
+    group: domain
+    status: active
+    order: 45
+    tags: [two-wheelers, mobility, prospective LCA, parameterization]
+    links:
+      source: https://github.com/Laboratory-for-Energy-Systems-Analysis/carculator_two_wheeler
+      docs: https://carculator-two-wheeler.readthedocs.io/
+      package: https://pypi.org/project/carculator-two-wheeler/
+
+  - id: sense
+    name: SENSE
+    summary: Adds social LCA data and methods to Brightway inventories.
+    description: Maps PSILCA social indicators and methods into ecoinvent, Regioinvent, or foreground databases so environmental and social impacts can be assessed together.
+    stage: inventory
+    group: domain
+    status: experimental
+    order: 50
+    tags: [social LCA, PSILCA, semantic matching, Regioinvent]
+    links:
+      source: https://github.com/nicoschr/SENSE
+
+  - id: pelca
+    name: PELCA
+    summary: Assesses modular power-electronics life cycles over time.
+    description: Uses Brightway to model diagnosability, repair, replacement, maintenance, and lifetime scenarios for modular power-electronics systems.
+    stage: assessment
+    group: domain
+    status: active
+    order: 70
+    tags: [power electronics, circularity, maintenance, dynamic LCA]
+    links:
+      source: https://github.com/merce-fra/PELCA
+
+relationships:
+  - source: ecoinvent-interface
+    target: bw2io
+    type: data-flow
+    summary: Downloaded ecoinvent releases can be imported through bw2io.
+  - source: bw-simapro-csv
+    target: bw2io
+    type: data-flow
+    summary: Parsed SimaPro data can be exported in a bw2io-compatible structure.
+  - source: bw-interface-schemas
+    target: bw2io
+    type: integrates
+    summary: Shared schemas define stable data contracts around Brightway import and export workflows.
+  - source: pyilcd
+    target: bw2io
+    type: integrates
+    summary: ILCD objects can participate in Brightway import and exchange workflows.
+  - source: pyecospold
+    target: bw2io
+    type: data-flow
+    summary: Typed Ecospold objects can feed inventory import and export workflows.
+  - source: brightpath
+    target: bw2io
+    type: integrates
+    summary: BrightPath uses Brightway import structures when converting SimaPro data.
+  - source: bw-hestia-bridge
+    target: bw2data
+    type: data-flow
+    summary: Converted Hestia cycles can be written as Brightway inventory databases.
+  - source: brightway-ef4lca
+    target: bw2data
+    type: data-flow
+    summary: Processed ÖKOBAUDAT modules and proxy flows are written to Brightway databases.
+  - source: bw2io
+    target: bw2data
+    type: data-flow
+    summary: Linked inventories and methods are written to Brightway projects.
+  - source: bw2data
+    target: bw-processing
+    type: data-flow
+    summary: Project data are prepared as calculation-ready datapackages.
+  - source: bw-processing
+    target: matrix-utils
+    type: data-flow
+    summary: Datapackage resources are mapped and assembled into matrices.
+  - source: stats-arrays
+    target: matrix-utils
+    type: integrates
+    summary: Shared uncertainty definitions drive stochastic matrix samples.
+  - source: bw2calc
+    target: bw-processing
+    type: depends-on
+    summary: Calculations consume matrix data supplied in bw_processing datapackages.
+  - source: bw2calc
+    target: matrix-utils
+    type: depends-on
+    summary: Matrix construction and array iteration are delegated to matrix_utils.
+  - source: bw-graph-tools
+    target: bw2calc
+    type: depends-on
+    summary: Graph traversal uses Brightway calculation objects and matrices.
+  - source: bw2analyzer
+    target: bw2calc
+    type: depends-on
+    summary: Analysis helpers interpret results produced by bw2calc.
+  - source: bw2ui
+    target: bw2data
+    type: integrates
+    summary: The interface exposes Brightway project and database operations.
+  - source: randonneur
+    target: bw2io
+    type: integrates
+    summary: bw2io can apply Randonneur transformations during import workflows.
+  - source: ecoinvent-migrate
+    target: randonneur
+    type: data-flow
+    summary: Migration generators produce Randonneur-compatible mapping resources.
+  - source: multifunctional
+    target: bw2data
+    type: extends
+    summary: Multifunctional databases register Brightway-aware allocation behavior.
+  - source: bw2parameters
+    target: bw2data
+    type: extends
+    summary: Parameter groups and formulas support parameterized Brightway inventory data.
+  - source: bw-aggregation
+    target: bw2calc
+    type: extends
+    summary: Aggregated background processes reduce repeated calculation cost.
+  - source: edge-of-the-world
+    target: bw2calc
+    type: extends
+    summary: The experimental backend explores richer exchanges behind matrix values.
+  - source: bw-regional
+    target: bw2calc
+    type: extends
+    summary: Regionalized matrices add spatial differentiation to LCA calculations.
+  - source: bw-temporalis
+    target: bw2calc
+    type: extends
+    summary: Temporal graph traversal builds on the Brightway calculation stack.
+  - source: bw-timex
+    target: bw-temporalis
+    type: integrates
+    summary: Time-explicit calculations use temporal distributions and traversal concepts.
+  - source: dynamic-characterization
+    target: bw-temporalis
+    type: integrates
+    summary: Temporalis inventories can be characterized with time-dependent functions.
+  - source: dynamic-characterization
+    target: bw-timex
+    type: integrates
+    summary: Timex inventories can be characterized with time-dependent functions.
+  - source: lca-algebraic
+    target: bw2calc
+    type: extends
+    summary: Symbolic foreground models compile to fast Brightway calculations.
+  - source: presamples
+    target: bw2calc
+    type: extends
+    summary: Pre-sampled values can replace selected entries during calculations.
+  - source: activity-browser
+    target: bw2data
+    type: depends-on
+    summary: Activity Browser reads and edits Brightway projects and inventories.
+  - source: activity-browser
+    target: bw2calc
+    type: depends-on
+    summary: Activity Browser runs and interprets Brightway calculations.
+  - source: brightwebapp
+    target: bw2calc
+    type: integrates
+    summary: Web applications can execute Brightway calculations through Pyodide.
+  - source: wurst
+    target: bw2data
+    type: integrates
+    summary: Wurst transforms and relinks Brightway-compatible inventory datasets.
+  - source: premise
+    target: wurst
+    type: depends-on
+    summary: Premise uses Wurst operations to transform and relink inventories.
+  - source: premise
+    target: shrecc
+    type: data-flow
+    summary: SHRECC can map prospective electricity systems onto premise and IAM-specific background databases.
+  - source: shrecc
+    target: bw2data
+    type: data-flow
+    summary: SHRECC writes period-specific electricity-consumption inventories to Brightway databases.
+  - source: shrecc
+    target: bw2calc
+    type: integrates
+    summary: SHRECC can calculate hourly impacts from retained electricity mixes with Brightway LCIA methods.
+  - source: regioinvent
+    target: bw2data
+    type: data-flow
+    summary: Regioinvent writes nationalized supply chains, spatialized flows, and methods to Brightway projects.
+  - source: regiopremise
+    target: regioinvent
+    type: extends
+    summary: Regiopremise adapts Regioinvent's regionalization workflow to premise databases and IAM regions.
+  - source: regiopremise
+    target: premise
+    type: integrates
+    summary: Regiopremise consumes prospective inventories generated by premise.
+  - source: unfold
+    target: premise
+    type: integrates
+    summary: Premise-generated database changes can be distributed as compact differences.
+  - source: premise
+    target: scenario-link
+    type: data-flow
+    summary: Scenario databases produced by Premise can be distributed through ScenarioLink.
+  - source: scenario-link
+    target: activity-browser
+    type: plugin
+    summary: ScenarioLink installs into Activity Browser to retrieve scenario databases.
+  - source: premise
+    target: pathways
+    type: data-flow
+    summary: Scenario-specific inventories provide backgrounds for pathway-wide assessment.
+  - source: premise
+    target: trails
+    type: data-flow
+    summary: Premise exports time-indexed datapackages consumed by TRAILS.
+  - source: premise
+    target: pulpo
+    type: data-flow
+    summary: Prospective premise databases can provide scenario backgrounds for life-cycle optimization.
+  - source: pulpo
+    target: bw2calc
+    type: depends-on
+    summary: PULPO derives optimization systems from Brightway life-cycle inventory matrices.
+  - source: premise
+    target: prosperdyn
+    type: data-flow
+    summary: ProspeRdyn imports premise backgrounds for successive time steps.
+  - source: prosperdyn
+    target: bw2calc
+    type: depends-on
+    summary: ProspeRdyn calculates its time-specific inventories through Brightway.
+  - source: premise
+    target: enbios
+    type: data-flow
+    summary: ENBIOS can use premise to define prospective inventories for energy-system scenarios.
+  - source: enbios
+    target: bw2calc
+    type: depends-on
+    summary: ENBIOS delegates life-cycle calculations to Brightway.
+  - source: pathways
+    target: bw2calc
+    type: integrates
+    summary: Pathways uses LCA calculations to score technology deployment over time.
+  - source: pathways
+    target: edges
+    type: integrates
+    summary: Pathway inventories can use exchange-level characterization.
+  - source: trails
+    target: edges
+    type: integrates
+    summary: TRAILS can characterize temporal inventories with EDGES methods.
+  - source: polyviz
+    target: bw2calc
+    type: depends-on
+    summary: Polyviz turns Brightway calculation outputs into interactive visualizations.
+  - source: flodym
+    target: odym
+    type: extends
+    summary: flodym reworks ODYM concepts into a modern dimension-aware API.
+  - source: futura
+    target: wurst
+    type: depends-on
+    summary: Futura used Wurst transformations to build future databases.
+  - source: ocelot
+    target: bw2io
+    type: data-flow
+    summary: Ocelot system models produced inventory files suitable for LCA import.
+  - source: openlca2bw
+    target: bw2data
+    type: data-flow
+    summary: Converted openLCA flows, processes, and methods are written into Brightway projects.
+  - source: brightway-olca
+    target: bw2data
+    type: data-flow
+    summary: Inventory data read from openLCA through IPC can enter Brightway projects.
+  - source: aligned-converter
+    target: bw2data
+    type: data-flow
+    summary: ALIGNED inventory tables can be converted directly into Brightway databases and dictionaries.
+  - source: fauldier
+    target: bw2data
+    type: data-flow
+    summary: Normalized spreadsheet inventories are emitted in a Brightway-compatible form.
+  - source: pylcaio
+    target: bw2data
+    type: data-flow
+    summary: Hybridized process and input-output systems are created for use in Brightway projects.
+  - source: simodin
+    target: bw2data
+    type: data-flow
+    summary: Simulation-derived life-cycle datasets can be exported as Brightway databases.
+  - source: pandarus
+    target: bw-regional
+    type: integrates
+    summary: Pandarus prepares spatial intersections used in regionalized Brightway calculations.
+  - source: moca
+    target: bw2calc
+    type: extends
+    summary: MOCA adds parallel, structured Monte Carlo workflows around Brightway calculations.
+  - source: optimex
+    target: bw-timex
+    type: integrates
+    summary: Optimex can reuse time-explicit product systems prepared with bw_timex.
+  - source: optimex
+    target: bw2calc
+    type: depends-on
+    summary: Optimex derives life-cycle coefficients and constraints from the Brightway calculation system.
+  - source: premise
+    target: optimex
+    type: data-flow
+    summary: Prospective premise backgrounds can supply the evolving systems optimized by Optimex.
+  - source: pbaesa
+    target: bw2data
+    type: data-flow
+    summary: Planetary-boundary characterization methods are registered in Brightway projects.
+  - source: pbaesa
+    target: bw2calc
+    type: integrates
+    summary: Absolute sustainability indicators are evaluated with Brightway life-cycle calculations.
+  - source: iwp-reborn
+    target: bw2data
+    type: data-flow
+    summary: Generated IMPACT World+ resources can be installed as Brightway LCIA methods.
+  - source: premise-gwp
+    target: bw2data
+    type: data-flow
+    summary: IPCC climate methods and additional characterization factors are registered in Brightway.
+  - source: premise-gwp
+    target: premise
+    type: integrates
+    summary: The methods cover additional flows used in prospective premise inventories.
+  - source: lcpy
+    target: bw2calc
+    type: depends-on
+    summary: LcPy derives unit impacts from Brightway databases for dynamic parametric models.
+  - source: relics
+    target: bw2data
+    type: data-flow
+    summary: Metal resource-extraction indicators are added to Brightway method registries.
+  - source: bw-matchbox
+    target: bw2data
+    type: depends-on
+    summary: The matching interface reads and reconciles activities across Brightway databases.
+  - source: firefly
+    target: bw2data
+    type: depends-on
+    summary: Firefly browses and edits Brightway projects, activities, exchanges, and databases.
+  - source: firefly
+    target: bw2calc
+    type: depends-on
+    summary: Firefly runs Brightway LCIA and contribution calculations through its backend.
+  - source: lcopt
+    target: bw2data
+    type: depends-on
+    summary: lcopt stored and parameterized foreground inventory models in Brightway projects.
+  - source: lcopt
+    target: bw2calc
+    type: depends-on
+    summary: lcopt used Brightway calculations for scenarios, results, and contribution analysis.
+  - source: carculator
+    target: bw2io
+    type: data-flow
+    summary: Parameterized passenger-car inventories can be exported for import into Brightway.
+  - source: carculator-truck
+    target: bw2io
+    type: data-flow
+    summary: Parameterized truck inventories can be exported for import into Brightway.
+  - source: carculator-bus
+    target: bw2io
+    type: data-flow
+    summary: Parameterized bus inventories can be exported for import into Brightway.
+  - source: carculator-two-wheeler
+    target: bw2io
+    type: data-flow
+    summary: Parameterized two-wheeler inventories can be exported for import into Brightway.
+  - source: premise
+    target: carculator
+    type: data-flow
+    summary: Premise scenarios can provide time- and pathway-specific background inventories for passenger cars.
+  - source: premise
+    target: carculator-truck
+    type: data-flow
+    summary: Premise scenarios can provide time- and pathway-specific background inventories for trucks.
+  - source: premise
+    target: carculator-bus
+    type: data-flow
+    summary: Premise scenarios can provide time- and pathway-specific background inventories for buses.
+  - source: premise
+    target: carculator-two-wheeler
+    type: data-flow
+    summary: Premise scenarios can provide time- and pathway-specific background inventories for two-wheelers.
+  - source: sense
+    target: bw2data
+    type: extends
+    summary: SENSE augments Brightway inventories with social flows, indicators, and LCIA methods.
+  - source: regioinvent
+    target: sense
+    type: data-flow
+    summary: SENSE can enrich Regioinvent databases with mapped social indicators.
+  - source: pelca
+    target: bw2calc
+    type: depends-on
+    summary: PELCA uses Brightway to calculate impacts across power-electronics life-cycle scenarios.

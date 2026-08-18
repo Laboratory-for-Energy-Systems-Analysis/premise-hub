@@ -15,6 +15,7 @@ def test_landing_and_health() -> None:
     assert "Premise resources" in landing.text
     assert "/scenarios/" in landing.text
     assert "/workshop/" in landing.text
+    assert "/ecosystem/" in landing.text
 
     health = client.get("/health")
     assert health.status_code == 200
@@ -22,6 +23,7 @@ def test_landing_and_health() -> None:
         "status": "ok",
         "services": {
             "landing": "ok",
+            "ecosystem": "ok",
             "scenarios": "ok",
             "workshop": "ok",
         },

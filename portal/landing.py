@@ -13,11 +13,25 @@ def create_landing_app() -> Flask:
     @app.get("/")
     def index():
         catalog = resources()
-        featured = [item for item in catalog if item["featured"]]
+        featured_resources = [item for item in catalog if item["featured"]]
+        interactive_ecosystem = next(
+            (
+                item
+                for item in featured_resources
+                if item["id"] == "interactive-ecosystem"
+            ),
+            None,
+        )
+        featured = [
+            item
+            for item in featured_resources
+            if item["id"] != "interactive-ecosystem"
+        ]
         ecosystem_resources = [item for item in catalog if not item["featured"]]
         return render_template(
             "index.html",
             featured=featured,
+            interactive_ecosystem=interactive_ecosystem,
             presentations=presentations(),
             ecosystem=ecosystem_resources,
         )

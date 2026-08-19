@@ -6,6 +6,14 @@
   kind: hosted
   logo: premise-logo.png
   featured: true
+- id: interactive-ecosystem
+  title: Interactive Brightway ecosystem
+  summary: Navigate the open-source tools used to exchange inventories, transform data, calculate impacts, and communicate results.
+  href: /ecosystem/
+  category: Interactive map
+  kind: hosted
+  logo: brightway-logo.svg
+  featured: true
 - id: premise-docs
   title: Premise documentation
   summary: Installation, database generation, scenarios, inventories, and API guidance.

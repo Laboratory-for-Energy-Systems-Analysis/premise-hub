@@ -21,6 +21,10 @@ def test_landing_and_health() -> None:
     assert "/ecosystem/" in landing.text
     assert 'rel="icon" href="/static/favicon.ico"' in landing.text
     assert "Presentations" in landing.text
+    assert "IAM scenarios workshop" in landing.text
+    assert "Interactive Brightway ecosystem" in landing.text
+    assert "ecosystem-map-link" not in landing.text
+    assert landing.text.count('href="/ecosystem/"') == 1
     assert 'datetime="2026-09-03"' in landing.text
     assert "3 September 2026" in landing.text
 
@@ -73,9 +77,10 @@ def test_public_routes_and_prefixes() -> None:
 
 def test_resource_catalog_contract() -> None:
     catalog = resources()
-    assert len(catalog) == 7
+    assert len(catalog) == 8
     assert [item["id"] for item in catalog if item["featured"]] == [
         "scenario-explorer",
+        "interactive-ecosystem",
     ]
     assert all(
         str(item["href"]).startswith("https://")
@@ -89,6 +94,7 @@ def test_presentation_catalog_contract() -> None:
     assert [item["id"] for item in catalog] == ["iam-workshop-2026-09-03"]
     assert catalog[0]["date"] == "2026-09-03"
     assert catalog[0]["date_label"] == "3 September 2026"
+    assert catalog[0]["title"] == "IAM scenarios workshop"
     assert catalog[0]["href"] == "/workshop/"
 
 

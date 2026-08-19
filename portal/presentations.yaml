@@ -1,0 +1,9 @@
+# Add new presentations here using an ISO date (YYYY-MM-DD). The home page
+# displays the newest entries first and becomes vertically scrollable as the
+# catalog grows. Use kind: external only with an HTTPS href.
+- id: iam-workshop-2026-09-03
+  title: IAM workshop
+  summary: Climate objectives, IAM narratives, energy-system pathways, Premise transformations, and prospective LCA.
+  date: 2026-09-03
+  href: /workshop/
+  kind: hosted

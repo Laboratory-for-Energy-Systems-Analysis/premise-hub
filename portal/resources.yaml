@@ -6,14 +6,6 @@
   kind: hosted
   logo: premise-logo.png
   featured: true
-- id: iam-workshop
-  title: IAM Workshop
-  summary: An interactive presentation connecting climate objectives, IAM narratives, energy-system pathways, Premise transformations, and prospective LCA.
-  href: /workshop/
-  category: Hosted tools
-  kind: hosted
-  logo: workshop-mark.svg
-  featured: true
 - id: premise-docs
   title: Premise documentation
   summary: Installation, database generation, scenarios, inventories, and API guidance.

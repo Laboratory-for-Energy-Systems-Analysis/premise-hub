@@ -1,0 +1,682 @@
+# Curated bibliography of publications that explicitly use Premise in their
+# methods or data workflow. Papers that merely cite or discuss Premise are not
+# included. Add new entries with a verified DOI and ISO publication date; the
+# home page sorts application papers newest first.
+- id: premise-method-2022
+  title: "PRospective EnvironMental Impact asSEment (premise): A streamlined approach to producing databases for prospective life cycle assessment using integrated assessment models"
+  authors:
+    - Romain Sacchi
+    - Tom Terlouw
+    - Kais Siala
+    - Alois Dirnaichner
+    - Christian Bauer
+    - Brian Cox
+    - Christopher Mutel
+    - Vassilis Daioglou
+    - Gunnar Luderer
+  venue: Renewable and Sustainable Energy Reviews
+  date: 2022-05-01
+  doi: 10.1016/j.rser.2022.112311
+  href: https://doi.org/10.1016/j.rser.2022.112311
+  topics: [Methodology, Integrated assessment models]
+  kind: foundational
+
+- id: berra-2026-swiss-gas-power
+  title: Prospective life cycle assessment of alternative fuels and carbon capture in Swiss gas-fired power plants
+  authors: [Laura Berra, Giulia Iacono, André Bardow, Gerardo Escamilla, Eleonora Bargiacchi, Christian Moretti]
+  venue: Energy & Fuels
+  date: 2026-06-22
+  doi: 10.1021/acs.energyfuels.5c05190
+  href: https://doi.org/10.1021/acs.energyfuels.5c05190
+  topics: [Energy systems, Fuels, Carbon capture]
+  kind: application
+
+- id: liu-2026-urban-metabolism
+  title: "Urban metabolism in transition: A dynamic modeling of stock-flow-service nexus in the built environment"
+  authors: [Xiaoyi Liu, Zhongnan Ye, Shu-Chien Hsu, Chi-Sun Poon]
+  venue: Journal of Industrial Ecology
+  date: 2026-05-19
+  doi: 10.1007/s44498-026-00092-2
+  href: https://doi.org/10.1007/s44498-026-00092-2
+  topics: [Buildings, Circular economy]
+  kind: application
+
+- id: naber-2026-magnesium-binder
+  title: Magnesium silicate binder shows potential as a carbon-neutral route for cement manufacture
+  authors: [Christoph Naber, Juraj Majzlan, Nils Moosdorf, Jürgen Neubauer, Daniel Wagner, F. Bellmann]
+  venue: Communications Sustainability
+  date: 2026-05-13
+  doi: 10.1038/s44458-026-00085-z
+  href: https://doi.org/10.1038/s44458-026-00085-z
+  topics: [Industry, Cement, Emerging technologies]
+  kind: application
+
+- id: wiloso-2026-lyocell-dress
+  title: Time-explicit life cycle assessment of a lyocell dress using bw_timex with biogenic carbon accounting
+  authors: [Adisa Ramadhan Wiloso, Mohammad El Wali, Juulia Suuronen, Jing Yang, Hanna L. Tuomisto, Elias Hurmekoski]
+  venue: The International Journal of Life Cycle Assessment
+  date: 2026-03-01
+  doi: 10.1007/s11367-026-02616-1
+  href: https://doi.org/10.1007/s11367-026-02616-1
+  topics: [Methodology, Textiles]
+  kind: application
+
+- id: watanabe-2026-prospective-characterization
+  title: Prospective characterization factors for assessing climate change impacts in life cycle assessments
+  authors: [Marcos D. Barbosa Watanabe, Francesco Cherubini]
+  venue: Environmental Science & Technology
+  date: 2026-01-21
+  doi: 10.1021/acs.est.5c12391
+  href: https://doi.org/10.1021/acs.est.5c12391
+  topics: [Methodology, Climate change]
+  kind: application
+
+- id: mendoza-beltran-2026-circular-nutrients
+  title: Leveraging circular nutrients to improve the sustainability of peri-urban agriculture
+  authors: [Angelica Mendoza Beltrán, Susana Toboso-Chavero, Juan David Arosemena Polo, Adriana Lucia Romero Lestido, Gara Villalba]
+  venue: npj Urban Sustainability
+  date: 2026-01-08
+  doi: 10.1038/s42949-025-00333-6
+  href: https://doi.org/10.1038/s42949-025-00333-6
+  topics: [Agriculture, Circular economy]
+  kind: application
+
+- id: dashti-2025-baseload-hydrogen
+  title: Prospective life cycle assessment of baseload hydrogen based on solar photovoltaics and wind power including underground hydrogen storage
+  authors: [Mahdi Dashti, Hasret Sahin, Romain Sacchi, Matteo Vincenzo Rocco, Christian Breyer]
+  venue: Sustainable Production and Consumption
+  date: 2025-11-06
+  doi: 10.1016/j.spc.2025.10.017
+  href: https://doi.org/10.1016/j.spc.2025.10.017
+  topics: [Hydrogen, Energy systems]
+  kind: application
+
+- id: matustik-2025-sludge-pyrolysis
+  title: Life cycle environmental impacts of sewage sludge pyrolysis and their dynamic evolution
+  authors: [Jan Matuštík, Aleš Paulu, Jaroslav Moško, Michael Pohořelý]
+  venue: ACS Environmental Au
+  date: 2025-10-27
+  doi: 10.1021/acsenvironau.5c00097
+  href: https://doi.org/10.1021/acsenvironau.5c00097
+  topics: [Waste, Carbon dioxide removal]
+  kind: application
+
+- id: abu-ghaida-2025-disassembly
+  title: Assessing the environmental benefits of design for disassembly in buildings with a time-resolved prospective LCA approach
+  authors: [Haitham Abu-Ghaida, Alexander Hollberg, Michiel Ritzen, A. Wöhler, Sebastien Lizin]
+  venue: The International Journal of Life Cycle Assessment
+  date: 2025-08-11
+  doi: 10.1007/s11367-025-02526-8
+  href: https://doi.org/10.1007/s11367-025-02526-8
+  topics: [Buildings, Circular economy, Methodology]
+  kind: application
+
+- id: sacchi-2024-pathways
+  title: "pathways: Life cycle assessment of energy transition scenarios"
+  authors: [Romain Sacchi, Álvaro José Hahn Menacho]
+  venue: Journal of Open Source Software
+  date: 2024-11-18
+  doi: 10.21105/joss.07309
+  href: https://doi.org/10.21105/joss.07309
+  topics: [Software, Energy systems, Methodology]
+  kind: application
+
+- id: lechtenberg-2024-pulpo
+  title: "PULPO: A framework for efficient integration of life cycle inventory models into life cycle product optimization"
+  authors: [Fabian Lechtenberg, Ioan-Robert Istrate, Víctor Tulus, Antonio Espuña, Moisès Graells, Gonzalo Guillén-Gosálbez]
+  venue: Journal of Industrial Ecology
+  date: 2024-10-10
+  doi: 10.1111/jiec.13561
+  href: https://doi.org/10.1111/jiec.13561
+  topics: [Methodology, Software]
+  kind: application
+
+- id: mastrucci-2024-china-buildings
+  title: "Circular strategies for building sector decarbonization in China: A scenario analysis"
+  authors: [Alessio Mastrucci, Fei Guo, Xiaoyang Zhong, Florian Maczek, Bas van Ruijven]
+  venue: Journal of Industrial Ecology
+  date: 2024-07-11
+  doi: 10.1111/jiec.13523
+  href: https://doi.org/10.1111/jiec.13523
+  topics: [Buildings, Circular economy, National pathways]
+  kind: application
+
+- id: alaux-2023-fungal-insulation
+  title: "Environmental potential of fungal insulation: A prospective life cycle assessment of mycelium-based composites"
+  authors: [Nicolas Alaux, Hana Vašatko, Dominik Maierhofer, Marcella Ruschi Mendes Saade, Milena Stavrić, Alexander Passer]
+  venue: The International Journal of Life Cycle Assessment
+  date: 2023-10-28
+  doi: 10.1007/s11367-023-02243-0
+  href: https://doi.org/10.1007/s11367-023-02243-0
+  topics: [Buildings, Emerging technologies, Circular economy]
+  kind: application
+
+- id: davila-2023-cement-ccus
+  title: Preconditions for achieving carbon neutrality in cement production through CCUS
+  authors: [Juanita Gallego Dávila, Romain Sacchi, Massimo Pizzol]
+  venue: Journal of Cleaner Production
+  date: 2023-09-23
+  doi: 10.1016/j.jclepro.2023.138935
+  href: https://doi.org/10.1016/j.jclepro.2023.138935
+  topics: [Cement, Carbon capture, Industry]
+  kind: application
+
+- id: medrano-garcia-2023-vinyl-chloride
+  title: Economic and environmental competitiveness of ethane-based technologies for vinyl chloride synthesis
+  authors: [Juan D. Medrano-García, Vera Giulimondi, Amedeo Ceruti, Guido Zichittella, Javier Pérez-Ramírez, Gonzalo Guillén-Gosálbez]
+  venue: ACS Sustainable Chemistry & Engineering
+  date: 2023-08-23
+  doi: 10.1021/acssuschemeng.3c03006
+  href: https://doi.org/10.1021/acssuschemeng.3c03006
+  topics: [Chemicals, Industry, Emerging technologies]
+  kind: application
+
+- id: ostermann-2023-lightweight-structures
+  title: "Integrating prospective scenarios in life cycle engineering: Case study of lightweight structures"
+  authors: [Moritz Ostermann, Julian Grenz, Marcel Triebus, Felipe Cerdas, Thorsten Marten, Thomas Tröster, Christoph Herrmann]
+  venue: Energies
+  date: 2023-04-11
+  doi: 10.3390/en16083371
+  href: https://doi.org/10.3390/en16083371
+  topics: [Industry, Transport, Emerging technologies]
+  kind: application
+
+- id: ballal-2023-aviation-efuels
+  title: Climate change impacts of e-fuels for aviation in Europe under present-day conditions and future policy scenarios
+  authors: [Vedant Ballal, Otávio Cavalett, Francesco Cherubini, Marcos Djun Barbosa Watanabe]
+  venue: Fuel
+  date: 2023-01-03
+  doi: 10.1016/j.fuel.2022.127316
+  href: https://doi.org/10.1016/j.fuel.2022.127316
+  topics: [Transport, Aviation, Fuels]
+  kind: application
+
+- id: schlesier-2026-fossil-infrastructure
+  title: Recycling fossil infrastructure for cleaner energy transitions
+  authors: [Hauke Schlesier, Gonzalo Guillén-Gosálbez, Harald Desing]
+  venue: Nature Communications
+  date: 2026-03-15
+  doi: 10.1038/s41467-026-70777-6
+  href: https://doi.org/10.1038/s41467-026-70777-6
+  topics: [Energy systems, Circular economy]
+  kind: application
+
+- id: poulsen-2026-energyplan
+  title: Prospective life cycle assessment framework for energy transition scenarios based on the EnergyPLAN tool
+  authors: [Lasse Krogh Poulsen, Søren Løkke, Iva Ridjan Skov, Lotte Ansgaard Thomsen, Henrik Lund]
+  venue: The International Journal of Life Cycle Assessment
+  date: 2026-03-01
+  doi: 10.1007/s11367-026-02594-4
+  href: https://doi.org/10.1007/s11367-026-02594-4
+  topics: [Energy systems, Methodology]
+  kind: application
+
+- id: van-der-hulst-2025-learning-curves
+  title: Learning Curves in Prospective Life Cycle Assessment
+  authors: [Mitchell K. van der Hulst, Mara Hauck, Selwyn Hoeks, Rosalie van Zelm, Mark A. J. Huijbregts]
+  venue: Environmental Science & Technology
+  date: 2025-07-30
+  doi: 10.1021/acs.est.5c03870
+  href: https://doi.org/10.1021/acs.est.5c03870
+  topics: [Methodology, Emerging technologies]
+  kind: application
+
+- id: simaitis-2025-passenger-cars
+  title: Battery electric vehicles show the lowest carbon footprints among passenger cars across 1.5–3.0 °C energy decarbonisation pathways
+  authors: [Joris Šimaitis, Rick Lupton, Christopher Vagg, Isabela Butnar, Romain Sacchi, Stephen Allen]
+  venue: Communications Earth & Environment
+  date: 2025-06-18
+  doi: 10.1038/s43247-025-02447-2
+  href: https://doi.org/10.1038/s43247-025-02447-2
+  topics: [Transport, Batteries]
+  kind: application
+
+- id: gong-2025-china-net-zero
+  title: Multilevel emission impacts of electrification and coal pathways in China’s net-zero transition
+  authors: [Chen Chris Gong, Falko Ueckerdt, Christoph Bertram, Yuxin Yin, David Bantje, Robert Pietzcker, Johanna Hoppe, Robin Hasse, Michaja Pehl, Simón Moreno-Leiva, Jakob Duerrwaechter, Jarusch Muesse, Gunnar Luderer]
+  venue: Joule
+  date: 2025-05-05
+  doi: 10.1016/j.joule.2025.101945
+  href: https://doi.org/10.1016/j.joule.2025.101945
+  topics: [Energy systems, Transport]
+  kind: application
+
+- id: hahn-menacho-2025-switzerland
+  title: The global environmental footprint of Switzerland’s net-zero energy system uncovers impacts abroad
+  authors: [Álvaro José Hahn Menacho, Romain Sacchi, Christian Bauer, Christian Moretti, Evangelos Panos, Russell McKenna, Peter Burgherr]
+  venue: Communications Earth & Environment
+  date: 2025-04-05
+  doi: 10.1038/s43247-025-02220-5
+  href: https://doi.org/10.1038/s43247-025-02220-5
+  topics: [Energy systems, National pathways]
+  kind: application
+
+- id: harpprecht-2025-steel
+  title: Future environmental impacts of global iron and steel production
+  authors: [Carina Harpprecht, Romain Sacchi, Tobias Naegler, Mariësse A. E. van Sluisveld, Vassilis Daioglou, Arnold Tukker, Bernhard Steubing]
+  venue: Energy & Environmental Science
+  date: 2025-01-01
+  doi: 10.1039/d5ee01356a
+  href: https://doi.org/10.1039/d5ee01356a
+  topics: [Industry, Steel]
+  kind: application
+
+- id: simaitis-2024-tiam-ucl
+  title: "Expanding scenario diversity in prospective LCA: Coupling the TIAM-UCL integrated assessment model with Premise and ecoinvent"
+  authors: [Joris Šimaitis, Isabela Butnar, Romain Sacchi, Rick Lupton, Christopher Vagg, Stephen Allen]
+  venue: Renewable and Sustainable Energy Reviews
+  date: 2024-12-27
+  doi: 10.1016/j.rser.2024.115298
+  href: https://doi.org/10.1016/j.rser.2024.115298
+  topics: [Methodology, Integrated assessment models]
+  kind: application
+
+- id: ingwersen-2024-maritime-fuels
+  title: Prospective life cycle assessment of cost-effective pathways for achieving the FuelEU Maritime Regulation targets
+  authors: [Anna Ingwersen, Álvaro José Hahn Menacho, Stephan Pfister, Jonathan N. Peel, Romain Sacchi, Christian Moretti]
+  venue: Science of the Total Environment
+  date: 2024-12-17
+  doi: 10.1016/j.scitotenv.2024.177880
+  href: https://doi.org/10.1016/j.scitotenv.2024.177880
+  topics: [Transport, Fuels]
+  kind: application
+
+- id: huber-2024-second-life-batteries
+  title: "Powering the circular future: Climate change and economic perspectives on second-life batteries in the Belgian context"
+  authors: [Dominik Huber, Anne van den Oever, Maeva Lavigne Philippot, Daniele Costa, Thierry Coosemans, Maarten Messagie]
+  venue: Journal of Industrial Ecology
+  date: 2024-10-29
+  doi: 10.1111/jiec.13566
+  href: https://doi.org/10.1111/jiec.13566
+  topics: [Batteries, Circular economy]
+  kind: application
+
+- id: alaux-2024-pulse-at
+  title: "Assessing the prospective environmental impacts and circularity potentials of building stocks: An open-source model from Austria (PULSE-AT)"
+  authors: [Nicolas Alaux, Benedict Schwark, Marius Hörmann, Marcella Ruschi Mendes Saade, Alexander Passer]
+  venue: Journal of Industrial Ecology
+  date: 2024-10-08
+  doi: 10.1111/jiec.13558
+  href: https://doi.org/10.1111/jiec.13558
+  topics: [Buildings, Circular economy]
+  kind: application
+
+- id: charalambous-2024-emerging-technologies
+  title: Integrating emerging technologies deployed at scale within prospective life cycle assessments
+  authors: [Margarita A. Charalambous, Romain Sacchi, Víctor Tulus, Gonzalo Guillén-Gosálbez]
+  venue: Sustainable Production and Consumption
+  date: 2024-08-24
+  doi: 10.1016/j.spc.2024.08.016
+  href: https://doi.org/10.1016/j.spc.2024.08.016
+  topics: [Methodology, Emerging technologies]
+  kind: application
+
+- id: terlouw-2024-hydrogen-economies
+  title: Future hydrogen economies imply environmental trade-offs and a supply-demand mismatch
+  authors: [Tom Terlouw, Lorenzo Rosa, Christian Bauer, Russell McKenna]
+  venue: Nature Communications
+  date: 2024-08-15
+  doi: 10.1038/s41467-024-51251-7
+  href: https://doi.org/10.1038/s41467-024-51251-7
+  topics: [Hydrogen, Energy systems]
+  kind: application
+
+- id: ottenbros-2024-direct-air-capture
+  title: Prospective environmental burdens and benefits of fast-swing direct air carbon capture and storage
+  authors: [Anne B. Ottenbros, Rosalie van Zelm, Jasper Simons, Mitchell K. van der Hulst, Kiane de Kleijne, Hans de Neve, Mark A. J. Huijbregts]
+  venue: Scientific Reports
+  date: 2024-07-17
+  doi: 10.1038/s41598-024-66990-2
+  href: https://doi.org/10.1038/s41598-024-66990-2
+  topics: [Carbon dioxide removal, Emerging technologies]
+  kind: application
+
+- id: istrate-2024-digital-content
+  title: The environmental sustainability of digital content consumption
+  authors: [Ioan-Robert Istrate, Víctor Tulus, Robert N. Grass, Laurent Vanbever, Wendelin J. Stark, Gonzalo Guillén-Gosálbez]
+  venue: Nature Communications
+  date: 2024-05-02
+  doi: 10.1038/s41467-024-47621-w
+  href: https://doi.org/10.1038/s41467-024-47621-w
+  topics: [Digital, Consumption]
+  kind: application
+
+- id: muller-2024-cement
+  title: "Decarbonizing the cement industry: Findings from coupling prospective life cycle assessment of clinker with integrated assessment model scenarios"
+  authors: [Amelie Müller, Carina Harpprecht, Romain Sacchi, Ben Maes, Mariësse A. E. van Sluisveld, Vassilis Daioglou, Branko Šavija, Bernhard Steubing]
+  venue: Journal of Cleaner Production
+  date: 2024-03-23
+  doi: 10.1016/j.jclepro.2024.141884
+  href: https://doi.org/10.1016/j.jclepro.2024.141884
+  topics: [Industry, Cement]
+  kind: application
+
+- id: wei-2024-global-hydrogen
+  title: Future environmental impacts of global hydrogen production
+  authors: [Shijie Wei, Romain Sacchi, Arnold Tukker, Sangwon Suh, Bernhard Steubing]
+  venue: Energy & Environmental Science
+  date: 2024-01-01
+  doi: 10.1039/d3ee03875k
+  href: https://doi.org/10.1039/d3ee03875k
+  topics: [Hydrogen, Energy systems]
+  kind: application
+
+- id: schmidt-2023-plastic-packaging
+  title: "The environmental performance of plastic packaging waste management in Germany: Current and future key factors"
+  authors: [Sarah Schmidt, David Laner]
+  venue: Journal of Industrial Ecology
+  date: 2023-07-28
+  doi: 10.1111/jiec.13411
+  href: https://doi.org/10.1111/jiec.13411
+  topics: [Plastics, Circular economy]
+  kind: application
+
+- id: sacchi-2023-aviation
+  title: How to make climate-neutral aviation fly
+  authors: [Romain Sacchi, Viola Becattini, Paolo Gabrielli, Brian Cox, Alois Dirnaichner, Christian Bauer, Marco Mazzotti]
+  venue: Nature Communications
+  date: 2023-07-06
+  doi: 10.1038/s41467-023-39749-y
+  href: https://doi.org/10.1038/s41467-023-39749-y
+  topics: [Transport, Aviation]
+  kind: application
+
+- id: simaitis-2023-battery-recycling
+  title: Are future recycling benefits misleading? Prospective life cycle assessment of lithium-ion batteries
+  authors: [Joris Šimaitis, Stephen Allen, Christopher Vagg]
+  venue: Journal of Industrial Ecology
+  date: 2023-06-22
+  doi: 10.1111/jiec.13413
+  href: https://doi.org/10.1111/jiec.13413
+  topics: [Batteries, Circular economy]
+  kind: application
+
+- id: van-den-oever-2023-heavy-duty-trucks
+  title: Prospective life cycle assessment of alternatively fueled heavy-duty trucks
+  authors: [Anne van den Oever, Daniele Costa, Maarten Messagie]
+  venue: Applied Energy
+  date: 2023-02-15
+  doi: 10.1016/j.apenergy.2023.120834
+  href: https://doi.org/10.1016/j.apenergy.2023.120834
+  topics: [Transport, Fuels]
+  kind: application
+
+- id: adrianto-2023-copper-tailings
+  title: "Toward sustainable reprocessing and valorization of sulfidic copper tailings: Scenarios and prospective LCA"
+  authors: [Lugas Raka Adrianto, Luca Ciacci, Stephan Pfister, Stefanie Hellweg]
+  venue: Science of the Total Environment
+  date: 2023-02-03
+  doi: 10.1016/j.scitotenv.2023.162038
+  href: https://doi.org/10.1016/j.scitotenv.2023.162038
+  topics: [Mining, Circular economy]
+  kind: application
+
+- id: saavedra-del-oso-2022-pha
+  title: Prospective LCA to provide environmental guidance for developing waste-to-PHA biorefineries
+  authors: [Mateo Saavedra del Oso, Miguel Mauricio-Iglesias, Almudena Hospido, Bernhard Steubing]
+  venue: Journal of Cleaner Production
+  date: 2022-11-30
+  doi: 10.1016/j.jclepro.2022.135331
+  href: https://doi.org/10.1016/j.jclepro.2022.135331
+  topics: [Plastics, Emerging technologies]
+  kind: application
+
+- id: xu-2022-battery-cells
+  title: Future greenhouse gas emissions of automotive lithium-ion battery cell production
+  authors: [Chengjian Xu, Bernhard Steubing, Mingming Hu, Carina Harpprecht, Marc van der Meide, Arnold Tukker]
+  venue: Resources, Conservation and Recycling
+  date: 2022-08-28
+  doi: 10.1016/j.resconrec.2022.106606
+  href: https://doi.org/10.1016/j.resconrec.2022.106606
+  topics: [Batteries, Transport]
+  kind: application
+
+- id: li-2022-offshore-wind
+  title: Environmental Impacts of Global Offshore Wind Energy Development until 2040
+  authors: [Chen Li, José M. Mogollón, Arnold Tukker, Bernhard Steubing]
+  venue: Environmental Science & Technology
+  date: 2022-07-28
+  doi: 10.1021/acs.est.2c02183
+  href: https://doi.org/10.1021/acs.est.2c02183
+  topics: [Energy systems, Wind]
+  kind: application
+
+- id: watanabe-2022-shipping-biofuels
+  title: Climate change mitigation of drop-in biofuels for deep-sea shipping under a prospective life-cycle assessment
+  authors: [Marcos Djun Barbosa Watanabe, Francesco Cherubini, Otávio Cavalett]
+  venue: Journal of Cleaner Production
+  date: 2022-06-14
+  doi: 10.1016/j.jclepro.2022.132662
+  href: https://doi.org/10.1016/j.jclepro.2022.132662
+  topics: [Transport, Fuels]
+  kind: application
+
+- id: terlouw-2022-water-electrolysis
+  title: "Large-scale hydrogen production via water electrolysis: A techno-economic and environmental assessment"
+  authors: [Tom Terlouw, Christian Bauer, Russell McKenna, Marco Mazzotti]
+  venue: Energy & Environmental Science
+  date: 2022-01-01
+  doi: 10.1039/d2ee01023b
+  href: https://doi.org/10.1039/d2ee01023b
+  topics: [Hydrogen, Energy systems]
+  kind: application
+
+- id: galan-martin-2025-ceramic-sector
+  title: "Assessing Pathways to Carbon Neutrality in the Ceramic Sector: A Prospective Life Cycle Assessment under Energy System Projections and Technology Scenarios"
+  authors: [Ángel Galán-Martín, Richard Cabrera-Jiménez, Salvador Bueno-Rodríguez, Rosendo Jesús Galán-Arboledas, Gonzalo Guillén-Gosálbez]
+  venue: Environmental Science & Technology
+  date: 2025-11-27
+  doi: 10.1021/acs.est.5c12177
+  href: https://doi.org/10.1021/acs.est.5c12177
+  topics: [Industry, Ceramics]
+  kind: application
+
+- id: arblaster-2025-air-traffic
+  title: Air traffic growth jeopardises European aviation’s climate mitigation efforts despite the substantial potential of hydrogen
+  authors: [Thomas Arblaster, Nils Thonemann, Bernhard Steubing]
+  venue: Communications Earth & Environment
+  date: 2025-11-27
+  doi: 10.1038/s43247-025-02935-5
+  href: https://doi.org/10.1038/s43247-025-02935-5
+  topics: [Transport, Aviation]
+  kind: application
+
+- id: pujol-2025-direct-air-capture-urea
+  title: Prospective life cycle and techno-economic analysis of direct air capture-to-urea production under CBAM
+  authors: [Albert Pujol, Mads Heuckendorff, Thomas Helmer Pedersen, Mijndert van der Spek]
+  venue: Journal of Cleaner Production
+  date: 2025-11-01
+  doi: 10.1016/j.jclepro.2025.146984
+  href: https://doi.org/10.1016/j.jclepro.2025.146984
+  topics: [Carbon dioxide removal, Chemicals]
+  kind: application
+
+- id: kolmeijer-2025-methanol-economy
+  title: A feasible methanol economy for a green future
+  authors: [Hidde Kolmeijer, Abhinandan Nabera, Antonio J. Martín, Gonzalo Guillén-Gosálbez, Javier Pérez-Ramírez]
+  venue: Green Chemistry
+  date: 2025-10-31
+  doi: 10.1039/d5gc04615g
+  href: https://doi.org/10.1039/d5gc04615g
+  topics: [Chemicals, Fuels]
+  kind: application
+
+- id: fayyaz-2025-wind-blade-recycling
+  title: "Trade-offs between circularity and sustainability: A prospective sustainability assessment of wind turbine blade recycling considering socioeconomic pathways and climate policies"
+  authors: [Samaneh Fayyaz, Mias Sommer Schjønberg, Benyamin Khoshnevisan, Jakob Rostgaard Eltzholtz, Muhammad Tahir Ashraf, Morten Birkved]
+  venue: Energy Conversion and Management
+  date: 2025-10-27
+  doi: 10.1016/j.enconman.2025.120697
+  href: https://doi.org/10.1016/j.enconman.2025.120697
+  topics: [Wind, Circular economy]
+  kind: application
+
+- id: spreafico-2025-wire-arc-additive-manufacturing
+  title: Prospective life cycle assessment of future Wire Arc Additive Manufacturing deposition process for large-scale steel parts
+  authors: [Christian Spreafico, Samruddha Kokare, Radu Godina]
+  venue: Environmental Impact Assessment Review
+  date: 2025-08-14
+  doi: 10.1016/j.eiar.2025.108111
+  href: https://doi.org/10.1016/j.eiar.2025.108111
+  topics: [Industry, Steel]
+  kind: application
+
+- id: gonella-2025-co2-derived-plga
+  title: Greenhouse Gas Reduction Potential of Novel CO₂-Derived Polylactic-co-glycolic Acid (PLGA) Plastics
+  authors: [Sara Gonella, Mark A. J. Huijbregts, Heleen de Coninck, Vincent de Gooyert, Steef V. Hanssen]
+  venue: ACS Sustainable Chemistry & Engineering
+  date: 2025-04-15
+  doi: 10.1021/acssuschemeng.4c06463
+  href: https://doi.org/10.1021/acssuschemeng.4c06463
+  topics: [Plastics, Carbon dioxide utilization]
+  kind: application
+
+- id: hahn-menacho-2025-material-energy-nexus
+  title: "The material-energy nexus in net-zero transition scenarios: Exploring environmental trade-offs and uncertainties"
+  authors: [Álvaro José Hahn Menacho, Romain Sacchi, Christian Bauer, Evangelos Panos, Russell McKenna, Peter Burgherr]
+  venue: Resources, Conservation and Recycling
+  date: 2025-03-20
+  doi: 10.1016/j.resconrec.2025.108251
+  href: https://doi.org/10.1016/j.resconrec.2025.108251
+  topics: [Energy systems, Materials]
+  kind: application
+
+- id: azimi-2025-net-zero-steelmaking
+  title: Prospective Life Cycle Assessment Suggests Direct Reduced Iron Is the Most Sustainable Pathway to Net-Zero Steelmaking
+  authors: [Arezoo Azimi, Mijndert van der Spek]
+  venue: Industrial & Engineering Chemistry Research
+  date: 2025-02-08
+  doi: 10.1021/acs.iecr.4c03321
+  href: https://doi.org/10.1021/acs.iecr.4c03321
+  topics: [Industry, Steel]
+  kind: application
+
+- id: charalambous-2025-onboard-carbon-capture
+  title: Onboard Carbon Capture for Circular Marine Fuels
+  authors: [Margarita A. Charalambous, Valentina Negri, Valentin Kamm, Gonzalo Guillén-Gosálbez]
+  venue: ACS Sustainable Chemistry & Engineering
+  date: 2025-02-04
+  doi: 10.1021/acssuschemeng.4c08354
+  href: https://doi.org/10.1021/acssuschemeng.4c08354
+  topics: [Transport, Fuels]
+  kind: application
+
+- id: salah-2024-circular-ethylene
+  title: Environmental Benefits of Circular Ethylene Production from Polymer Waste
+  authors: [Cecilia Salah, Ioan-Robert Istrate, Anders Bjørn, Víctor Tulus, Javier Pérez-Ramírez, Gonzalo Guillén-Gosálbez]
+  venue: ACS Sustainable Chemistry & Engineering
+  date: 2024-09-03
+  doi: 10.1021/acssuschemeng.4c04241
+  href: https://doi.org/10.1021/acssuschemeng.4c04241
+  topics: [Plastics, Circular economy]
+  kind: application
+
+- id: lian-2024-cleanrooms
+  title: Quantifying the present and future environmental sustainability of cleanrooms
+  authors: [Justin Z. Lian, Flora Siebler, Bernhard Steubing, Aldo Jesorka, Valerio Barbarossa, Ranran Wang, Karl Leo, Indraneel Sen, Stefano Cucurachi]
+  venue: Cell Reports Sustainability
+  date: 2024-09-01
+  doi: 10.1016/j.crsus.2024.100219
+  href: https://doi.org/10.1016/j.crsus.2024.100219
+  topics: [Industry, Energy systems]
+  kind: application
+
+- id: ginster-2024-circular-battery-production
+  title: "Circular battery production in the EU: Insights from integrating life cycle assessment into system dynamics modeling on recycled content and environmental impacts"
+  authors: [Raphael Ginster, Steffen Blömeke, Jan-Linus Popien, Christian Scheller, Felipe Cerdas, Christoph Herrmann, Thomas Spengler]
+  venue: Journal of Industrial Ecology
+  date: 2024-07-16
+  doi: 10.1111/jiec.13527
+  href: https://doi.org/10.1111/jiec.13527
+  topics: [Batteries, Circular economy]
+  kind: application
+
+- id: spreafico-2024-titanium-powder
+  title: Prospective life cycle assessment of titanium powder atomization
+  authors: [Christian Spreafico]
+  venue: Journal of Cleaner Production
+  date: 2024-07-08
+  doi: 10.1016/j.jclepro.2024.143104
+  href: https://doi.org/10.1016/j.jclepro.2024.143104
+  topics: [Industry, Emerging technologies]
+  kind: application
+
+- id: van-der-hulst-2024-tandem-photovoltaics
+  title: Comparing Environmental Impacts of Single-Junction Silicon and Silicon/Perovskite Tandem Photovoltaics—A Prospective Life Cycle Assessment
+  authors: [Mitchell K. van der Hulst, Dorottya Magoss, Yiri Massop, Sjoerd Veenstra, Niels van Loon, İlker Doğan, Gianluca Coletti, Mirjam Theelen, Selwyn Hoeks, Mark A. J. Huijbregts, Rosalie van Zelm, Mara Hauck]
+  venue: ACS Sustainable Chemistry & Engineering
+  date: 2024-05-23
+  doi: 10.1021/acssuschemeng.4c01952
+  href: https://doi.org/10.1021/acssuschemeng.4c01952
+  topics: [Photovoltaics, Emerging technologies]
+  kind: application
+
+- id: boyce-2024-global-ammonia
+  title: A prospective life cycle assessment of global ammonia decarbonisation scenarios
+  authors: [Johanna Boyce, Romain Sacchi, Earl Goetheer, Bernhard Steubing]
+  venue: Heliyon
+  date: 2024-03-01
+  doi: 10.1016/j.heliyon.2024.e27547
+  href: https://doi.org/10.1016/j.heliyon.2024.e27547
+  topics: [Chemicals, Hydrogen]
+  kind: application
+
+- id: nabera-2024-green-chemicals
+  title: Integrating climate policies in the sustainability analysis of green chemicals
+  authors: [Abhinandan Nabera, Antonio J. Martín, Ioan-Robert Istrate, Javier Pérez-Ramírez, Gonzalo Guillén-Gosálbez]
+  venue: Green Chemistry
+  date: 2024-01-01
+  doi: 10.1039/d4gc00392f
+  href: https://doi.org/10.1039/d4gc00392f
+  topics: [Chemicals, Energy systems]
+  kind: application
+
+- id: zhang-2023-sodium-ion-batteries
+  title: Future climate impacts of sodium-ion batteries
+  authors: [Shan Zhang, Bernhard Steubing, Hanna Karlsson, Per-Anders Hansson, Åke Nordberg]
+  venue: Resources, Conservation and Recycling
+  date: 2023-12-11
+  doi: 10.1016/j.resconrec.2023.107362
+  href: https://doi.org/10.1016/j.resconrec.2023.107362
+  topics: [Batteries, Energy systems]
+  kind: application
+
+- id: zhang-2023-swiss-construction-materials
+  title: The impacts of future sectoral change on the greenhouse gas emissions of construction materials for Swiss residential buildings
+  authors: [Xiaojin Zhang, Niko Heeren, Christian Bauer, Peter Burgherr, Russell McKenna, Guillaume Habert]
+  venue: Energy and Buildings
+  date: 2023-12-09
+  doi: 10.1016/j.enbuild.2023.113824
+  href: https://doi.org/10.1016/j.enbuild.2023.113824
+  topics: [Buildings, Materials]
+  kind: application
+
+- id: weidner-2022-large-scale-hydrogen
+  title: Environmental sustainability assessment of large-scale hydrogen production using prospective life cycle analysis
+  authors: [Till Weidner, Víctor Tulus, Gonzalo Guillén-Gosálbez]
+  venue: International Journal of Hydrogen Energy
+  date: 2022-12-10
+  doi: 10.1016/j.ijhydene.2022.11.044
+  href: https://doi.org/10.1016/j.ijhydene.2022.11.044
+  topics: [Hydrogen, Planetary boundaries]
+  kind: application
+
+- id: cavalett-2022-retrofitted-cement
+  title: LCA and negative emission potential of retrofitted cement plants under oxyfuel conditions at high biogenic fuel shares
+  authors: [Otávio Cavalett, Marcos Djun Barbosa Watanabe, Kristina Fleiger, Volker Hoenig, Francesco Cherubini]
+  venue: Scientific Reports
+  date: 2022-05-27
+  doi: 10.1038/s41598-022-13064-w
+  href: https://doi.org/10.1038/s41598-022-13064-w
+  topics: [Cement, Carbon dioxide removal]
+  kind: application
+
+- id: sacchi-2022-passenger-car-electrification
+  title: When, where and how can the electrification of passenger cars reduce greenhouse gas emissions?
+  authors: [Romain Sacchi, Christian Bauer, Brian Cox, Christopher Mutel]
+  venue: Renewable and Sustainable Energy Reviews
+  date: 2022-04-22
+  doi: 10.1016/j.rser.2022.112475
+  href: https://doi.org/10.1016/j.rser.2022.112475
+  topics: [Transport, Electric vehicles]
+  kind: application

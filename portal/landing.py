@@ -5,6 +5,7 @@ from flask import Flask, Response, jsonify, redirect, render_template
 from .catalog import resources
 from .ecosystem import ecosystem
 from .presentations import presentations
+from .publications import publications
 
 
 def create_landing_app() -> Flask:
@@ -13,6 +14,13 @@ def create_landing_app() -> Flask:
     @app.get("/")
     def index():
         catalog = resources()
+        publication_catalog = publications()
+        publication_entries = [
+            item for item in publication_catalog if item["kind"] == "application"
+        ]
+        foundational_publication = next(
+            item for item in publication_catalog if item["kind"] == "foundational"
+        )
         featured_resources = [item for item in catalog if item["featured"]]
         interactive_ecosystem = next(
             (
@@ -34,6 +42,19 @@ def create_landing_app() -> Flask:
             interactive_ecosystem=interactive_ecosystem,
             presentations=presentations(),
             ecosystem=ecosystem_resources,
+            publications=publication_entries,
+            foundational_publication=foundational_publication,
+            publication_years=sorted(
+                {item["year"] for item in publication_entries}, reverse=True
+            ),
+            publication_topics=sorted(
+                {
+                    topic
+                    for item in publication_entries
+                    for topic in item["topics"]
+                },
+                key=str.casefold,
+            ),
         )
 
     @app.get("/ecosystem/")

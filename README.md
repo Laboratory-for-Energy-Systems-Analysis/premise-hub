@@ -35,6 +35,22 @@ python scripts/browser_smoke.py --url http://127.0.0.1:8050
 Workshop-specific visual checks remain under `apps/workshop/scripts/` and must
 be pointed at `http://127.0.0.1:8050/workshop/` when the portal is running.
 
+## Publication catalog maintenance
+
+The scrollable publication list on the landing page is driven by
+`portal/publications.yaml`. Include peer-reviewed papers whose methods or data
+workflow explicitly report using Premise; papers that only cite, review, or
+discuss Premise do not belong in the application list. The foundational
+Premise paper is retained as the catalog's single `foundational` entry and is
+displayed separately.
+
+Each entry needs a stable identifier, full title and author list, journal,
+ISO publication date, DOI, matching `https://doi.org/` link, topic tags, and a
+kind of either `application` or `foundational`. The loader validates these
+fields, rejects duplicate identifiers and DOIs, and sorts applications newest
+first. After adding a paper, run the unit and browser smoke tests described
+above.
+
 ## Ecosystem catalog maintenance
 
 The interactive Brightway ecosystem is driven by `portal/ecosystem.yaml`.

@@ -8,6 +8,7 @@ from werkzeug.wrappers import Response
 
 from portal.catalog import resources
 from portal.presentations import presentations
+from portal.publications import publications
 from portal.wsgi import application
 
 client = Client(application, Response)
@@ -15,6 +16,9 @@ client = Client(application, Response)
 
 def test_landing_and_health() -> None:
     landing = client.get("/")
+    publication_count = sum(
+        item["kind"] == "application" for item in publications()
+    )
     assert landing.status_code == 200
     assert "Premise resources" in landing.text
     assert "/scenarios/" in landing.text
@@ -26,6 +30,12 @@ def test_landing_and_health() -> None:
     assert "Presentations" in landing.text
     assert "IAM scenarios workshop" in landing.text
     assert "Interactive Brightway ecosystem" in landing.text
+    assert "Research using Premise" in landing.text
+    assert f"{publication_count} verified publications" in landing.text
+    assert "Recycling fossil infrastructure for cleaner energy transitions" in landing.text
+    assert "Large-scale hydrogen production via water electrolysis" in landing.text
+    assert landing.text.count("data-publication-item") == publication_count
+    assert "/static/publications.js" in landing.text
     assert "ecosystem-map-link" not in landing.text
     assert landing.text.count('href="/ecosystem/"') == 1
     assert 'datetime="2026-09-03"' in landing.text
@@ -34,7 +44,12 @@ def test_landing_and_health() -> None:
     styles = client.get("/static/styles.css")
     assert styles.status_code == 200
     assert ".presentations-list" in styles.text
+    assert ".publications-list" in styles.text
     assert "overflow-y: auto" in styles.text
+
+    publication_script = client.get("/static/publications.js")
+    assert publication_script.status_code == 200
+    assert "applyFilters" in publication_script.text
 
     health = client.get("/health")
     assert health.status_code == 200
@@ -106,6 +121,22 @@ def test_presentation_catalog_contract() -> None:
     assert catalog[0]["date_label"] == "3 September 2026"
     assert catalog[0]["title"] == "IAM scenarios workshop"
     assert catalog[0]["href"] == "/workshop/"
+
+
+def test_publication_catalog_contract() -> None:
+    catalog = publications()
+    foundational = [item for item in catalog if item["kind"] == "foundational"]
+    applications = [item for item in catalog if item["kind"] == "application"]
+
+    assert len(foundational) == 1
+    assert len(applications) >= 49
+    assert foundational[0]["doi"] == "10.1016/j.rser.2022.112311"
+    assert [item["date"] for item in applications] == sorted(
+        [item["date"] for item in applications], reverse=True
+    )
+    assert len({item["doi"] for item in catalog}) == len(catalog)
+    assert all(str(item["href"]).startswith("https://doi.org/") for item in catalog)
+    assert all(item["topics"] for item in applications)
 
 
 def test_all_apps_use_the_same_premise_favicon() -> None:

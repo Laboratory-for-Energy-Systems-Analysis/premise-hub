@@ -74,6 +74,7 @@ app = dash.Dash(
     __name__,
     external_stylesheets=[dbc.themes.LUX],
     requests_pathname_prefix=REQUESTS_PREFIX,
+    compress=True,
     title="Premise IAM Scenario Explorer",
     update_title=None,
 )
@@ -143,18 +144,18 @@ def available_pairs(
 ) -> list[dict[str, str]]:
     subset = frame
     if sector:
-        subset = subset.loc[subset["sector"].astype(str).eq(sector)]
+        subset = subset.loc[subset["sector"].eq(sector)]
     values = (
         subset[["model", "scenario"]]
-        .astype(str)
         .drop_duplicates()
+        .astype(str)
         .sort_values(["model", "scenario"])
     )
     return values.to_dict("records")
 
 
 def sectors_for_topic(frame: pd.DataFrame, topic_id: str) -> list[str]:
-    available = set(frame["sector"].astype(str).unique())
+    available = set(frame["sector"].dropna().unique())
     configured = TOPIC_BY_ID.get(topic_id, {}).get("sectors", [])
     sectors = [sector for sector in configured if sector in available]
     if topic_id == "energy":
@@ -213,14 +214,16 @@ def common_regions(
 ) -> list[str]:
     if not pairs:
         return []
+    sector_rows = frame.loc[
+        frame["sector"].eq(sector), ["model", "scenario", "region"]
+    ]
     region_sets = []
     for pair in pairs:
-        subset = frame.loc[
-            frame["sector"].astype(str).eq(sector)
-            & frame["model"].astype(str).eq(pair["model"])
-            & frame["scenario"].astype(str).eq(pair["scenario"])
+        subset = sector_rows.loc[
+            sector_rows["model"].eq(pair["model"])
+            & sector_rows["scenario"].eq(pair["scenario"])
         ]
-        region_sets.append(set(subset["region"].astype(str).unique()))
+        region_sets.append(set(subset["region"].dropna().unique()))
     common = set.intersection(*region_sets) if region_sets else set()
     return sorted(common, key=lambda value: (value != "World", value))
 
@@ -235,7 +238,7 @@ def validate_view_state(raw_state: object) -> tuple[dict[str, object], list[str]
         notes.append("The requested premise version was unavailable; 2.4.9 was used.")
     frame = get_dataset(version)
 
-    available_sectors = set(frame["sector"].astype(str).unique())
+    available_sectors = set(frame["sector"].dropna().unique())
     sector = str(raw.get("sector") or DEFAULT_SECTOR)
     if sector not in available_sectors:
         sector = (
@@ -305,12 +308,15 @@ def filter_frame(
     pairs: list[dict[str, str]],
     regions: list[str] | None = None,
 ) -> pd.DataFrame:
-    subset = frame.loc[frame["sector"].astype(str).eq(sector)].copy()
-    tokens = {pair_token(pair["model"], pair["scenario"]) for pair in pairs}
-    combined = subset["model"].astype(str) + ":" + subset["scenario"].astype(str)
-    subset = subset.loc[combined.isin(tokens)]
+    subset = frame.loc[frame["sector"].eq(sector)].copy()
+    pair_mask = pd.Series(False, index=subset.index)
+    for pair in pairs:
+        pair_mask |= subset["model"].eq(pair["model"]) & subset["scenario"].eq(
+            pair["scenario"]
+        )
+    subset = subset.loc[pair_mask]
     if regions is not None:
-        subset = subset.loc[subset["region"].astype(str).isin(regions)]
+        subset = subset.loc[subset["region"].isin(regions)]
     return subset
 
 
@@ -885,7 +891,7 @@ def apply_initial_version(state: dict[str, object] | None):
 )
 def update_topic_options(dataset_id: str, initial_state: dict[str, object] | None):
     frame = get_dataset(dataset_id)
-    available = set(frame["sector"].astype(str).unique())
+    available = set(frame["sector"].dropna().unique())
     options = [
         {"label": topic["label"], "value": topic["id"]}
         for topic in TOPICS
@@ -1077,8 +1083,8 @@ def update_region_options(
     regions = common_regions(frame, sector, pairs)
     selected_data = filter_frame(frame, sector, pairs)
     derived_world = not selected_data.loc[
-        selected_data["region"].astype(str).eq("World")
-        & selected_data["region_source"].astype(str).eq("derived")
+        selected_data["region"].eq("World")
+        & selected_data["region_source"].eq("derived")
     ].empty
     options = [
         {
@@ -1161,12 +1167,10 @@ def _comparison_card(
     model = pair["model"]
     scenario = pair["scenario"]
     subset = frame.loc[
-        frame["model"].astype(str).eq(model)
-        & frame["scenario"].astype(str).eq(scenario)
+        frame["model"].eq(model) & frame["scenario"].eq(scenario)
     ]
     derived = not subset.loc[
-        subset["region_source"].astype(str).eq("derived")
-        & subset["region"].astype(str).eq("World")
+        subset["region_source"].eq("derived") & subset["region"].eq("World")
     ].empty
     ssp_name, ssp_text, rcp_name, rcp_text = scenario_details(scenario)
     details = [
@@ -1250,8 +1254,7 @@ def _single_series_comparison_card(
     y_range: tuple[float, float] | None,
 ) -> html.Article:
     derived = not frame.loc[
-        frame["region_source"].astype(str).eq("derived")
-        & frame["region"].astype(str).eq("World")
+        frame["region_source"].eq("derived") & frame["region"].eq("World")
     ].empty
     region_count = frame["region"].astype(str).nunique()
     figure_height = max(500, ((region_count + 2) // 3) * 360)
@@ -1362,8 +1365,7 @@ def update_graphs(
             y_range = (minimum - (padding if minimum < 0 else 0), maximum + padding)
 
     derived = not raw.loc[
-        raw["region_source"].astype(str).eq("derived")
-        & raw["region"].astype(str).eq("World")
+        raw["region_source"].eq("derived") & raw["region"].eq("World")
     ].empty
     context = html.Section(
         className="sector-context",
@@ -1460,9 +1462,12 @@ def export_selected(n_clicks: int, selected_pairs: object, dataset_id: str):
         raise PreventUpdate
     pairs = normalize_pairs(selected_pairs)
     frame = get_dataset(dataset_id).copy()
-    tokens = {pair_token(pair["model"], pair["scenario"]) for pair in pairs}
-    combined = frame["model"].astype(str) + ":" + frame["scenario"].astype(str)
-    frame = frame.loc[combined.isin(tokens)]
+    pair_mask = pd.Series(False, index=frame.index)
+    for pair in pairs:
+        pair_mask |= frame["model"].eq(pair["model"]) & frame["scenario"].eq(
+            pair["scenario"]
+        )
+    frame = frame.loc[pair_mask]
     frame = frame.drop(
         columns=[column for column in ["Unnamed: 0"] if column in frame.columns]
     )

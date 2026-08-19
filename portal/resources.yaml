@@ -4,7 +4,7 @@
   href: /scenarios/
   category: Hosted tools
   kind: hosted
-  logo: premise-logo.png
+  logo: premise-logo-transparent.png
   featured: true
 - id: interactive-ecosystem
   title: Interactive Brightway ecosystem
@@ -20,7 +20,7 @@
   href: https://premise.readthedocs.io/
   category: Premise
   kind: external
-  logo: premise-logo.png
+  logo: premise-logo-transparent.png
   featured: false
 - id: premise-github
   title: Premise on GitHub
@@ -28,7 +28,7 @@
   href: https://github.com/polca/premise
   category: Premise
   kind: external
-  logo: premise-logo.png
+  logo: premise-logo-transparent.png
   featured: false
 - id: brightway
   title: Brightway

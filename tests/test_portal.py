@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
+from PIL import Image
 from werkzeug.test import Client
 from werkzeug.wrappers import Response
 
@@ -20,6 +21,8 @@ def test_landing_and_health() -> None:
     assert "/workshop/" in landing.text
     assert "/ecosystem/" in landing.text
     assert 'rel="icon" href="/static/favicon.ico"' in landing.text
+    assert "/static/premise-logo-transparent.png" in landing.text
+    assert "premise-logo.png" not in landing.text
     assert "Presentations" in landing.text
     assert "IAM scenarios workshop" in landing.text
     assert "Interactive Brightway ecosystem" in landing.text
@@ -62,6 +65,10 @@ def test_public_routes_and_prefixes() -> None:
     assert favicon.status_code == 200
     assert favicon.data.startswith(b"\x00\x00\x01\x00")
 
+    premise_logo = client.get("/static/premise-logo-transparent.png")
+    assert premise_logo.status_code == 200
+    assert premise_logo.data.startswith(b"\x89PNG\r\n\x1a\n")
+
     for prefix in ["/scenarios", "/workshop"]:
         index = client.get(f"{prefix}/")
         assert index.status_code == 200
@@ -72,6 +79,9 @@ def test_public_routes_and_prefixes() -> None:
 
     assert client.get("/workshop/assets/styles.css").status_code == 200
     assert client.get("/workshop/assets/psi-mark.svg").status_code == 200
+    assert (
+        client.get("/workshop/assets/premise-logo-transparent.png").status_code == 200
+    )
     assert client.get("/scenarios/assets/explorer.css").status_code == 200
 
 
@@ -107,3 +117,18 @@ def test_all_apps_use_the_same_premise_favicon() -> None:
     ]
     assert all(path.is_file() for path in favicon_paths)
     assert len({path.read_bytes() for path in favicon_paths}) == 1
+    with Image.open(favicon_paths[0]) as favicon:
+        assert favicon.convert("RGBA").getchannel("A").getextrema() == (0, 255)
+
+
+def test_portal_and_workshop_use_the_same_transparent_premise_logo() -> None:
+    root = Path(__file__).resolve().parents[1]
+    logo_paths = [
+        root / "portal/static/premise-logo-transparent.png",
+        root / "apps/workshop/assets/premise-logo-transparent.png",
+    ]
+    assert all(path.is_file() for path in logo_paths)
+    assert len({path.read_bytes() for path in logo_paths}) == 1
+    with Image.open(logo_paths[0]) as logo:
+        assert logo.mode == "RGBA"
+        assert logo.getchannel("A").getextrema() == (0, 255)

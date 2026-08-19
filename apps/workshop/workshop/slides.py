@@ -6393,7 +6393,7 @@ def slide_premise_library() -> html.Div:
                                         className="premise-library-bridge-art",
                                     ),
                                     html.Img(
-                                        src=asset_url("premise-logo.png"),
+                                        src=asset_url("premise-logo-transparent.png"),
                                         alt="Official Premise logo",
                                         className="premise-library-official-logo",
                                     ),
@@ -6618,7 +6618,7 @@ def slide_premise_ecosystem() -> html.Div:
                                 className="premise-network-art",
                             ),
                             html.Img(
-                                src=asset_url("premise-logo.png"),
+                                src=asset_url("premise-logo-transparent.png"),
                                 alt="Official Premise logo",
                                 className="premise-network-official-logo",
                             ),

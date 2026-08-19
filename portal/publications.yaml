@@ -21,6 +21,146 @@
   topics: [Methodology, Integrated assessment models]
   kind: foundational
 
+- id: van-der-meide-2026-premise-databases
+  title: An analysis of the effects of changes in Premise databases on the environmental impacts of key products
+  authors: [Marc van der Meide, Mingming Hu, Bernhard Steubing, Nils Thonemann, Arnold Tukker]
+  venue: The International Journal of Life Cycle Assessment
+  date: 2026-07-21
+  doi: 10.1007/s11367-026-02712-2
+  href: https://doi.org/10.1007/s11367-026-02712-2
+  topics: [Methodology, Integrated assessment models]
+  kind: application
+
+- id: roy-2026-cathode-materials
+  title: "Projecting environmental improvements in mineral processing pathways: The case of cathode active material production"
+  authors: [Sophia Roy, Ketan Vaidya, Jean-Philippe Harvey, Louis Fradette]
+  venue: The International Journal of Life Cycle Assessment
+  date: 2026-06-01
+  doi: 10.1007/s11367-026-02658-5
+  href: https://doi.org/10.1007/s11367-026-02658-5
+  topics: [Batteries, Materials, Mining]
+  kind: application
+
+- id: kanso-2026-renewable-dimethyl-ether
+  title: Technical and environmental assessment of renewable dimethyl ether production from CO2 in different European contexts
+  authors: [Mohamad Kanso, Jurriaan Boon, Alma Capa, Ligia Tiruta-Barna, Carlos Eduardo Robles-Rodríguez]
+  venue: Frontiers in Chemical Engineering
+  date: 2026-04-20
+  doi: 10.3389/fceng.2026.1796275
+  href: https://doi.org/10.3389/fceng.2026.1796275
+  topics: [Chemicals, Fuels, Carbon dioxide utilization]
+  kind: application
+
+- id: lejeune-2026-hydrogen-planetary-boundaries
+  title: Pathways to global hydrogen production within planetary boundaries
+  authors: [Michaël Lejeune, Sami Kara, Michael Zwicky Hauschild, Sareh Shahrabifarahani, Rahman Daiyan]
+  venue: Nature Communications
+  date: 2026-03-05
+  doi: 10.1038/s41467-026-70168-x
+  href: https://doi.org/10.1038/s41467-026-70168-x
+  topics: [Hydrogen, Planetary boundaries, Energy systems]
+  kind: application
+
+- id: cortes-castelblanco-2026-italian-grid
+  title: Hourly Attributional Prospective Life Cycle Assessment of the Italian Electricity Grid
+  authors: [Juan Diego Cortés Castelblanco, Giuseppe Muliere, Jacopo Famiglietti]
+  venue: Sustainability
+  date: 2026-02-02
+  doi: 10.3390/su18031506
+  href: https://doi.org/10.3390/su18031506
+  topics: [Energy systems, Methodology]
+  kind: application
+
+- id: ng-2026-controlled-environment-agriculture
+  title: Contextual conditions define maximum energy-use threshold in low-carbon controlled environment agriculture for agri-food transformation
+  authors: [Shiwei Ng, Olaf Hinrichsen, S. Viswanathan]
+  venue: Nature Communications
+  date: 2026-02-02
+  doi: 10.1038/s41467-026-68631-w
+  href: https://doi.org/10.1038/s41467-026-68631-w
+  topics: [Agriculture, Energy systems]
+  kind: application
+
+- id: noll-2026-africa-electric-vehicles
+  title: Battery-electric passenger vehicles will be cost-effective across Africa well before 2040
+  authors: [Bessie Noll, Darius Graff, Tobias S. Schmidt, Anthony Patt, Christian Bauer, Churchill Agutu, Paul Kyoma Asiimwe, Ogheneruona E. Diemuodeke, Stephan Krygsman, Inga Mareike Nienkerke, Tim Tröndle, Christian Moretti]
+  venue: Nature Energy
+  date: 2026-01-13
+  doi: 10.1038/s41560-025-01955-x
+  href: https://doi.org/10.1038/s41560-025-01955-x
+  topics: [Transport, Electric vehicles, Energy systems]
+  kind: application
+
+- id: machin-ferrero-2026-biomethane
+  title: Life cycle assessment of manure-based biomethane with carbon capture and storage for Argentina's transport sector
+  authors: [Lucas M. Machin Ferrero, Agustín Almaraz, Fernando D. Mele]
+  venue: Sustainable Energy Technologies and Assessments
+  date: 2026-01-01
+  doi: 10.1016/j.seta.2026.104820
+  href: https://doi.org/10.1016/j.seta.2026.104820
+  topics: [Transport, Fuels, Carbon capture]
+  kind: application
+
+- id: terlouw-2025-global-hydrogen-projects
+  title: Global greenhouse gas emissions mitigation potential of existing and planned hydrogen projects
+  authors: [Tom Terlouw, Christian Moretti, Carina Harpprecht, Romain Sacchi, Russell McKenna, Christian Bauer]
+  venue: Nature Energy
+  date: 2025-11-06
+  doi: 10.1038/s41560-025-01892-9
+  href: https://doi.org/10.1038/s41560-025-01892-9
+  topics: [Hydrogen, Energy systems, Climate change]
+  kind: application
+
+- id: lazar-2025-artificial-photosynthesis
+  title: Prospective Life Cycle Assessment of Early-Stage CO2-Removing Artificial Photosynthesis Producing Synthesis Gas, Hydrogen Peroxide, and Methane
+  authors: [Lukas Lazar]
+  venue: Energy Technology
+  date: 2025-06-15
+  doi: 10.1002/ente.202402224
+  href: https://doi.org/10.1002/ente.202402224
+  topics: [Emerging technologies, Chemicals, Carbon dioxide utilization]
+  kind: application
+
+- id: kanchiralla-2025-electric-ferries
+  title: Environmental and economic assessment of electric ferries with different lithium-ion battery technologies
+  authors: [Fayas Malik Kanchiralla, Emma Arfa Grunditz, Anders Nordelöf, Selma Brynolf, Evelina Wikner]
+  venue: Applied Energy
+  date: 2025-06-09
+  doi: 10.1016/j.apenergy.2025.126274
+  href: https://doi.org/10.1016/j.apenergy.2025.126274
+  topics: [Transport, Batteries, Electric vehicles]
+  kind: application
+
+- id: schnyder-2025-industrial-symbiosis
+  title: Assessing decarbonization strategies and industrial symbiosis in the chemical and waste-to-energy sector
+  authors: [Maria Schnyder, Jing Huo, Stefanie Hellweg]
+  venue: Journal of Industrial Ecology
+  date: 2025-01-23
+  doi: 10.1111/jiec.13616
+  href: https://doi.org/10.1111/jiec.13616
+  topics: [Chemicals, Circular economy, Carbon capture]
+  kind: application
+
+- id: schwarz-2024-cits
+  title: The Circular Industrial Transformation System (CITS) model - Assessing the life cycle impacts of climate and circularity strategies
+  authors: [Anna Schwarz, S. M. C. Lensen, Sjoerd Herlaar, Toon van Harmelen, Peter Stegmann]
+  venue: Journal of Cleaner Production
+  date: 2024-11-01
+  doi: 10.1016/j.jclepro.2024.144158
+  href: https://doi.org/10.1016/j.jclepro.2024.144158
+  topics: [Industry, Circular economy, Methodology]
+  kind: application
+
+- id: hennequin-2024-tire-activator
+  title: Environmental Impact Prediction of a New Tire Vulcanization Activator
+  authors: [Thomas Hennequin, L. van Vlimmeren, Silvia Mostoni, Francesca Rita Pomilla, Roberto Scotti, Claudia Stauch, Mitchell K. van der Hulst, Mark A. J. Huijbregts, Rosalie van Zelm]
+  venue: ACS Sustainable Chemistry & Engineering
+  date: 2024-04-10
+  doi: 10.1021/acssuschemeng.3c06640
+  href: https://doi.org/10.1021/acssuschemeng.3c06640
+  topics: [Chemicals, Emerging technologies, Materials]
+  kind: application
+
 - id: berra-2026-swiss-gas-power
   title: Prospective life cycle assessment of alternative fuels and carbon capture in Swiss gas-fired power plants
   authors: [Laura Berra, Giulia Iacono, André Bardow, Gerardo Escamilla, Eleonora Bargiacchi, Christian Moretti]

@@ -32,7 +32,7 @@
       <section class="section" aria-labelledby="featured-title">
         <div class="section-heading">
           <div><p class="eyebrow">Start here</p><h2 id="featured-title">Interactive resources</h2></div>
-          <p>Use the same scenario vocabulary at two levels: explore the data directly, or follow the guided workshop narrative.</p>
+          <p>Explore IAM scenario data directly, or revisit dated presentations and workshops.</p>
         </div>
         <div class="featured-grid">
           {% for item in featured %}
@@ -42,6 +42,36 @@
             <span class="card-arrow" aria-hidden="true">→</span>
           </a>
           {% endfor %}
+          <section class="presentations-panel" aria-labelledby="presentations-title">
+            <div class="presentations-heading">
+              <div>
+                <small>Talks &amp; workshops</small>
+                <h3 id="presentations-title">Presentations</h3>
+              </div>
+              <span class="presentation-count" aria-label="{{ presentations|length }} presentation{% if presentations|length != 1 %}s{% endif %}">{{ presentations|length }}</span>
+            </div>
+            <div class="presentations-list" role="list" tabindex="0" aria-label="Dated presentations">
+              {% for presentation in presentations %}
+              <a
+                class="presentation-item"
+                href="{{ presentation.href }}"
+                role="listitem"
+                {% if presentation.kind == 'external' %}target="_blank" rel="noopener noreferrer"{% endif %}
+              >
+                <time datetime="{{ presentation.date }}" aria-label="{{ presentation.date_label }}">
+                  <strong>{{ presentation.day }}</strong>
+                  <span>{{ presentation.month }}</span>
+                  <small>{{ presentation.year }}</small>
+                </time>
+                <span class="presentation-copy">
+                  <strong>{{ presentation.title }}</strong>
+                  <span>{{ presentation.summary }}</span>
+                </span>
+                <span class="card-arrow" aria-hidden="true">→</span>
+              </a>
+              {% endfor %}
+            </div>
+          </section>
         </div>
       </section>
 

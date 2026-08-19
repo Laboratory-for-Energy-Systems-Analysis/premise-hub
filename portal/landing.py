@@ -4,6 +4,7 @@ from flask import Flask, Response, jsonify, redirect, render_template
 
 from .catalog import resources
 from .ecosystem import ecosystem
+from .presentations import presentations
 
 
 def create_landing_app() -> Flask:
@@ -15,7 +16,10 @@ def create_landing_app() -> Flask:
         featured = [item for item in catalog if item["featured"]]
         ecosystem_resources = [item for item in catalog if not item["featured"]]
         return render_template(
-            "index.html", featured=featured, ecosystem=ecosystem_resources
+            "index.html",
+            featured=featured,
+            presentations=presentations(),
+            ecosystem=ecosystem_resources,
         )
 
     @app.get("/ecosystem/")

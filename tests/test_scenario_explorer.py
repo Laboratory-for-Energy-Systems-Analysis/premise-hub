@@ -412,6 +412,7 @@ def test_layout_exposes_accessible_workflow_and_psi_theme() -> None:
         "graphs-loading",
     } <= ids
     assert app.title == "Premise IAM Scenario Explorer"
+    assert app.config.compress is True
 
     explorer_css = (Path("apps/scenario_explorer/assets/explorer.css")).read_text()
     workshop_css = (Path("apps/workshop/assets/styles.css")).read_text()

@@ -276,24 +276,28 @@ def test_url_state_round_trip_and_invalid_fallback() -> None:
     assert notes
 
 
-def test_default_comparisons_and_legacy_saved_view_migration() -> None:
+def test_default_comparisons_override_stale_local_view() -> None:
     default, _ = validate_view_state(None)
     assert default["pairs"] == DEFAULT_COMPARISONS
 
-    legacy = {
+    stale = {
+        "revision": 2,
         "version": DEFAULT_DATASET,
         "sector": "GMST increase",
-        "pairs": [{"model": "image", "scenario": "SSP1-L"}],
+        "pairs": [
+            {"model": "image", "scenario": "SSP1-L"},
+            {"model": "image", "scenario": "SSP1-M"},
+        ],
         "regions": ["World"],
         "mode": "absolute",
     }
-    migrated, _ = initialize_view(None, legacy)
-    assert migrated["pairs"] == DEFAULT_COMPARISONS
+    reset, _ = initialize_view(None, stale)
+    assert reset["pairs"] == DEFAULT_COMPARISONS
 
     explicit, _ = initialize_view(
         "?version=2.4.9&sector=GMST+increase"
         "&pair=image%3ASSP1-L&region=World&mode=absolute",
-        legacy,
+        stale,
     )
     assert explicit["pairs"] == [{"model": "image", "scenario": "SSP1-L"}]
 

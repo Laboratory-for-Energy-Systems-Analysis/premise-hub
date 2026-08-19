@@ -157,24 +157,6 @@ def default_comparisons_for(
     return preferred or available[:1]
 
 
-def migrate_legacy_saved_view(value: object) -> object:
-    """Upgrade the old automatically saved default without changing custom views."""
-    if not isinstance(value, dict) or value.get("revision") == VIEW_STATE_REVISION:
-        return value
-    legacy_default = (
-        value.get("version") == DEFAULT_DATASET
-        and value.get("sector") == DEFAULT_SECTOR
-        and normalize_pairs(value.get("pairs")) == [DEFAULT_PAIR]
-        and value.get("regions") == ["World"]
-        and value.get("mode") == "absolute"
-    )
-    if not legacy_default:
-        return value
-    migrated = dict(value)
-    migrated["pairs"] = [dict(pair) for pair in DEFAULT_COMPARISONS]
-    return migrated
-
-
 def available_pairs(
     frame: pd.DataFrame, sector: str | None = None
 ) -> list[dict[str, str]]:
@@ -900,10 +882,10 @@ app.layout = build_layout
     Input("explorer-url", "search"),
     State("saved-view-store", "data"),
 )
-def initialize_view(search: str | None, saved_state: object):
-    requested = (
-        parse_view_query(search) if search else migrate_legacy_saved_view(saved_state)
-    )
+def initialize_view(search: str | None, _saved_state: object):
+    # An explicit URL reproduces a shared view. A clean URL must always use the
+    # application defaults rather than selections persisted by an older visit.
+    requested = parse_view_query(search) if search else None
     state, notes = validate_view_state(requested)
     return state, " ".join(notes)
 

@@ -86,6 +86,19 @@ def main() -> None:
         if args.output:
             page.screenshot(path=args.output / "ecosystem-desktop.png", full_page=True)
 
+        page.evaluate(
+            """localStorage.setItem("saved-view-store", JSON.stringify({
+                revision: 2,
+                version: "2.4.9",
+                sector: "GMST increase",
+                pairs: [
+                    {model: "image", scenario: "SSP1-L"},
+                    {model: "image", scenario: "SSP1-M"}
+                ],
+                regions: ["World"],
+                mode: "absolute"
+            }))"""
+        )
         page.goto(f"{base}/scenarios/", wait_until="networkidle")
         page.get_by_role("heading", name="premise scenario explorer").wait_for()
         page.locator("#dataset-version-dropdown").wait_for()

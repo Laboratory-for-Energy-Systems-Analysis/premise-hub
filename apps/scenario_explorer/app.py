@@ -37,7 +37,13 @@ with (DATA_DIR / "sector_catalog.yaml").open(encoding="utf-8") as stream:
 DATASETS = {str(entry["id"]): entry for entry in DATASET_ENTRIES}
 DEFAULT_DATASET = "2.4.9"
 DEFAULT_SECTOR = "GMST increase"
-DEFAULT_PAIR = {"model": "image", "scenario": "SSP1-L"}
+DEFAULT_COMPARISONS = [
+    {"model": "image", "scenario": "SSP1-L"},
+    {"model": "image", "scenario": "SSP2-M"},
+    {"model": "image", "scenario": "SSP3-H"},
+]
+DEFAULT_PAIR = DEFAULT_COMPARISONS[0]
+VIEW_STATE_REVISION = 2
 
 TOPICS = SECTOR_CATALOG["topics"]
 TOPIC_BY_ID = {topic["id"]: topic for topic in TOPICS}
@@ -137,6 +143,36 @@ def normalize_pairs(value: object) -> list[dict[str, str]]:
         if model and scenario and {"model": model, "scenario": scenario} not in pairs:
             pairs.append({"model": model, "scenario": scenario})
     return pairs[:MAX_COMPARISONS]
+
+
+def default_comparisons_for(
+    available: list[dict[str, str]],
+) -> list[dict[str, str]]:
+    available_tokens = {pair_token(**pair) for pair in available}
+    preferred = [
+        dict(pair)
+        for pair in DEFAULT_COMPARISONS
+        if pair_token(**pair) in available_tokens
+    ]
+    return preferred or available[:1]
+
+
+def migrate_legacy_saved_view(value: object) -> object:
+    """Upgrade the old automatically saved default without changing custom views."""
+    if not isinstance(value, dict) or value.get("revision") == VIEW_STATE_REVISION:
+        return value
+    legacy_default = (
+        value.get("version") == DEFAULT_DATASET
+        and value.get("sector") == DEFAULT_SECTOR
+        and normalize_pairs(value.get("pairs")) == [DEFAULT_PAIR]
+        and value.get("regions") == ["World"]
+        and value.get("mode") == "absolute"
+    )
+    if not legacy_default:
+        return value
+    migrated = dict(value)
+    migrated["pairs"] = [dict(pair) for pair in DEFAULT_COMPARISONS]
+    return migrated
 
 
 def available_pairs(
@@ -258,12 +294,7 @@ def validate_view_state(raw_state: object) -> tuple[dict[str, object], list[str]
         if pair_token(pair["model"], pair["scenario"]) in valid_tokens
     ]
     if not pairs:
-        preferred = (
-            DEFAULT_PAIR
-            if pair_token(**DEFAULT_PAIR) in valid_tokens
-            else valid_pairs[0]
-        )
-        pairs = [preferred]
+        pairs = default_comparisons_for(valid_pairs)
         if raw.get("pairs"):
             notes.append("Unavailable model–scenario comparisons were removed.")
     elif len(normalize_pairs(raw.get("pairs"))) != len(pairs):
@@ -870,7 +901,9 @@ app.layout = build_layout
     State("saved-view-store", "data"),
 )
 def initialize_view(search: str | None, saved_state: object):
-    requested = parse_view_query(search) if search else saved_state
+    requested = (
+        parse_view_query(search) if search else migrate_legacy_saved_view(saved_state)
+    )
     state, notes = validate_view_state(requested)
     return state, " ".join(notes)
 
@@ -1026,10 +1059,7 @@ def manage_comparisons(
             if pair_token(pair["model"], pair["scenario"]) != trigger.get("token")
         ]
     elif not candidates and valid:
-        preferred = (
-            DEFAULT_PAIR if pair_token(**DEFAULT_PAIR) in valid_tokens else valid[0]
-        )
-        candidates = [preferred]
+        candidates = default_comparisons_for(valid)
 
     return candidates[:MAX_COMPARISONS], message
 
@@ -1499,6 +1529,7 @@ def save_view_state(
     if not all([dataset_id, sector, mode]) or regions is None:
         return no_update, no_update, no_update
     state = {
+        "revision": VIEW_STATE_REVISION,
         "version": dataset_id,
         "sector": sector,
         "pairs": normalize_pairs(selected_pairs),

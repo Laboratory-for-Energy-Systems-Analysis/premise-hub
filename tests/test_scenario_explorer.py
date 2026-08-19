@@ -8,6 +8,7 @@ import pytest
 
 from apps.scenario_explorer.app import (
     DATASETS,
+    DEFAULT_COMPARISONS,
     DEFAULT_DATASET,
     MAX_COMPARISONS,
     TOP_VARIABLES,
@@ -25,10 +26,12 @@ from apps.scenario_explorer.app import (
     get_all_variables,
     get_dataset,
     humanize_variable,
+    initialize_view,
     is_single_series_comparison,
     normalize_pairs,
     parse_view_query,
     sector_supports_relative,
+    save_view_state,
     sectors_for_topic,
     serialize_view_state,
     summarize_for_chart,
@@ -267,10 +270,42 @@ def test_url_state_round_trip_and_invalid_fallback() -> None:
     )
     assert validated["version"] == DEFAULT_DATASET
     assert validated["sector"] == "GMST increase"
-    assert validated["pairs"] == [{"model": "image", "scenario": "SSP1-L"}]
+    assert validated["pairs"] == DEFAULT_COMPARISONS
     assert validated["regions"] == ["World"]
     assert validated["mode"] == "absolute"
     assert notes
+
+
+def test_default_comparisons_and_legacy_saved_view_migration() -> None:
+    default, _ = validate_view_state(None)
+    assert default["pairs"] == DEFAULT_COMPARISONS
+
+    legacy = {
+        "version": DEFAULT_DATASET,
+        "sector": "GMST increase",
+        "pairs": [{"model": "image", "scenario": "SSP1-L"}],
+        "regions": ["World"],
+        "mode": "absolute",
+    }
+    migrated, _ = initialize_view(None, legacy)
+    assert migrated["pairs"] == DEFAULT_COMPARISONS
+
+    explicit, _ = initialize_view(
+        "?version=2.4.9&sector=GMST+increase"
+        "&pair=image%3ASSP1-L&region=World&mode=absolute",
+        legacy,
+    )
+    assert explicit["pairs"] == [{"model": "image", "scenario": "SSP1-L"}]
+
+    saved, _, _ = save_view_state(
+        DEFAULT_DATASET,
+        "GMST increase",
+        DEFAULT_COMPARISONS,
+        ["World"],
+        "absolute",
+        "https://example.test/scenarios/",
+    )
+    assert saved["revision"] == 2
 
 
 def test_top_eight_other_is_display_only() -> None:

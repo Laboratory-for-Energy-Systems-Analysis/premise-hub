@@ -92,6 +92,9 @@ def main() -> None:
         page.locator(".js-plotly-plot").first.wait_for()
         assert page.locator(".psi-mark").is_visible()
         assert page.locator(".result-card").count() == 1
+        assert page.locator(".js-plotly-plot").first.evaluate(
+            "el => el.data.map(trace => trace.name)"
+        ) == ["IMAGE · SSP1-L", "IMAGE · SSP2-M", "IMAGE · SSP3-H"]
         assert page.locator(".result-card").first.evaluate(
             "el => getComputedStyle(el).borderTopColor === 'rgb(0, 138, 130)'"
         )

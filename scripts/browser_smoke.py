@@ -49,6 +49,19 @@ def main() -> None:
             "heading",
             name="Explore pathways. Transform inventories. Understand results.",
         ).wait_for()
+        page.get_by_role("heading", name="Research using Premise").wait_for()
+        publication_count = page.locator("[data-publication-item]").count()
+        assert publication_count >= 49
+        assert page.locator("#publication-result-count").text_content() == (
+            f"{publication_count} verified publications"
+        )
+        page.locator("#publication-search").fill("FuelEU Maritime")
+        assert page.locator("[data-publication-item]:visible").count() == 1
+        assert page.locator("#publication-result-count").text_content() == (
+            f"1 of {publication_count} publications"
+        )
+        page.locator("#publication-reset").click()
+        assert page.locator("[data-publication-item]:visible").count() == publication_count
         if args.output:
             page.screenshot(path=args.output / "landing-desktop.png", full_page=True)
 
@@ -197,6 +210,10 @@ def main() -> None:
         mobile.goto(base, wait_until="networkidle")
         assert mobile.locator("body").evaluate(
             "el => el.scrollWidth <= window.innerWidth + 1"
+        )
+        mobile.get_by_role("heading", name="Research using Premise").wait_for()
+        assert mobile.locator(".publication-controls").evaluate(
+            "el => getComputedStyle(el).gridTemplateColumns.split(' ').length === 1"
         )
         if args.output:
             mobile.screenshot(path=args.output / "landing-mobile.png", full_page=True)

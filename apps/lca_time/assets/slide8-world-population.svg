@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="108" viewBox="0 0 320 108" role="img" aria-labelledby="title desc">
+  <title id="title">SSP2 global population</title>
+  <desc id="desc">Global population grows from 8.2 billion in 2025 to 10.0 billion in 2100 in both policy pathways.</desc>
+  <defs>
+    <linearGradient id="population-fill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#008a82" stop-opacity=".28" />
+      <stop offset="1" stop-color="#008a82" stop-opacity=".03" />
+    </linearGradient>
+  </defs>
+  <style>
+    text { font-family: Arial, Helvetica, sans-serif; fill: #526771; }
+    .grid { stroke: #c3d3d7; stroke-width: 1; opacity: .7; }
+    .tick, .year { font-size: 8px; font-weight: 750; }
+    .endpoint { fill: #006e68; font-size: 9px; font-weight: 900; paint-order: stroke; stroke: #fff; stroke-width: 3px; }
+  </style>
+  <line x1="28.0" y1="72.5" x2="292.0" y2="72.5" class="grid" /><text x="22.0" y="75.5" text-anchor="end" class="tick">8</text><line x1="28.0" y1="49.5" x2="292.0" y2="49.5" class="grid" /><text x="22.0" y="52.5" text-anchor="end" class="tick">9</text><line x1="28.0" y1="26.5" x2="292.0" y2="26.5" class="grid" /><text x="22.0" y="29.5" text-anchor="end" class="tick">10</text>
+  <polygon points="28.0,84.0 28.0,75.7 44.5,67.6 61.0,59.4 77.5,51.9 94.0,44.9 110.5,38.8 127.0,33.5 143.5,29.2 160.0,25.8 193.0,21.6 226.0,20.4 259.0,22.1 292.0,25.9 292.0,84.0" fill="url(#population-fill)" />
+  <polyline points="28.0,75.7 44.5,67.6 61.0,59.4 77.5,51.9 94.0,44.9 110.5,38.8 127.0,33.5 143.5,29.2 160.0,25.8 193.0,21.6 226.0,20.4 259.0,22.1 292.0,25.9" fill="none" stroke="#008a82" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+  <circle cx="292.0" cy="25.9" r="4" fill="#008a82" />
+  <text x="287.0" y="18.9" text-anchor="end" class="endpoint">10.0 bn</text>
+  <text x="28.0" y="102" text-anchor="middle" class="year">2020</text><text x="127.0" y="102" text-anchor="middle" class="year">2050</text><text x="292.0" y="102" text-anchor="middle" class="year">2100</text>
+</svg>

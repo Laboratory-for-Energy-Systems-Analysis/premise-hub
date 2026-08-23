@@ -1,0 +1,33 @@
+{
+  "basis": {
+    "year": 2025,
+    "model": "remind-eu",
+    "pathway": "SSP2-NPi",
+    "region": "ENC",
+    "functional_unit": "1 physical net tonne of atmospheric carbon dioxide stored",
+    "climate_method": "IPCC 2021 GWP100 including biogenic carbon dioxide",
+    "calculation_script": "dev/diagnose_beccs_heat_contribution.py",
+    "source_package_sha256": "cfe68ecd5570e74237fe54e13e4f4f5a7269fc0eee30beb6c1b547166a910263",
+    "foreground_sha256": "b26a2d4d1a33dd6236b4ca552212fc6cbe8a750fa73a449c196702fba2290c60"
+  },
+  "BECCS": {
+    "score_kg_co2eq_per_net_tonne": -963.0666427810453,
+    "process_groups_kg_co2eq_per_net_tonne": {
+      "Avoided Northern European electricity": -27.61623554329043,
+      "Avoided Northern European heat": -10.362012627692561,
+      "CCS infrastructure and end-of-life": 1.7280313860702237,
+      "Capture chemicals and operating materials": 2.420780959525068,
+      "Capture electricity": 0.0,
+      "Compression and recompression": 7.183740345508626,
+      "Forest regrowth": -1143.1184003917824,
+      "Harvesting and biomass supply": 27.038396788769568,
+      "New CHP infrastructure and end-of-life": 3.1464244865171525,
+      "Other CHP and CCS supply-chain GHG emissions": 1.6143549032676674e-05,
+      "Other CHP operating emissions": 9.602645843561618,
+      "Pipeline and geological storage": 23.791542759174337,
+      "Residual biogenic stack emissions": 114.31184270690449,
+      "Transport losses": 28.80658436213992
+    },
+    "display_attribution": "The process-step view separates the new CHP, future forest regrowth, biomass supply, avoided Northern European energy, capture, transport and storage. The categories add exactly to the greenfield result."
+  }
+}

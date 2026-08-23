@@ -206,6 +206,18 @@ def main() -> None:
         if args.output:
             page.screenshot(path=args.output / "workshop.png")
 
+        page.goto(f"{base}/lca-time/", wait_until="networkidle")
+        page.locator(".slide").wait_for()
+        page.get_by_role(
+            "heading", name="How time changes LCA results"
+        ).wait_for()
+        page.locator("#next-button").click()
+        page.get_by_role(
+            "heading", name="One study, three treatments of time"
+        ).wait_for()
+        if args.output:
+            page.screenshot(path=args.output / "lca-through-time.png")
+
         mobile = browser.new_page(viewport={"width": 390, "height": 844})
         mobile.goto(base, wait_until="networkidle")
         assert mobile.locator("body").evaluate(

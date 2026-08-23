@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420" height="150" viewBox="0 0 420 150" role="img" aria-labelledby="title desc">
+  <title id="title">Prospective LCA future system</title>
+  <desc id="desc">Scenario pathways define a future background system that is used for an LCA snapshot at a selected future year.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L8 4 L0 8 Z" fill="#d99614"/>
+    </marker>
+  </defs>
+  <style>
+    text { font-family: Arial, Helvetica, sans-serif; }
+    .label { fill: #0b3b52; font-size: 13px; font-weight: 800; }
+    .small { fill: #5b6a74; font-size: 10px; font-weight: 700; letter-spacing: .3px; }
+  </style>
+  <text class="small" x="18" y="18">SCENARIO PATHWAYS</text>
+  <line x1="18" y1="112" x2="174" y2="112" stroke="#c7d2d7" stroke-width="1.5"/>
+  <line x1="18" y1="34" x2="18" y2="112" stroke="#c7d2d7" stroke-width="1.5"/>
+  <path d="M20 62 C68 61 91 64 122 71 S154 83 171 88" fill="none" stroke="#9caab1" stroke-width="3" stroke-linecap="round"/>
+  <path d="M20 62 C66 61 92 55 120 43 S151 28 171 23" fill="none" stroke="#d99614" stroke-width="4" stroke-linecap="round"/>
+  <line x1="171" y1="21" x2="171" y2="117" stroke="#d99614" stroke-width="2" stroke-dasharray="5 4"/>
+  <text class="small" x="18" y="128">2025</text>
+  <text class="small" x="171" y="128" text-anchor="middle">FUTURE YEAR</text>
+  <line x1="179" y1="69" x2="211" y2="69" stroke="#d99614" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <rect x="217" y="25" width="122" height="88" rx="12" fill="#fff7e2" stroke="#d99614" stroke-width="2"/>
+  <text class="label" x="278" y="49" text-anchor="middle">future system</text>
+  <line x1="236" y1="64" x2="320" y2="64" stroke="#e7c878" stroke-width="1"/>
+  <text class="small" x="278" y="79" text-anchor="middle">ELECTRICITY · HEAT</text>
+  <text class="small" x="278" y="95" text-anchor="middle">FUELS · MATERIALS</text>
+  <line x1="340" y1="69" x2="365" y2="69" stroke="#d99614" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <circle cx="390" cy="69" r="21" fill="#0b3b52"/>
+  <text x="390" y="74" text-anchor="middle" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="800">LCA</text>
+  <text class="small" x="390" y="105" text-anchor="middle">SNAPSHOT</text>
+</svg>

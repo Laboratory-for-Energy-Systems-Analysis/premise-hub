@@ -15,10 +15,13 @@ The workshop contains reduced, teaching-oriented extracts and calculated LCA
 results. Their provenance is documented in `apps/workshop/data/README.md` and
 in the source notes displayed on the relevant slides.
 
+The LCA-through-time presentation contains reviewed, processed LCA and climate
+response results. Their provenance is documented in
+`apps/lca_time/data/README.md` and in the source notes displayed on the slides.
+
 ## Project and institutional marks
 
 Premise, Brightway, Pathways, Trails, Activity Browser, and PSI names and logos
 remain the property of their respective projects and institutions. Their
 inclusion identifies linked resources and does not place those marks under the
 repository's BSD license.
-

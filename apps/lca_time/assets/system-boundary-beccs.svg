@@ -1,0 +1,258 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 450" role="img" aria-labelledby="title desc">
+  <title id="title">Greenfield BECCS compared with a standing forest and Northern European energy</title>
+  <desc id="desc">The reference lane leaves the mature spruce forest standing and purchases equivalent electricity and heat. The project lane harvests and regrows the forest, builds a biomass combined heat and power plant with post-combustion capture, exports the same useful energy, transports the captured carbon dioxide two thousand kilometres and stores one physical tonne after transport loss.</desc>
+  <defs>
+    <filter id="shadow" x="-15%" y="-20%" width="130%" height="150%"><feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#17303d" flood-opacity=".09"/></filter>
+    <marker id="ag" markerWidth="8" markerHeight="8" refX="7.2" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0L8 4L0 8Z" fill="#3e7654"/></marker>
+    <marker id="ay" markerWidth="8" markerHeight="8" refX="7.2" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0L8 4L0 8Z" fill="#d18a12"/></marker>
+    <marker id="at" markerWidth="8" markerHeight="8" refX="7.2" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0L8 4L0 8Z" fill="#008a82"/></marker>
+    <marker id="ar" markerWidth="8" markerHeight="8" refX="7.2" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0L8 4L0 8Z" fill="#c44e52"/></marker>
+    <style>
+      text{font-family:Arial,Helvetica,sans-serif}.lane{stroke-width:2;stroke-dasharray:10 7}.reference{fill:#f7f9fa;stroke:#aac4cb}.project{fill:#f5faf7;stroke:#6f9f7e}.title{fill:#0b3b52;font-size:14px;font-weight:900}.kicker{fill:#0b3b52;font-size:13px;font-weight:900;letter-spacing:.7px}.boundary-label{fill:#276c8a;font-size:12px;font-weight:900;letter-spacing:1.2px;text-anchor:end}.boundary-project{fill:#3e7654}.fu{fill:#5b6a74;font-size:11px;font-weight:700;text-anchor:end}.node{fill:#fff;stroke:#c8d7dc;stroke-width:1.7;filter:url(#shadow)}.forest{fill:#f1f7f2;stroke:#6f9f7e}.co2{fill:#edf8f7;stroke:#008a82}.energy{fill:#fff8e7;stroke:#d18a12}.air{fill:#fbeef0;stroke:#c44e52}.atmosphere-pool{fill:#edf6f8;stroke:#4193b8;stroke-width:1.8}.n-title{fill:#0b3b52;font-size:13.5px;font-weight:900;text-anchor:middle}.n-note{fill:#5b6a74;font-size:10px;font-weight:700;text-anchor:middle}.n-strong{fill:#344b57;font-size:10.5px;font-weight:900;text-anchor:middle}.g,.y,.t,.r{fill:none;stroke-linecap:round;stroke-linejoin:round}.g{stroke:#3e7654;stroke-width:3.4;marker-end:url(#ag)}.y{stroke:#d18a12;stroke-width:3;marker-end:url(#ay)}.t{stroke:#008a82;stroke-width:3.4;marker-end:url(#at)}.r{stroke:#c44e52;stroke-width:2.8;marker-end:url(#ar)}.dash{stroke-dasharray:7 5}.flow-label{fill:#344b57;stroke:#fff;stroke-width:3px;paint-order:stroke fill;font-size:9.5px;font-weight:900;text-anchor:middle}.biomass-label{fill:#315d42}.band{fill:#0b3b52}.band-title{fill:#fff;font-size:12.5px;font-weight:900}.band-note{fill:#deedf0;font-size:9.5px;font-weight:700}.small{fill:#60737b;font-size:8.5px;font-weight:700;text-anchor:middle}.balance{fill:#0b3b52;font-size:10.5px;font-weight:900;text-anchor:middle}.left{text-anchor:start}.right{text-anchor:end}
+    </style>
+  </defs>
+
+  <text x="25" y="18" class="title">Greenfield BECCS = new CHP+CCS − standing forest − equivalent market energy</text>
+
+  <rect x="25" y="31" width="1750" height="119" rx="18" class="lane reference"/>
+  <text x="47" y="52" class="kicker">NO PROJECT · EXISTING FOREST REMAINS STANDING</text>
+  <text x="1475" y="51" class="boundary-label">REFERENCE SYSTEM BOUNDARY</text>
+
+  <g transform="translate(50 67)">
+    <rect width="220" height="68" rx="13" class="node forest"/>
+    <g transform="translate(6 5)" stroke-linejoin="round">
+      <path d="M7 54H72" fill="none" stroke="#3e7654" stroke-width="1.7" stroke-linecap="round"/>
+      <path d="M22 54V31M11 39L22 14L33 39ZM13 47L22 25L31 47Z" fill="#7ea98a" stroke="#3e7654" stroke-width="1.2"/>
+      <path d="M46 54V28M34 37L46 8L58 37ZM36 46L46 20L56 46Z" fill="#99bfa2" stroke="#3e7654" stroke-width="1.2"/>
+      <path d="M65 54V36M57 41L65 22L73 41ZM58 48L65 31L72 48Z" fill="#b2cdb5" stroke="#3e7654" stroke-width="1.1"/>
+    </g>
+    <text x="145" y="22" class="n-title">Mature spruce forest</text>
+    <text x="145" y="41" class="n-strong">carbon stock held constant</text>
+    <text x="145" y="56" class="n-note">shared past uptake cancels</text>
+  </g>
+  <path d="M275 101H305" class="g dash"/>
+  <g transform="translate(310 67)">
+    <rect width="225" height="68" rx="13" class="node"/>
+    <g transform="translate(16 14)">
+      <circle cx="22" cy="20" r="19" fill="#edf7ef" stroke="#7ba887" stroke-width="1.3"/>
+      <path d="M22 33V21M14 24L22 8L30 24ZM15 29L22 15L29 29Z" fill="#8db397" stroke="#3e7654" stroke-width="1"/>
+      <path d="M7 17C9 8 18 2 27 3M31 5L27 3L27 8M37 24C34 33 25 38 16 35M12 33L16 35L16 30" fill="none" stroke="#3e7654" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <text x="145" y="21" class="n-title">Shared forest history</text>
+    <text x="145" y="40" class="n-note">past growth and management</text>
+    <text x="145" y="56" class="n-strong">identical in both cases</text>
+  </g>
+
+  <g transform="translate(600 58)">
+    <rect width="260" height="37" rx="11" class="node energy"/>
+    <circle cx="23" cy="18" r="12" fill="#fff" stroke="#d18a12" stroke-width="1.5"/>
+    <path d="M27 8L16 21H22L19 29L31 16H25Z" fill="#d18a12"/>
+    <text x="43" y="15" class="n-title left">Northern European power</text>
+    <text x="43" y="29" class="n-note left">0.564 MWh</text>
+  </g>
+  <g transform="translate(600 103)">
+    <rect width="260" height="37" rx="11" class="node energy"/>
+    <circle cx="23" cy="18" r="12" fill="#fff" stroke="#d18a12" stroke-width="1.5"/>
+    <path d="M18 27C13 21 23 18 19 10M26 27C21 21 31 18 27 10" fill="none" stroke="#d18a12" stroke-width="2" stroke-linecap="round"/>
+    <text x="43" y="15" class="n-title left">Northern European heat</text>
+    <text x="43" y="29" class="n-note left">0.249 GJ useful heat</text>
+  </g>
+  <path d="M535 101H1025V79H1050" class="g dash"/>
+  <path d="M860 77H1013V97H1050M860 121H1032V116H1050" class="y"/>
+  <g transform="translate(1050 61)">
+    <rect width="430" height="76" rx="14" fill="#eaf2f4" stroke="#aac4cb" stroke-width="1.5"/>
+    <g transform="translate(22 11)">
+      <path d="M12 52V32M3 37L12 17L21 37ZM4 45L12 26L20 45Z" fill="#8db397" stroke="#3e7654" stroke-width="1.1"/>
+      <path d="M31 34H43M37 28V40" fill="none" stroke="#6f7f87" stroke-width="1.6" stroke-linecap="round"/>
+      <circle cx="58" cy="21" r="12" fill="#fff8e7" stroke="#d18a12" stroke-width="1.3"/>
+      <path d="M61 12L52 23H57L55 30L65 19H60Z" fill="#d18a12"/>
+      <path d="M50 51C45 45 55 42 51 34M60 51C55 45 65 42 61 34" fill="none" stroke="#d18a12" stroke-width="1.8" stroke-linecap="round"/>
+    </g>
+    <text x="270" y="22" class="n-title">Reference outcome</text>
+    <text x="270" y="42" class="n-strong">standing forest + purchased energy</text>
+    <text x="270" y="58" class="n-note">same electricity and useful-heat services</text>
+    <text x="270" y="71" class="n-note">no new plant · no capture · no geological storage</text>
+  </g>
+
+  <rect x="25" y="164" width="1750" height="257" rx="18" class="lane project"/>
+  <text x="47" y="187" class="kicker">PROJECT · HARVEST + REGROW + BUILD NEW CHP WITH CCS</text>
+  <text x="1725" y="187" class="boundary-label boundary-project">GREENFIELD BECCS SYSTEM BOUNDARY</text>
+
+  <path d="M1508 27H1492V145H38V101H50" class="g dash"/>
+  <path d="M1526 38V157H38V360H50" class="g"/>
+
+  <g transform="translate(50 215)">
+    <rect width="170" height="90" rx="13" class="node forest"/>
+    <g transform="translate(4 12)" stroke-linejoin="round">
+      <path d="M4 65H68" fill="none" stroke="#3e7654" stroke-width="1.7" stroke-linecap="round"/>
+      <path d="M18 65V38M6 47L18 17L30 47ZM8 56L18 29L28 56Z" fill="#7ea98a" stroke="#3e7654" stroke-width="1.2"/>
+      <path d="M45 65V34M32 44L45 8L58 44ZM34 55L45 21L56 55Z" fill="#9bbda2" stroke="#3e7654" stroke-width="1.2"/>
+      <path d="M67 65V46M59 50L67 30L75 50ZM60 57L67 39L74 57Z" fill="#bdd5c0" stroke="#3e7654" stroke-width="1.1"/>
+    </g>
+    <text x="119" y="23" class="n-title">Existing forest</text>
+    <text x="119" y="43" class="n-strong">harvest starts 2030</text>
+    <text x="119" y="61" class="n-note">0.63 t dry wood</text>
+    <text x="119" y="76" class="n-note">per tonne stored</text>
+  </g>
+  <path d="M220 260H255" class="g"/>
+
+  <g transform="translate(255 215)">
+    <rect width="185" height="90" rx="14" class="node"/>
+    <g transform="translate(8 7)">
+      <rect x="2" y="33" width="30" height="39" rx="5" fill="#fff8e7" stroke="#d18a12" stroke-width="1.7"/>
+      <path d="M17 63C8 55 18 49 17 41C27 49 29 58 17 63Z" fill="#e5a42c" stroke="#d18a12" stroke-width="1"/>
+      <rect x="23" y="13" width="10" height="21" rx="2" fill="#edf2f4" stroke="#55737f" stroke-width="1.5"/>
+      <path d="M28 13C24 8 33 6 29 1" fill="none" stroke="#86b8c9" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M32 43H42" fill="none" stroke="#d18a12" stroke-width="1.8"/>
+      <circle cx="54" cy="43" r="13" fill="#fff" stroke="#55737f" stroke-width="1.7"/>
+      <g transform="translate(54 43)" fill="#86c0d2" stroke="#4193b8" stroke-width=".5">
+        <path d="M-1 -1C-2-5 0-9 3-9C6-6 4-2 1 1Z"/>
+        <path d="M-1 -1C-2-5 0-9 3-9C6-6 4-2 1 1Z" transform="rotate(120)"/>
+        <path d="M-1 -1C-2-5 0-9 3-9C6-6 4-2 1 1Z" transform="rotate(240)"/>
+        <circle r="2.4" fill="#0b3b52"/>
+      </g>
+      <path d="M67 43H76V57" fill="none" stroke="#55737f" stroke-width="1.7"/>
+      <rect x="65" y="57" width="25" height="17" rx="4" fill="#fff" stroke="#4193b8" stroke-width="1.6"/>
+      <path d="M80 59L72 67H77L74 73L84 64H79Z" fill="#4193b8"/>
+      <path d="M39 24C43 20 47 28 51 24M42 18C46 14 50 22 54 18" fill="none" stroke="#d18a12" stroke-width="1.4" stroke-linecap="round"/>
+    </g>
+    <text x="130" y="22" class="n-title">New biomass CHP</text>
+    <text x="130" y="42" class="n-strong">12.9 GJ fuel</text>
+    <text x="130" y="59" class="n-note">5.9 GJ gross output</text>
+    <text x="130" y="74" class="n-note">1.143 t flue gas CO₂</text>
+  </g>
+  <path d="M440 260H475" class="t"/>
+
+  <g transform="translate(475 211)">
+    <rect width="205" height="98" rx="14" class="node co2"/>
+    <g transform="translate(10 10)">
+      <rect x="0" y="8" width="24" height="65" rx="8" fill="#fff" stroke="#4193b8" stroke-width="1.8"/>
+      <rect x="31" y="8" width="24" height="65" rx="8" fill="#fff" stroke="#4193b8" stroke-width="1.8"/>
+      <path d="M6 20H18M6 31H18M6 42H18M6 53H18M6 64H18M37 20H49M37 31H49M37 42H49M37 53H49M37 64H49" stroke="#78b7c9" stroke-width="1.5"/>
+      <g fill="#008a82"><circle cx="12" cy="26" r="2"/><circle cx="12" cy="48" r="2"/><circle cx="12" cy="69" r="2"/></g>
+      <g fill="#c4d0d4"><circle cx="43" cy="26" r="2"/><circle cx="43" cy="48" r="2"/><circle cx="43" cy="69" r="2"/></g>
+      <path d="M11 3C21-3 37-2 44 5M40 1L45 5L41 9M46 79C37 84 20 82 13 75M17 80L12 75L16 71" fill="none" stroke="#6f7f87" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+      <rect x="62" y="26" width="24" height="39" rx="5" fill="#fff8e7" stroke="#d18a12" stroke-width="1.7"/>
+      <path d="M67 33H81M67 40H81M67 47H81M67 54H81M67 61H81" fill="none" stroke="#d18a12" stroke-width="1.4" stroke-linecap="round"/>
+      <path d="M62 35H55M86 56H92" fill="none" stroke="#d18a12" stroke-width="1.6" stroke-linecap="round"/>
+    </g>
+    <text x="153" y="23" class="n-title">Amine capture</text>
+    <text x="153" y="43" class="n-strong">90% · 1.029 t captured</text>
+    <text x="153" y="60" class="n-note">3.67 GJ CHP heat</text>
+    <text x="153" y="75" class="n-note">0.69 kg chemicals</text>
+    <text x="153" y="90" class="n-note">82 m³ cooling water</text>
+  </g>
+  <path d="M680 260H715" class="t"/>
+
+  <g transform="translate(715 218)">
+    <rect width="155" height="84" rx="13" class="node co2"/>
+    <g transform="translate(10 17)">
+      <path d="M2 20H26C40 20 46 25 46 34C46 43 40 48 26 48H2Z" fill="#edf2f4" stroke="#55737f" stroke-width="1.9"/>
+      <circle cx="25" cy="34" r="10" fill="#fff" stroke="#55737f" stroke-width="1.6"/>
+      <path d="M25 25C32 29 32 39 25 43C18 39 18 29 25 25ZM-3 29H3M46 29H54M46 39H54" fill="none" stroke="#55737f" stroke-width="1.8" stroke-linecap="round"/>
+      <circle cx="54" cy="15" r="9" fill="#fff" stroke="#4193b8" stroke-width="1.4"/>
+      <path d="M54 15L59 11M54 15V9" fill="none" stroke="#4193b8" stroke-width="1.4" stroke-linecap="round"/>
+    </g>
+    <text x="110" y="24" class="n-title">Compression</text>
+    <text x="110" y="43" class="n-note">9 booster pumps</text>
+    <text x="110" y="60" class="n-strong">0.14 MWh</text>
+    <text x="110" y="74" class="n-note">including storage</text>
+  </g>
+  <path d="M870 260H905" class="t"/>
+
+  <g transform="translate(905 218)">
+    <rect width="180" height="84" rx="13" class="node co2"/>
+    <g transform="translate(9 9)">
+      <path d="M5 38H90" stroke="#008a82" stroke-width="12" stroke-linecap="round"/>
+      <path d="M5 38H90" stroke="#dff1ee" stroke-width="6" stroke-linecap="round"/>
+      <path d="M26 28V48M32 28V48M62 28V48M68 28V48" stroke="#008a82" stroke-width="1.8"/>
+      <circle cx="48" cy="21" r="9" fill="#fff" stroke="#008a82" stroke-width="1.7"/>
+      <path d="M48 13V29M40 21H56M43 16L53 26M53 16L43 26M48 30V38" fill="none" stroke="#008a82" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M20 45V58H35V45M61 45V58H76V45" fill="none" stroke="#008a82" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <text x="139" y="24" class="n-title">CO₂ pipeline</text>
+    <text x="139" y="44" class="n-strong">2,000 km</text>
+    <text x="139" y="61" class="n-note">0.029 t pipeline loss</text>
+  </g>
+  <path d="M1085 260H1120" class="t"/>
+
+  <g transform="translate(1120 211)">
+    <rect width="190" height="98" rx="14" class="node co2"/>
+    <g transform="translate(8 12)">
+      <path d="M5 28C22 23 37 34 53 28C69 23 85 34 101 28V40H5Z" fill="#dfead7"/>
+      <path d="M5 41C22 36 37 47 53 41C69 36 85 47 101 41V53H5Z" fill="#81938b"/>
+      <path d="M5 54C22 49 37 60 53 54C69 49 85 60 101 54V78H5Z" fill="#c7dfda"/>
+      <path d="M16 25H33V65L46 72" fill="none" stroke="#008a82" stroke-width="3.2" stroke-linejoin="round"/>
+      <path d="M12 25H37M15 20H34M20 20V15M30 20V15" fill="none" stroke="#0b3b52" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M44 67L51 72L44 77M33 62H40M33 67H42" fill="none" stroke="#008a82" stroke-width="1.6"/>
+      <path d="M49 67C61 61 83 64 96 73C89 80 66 83 50 77C44 75 44 70 49 67Z" fill="#57b6ad" opacity=".84"/>
+      <g fill="#fff" stroke="#008a82" stroke-width=".8"><circle cx="62" cy="72" r="2"/><circle cx="74" cy="76" r="2.4"/><circle cx="87" cy="72" r="1.7"/></g>
+    </g>
+    <text x="148" y="25" class="n-title">Geological</text>
+    <text x="148" y="40" class="n-title">storage</text>
+    <text x="148" y="61" class="n-strong">1.000 t stored</text>
+    <text x="148" y="77" class="n-note">3 km injection well</text>
+  </g>
+
+  <path d="M575 211V197H1345V226H1370" class="r"/>
+  <path d="M995 218V207H1357V254H1370" class="r"/>
+  <g transform="translate(1370 205)">
+    <rect width="355" height="72" rx="14" class="node air"/>
+    <g transform="translate(26 8)">
+      <path d="M10 43C2 43-2 38 0 32C2 26 7 23 13 23C15 14 23 9 32 9C42 9 49 15 51 24C54 22 57 22 60 22C68 22 74 28 74 35C74 41 68 44 61 44Z" fill="#fff" stroke="#c44e52" stroke-width="1.6"/>
+      <path d="M22 55V44M35 55V44M48 55V44M18 49L22 44L26 49M31 49L35 44L39 49M44 49L48 44L52 49" fill="none" stroke="#c44e52" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="37" y="36" fill="#8c2f5d" font-size="10" font-weight="900" text-anchor="middle">CO₂</text>
+    </g>
+    <text x="225" y="22" class="n-title">Returned to atmosphere</text>
+    <text x="225" y="43" class="n-strong">0.114 t residual stack CO₂</text>
+    <text x="225" y="59" class="n-note">0.029 t transport loss</text>
+  </g>
+  <path d="M1547 205V43" class="r"/>
+
+  <g transform="translate(1500 0)">
+    <path d="M10 42C2 42-2 36 0 30C2 24 8 20 15 20C18 10 27 5 38 5C49 5 58 12 60 22C64 20 68 19 72 19C81 19 88 26 88 34C88 40 81 44 73 44H10Z" class="atmosphere-pool"/>
+    <text x="158" y="19" class="n-title">Atmosphere</text>
+    <text x="158" y="35" class="n-note">shared atmospheric reservoir</text>
+  </g>
+
+  <path d="M348 305V322H1355V326H1370" class="y dash"/>
+  <g transform="translate(1370 291)">
+    <rect width="355" height="68" rx="14" class="node energy"/>
+    <g transform="translate(25 9)">
+      <circle cx="22" cy="23" r="16" fill="#fff" stroke="#d18a12" stroke-width="1.6"/>
+      <path d="M26 11L14 26H21L18 36L31 21H24Z" fill="#d18a12"/>
+      <path d="M55 39C47 30 64 25 56 15M72 39C64 30 81 25 73 15" fill="none" stroke="#d18a12" stroke-width="2.5" stroke-linecap="round"/>
+    </g>
+    <text x="225" y="21" class="n-title">Useful energy exported</text>
+    <text x="225" y="41" class="n-strong">0.564 MWh electricity · 0.249 GJ heat</text>
+    <text x="225" y="57" class="n-note">displaces annual Northern European markets</text>
+  </g>
+
+  <path d="M135 305V328" class="g"/>
+  <g transform="translate(50 328)">
+    <rect width="270" height="64" rx="12" fill="#edf7ef" stroke="#7ba887" stroke-width="1.5"/>
+    <g transform="translate(8 7)" stroke-linejoin="round">
+      <path d="M4 49H72" fill="none" stroke="#3e7654" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M14 49V38M9 40L14 30L19 40ZM10 45L14 36L18 45Z" fill="#c2d9c4" stroke="#3e7654" stroke-width=".9"/>
+      <path d="M35 49V31M27 36L35 19L43 36ZM29 43L35 27L41 43Z" fill="#a7c9ad" stroke="#3e7654" stroke-width="1"/>
+      <path d="M60 49V24M49 32L60 8L71 32ZM51 41L60 18L69 41Z" fill="#87ad90" stroke="#3e7654" stroke-width="1.1"/>
+      <path d="M7 17C20 6 43 3 61 9M57 5L62 9L57 13" fill="none" stroke="#3e7654" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <text x="178" y="21" class="n-title">Replacement-stand regrowth</text>
+    <text x="178" y="41" class="n-strong">1.143 t CO₂ · 83 years</text>
+    <text x="178" y="56" class="n-note">dated after each project harvest</text>
+  </g>
+
+  <g transform="translate(350 347)">
+    <rect width="985" height="48" rx="12" class="band"/>
+    <text x="21" y="20" class="band-title">WHAT ENTERS THE GREENFIELD RESULT</text>
+    <text x="21" y="37" class="band-note">future regrowth · biomass supply · new CHP + end-of-life · avoided power + heat · capture · compression · pipeline · storage · losses</text>
+  </g>
+  <g transform="translate(1370 370)">
+    <rect width="355" height="34" rx="10" fill="#edf8f7" stroke="#008a82" stroke-width="1.4"/>
+    <text x="177" y="14" class="balance">Direct carbon after full regrowth</text>
+    <text x="177" y="28" class="n-strong">−1.143 + 0.114 + 0.029 = −1.000 t CO₂</text>
+  </g>
+
+  <text x="25" y="443" class="small left">Physical basis: 1.029 t captured − 0.029 t transport loss = 1.000 t delivered to storage. Future forest regrowth is project uptake; past forest history is shared.</text>
+</svg>

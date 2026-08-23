@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="600" viewBox="0 0 920 600" role="img" aria-labelledby="title desc">
+  <title id="title">REMIND-EU scenario trajectories</title>
+  <desc id="desc">Global carbon dioxide emissions and global mean surface temperature from 2020 to 2100 for SSP2-NPi and SSP2-PkBudg1000.</desc>
+  <style>
+    text { font-family: Arial, Helvetica, sans-serif; fill: #526771; }
+    .panel-label { fill: #0b3b52; font-size: 12px; font-weight: 800; letter-spacing: .5px; }
+    .grid { stroke: #9eb3bc; stroke-width: 1; opacity: .32; }
+    .year { font-size: 12px; font-weight: 700; }
+    .trajectory { fill: none; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+    .value { font-size: 12px; font-weight: 800; }
+    .legend { font-size: 13px; font-weight: 800; }
+  </style>
+  <g class="grid"><line x1="92.0" y1="78" x2="92.0" y2="548" />
+<line x1="280.5" y1="78" x2="280.5" y2="548" />
+<line x1="469.0" y1="78" x2="469.0" y2="548" />
+<line x1="657.5" y1="78" x2="657.5" y2="548" />
+<line x1="846.0" y1="78" x2="846.0" y2="548" /><line x1="92" y1="305.1" x2="846" y2="305.1" />
+<line x1="92" y1="221.5" x2="846" y2="221.5" />
+<line x1="92" y1="137.8" x2="846" y2="137.8" /><line x1="92" y1="520.4" x2="846" y2="520.4" />
+<line x1="92" y1="474.4" x2="846" y2="474.4" />
+<line x1="92" y1="428.4" x2="846" y2="428.4" /></g>
+  <text class="panel-label" x="846" y="90" text-anchor="end">CO₂ EMISSIONS · Gt yr⁻¹</text>
+  <text class="panel-label" x="846" y="401" text-anchor="end">GMST · °C ABOVE PRE-INDUSTRIAL</text>
+  <g>
+    <line x1="560" y1="56" x2="588" y2="56" stroke="#d99614" stroke-width="5" stroke-linecap="round" />
+    <text class="legend" x="598" y="61">SSP2-NPi</text>
+    <line x1="716" y1="56" x2="744" y2="56" stroke="#008a82" stroke-width="5" stroke-linecap="round" />
+    <text class="legend" x="754" y="61">SSP2-PkBudg1000</text>
+  </g>
+  <polyline class="trajectory" stroke="#d99614" points="92.0,123.0 139.1,124.3 186.2,133.1 233.4,146.4 280.5,156.1 327.6,164.5 374.8,170.5 421.9,176.4 469.0,173.9 563.2,170.0 657.5,173.4 751.8,179.4 846.0,188.2" /><polyline class="trajectory" stroke="#d99614" points="92.0,536.4 139.1,522.3 186.2,511.5 233.4,500.5 280.5,491.9 327.6,485.3 374.8,477.3 421.9,472.5 469.0,466.3 563.2,455.2 657.5,444.2 751.8,433.1 846.0,422.1" /><polyline class="trajectory" stroke="#008a82" points="92.0,123.0 139.1,124.3 186.2,139.5 233.4,182.1 280.5,215.6 327.6,244.7 374.8,266.6 421.9,278.1 469.0,288.1 563.2,297.4 657.5,303.7 751.8,306.6 846.0,308.3" /><polyline class="trajectory" stroke="#008a82" points="92.0,536.4 139.1,522.3 186.2,511.2 233.4,499.8 280.5,492.8 327.6,489.4 374.8,486.5 421.9,488.3 469.0,488.1 563.2,490.7 657.5,493.3 751.8,495.5 846.0,496.9" />
+  <circle cx="846" cy="188.2" r="4.5" fill="#d99614" /><circle cx="846" cy="422.1" r="4.5" fill="#d99614" /><circle cx="846" cy="308.3" r="4.5" fill="#008a82" /><circle cx="846" cy="496.9" r="4.5" fill="#008a82" />
+  <text class="value" x="836" y="177.2" text-anchor="end" fill="#9c6705">28</text>
+  <text class="value" x="836" y="297.3" text-anchor="end" fill="#006e68">-0.8</text>
+  <text class="value" x="836" y="412.1" text-anchor="end" fill="#9c6705">2.57°</text>
+  <text class="value" x="836" y="486.9" text-anchor="end" fill="#006e68">1.76°</text>
+  <g class="year"><text x="92.0" y="577" text-anchor="middle">2020</text>
+<text x="280.5" y="577" text-anchor="middle">2040</text>
+<text x="469.0" y="577" text-anchor="middle">2060</text>
+<text x="657.5" y="577" text-anchor="middle">2080</text>
+<text x="846.0" y="577" text-anchor="middle">2100</text></g>
+  <text x="846" y="594" text-anchor="end" font-size="10" font-weight="700">REMIND-EU · SSP2-NPi / SSP2-PkBudg1000</text>
+</svg>

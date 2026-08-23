@@ -1,0 +1,348 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 430" preserveAspectRatio="none" role="img" aria-labelledby="title desc">
+  <title id="title">From IAM scenarios to a routed temporal inventory</title>
+  <desc id="desc">IAM assumptions enter premise, which creates technosphere and biosphere matrix snapshots. TRAILS interpolates annual matrix slices, distributes temporal exchanges into dated pulses, routes those pulses through a calendar-year process network, solves one inventory matrix G for each year, and left-multiplies every annual G matrix by the same diagonal characterisation matrix Q for the selected LCIA method to obtain annual characterised inventory matrices H.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f9fcfb"/>
+      <stop offset=".58" stop-color="#edf6f3"/>
+      <stop offset="1" stop-color="#edf5f8"/>
+    </linearGradient>
+    <linearGradient id="cube-front" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#dff2ee"/>
+      <stop offset="1" stop-color="#b8ddd6"/>
+    </linearGradient>
+    <linearGradient id="cube-side" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#c6e5df"/>
+      <stop offset="1" stop-color="#92c8be"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#173b4a" flood-opacity=".11"/>
+    </filter>
+    <marker id="arrow-teal" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="5.5" markerHeight="5.5" orient="auto">
+      <path d="M0 0 L8 4 L0 8 Z" fill="#008a82"/>
+    </marker>
+    <marker id="arrow-blue" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="5.5" markerHeight="5.5" orient="auto">
+      <path d="M0 0 L8 4 L0 8 Z" fill="#006b8f"/>
+    </marker>
+    <marker id="arrow-grey" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="5" markerHeight="5" orient="auto">
+      <path d="M0 0 L8 4 L0 8 Z" fill="#7b9199"/>
+    </marker>
+    <marker id="arrow-purple" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="5.5" markerHeight="5.5" orient="auto">
+      <path d="M0 0 L8 4 L0 8 Z" fill="#60487d"/>
+    </marker>
+  </defs>
+  <style>
+    text{font-family:Arial,Helvetica,sans-serif}
+    .band{font-size:10px;font-weight:900;letter-spacing:.10em;fill:#60757d}
+    .step{font-size:8.5px;font-weight:900;letter-spacing:.08em;fill:#60757d}
+    .heading{font-size:16px;font-weight:900;fill:#0b3b52}
+    .sub{font-size:9px;font-weight:750;fill:#5b7078}
+    .label{font-size:9.5px;font-weight:900;fill:#0b3b52}
+    .tiny{font-size:7.8px;font-weight:750;fill:#60757d}
+    .micro{font-size:7px;font-weight:800;fill:#60757d}
+    .white{fill:#fff}
+  </style>
+
+  <rect x="1" y="2" width="1158" height="426" rx="16" fill="url(#background)" stroke="#c2d8da" stroke-width="1.2"/>
+  <rect x="1" y="2" width="672" height="6" rx="3" fill="#008a82"/>
+  <rect x="673" y="2" width="486" height="6" rx="3" fill="#006b8f"/>
+  <text x="20" y="27" class="band">SCENARIO BACKGROUND MATRICES</text>
+  <text x="694" y="27" class="band">INTERPOLATE AND ROUTE THROUGH CALENDAR YEARS</text>
+
+  <!-- IAM assumptions -->
+  <g filter="url(#shadow)">
+    <rect x="18" y="41" width="134" height="127" rx="12" fill="#fff" stroke="#c5d8d5"/>
+  </g>
+  <circle cx="37" cy="60" r="12" fill="#0b3b52"/>
+  <path d="M29 65 C33 57 39 53 45 51 M29 55 C34 59 40 62 46 66 M37 48 V71" fill="none" stroke="#fff" stroke-width="1.4"/>
+  <text x="56" y="57" class="step">IAM PATHWAY</text>
+  <text x="31" y="87" class="heading">Scenario context</text>
+  <text x="31" y="103" class="sub">Technologies and markets</text>
+  <rect x="31" y="114" width="47" height="17" rx="8.5" fill="#edf5f8"/><text x="54.5" y="126" text-anchor="middle" class="micro">electricity</text>
+  <rect x="84" y="114" width="38" height="17" rx="8.5" fill="#fff2d6"/><text x="103" y="126" text-anchor="middle" class="micro">heat</text>
+  <rect x="31" y="137" width="47" height="17" rx="8.5" fill="#f1edf7"/><text x="54.5" y="149" text-anchor="middle" class="micro">transport</text>
+  <rect x="84" y="137" width="38" height="17" rx="8.5" fill="#eaf5f3"/><text x="103" y="149" text-anchor="middle" class="micro">industry</text>
+
+  <line x1="157" y1="104" x2="177" y2="104" stroke="#008a82" stroke-width="2.5" marker-end="url(#arrow-teal)"/>
+
+  <!-- premise official logo -->
+  <g filter="url(#shadow)">
+    <rect x="184" y="41" width="144" height="127" rx="12" fill="#fff" stroke="#afd3cd"/>
+  </g>
+  <text x="199" y="58" class="step">ALIGN LCI TO IAM</text>
+  <image href="/assets/premise-logo.png" x="218" y="61" width="76" height="76" preserveAspectRatio="xMidYMid meet"/>
+
+  <line x1="333" y1="104" x2="353" y2="104" stroke="#008a82" stroke-width="2.5" marker-end="url(#arrow-teal)"/>
+
+  <!-- Discrete matrix package -->
+  <g filter="url(#shadow)">
+    <rect x="360" y="41" width="176" height="127" rx="12" fill="#fff" stroke="#afd3cd"/>
+  </g>
+  <text x="375" y="58" class="step">MATRIX SNAPSHOTS</text>
+  <text x="375" y="77" class="heading">Every IAM year</text>
+  <g>
+    <rect x="375" y="89" width="43" height="49" rx="7" fill="#edf4f3" stroke="#cadbd8"/>
+    <text x="396.5" y="102" text-anchor="middle" class="tiny">2025</text>
+    <rect x="381" y="109" width="13" height="17" rx="3" fill="#008a82"/><text x="387.5" y="121" text-anchor="middle" class="white" font-size="8" font-weight="900">A</text>
+    <rect x="399" y="109" width="13" height="17" rx="3" fill="#3e7654"/><text x="405.5" y="121" text-anchor="middle" class="white" font-size="8" font-weight="900">B</text>
+    <rect x="426" y="89" width="43" height="49" rx="7" fill="#e7f3f1" stroke="#abd1ca"/>
+    <text x="447.5" y="102" text-anchor="middle" class="tiny">2030</text>
+    <rect x="432" y="109" width="13" height="17" rx="3" fill="#008a82"/><text x="438.5" y="121" text-anchor="middle" class="white" font-size="8" font-weight="900">A</text>
+    <rect x="450" y="109" width="13" height="17" rx="3" fill="#3e7654"/><text x="456.5" y="121" text-anchor="middle" class="white" font-size="8" font-weight="900">B</text>
+    <rect x="477" y="89" width="43" height="49" rx="7" fill="#e1f1ee" stroke="#91c8be"/>
+    <text x="498.5" y="102" text-anchor="middle" class="tiny">2050</text>
+    <rect x="483" y="109" width="13" height="17" rx="3" fill="#008a82"/><text x="489.5" y="121" text-anchor="middle" class="white" font-size="8" font-weight="900">A</text>
+    <rect x="501" y="109" width="13" height="17" rx="3" fill="#3e7654"/><text x="507.5" y="121" text-anchor="middle" class="white" font-size="8" font-weight="900">B</text>
+  </g>
+  <text x="448" y="153" text-anchor="middle" class="micro">shared activity + flow indices</text>
+
+  <line x1="541" y1="104" x2="562" y2="104" stroke="#006b8f" stroke-width="2.5" marker-end="url(#arrow-blue)"/>
+  <rect x="525" y="28" width="59" height="20" rx="10" fill="#fff" stroke="#b3ccd5"/>
+  <text x="554.5" y="41" text-anchor="middle" class="micro">A(y) + B(y)</text>
+
+  <!-- TRAILS official logo and role -->
+  <g filter="url(#shadow)">
+    <rect x="569" y="41" width="105" height="127" rx="12" fill="#fff" stroke="#b8d2dc"/>
+  </g>
+  <image href="/assets/trails-logo.png" x="587" y="53" width="69" height="69" preserveAspectRatio="xMidYMid meet"/>
+  <text x="621.5" y="138" text-anchor="middle" fill="#536c76" font-size="14" font-weight="900" letter-spacing=".08em">TRAILS</text>
+  <text x="621.5" y="153" text-anchor="middle" class="micro">interpolate + route</text>
+
+  <line x1="680" y1="104" x2="703" y2="104" stroke="#006b8f" stroke-width="2.5" marker-end="url(#arrow-blue)"/>
+
+  <!-- 3D annual technosphere block -->
+  <g filter="url(#shadow)">
+    <rect x="710" y="41" width="252" height="127" rx="12" fill="#fff" stroke="#b8d2dc"/>
+  </g>
+  <text x="725" y="58" class="step">ANNUAL BACKGROUND</text>
+  <text x="725" y="77" class="heading" textLength="220" lengthAdjust="spacingAndGlyphs">A(y) and B(y), every year</text>
+  <!-- 3D technosphere block: activity × product × year -->
+  <g fill="#e9f5f2" stroke="#7ebdb3" stroke-width="1">
+    <polygon points="742,98 829,98 829,138 742,138" opacity=".34"/>
+    <polygon points="752,93 839,93 839,133 752,133" opacity=".44"/>
+    <polygon points="762,88 849,88 849,128 762,128" opacity=".56"/>
+    <polygon points="772,83 859,83 859,123 772,123" opacity=".70"/>
+  </g>
+  <polygon points="742,98 772,83 859,83 829,98" fill="#cbe7e1" stroke="#75b6ab"/>
+  <polygon points="829,98 859,83 859,123 829,138" fill="url(#cube-side)" stroke="#75b6ab"/>
+  <rect x="742" y="98" width="87" height="40" fill="url(#cube-front)" stroke="#5eaa9d" stroke-width="1.2"/>
+  <g stroke="#8dc7bd" stroke-width=".8" opacity=".9">
+    <line x1="759" y1="98" x2="759" y2="138"/><line x1="776" y1="98" x2="776" y2="138"/><line x1="793" y1="98" x2="793" y2="138"/><line x1="810" y1="98" x2="810" y2="138"/>
+    <line x1="742" y1="108" x2="829" y2="108"/><line x1="742" y1="118" x2="829" y2="118"/><line x1="742" y1="128" x2="829" y2="128"/>
+  </g>
+  <g fill="#008a82">
+    <rect x="761" y="110" width="13" height="6" rx="2"/><rect x="795" y="120" width="13" height="6" rx="2"/><rect x="778" y="130" width="13" height="6" rx="2"/><rect x="813" y="101" width="13" height="6" rx="2"/>
+  </g>
+  <text x="785.5" y="148" text-anchor="middle" class="micro">A: activities × products × year</text>
+  <text x="864" y="92" class="micro">year →</text>
+  <!-- paired B slab -->
+  <rect x="890" y="94" width="53" height="46" rx="7" fill="#e8f2ea" stroke="#9ec5aa"/>
+  <rect x="897" y="103" width="18" height="28" rx="5" fill="#3e7654"/>
+  <text x="906" y="122" text-anchor="middle" class="white" font-size="11" font-weight="900">B</text>
+  <text x="929" y="113" text-anchor="middle" class="label">B(y)</text>
+  <text x="929" y="126" text-anchor="middle" class="micro">flows</text>
+  <rect x="870" y="146" width="72" height="14" rx="7" fill="#e5f0f4"/>
+  <text x="906" y="156" text-anchor="middle" fill="#245f78" font-size="6.6" font-weight="900">ANNUAL SLICES</text>
+
+  <line x1="967" y1="104" x2="992" y2="104" stroke="#006b8f" stroke-width="2.5" marker-end="url(#arrow-blue)"/>
+
+  <!-- Temporal exchange distribution, the routing diagram -->
+  <g filter="url(#shadow)">
+    <rect x="999" y="41" width="142" height="127" rx="12" fill="#fff" stroke="#b8d2dc"/>
+  </g>
+  <text x="1014" y="58" class="step">TEMPORAL EXCHANGE</text>
+  <text x="1014" y="77" class="heading">Dated pulses</text>
+  <circle cx="1023" cy="101" r="7" fill="#0b3b52"/>
+  <line x1="1030" y1="101" x2="1046" y2="101" stroke="#7b9199" stroke-width="1.6"/>
+  <path d="M1046 101 C1061 101 1059 88 1073 88 M1046 101 H1073 M1046 101 C1061 101 1059 114 1073 114" fill="none" stroke="#006b8f" stroke-width="1.5"/>
+  <circle cx="1077" cy="88" r="6" fill="#4193b8"/><circle cx="1077" cy="101" r="8" fill="#006b8f"/><circle cx="1077" cy="114" r="5" fill="#7ab4cb"/>
+  <text x="1092" y="91" class="micro">2030 · 20%</text><text x="1092" y="104" class="micro">2040 · 50%</text><text x="1092" y="117" class="micro">2060 · 30%</text>
+  <rect x="1014" y="132" width="111" height="19" rx="9.5" fill="#e5f0f4"/>
+  <text x="1069.5" y="145" text-anchor="middle" fill="#245f78" font-size="7.2" font-weight="900">1 EXCHANGE → 3 YEARS</text>
+
+  <!-- Preprint routing algorithm -->
+  <rect x="18" y="180" width="529" height="179" rx="13" fill="#fff" stroke="#b8d1d8" filter="url(#shadow)"/>
+  <text x="35" y="199" class="step">TEMPORAL ROUTING ALGORITHM</text>
+  <rect x="414" y="186" width="115" height="17" rx="8.5" fill="#e5f0f4"/>
+  <text x="471.5" y="197" text-anchor="middle" fill="#245f78" font-size="6.5" font-weight="900">SACCHI ET AL. 2026 · FIG. 1</text>
+
+  <rect x="35" y="211" width="87" height="31" rx="7" fill="#edf5f8" stroke="#bfd3db"/>
+  <circle cx="49" cy="226.5" r="9" fill="#0b3b52"/><text x="49" y="230" text-anchor="middle" class="white" font-size="8" font-weight="900">1</text>
+  <text x="62" y="222" class="label">Root demand</text><text x="62" y="234" class="micro">(y₀, a₀, Q₀)</text>
+
+  <rect x="136" y="211" width="126" height="31" rx="7" fill="#eaf2fb" stroke="#b6ccdc"/>
+  <circle cx="150" cy="226.5" r="9" fill="#4193b8"/><text x="150" y="230" text-anchor="middle" class="white" font-size="8" font-weight="900">2</text>
+  <text x="163" y="222" class="label">Read next activity</text><text x="163" y="234" class="micro">A(y) row · routed B(y)</text>
+
+  <rect x="276" y="211" width="111" height="31" rx="7" fill="#eaf2fb" stroke="#b6ccdc"/>
+  <circle cx="290" cy="226.5" r="9" fill="#006b8f"/><text x="290" y="230" text-anchor="middle" class="white" font-size="8" font-weight="900">3</text>
+  <text x="303" y="222" class="label">Distribute in time</text><text x="303" y="234" class="micro">y or y + offset</text>
+
+  <rect x="401" y="211" width="128" height="31" rx="7" fill="#eaf2fb" stroke="#b6ccdc"/>
+  <circle cx="415" cy="226.5" r="9" fill="#006b8f"/><text x="415" y="230" text-anchor="middle" class="white" font-size="8" font-weight="900">4</text>
+  <text x="428" y="222" class="label">Scale and test input</text><text x="428" y="234" class="micro">Qchild · potential pchild</text>
+  <g stroke="#7b9199" stroke-width="1.3" marker-end="url(#arrow-grey)">
+    <line x1="123" y1="226.5" x2="133" y2="226.5"/><line x1="263" y1="226.5" x2="273" y2="226.5"/><line x1="388" y1="226.5" x2="398" y2="226.5"/>
+  </g>
+
+  <path d="M465 243 C465 252 360 253 333 260" fill="none" stroke="#7b9199" stroke-width="1.3" marker-end="url(#arrow-grey)"/>
+  <polygon points="300,249 363,271 300,293 237,271" fill="#fff3d9" stroke="#bda66d" stroke-width="1.2"/>
+  <text x="300" y="267" text-anchor="middle" class="label">Route this input?</text>
+  <text x="300" y="279" text-anchor="middle" class="micro">pchild &gt; τrel · pFU</text>
+
+  <rect x="48" y="299" width="136" height="30" rx="7" fill="#eaf6ec" stroke="#b9d5bf"/>
+  <text x="116" y="311" text-anchor="middle" class="label">Stop and record demand</text>
+  <text x="116" y="322" text-anchor="middle" class="micro">depth · amount · cutoff · leaf</text>
+  <rect x="385" y="299" width="132" height="30" rx="7" fill="#e8f6f4" stroke="#add3cd"/>
+  <text x="451" y="311" text-anchor="middle" class="label">Continue routing</text>
+  <text x="451" y="322" text-anchor="middle" class="micro">continue explicit routing</text>
+  <path d="M248 280 C220 287 176 295 150 299" fill="none" stroke="#7b9199" stroke-width="1.3" marker-end="url(#arrow-grey)"/>
+  <text x="210" y="291" class="micro">no</text>
+  <path d="M352 280 C383 287 416 294 432 299" fill="none" stroke="#7b9199" stroke-width="1.3" marker-end="url(#arrow-grey)"/>
+  <text x="389" y="291" class="micro">yes</text>
+  <path d="M517 314 H535 V206 H199 V210" fill="none" stroke="#008a82" stroke-width="1.3" stroke-dasharray="4 3" marker-end="url(#arrow-teal)"/>
+
+  <rect x="159" y="335" width="230" height="17" rx="8.5" fill="#f1edf8" stroke="#d2c2e5"/>
+  <text x="274" y="346.5" text-anchor="middle" fill="#60487d" font-size="7.2" font-weight="900">COMBINE STOPPED + ROUTED DEMAND BY YEAR</text>
+  <path d="M116 329 C139 333 157 338 162 340" fill="none" stroke="#7b9199" stroke-width="1.2" marker-end="url(#arrow-grey)"/>
+
+  <!-- The process-year network produced by the loop -->
+  <line x1="549" y1="270" x2="561" y2="270" stroke="#006b8f" stroke-width="2.3" marker-end="url(#arrow-blue)"/>
+  <rect x="563" y="180" width="578" height="179" rx="13" fill="#fff" stroke="#b8d1d8" filter="url(#shadow)"/>
+  <text x="580" y="199" class="step">ROUTED PROCESS–YEAR NETWORK</text>
+  <line x1="1010" y1="196" x2="1028" y2="196" stroke="#4193b8" stroke-width="1.8"/>
+  <circle cx="1019" cy="196" r="3.5" fill="#4193b8" stroke="#fff"/>
+  <text x="1034" y="199" class="micro">size = amount</text>
+  <rect x="580" y="208" width="545" height="21" rx="6" fill="#f0f3f4"/>
+  <rect x="580" y="231" width="545" height="23" rx="6" fill="#eaf2f8"/>
+  <rect x="580" y="256" width="545" height="23" rx="6" fill="#f5f0e8"/>
+  <rect x="580" y="281" width="545" height="23" rx="6" fill="#f1edf7"/>
+  <rect x="580" y="306" width="545" height="27" rx="6" fill="#edf5ee"/>
+  <text x="590" y="222" class="label">d0</text><text x="590" y="247" class="label">d1</text><text x="590" y="272" class="label">d2</text><text x="590" y="297" class="label">d3</text><text x="590" y="324" class="label">stopped</text>
+  <g stroke="#d7e1e4" stroke-width="1">
+    <line x1="650" y1="205" x2="650" y2="335"/><line x1="740" y1="205" x2="740" y2="335"/><line x1="830" y1="205" x2="830" y2="335"/>
+    <line x1="920" y1="205" x2="920" y2="335"/><line x1="1010" y1="205" x2="1010" y2="335"/><line x1="1100" y1="205" x2="1100" y2="335"/>
+  </g>
+  <g class="micro">
+    <text x="650" y="350" text-anchor="middle">2025</text><text x="740" y="350" text-anchor="middle">2035</text><text x="830" y="350" text-anchor="middle">2045</text>
+    <text x="920" y="350" text-anchor="middle">2055</text><text x="1010" y="350" text-anchor="middle">2065</text><text x="1100" y="350" text-anchor="middle">2075</text>
+  </g>
+
+  <g fill="none" stroke-linecap="round">
+    <path d="M800 218 C755 224 720 233 690 243" stroke="#4193b8" stroke-width="2" opacity=".64"/>
+    <path d="M690 243 C672 251 658 259 650 268" stroke="#4193b8" stroke-width="1.5" opacity=".58"/>
+    <path d="M690 243 C714 251 731 259 740 268" stroke="#4193b8" stroke-width="2.1" opacity=".60"/>
+    <path d="M650 268 C643 277 640 285 640 293" stroke="#4193b8" stroke-width="1.3" opacity=".54"/>
+    <path d="M740 268 C735 277 732 285 730 293" stroke="#4193b8" stroke-width="1.7" opacity=".54"/>
+    <path d="M640 293 C636 302 635 311 635 319" stroke="#4193b8" stroke-width="1.2" opacity=".50"/>
+    <path d="M730 293 C726 302 722 311 720 319" stroke="#4193b8" stroke-width="1.5" opacity=".50"/>
+
+    <path d="M800 218 C814 225 824 234 835 243" stroke="#f28b22" stroke-width="3" opacity=".68"/>
+    <path d="M800 218 C838 224 856 234 865 243" stroke="#f28b22" stroke-width="2.2" opacity=".52"/>
+    <path d="M800 218 C858 223 884 233 895 243" stroke="#f28b22" stroke-width="1.6" opacity=".42"/>
+    <path d="M835 243 C827 251 822 259 820 268" stroke="#f28b22" stroke-width="2.2" opacity=".62"/>
+    <path d="M835 243 C855 251 870 259 875 268" stroke="#e65b54" stroke-width="2.8" opacity=".64"/>
+    <path d="M895 243 C906 251 915 259 920 268" stroke="#a55ccb" stroke-width="1.7" opacity=".52"/>
+    <path d="M820 268 C817 277 815 285 815 293" stroke="#f28b22" stroke-width="1.8" opacity=".56"/>
+    <path d="M875 268 C878 277 880 285 880 293" stroke="#e65b54" stroke-width="2.3" opacity=".58"/>
+    <path d="M920 268 C923 277 925 285 925 293" stroke="#a55ccb" stroke-width="1.5" opacity=".50"/>
+    <path d="M815 293 C812 302 810 311 810 319" stroke="#f28b22" stroke-width="1.5" opacity=".52"/>
+    <path d="M880 293 C883 302 885 311 885 319" stroke="#e65b54" stroke-width="2" opacity=".54"/>
+    <path d="M925 293 C928 302 930 311 930 319" stroke="#a55ccb" stroke-width="1.3" opacity=".48"/>
+
+    <path d="M800 218 C862 221 945 232 1000 243" stroke="#58a44e" stroke-width="1.8" opacity=".56"/>
+    <path d="M800 218 C905 220 1010 232 1040 243" stroke="#58a44e" stroke-width="1.2" opacity=".40"/>
+    <path d="M1000 243 C983 251 972 259 970 268" stroke="#58a44e" stroke-width="1.7" opacity=".58"/>
+    <path d="M1000 243 C1020 251 1040 259 1050 268" stroke="#58a44e" stroke-width="2.3" opacity=".60"/>
+    <path d="M1040 243 C1063 251 1083 259 1095 268" stroke="#58a44e" stroke-width="1.5" opacity=".50"/>
+    <path d="M970 268 C966 277 965 285 965 293" stroke="#58a44e" stroke-width="1.4" opacity=".54"/>
+    <path d="M1050 268 C1056 277 1060 285 1060 293" stroke="#58a44e" stroke-width="1.9" opacity=".56"/>
+    <path d="M1095 268 C1099 277 1100 285 1100 293" stroke="#58a44e" stroke-width="1.3" opacity=".50"/>
+    <path d="M965 293 C962 302 960 311 960 319" stroke="#58a44e" stroke-width="1.2" opacity=".50"/>
+    <path d="M1060 293 C1067 302 1070 311 1070 319" stroke="#58a44e" stroke-width="1.7" opacity=".52"/>
+    <path d="M1100 293 C1107 302 1110 311 1110 319" stroke="#58a44e" stroke-width="1.1" opacity=".46"/>
+  </g>
+  <rect x="792" y="210" width="16" height="16" transform="rotate(45 800 218)" fill="#182b35" stroke="#fff" stroke-width="1.5"/>
+  <g stroke="#fff" stroke-width="1.2">
+    <circle cx="690" cy="243" r="7" fill="#4193b8"/><circle cx="650" cy="268" r="5" fill="#4193b8"/><circle cx="740" cy="268" r="7.5" fill="#4193b8"/><circle cx="640" cy="293" r="4" fill="#4193b8"/><circle cx="730" cy="293" r="5.5" fill="#4193b8"/><circle cx="635" cy="319" r="3.7" fill="#4193b8"/><circle cx="720" cy="319" r="4.5" fill="#4193b8"/>
+    <circle cx="835" cy="243" r="9.5" fill="#f28b22"/><circle cx="865" cy="243" r="6.5" fill="#f28b22"/><circle cx="895" cy="243" r="4.5" fill="#f28b22"/><circle cx="820" cy="268" r="6" fill="#f28b22"/><circle cx="875" cy="268" r="8" fill="#e65b54"/><circle cx="920" cy="268" r="5.5" fill="#a55ccb"/><circle cx="815" cy="293" r="4.5" fill="#f28b22"/><circle cx="880" cy="293" r="6.5" fill="#e65b54"/><circle cx="925" cy="293" r="4.5" fill="#a55ccb"/><circle cx="810" cy="319" r="4" fill="#f28b22"/><circle cx="885" cy="319" r="5.5" fill="#e65b54"/><circle cx="930" cy="319" r="3.8" fill="#a55ccb"/>
+    <circle cx="1000" cy="243" r="6" fill="#58a44e"/><circle cx="1040" cy="243" r="4.5" fill="#58a44e"/><circle cx="970" cy="268" r="5" fill="#58a44e"/><circle cx="1050" cy="268" r="7.5" fill="#58a44e"/><circle cx="1095" cy="268" r="5" fill="#58a44e"/><circle cx="965" cy="293" r="4" fill="#58a44e"/><circle cx="1060" cy="293" r="5.5" fill="#58a44e"/><circle cx="1100" cy="293" r="4" fill="#58a44e"/><circle cx="960" cy="319" r="3.8" fill="#58a44e"/><circle cx="1070" cy="319" r="4.8" fill="#58a44e"/><circle cx="1110" cy="319" r="3.8" fill="#58a44e"/>
+  </g>
+  <rect x="999" y="308" width="112" height="17" rx="8.5" fill="#e8f6f4"/>
+  <text x="1055" y="319.5" text-anchor="middle" fill="#356b63" font-size="6.8" font-weight="900">STOPPED → DEMAND f(y)</text>
+  <!-- link dated pulses into the process-year graph -->
+  <path d="M1077 156 C1077 177 940 185 800 210" fill="none" stroke="#006b8f" stroke-width="1.5" stroke-dasharray="4 4" marker-end="url(#arrow-blue)"/>
+
+  <!-- Year-wise characterization follows the manuscript notation H_y = Q G_y -->
+  <rect x="18" y="366" width="1123" height="52" rx="12" fill="#f4f0f8" stroke="#cdbfdf"/>
+  <text x="34" y="380" fill="#60487d" font-size="7.5" font-weight="900" letter-spacing=".07em">YEAR-WISE CHARACTERISATION</text>
+  <text x="34" y="392" class="label">H<tspan baseline-shift="sub" font-size="6">y</tspan> = Q G<tspan baseline-shift="sub" font-size="6">y</tspan></text>
+  <text x="34" y="404" class="micro">Years stack G<tspan baseline-shift="sub" font-size="5">y</tspan> and H<tspan baseline-shift="sub" font-size="5">y</tspan>; not Q</text>
+
+  <!-- Q: one diagonal flow × flow characterization matrix for the selected method -->
+  <rect x="200" y="372" width="214" height="40" rx="8" fill="#fff" stroke="#d4c7e3"/>
+  <text x="212" y="384" class="label">Q = diag(CF)</text>
+  <text x="212" y="395" class="micro">flow × flow · diagonal</text>
+  <text x="212" y="406" class="micro">one Q per LCIA method</text>
+  <g transform="translate(348 376)">
+    <rect x="0" y="0" width="40" height="28" rx="3" fill="#fff" stroke="#7d65a3"/>
+    <g stroke="#e1d8eb" stroke-width=".55">
+      <line x1="8" y1="0" x2="8" y2="28"/><line x1="16" y1="0" x2="16" y2="28"/><line x1="24" y1="0" x2="24" y2="28"/><line x1="32" y1="0" x2="32" y2="28"/>
+      <line x1="0" y1="5.6" x2="40" y2="5.6"/><line x1="0" y1="11.2" x2="40" y2="11.2"/><line x1="0" y1="16.8" x2="40" y2="16.8"/><line x1="0" y1="22.4" x2="40" y2="22.4"/>
+    </g>
+    <rect x=".7" y=".7" width="6.6" height="4.2" rx=".6" fill="#54278f"/><rect x="8.7" y="6.3" width="6.6" height="4.2" rx=".6" fill="#756bb1"/><rect x="16.7" y="11.9" width="6.6" height="4.2" rx=".6" fill="#9e9ac8"/><rect x="24.7" y="17.5" width="6.6" height="4.2" rx=".6" fill="#6a51a3"/><rect x="32.7" y="23.1" width="6.6" height="4.2" rx=".6" fill="#807dba"/>
+    <text x="20" y="36" text-anchor="middle" font-size="5.8" font-weight="800" fill="#60757d">flow f →</text>
+    <text x="-5" y="14" text-anchor="middle" transform="rotate(-90 -5 14)" font-size="5.8" font-weight="800" fill="#60757d">flow f</text>
+  </g>
+
+  <text x="430" y="398" text-anchor="middle" fill="#60487d" font-size="17" font-weight="900">×</text>
+
+  <!-- G_y: annual inventory matrices stacked along calendar year -->
+  <rect x="446" y="372" width="293" height="40" rx="8" fill="#fff" stroke="#bfd3db"/>
+  <text x="458" y="384" class="label">G<tspan baseline-shift="sub" font-size="6">y</tspan> · annual inventory</text>
+  <text x="458" y="395" class="micro">flow × activity</text>
+  <text x="458" y="406" class="micro">one matrix for every year y</text>
+  <g transform="translate(613 375)">
+    <rect x="10" y="5" width="84" height="28" rx="3" fill="#eef5f7" stroke="#9fbfc9"/>
+    <rect x="5" y="2.5" width="84" height="28" rx="3" fill="#f5f9fa" stroke="#84adba"/>
+    <rect x="0" y="0" width="84" height="28" rx="3" fill="#fff" stroke="#5e91a2"/>
+    <g stroke="#d4e0e4" stroke-width=".6">
+      <line x1="14" y1="0" x2="14" y2="28"/><line x1="28" y1="0" x2="28" y2="28"/><line x1="42" y1="0" x2="42" y2="28"/><line x1="56" y1="0" x2="56" y2="28"/><line x1="70" y1="0" x2="70" y2="28"/>
+      <line x1="0" y1="9.3" x2="84" y2="9.3"/><line x1="0" y1="18.6" x2="84" y2="18.6"/>
+    </g>
+    <rect x="1" y="1" width="12" height="7.3" fill="#9ecae1"/><rect x="15" y="1" width="12" height="7.3" fill="#d8eef2"/><rect x="29" y="1" width="12" height="7.3" fill="#4193b8"/><rect x="43" y="1" width="12" height="7.3" fill="#f5d9d5"/><rect x="57" y="1" width="12" height="7.3" fill="#7ab4cb"/><rect x="71" y="1" width="12" height="7.3" fill="#edf3f5"/>
+    <rect x="1" y="10.3" width="12" height="7.3" fill="#edf3f5"/><rect x="15" y="10.3" width="12" height="7.3" fill="#6baed6"/><rect x="29" y="10.3" width="12" height="7.3" fill="#c9e3ec"/><rect x="43" y="10.3" width="12" height="7.3" fill="#e65b54"/><rect x="57" y="10.3" width="12" height="7.3" fill="#edf3f5"/><rect x="71" y="10.3" width="12" height="7.3" fill="#9ecae1"/>
+    <rect x="1" y="19.6" width="12" height="7.3" fill="#c9e3ec"/><rect x="15" y="19.6" width="12" height="7.3" fill="#edf3f5"/><rect x="29" y="19.6" width="12" height="7.3" fill="#7ab4cb"/><rect x="43" y="19.6" width="12" height="7.3" fill="#f3aaa4"/><rect x="57" y="19.6" width="12" height="7.3" fill="#4193b8"/><rect x="71" y="19.6" width="12" height="7.3" fill="#d8eef2"/>
+    <text x="42" y="37" text-anchor="middle" font-size="5.8" font-weight="800" fill="#60757d">activity a →</text>
+    <text x="-5" y="15" text-anchor="middle" transform="rotate(-90 -5 15)" font-size="5.8" font-weight="800" fill="#60757d">flow f</text>
+    <text x="101" y="22" class="micro">year y</text>
+  </g>
+
+  <line x1="750" y1="392" x2="775" y2="392" stroke="#60487d" stroke-width="2" marker-end="url(#arrow-purple)"/>
+
+  <!-- H_y: annual characterized inventory matrices -->
+  <rect x="786" y="372" width="340" height="40" rx="8" fill="#fff" stroke="#c8b9dc"/>
+  <text x="798" y="384" fill="#60487d" font-size="9.5" font-weight="900">H<tspan baseline-shift="sub" font-size="6">y</tspan> · characterised inventory</text>
+  <text x="798" y="395" class="micro">stored as method × activity × flow × year</text>
+  <text x="798" y="406" class="micro">annual characterised matrices →</text>
+  <g transform="translate(961 376)">
+    <g transform="translate(0 0)">
+      <rect x="0" y="0" width="48" height="27" rx="3" fill="#fff" stroke="#c8b9dc"/>
+      <rect x="4" y="4" width="8" height="6" fill="#9ecae1"/><rect x="13" y="4" width="8" height="6" fill="#6baed6"/><rect x="22" y="4" width="8" height="6" fill="#dadaeb"/><rect x="31" y="4" width="8" height="6" fill="#f7f7f7"/>
+      <rect x="4" y="11" width="8" height="6" fill="#fee0d2"/><rect x="13" y="11" width="8" height="6" fill="#fc9272"/><rect x="22" y="11" width="8" height="6" fill="#9e9ac8"/><rect x="31" y="11" width="8" height="6" fill="#6baed6"/>
+      <text x="24" y="25" text-anchor="middle" font-size="5.4" font-weight="800" fill="#60757d">2030</text>
+    </g>
+    <g transform="translate(54 0)">
+      <rect x="0" y="0" width="48" height="27" rx="3" fill="#fff" stroke="#c8b9dc"/>
+      <rect x="4" y="4" width="8" height="6" fill="#6baed6"/><rect x="13" y="4" width="8" height="6" fill="#9ecae1"/><rect x="22" y="4" width="8" height="6" fill="#9e9ac8"/><rect x="31" y="4" width="8" height="6" fill="#dadaeb"/>
+      <rect x="4" y="11" width="8" height="6" fill="#fc9272"/><rect x="13" y="11" width="8" height="6" fill="#fee0d2"/><rect x="22" y="11" width="8" height="6" fill="#6baed6"/><rect x="31" y="11" width="8" height="6" fill="#9e9ac8"/>
+      <text x="24" y="25" text-anchor="middle" font-size="5.4" font-weight="800" fill="#60757d">2050</text>
+    </g>
+    <g transform="translate(108 0)">
+      <rect x="0" y="0" width="48" height="27" rx="3" fill="#fff" stroke="#c8b9dc"/>
+      <rect x="4" y="4" width="8" height="6" fill="#dadaeb"/><rect x="13" y="4" width="8" height="6" fill="#9e9ac8"/><rect x="22" y="4" width="8" height="6" fill="#6baed6"/><rect x="31" y="4" width="8" height="6" fill="#9ecae1"/>
+      <rect x="4" y="11" width="8" height="6" fill="#fee0d2"/><rect x="13" y="11" width="8" height="6" fill="#fc9272"/><rect x="22" y="11" width="8" height="6" fill="#9e9ac8"/><rect x="31" y="11" width="8" height="6" fill="#6baed6"/>
+      <text x="24" y="25" text-anchor="middle" font-size="5.4" font-weight="800" fill="#60757d">2070</text>
+    </g>
+  </g>
+</svg>

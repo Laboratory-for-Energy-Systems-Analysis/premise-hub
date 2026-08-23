@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 200" role="img" aria-labelledby="title desc">
+  <title id="title">Physical denominator for one net tonne stored</title>
+  <desc id="desc">Gross atmospheric carbon dioxide capture is scaled so that, after transport losses, one net tonne reaches geological storage. Life-cycle greenhouse gas impacts are reported separately.</desc>
+  <defs>
+    <marker id="arrow-teal" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0 0 L9 4.5 L0 9 Z" fill="#008a82"/>
+    </marker>
+    <marker id="arrow-green" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0 0 L9 4.5 L0 9 Z" fill="#3e7654"/>
+    </marker>
+    <marker id="arrow-red" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0 0 L9 4.5 L0 9 Z" fill="#c44e52"/>
+    </marker>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#17303d" flood-opacity=".08"/>
+    </filter>
+    <style>
+      text { font-family: Arial, Helvetica, sans-serif; }
+      .panel { fill: #fff; stroke: #d2dfe3; stroke-width: 1.5; filter: url(#shadow); }
+      .kicker { font-size: 12px; font-weight: 900; letter-spacing: 1.2px; }
+      .title { fill: #0b3b52; font-size: 26px; font-weight: 900; }
+      .system-title { font-size: 20px; }
+      .note { fill: #5b6a74; font-size: 14px; }
+      .pill { font-size: 11px; font-weight: 900; letter-spacing: .8px; text-anchor: middle; }
+    </style>
+  </defs>
+
+  <!-- Physical flow panel -->
+  <rect x="12" y="12" width="610" height="176" rx="18" class="panel"/>
+  <text x="38" y="39" class="kicker" fill="#008a82">PHYSICAL CARBON BALANCE</text>
+
+  <!-- Pipeline -->
+  <path d="M48 93 H190" fill="none" stroke="#008a82" stroke-width="15" stroke-linecap="round"/>
+  <path d="M48 93 H190" fill="none" stroke="#dff1ee" stroke-width="9" stroke-linecap="round"/>
+  <path d="M92 83 V103 M98 83 V103 M142 83 V103 M148 83 V103" stroke="#008a82" stroke-width="2.3"/>
+  <path d="M78 101 V119 H112 V101 M128 101 V119 H162 V101 M73 119 H117 M123 119 H167" fill="none" stroke="#008a82" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M190 93 H213" fill="none" stroke="#008a82" stroke-width="4" marker-end="url(#arrow-teal)"/>
+
+  <!-- Geological store -->
+  <rect x="220" y="45" width="130" height="118" rx="13" fill="#f7fbfa" stroke="#008a82" stroke-width="2"/>
+  <path d="M232 92 C249 85 265 100 282 93 C300 86 319 99 338 91 V109 H232 Z" fill="#dfead7"/>
+  <path d="M232 109 C250 102 268 117 286 110 C304 103 322 116 338 108 V128 H232 Z" fill="#8f9d96"/>
+  <path d="M232 128 C250 121 268 136 286 129 C304 122 322 135 338 127 V153 H232 Z" fill="#cfe5e1"/>
+  <path d="M257 61 H282 V137" fill="none" stroke="#008a82" stroke-width="5" stroke-linecap="round"/>
+  <path d="M282 80 V128" fill="none" stroke="#fff" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arrow-teal)"/>
+  <path d="M283 136 C297 128 318 131 326 142 C319 151 298 154 284 146 C278 143 278 139 283 136 Z" fill="#57b6ad" opacity=".75"/>
+
+  <text x="370" y="73" class="title system-title">gross atmospheric CO₂</text>
+  <text x="370" y="97" class="title system-title">capture</text>
+  <text x="370" y="121" class="title system-title">minus transport loss</text>
+  <text x="370" y="141" class="note">supply-chain GHGs reported separately</text>
+  <rect x="370" y="150" width="101" height="25" rx="12.5" fill="#dff1ee"/>
+  <text x="420.5" y="167" class="pill" fill="#00746e">VARIABLE</text>
+
+  <!-- Normalization -->
+  <circle cx="700" cy="100" r="42" fill="#0b3b52"/>
+  <text x="700" y="116" fill="#fff" font-size="52" font-weight="900" text-anchor="middle">→</text>
+
+  <!-- Atmospheric outcome panel -->
+  <rect x="778" y="12" width="610" height="176" rx="18" class="panel"/>
+  <text x="804" y="39" class="kicker" fill="#4193b8">FIXED FUNCTIONAL UNIT</text>
+
+  <!-- Cloud and opposing exchange arrows -->
+  <path d="M836 118 C820 118 809 108 809 94 C809 81 819 71 832 69 C837 50 853 39 873 39 C895 39 912 53 916 73 C921 70 927 69 934 69 C952 69 965 81 965 96 C965 110 953 118 937 118 Z" fill="#edf6f8" stroke="#4193b8" stroke-width="2"/>
+  <text x="887" y="92" fill="#0b3b52" font-size="21" font-weight="900" text-anchor="middle">atmosphere</text>
+  <path d="M832 123 V143" fill="none" stroke="#3e7654" stroke-width="4" marker-end="url(#arrow-green)"/>
+  <text x="823" y="160" fill="#3e7654" font-size="12" font-weight="800" text-anchor="middle">uptake</text>
+  <path d="M944 143 V123" fill="none" stroke="#c44e52" stroke-width="4" marker-end="url(#arrow-red)"/>
+  <text x="951" y="160" fill="#a13d40" font-size="12" font-weight="800" text-anchor="middle">release</text>
+
+  <text x="1000" y="83" class="title">1 net tonne CO₂</text>
+  <text x="1000" y="111" class="title">stored from the atmosphere</text>
+  <text x="1000" y="136" class="note">physical denominator for reporting impacts</text>
+  <rect x="1000" y="148" width="133" height="26" rx="13" fill="#e5f0f5"/>
+  <text x="1066.5" y="165" class="pill" fill="#276c8a">FUNCTIONAL UNIT</text>
+</svg>

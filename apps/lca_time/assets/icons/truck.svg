@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Freight truck">
+  <path d="M4 9h16v14H4z" fill="none" stroke="#fff" stroke-linejoin="round" stroke-width="2"/>
+  <path d="M20 14h5l3 5v4h-8z" fill="none" stroke="#fff" stroke-linejoin="round" stroke-width="2"/>
+  <path d="M23 16h2l1.6 3H23zM7 13h10M7 17h7" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/>
+  <circle cx="9" cy="24" r="2.5" fill="#fff"/>
+  <circle cx="24" cy="24" r="2.5" fill="#fff"/>
+</svg>

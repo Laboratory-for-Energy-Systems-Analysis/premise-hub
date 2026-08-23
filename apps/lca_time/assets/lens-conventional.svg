@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420" height="150" viewBox="0 0 420 150" role="img" aria-labelledby="title desc">
+  <title id="title">Conventional LCA snapshot</title>
+  <desc id="desc">Resources, an LCA system, its service and emissions are represented in one present-day system state.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L8 4 L0 8 Z" fill="#84929a"/>
+    </marker>
+  </defs>
+  <style>
+    text { font-family: Arial, Helvetica, sans-serif; }
+    .label { fill: #0b3b52; font-size: 13px; font-weight: 800; }
+    .small { fill: #5b6a74; font-size: 10px; font-weight: 700; letter-spacing: .35px; }
+    .box { fill: #ffffff; stroke: #c8d3d8; stroke-width: 1.5; }
+  </style>
+  <rect x="189" y="7" width="42" height="126" rx="10" fill="#84929a" opacity=".09"/>
+  <line x1="28" y1="126" x2="392" y2="126" stroke="#bcc9cf" stroke-width="2"/>
+  <line x1="210" y1="118" x2="210" y2="134" stroke="#84929a" stroke-width="3"/>
+  <text x="210" y="146" text-anchor="middle" class="small">PRESENT DAY</text>
+  <rect class="box" x="15" y="47" width="82" height="42" rx="9"/>
+  <text class="label" x="56" y="66" text-anchor="middle">resources</text>
+  <text class="small" x="56" y="79" text-anchor="middle">inputs</text>
+  <line x1="98" y1="68" x2="144" y2="68" stroke="#84929a" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <rect x="150" y="35" width="120" height="66" rx="12" fill="#edf1f3" stroke="#84929a" stroke-width="2"/>
+  <text class="label" x="210" y="62" text-anchor="middle">LCA system</text>
+  <text class="small" x="210" y="78" text-anchor="middle">one system state</text>
+  <line x1="271" y1="68" x2="316" y2="68" stroke="#84929a" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <rect class="box" x="322" y="47" width="83" height="42" rx="9"/>
+  <text class="label" x="363.5" y="66" text-anchor="middle">service</text>
+  <text class="small" x="363.5" y="79" text-anchor="middle">functional unit</text>
+  <line x1="210" y1="35" x2="210" y2="17" stroke="#84929a" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text class="small" x="242" y="18">EMISSIONS</text>
+</svg>

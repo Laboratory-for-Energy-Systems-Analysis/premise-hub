@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="370" height="136" viewBox="0 0 370 136" role="img" aria-labelledby="title desc">
+  <title id="title">Northern European electricity generation</title>
+  <desc id="desc">Total secondary electricity generation in the REMIND-EU Northern European region for SSP2-NPi and SSP2-PkBudg1000.</desc>
+  <style>
+    text { font-family: Arial, Helvetica, sans-serif; fill: #526771; }
+    .grid { stroke: #c5d3d7; stroke-width: 1; opacity: .65; }
+    .tick, .year { font-size: 8px; font-weight: 750; }
+    .trajectory { stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+    .workshop-year { stroke: #006b8f; stroke-width: 1.1; stroke-dasharray: 3 4; opacity: .4; }
+    .endpoint { font-size: 9px; font-weight: 900; paint-order: stroke; stroke: #fff; stroke-width: 3px; }
+  </style>
+  <line x1="34.0" y1="108.0" x2="342.0" y2="108.0" class="grid" /><text x="28.0" y="111.0" text-anchor="end" class="tick">0.8</text><line x1="34.0" y1="82.9" x2="342.0" y2="82.9" class="grid" /><text x="28.0" y="85.9" text-anchor="end" class="tick">1.0</text><line x1="34.0" y1="57.7" x2="342.0" y2="57.7" class="grid" /><text x="28.0" y="60.7" text-anchor="end" class="tick">1.2</text><line x1="34.0" y1="32.6" x2="342.0" y2="32.6" class="grid" /><text x="28.0" y="35.6" text-anchor="end" class="tick">1.4</text>
+  <line x1="53.2" y1="20.0" x2="53.2" y2="108.0" class="workshop-year" /><line x1="149.5" y1="20.0" x2="149.5" y2="108.0" class="workshop-year" />
+  <polyline points="34.0,92.8 53.2,84.2 72.5,74.9 91.8,68.2 111.0,59.7 130.2,47.8 149.5,36.2 168.8,31.6 188.0,22.7 226.5,22.2 265.0,24.3 303.5,34.7 342.0,46.9" fill="none" stroke="#6f818a" class="trajectory" /><circle cx="342.0" cy="46.9" r="4" fill="#6f818a" /><text x="337.0" y="39.9" text-anchor="end" fill="#6f818a" class="endpoint">1.29</text><polyline points="34.0,92.8 53.2,84.2 72.5,84.7 91.8,83.0 111.0,79.6 130.2,79.2 149.5,80.7 168.8,82.4 188.0,80.2 226.5,76.5 265.0,70.7 303.5,73.2 342.0,74.3" fill="none" stroke="#008a82" class="trajectory" /><circle cx="342.0" cy="74.3" r="4" fill="#008a82" /><text x="337.0" y="67.3" text-anchor="end" fill="#008a82" class="endpoint">1.07</text>
+  <text x="34.0" y="129" text-anchor="middle" class="year">2020</text><text x="149.5" y="129" text-anchor="middle" class="year">2050</text><text x="342.0" y="129" text-anchor="middle" class="year">2100</text>
+</svg>

@@ -1,0 +1,207 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 450" role="img" aria-labelledby="title desc">
+  <title id="title">DACCS system boundary and selected 2025 inventory flows</title>
+  <desc id="desc">Atmospheric carbon dioxide enters a solid-sorbent direct air capture plant. Electricity drives air contact and a heat pump for low-temperature sorbent regeneration. The plant captures 1.03 tonnes of carbon dioxide; a 2000 kilometre pipeline loses 0.029 tonnes before one net tonne reaches geological storage.</desc>
+  <defs>
+    <marker id="arrow-biomass" markerWidth="7" markerHeight="7" refX="6.3" refY="3.5" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0 0 L7 3.5 L0 7 Z" fill="#3e7654"/>
+    </marker>
+    <marker id="arrow-energy" markerWidth="7" markerHeight="7" refX="6.3" refY="3.5" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0 0 L7 3.5 L0 7 Z" fill="#d18a12"/>
+    </marker>
+    <marker id="arrow-co2" markerWidth="7" markerHeight="7" refX="6.3" refY="3.5" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0 0 L7 3.5 L0 7 Z" fill="#008a82"/>
+    </marker>
+    <marker id="arrow-other" markerWidth="7" markerHeight="7" refX="6.3" refY="3.5" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0 0 L7 3.5 L0 7 Z" fill="#6f7f87"/>
+    </marker>
+    <filter id="shadow" x="-15%" y="-20%" width="130%" height="150%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#17303d" flood-opacity=".09"/>
+    </filter>
+    <style>
+      text { font-family: Arial, Helvetica, sans-serif; }
+      .boundary { fill: #f7fbfc; stroke: #74a9bf; stroke-width: 2; stroke-dasharray: 10 7; }
+      .boundary-bottom { fill: none; stroke: #4193b8; stroke-width: 2.5; stroke-dasharray: 10 7; }
+      .boundary-label { fill: #276c8a; font-size: 12px; font-weight: 900; letter-spacing: 1.2px; }
+      .node { fill: #fff; stroke: #cbd9de; stroke-width: 1.7; filter: url(#shadow); }
+      .node-co2 { fill: #edf8f7; stroke: #008a82; }
+      .node-title { fill: #0b3b52; font-size: 15px; font-weight: 900; text-anchor: middle; }
+      .node-title-compact { font-size: 13.5px; }
+      .node-note { fill: #5b6a74; font-size: 10px; text-anchor: middle; }
+      .flow-biomass { fill: none; stroke: #3e7654; stroke-width: 3.4; marker-end: url(#arrow-biomass); }
+      .flow-energy { fill: none; stroke: #d18a12; stroke-width: 3; marker-end: url(#arrow-energy); }
+      .flow-co2 { fill: none; stroke: #008a82; stroke-width: 3.4; marker-end: url(#arrow-co2); }
+      .flow-other { fill: none; stroke: #6f7f87; stroke-width: 2.8; marker-end: url(#arrow-other); }
+      .flow-label { fill: #344b57; stroke: #fff; stroke-width: 3px; paint-order: stroke fill; font-size: 10.5px; font-weight: 800; text-anchor: middle; }
+      .biomass-label { fill: #315d42; }
+      .energy-label { fill: #80560b; }
+      .co2-label { fill: #00736d; }
+      .other-label { fill: #53636c; }
+      .input-energy { fill: #fff8e7; stroke: #d18a12; stroke-width: 1.5; }
+      .input-other { fill: #f1f5f6; stroke: #6f7f87; stroke-width: 1.5; }
+      .small-title { fill: #0b3b52; font-size: 13px; font-weight: 900; text-anchor: middle; }
+      .small-note { fill: #5b6a74; font-size: 10px; text-anchor: middle; }
+      .atmosphere { fill: #edf6f8; stroke: #4193b8; stroke-width: 2; }
+      .geo-label { fill: #415965; font-size: 7.5px; font-weight: 800; text-anchor: end; }
+    </style>
+  </defs>
+
+  <!-- Atmospheric pool, aligned with the BECCS system slide. -->
+  <g transform="translate(178 0)">
+    <path d="M683 81 C671 81 663 73 663 63 C663 53 670 46 680 44 C684 30 696 22 711 22 C727 22 740 32 743 47 C747 45 752 44 757 44 C770 44 780 53 780 64 C780 74 771 81 759 81 Z" class="atmosphere"/>
+    <text x="722" y="62" class="small-title">atmosphere</text>
+  </g>
+
+  <!-- Project boundary -->
+  <rect x="34" y="88" width="1732" height="310" rx="22" class="boundary"/>
+  <path d="M865 77 C700 82 410 80 230 91 C210 93 205 111 205 145" class="flow-co2"/>
+  <path d="M1338 171 C1328 115 1150 80 958 64" class="flow-co2"/>
+  <text x="485" y="52" class="flow-label co2-label">Carbon dioxide, in air · 1.03 t</text>
+  <text x="485" y="67" class="flow-label co2-label">atmospheric uptake</text>
+  <text x="1300" y="52" class="flow-label co2-label">Transport loss · 0.029 t CO₂</text>
+  <text x="1300" y="67" class="flow-label co2-label">2.8% of captured stream</text>
+  <rect x="1304" y="98" width="450" height="20" rx="3" fill="#f7fbfc"/>
+  <text x="1318" y="112" class="boundary-label">DACCS SYSTEM BOUNDARY · 2025 NORTHERN EUROPE</text>
+
+  <!-- Air contactor -->
+  <g transform="translate(-120 0)">
+  <rect x="220" y="145" width="210" height="112" rx="15" class="node node-co2"/>
+  <!-- Modular contactor: a five-blade induced-draft fan and louvered sorbent wall. -->
+  <circle cx="244" cy="200" r="16" fill="#fff" stroke="#4193b8" stroke-width="1.8"/>
+  <g transform="translate(244 200)" fill="#86c0d2" stroke="#4193b8" stroke-width=".55" stroke-linejoin="round">
+    <path d="M-1.5 -1.2 C-2.3 -5 -1.2 -10 1.3 -11 C4.5 -8.8 4.2 -4.2 1.2 -.8 Z"/>
+    <path d="M-1.5 -1.2 C-2.3 -5 -1.2 -10 1.3 -11 C4.5 -8.8 4.2 -4.2 1.2 -.8 Z" transform="rotate(72)"/>
+    <path d="M-1.5 -1.2 C-2.3 -5 -1.2 -10 1.3 -11 C4.5 -8.8 4.2 -4.2 1.2 -.8 Z" transform="rotate(144)"/>
+    <path d="M-1.5 -1.2 C-2.3 -5 -1.2 -10 1.3 -11 C4.5 -8.8 4.2 -4.2 1.2 -.8 Z" transform="rotate(216)"/>
+    <path d="M-1.5 -1.2 C-2.3 -5 -1.2 -10 1.3 -11 C4.5 -8.8 4.2 -4.2 1.2 -.8 Z" transform="rotate(288)"/>
+    <circle r="2.7" fill="#0b3b52" stroke="#fff" stroke-width=".8"/>
+  </g>
+  <path d="M220 184 H227 M220 200 H227 M220 216 H227 M260 200 H270" fill="none" stroke="#86b8c9" stroke-width="2" stroke-linecap="round"/>
+  <rect x="270" y="163" width="55" height="74" rx="7" fill="#fff" stroke="#4193b8" stroke-width="1.9"/>
+  <path d="M278 175 H317 M278 187 H317 M278 199 H317 M278 211 H317 M278 223 H317" stroke="#78b7c9" stroke-width="2"/>
+  <g fill="#008a82"><circle cx="286" cy="181" r="2.1"/><circle cx="307" cy="193" r="2.1"/><circle cx="288" cy="217" r="2.1"/><circle cx="310" cy="229" r="2.1"/></g>
+  <path d="M325 184 H332 M325 200 H332 M325 216 H332" fill="none" stroke="#86b8c9" stroke-width="2" stroke-linecap="round"/>
+  <text x="369" y="181" class="node-title node-title-compact">Air contactor</text>
+  <text x="370" y="203" class="node-note">solid-sorbent beds</text>
+  <text x="370" y="220" class="node-note">fans move ambient air</text>
+  </g>
+
+  <!-- Regeneration -->
+  <g transform="translate(5 0)">
+  <rect x="512" y="145" width="222" height="112" rx="15" class="node node-co2"/>
+  <!-- Two cyclic vessels and a plate heat exchanger make regeneration explicit. -->
+  <rect x="533" y="163" width="35" height="76" rx="11" fill="#fff" stroke="#4193b8" stroke-width="1.9"/>
+  <rect x="576" y="163" width="35" height="76" rx="11" fill="#fff" stroke="#4193b8" stroke-width="1.9"/>
+  <path d="M541 177 H560 M541 189 H560 M541 201 H560 M541 213 H560 M541 225 H560 M584 177 H603 M584 189 H603 M584 201 H603 M584 213 H603 M584 225 H603" stroke="#78b7c9" stroke-width="1.7"/>
+  <g fill="#008a82"><circle cx="550" cy="183" r="2.2"/><circle cx="550" cy="207" r="2.2"/><circle cx="550" cy="231" r="2.2"/></g>
+  <g fill="#c4d0d4"><circle cx="593" cy="183" r="2.2"/><circle cx="593" cy="207" r="2.2"/><circle cx="593" cy="231" r="2.2"/></g>
+  <path d="M548 156 C560 148 581 149 591 159 M587 154 L592 159 L588 164 M596 246 C584 253 561 251 551 241 M555 246 L550 241 L554 236" fill="none" stroke="#6f7f87" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="619" y="174" width="27" height="48" rx="6" fill="#fff8e7" stroke="#d18a12" stroke-width="1.8"/>
+  <path d="M624 182 H641 M624 190 H641 M624 198 H641 M624 206 H641 M624 214 H641" fill="none" stroke="#d18a12" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M619 184 H611 M646 212 H653" fill="none" stroke="#d18a12" stroke-width="1.7" stroke-linecap="round"/>
+  <text x="687" y="177" class="node-title node-title-compact">Sorbent</text>
+  <text x="687" y="196" class="node-title node-title-compact">regeneration</text>
+  <text x="687" y="218" class="node-note">heat + vacuum</text>
+  <text x="687" y="233" class="node-note">concentrated CO₂</text>
+  </g>
+  <path d="M310 201 H517" class="flow-other"/>
+  <text x="414" y="185" class="flow-label other-label">loaded sorbent</text>
+  <path d="M517 229 H310" class="flow-other"/>
+  <text x="414" y="246" class="flow-label other-label">regenerated sorbent</text>
+
+  <!-- Conditioning, pipeline and storage -->
+  <g transform="translate(150 0)">
+  <rect x="809" y="156" width="140" height="90" rx="14" class="node node-co2"/>
+  <path d="M821 186 H844 C858 186 863 191 863 200 C863 209 858 214 844 214 H821 Z" fill="#edf2f4" stroke="#55737f" stroke-width="2"/>
+  <circle cx="842" cy="200" r="10" fill="#fff" stroke="#55737f" stroke-width="1.7"/>
+  <path d="M842 191 C849 195 849 205 842 209 C835 205 835 195 842 191 Z M816 195 H823 M863 195 H871 M863 205 H871" fill="none" stroke="#55737f" stroke-width="2" stroke-linecap="round"/>
+  <text x="910" y="191" class="node-title node-title-compact">Compression</text>
+  <text x="908" y="211" class="node-note">condition CO₂</text>
+  </g>
+  <path d="M739 201 H959" class="flow-co2"/>
+  <text x="849" y="185" class="flow-label co2-label">1.03 t CO₂ captured</text>
+
+  <g transform="translate(280 0)">
+  <rect x="999" y="171" width="118" height="60" rx="12" class="node node-co2"/>
+  <path d="M1017 201 H1099" stroke="#008a82" stroke-width="12" stroke-linecap="round"/>
+  <path d="M1017 201 H1099" stroke="#dff1ee" stroke-width="6" stroke-linecap="round"/>
+  <path d="M1038 191 V211 M1044 191 V211 M1072 191 V211 M1078 191 V211" stroke="#008a82" stroke-width="2"/>
+  <circle cx="1058" cy="185" r="8" fill="#fff" stroke="#008a82" stroke-width="1.8"/>
+  <path d="M1058 177 V193 M1050 185 H1066 M1053 180 L1063 190 M1063 180 L1053 190 M1058 193 V201 M1032 208 V220 H1047 V208 M1069 208 V220 H1084 V208" fill="none" stroke="#008a82" stroke-width="1.6" stroke-linecap="round"/>
+  <text x="1058" y="248" class="node-note">2,000 km · 9 booster pumps</text>
+  </g>
+  <path d="M1099 201 H1279" class="flow-co2"/>
+
+  <g transform="translate(400 0)">
+  <rect x="1170" y="137" width="160" height="122" rx="15" class="node node-co2"/>
+  <text x="1250" y="157" class="node-title node-title-compact">Geological storage</text>
+  <path d="M1188 174 C1207 168 1226 181 1245 174 C1264 168 1286 181 1312 174 V188 H1188 Z" fill="#dfead7"/>
+  <path d="M1188 189 C1207 183 1226 196 1245 190 C1264 184 1286 196 1312 189 V203 H1188 Z" fill="#81938b"/>
+  <path d="M1188 204 C1207 198 1226 211 1245 205 C1264 199 1286 211 1312 204 V237 H1188 Z" fill="#c7dfda"/>
+  <path d="M1200 171 H1220 V218 L1236 226" fill="none" stroke="#008a82" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M1195 171 H1225 M1198 166 H1222 M1203 166 V160 M1217 166 V160" fill="none" stroke="#0b3b52" stroke-width="1.7" stroke-linecap="round"/>
+  <path d="M1233 220 L1242 226 L1233 232 M1220 215 H1227 M1220 221 H1229" fill="none" stroke="#008a82" stroke-width="1.8"/>
+  <path d="M1238 220 C1254 213 1281 216 1296 227 C1289 237 1258 241 1239 232 C1232 229 1232 224 1238 220 Z" fill="#57b6ad" opacity=".82"/>
+  <g fill="#fff" stroke="#008a82" stroke-width="1">
+    <circle cx="1252" cy="226" r="2.5"/><circle cx="1266" cy="231" r="3"/><circle cx="1281" cy="227" r="2"/>
+  </g>
+  <text x="1303" y="199" class="geo-label">caprock</text>
+  <text x="1303" y="217" class="geo-label">saline reservoir</text>
+  <text x="1250" y="246" class="node-note">1.00 t net stored</text>
+  <text x="1250" y="255" class="node-note">3 km injection well</text>
+  </g>
+  <path d="M1397 201 H1570" class="flow-co2"/>
+
+  <!-- Heat pump and energy inputs -->
+  <g transform="translate(5 0)">
+  <rect x="512" y="294" width="222" height="72" rx="13" class="input-energy"/>
+  <!-- Electric heat pump: cold-side input, compressor loop and useful heat. -->
+  <rect x="529" y="306" width="52" height="47" rx="8" fill="#fff" stroke="#d18a12" stroke-width="1.8"/>
+  <path d="M535 321 C538 318 541 324 544 321 M535 327 C538 324 541 330 544 327 M535 333 C538 330 541 336 544 333" fill="none" stroke="#4193b8" stroke-width="1.7" stroke-linecap="round"/>
+  <circle cx="556" cy="328" r="8" fill="#fff8e7" stroke="#d18a12" stroke-width="1.7"/>
+  <path d="M558 320 L552 328 H556 L554 335 L561 326 H557 Z" fill="#d18a12"/>
+  <path d="M546 316 C552 311 563 312 567 318 M566 315 L567 318 L564 319 M566 339 C560 345 550 344 546 338 M547 342 L546 338 L550 338" fill="none" stroke="#6f7f87" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M569 335 C565 331 573 328 569 324 M574 335 C570 331 578 328 574 324" fill="none" stroke="#d18a12" stroke-width="1.6" stroke-linecap="round"/>
+  <text x="659" y="316" class="small-title">Heat pump · COP = 3</text>
+  <text x="657" y="338" class="small-note">1.13 MWh → 12.24 GJ heat</text>
+  <text x="657" y="353" class="small-note">low-temperature regeneration</text>
+  <path d="M623 294 V257" class="flow-energy"/>
+  <text x="650" y="280" class="flow-label energy-label">12.24 GJ heat</text>
+  </g>
+
+  <g transform="translate(-120 0)">
+  <rect x="220" y="294" width="248" height="72" rx="13" class="input-energy"/>
+  <circle cx="247" cy="330" r="14" fill="#fff" stroke="#d18a12" stroke-width="1.8"/>
+  <path d="M250 319 L241 331 H247 L244 341 L254 328 H249 Z" fill="#d18a12"/>
+  <text x="355" y="317" class="small-title">Capture electricity · 1.85 MWh</text>
+  <text x="355" y="338" class="small-note">0.72 MWh fans + process</text>
+  <text x="355" y="353" class="small-note">1.13 MWh to heat pump · Northern European supply</text>
+  <path d="M325 294 V257" class="flow-energy"/>
+  <text x="351" y="280" class="flow-label energy-label">0.72 MWh</text>
+  </g>
+  <path d="M348 330 H517" class="flow-energy"/>
+  <text x="433" y="318" class="flow-label energy-label">1.13 MWh</text>
+
+  <g transform="translate(150 0)">
+  <rect x="780" y="294" width="198" height="72" rx="13" class="input-energy"/>
+  <text x="879" y="313" class="small-title">Compression + storage</text>
+  <text x="879" y="328" class="small-title">0.14 MWh total</text>
+  <text x="879" y="347" class="small-note">0.12 MWh initial compression + injection</text>
+  <text x="879" y="361" class="small-note">0.02 MWh · 9 booster pumps</text>
+  <path d="M879 294 V246" class="flow-energy"/>
+  <text x="906" y="278" class="flow-label energy-label">0.14 MWh</text>
+  </g>
+
+  <!-- Material make-up is part of the DACCS system boundary. -->
+  <g transform="translate(5 0)">
+  <rect x="480" y="96" width="246" height="42" rx="10" class="input-other"/>
+  <path d="M494 105 H523 L520 130 H497 Z" fill="#fff" stroke="#6f7f87" stroke-width="1.4"/>
+  <path d="M497 111 H520 M501 102 H516 L519 106 H498 Z" fill="#dfe6e8" stroke="#6f7f87" stroke-width="1.1"/>
+  <g fill="#aebec4" stroke="#6f7f87" stroke-width=".5"><circle cx="503" cy="118" r="1.9"/><circle cx="510" cy="115" r="1.7"/><circle cx="515" cy="122" r="2"/><circle cx="506" cy="126" r="1.6"/></g>
+  <text x="622" y="113" class="small-title">Solid sorbent make-up</text>
+  <text x="622" y="129" class="small-note">3.09 kg amine-based silica</text>
+  <path d="M623 138 V145" class="flow-other"/>
+  </g>
+
+  <text x="1540" y="383" fill="#6b7b84" font-size="10" text-anchor="middle">100 kt CO₂/year · 20-year plant life · infrastructure included</text>
+  <path d="M56 398 H1744" class="boundary-bottom"/>
+</svg>

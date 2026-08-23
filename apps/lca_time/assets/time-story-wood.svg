@@ -1,0 +1,186 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 305" preserveAspectRatio="none" role="img" aria-labelledby="title desc">
+  <title id="title">Static and time-explicit representations of carbon stored in construction timber</title>
+  <desc id="desc">The static panel assigns biomass growth, use as construction material, and combustion to the same reference time, so uptake and release cancel. The time-explicit panel shows growth before construction, sixty years of carbon storage in a building, and carbon dioxide release at end-of-life combustion, with a schematic temporary climate effect.</desc>
+  <defs>
+    <linearGradient id="panel-static" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#f2f5f6"/>
+    </linearGradient>
+    <linearGradient id="panel-time" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#f0f7f6"/>
+    </linearGradient>
+    <linearGradient id="stored-carbon" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#d7e9dc"/>
+      <stop offset="1" stop-color="#ead9b9"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#173743" flood-opacity="0.10"/>
+    </filter>
+    <marker id="arrow-green" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0 0 L7 3.5 L0 7 Z" fill="#3e7654"/>
+    </marker>
+    <marker id="arrow-red" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0 0 L7 3.5 L0 7 Z" fill="#c44e52"/>
+    </marker>
+    <marker id="arrow-grey" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0 0 L7 3.5 L0 7 Z" fill="#80939a"/>
+    </marker>
+    <style>
+      text { font-family: Arial, Helvetica, sans-serif; }
+      .panel { stroke: #d6e0e4; stroke-width: 1.2; }
+      .tag { font-size: 8px; font-weight: 900; letter-spacing: 1.2px; }
+      .panel-title { fill: #0b3b52; font-size: 18px; font-weight: 900; }
+      .panel-subtitle { fill: #60757d; font-size: 9px; font-weight: 700; }
+      .event-card { fill: #ffffff; stroke: #dce4e7; stroke-width: 1; }
+      .event-title { fill: #173743; font-size: 10px; font-weight: 900; text-anchor: middle; }
+      .event-note { fill: #687c83; font-size: 7.5px; font-weight: 700; text-anchor: middle; }
+      .small-label { fill: #687c83; font-size: 8px; font-weight: 800; }
+      .year { fill: #526971; font-size: 8px; font-weight: 900; text-anchor: middle; }
+      .phase-label { fill: #315b48; font-size: 8px; font-weight: 900; text-anchor: middle; }
+      .climate-label { fill: #39715d; font-size: 8px; font-weight: 900; }
+    </style>
+  </defs>
+
+  <rect x="1" y="1" width="420" height="303" rx="14" fill="url(#panel-static)" class="panel"/>
+  <rect x="435" y="1" width="724" height="303" rx="14" fill="url(#panel-time)" class="panel"/>
+
+  <!-- STATIC PANEL -->
+  <rect x="18" y="16" width="82" height="18" rx="9" fill="#e7ecee"/>
+  <text x="59" y="28" text-anchor="middle" fill="#52646c" class="tag">STATIC LCA</text>
+  <text x="18" y="55" class="panel-title">A 60-year sequence shown as one instant</text>
+  <text x="18" y="69" class="panel-subtitle">Process order and duration are omitted from the inventory.</text>
+
+  <g transform="translate(18 82)" filter="url(#shadow)">
+    <rect width="118" height="92" rx="10" class="event-card"/>
+    <g transform="translate(59 10)">
+      <rect x="-4" y="35" width="8" height="21" rx="2" fill="#8b663e"/>
+      <path d="M0 0 L-23 37 H23 Z" fill="#3e7654"/>
+      <path d="M0 12 L-19 45 H19 Z" fill="#4f8862"/>
+      <path d="M0 24 L-15 52 H15 Z" fill="#65a078"/>
+    </g>
+    <text x="59" y="75" class="event-title">Biomass growth</text>
+    <text x="59" y="87" class="event-note" fill="#3e7654">− CO₂ uptake</text>
+  </g>
+
+  <g transform="translate(151 82)" filter="url(#shadow)">
+    <rect width="118" height="92" rx="10" class="event-card"/>
+    <g transform="translate(28 13)" stroke="#9a6a33" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none">
+      <path d="M4 45 V17 L31 1 L58 17 V45"/>
+      <path d="M4 17 H58 M17 10 V45 M45 10 V45 M4 31 H58"/>
+      <path d="M17 31 L31 17 L45 31" stroke-width="3"/>
+    </g>
+    <text x="59" y="75" class="event-title">Timber building</text>
+    <text x="59" y="87" class="event-note">60 years of use</text>
+  </g>
+
+  <g transform="translate(284 82)" filter="url(#shadow)">
+    <rect width="118" height="92" rx="10" class="event-card"/>
+    <g transform="translate(34 10)">
+      <rect x="5" y="25" width="42" height="32" rx="4" fill="#7b8e95"/>
+      <rect x="34" y="4" width="9" height="27" rx="2" fill="#586e76"/>
+      <path d="M14 49 C7 39 14 33 18 29 C18 37 24 38 24 46 C27 39 31 36 33 31 C38 40 37 49 31 54 C25 59 18 57 14 49 Z" fill="#d99614"/>
+      <path d="M19 48 C17 43 20 40 23 37 C23 42 28 44 27 50 C25 54 21 54 19 48 Z" fill="#f2c14e"/>
+    </g>
+    <text x="59" y="75" class="event-title">Combustion</text>
+    <text x="59" y="87" class="event-note" fill="#c44e52">+ CO₂ release</text>
+  </g>
+
+  <path d="M77 177 V192 M210 177 V192 M343 177 V192" fill="none" stroke="#9dafb5" stroke-width="1.5" stroke-dasharray="3 3"/>
+  <rect x="57" y="190" width="306" height="26" rx="13" fill="#dfe5e8" stroke="#c8d3d7"/>
+  <text x="210" y="207" text-anchor="middle" fill="#536870" font-size="10" font-weight="900">ALL FLOWS ASSIGNED TO  t = 0</text>
+
+  <rect x="59" y="225" width="103" height="23" rx="6" fill="#dcebe1"/>
+  <text x="110.5" y="240" text-anchor="middle" fill="#326344" font-size="10" font-weight="900">−1 t CO₂</text>
+  <text x="174" y="241" text-anchor="middle" fill="#71848b" font-size="14" font-weight="900">+</text>
+  <rect x="187" y="225" width="103" height="23" rx="6" fill="#f5dddd"/>
+  <text x="238.5" y="240" text-anchor="middle" fill="#8a3035" font-size="10" font-weight="900">+1 t CO₂</text>
+  <text x="303" y="241" text-anchor="middle" fill="#71848b" font-size="14" font-weight="900">=</text>
+  <rect x="315" y="225" width="52" height="23" rx="6" fill="#ffffff" stroke="#bfcdd2"/>
+  <text x="341" y="240" text-anchor="middle" fill="#0b3b52" font-size="10" font-weight="900">0</text>
+
+  <text x="18" y="266" class="small-label">Represented climate response</text>
+  <line x1="145" y1="264" x2="391" y2="264" stroke="#bac6ca" stroke-width="1"/>
+  <path d="M153 264 H384" fill="none" stroke="#80939a" stroke-width="2.5" stroke-linecap="round"/>
+  <text x="210" y="287" text-anchor="middle" fill="#667b82" font-size="9" font-weight="800">instant uptake + release → no temporal signal</text>
+
+  <!-- TIME-EXPLICIT PANEL -->
+  <rect x="452" y="16" width="104" height="18" rx="9" fill="#dff1ef"/>
+  <text x="504" y="28" text-anchor="middle" fill="#087069" class="tag">TIME-EXPLICIT</text>
+  <text x="452" y="55" class="panel-title">Growth, storage and combustion remain on the calendar</text>
+  <text x="452" y="69" class="panel-subtitle">The mass balance is unchanged; the interval outside the atmosphere is retained.</text>
+
+  <!-- atmosphere cloud -->
+  <g transform="translate(735 76)" filter="url(#shadow)">
+    <path d="M15 26 C5 26 0 19 3 12 C6 6 12 5 18 7 C21 0 30 -3 38 1 C44 4 47 9 46 15 C54 13 62 18 62 25 C62 32 57 36 49 36 H15 C7 36 3 32 3 26 Z" fill="#e6eef1" stroke="#aabcc3"/>
+    <text x="32" y="24" text-anchor="middle" fill="#4e6872" font-size="8" font-weight="900">ATMOSPHERE</text>
+  </g>
+
+  <!-- forest illustration -->
+  <g transform="translate(492 95)">
+    <ellipse cx="35" cy="64" rx="50" ry="7" fill="#dfe9e2"/>
+    <rect x="31" y="36" width="8" height="30" rx="2" fill="#8b663e"/>
+    <path d="M35 0 L5 43 H65 Z" fill="#3e7654"/>
+    <path d="M35 15 L10 52 H60 Z" fill="#4f8862"/>
+    <path d="M35 30 L16 59 H54 Z" fill="#65a078"/>
+    <path d="M7 29 L-8 50 H22 Z M66 27 L51 49 H81 Z" fill="#6fa27d" opacity=".78"/>
+  </g>
+  <text x="527" y="173" class="event-title">Forest growth</text>
+
+  <!-- building illustration -->
+  <g transform="translate(728 99)" stroke="#9a6a33" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M4 59 V22 L42 0 L80 22 V59"/>
+    <path d="M4 22 H80 M23 11 V59 M61 11 V59 M4 41 H80"/>
+    <path d="M23 41 L42 22 L61 41" stroke-width="3.5"/>
+  </g>
+  <text x="770" y="173" class="event-title">Timber in a building</text>
+
+  <!-- combustion illustration -->
+  <g transform="translate(1017 97)">
+    <ellipse cx="37" cy="64" rx="50" ry="7" fill="#e8ecee"/>
+    <rect x="4" y="30" width="60" height="35" rx="5" fill="#7b8e95"/>
+    <rect x="48" y="1" width="12" height="35" rx="2" fill="#586e76"/>
+    <path d="M17 57 C8 44 17 36 23 31 C22 42 31 43 30 53 C35 44 40 39 42 31 C49 44 48 56 39 63 C31 69 22 66 17 57 Z" fill="#d99614"/>
+    <path d="M24 56 C20 49 25 44 29 40 C29 48 36 50 34 58 C31 64 27 63 24 56 Z" fill="#f2c14e"/>
+  </g>
+  <text x="1054" y="173" class="event-title">End-of-life combustion</text>
+
+  <!-- carbon exchange arrows -->
+  <path d="M737 97 C665 82 596 83 550 104" fill="none" stroke="#3e7654" stroke-width="2.4" marker-end="url(#arrow-green)"/>
+  <rect x="613" y="78" width="78" height="18" rx="9" fill="#e3efe7"/>
+  <text x="652" y="90" text-anchor="middle" fill="#326344" font-size="8" font-weight="900">CO₂ uptake</text>
+  <path d="M1064 97 C1048 67 935 73 800 93" fill="none" stroke="#c44e52" stroke-width="2.4" marker-end="url(#arrow-red)"/>
+  <rect x="897" y="76" width="99" height="18" rx="9" fill="#f6e1e1"/>
+  <text x="946.5" y="88" text-anchor="middle" fill="#96383d" font-size="8" font-weight="900">CO₂ release at +60</text>
+
+  <!-- process timeline -->
+  <line x1="475" y1="201" x2="1123" y2="201" stroke="#80939a" stroke-width="2" marker-end="url(#arrow-grey)"/>
+  <rect x="475" y="188" width="180" height="12" rx="6" fill="#cfe3d5"/>
+  <rect x="655" y="188" width="390" height="12" rx="6" fill="url(#stored-carbon)"/>
+  <line x1="655" y1="181" x2="655" y2="207" stroke="#0b3b52" stroke-width="2"/>
+  <line x1="1045" y1="181" x2="1045" y2="207" stroke="#c44e52" stroke-width="2.5"/>
+  <text x="565" y="197" class="phase-label">growth</text>
+  <text x="850" y="197" class="phase-label" fill="#76510a">carbon stored in wood product · 60 years</text>
+  <text x="475" y="217" class="year">−40 y</text>
+  <text x="655" y="217" class="year">0 · construction</text>
+  <text x="1045" y="217" class="year">+60 y · combustion</text>
+
+  <!-- schematic climate response -->
+  <text x="452" y="242" class="small-label">Conceptual relative climate response · not to scale</text>
+  <g transform="translate(713 238)">
+    <line x1="0" y1="3" x2="25" y2="3" stroke="#80939a" stroke-width="2" stroke-dasharray="4 3"/>
+    <text x="31" y="6" fill="#657a82" font-size="7.5" font-weight="800">instant uptake + release</text>
+    <line x1="157" y1="3" x2="182" y2="3" stroke="#3e7654" stroke-width="2.6"/>
+    <text x="188" y="6" fill="#315f48" font-size="7.5" font-weight="800">release delayed 60 y</text>
+  </g>
+  <text x="452" y="255" fill="#75878e" font-size="7" font-weight="800">reference</text>
+  <text x="452" y="286" fill="#3e7654" font-size="7" font-weight="900">cooling</text>
+  <line x1="474" y1="258" x2="1120" y2="258" stroke="#80939a" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <path d="M475 258 C520 260 580 273 655 281 L1005 281 C1023 281 1036 274 1045 269 C1070 264 1095 261 1120 260 L1120 258 L475 258 Z" fill="#d9ece0" opacity=".92"/>
+  <path d="M475 258 C520 260 580 273 655 281 L1005 281 C1023 281 1036 274 1045 269 C1070 264 1095 261 1120 260" fill="none" stroke="#3e7654" stroke-width="2.8" stroke-linecap="round"/>
+  <line x1="1045" y1="252" x2="1045" y2="285" stroke="#c44e52" stroke-width="1.5" stroke-dasharray="3 2"/>
+  <circle cx="1045" cy="269" r="4" fill="#ffffff" stroke="#c44e52" stroke-width="2"/>
+  <rect x="960" y="282" width="108" height="16" rx="8" fill="#f5dddd"/>
+  <text x="1014" y="293" text-anchor="middle" fill="#93373c" font-size="7.5" font-weight="900">emission at +60 y</text>
+  <text x="770" y="276" class="climate-label">different climate trajectory during and after storage</text>
+</svg>

@@ -10,6 +10,11 @@ from portal.catalog import resources
 from portal.presentations import presentations
 from portal.publications import publications
 from portal.wsgi import application
+from apps.lca_time.workshop.config import (
+    APPENDIX_SLIDE_COUNT,
+    CORE_SLIDE_COUNT,
+    LAST_SLIDE,
+)
 
 client = Client(application, Response)
 
@@ -23,12 +28,14 @@ def test_landing_and_health() -> None:
     assert "Premise resources" in landing.text
     assert "/scenarios/" in landing.text
     assert "/workshop/" in landing.text
+    assert "/lca-time/" in landing.text
     assert "/ecosystem/" in landing.text
     assert 'rel="icon" href="/static/favicon.ico"' in landing.text
     assert "/static/premise-logo-transparent.png" in landing.text
     assert "premise-logo.png" not in landing.text
     assert "Presentations" in landing.text
     assert "IAM scenarios workshop" in landing.text
+    assert "LCA through time" in landing.text
     assert "Interactive Brightway ecosystem" in landing.text
     assert "Research using Premise" in landing.text
     assert f"{publication_count} verified publications" in landing.text
@@ -40,6 +47,8 @@ def test_landing_and_health() -> None:
     assert landing.text.count('href="/ecosystem/"') == 1
     assert 'datetime="2026-09-03"' in landing.text
     assert "3 September 2026" in landing.text
+    assert 'datetime="2026-08-27"' in landing.text
+    assert "27 August 2026" in landing.text
 
     styles = client.get("/static/styles.css")
     assert styles.status_code == 200
@@ -58,6 +67,7 @@ def test_landing_and_health() -> None:
         "services": {
             "landing": "ok",
             "ecosystem": "ok",
+            "lca_time": "ok",
             "scenarios": "ok",
             "workshop": "ok",
         },
@@ -84,7 +94,7 @@ def test_public_routes_and_prefixes() -> None:
     assert premise_logo.status_code == 200
     assert premise_logo.data.startswith(b"\x89PNG\r\n\x1a\n")
 
-    for prefix in ["/scenarios", "/workshop"]:
+    for prefix in ["/scenarios", "/workshop", "/lca-time"]:
         index = client.get(f"{prefix}/")
         assert index.status_code == 200
         assert f"{prefix}/_dash-component-suites/" in index.text
@@ -98,6 +108,10 @@ def test_public_routes_and_prefixes() -> None:
         client.get("/workshop/assets/premise-logo-transparent.png").status_code == 200
     )
     assert client.get("/scenarios/assets/explorer.css").status_code == 200
+    assert client.get("/lca-time/assets/styles.css").status_code == 200
+    assert (
+        client.get("/lca-time/assets/routing/beccs-routing.html").status_code == 200
+    )
 
 
 def test_resource_catalog_contract() -> None:
@@ -116,11 +130,24 @@ def test_resource_catalog_contract() -> None:
 
 def test_presentation_catalog_contract() -> None:
     catalog = presentations()
-    assert [item["id"] for item in catalog] == ["iam-workshop-2026-09-03"]
+    assert [item["id"] for item in catalog] == [
+        "iam-workshop-2026-09-03",
+        "lca-through-time-2026-08-27",
+    ]
     assert catalog[0]["date"] == "2026-09-03"
     assert catalog[0]["date_label"] == "3 September 2026"
     assert catalog[0]["title"] == "IAM scenarios workshop"
     assert catalog[0]["href"] == "/workshop/"
+    assert catalog[1]["date"] == "2026-08-27"
+    assert catalog[1]["date_label"] == "27 August 2026"
+    assert catalog[1]["title"] == "LCA through time"
+    assert catalog[1]["href"] == "/lca-time/"
+
+
+def test_lca_time_deck_contract() -> None:
+    assert CORE_SLIDE_COUNT == 24
+    assert APPENDIX_SLIDE_COUNT == 2
+    assert LAST_SLIDE == 25
 
 
 def test_publication_catalog_contract() -> None:
@@ -145,6 +172,7 @@ def test_all_apps_use_the_same_premise_favicon() -> None:
         root / "portal/static/favicon.ico",
         root / "apps/scenario_explorer/assets/favicon.ico",
         root / "apps/workshop/assets/favicon.ico",
+        root / "apps/lca_time/assets/favicon.ico",
     ]
     assert all(path.is_file() for path in favicon_paths)
     assert len({path.read_bytes() for path in favicon_paths}) == 1

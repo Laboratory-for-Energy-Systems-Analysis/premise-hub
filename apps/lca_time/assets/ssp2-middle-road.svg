@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420" height="220" viewBox="0 0 420 220" role="img" aria-labelledby="title desc">
+  <title id="title">SSP2 middle-of-the-road societal development</title>
+  <desc id="desc">A balanced landscape with a city, industry, farming, energy infrastructure and people around a globe.</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#edf7f8"/>
+      <stop offset="1" stop-color="#ffffff"/>
+    </linearGradient>
+  </defs>
+  <rect width="420" height="220" rx="20" fill="url(#sky)"/>
+  <circle cx="210" cy="95" r="68" fill="#dbecef" stroke="#6fa8b7" stroke-width="3"/>
+  <ellipse cx="210" cy="95" rx="34" ry="68" fill="none" stroke="#94bdc7" stroke-width="2"/>
+  <path d="M143 95h134M151 69h118M151 121h118" fill="none" stroke="#94bdc7" stroke-width="2"/>
+  <path d="M0 176c55-24 95-19 139 0 42-30 91-31 142-2 43-19 92-21 139 2v44H0z" fill="#dcebdc"/>
+  <path d="M0 189c70-8 119-7 177 1 64 9 138 8 243-4v34H0z" fill="#bad4c1"/>
+  <g fill="#0b3b52">
+    <rect x="35" y="116" width="31" height="55" rx="2"/>
+    <rect x="69" y="96" width="42" height="75" rx="2"/>
+    <rect x="115" y="128" width="29" height="43" rx="2"/>
+    <path d="M35 116l15-17 16 17zM69 96l21-23 21 23z" fill="#4193b8"/>
+    <g fill="#d9ecef">
+      <rect x="43" y="128" width="7" height="8"/><rect x="54" y="128" width="7" height="8"/>
+      <rect x="78" y="110" width="8" height="9"/><rect x="93" y="110" width="8" height="9"/>
+      <rect x="78" y="128" width="8" height="9"/><rect x="93" y="128" width="8" height="9"/>
+    </g>
+  </g>
+  <g transform="translate(283 111)">
+    <path d="M0 61V28h22v-15l19 15v-15l20 15v33z" fill="#6b7d86"/>
+    <rect x="61" y="0" width="12" height="61" rx="3" fill="#c44e52"/>
+    <path d="M67 0c-11-13 8-14-1-28 18 8 20 21 10 31z" fill="#c6d9dd" opacity=".9"/>
+    <g fill="#dce8eb"><rect x="8" y="38" width="8" height="9"/><rect x="30" y="38" width="8" height="9"/><rect x="51" y="38" width="8" height="9"/></g>
+  </g>
+  <g transform="translate(250 147)" stroke="#3e7654" stroke-width="4" stroke-linecap="round">
+    <path d="M0 34V7M0 13l-13-8M0 18l14-10"/>
+    <circle cx="-13" cy="5" r="7" fill="#73a184" stroke="none"/>
+    <circle cx="14" cy="8" r="8" fill="#73a184" stroke="none"/>
+    <circle cx="0" cy="4" r="9" fill="#3e7654" stroke="none"/>
+  </g>
+  <g transform="translate(164 162)" fill="#7656a8">
+    <circle cx="0" cy="0" r="10"/><path d="M-15 25c0-11 7-18 15-18s15 7 15 18z"/>
+    <circle cx="38" cy="0" r="10"/><path d="M23 25c0-11 7-18 15-18s15 7 15 18z"/>
+  </g>
+  <g transform="translate(357 73)" stroke="#008a82" stroke-width="3" fill="none" stroke-linecap="round">
+    <path d="M0 48V0M0 13l-22 15M0 13l23 14"/>
+    <circle cx="0" cy="13" r="4" fill="#008a82"/>
+  </g>
+  <path d="M147 198h126" stroke="#d99614" stroke-width="8" stroke-linecap="round" stroke-dasharray="18 10"/>
+</svg>

@@ -10,6 +10,8 @@ The deployed service exposes:
 - `/ecosystem/` — interactive map of open-source Brightway tools;
 - `/scenarios/` — the IAM scenario explorer;
 - `/workshop/` — the interactive IAM workshop;
+- `/lca-time/` — the LCSS presentation comparing conventional, prospective,
+  and time-explicit LCA;
 - `/health` — a lightweight service health endpoint.
 
 ## Local development
@@ -34,6 +36,9 @@ python scripts/browser_smoke.py --url http://127.0.0.1:8050
 
 Workshop-specific visual checks remain under `apps/workshop/scripts/` and must
 be pointed at `http://127.0.0.1:8050/workshop/` when the portal is running.
+The LCA-through-time presentation is deployed from `apps/lca_time/`; its
+processed result contract and provenance are documented in that app's data
+README.
 
 ## Publication catalog maintenance
 

@@ -88,7 +88,7 @@ class PresentationPasswordGate:
         title = escape(self.title)
         action = escape(f"{self.mount_path}/", quote=True)
         error_markup = (
-            '<p class="error" role="alert">That event date is not correct.</p>'
+            '<p class="error" role="alert">That password is not correct.</p>'
             if error
             else ""
         )
@@ -121,10 +121,10 @@ class PresentationPasswordGate:
       <img src="/static/premise-logo-transparent.png" alt="Premise">
       <small>Protected presentation</small>
       <h1>{title}</h1>
-      <p>Enter the event date to continue.</p>
+      <p>Enter the password to continue.</p>
       <form method="post" action="{action}">
-        <label for="password">Event date</label>
-        <input id="password" name="password" type="password" inputmode="numeric" pattern="[0-9]{{8}}" placeholder="DDMMYYYY" autocomplete="current-password" required autofocus>
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" autocomplete="current-password" required autofocus>
         <button type="submit">Open presentation</button>
         {error_markup}
       </form>

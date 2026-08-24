@@ -106,6 +106,9 @@ def test_public_routes_and_prefixes() -> None:
         protected = client.get(f"{prefix}/")
         assert protected.status_code == 401
         assert "Protected presentation" in protected.text
+        assert "Enter the password to continue." in protected.text
+        assert "event date" not in protected.text.casefold()
+        assert "DDMMYYYY" not in protected.text
 
     unlock_presentation(client, "/workshop", "03092026")
     unlock_presentation(client, "/lca-time", "27082026")
@@ -140,7 +143,7 @@ def test_presentation_passwords_protect_every_deck_route() -> None:
 
     wrong_password = auth_client.post("/workshop/", data={"password": "27082026"})
     assert wrong_password.status_code == 401
-    assert "That event date is not correct." in wrong_password.text
+    assert "That password is not correct." in wrong_password.text
 
     unlock_presentation(auth_client, "/workshop", "03092026")
     assert auth_client.get("/workshop/_dash-layout").status_code == 200

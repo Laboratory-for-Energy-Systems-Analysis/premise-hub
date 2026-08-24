@@ -23,7 +23,7 @@ def launch_chromium(playwright):
 
 def unlock_presentation(page, url: str, password: str) -> None:
     page.goto(url, wait_until="networkidle")
-    page.get_by_label("Event date").fill(password)
+    page.get_by_label("Password", exact=True).fill(password)
     page.get_by_role("button", name="Open presentation").click()
     page.wait_for_url(url)
     page.wait_for_load_state("networkidle")

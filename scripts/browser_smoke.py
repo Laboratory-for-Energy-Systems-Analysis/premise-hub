@@ -21,6 +21,14 @@ def launch_chromium(playwright):
     return playwright.chromium.launch()
 
 
+def unlock_presentation(page, url: str, password: str) -> None:
+    page.goto(url, wait_until="networkidle")
+    page.get_by_label("Event date").fill(password)
+    page.get_by_role("button", name="Open presentation").click()
+    page.wait_for_url(url)
+    page.wait_for_load_state("networkidle")
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--url", default="http://127.0.0.1:8050")
@@ -197,7 +205,7 @@ def main() -> None:
         assert len(removal_contract) > 1, removal_contract
         assert all(group == "1" for group in removal_contract), removal_contract
 
-        page.goto(f"{base}/workshop/", wait_until="networkidle")
+        unlock_presentation(page, f"{base}/workshop/", "03092026")
         page.locator(".slide").wait_for()
         page.locator("#next-button").click()
         page.get_by_role(
@@ -206,7 +214,7 @@ def main() -> None:
         if args.output:
             page.screenshot(path=args.output / "workshop.png")
 
-        page.goto(f"{base}/lca-time/", wait_until="networkidle")
+        unlock_presentation(page, f"{base}/lca-time/", "27082026")
         page.locator(".slide").wait_for()
         page.get_by_role(
             "heading", name="How time changes LCA results"

@@ -19,11 +19,17 @@ from apps.lca_time.workshop.config import (
 client = Client(application, Response)
 
 
+def unlock_presentation(test_client: Client, prefix: str, password: str) -> None:
+    response = test_client.post(
+        f"{prefix}/", data={"password": password}, follow_redirects=False
+    )
+    assert response.status_code == 303
+    assert response.headers["Location"] == f"{prefix}/"
+
+
 def test_landing_and_health() -> None:
     landing = client.get("/")
-    publication_count = sum(
-        item["kind"] == "application" for item in publications()
-    )
+    publication_count = sum(item["kind"] == "application" for item in publications())
     assert landing.status_code == 200
     assert "Premise resources" in landing.text
     assert "/scenarios/" in landing.text
@@ -39,7 +45,9 @@ def test_landing_and_health() -> None:
     assert "Interactive Brightway ecosystem" in landing.text
     assert "Research using Premise" in landing.text
     assert f"{publication_count} verified publications" in landing.text
-    assert "Recycling fossil infrastructure for cleaner energy transitions" in landing.text
+    assert (
+        "Recycling fossil infrastructure for cleaner energy transitions" in landing.text
+    )
     assert "Large-scale hydrogen production via water electrolysis" in landing.text
     assert landing.text.count("data-publication-item") == publication_count
     assert "/static/publications.js" in landing.text
@@ -94,6 +102,14 @@ def test_public_routes_and_prefixes() -> None:
     assert premise_logo.status_code == 200
     assert premise_logo.data.startswith(b"\x89PNG\r\n\x1a\n")
 
+    for prefix in ["/workshop", "/lca-time"]:
+        protected = client.get(f"{prefix}/")
+        assert protected.status_code == 401
+        assert "Protected presentation" in protected.text
+
+    unlock_presentation(client, "/workshop", "03092026")
+    unlock_presentation(client, "/lca-time", "27082026")
+
     for prefix in ["/scenarios", "/workshop", "/lca-time"]:
         index = client.get(f"{prefix}/")
         assert index.status_code == 200
@@ -109,9 +125,31 @@ def test_public_routes_and_prefixes() -> None:
     )
     assert client.get("/scenarios/assets/explorer.css").status_code == 200
     assert client.get("/lca-time/assets/styles.css").status_code == 200
-    assert (
-        client.get("/lca-time/assets/routing/beccs-routing.html").status_code == 200
-    )
+    assert client.get("/lca-time/assets/routing/beccs-routing.html").status_code == 200
+
+
+def test_presentation_passwords_protect_every_deck_route() -> None:
+    auth_client = Client(application, Response, use_cookies=True)
+
+    workshop_asset = auth_client.get("/workshop/assets/styles.css")
+    workshop_api = auth_client.get("/workshop/_dash-layout")
+    assert workshop_asset.status_code == 401
+    assert workshop_api.status_code == 401
+    assert workshop_asset.headers["Cache-Control"] == "no-store"
+    assert workshop_asset.headers["X-Robots-Tag"] == "noindex, nofollow"
+
+    wrong_password = auth_client.post("/workshop/", data={"password": "27082026"})
+    assert wrong_password.status_code == 401
+    assert "That event date is not correct." in wrong_password.text
+
+    unlock_presentation(auth_client, "/workshop", "03092026")
+    assert auth_client.get("/workshop/_dash-layout").status_code == 200
+    assert auth_client.get("/workshop/assets/styles.css").status_code == 200
+
+    # Each presentation has a separate cookie and its own event-date password.
+    assert auth_client.get("/lca-time/").status_code == 401
+    unlock_presentation(auth_client, "/lca-time", "27082026")
+    assert auth_client.get("/lca-time/_dash-layout").status_code == 200
 
 
 def test_resource_catalog_contract() -> None:

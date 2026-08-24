@@ -14,6 +14,11 @@ The deployed service exposes:
   and time-explicit LCA;
 - `/health` — a lightweight service health endpoint.
 
+The two hosted presentations require their event date (`DDMMYYYY`) as the
+password. The dates and presentation routes are defined once in
+`portal/presentations.yaml`; the WSGI composition applies the corresponding
+gate to every route below each presentation prefix.
+
 ## Local development
 
 Create a Python 3.13 environment, install the runtime and development

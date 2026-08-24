@@ -23,6 +23,7 @@ from .results import (
     cohort_temporal_score_series,
     cohort_temporal_total,
     co2_reference_pulse_series,
+    forest_pool_sensitivity,
     gross_storage_per_net_tonne,
     lifetime_annual_series,
     lifetime_net_storage_tonnes,
@@ -1182,7 +1183,8 @@ def render_static_contribution_view(view: str = "step"):
         "step": (
             "For greenfield BECCS, forest regrowth and avoided Northern European energy "
             "outweigh harvest, plant, capture and transport burdens. For DACCS, "
-            "electricity for capture and sorbent regeneration dominates."
+            "electricity for capture and sorbent regeneration dominates. The baseline "
+            "does not assign a flux to residues, roots or soil carbon."
         ),
         "location": (
             "This view locates the contributing activities, not the eventual atmospheric climate effect. "
@@ -1193,7 +1195,7 @@ def render_static_contribution_view(view: str = "step"):
             "are shown; ‘Other activities’ preserves the exact total."
         ),
     }[view]
-    return [
+    content = [
         html.Div(
             [
                 _contribution_panel("BECCS", "new CHP+CCS", "forest", view),
@@ -1201,20 +1203,108 @@ def render_static_contribution_view(view: str = "step"):
             ],
             className="contribution-comparison",
         ),
-        html.Div(
-            [
-                html.Strong(
-                    "The same storage service does not imply the same GWP100 score. "
-                ),
-                html.Span(takeaway),
-            ],
-            className="contribution-takeaway",
-        ),
-        html.Div(
-            "Characterised activity contributions · IPCC 2021 GWP100 including biogenic CO₂ · SSP2-NPi · Northern Europe · 2025 · functional unit: 1 net tonne stored after transport loss",
-            className="contribution-footnote",
-        ),
     ]
+    if view == "step":
+        sensitivity = forest_pool_sensitivity("static")
+        fraction_pct = 100 * float(sensitivity["stress_test_fraction"])
+        break_even_pct = 100 * float(sensitivity["break_even_fraction"])
+        stress_gap = float(sensitivity["comparator_daccs"]) - float(
+            sensitivity["stress_test_beccs"]
+        )
+        content.append(
+            html.Div(
+                [
+                    html.Div(
+                        [
+                            html.Strong("Unmodelled forest-carbon sensitivity"),
+                            html.Span(
+                                "What if harvest causes extra CO₂ emissions from residues, roots or soil?"
+                            ),
+                            html.Small("Separate from the upper contribution bars"),
+                        ],
+                        className="forest-sensitivity-heading",
+                    ),
+                    html.Div(
+                        [
+                            html.Div(
+                                [
+                                    html.Span("BECCS baseline"),
+                                    html.Strong(
+                                        f"{_format_score(float(sensitivity['baseline_beccs']))} kg"
+                                    ),
+                                ],
+                                className="forest-sensitivity-step",
+                            ),
+                            html.B("+", className="forest-sensitivity-operator"),
+                            html.Div(
+                                [
+                                    html.Span(f"Illustrative {fraction_pct:.0f}% test"),
+                                    html.Strong(
+                                        f"+{float(sensitivity['stress_test_correction']):,.0f} kg"
+                                    ),
+                                    html.Small(
+                                        f"{fraction_pct:.0f}% of the 1,143 kg regrowth uptake"
+                                    ),
+                                ],
+                                className=(
+                                    "forest-sensitivity-step "
+                                    "forest-sensitivity-assumption"
+                                ),
+                            ),
+                            html.B("=", className="forest-sensitivity-operator"),
+                            html.Div(
+                                [
+                                    html.Span("Adjusted BECCS"),
+                                    html.Strong(
+                                        f"{_format_score(float(sensitivity['stress_test_beccs']))} kg"
+                                    ),
+                                ],
+                                className=(
+                                    "forest-sensitivity-step "
+                                    "forest-sensitivity-adjusted"
+                                ),
+                            ),
+                        ],
+                        className="forest-sensitivity-equation",
+                    ),
+                    html.Div(
+                        [
+                            html.Strong(
+                                f"DACCS baseline {_format_score(float(sensitivity['comparator_daccs']))} kg"
+                            ),
+                            html.Span(
+                                f"In the 10% test, BECCS remains {stress_gap:.0f} kg lower."
+                            ),
+                            html.Em(
+                                "Ranking changes if extra forest emissions exceed "
+                                f"{float(sensitivity['break_even_correction']):,.0f} kg "
+                                f"({break_even_pct:.1f}% of regrowth uptake)."
+                            ),
+                        ],
+                        className="forest-sensitivity-verdict",
+                    ),
+                ],
+                className="forest-sensitivity",
+            )
+        )
+    content.extend(
+        [
+            html.Div(
+                [
+                    html.Strong(
+                        "The same storage service does not imply the same GWP100 score. "
+                    ),
+                    html.Span(takeaway),
+                ],
+                className="contribution-takeaway",
+            ),
+            html.Div(
+                "Characterised activity contributions · uptake-only baseline plus a separate sensitivity calculation · IPCC 2021 GWP100 including biogenic CO₂ · SSP2-NPi · Northern Europe · 2025 · functional unit: 1 net tonne stored after transport loss",
+                className="contribution-footnote",
+            ),
+        ]
+    )
+    return content
 
 
 def render_static_contribution_legend(view: str = "step"):
@@ -1290,9 +1380,9 @@ def _static_contribution_slide(index: int):
             ),
             html.Div(
                 [
-                    html.Strong("Read the DACCS uptake carefully:"),
+                    html.Strong("Why is this only a sensitivity?"),
                     html.Span(
-                        "negative upstream biogenic uptake belongs to the electricity supply chain, not to direct air capture."
+                        "we do not yet have site-specific magnitudes or timing for residue, root and soil-carbon emissions."
                     ),
                 ],
                 className="contribution-plain-language-note",
@@ -4462,7 +4552,7 @@ def _temporal_gwp_slide(index: int):
                         html.Span("cumulative GWP100 on the right axis"),
                         html.Span("·"),
                         html.Span(
-                            "GWP100 incl. biogenic CO₂ · SSP2-PkBudg1000 · Northern Europe · 2030 cohort"
+                            "GWP100 incl. biogenic CO₂ · uptake-only forest baseline · SSP2-PkBudg1000 · Northern Europe · 2030 cohort"
                         ),
                     ],
                     className="temporal-gwp-note",
@@ -6828,6 +6918,7 @@ def _synthesis(index: int):
     routed_temporal = {
         case: cohort_temporal_total(case, "per_tonne") for case in ("BECCS", "DACCS")
     }
+    forest_screen = forest_pool_sensitivity("routed")
     pulse_gap = abs(pulse["DACCS"][0] - pulse["BECCS"][0])
     final_pulse_gap = abs(pulse["DACCS"][-1] - pulse["BECCS"][-1])
     gwp_figure = _summary_gwp_figure(
@@ -6866,7 +6957,7 @@ def _synthesis(index: int):
                                             ]
                                         ),
                                         html.P(
-                                            "Static 2025 score versus prospective 2030–2049 lifetime average"
+                                            "Baseline scores, with a separate forest-carbon sensitivity"
                                         ),
                                     ],
                                     className="summary-metric-heading",
@@ -6884,15 +6975,14 @@ def _synthesis(index: int):
                                     [
                                         html.Strong("Result"),
                                         html.Span(
-                                            "Greenfield BECCS is 132 kg CO₂-eq more negative "
-                                            "than DACCS in 2025 and about 70–73 kg more negative "
-                                            "over the prospective cohort."
+                                            "The routed uptake-only BECCS result needs only "
+                                            f"+{float(forest_screen['break_even_correction']):,.0f} kg "
+                                            f"({100 * float(forest_screen['break_even_fraction']):.1f}% "
+                                            "of gross regrowth) to tie DACCS."
                                         ),
                                         html.Em(
-                                            "NPi to PkBudg1000: BECCS −6 · DACCS −9 kg · "
-                                            "routed temporal: "
-                                            f"BECCS −{abs(routed_temporal['BECCS']):,.0f} · "
-                                            f"DACCS −{abs(routed_temporal['DACCS']):,.0f} kg"
+                                            f"10% test: BECCS {_format_score(float(forest_screen['stress_test_beccs']))} · "
+                                            f"DACCS {_format_score(routed_temporal['DACCS'])} kg"
                                         ),
                                     ],
                                     className="summary-metric-finding",
@@ -6911,8 +7001,8 @@ def _synthesis(index: int):
                                             ]
                                         ),
                                         html.P(
-                                            "How does the equivalent change as the horizon "
-                                            "includes more delayed forest-regrowth response?"
+                                            "Baseline only: how does the equivalent change as "
+                                            "the horizon includes delayed forest regrowth?"
                                         ),
                                     ],
                                     className="summary-metric-heading",
@@ -6982,8 +7072,8 @@ def _synthesis(index: int):
                     [
                         html.Strong("The indicators answer different questions."),
                         html.Span(
-                            "The reference system, event dates and assessment horizon are "
-                            "part of every result."
+                            "The forest-carbon sensitivity changes GWP totals only; updating FaIR "
+                            "also requires a defensible residue, root and soil-carbon time profile."
                         ),
                     ],
                     className="summary-separate-verdict",
@@ -6993,8 +7083,8 @@ def _synthesis(index: int):
         ),
         eyebrow="Synthesis · two indicators, two analytical questions",
         lead=(
-            "GWP100 scores the life-cycle inventory; CO₂-pulse equivalence compares "
-            "a dated climate response with a chosen CO₂ pulse."
+            "BECCS leads in the uptake-only baseline, but a small post-harvest "
+            "forest-carbon correction can reverse its GWP100 ranking."
         ),
     )
 
@@ -7732,6 +7822,14 @@ def _appendix_sources(index: int):
         (
             "Sacchi et al. (2026) · deep temporalisation",
             "https://www.researchsquare.com/article/rs-10139523/v1",
+        ),
+        (
+            "Wanielik et al. (2025) · dynamic wood carbon",
+            "https://doi.org/10.1016/j.procir.2025.01.089",
+        ),
+        (
+            "Menichetti et al. (2025) · post-harvest forest carbon",
+            "https://pub.epsilon.slu.se/37940/1/menichetti-l-et-al-20250721.pdf",
         ),
         (
             "Deutz & Bardow (2021) · DAC inventory",

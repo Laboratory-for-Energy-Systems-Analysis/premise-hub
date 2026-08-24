@@ -565,9 +565,26 @@ select { font: inherit; }
 .contribution-other { background: #7d8d95; }
 .contribution-benefit { background: var(--teal); }
 .contribution-burden { background: var(--amber); }
-.contribution-equation { display: flex; align-items: center; justify-content: flex-end; gap: 8px; margin-top: 10px; padding: 7px 9px; border-radius: 8px; background: #eef4f5; color: var(--muted); font-size: 10px; font-variant-numeric: tabular-nums; font-weight: 800; }
+.contribution-equation { display: flex; align-items: center; justify-content: flex-end; gap: 8px; margin-top: 4px; padding: 7px 9px; border-radius: 8px; background: #eef4f5; color: var(--muted); font-size: 10px; font-variant-numeric: tabular-nums; font-weight: 800; }
 .contribution-equation strong { color: #8a9aa2; }
 .contribution-equation span:last-child { color: var(--teal); font-size: 12px; font-weight: 900; }
+.forest-sensitivity { display: grid; min-height: 58px; grid-template-columns: minmax(230px,1.15fr) minmax(460px,2fr) minmax(280px,1.25fr); align-items: stretch; gap: 8px; padding: 7px 9px; border: 1px solid #e3c66f; border-left: 5px solid var(--amber); border-radius: 9px; background: #fffaf0; }
+.forest-sensitivity-heading { display: grid; align-content: center; gap: 2px; }
+.forest-sensitivity-heading strong { color: #6d510c; font-size: 10px; font-weight: 950; letter-spacing: .045em; text-transform: uppercase; }
+.forest-sensitivity-heading span { color: #665b40; font-size: 8px; font-weight: 800; line-height: 1.15; }
+.forest-sensitivity-heading small { color: #8a7a55; font-size: 7px; font-weight: 850; }
+.forest-sensitivity-equation { display: grid; grid-template-columns: minmax(105px,1fr) 15px minmax(150px,1.25fr) 15px minmax(105px,1fr); align-items: center; gap: 4px; }
+.forest-sensitivity-step { display: grid; min-height: 42px; align-content: center; justify-items: center; gap: 1px; padding: 4px 6px; border: 1px solid #eadcae; border-radius: 7px; background: white; text-align: center; }
+.forest-sensitivity-step span { color: #786842; font-size: 7px; font-weight: 900; letter-spacing: .035em; text-transform: uppercase; }
+.forest-sensitivity-step strong { color: var(--psi-deep); font-size: 13px; font-weight: 950; font-variant-numeric: tabular-nums; }
+.forest-sensitivity-step small { color: #74653f; font-size: 6.5px; font-weight: 850; }
+.forest-sensitivity-assumption { border-color: #dfbf60; background: #fff7dc; }
+.forest-sensitivity-adjusted { border-color: #b7d2c0; background: #f1f8f3; }
+.forest-sensitivity-operator { color: var(--amber); font-size: 17px; text-align: center; }
+.forest-sensitivity-verdict { display: grid; align-content: center; gap: 2px; padding-left: 8px; border-left: 1px solid #e5d6a7; }
+.forest-sensitivity-verdict strong { color: var(--psi-deep); font-size: 10px; }
+.forest-sensitivity-verdict span { color: #536a62; font-size: 8px; font-weight: 900; }
+.forest-sensitivity-verdict em { color: #725f32; font-size: 7.5px; font-style: normal; font-weight: 800; line-height: 1.18; }
 .contribution-takeaway { padding: 10px 15px; border-left: 5px solid var(--amber); border-radius: 0 11px 11px 0; background: #fff8e6; color: #5e460f; font-size: 13px; line-height: 1.3; }
 .contribution-footnote { color: var(--muted); font-size: 9px; line-height: 1.2; text-align: right; }
 
@@ -1422,6 +1439,9 @@ select { font: inherit; }
   .contribution-rows { gap: 3px; }
   .contribution-track { height: 18px; }
   .contribution-equation { margin-top: 7px; padding: 5px 7px; }
+  .forest-sensitivity { min-height: 48px; padding-block: 4px; }
+  .forest-sensitivity-step { min-height: 34px; padding-block: 2px; }
+  .forest-sensitivity-step strong { font-size: 10px; }
   .contribution-takeaway { padding: 8px 12px; font-size: 11px; }
 
   .slide-9 .slide-body { gap: 5px; }
@@ -1608,6 +1628,11 @@ select { font: inherit; }
   .contribution-track { height: 21px; }
   .contribution-equation { min-height: 29px; margin-top: 7px; padding: 6px 9px; font-size: 11px; }
   .contribution-equation span:last-child { font-size: 13px; }
+  .forest-sensitivity { min-height: 64px; gap: 10px; padding: 8px 11px; }
+  .forest-sensitivity-heading strong { font-size: 11px; }
+  .forest-sensitivity-heading span, .forest-sensitivity-step span, .forest-sensitivity-step small, .forest-sensitivity-verdict span, .forest-sensitivity-verdict em { font-size: 8px; }
+  .forest-sensitivity-step { min-height: 47px; }
+  .forest-sensitivity-step strong { font-size: 14px; }
   .contribution-takeaway { padding: 13px 17px; font-size: 15px; }
   .contribution-footnote { font-size: 10px; }
 

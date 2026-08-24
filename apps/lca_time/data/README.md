@@ -257,6 +257,22 @@ divided by lifetime net atmospheric CO2 stored are retained. Recalculate with:
   scripts/calculate_cohort_temporal_scores.py --show-progress
 ```
 
+## `forest_pool_sensitivity.json`
+
+Presentation-level screening assumptions for post-harvest forest-carbon pools
+that are absent from the reviewed uptake-only BECCS baseline: harvest residues
+and dead organic matter, roots, and soil organic carbon. The default stress test
+adds a positive correction equal to 10% of the modeled gross forest-regrowth
+benefit. The displayed break-even fraction is calculated from the actual
+BECCS–DACCS score gap, rather than stored as a fixed number.
+
+This sensitivity does not overwrite any LCA result artifact. It is applied in
+the presentation layer to the 2025 contribution view and the complete routed
+cohort total. It is not propagated into FaIR because the available case data do
+not yet identify a site-specific magnitude and time profile for the omitted
+pools. The configuration records the literature used to motivate the screen
+and labels the 10% value as illustrative, not calibrated.
+
 ## `cohort_fair_responses.csv`
 
 Median and 2.5th/97.5th-percentile FaIR radiative-forcing and temperature-

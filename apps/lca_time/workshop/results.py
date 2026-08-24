@@ -25,6 +25,7 @@ CO2_REFERENCE_PULSE = ROOT / "data" / "processed" / "co2_reference_pulse.csv"
 COHORT_PULSE_EQUIVALENCE_GRID = (
     ROOT / "data" / "processed" / "cohort_pulse_equivalence_grid.npz"
 )
+FOREST_POOL_SENSITIVITY = ROOT / "data" / "forest_pool_sensitivity.json"
 NET_REMOVAL_KG = 1000.0
 
 
@@ -46,6 +47,20 @@ def process_step_attribution() -> dict:
 
     with PROCESS_STEP_ATTRIBUTION.open(encoding="utf-8") as stream:
         return json.load(stream)
+
+
+@lru_cache(maxsize=1)
+def forest_pool_sensitivity_settings() -> dict:
+    """Return the documented presentation-level forest-pool assumptions."""
+
+    with FOREST_POOL_SENSITIVITY.open(encoding="utf-8") as stream:
+        settings = json.load(stream)
+    fraction = float(settings["stress_test_fraction_of_gross_regrowth"])
+    if not 0.0 <= fraction <= 1.0:
+        raise ValueError(
+            "Forest-pool stress-test fraction must be between zero and one."
+        )
+    return settings
 
 
 def static_score(
@@ -337,6 +352,71 @@ def cohort_temporal_total(case: str, normalization: str = "cohort") -> float:
         for _, series in cohort_temporal_score_series(case, normalization)
         for _, value in series
     )
+
+
+def cohort_temporal_contributor_total(
+    case: str, contributor: str, normalization: str = "cohort"
+) -> float:
+    """Return one exact routed contributor total without altering source results."""
+
+    matches = [
+        sum(value for _year, value in series)
+        for label, series in cohort_temporal_score_series(case, normalization)
+        if label == contributor
+    ]
+    if len(matches) != 1:
+        raise LookupError(
+            f"Expected one routed contributor named {contributor!r} for {case}; "
+            f"found {len(matches)}."
+        )
+    return matches[0]
+
+
+def forest_pool_sensitivity(scope: str = "routed") -> dict[str, float | str]:
+    """Screen omitted post-harvest forest pools against the BECCS/DACCS gap.
+
+    The positive correction is expressed as a fraction of the magnitude of the
+    modeled forest-regrowth benefit. It is a transparent perturbation of the
+    reviewed results, not a claim about the size of residue, root or soil-carbon
+    losses at a particular site.
+    """
+
+    fraction = float(
+        forest_pool_sensitivity_settings()["stress_test_fraction_of_gross_regrowth"]
+    )
+    if scope == "static":
+        treatment = "new CHP+CCS vs standing forest and Northern European energy"
+        baseline_beccs = static_score("BECCS", "SSP2-NPi", 2025, treatment)
+        comparator_daccs = static_score("DACCS", "SSP2-NPi", 2025, "not applicable")
+        gross_regrowth = abs(
+            float(
+                process_step_attribution()["BECCS"][
+                    "process_groups_kg_co2eq_per_net_tonne"
+                ]["Forest regrowth"]
+            )
+        )
+    elif scope == "routed":
+        baseline_beccs = cohort_temporal_total("BECCS", "per_tonne")
+        comparator_daccs = cohort_temporal_total("DACCS", "per_tonne")
+        gross_regrowth = abs(
+            cohort_temporal_contributor_total("BECCS", "Forest regrowth", "per_tonne")
+        )
+    else:
+        raise ValueError(f"Unknown forest-pool sensitivity scope: {scope}.")
+
+    break_even_correction = max(comparator_daccs - baseline_beccs, 0.0)
+    stress_test_correction = fraction * gross_regrowth
+    return {
+        "scope": scope,
+        "baseline_beccs": baseline_beccs,
+        "comparator_daccs": comparator_daccs,
+        "gross_regrowth": gross_regrowth,
+        "break_even_correction": break_even_correction,
+        "break_even_fraction": break_even_correction / gross_regrowth,
+        "stress_test_fraction": fraction,
+        "stress_test_correction": stress_test_correction,
+        "stress_test_beccs": baseline_beccs + stress_test_correction,
+    }
 
 
 @lru_cache(maxsize=1)

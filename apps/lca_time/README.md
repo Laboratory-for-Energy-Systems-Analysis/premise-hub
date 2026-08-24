@@ -9,6 +9,7 @@ and reviewed processed outputs. Licensed premise/TRAILS packages, Brightway
 databases, raw calculations, build scripts, screenshots, and development
 artifacts remain in the source project and are not needed to serve the deck.
 
-This copy was integrated from `FSLCI_workshop_2026` commit `81229f2f1dce`.
-Dataset provenance and the upstream reproduction workflow are documented in
-[`data/README.md`](data/README.md).
+This copy is maintained from the `FSLCI_workshop_2026` source project. It also
+contains the presentation-level post-harvest forest-pool sensitivity; the
+reviewed LCA artifacts remain unchanged. Dataset provenance and the upstream
+reproduction workflow are documented in [`data/README.md`](data/README.md).

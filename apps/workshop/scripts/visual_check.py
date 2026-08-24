@@ -23,6 +23,20 @@ from workshop.config import (
 )
 
 
+def launch_chromium(playwright):
+    expected = Path(playwright.chromium.executable_path)
+    if expected.is_file():
+        return playwright.chromium.launch()
+    installed = sorted(
+        (Path.home() / "Library" / "Caches" / "ms-playwright").glob(
+            "chromium_headless_shell-*/chrome-headless-shell-mac-arm64/chrome-headless-shell"
+        )
+    )
+    if installed:
+        return playwright.chromium.launch(executable_path=str(installed[-1]))
+    return playwright.chromium.launch()
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--url", default="http://127.0.0.1:8050")
@@ -36,7 +50,7 @@ def main() -> None:
     vertical_overflow: list[tuple[int, int]] = []
     document_overflow: list[tuple[int, int]] = []
     with sync_playwright() as playwright:
-        browser = playwright.chromium.launch()
+        browser = launch_chromium(playwright)
         page = browser.new_page(viewport={"width": args.width, "height": args.height})
         page.goto(args.url, wait_until="networkidle")
         for slide in range(LAST_SLIDE + 1):
@@ -96,7 +110,7 @@ def main() -> None:
                         == 1
                     )
                     page.wait_for_function(
-                        "expected => { const el = document.querySelector(" 
+                        "expected => { const el = document.querySelector("
                         "'.iam-world-map-graph .js-plotly-plot'); "
                         "return el?.data?.[0]?.customdata && "
                         "new Set(el.data[0].customdata).size === expected; }",
@@ -110,9 +124,7 @@ def main() -> None:
                         )
                     )
                     assert region_count == expected_regions
-                page.screenshot(
-                    path=args.output / f"slide-{slide + 1:02d}-gcam.png"
-                )
+                page.screenshot(path=args.output / f"slide-{slide + 1:02d}-gcam.png")
             if slide == FIRST_SECTOR_SLIDE:
                 initial_colours = page.locator(".sector-main .js-plotly-plot").evaluate(
                     "el => Object.fromEntries(el.data.map(trace => "

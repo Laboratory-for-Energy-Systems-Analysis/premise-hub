@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 520" role="img" aria-labelledby="title desc">
   <title id="title">Premise update workflow</title>
-  <desc id="desc">Scenario coordinates and a background life-cycle inventory merge into a three-stage mapping, updating, and relinking workflow that produces prospective inventories.</desc>
+  <desc id="desc">Scenario details and a background life-cycle inventory enter a three-stage mapping, updating and relinking workflow that produces prospective inventories.</desc>
   <defs>
     <linearGradient id="workflowBg" x1="0" x2="1">
       <stop stop-color="#f1f7f8"/>
@@ -53,7 +53,7 @@
 
     <g transform="translate(348 46)">
       <rect x="72" width="440" height="42" rx="21" fill="#0b3b52"/>
-      <text x="292" y="27" text-anchor="middle" fill="#fff" font-size="17" font-style="italic" font-weight="700">Premise update pipeline</text>
+      <text x="292" y="27" text-anchor="middle" fill="#fff" font-size="17" font-style="italic" font-weight="700">Premise update workflow</text>
     </g>
 
     <path d="M378 244H908" fill="none" stroke="#b7d7d8" stroke-width="14" stroke-linecap="round"/>
@@ -104,7 +104,7 @@
     </g>
 
     <g transform="translate(926 62)" filter="url(#workflowShadow)">
-      <text x="104" y="0" text-anchor="middle" font-size="17" font-weight="800" letter-spacing="1">BUILD ARTEFACTS</text>
+      <text x="104" y="0" text-anchor="middle" font-size="17" font-weight="800" letter-spacing="1">BUILD OUTPUTS</text>
       <g transform="translate(0 24)">
         <rect width="208" height="104" rx="18" fill="#fff" stroke="#006b8f" stroke-width="4"/>
         <rect width="60" height="104" rx="18" fill="#eaf3f6"/>

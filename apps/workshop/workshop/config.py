@@ -20,9 +20,7 @@ IMAGE_END_USE_TRANSFORMATIONS_FILE = (
     DATA_DIR / "processed" / "image_end_use_transformations.csv"
 )
 PREMISE_MAPPING_COUNTS_FILE = DATA_DIR / "processed" / "premise_mapping_counts.csv"
-IAM_REGION_TOPOLOGIES_FILE = (
-    DATA_DIR / "processed" / "iam_region_topologies.json"
-)
+IAM_REGION_TOPOLOGIES_FILE = DATA_DIR / "processed" / "iam_region_topologies.json"
 
 with (DATA_DIR / "narratives.json").open(encoding="utf-8") as stream:
     NARRATIVES = json.load(stream)
@@ -39,56 +37,56 @@ CORE_YEARS = [2020, 2040, 2060]
 
 SLIDE_TITLES = [
     "IAM scenarios for prospective LCA",
-    "Societies demand services—not tonnes of fuel",
-    "Emissions are distributed across a connected system",
-    "CO₂ accumulates; warming follows the cumulative total",
-    "Why integrated assessment?",
-    "A deadline is not a pathway",
-    "An IAM is a disciplined thought experiment",
-    "Not every IAM integrates the same systems",
-    "IAMs can solve the same question differently",
+    "People need services, not fuel",
+    "Emissions come from a connected system",
+    "CO₂ accumulates, so the full pathway matters",
+    "Why do we need integrated assessment?",
+    "A target date is not a pathway",
+    "An IAM is a structured thought experiment",
+    "IAMs represent different parts of the system",
+    "IAMs can answer the same question differently",
     "From emissions scenarios to policy evidence",
-    "The SSPs diverge before climate policy is added",
+    "SSPs differ before climate policy is added",
     "SSP1–SSP3: from cooperation to fragmentation",
-    "SSP4 and SSP5: capability is not sustainability",
-    "RCPs describe radiative-forcing experiments",
-    "CMIP7 families describe emissions through time",
+    "Fast innovation does not guarantee sustainability",
+    "RCPs define radiative-forcing experiments",
+    "CMIP7 families describe how emissions change over time",
     "A quantitative scenario combines three layers",
-    "Choose before you know the assumptions",
-    "From investment to system change",
+    "Choose a pathway before seeing its assumptions",
+    "Investment changes the system over time",
     "First, compare the whole energy system",
-    "Then zoom in on the electricity chain",
+    "Then examine the electricity chain",
     "Primary energy: resources entering the system",
-    "Secondary energy: carriers after conversion",
-    "Final energy: what end-use sectors receive",
-    "Passenger cars: electrification changes the energy arithmetic",
-    "Cement: decarbonization changes the kiln fleet",
-    "Steel: circular and electric routes displace blast furnaces",
-    "Space heating: electrification and networks replace fossil boilers",
-    "Premise sees a different level of detail in each IAM",
-    "What IAMs leave outside",
-    "Can you defend why the LCA result changed?",
-    "Six IAMs divide the same world differently",
-    "CH stays Swiss—but its IAM region depends on the model",
+    "Secondary energy: carriers produced after conversion",
+    "Final energy: energy delivered to users",
+    "Passenger cars: electrification reduces energy per kilometre",
+    "Cement: lower emissions require a different kiln mix",
+    "Steel: recycled and electric routes replace blast furnaces",
+    "Space heating: electricity and heat networks replace fossil boilers",
+    "Premise gets different levels of detail from each IAM",
+    "What IAMs leave out",
+    "Can you explain why the LCA result changed?",
+    "Six IAMs group countries into different regions",
+    "A Swiss inventory can map to different IAM regions",
     "Change one dimension at a time",
-    "Explore the transformation that matters",
-    "Low 2100 warming can rely on large future removals",
-    "Premise transforms selected levers—not the whole economy",
-    "Turn a scenario result into a defensible LCA statement",
-    "Unit impact, deployment and cause are different questions",
-    "Match boundaries before turning intensity into total impact",
-    "Trace one result from IAM signal to LCIA score",
-    "Steel connects route choice, inventory intensity and total demand",
-    "IAM says ‘solar’; LCA needs a module technology",
-    "PV uncertainty is indicator-specific",
-    "Similar warming does not mean a similar footprint",
-    "Audit the chain before reporting the result",
-    "Choose the scenario source that resolves the decision lever",
-    "Premise is the translation layer—not the scenario model",
-    "From research coupling to open scenario infrastructure",
-    "A build turns scenario coordinates into inventory changes",
-    "Brightway computes; Activity Browser makes scenarios explorable",
-    "The same databases support three analytical scales",
+    "Explore how scenarios change each sector",
+    "Low warming in 2100 can depend on large future removals",
+    "Premise updates selected parts of the background database",
+    "Turn a scenario result into a well-supported LCA statement",
+    "Unit impact, deployment and causes are different questions",
+    "Match boundaries before calculating total impact",
+    "Trace an LCA result back to the scenario data",
+    "Steel links production routes, unit impact and total output",
+    "The IAM says solar; the LCA needs a specific module technology",
+    "PV uncertainty affects indicators differently",
+    "Similar warming can still have very different impacts",
+    "Check the full chain before reporting a result",
+    "Choose a scenario source with the detail your decision needs",
+    "Premise translates scenarios; it is not a scenario model",
+    "From one-off research links to shared scenario tools",
+    "A build converts scenario choices into inventory changes",
+    "Premise changes inventories; Brightway calculates results",
+    "One set of databases supports three scales of analysis",
     "Resources for building and documenting scenarios",
 ]
 
@@ -102,11 +100,11 @@ CHAPTERS = [
     {"name": "Applied cases", "start": 38, "end": 51},
 ]
 
-ANONYMOUS_SLIDE = SLIDE_TITLES.index("Choose before you know the assumptions")
-FIRST_SECTOR_SLIDE = SLIDE_TITLES.index("Explore the transformation that matters")
-IAM_MAP_SLIDE = SLIDE_TITLES.index("Six IAMs divide the same world differently")
+ANONYMOUS_SLIDE = SLIDE_TITLES.index("Choose a pathway before seeing its assumptions")
+FIRST_SECTOR_SLIDE = SLIDE_TITLES.index("Explore how scenarios change each sector")
+IAM_MAP_SLIDE = SLIDE_TITLES.index("Six IAMs group countries into different regions")
 RESULT_TRACER_SLIDE = SLIDE_TITLES.index(
-    "Trace one result from IAM signal to LCIA score"
+    "Trace an LCA result back to the scenario data"
 )
 LAST_SLIDE = len(SLIDE_TITLES) - 1
 

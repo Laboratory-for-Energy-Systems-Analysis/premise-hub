@@ -7597,6 +7597,11 @@ select {
   .premise-role-row small { font-size: 10px; }
 }
 
+@media (min-width: 701px) and (min-height: 821px) and (max-height: 950px) {
+  .ssp-narrative-slide,
+  .anonymous-scenario-slide { padding-block: 17px 12px; }
+}
+
 @page {
   size: 16in 9in;
   margin: 0;

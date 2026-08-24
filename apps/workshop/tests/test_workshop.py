@@ -169,118 +169,126 @@ class WorkshopSmokeTests(unittest.TestCase):
 
     def test_climate_introduction_contract(self) -> None:
         self.assertEqual(len(SLIDE_TITLES), 52)
-        self.assertEqual(SLIDE_TITLES[5], "A deadline is not a pathway")
-        self.assertEqual(SLIDE_TITLES[6], "An IAM is a disciplined thought experiment")
-        self.assertEqual(SLIDE_TITLES[7], "Not every IAM integrates the same systems")
+        self.assertEqual(SLIDE_TITLES[5], "A target date is not a pathway")
+        self.assertEqual(SLIDE_TITLES[6], "An IAM is a structured thought experiment")
         self.assertEqual(
-            SLIDE_TITLES[8], "IAMs can solve the same question differently"
+            SLIDE_TITLES[7], "IAMs represent different parts of the system"
+        )
+        self.assertEqual(
+            SLIDE_TITLES[8], "IAMs can answer the same question differently"
         )
         self.assertEqual(SLIDE_TITLES[9], "From emissions scenarios to policy evidence")
-        self.assertEqual(
-            SLIDE_TITLES[10], "The SSPs diverge before climate policy is added"
-        )
+        self.assertEqual(SLIDE_TITLES[10], "SSPs differ before climate policy is added")
         self.assertEqual(
             SLIDE_TITLES[11], "SSP1–SSP3: from cooperation to fragmentation"
         )
         self.assertEqual(
-            SLIDE_TITLES[12], "SSP4 and SSP5: capability is not sustainability"
+            SLIDE_TITLES[12], "Fast innovation does not guarantee sustainability"
         )
         self.assertEqual(
             SLIDE_TITLES[13],
-            "RCPs describe radiative-forcing experiments",
+            "RCPs define radiative-forcing experiments",
         )
         self.assertEqual(
-            SLIDE_TITLES[14], "CMIP7 families describe emissions through time"
+            SLIDE_TITLES[14], "CMIP7 families describe how emissions change over time"
         )
         self.assertEqual(
             SLIDE_TITLES[15], "A quantitative scenario combines three layers"
         )
-        self.assertEqual(SLIDE_TITLES[16], "Choose before you know the assumptions")
-        self.assertEqual(SLIDE_TITLES[17], "From investment to system change")
+        self.assertEqual(
+            SLIDE_TITLES[16], "Choose a pathway before seeing its assumptions"
+        )
+        self.assertEqual(SLIDE_TITLES[17], "Investment changes the system over time")
         self.assertEqual(SLIDE_TITLES[18], "First, compare the whole energy system")
-        self.assertEqual(SLIDE_TITLES[19], "Then zoom in on the electricity chain")
+        self.assertEqual(SLIDE_TITLES[19], "Then examine the electricity chain")
         self.assertEqual(
             SLIDE_TITLES[23],
-            "Passenger cars: electrification changes the energy arithmetic",
+            "Passenger cars: electrification reduces energy per kilometre",
         )
         self.assertEqual(
             SLIDE_TITLES[26],
-            "Space heating: electrification and networks replace fossil boilers",
+            "Space heating: electricity and heat networks replace fossil boilers",
         )
         self.assertEqual(
             SLIDE_TITLES[27],
-            "Premise sees a different level of detail in each IAM",
+            "Premise gets different levels of detail from each IAM",
         )
         self.assertNotIn("Mapped IAM detail varies by model and sector", SLIDE_TITLES)
-        self.assertEqual(SLIDE_TITLES[29], "Can you defend why the LCA result changed?")
-        self.assertEqual(SLIDE_TITLES[30], "Six IAMs divide the same world differently")
+        self.assertEqual(
+            SLIDE_TITLES[29], "Can you explain why the LCA result changed?"
+        )
+        self.assertEqual(
+            SLIDE_TITLES[30], "Six IAMs group countries into different regions"
+        )
         self.assertEqual(
             SLIDE_TITLES[31],
-            "CH stays Swiss—but its IAM region depends on the model",
+            "A Swiss inventory can map to different IAM regions",
         )
         self.assertEqual(SLIDE_TITLES[32], "Change one dimension at a time")
-        self.assertEqual(SLIDE_TITLES[33], "Explore the transformation that matters")
+        self.assertEqual(SLIDE_TITLES[33], "Explore how scenarios change each sector")
         self.assertEqual(
             SLIDE_TITLES[36],
-            "Turn a scenario result into a defensible LCA statement",
+            "Turn a scenario result into a well-supported LCA statement",
         )
         self.assertEqual(
             SLIDE_TITLES[37],
-            "Unit impact, deployment and cause are different questions",
+            "Unit impact, deployment and causes are different questions",
         )
         self.assertEqual(
             SLIDE_TITLES[38],
-            "Match boundaries before turning intensity into total impact",
+            "Match boundaries before calculating total impact",
         )
         self.assertEqual(
             SLIDE_TITLES[RESULT_TRACER_SLIDE],
-            "Trace one result from IAM signal to LCIA score",
+            "Trace an LCA result back to the scenario data",
         )
         self.assertEqual(
             SLIDE_TITLES[40],
-            "Steel connects route choice, inventory intensity and total demand",
+            "Steel links production routes, unit impact and total output",
         )
         self.assertEqual(
             SLIDE_TITLES[41],
-            "IAM says ‘solar’; LCA needs a module technology",
-        )
-        self.assertEqual(SLIDE_TITLES[42], "PV uncertainty is indicator-specific")
-        self.assertEqual(
-            SLIDE_TITLES[43], "Similar warming does not mean a similar footprint"
+            "The IAM says solar; the LCA needs a specific module technology",
         )
         self.assertEqual(
-            SLIDE_TITLES[44], "Audit the chain before reporting the result"
+            SLIDE_TITLES[42], "PV uncertainty affects indicators differently"
+        )
+        self.assertEqual(
+            SLIDE_TITLES[43], "Similar warming can still have very different impacts"
+        )
+        self.assertEqual(
+            SLIDE_TITLES[44], "Check the full chain before reporting a result"
         )
         self.assertEqual(
             SLIDE_TITLES[45],
-            "Choose the scenario source that resolves the decision lever",
+            "Choose a scenario source with the detail your decision needs",
         )
         self.assertEqual(
             SLIDE_TITLES[46],
-            "Premise is the translation layer—not the scenario model",
+            "Premise translates scenarios; it is not a scenario model",
         )
         self.assertEqual(
             SLIDE_TITLES[47],
-            "From research coupling to open scenario infrastructure",
+            "From one-off research links to shared scenario tools",
         )
         self.assertEqual(
             SLIDE_TITLES[48],
-            "A build turns scenario coordinates into inventory changes",
+            "A build converts scenario choices into inventory changes",
         )
         self.assertEqual(
             SLIDE_TITLES[49],
-            "Brightway computes; Activity Browser makes scenarios explorable",
+            "Premise changes inventories; Brightway calculates results",
         )
         self.assertEqual(
             SLIDE_TITLES[50],
-            "The same databases support three analytical scales",
+            "One set of databases supports three scales of analysis",
         )
         self.assertEqual(
             SLIDE_TITLES[51], "Resources for building and documenting scenarios"
         )
         self.assertEqual(
             SLIDE_TITLES[ANONYMOUS_SLIDE],
-            "Choose before you know the assumptions",
+            "Choose a pathway before seeing its assumptions",
         )
         population = ssp_baseline_comparison_figure("population")
         self.assertEqual(len(population.data), 5)
@@ -758,6 +766,20 @@ class WorkshopSmokeTests(unittest.TestCase):
             "choose the contrast that tests your decision",
         ]:
             self.assertNotIn(phrase, text)
+
+    def test_slide_copy_has_no_em_dashes(self) -> None:
+        root = Path(__file__).resolve().parents[1]
+        for path in [
+            "workshop/config.py",
+            "workshop/slides.py",
+            "workshop/figures.py",
+            "data/narratives.json",
+            "data/premise_transformations.json",
+            "assets/premise-transformation-engine.svg",
+            "assets/premise-library-bridge.svg",
+            "assets/premise-ecosystem-network.svg",
+        ]:
+            self.assertNotIn("—", (root / path).read_text(encoding="utf-8"), path)
 
     def test_lcia_schema_is_auditable(self) -> None:
         root = Path(__file__).resolve().parents[1]

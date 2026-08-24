@@ -63,7 +63,6 @@ from .figures import (
     total_energy_system_figure,
 )
 
-
 PREMISE_NAME = re.compile(r"\bpremise\b", flags=re.IGNORECASE)
 _ASSET_PREFIX = "/assets/"
 
@@ -346,7 +345,7 @@ def slide_welcome() -> html.Div:
                         "IAM scenarios\nfor prospective LCA", className="hero-title"
                     ),
                     html.P(
-                        "How to read the worlds behind a premise database",
+                        "How scenarios shape a premise database",
                         className="hero-subtitle",
                     ),
                     html.Div(
@@ -377,8 +376,8 @@ def slide_welcome() -> html.Div:
                             html.Div(
                                 [
                                     html.Span("IAM", className="hero-iam-badge"),
-                                    html.Strong("Coupled system"),
-                                    html.Small("conditional calculation"),
+                                    html.Strong("Connected system"),
+                                    html.Small("calculation based on assumptions"),
                                 ],
                                 className="hero-iam-core",
                             ),
@@ -401,7 +400,7 @@ def slide_welcome() -> html.Div:
                             html.Div(
                                 [
                                     html.Strong("Pathways"),
-                                    html.Small("deployment · emissions"),
+                                    html.Small("technologies · emissions"),
                                 ],
                                 className="hero-output-card pathway-output",
                             ),
@@ -409,7 +408,7 @@ def slide_welcome() -> html.Div:
                             html.Div(
                                 [
                                     html.Strong("Inventories"),
-                                    html.Small("premise transformations"),
+                                    html.Small("premise updates"),
                                 ],
                                 className="hero-output-card inventory-output",
                             ),
@@ -425,7 +424,7 @@ def slide_welcome() -> html.Div:
                         className="hero-outputs",
                     ),
                     html.Div(
-                        "A policy endpoint becomes a chain of conditional evidence",
+                        "A policy target becomes a pathway, an inventory and an LCA result",
                         className="hero-workflow-caption",
                     ),
                 ],
@@ -462,8 +461,8 @@ def slide_energy_climate() -> html.Div:
         [
             eyebrow("Why integrated assessment · energy services"),
             title(
-                "Societies demand services—not tonnes of fuel",
-                "Energy use sits between human needs, infrastructure and environmental pressure",
+                "People need services, not fuel",
+                "Energy connects human needs and infrastructure to environmental pressure",
             ),
             html.Div(
                 [
@@ -488,7 +487,7 @@ def slide_energy_climate() -> html.Div:
                             metric_card(
                                 "−5.5%",
                                 "CO₂ per unit energy",
-                                "Relative decoupling—not an absolute decline",
+                                "CO₂ grew more slowly than energy use, but still grew",
                                 "metric-intensity",
                             ),
                             metric_card(
@@ -511,7 +510,7 @@ def slide_energy_climate() -> html.Div:
                 "2000–2024: Energy Institute / U.S. EIA primary energy and Global Carbon Budget fossil CO₂, processed by Our World in Data. 2025: IEA Global Energy Review 2026."
             ),
             takeaway(
-                "Climate analysis must connect services, technologies, stocks, energy flows and emissions—not energy supply alone."
+                "Climate analysis must connect services, technologies, infrastructure, energy flows and emissions. Energy supply alone is not enough."
             ),
         ],
         className="slide intro-energy-slide",
@@ -549,8 +548,8 @@ def slide_emissions_system() -> html.Div:
         [
             eyebrow("Why integrated assessment · greenhouse gases"),
             title(
-                "Emissions are distributed across a connected system",
-                "Sector boundaries change the diagnosis, but not the atmosphere",
+                "Emissions come from a connected system",
+                "How we group emissions changes what we see, but not the atmospheric total",
             ),
             html.Div(
                 [
@@ -578,7 +577,7 @@ def slide_emissions_system() -> html.Div:
                 "IPCC AR6 WGIII SPM B.1.1, B.2.1 and Figure SPM.2 · 2019 GWP100-AR6 values. Regional shares are production-based and sum to 99% through rounding."
             ),
             takeaway(
-                "Sector coupling determines whether a technology shifts, reduces or amplifies emissions across its life cycle."
+                "Links between sectors determine whether a technology moves, reduces or increases emissions across its life cycle."
             ),
         ],
         className="slide intro-emissions-slide",
@@ -601,8 +600,8 @@ def slide_warming_budget() -> html.Div:
         [
             eyebrow("Why integrated assessment · cumulative change"),
             title(
-                "CO₂ accumulates; warming follows the cumulative total",
-                "A pathway must respect both an endpoint and the route taken to reach it",
+                "CO₂ accumulates, so the full pathway matters",
+                "Both the final target and the emissions released along the way affect warming",
             ),
             html.Div(
                 [
@@ -632,7 +631,7 @@ def slide_warming_budget() -> html.Div:
                 "IPCC AR6 WGI SPM: historical emissions and remaining budgets from the start of 2020. Right-hand chart: schematic 40 Gt/yr example; areas are calculated, not an assessed pathway."
             ),
             takeaway(
-                "The same end-year emissions can hide different cumulative emissions, overshoot and removal obligations."
+                "The same emissions in the final year can hide very different cumulative emissions, temperature overshoot and removal needs."
             ),
         ],
         className="slide intro-budget-slide",
@@ -647,7 +646,7 @@ def slide_why_integrate() -> html.Div:
         ("H₂ + removals", "Electrolysis · DAC"),
     ]
     statistics = [
-        ("5 × 6", "Systems × levers", "Mapped in this teaching matrix"),
+        ("5 × 6", "Systems × options", "Mapped in this teaching matrix"),
         ("4", "Simultaneous claims", "On clean power and grids"),
         ("40–70%", "Demand-side potential", "End-use GHG reduction by 2050"),
         ("≥ 50%", "Near-term potential", "2019 GHG level reducible by 2030"),
@@ -656,8 +655,8 @@ def slide_why_integrate() -> html.Div:
         [
             eyebrow("Why integrated assessment · decision system"),
             title(
-                "Why integrated assessment?",
-                "Mitigation levers interact across sectors, time, regions and objectives",
+                "Why do we need integrated assessment?",
+                "Climate options interact across sectors, time, regions and policy goals",
             ),
             html.Div(
                 [
@@ -667,7 +666,7 @@ def slide_why_integrate() -> html.Div:
                                 [
                                     html.Strong("How to read the matrix"),
                                     html.Span(
-                                        "Choose a system (row). Each cell shows how strongly the lever (column) directly shapes its pathway."
+                                        "Choose a system (row). Each cell shows how strongly an option (column) affects that system."
                                     ),
                                 ],
                                 className="matrix-reading-guide",
@@ -684,7 +683,7 @@ def slide_why_integrate() -> html.Div:
                                         className="matrix-legend-item",
                                     )
                                     for level, label in enumerate(
-                                        ["Limited", "Supporting", "Material", "Central"]
+                                        ["Limited", "Small", "Strong", "Central"]
                                     )
                                 ],
                                 className="matrix-legend",
@@ -715,7 +714,7 @@ def slide_why_integrate() -> html.Div:
                                                         "2030 economic potential"
                                                     ),
                                                     html.Span(
-                                                        "All sector options assessed at ≤ USD100 per tonne avoided in 2030—including supply, efficiency and process changes."
+                                                        "All sector options assessed at no more than USD 100 per tonne avoided in 2030. This includes supply, efficiency and process changes."
                                                     ),
                                                 ]
                                             ),
@@ -733,7 +732,7 @@ def slide_why_integrate() -> html.Div:
                                                         "2050 demand-side potential"
                                                     ),
                                                     html.Span(
-                                                        "Avoid–shift–improve measures by 2050: behaviour, infrastructure and end-use technology. Cleaner energy supply is excluded."
+                                                        "Measures that avoid demand, shift activities or improve efficiency by 2050. These include behaviour, infrastructure and end-use technology, but exclude cleaner energy supply."
                                                     ),
                                                 ]
                                             ),
@@ -755,7 +754,7 @@ def slide_why_integrate() -> html.Div:
                                     ),
                                     html.Strong("Electrification couples sectors"),
                                     html.Small(
-                                        "Why four plausible sector plans cannot be added independently"
+                                        "Why four plausible sector plans cannot be planned separately"
                                     ),
                                 ],
                                 className="integration-example-title",
@@ -767,7 +766,7 @@ def slide_why_integrate() -> html.Div:
                                         [
                                             html.Strong("Sector decisions"),
                                             html.Span(
-                                                "Each looks plausible when considered alone"
+                                                "Each looks feasible when considered alone"
                                             ),
                                         ]
                                     ),
@@ -811,7 +810,7 @@ def slide_why_integrate() -> html.Div:
                                 [
                                     html.Span("↓", className="integration-flow-arrow"),
                                     html.Strong(
-                                        "IAM balances the claims and constraints over time"
+                                        "The IAM balances all demands and constraints over time"
                                     ),
                                 ],
                                 className="integration-flow-label",
@@ -825,7 +824,7 @@ def slide_why_integrate() -> html.Div:
                                                 "Scenario outputs for prospective LCA"
                                             ),
                                             html.Span(
-                                                "Deployment · electricity mix · efficiencies · upstream inventories"
+                                                "Technology use · electricity mix · efficiencies · upstream inventories"
                                             ),
                                         ]
                                     ),
@@ -856,7 +855,7 @@ def slide_why_integrate() -> html.Div:
                 "2019 totals include electricity and heat reassigned to end-use sectors (IPCC AR6 WGIII Figure 2.12). Table 12.4: 2030 economic potential; Figure SPM.6 / Chapter 5: 2050 demand-side potential. The strips compare scale; they are not sequential reductions or residual forecasts."
             ),
             takeaway(
-                "We need IAMs because isolated sector assumptions can be individually plausible yet mutually inconsistent."
+                "We need IAMs because separate sector plans can each look feasible but still conflict when combined."
             ),
         ],
         className="slide integration-slide",
@@ -911,8 +910,8 @@ def slide_net_zero_pathway() -> html.Div:
         [
             eyebrow("Why integrated assessment · from pledge to pathway"),
             title(
-                "A deadline is not a pathway",
-                "“Net zero by 20XX” fixes an endpoint—many transformations can reach it",
+                "A target date is not a pathway",
+                "A net-zero year states the destination, but not how to get there",
             ),
             html.Div(
                 [
@@ -992,7 +991,7 @@ def slide_net_zero_pathway() -> html.Div:
                 "Map: archival Climate Watch target-year view. Table: national sources and Net Zero Tracker, checked August 2026; definitions differ in legal status, gas coverage, boundaries and removals."
             ),
             takeaway(
-                "IAMs translate goals and constraints into internally consistent pathways—conditional on assumptions about society, technology and policy."
+                "IAMs turn goals and constraints into consistent pathways based on explicit assumptions about society, technology and policy."
             ),
         ],
         className="slide netzero-slide",
@@ -1004,7 +1003,7 @@ def slide_iam_definition() -> html.Div:
         (
             "I",
             "Integrated",
-            "Changes propagate across connected human and natural systems.",
+            "A change in one human or natural system can affect the others.",
             "iam-meaning-integrated",
         ),
         (
@@ -1016,19 +1015,19 @@ def slide_iam_definition() -> html.Div:
         (
             "M",
             "Model",
-            "Equations, constraints and behavioural rules generate pathways.",
+            "Equations, constraints and rules about behaviour generate pathways.",
             "iam-meaning-model",
         ),
     ]
     experiment_steps = [
         ("Question", "What if a target, policy or technology constraint changes?"),
         (
-            "Assumptions + machinery",
-            "Society, technology and policy enter equations, constraints and solution rules",
+            "Assumptions + model rules",
+            "Society, technology and policy are represented through equations, constraints and rules",
         ),
         (
             "Conditional outputs",
-            "Regional energy, land, emissions and removals—not a complete inventory",
+            "Regional energy, land, emissions and removals. These are not a complete inventory.",
         ),
     ]
     experiment_modes = [
@@ -1052,8 +1051,8 @@ def slide_iam_definition() -> html.Div:
         [
             eyebrow("Why integrated assessment · definition"),
             title(
-                "An IAM is a disciplined thought experiment",
-                "It quantifies conditional futures; it does not predict which future will occur",
+                "An IAM is a structured thought experiment",
+                "It calculates futures under stated assumptions; it does not predict which future will occur",
             ),
             html.Div(
                 [
@@ -1075,7 +1074,9 @@ def slide_iam_definition() -> html.Div:
                             html.Div(
                                 [
                                     html.Strong("A disciplined experiment"),
-                                    html.Span("Trace the logic from premise to result"),
+                                    html.Span(
+                                        "Follow the reasoning from assumptions to results"
+                                    ),
                                 ],
                                 className="iam-experiment-heading",
                             ),
@@ -1116,7 +1117,7 @@ def slide_iam_definition() -> html.Div:
                         [
                             html.Figcaption(
                                 [
-                                    html.Strong("Model machinery · coupled systems"),
+                                    html.Strong("Model rules · connected systems"),
                                     html.Span(
                                         "Optimisation or simulation connects services, resources, technologies and emissions"
                                     ),
@@ -1218,7 +1219,7 @@ def slide_iam_definition() -> html.Div:
                                                 "regional demand · deployment · energy · land · emissions · climate"
                                             ),
                                             html.B(
-                                                "→ premise inputs, not a complete LCI"
+                                                "→ inputs for premise, not a complete LCI"
                                             ),
                                         ],
                                         className="iam-pathway-band",
@@ -1233,10 +1234,10 @@ def slide_iam_definition() -> html.Div:
                 className="iam-definition-layout",
             ),
             source_note(
-                "The boundary is schematic. Behaviour and distribution are often stylised; political implementation, climate damages and Earth-system feedbacks may be linked, exogenous or absent."
+                "The boundary is simplified. Behaviour and distribution are often represented in broad terms. Political implementation, climate damage and Earth-system feedbacks may be linked to the model, set externally or omitted."
             ),
             takeaway(
-                "Ask not “Is this forecast right?” but “Which systems, assumptions and feedbacks produced this conditional pathway?”"
+                "Do not ask only whether the forecast is right. Ask which systems, assumptions and feedbacks produced the pathway."
             ),
         ],
         className="slide iam-definition-slide",
@@ -1260,8 +1261,8 @@ def slide_iam_system_coverage() -> html.Div:
         [
             eyebrow("Why integrated assessment · model boundaries"),
             title(
-                "Not every IAM integrates the same systems",
-                "Model choice determines which feedbacks are endogenous, linked—or outside the calculation",
+                "IAMs represent different parts of the system",
+                "Some systems respond directly inside the model, some are simplified and linked, and others are excluded",
             ),
             html.Div(
                 [
@@ -1270,9 +1271,9 @@ def slide_iam_system_coverage() -> html.Div:
                             html.Span("●", className="iam-coverage-key-symbol"),
                             html.Div(
                                 [
-                                    html.Strong("Core / endogenous"),
+                                    html.Strong("Inside the model"),
                                     html.Span(
-                                        "Can respond inside the run—e.g., energy investment or land allocation"
+                                        "Can respond directly during the calculation, for example energy investment or land allocation"
                                     ),
                                 ],
                                 className="iam-coverage-key-copy",
@@ -1287,7 +1288,7 @@ def slide_iam_system_coverage() -> html.Div:
                                 [
                                     html.Strong("Linked / simplified"),
                                     html.Span(
-                                        "Passed through a reduced or coupled module—test the sensitivity"
+                                        "Represented through a simpler connected module, so its influence should be tested"
                                     ),
                                 ],
                                 className="iam-coverage-key-copy",
@@ -1300,9 +1301,9 @@ def slide_iam_system_coverage() -> html.Div:
                             html.Span("○", className="iam-coverage-key-symbol"),
                             html.Div(
                                 [
-                                    html.Strong("Outside the core"),
+                                    html.Strong("Outside the model"),
                                     html.Span(
-                                        "Must be assessed elsewhere—e.g., politics, behaviour or materials"
+                                        "Must be assessed elsewhere, for example politics, behaviour or material supply"
                                     ),
                                 ],
                                 className="iam-coverage-key-copy",
@@ -1368,7 +1369,7 @@ def slide_iam_system_coverage() -> html.Div:
                 "Coverage is schematic: official IMAGE, MESSAGEix–GLOBIOM, REMIND–MAgPIE, GCAM and TIAM-UCL documentation; versions and experiment setups vary."
             ),
             takeaway(
-                "Choose an IAM whose endogenous systems match the LCA question—and document what must be assessed outside it."
+                "Choose an IAM that represents the systems central to the LCA question, and document what must be assessed outside the model."
             ),
         ],
         className="slide iam-coverage-slide",
@@ -1386,14 +1387,14 @@ def slide_iam_history_policy() -> html.Div:
         (
             "2000",
             "SRES storylines",
-            "Scenario families foregrounded population, development, technology and globalisation—without climate-policy mitigation.",
-            "Narrative uncertainty—not one forecast—became the organising principle.",
+            "Scenario families focused on population, development, technology and globalisation without adding climate mitigation policy.",
+            "The scenarios described several possible stories instead of presenting one forecast.",
         ),
         (
             "2007–10",
             "IAMC and RCPs",
             "A coordinated IAM community produced forcing pathways, emissions and land-use inputs for CMIP5.",
-            "Common forcing levels let IAM and climate-model experiments proceed in parallel and reconnect later.",
+            "Common forcing levels allowed IAM and climate-model teams to run experiments separately and compare them later.",
         ),
         (
             "2015",
@@ -1404,14 +1405,14 @@ def slide_iam_history_policy() -> html.Div:
         (
             "2017–22",
             "SSPs, SR1.5 and AR6",
-            "Large multi-model ensembles compared development worlds, mitigation timing, net zero, overshoot and sector transitions.",
+            "Large groups of model runs compared development patterns, mitigation timing, net zero, overshoot and sector transitions.",
             "Timing, demand, removals and feasibility became central to assessing 1.5°C-compatible pathways.",
         ),
         (
             "2026 →",
             "AR7 and CMIP7",
             "Representative emission families update the common experiments used across mitigation, climate and impacts research.",
-            "The new design foregrounds emissions trajectories while preserving links across these research communities.",
+            "The new design puts emissions trajectories at the centre while keeping the research areas connected.",
         ),
     ]
     interface = [
@@ -1423,7 +1424,7 @@ def slide_iam_history_policy() -> html.Div:
         (
             "2",
             "Model experiments",
-            "Multiple IAMs and sensitivities expose pathways and trade-offs",
+            "Multiple IAMs and sensitivity tests show pathways and trade-offs",
         ),
         (
             "3",
@@ -1489,7 +1490,7 @@ def slide_iam_history_policy() -> html.Div:
                             ],
                             html.Div(
                                 [
-                                    html.Strong("Influence ≠ authority"),
+                                    html.Strong("Evidence does not make the decision"),
                                     html.P(
                                         "IAMs clarify consequences; they cannot choose social values, political legitimacy or an acceptable distribution of costs."
                                     ),
@@ -1506,7 +1507,7 @@ def slide_iam_history_policy() -> html.Div:
                 "Sources: IPCC scenario history; IAMC history; UNFCCC Paris Agreement; IPCC AR6 WGIII Chapter 3; ScenarioMIP-CMIP7 (2026)."
             ),
             takeaway(
-                "IAMs inform policy by comparing conditional pathways and near-term implications; neither an IAM nor the IPCC prescribes one national plan."
+                "IAMs support policy by comparing pathways and their near-term implications. Neither an IAM nor the IPCC chooses a national plan."
             ),
         ],
         className="slide iam-history-slide",
@@ -1542,8 +1543,8 @@ def slide_ssp_quantitative() -> html.Div:
         [
             eyebrow("Scenario language · socioeconomic trajectories"),
             title(
-                "The SSPs diverge before climate policy is added",
-                "Population and GDP are shared socioeconomic drivers; energy-system outcomes are IAM elaborations of each baseline storyline",
+                "SSPs differ before climate policy is added",
+                "Population and GDP are shared inputs; each IAM turns the baseline storyline into energy-system results",
             ),
             html.Div(
                 [
@@ -1551,13 +1552,13 @@ def slide_ssp_quantitative() -> html.Div:
                         [
                             html.Strong("One storyline, several quantified layers"),
                             html.Span(
-                                "Demographic and economic projections feed IAMs; the IAM then resolves energy, land and emissions."
+                                "Population and economic projections enter the IAM, which then calculates energy, land use and emissions."
                             ),
                         ]
                     ),
                     html.Div(
                         [
-                            html.Strong("Indices aid comparison"),
+                            html.Strong("Indices make comparison easier"),
                             html.Span(
                                 "GDP and fossil-energy curves use 2010 = 100; population remains in billions."
                             ),
@@ -1565,7 +1566,7 @@ def slide_ssp_quantitative() -> html.Div:
                     ),
                     html.Div(
                         [
-                            html.Strong("Baseline ≠ no change"),
+                            html.Strong("A baseline still changes"),
                             html.Span(
                                 "No additional climate policy still allows efficiency, innovation and structural change."
                             ),
@@ -1608,7 +1609,7 @@ def slide_ssp_quantitative() -> html.Div:
                 className="ssp-challenge-summary-row",
             ),
             source_note(
-                "Sources: IIASA SSP Database · O’Neill et al. (2016, 2017) · Riahi et al. (2017). Population and GDP follow classic SSP projections; fossil energy is a schematic index of baseline marker patterns."
+                "Sources: IIASA SSP Database · O’Neill et al. (2016, 2017) · Riahi et al. (2017). Population and GDP follow the standard SSP projections. Fossil energy is an illustrative index based on baseline patterns from representative models."
             ),
             takeaway(
                 "The SSP number changes demand, resources and development conditions before the model is asked to meet any climate target."
@@ -1624,7 +1625,7 @@ def slide_ssp_1_to_3() -> html.Div:
             "code": "SSP1",
             "name": "Sustainability",
             "tagline": "Taking the Green Road",
-            "thesis": "Development goals, inclusion and environmental stewardship reinforce one another.",
+            "thesis": "Development, social inclusion and environmental protection reinforce one another.",
             "sections": [
                 (
                     "People & institutions",
@@ -1636,10 +1637,10 @@ def slide_ssp_1_to_3() -> html.Div:
                 ),
                 (
                     "Technology & environment",
-                    "Efficiency and low-carbon innovation diffuse quickly; management of the global commons improves.",
+                    "Efficiency and low-carbon technologies spread quickly, and countries cooperate more to protect the shared environment.",
                 ),
             ],
-            "lca": "Expect lower service-demand pressure and faster learning, but examine biomass, land and rebound effects rather than treating ‘green’ as impact-free.",
+            "lca": "Expect slower growth in service demand and faster technology improvement. Still examine biomass, land use and rebound effects instead of assuming that low-carbon options have no impacts.",
             "signals": [
                 ("Population 2100", "6.9 bn"),
                 ("GDP", "high"),
@@ -1664,7 +1665,7 @@ def slide_ssp_1_to_3() -> html.Div:
                 ),
                 (
                     "Technology & environment",
-                    "Technology diffuses at a moderate pace; environmental degradation continues despite incremental improvements.",
+                    "Technology spreads at a moderate pace. Environmental damage continues despite gradual improvements.",
                 ),
             ],
             "lca": "Useful as an anchor, but neither neutral nor most likely. Pair it with contrasting SSPs and multiple emissions pathways.",
@@ -1692,10 +1693,10 @@ def slide_ssp_1_to_3() -> html.Div:
                 ),
                 (
                     "Technology & environment",
-                    "Innovation diffuses slowly; material-intensive consumption and local fossil resources remain important.",
+                    "Innovation spreads slowly. Material-intensive consumption and local fossil resources remain important.",
                 ),
             ],
-            "lca": "Expect slower learning, persistent fossil supply, regionalised trade and strong location effects. Very low forcing targets may not solve in many IAMs.",
+            "lca": "Expect slower technology improvement, continued fossil supply, more regional trade and strong location effects. Many IAMs may not find a feasible pathway to very low forcing targets.",
             "signals": [
                 ("Population 2100", "12.6 bn"),
                 ("GDP", "low"),
@@ -1710,7 +1711,7 @@ def slide_ssp_1_to_3() -> html.Div:
             eyebrow("SSP narratives · development and cooperation"),
             title(
                 "SSP1–SSP3: from cooperation to fragmentation",
-                "The narratives change who develops, how demand grows, how technology diffuses and how quickly collective action can begin",
+                "The narratives change who develops, how demand grows, how technology spreads and how quickly countries can act together",
             ),
             html.Div(
                 [
@@ -1742,7 +1743,7 @@ def slide_ssp_1_to_3() -> html.Div:
                             ),
                             html.Div(
                                 [
-                                    html.Strong("Prospective-LCA reading"),
+                                    html.Strong("What this means for prospective LCA"),
                                     html.P(story["lca"]),
                                 ],
                                 className="ssp-story-lca",
@@ -1784,7 +1785,7 @@ def slide_ssp_1_to_3() -> html.Div:
                 "Sources: O’Neill et al. (2016, 2017) · Riahi et al. (2017) · IIASA SSP Database."
             ),
             takeaway(
-                "SSP2 is not halfway between SSP1 and SSP3: each storyline is a coherent bundle of institutions, demand, technology and distribution."
+                "SSP2 is not simply halfway between SSP1 and SSP3. Each storyline combines a consistent set of assumptions about institutions, demand, technology and inequality."
             ),
         ],
         className="slide ssp-narrative-slide",
@@ -1816,7 +1817,7 @@ def slide_ssp_4_to_5() -> html.Div:
                     "Technology helps, but land-use governance, poverty and unequal participation make the most stringent targets hard to implement consistently.",
                 ),
             ],
-            "lca": "Use regional resolution and distribution-sensitive interpretation: clean electricity for one group can coexist with traditional fuels, poor infrastructure and displaced impacts elsewhere.",
+            "lca": "Compare regions and social groups. Clean electricity for one group can coexist with traditional fuels, poor infrastructure and impacts shifted elsewhere.",
             "signals": [
                 ("Population 2100", "9.3 bn"),
                 ("Technology", "fast · unequal"),
@@ -1848,7 +1849,7 @@ def slide_ssp_4_to_5() -> html.Div:
                     "A stringent forcing target requires a sharp departure from the baseline, rapid capital replacement and often extensive carbon removal.",
                 ),
             ],
-            "lca": "Do not equate fast technology learning with low impacts: high service demand, fossil lock-in, infrastructure turnover and removal dependence can dominate prospective inventories.",
+            "lca": "Fast technology improvement does not guarantee low impacts. High service demand, continued dependence on fossil fuels, rapid infrastructure replacement and reliance on carbon removal can dominate prospective inventories.",
             "signals": [
                 ("Population 2100", "7.4 bn"),
                 ("Technology", "fast"),
@@ -1862,8 +1863,8 @@ def slide_ssp_4_to_5() -> html.Div:
         [
             eyebrow("SSP narratives · capability, distribution and energy"),
             title(
-                "SSP4 and SSP5: capability is not sustainability",
-                "Both worlds can innovate rapidly, but they distribute opportunity differently and make opposite assumptions about energy-intensive development",
+                "Fast innovation does not guarantee sustainability",
+                "SSP4 and SSP5 both innovate quickly, but they distribute opportunity differently and make opposite assumptions about energy use",
             ),
             html.Div(
                 [
@@ -1895,7 +1896,7 @@ def slide_ssp_4_to_5() -> html.Div:
                             ),
                             html.Div(
                                 [
-                                    html.Strong("Prospective-LCA reading"),
+                                    html.Strong("What this means for prospective LCA"),
                                     html.P(story["lca"]),
                                 ],
                                 className="ssp-story-lca",
@@ -1962,7 +1963,7 @@ def slide_ssp_4_to_5() -> html.Div:
                 "Sources: O’Neill et al. (2016, 2017) · Riahi et al. (2017) · IIASA SSP Database."
             ),
             takeaway(
-                "Technology capacity alone cannot identify a ‘green’ future: distribution, demand and energy orientation determine what that capacity does."
+                "Technology alone does not make a future sustainable. Access, demand and the energy system determine how that technology is used."
             ),
         ],
         className="slide ssp-narrative-slide ssp-pair-slide",
@@ -1997,8 +1998,8 @@ def slide_forcing_families() -> html.Div:
         [
             eyebrow("Scenario language · concentration experiment"),
             title(
-                "RCPs describe radiative-forcing experiments",
-                "The endpoint names a forcing level; the full curve determines when the climate system experiences it",
+                "RCPs define radiative-forcing experiments",
+                "The label gives an approximate forcing level in 2100; the full curve shows how forcing develops over time",
             ),
             html.Div(
                 [
@@ -2046,7 +2047,7 @@ def slide_forcing_families() -> html.Div:
                         [
                             html.Div(
                                 [
-                                    html.Strong("Prescribed experiment"),
+                                    html.Strong("Inputs set in advance"),
                                     html.Span(
                                         "Concentrations and forcing are inputs to the climate-model run."
                                     ),
@@ -2057,7 +2058,7 @@ def slide_forcing_families() -> html.Div:
                                 [
                                     html.Strong("Modelled response"),
                                     html.Span(
-                                        "GMST is an output with a range—not a number encoded by the RCP label."
+                                        "Global mean surface temperature (GMST) is a range of model results, not a number contained in the RCP label."
                                     ),
                                 ],
                                 className="forcing-reading-card",
@@ -2087,7 +2088,7 @@ def slide_forcing_families() -> html.Div:
                                         "Read the forcing curve together with its climate response"
                                     ),
                                     html.P(
-                                        "Warming lags forcing, and the same label produces a distribution across climate models."
+                                        "Warming responds with a delay, and climate models produce a range of temperatures for the same forcing pathway."
                                     ),
                                 ],
                                 className="forcing-trajectory-heading",
@@ -2102,13 +2103,13 @@ def slide_forcing_families() -> html.Div:
                     html.Div(
                         [
                             trajectory_card(
-                                "Prescribed forcing trajectory",
+                                "Forcing trajectory set in advance",
                                 "RCP number ≈ 2100 forcing level",
                                 rcp_forcing_trajectory_figure(compact=True),
                             ),
                             trajectory_card(
-                                "Illustrative GMST response",
-                                "central warming relative to 1850–1900",
+                                "Illustrative temperature response",
+                                "central GMST estimate relative to 1850–1900",
                                 rcp_gmst_trajectory_figure(compact=True),
                             ),
                         ],
@@ -2121,7 +2122,7 @@ def slide_forcing_families() -> html.Div:
                 "Sources: van Vuuren et al. (2011); Gidden et al. (2019); IPCC AR6. SSP1-1.9 is the CMIP6 low-end extension; curves are teaching approximations."
             ),
             takeaway(
-                "An RCP names the forcing experiment; temperature is the uncertain climate response to the whole trajectory."
+                "An RCP defines a forcing experiment. Temperature is the uncertain climate response to the full forcing trajectory."
             ),
         ],
         className="slide forcing-families-slide forcing-rcp-slide",
@@ -2142,8 +2143,8 @@ def slide_emission_families() -> html.Div:
         [
             eyebrow("Scenario language · emissions experiment"),
             title(
-                "CMIP7 families describe emissions through time",
-                "The names make timing explicit; Earth-system models translate emissions into forcing and temperature",
+                "CMIP7 families describe how emissions change over time",
+                "The names describe both the emissions level and its timing; Earth-system models calculate the resulting forcing and temperature",
             ),
             html.Div(
                 [
@@ -2155,7 +2156,7 @@ def slide_emission_families() -> html.Div:
                                         "ScenarioMIP-CMIP7 · seven emissions families"
                                     ),
                                     html.P(
-                                        "H, M and L indicate broad emissions levels; the second letter signals later change. VL and LN distinguish the fastest reductions from pathways that become net negative."
+                                        "H, M and L indicate broad emissions levels. A second letter describes how emissions change later. VL marks the fastest reductions, while LN becomes net negative later."
                                     ),
                                 ],
                                 className="forcing-panel-heading",
@@ -2226,7 +2227,7 @@ def slide_emission_families() -> html.Div:
                                 className="forcing-trajectory-heading",
                             ),
                             html.Div(
-                                "FaIR-style central teaching curves · 1.5 °C dotted.",
+                                "Central illustrative curves based on FaIR · the dotted line marks 1.5 °C.",
                                 className="forcing-trajectory-caveat",
                             ),
                         ],
@@ -2235,13 +2236,13 @@ def slide_emission_families() -> html.Div:
                     html.Div(
                         [
                             trajectory_card(
-                                "Prescribed emissions trajectory",
+                                "Emissions trajectory set in advance",
                                 "illustrative global GHG emissions · Gt CO₂-eq/yr",
                                 cmip7_family_figure(compact=True),
                             ),
                             trajectory_card(
-                                "Illustrative GMST response",
-                                "central warming relative to 1850–1900",
+                                "Illustrative temperature response",
+                                "central GMST estimate relative to 1850–1900",
                                 cmip7_gmst_trajectory_figure(compact=True),
                             ),
                         ],
@@ -2254,7 +2255,7 @@ def slide_emission_families() -> html.Div:
                 "Source: Van Vuuren et al. (2026), ScenarioMIP-CMIP7, doi:10.5194/gmd-19-2627-2026. Curves are central teaching approximations."
             ),
             takeaway(
-                "The family describes the emissions experiment—not the society producing it; GMST is the uncertain response."
+                "The family describes the emissions experiment, not the society producing it. GMST is the uncertain climate response."
             ),
         ],
         className="slide forcing-families-slide forcing-emissions-slide",
@@ -2292,7 +2293,7 @@ def slide_scenario_combinations() -> html.Div:
             eyebrow("Scenario language · combine the layers"),
             title(
                 "A quantitative scenario combines three layers",
-                "The same societal world or climate experiment can yield different pathways once the IAM implementation is specified",
+                "The same societal storyline or climate experiment can produce different pathways because each IAM uses its own assumptions and methods",
             ),
             html.Div(
                 [
@@ -2310,7 +2311,7 @@ def slide_scenario_combinations() -> html.Div:
                     ),
                     html.I("+"),
                     html.Div(
-                        [html.Strong("IAM"), html.Span("assumptions + solution")],
+                        [html.Strong("IAM"), html.Span("assumptions + model rules")],
                         className="scenario-equation-part equation-model",
                     ),
                     html.I("→"),
@@ -2328,9 +2329,9 @@ def slide_scenario_combinations() -> html.Div:
                 [
                     html.Div(
                         [
-                            html.H2("Decode the label—then verify the source"),
+                            html.H2("Read the label, then verify the source"),
                             html.P(
-                                "The code is only an index. Recover the source definition, model and variant before interpreting ambition or consequences."
+                                "The code is only a short label. Check its definition, IAM and model variant before interpreting its ambition or consequences."
                             ),
                             html.Div(
                                 [
@@ -2353,7 +2354,7 @@ def slide_scenario_combinations() -> html.Div:
                                 [
                                     html.Strong("Important"),
                                     html.Span(
-                                        "The label is not the scenario: investments, technology mixes and inventory changes depend on the implementation behind it."
+                                        "The label alone does not define the scenario. Investments, technology mixes and inventory changes depend on how the IAM implements it."
                                     ),
                                 ],
                                 className="scenario-label-caution",
@@ -2368,7 +2369,7 @@ def slide_scenario_combinations() -> html.Div:
                                     html.Div(
                                         [
                                             html.H2(
-                                                "Feasibility is storyline- and model-dependent"
+                                                "Whether a target can be reached depends on the storyline and IAM"
                                             ),
                                             html.P(
                                                 "Forcing levels become more stringent downward; SSPs are arranged roughly from lower to higher mitigation challenge."
@@ -2471,7 +2472,7 @@ def slide_scenario_combinations() -> html.Div:
                                 className="scenario-matrix-legend",
                             ),
                             html.P(
-                                "Cell = IAMs reaching the target / IAMs available for that SSP. A failed run reflects model structure and scenario assumptions—not proof that a pathway is impossible.",
+                                "Each cell shows the number of IAMs that reached the target divided by the number tested for that SSP. A failed model run reflects its structure and assumptions; it does not prove that the pathway is impossible.",
                                 className="scenario-matrix-reading",
                             ),
                         ],
@@ -2484,7 +2485,7 @@ def slide_scenario_combinations() -> html.Div:
                 "Matrix: Carbon Brief, adapted from Rogelj et al. (2018), Figure S1 · SSP database model runs."
             ),
             takeaway(
-                "Treat the label as coordinates; the assumptions, IAM and resulting trajectories determine what the scenario means for prospective LCA."
+                "Use the label to locate the scenario, then inspect its assumptions, IAM and trajectories before using it in prospective LCA."
             ),
         ],
         className="slide scenario-combination-slide",
@@ -2495,10 +2496,10 @@ def slide_anonymous(reveal: int) -> html.Div:
     names_visible = reveal > 0
     return html.Div(
         [
-            eyebrow("Interactive checkpoint · evidence screen"),
+            eyebrow("Interactive checkpoint · initial screening"),
             title(
-                "Choose before you know the assumptions",
-                "Which CO₂ pathway would you use for 2060—and what must you verify before building the database?",
+                "Choose a pathway before seeing its assumptions",
+                "Which CO₂ pathway would you use for 2060, and what must you check before building the database?",
             ),
             html.Div(
                 [
@@ -2512,7 +2513,7 @@ def slide_anonymous(reveal: int) -> html.Div:
                     html.Div(
                         [
                             html.H3(
-                                "Screen the climate signal—not the database",
+                                "Use the curve only as a first filter",
                                 className="panel-heading",
                             ),
                             html.P(
@@ -2530,7 +2531,7 @@ def slide_anonymous(reveal: int) -> html.Div:
                                                 "whether and when net zero or net-negative emissions occur"
                                             ),
                                             html.Li(
-                                                "relative cumulative emissions—the area under each curve"
+                                                "relative cumulative emissions (the area under each curve)"
                                             ),
                                         ]
                                     ),
@@ -2560,7 +2561,7 @@ def slide_anonymous(reveal: int) -> html.Div:
                                 [
                                     html.Strong("Selection rule"),
                                     html.Span(
-                                        "Reject incompatible curves; rank the remaining databases only after auditing the hidden dimensions."
+                                        "Reject curves that do not fit the question. Compare the remaining databases only after checking the assumptions hidden behind each curve."
                                     ),
                                 ],
                                 className="evidence-screen-rule",
@@ -2572,7 +2573,7 @@ def slide_anonymous(reveal: int) -> html.Div:
                 className="two-column chart-and-panel",
             ),
             takeaway(
-                "A CO₂ curve can screen scenarios; it cannot justify a database without the storyline, IAM and sector assumptions."
+                "A CO₂ curve can filter scenarios, but it cannot justify a database without the storyline, IAM and sector assumptions."
             ),
         ],
         className="slide anonymous-scenario-slide",
@@ -2583,11 +2584,11 @@ def slide_vocabulary() -> html.Div:
     checks = [
         (
             "Decision relevance",
-            "Which choice, functional unit, geography and time horizon is the scenario meant to stress-test?",
+            "Which choice, functional unit, geography and time horizon should the scenario test?",
             "decision · functional unit · geography · horizon",
         ),
         (
-            "Scenario coordinate",
+            "Exact scenario",
             "Which exact model, pathway, region, year and variable support the claim?",
             "IAM + version · scenario · region · year · variable",
         ),
@@ -2606,31 +2607,34 @@ def slide_vocabulary() -> html.Div:
         [
             eyebrow("Scenario literacy · reporting in practice"),
             title(
-                "Turn a scenario result into a defensible LCA statement",
-                "Connect the decision, scenario coordinate, inventory transformation and boundary of the claim",
+                "Turn a scenario result into a well-supported LCA statement",
+                "Connect the decision, exact scenario, inventory changes and limits of the claim",
             ),
             html.Div(
                 [
                     html.Div(
-                        [html.Strong("FOR"), html.Span("decision + functional unit")]
+                        [
+                            html.Strong("QUESTION"),
+                            html.Span("decision + functional unit"),
+                        ]
                     ),
                     html.I("+"),
                     html.Div(
                         [
-                            html.Strong("UNDER"),
+                            html.Strong("SCENARIO"),
                             html.Span("IAM · pathway · region · year"),
                         ]
                     ),
                     html.I("+"),
                     html.Div(
                         [
-                            html.Strong("VIA"),
+                            html.Strong("CHANGES"),
                             html.Span("documented premise transformations"),
                         ]
                     ),
                     html.I("→"),
                     html.Div(
-                        [html.Strong("REPORT"), html.Span("conditional LCIA result")]
+                        [html.Strong("RESULT"), html.Span("conditional LCIA result")]
                     ),
                 ],
                 className="conditional-statement",
@@ -2677,7 +2681,7 @@ def slide_vocabulary() -> html.Div:
                 className="evidence-language-grid",
             ),
             takeaway(
-                "A defensible result names the decision, scenario coordinate, transformation and uncertainty—not only the scenario label."
+                "A well-supported result names the decision, exact scenario, inventory changes and uncertainty. The scenario label alone is not enough."
             ),
         ],
         className="slide conditional-evidence-slide",
@@ -2689,8 +2693,8 @@ def slide_mechanics() -> html.Div:
         [
             eyebrow("IAM theory · stocks, flows and technology"),
             title(
-                "From investment to system change",
-                "REMIND SSP2-PkBudg650 · a stringent global carbon-budget case · electrolysis, 2020–2060",
+                "Investment changes the system over time",
+                "REMIND SSP2-PkBudg650 · a strict global carbon-budget case · electrolysis, 2020–2060",
             ),
             graph(iam_mechanics_figure(), "graph-frame mechanics-chart"),
             html.Div(
@@ -2710,13 +2714,13 @@ def slide_mechanics() -> html.Div:
                     metric_card(
                         "61 → 75%",
                         "Conversion efficiency",
-                        "A model parameter: the 14-point gain lowers electricity input per unit of hydrogen.",
+                        "The model assumes a 14 percentage-point gain, which lowers the electricity needed per unit of hydrogen.",
                         "mechanics-efficiency-card",
                     ),
                     metric_card(
-                        "Not 1:1",
-                        "Connection to premise",
-                        "Production and efficiency can transform inventories; investment needs a separate capital mapping.",
+                        "Partial link",
+                        "How premise uses it",
+                        "Production and efficiency can update operating inventories. Investment requires separate data for capital goods.",
                         "mechanics-premise-card",
                     ),
                 ],
@@ -2851,12 +2855,12 @@ def slide_total_energy_accounting_chain() -> html.Div:
             eyebrow("IAM output · whole-system energy accounting"),
             title(
                 "First, compare the whole energy system",
-                "IMAGE 3.4 · SSP2-VLHO · World · 2020 versus 2060 · matched flow-width scale",
+                "IMAGE 3.4 · SSP2-VLHO · World · 2020 versus 2060 · the same scale is used for all flow widths",
             ),
             html.Div(
                 [
                     comparison_panel(2020, "HISTORICAL START"),
-                    comparison_panel(2060, "DEEP-MITIGATION FUTURE"),
+                    comparison_panel(2060, "STRONG-MITIGATION FUTURE"),
                 ],
                 className="energy-comparison-grid",
             ),
@@ -2887,10 +2891,10 @@ def slide_total_energy_accounting_chain() -> html.Div:
                 className="energy-change-strip",
             ),
             source_note(
-                "Source: original IMAGE 3.4 SSP2-VLHO workbook · World. Carrier nodes use reported final-energy carrier detail and therefore balance exactly to end-use sectors; they show energy delivered to users, not gross secondary production. The footer retains separate reported electricity, liquid-fuel and hydrogen indicators. Transport carrier shares are scaled to reported Passenger/Freight totals; international passenger aviation is excluded. The primary-to-final difference includes conversion losses, own use, non-energy uses, bunkers and primary-energy conventions."
+                "Source: original IMAGE 3.4 SSP2-VLHO workbook · World. Carrier nodes use reported final-energy detail and therefore balance exactly with end-use sectors. They show energy delivered to users, not total secondary-energy production. The footer keeps the separately reported electricity, liquid-fuel and hydrogen indicators. Transport carrier shares are scaled to reported passenger and freight totals; international passenger aviation is excluded. The difference between primary and final energy includes conversion losses, energy used by the energy system, non-energy uses, international transport fuels and primary-energy accounting conventions."
             ),
             takeaway(
-                "World final energy grows only 17%, but delivered electricity more than triples and reaches 60% of final energy: composition changes far more than the total."
+                "World final energy grows by only 17%, but delivered electricity more than triples and reaches 60% of final energy. The energy mix changes much more than the total."
             ),
         ],
         className="slide energy-accounting-slide energy-example-slide total-energy-slide",
@@ -2976,13 +2980,13 @@ def slide_energy_accounting_chain() -> html.Div:
         [
             eyebrow("IAM output · electricity zoom"),
             title(
-                "Then zoom in on the electricity chain",
-                "IMAGE 3.4 · SSP2-VLHO · Europe (WEU + CEU) · matched flow-width scale",
+                "Then examine the electricity chain",
+                "IMAGE 3.4 · SSP2-VLHO · Europe (WEU + CEU) · the same scale is used for all flow widths",
             ),
             html.Div(
                 [
                     comparison_panel(2020, "HISTORICAL START"),
-                    comparison_panel(2060, "DEEP-MITIGATION FUTURE"),
+                    comparison_panel(2060, "STRONG-MITIGATION FUTURE"),
                 ],
                 className="energy-comparison-grid",
             ),
@@ -2999,7 +3003,9 @@ def slide_energy_accounting_chain() -> html.Div:
                         [
                             html.Strong("Electricity expands"),
                             html.Span("12.16 → 23.01 EJ/yr output"),
-                            html.B("Accounting ratio—not plant η: 62% → 75%"),
+                            html.B(
+                                "System output/input ratio, not power-plant efficiency: 62% → 75%"
+                            ),
                         ]
                     ),
                     html.Div(
@@ -3013,10 +3019,10 @@ def slide_energy_accounting_chain() -> html.Div:
                 className="energy-change-strip",
             ),
             source_note(
-                "Source: original IMAGE 3.4 SSP2-VLHO workbook · WEU + CEU. Sankey widths share one EJ/yr scale. ‘Other uses + balance’ is residual final electricity. IMAGE reports transport energy service—not useful energy—in billion passenger-km/yr; it covers all passenger modes and is therefore shown outside the energy balance."
+                "Source: original IMAGE 3.4 SSP2-VLHO workbook · WEU + CEU. All Sankey widths use the same EJ/yr scale. ‘Other uses + balance’ is the final electricity left after the named uses are subtracted. IMAGE reports passenger transport service in billion passenger-km/yr, not useful energy. It covers all passenger modes and is therefore shown outside the energy balance."
             ),
             takeaway(
-                "By 2060 the system delivers 89% more electricity and 61% more passenger mobility—with a radically different supply mix and much stronger transport electrification."
+                "By 2060, the system delivers 89% more electricity and 61% more passenger mobility. The supply mix changes sharply, and transport uses much more electricity."
             ),
         ],
         className="slide energy-accounting-slide energy-example-slide",
@@ -3048,8 +3054,8 @@ def slide_primary_energy_layer() -> html.Div:
                     ),
                     metric_card(
                         "Feedstocks",
-                        "Direct premise relevance",
-                        "Mapped biomass categories can change regional feedstock origins and supply shares.",
+                        "How premise uses this information",
+                        "Mapped biomass categories can change where regional feedstocks come from and how supply is shared.",
                         "energy-layer-premise",
                     ),
                 ],
@@ -3071,7 +3077,7 @@ def slide_secondary_energy_layer() -> html.Div:
         [
             eyebrow("IAM output · secondary energy"),
             title(
-                "Secondary energy: carriers after conversion",
+                "Secondary energy: carriers produced after conversion",
                 "World and Europe (WEU + CEU) · electricity shown; IMAGE also reports hydrogen, liquids and heat",
             ),
             graph(secondary_energy_layer_figure(), "graph-frame energy-layer-chart"),
@@ -3085,21 +3091,21 @@ def slide_secondary_energy_layer() -> html.Div:
                     ),
                     metric_card(
                         "1.8×",
-                        "World · VLHO vs SSP3-H output · 2060",
+                        "World · VLHO output compared with SSP3-H · 2060",
                         "Deep mitigation combines clean supply with more electrified end uses.",
                         "energy-layer-signal",
                     ),
                     metric_card(
-                        "Shares + η",
-                        "Direct premise relevance",
-                        "Generation shares and technology efficiencies rebuild regional electricity markets and inputs.",
+                        "Mix + efficiency",
+                        "How premise uses this information",
+                        "Generation shares and technology efficiencies update regional electricity markets and their inputs.",
                         "energy-layer-premise",
                     ),
                 ],
                 className="energy-layer-stat-grid",
             ),
             source_note(
-                "Source: original IMAGE 3.4 workbooks · exact decadal time steps. Europe = WEU + CEU; rows use independent vertical scales. Solar and wind sum IMAGE classes; ‘Other’ groups residual generation."
+                "Source: original IMAGE 3.4 workbooks · exact decadal time steps. Europe = WEU + CEU; rows use independent vertical scales. Solar and wind combine the relevant IMAGE classes; ‘Other’ contains the remaining generation."
             ),
             takeaway(
                 "For prospective LCA, the carrier mix and conversion efficiency usually matter more than the carrier total alone."
@@ -3114,7 +3120,7 @@ def slide_final_energy_layer() -> html.Div:
         [
             eyebrow("IAM output · final energy"),
             title(
-                "Final energy: what end-use sectors receive",
+                "Final energy: energy delivered to users",
                 "World and Europe (WEU + CEU) · selected services · independent vertical scales by region and service",
             ),
             graph(final_energy_layer_figure(), "graph-frame energy-layer-chart"),
@@ -3133,7 +3139,7 @@ def slide_final_energy_layer() -> html.Div:
                         "energy-layer-good",
                     ),
                     metric_card(
-                        "Not the FU",
+                        "Not the functional unit",
                         "Use in prospective LCA",
                         "IAM demand guides market and efficiency changes; the study still defines its functional unit and scale.",
                         "energy-layer-premise",
@@ -3186,7 +3192,7 @@ def slide_passenger_car_transformation() -> html.Div:
         [
             eyebrow("Final-energy consumers · road mobility"),
             title(
-                "Passenger cars: electrification changes the energy arithmetic",
+                "Passenger cars: electrification reduces energy per kilometre",
                 "IMAGE 3.4 · SSP2-VLHO · World · absolute activity, relative market shares and delivered energy per passenger-kilometre",
             ),
             graph(
@@ -3214,7 +3220,7 @@ def slide_passenger_car_transformation() -> html.Div:
                         "energy-layer-risk",
                     ),
                     metric_card(
-                        "Mix × η",
+                        "Technology mix + efficiency",
                         "What premise needs",
                         "Regional powertrain shares, fuel suppliers, electricity markets and vehicle efficiencies.",
                         "energy-layer-premise",
@@ -3226,7 +3232,7 @@ def slide_passenger_car_transformation() -> html.Div:
                 "Source: IMAGE 3.4 SSP2-VLHO. Absolute powertrain activity and relative shares: consolidated workshop scenario extract; the source reports an unspecified model activity unit rather than vehicle production. Specific energy: original workbook final energy for light-duty vehicles divided by reported light-duty passenger-km."
             ),
             takeaway(
-                "A service can expand while its final-energy requirement contracts: market share and specific energy must be transformed together."
+                "A transport service can grow while its final-energy use falls. Market shares and energy use per kilometre must be updated together."
             ),
         ],
         className="slide end-use-transformation-slide",
@@ -3243,8 +3249,8 @@ def slide_cement_transformation() -> html.Div:
         [
             eyebrow("Final-energy consumers · cement"),
             title(
-                "Cement: decarbonization changes the kiln fleet",
-                "IMAGE 3.4 · SSP2-VLHO · World · absolute kiln output, relative route shares and a transparent sector-energy proxy",
+                "Cement: lower emissions require a different kiln mix",
+                "IMAGE 3.4 · SSP2-VLHO · World · absolute kiln output, relative route shares and an estimated sector energy trend",
             ),
             graph(
                 end_use_transformation_figure("Cement"),
@@ -3255,13 +3261,13 @@ def slide_cement_transformation() -> html.Div:
                     metric_card(
                         f"{ccs_2060:.0%}",
                         "Cement output from CCS kilns · 2060",
-                        "MEA, on-site and oxyfuel capture enter with different energy and inventory consequences.",
+                        "Monoethanolamine (MEA), on-site and oxyfuel capture enter with different energy needs and inventory effects.",
                         "energy-layer-good",
                     ),
                     metric_card(
                         f"{energy_2060 / energy_2020 - 1:+.0%}",
-                        "Sector-energy proxy · 2020→2060",
-                        f"{energy_2020:.2f} → {energy_2060:.2f} GJ/t; use as a trend, not a kiln coefficient.",
+                        "Estimated sector energy · 2020→2060",
+                        f"{energy_2020:.2f} → {energy_2060:.2f} GJ/t; use this as a trend, not as the energy use of a specific kiln.",
                         "energy-layer-signal",
                     ),
                     metric_card(
@@ -3283,7 +3289,7 @@ def slide_cement_transformation() -> html.Div:
                 "Source: IMAGE 3.4 SSP2-VLHO. Absolute kiln output and relative shares: consolidated workshop scenario extract. The intensity panel divides original-workbook final energy for all non-metallic minerals by cement output; it therefore includes glass and ceramics and is explicitly a sector proxy."
             ),
             takeaway(
-                "For cement, a scenario is not simply ‘less energy’: it reallocates output among kiln and capture configurations with distinct burdens."
+                "For cement, a scenario is not simply about using less energy. It shifts output among kiln and capture technologies with different environmental impacts."
             ),
         ],
         className="slide end-use-transformation-slide",
@@ -3304,7 +3310,7 @@ def slide_steel_transformation() -> html.Div:
         [
             eyebrow("Final-energy consumers · steel"),
             title(
-                "Steel: circular and electric routes displace blast furnaces",
+                "Steel: recycled and electric routes replace blast furnaces",
                 "IMAGE 3.4 · SSP2-VLHO · World · absolute route allocation, relative shares and final energy per tonne of crude steel",
             ),
             graph(
@@ -3316,7 +3322,7 @@ def slide_steel_transformation() -> html.Div:
                     metric_card(
                         f"{secondary_2020:.0%} → {secondary_2060:.0%}",
                         "Secondary-steel share · 2020→2060",
-                        "Scrap availability and electric-arc-furnace inputs become first-order assumptions.",
+                        "Scrap availability and electric-arc-furnace inputs become key assumptions.",
                         "energy-layer-good",
                     ),
                     metric_card(
@@ -3332,7 +3338,7 @@ def slide_steel_transformation() -> html.Div:
                         "energy-layer-risk",
                     ),
                     metric_card(
-                        "Route × input",
+                        "Production route + inputs",
                         "What premise needs",
                         "Steel-route markets plus route-specific coal, scrap, electricity, hydrogen and capture flows.",
                         "energy-layer-premise",
@@ -3365,7 +3371,7 @@ def slide_space_heating_transformation() -> html.Div:
         [
             eyebrow("Final-energy consumers · space heating"),
             title(
-                "Space heating: electrification and networks replace fossil boilers",
+                "Space heating: electricity and heat networks replace fossil boilers",
                 "IMAGE 3.4 · SSP2-VLHO · World · absolute delivered energy, relative carrier shares and final energy per person",
             ),
             graph(
@@ -3383,7 +3389,7 @@ def slide_space_heating_transformation() -> html.Div:
                     metric_card(
                         f"{network_electric_2060:.0%}",
                         "Electric + district heat share · 2060",
-                        "The burden shifts upstream to grids, heat production and network infrastructure.",
+                        "More of the environmental impact comes from electricity grids, heat production and network infrastructure.",
                         "energy-layer-signal",
                     ),
                     metric_card(
@@ -3393,8 +3399,8 @@ def slide_space_heating_transformation() -> html.Div:
                         "energy-layer-risk",
                     ),
                     metric_card(
-                        "Carrier proxy",
-                        "What premise can infer",
+                        "Carrier-based estimate",
+                        "What premise can derive",
                         "Map delivered carriers to heating technologies, then apply technology-specific efficiencies and markets.",
                         "energy-layer-premise",
                     ),
@@ -3405,7 +3411,7 @@ def slide_space_heating_transformation() -> html.Div:
                 "Source: original IMAGE 3.4 SSP2-VLHO workbook. Absolute volumes and shares sum residential and commercial space-heating carriers. Electricity is a technology proxy including heat pumps and resistance heating; IMAGE does not report useful heat or floor area in this export, so specific use is shown per person."
             ),
             takeaway(
-                "Final-energy carriers indicate where the heating system moves, but premise still needs an explicit carrier-to-technology and efficiency mapping."
+                "Final-energy carriers show the direction of change, but premise still needs an explicit mapping from each carrier to heating technologies and efficiencies."
             ),
         ],
         className="slide end-use-transformation-slide",
@@ -3417,8 +3423,8 @@ def slide_model_landscape() -> html.Div:
         [
             eyebrow("IAM output · mapped detail"),
             title(
-                "Premise sees a different level of detail in each IAM",
-                "Each cell counts distinct IAM variables referenced by premise 2.4.6 for that model–sector combination",
+                "Premise gets different levels of detail from each IAM",
+                "Each cell counts the distinct IAM variables that premise 2.4.6 can use for that model and sector",
             ),
             graph(
                 model_coverage_figure(),
@@ -3428,7 +3434,7 @@ def slide_model_landscape() -> html.Div:
                 [
                     html.Div(
                         [
-                            html.Strong("Count the aliases"),
+                            html.Strong("What the count means"),
                             html.Span(
                                 "A larger number means premise can access more distinct activity, efficiency or energy-use signals."
                             ),
@@ -3438,7 +3444,7 @@ def slide_model_landscape() -> html.Div:
                         [
                             html.Strong("Read zero carefully"),
                             html.Span(
-                                "Zero means no alias in these mapping files—not that the IAM lacks the sector."
+                                "Zero means that these mapping files contain no matching variable. It does not mean that the IAM lacks the sector."
                             ),
                         ]
                     ),
@@ -3454,7 +3460,7 @@ def slide_model_landscape() -> html.Div:
                 className="model-heatmap-reading",
             ),
             source_note(
-                "Source: premise 2.4.6 IAM-variable mapping YAML files. Counts include distinct strings under model-specific activity, efficiency and energy-use aliases. Carbon-removal and biomass mappings are retained in the auditable extract but omitted here for legibility."
+                "Source: premise 2.4.6 IAM-variable mapping YAML files. Counts include distinct model-specific variable names for activity, efficiency and energy use. Carbon-removal and biomass mappings remain in the checked data extract but are omitted here to keep the figure readable."
             ),
             takeaway(
                 "Before choosing an IAM, verify that premise can observe the sector signals needed to transform your inventory."
@@ -3467,25 +3473,25 @@ def slide_model_landscape() -> html.Div:
 def slide_model_architecture() -> html.Div:
     architecture_rows = [
         (
-            "Solution logic",
-            "Recursive simulation",
-            "Intertemporal linear optimisation",
-            "Intertemporal nonlinear GE optimisation",
-            "REMIND optimisation + EU detail",
-            "Intertemporal linear energy-system optimisation",
-            "Recursive market equilibrium",
+            "How the model solves",
+            "Step-by-step simulation",
+            "Linear optimisation across all periods",
+            "Nonlinear general-equilibrium optimisation across all periods",
+            "REMIND optimisation with more EU detail",
+            "Linear energy-system optimisation across all periods",
+            "Step-by-step market equilibrium",
         ),
         (
-            "Foresight",
-            "Myopic / rule-based",
-            "Perfect-foresight benchmark",
-            "Perfect-foresight benchmark",
-            "Perfect-foresight benchmark",
-            "Usually perfect foresight",
-            "Myopic",
+            "How far ahead it looks",
+            "Limited look-ahead / rules",
+            "All-period benchmark",
+            "All-period benchmark",
+            "All-period benchmark",
+            "Usually all periods",
+            "Limited look-ahead",
         ),
         (
-            "Native resolution",
+            "Regional and time detail",
             "26 regions + World · recursive time grid",
             "11 regions · multi-period horizon",
             "12-region default · 5→10-year steps",
@@ -3494,7 +3500,7 @@ def slide_model_architecture() -> html.Div:
             "32 regions · 5-year steps",
         ),
         (
-            "Coupling emphasis",
+            "Connected systems",
             "Energy–land–climate modules",
             "MESSAGEix–GLOBIOM–MACRO / GAINS",
             "Macro–energy core + MAgPIE / MAGICC",
@@ -3515,8 +3521,8 @@ def slide_model_architecture() -> html.Div:
         [
             eyebrow("Why integrated assessment · model architecture"),
             title(
-                "IAMs can solve the same question differently",
-                "Solution logic, foresight, resolution and coupling shape the pathways each model generates",
+                "IAMs can answer the same question differently",
+                "How a model solves, looks ahead, divides time and regions, and connects systems shapes the pathway it produces",
             ),
             html.Div(
                 [
@@ -3526,7 +3532,7 @@ def slide_model_architecture() -> html.Div:
                                 [
                                     html.Strong("How the IAMs differ structurally"),
                                     html.Span(
-                                        "Read columns as model architectures—not rankings"
+                                        "Use the columns to compare model structures, not to rank the IAMs"
                                     ),
                                 ],
                                 className="model-architecture-heading",
@@ -3563,7 +3569,7 @@ def slide_model_architecture() -> html.Div:
                                 [
                                     html.Strong("Transition timing"),
                                     html.Span(
-                                        "Foresight and solution logic affect when assets are built, retired or retained."
+                                        "How far ahead the model looks and how it solves affect when assets are built, retired or kept in use."
                                     ),
                                 ]
                             ),
@@ -3571,7 +3577,7 @@ def slide_model_architecture() -> html.Div:
                                 [
                                     html.Strong("Visible bottlenecks"),
                                     html.Span(
-                                        "Temporal, spatial and technology resolution determine which constraints can appear."
+                                        "Detail in time, geography and technology determines which constraints the model can show."
                                     ),
                                 ]
                             ),
@@ -3579,7 +3585,7 @@ def slide_model_architecture() -> html.Div:
                                 [
                                     html.Strong("Feedbacks represented"),
                                     html.Span(
-                                        "Coupling determines whether energy, economy, land, water and climate respond together."
+                                        "The connected modules determine whether energy, the economy, land, water and climate respond together."
                                     ),
                                 ]
                             ),
@@ -3593,7 +3599,7 @@ def slide_model_architecture() -> html.Div:
                 "Architecture: official IMAGE, MESSAGEix–GLOBIOM, REMIND 2.1, TIAM-UCL 4.1.1 and GCAM 8.2 documentation. REMIND-EU inherits the REMIND solution logic with enhanced European detail. Exact regional aggregations and experiment setups vary by version."
             ),
             takeaway(
-                "Two IAMs given a similar climate objective can produce different transition timings, technologies and regional patterns."
+                "Two IAMs with a similar climate objective can still produce different timings, technologies and regional patterns."
             ),
         ],
         className="slide model-architecture-slide",
@@ -3603,7 +3609,7 @@ def slide_model_architecture() -> html.Div:
 def slide_limitations() -> html.Div:
     limitations = [
         (
-            "Technology optimism",
+            "Optimistic technology assumptions",
             "Deployment follows assumed costs, learning and build-rate constraints. Permitting, supply chains and public acceptance can make real scale-up slower.",
             ["MESSAGE", "REMIND", "REMIND-EU", "TIAM-UCL"],
         ),
@@ -3619,22 +3625,22 @@ def slide_limitations() -> html.Div:
         ),
         (
             "Demand and behaviour",
-            "Service demand often follows population, income and lifestyle assumptions. Heterogeneity, sufficiency, rebound and social practice remain stylised.",
+            "Service demand often follows broad assumptions about population, income and lifestyles. Differences among households, demand reduction, rebound effects and social practices are simplified.",
             ["IMAGE", "MESSAGE", "REMIND / EU", "TIAM-UCL", "GCAM"],
         ),
         (
-            "Uneven sector resolution",
+            "Uneven sector detail",
             "Electricity, steel and road transport often have explicit technology routes. Chemicals, construction and other industries may remain aggregated.",
             ["IMAGE", "MESSAGE", "REMIND / EU", "TIAM-UCL", "GCAM"],
         ),
         (
-            "Biophysical constraints",
-            "Land and water may be detailed while minerals, biodiversity and local ecosystem thresholds remain partial. Feasibility may need external checks.",
+            "Physical and environmental constraints",
+            "Land and water may be detailed, while minerals, biodiversity and local ecosystem limits are only partly represented. These limits may need separate checks.",
             ["TIAM-UCL", "REMIND / EU", "MESSAGE"],
         ),
         (
             "Non-energy and emerging sectors",
-            "Agriculture is commonly represented through land, food and emissions—not detailed equipment. IT, data centres and AI demand are often exogenous or absent.",
+            "Agriculture is commonly represented through land, food and emissions rather than detailed equipment. IT, data-centre and AI demand are often set outside the model or omitted.",
             ["IMAGE", "MESSAGE", "REMIND / EU", "TIAM-UCL", "GCAM"],
         ),
         (
@@ -3644,12 +3650,12 @@ def slide_limitations() -> html.Div:
         ),
         (
             "Climate feedbacks",
-            "Reduced-form climate modules translate emissions into warming, but damages and adaptation rarely feed back into the mitigation pathway.",
+            "Simplified climate modules translate emissions into warming, but climate damage and adaptation rarely change the mitigation pathway in return.",
             ["IMAGE", "MESSAGE", "REMIND / EU", "TIAM-UCL", "GCAM"],
         ),
         (
             "No probabilities",
-            "Scenario ensembles are conditional experiments, not calibrated likelihoods. Agreement across models does not make an outcome more probable.",
+            "Groups of scenarios are conditional experiments, not probabilities. Agreement across models does not make an outcome more likely.",
             ["IMAGE", "MESSAGE", "REMIND / EU", "TIAM-UCL", "GCAM"],
         ),
     ]
@@ -3657,8 +3663,8 @@ def slide_limitations() -> html.Div:
         [
             eyebrow("IAM theory · critical reading"),
             title(
-                "What IAMs leave outside",
-                "All models simplify; tags flag where each caveat is especially salient in typical global configurations",
+                "What IAMs leave out",
+                "All models simplify reality; the tags show which issues need particular attention in typical global versions",
             ),
             html.Div(
                 [
@@ -3669,7 +3675,7 @@ def slide_limitations() -> html.Div:
                             html.Div(
                                 [
                                     html.Span(
-                                        "Especially salient",
+                                        "Needs particular attention in",
                                         className="limitation-model-label",
                                     ),
                                     html.Div(
@@ -3693,10 +3699,10 @@ def slide_limitations() -> html.Div:
                 className="limitations-grid",
             ),
             source_note(
-                "Model tags reflect typical/default global configurations in official IMAGE, MESSAGEix–GLOBIOM, REMIND 2.1, TIAM-UCL 4.1.1 and GCAM 8.2 documentation. They are diagnostic prompts—not exclusive limitations or model rankings; variants and couplings can change the exposure."
+                "Model tags reflect typical global versions described in the official IMAGE, MESSAGEix–GLOBIOM, REMIND 2.1, TIAM-UCL 4.1.1 and GCAM 8.2 documentation. The tags are questions to investigate, not complete lists of limitations or model rankings. Other versions and model links can change them."
             ),
             takeaway(
-                "Ask which omission could reverse your LCA conclusion, then design a sensitivity, external constraint or complementary model around it."
+                "Ask which missing factor could change your LCA conclusion. Then test it through sensitivity analysis, an external constraint or another model."
             ),
         ],
         className="slide limitations-slide",
@@ -3752,7 +3758,7 @@ def slide_frameworks() -> html.Div:
         [
             eyebrow("Scenario frameworks · cross-generation comparison"),
             title(
-                "Compare trajectories—not labels—across frameworks",
+                "Compare trajectories, not labels, across frameworks",
                 "RCP2.6, SSP1-2.6 and a CMIP7 low family are related experiments, not interchangeable datasets",
             ),
             html.Div(
@@ -3864,12 +3870,12 @@ def slide_narratives() -> html.Div:
         [
             eyebrow("Scenario frameworks · traceability"),
             title(
-                "Can you defend why the LCA result changed?",
-                "One real IMAGE → premise → inventory → LCIA chain; every arrow needs evidence",
+                "Can you explain why the LCA result changed?",
+                "Follow one IMAGE result through premise, the inventory and LCIA; every step needs evidence",
             ),
             html.Div(
                 [
-                    html.Strong("Worked coordinate"),
+                    html.Strong("Example setup"),
                     html.Span("IMAGE 3.4"),
                     html.Span("SSP2-VLHO"),
                     html.Span("Teaching extract: WEU + CEU"),
@@ -3930,9 +3936,9 @@ def slide_narratives() -> html.Div:
                                 str(image_electricity_aliases),
                                 className="traceability-big-number",
                             ),
-                            html.H2("IMAGE electricity aliases"),
+                            html.H2("Mapped IMAGE electricity variables"),
                             html.P(
-                                "premise reads the full technology set, derives regional shares and efficiencies, and interpolates them to the requested year."
+                                "premise uses all mapped technologies, calculates regional shares and efficiencies, and estimates values between model years when needed."
                             ),
                             html.Small(
                                 "Evidence: premise 2.4.6 electricity.yaml mapping"
@@ -3946,7 +3952,7 @@ def slide_narratives() -> html.Div:
                             html.Strong("3 · Inventory change"),
                             html.H2("The electricity market is rebuilt"),
                             html.P(
-                                "Regional generation markets and technology datasets receive scenario-specific shares and performance. A narrative label never edits an exchange directly."
+                                "Regional generation markets and technology datasets receive scenario-specific shares and performance values. The scenario label itself never changes an exchange."
                             ),
                             html.Div(
                                 [
@@ -3985,7 +3991,7 @@ def slide_narratives() -> html.Div:
                                 className="traceability-lcia-values",
                             ),
                             html.P(
-                                "kg CO₂-eq per kWh, CH low-voltage electricity, 2060. The score contains the full transformed supply chain—not wind and solar alone."
+                                "kg CO₂-eq per kWh, CH low-voltage electricity, 2060. The score includes the full transformed supply chain, not only wind and solar."
                             ),
                             html.Small("Method: IPCC 2021 GWP100"),
                         ],
@@ -3998,7 +4004,7 @@ def slide_narratives() -> html.Div:
                 [
                     html.Div(
                         [
-                            html.Strong("Defensible statement"),
+                            html.Strong("Well-supported statement"),
                             html.P(
                                 f"In the premise-transformed IMAGE SSP2-VLHO 2060 database, this Swiss low-voltage electricity activity scores {vlho_gwp:.3f} kg CO₂-eq/kWh."
                             ),
@@ -4021,7 +4027,7 @@ def slide_narratives() -> html.Div:
                 "Sources: IMAGE 3.4 SSP2-VLHO pathway extract (WEU + CEU teaching aggregation); premise 2.4.6 CH → WEU mapping; workshop ecoinvent 3.12 cutoff scenario databases and LCIA results."
             ),
             takeaway(
-                "Traceability is not paperwork: it prevents a scenario label—or one attractive trend—from being mistaken for the cause of an LCA result."
+                "Traceability prevents a scenario label or one attractive trend from being mistaken for the cause of an LCA result."
             ),
         ],
         className="slide traceability-slide",
@@ -4059,8 +4065,8 @@ def slide_applied_geography() -> html.Div:
         [
             eyebrow("Scenario frameworks · applied geography"),
             title(
-                "CH stays Swiss—but its IAM region depends on the model",
-                "premise maps the same inventory location to IMAGE WEU or REMIND-EU NEN before applying scenario trends",
+                "A Swiss inventory can map to different IAM regions",
+                "Before applying scenario trends, premise maps CH to IMAGE region WEU or REMIND-EU region NEN",
             ),
             html.Div(
                 [
@@ -4081,7 +4087,7 @@ def slide_applied_geography() -> html.Div:
                                         className="geography-map-heading",
                                     ),
                                     html.P(
-                                        "WEU is the blue Western-European region—not the whole continent."
+                                        "WEU is the blue Western European region, not the whole continent."
                                     ),
                                     graph(
                                         image_geography_figure(),
@@ -4146,7 +4152,7 @@ def slide_applied_geography() -> html.Div:
                 "Geographies: premise 2.4.6 image-topology.json and remind-eu-topology.json · inventory activity: CH low-voltage electricity · REMIND-EU European-region count excludes the broader REF region."
             ),
             takeaway(
-                "Report all three coordinates: inventory location CH, IAM model, and scenario region—WEU for IMAGE or NEN for REMIND-EU."
+                "Report the inventory location, IAM and IAM region: CH with WEU for IMAGE, or CH with NEN for REMIND-EU."
             ),
         ],
         className="slide applied-geography-slide",
@@ -4177,10 +4183,10 @@ def slide_iam_region_explorer(selected_model: str = "image") -> html.Div:
     region_examples = list(regions)[: min(6, len(regions))]
     return html.Div(
         [
-            eyebrow("Scenario frameworks · spatial resolution"),
+            eyebrow("Scenario frameworks · geographic detail"),
             title(
-                "Six IAMs divide the same world differently",
-                "Select a model to recolour the map; every colour is one model-native region",
+                "Six IAMs group countries into different regions",
+                "Select an IAM to update the map; every colour represents a region defined by that model",
             ),
             html.Div(
                 [
@@ -4214,7 +4220,7 @@ def slide_iam_region_explorer(selected_model: str = "image") -> html.Div:
                                     html.Span("Selected model"),
                                     html.H2(topology["model"]),
                                     html.P(
-                                        "Hover over any country to reveal its model-native region."
+                                        "Hover over a country to see the region assigned by the selected IAM."
                                     ),
                                 ],
                                 className="iam-map-selected",
@@ -4237,7 +4243,7 @@ def slide_iam_region_explorer(selected_model: str = "image") -> html.Div:
                                         [
                                             html.Strong(largest_region),
                                             html.Span(
-                                                f"largest aggregate · {len(largest_countries)} territories"
+                                                f"largest region group · {len(largest_countries)} territories"
                                             ),
                                         ]
                                     ),
@@ -4248,11 +4254,14 @@ def slide_iam_region_explorer(selected_model: str = "image") -> html.Div:
                                 [
                                     html.Strong("Region-name examples"),
                                     html.Div(
-                                        [html.Span(region) for region in region_examples],
+                                        [
+                                            html.Span(region)
+                                            for region in region_examples
+                                        ],
                                         className="iam-map-region-chips",
                                     ),
                                     html.P(
-                                        "Region count measures spatial granularity—not scenario quality. Sector detail can still differ within the same model."
+                                        "The number of regions shows geographic detail, not scenario quality. Sector detail can still differ within the same IAM."
                                     ),
                                 ],
                                 className="iam-map-reading",
@@ -4267,7 +4276,7 @@ def slide_iam_region_explorer(selected_model: str = "image") -> html.Div:
                 "Geographies: premise 2.4.6 model topology files for IMAGE, MESSAGE, REMIND, REMIND-EU, TIAM-UCL and GCAM. Country codes are normalized to ISO-3 for display."
             ),
             takeaway(
-                "IAM geography determines which regional differences premise can propagate."
+                "IAM geography determines which regional differences premise can apply to an inventory."
             ),
         ],
         className="slide iam-map-slide",
@@ -4291,10 +4300,10 @@ def slide_controlled_comparisons() -> html.Div:
     ]
     return html.Div(
         [
-            eyebrow("Read the pathways · controlled contrasts"),
+            eyebrow("Read the pathways · controlled comparisons"),
             title(
                 "Change one dimension at a time",
-                "Left isolates climate ambition; right isolates model response within a matched low-SSP2 objective",
+                "The left comparison changes only climate ambition; the right changes only the IAM for a matched low-emissions SSP2 objective",
             ),
             graph(
                 controlled_comparison_figure(),
@@ -4322,7 +4331,7 @@ def slide_controlled_comparisons() -> html.Div:
                 className="controlled-comparison-cards",
             ),
             takeaway(
-                "Controlled comparisons make attribution possible—but cross-IAM matching must disclose how model-native scenario constraints were aligned."
+                "Controlled comparisons help explain why results differ. When comparing IAMs, explain how you matched their different scenario constraints."
             ),
         ],
         className="slide controlled-comparison-slide",
@@ -4339,8 +4348,8 @@ def slide_sector_explorer(sector: str, year: int, mode: str) -> html.Div:
     sector_specs = {
         "Electricity": (
             "Electricity",
-            "Generation mix, total output and transformed regional suppliers",
-            "Which foreground exchanges inherit the mix—and which conclusions also depend on biomass or CCS?",
+            "Compare the generation mix, total output and regional suppliers updated by premise",
+            "Which foreground exchanges use this mix? Which conclusions also depend on biomass or CCS?",
         ),
         "Transport Passenger Cars": (
             "Passenger cars",
@@ -4355,7 +4364,7 @@ def slide_sector_explorer(sector: str, year: int, mode: str) -> html.Div:
         "Steel": (
             "Steel",
             "Primary, secondary, CCS and hydrogen routes at different production scales",
-            "Which route and supplier changes propagate into this steel-intensive foreground system?",
+            "Which changes in production routes and suppliers affect this steel-intensive foreground system?",
         ),
     }
     if sector not in sector_specs:
@@ -4376,24 +4385,24 @@ def slide_sector_explorer(sector: str, year: int, mode: str) -> html.Div:
         ].iloc[0]
     )
     absolute_notes = {
-        "Electricity": "CH low-voltage intensity × IMAGE World generation; an inventory-equivalent estimate, not a spatially resolved system LCA.",
+        "Electricity": "CH low-voltage intensity × IMAGE World generation; a rough total based on inventory intensity, not a geographically matched system LCA.",
         "Transport Passenger Cars": "Not scaled: IMAGE activity is not identified as vehicle-km in this extract. A documented activity or occupancy conversion is required.",
-        "Cement": "CH cement intensity × IMAGE World production; an inventory-equivalent estimate, not a spatially resolved system LCA.",
-        "Steel": "WEU steel intensity × IMAGE World production; an inventory-equivalent estimate, not a spatially resolved system LCA.",
+        "Cement": "CH cement intensity × IMAGE World production; a rough total based on inventory intensity, not a geographically matched system LCA.",
+        "Steel": "WEU steel intensity × IMAGE World production; a rough total based on inventory intensity, not a geographically matched system LCA.",
     }
     audit_label = (
         "Absolute GWP audit" if mode == "absolute" else f"{display_name} audit"
     )
     audit_text = absolute_notes[sector] if mode == "absolute" else question
     source_text = (
-        "Absolute GWP multiplies calculated regional premise intensities by IMAGE World activity after explicit unit conversion; it is labelled as an inventory-equivalent estimate. Passenger cars remain unscaled because the IAM activity unit is unresolved."
+        "Absolute GWP multiplies calculated regional premise intensities by IMAGE World activity after converting the units. It is labelled as a rough inventory-based total. Passenger cars remain unscaled because the IAM activity unit is unclear."
         if mode == "absolute"
         else "IAM charts: World · four IMAGE pathways. GWP: premise 2.4.6 + ecoinvent 3.12 cutoff · IPCC 2021 GWP100 incl. biogenic CO₂ · calculated 2020/2040/2060 points; lines guide the eye."
     )
     return html.Div(
         [
             eyebrow("Interactive pathway explorer · IMAGE"),
-            title("Explore the transformation that matters", subtitle),
+            title("Explore how scenarios change each sector", subtitle),
             choice_controls(year, mode, sector=sector, sectors=sectors),
             html.Div(
                 [
@@ -4418,7 +4427,7 @@ def slide_sector_explorer(sector: str, year: int, mode: str) -> html.Div:
                         [
                             html.Strong(str(mapped_count)),
                             html.Span(
-                                f"IMAGE {mapping_sector.lower()} aliases in premise 2.4.6"
+                                f"mapped IMAGE {mapping_sector.lower()} variables in premise 2.4.6"
                             ),
                         ],
                         className="sector-mapping-badge",
@@ -4451,15 +4460,15 @@ def slide_cdr_summary() -> html.Div:
         [
             eyebrow("Read the pathways · removal dependence"),
             title(
-                "Low 2100 warming can rely on large future removals",
-                "Compare the annual build-out, cumulative deployment and peak-to-2100 temperature change",
+                "Low warming in 2100 can depend on large future removals",
+                "Compare annual removals, the cumulative amount removed and the temperature change from its peak to 2100",
             ),
             graph(cdr_overshoot_summary_figure(), "graph-frame cdr-summary-graph"),
             html.Div(
                 [
                     html.Div(
                         [
-                            html.Span("Pronounced overshoot"),
+                            html.Span("Large temperature overshoot"),
                             html.Strong("SSP2-VLHO"),
                             html.H2("479 Gt cumulative"),
                             html.P(
@@ -4470,7 +4479,7 @@ def slide_cdr_summary() -> html.Div:
                     ),
                     html.Div(
                         [
-                            html.Span("Lower removal reliance"),
+                            html.Span("Less reliance on removals"),
                             html.Strong("SSP1-L"),
                             html.H2("120 Gt cumulative"),
                             html.P(
@@ -4485,7 +4494,7 @@ def slide_cdr_summary() -> html.Div:
                             html.Strong("SSP2-M · SSP3-H"),
                             html.H2("warming still rises"),
                             html.P(
-                                f"SSP2-M reaches 2.85°C; SSP3-H reaches 3.56°C. No reported CDR row for {', '.join(missing) if missing else 'the missing pathway'}—missing does not mean zero."
+                                f"SSP2-M reaches 2.85°C; SSP3-H reaches 3.56°C. There is no reported CDR row for {', '.join(missing) if missing else 'the missing pathway'}. Missing data do not mean zero removals."
                             ),
                         ],
                         className="cdr-reading-card cdr-reading-missing",
@@ -4494,7 +4503,7 @@ def slide_cdr_summary() -> html.Div:
                 className="cdr-reading-grid",
             ),
             takeaway(
-                "Compare climate outcome with removal burden: CDR changes future energy, biomass, materials, transport and storage inventories."
+                "Compare the climate result with its reliance on carbon removal. CDR changes future energy, biomass, material, transport and storage needs."
             ),
         ],
         className="slide cdr-summary-slide",
@@ -4599,12 +4608,12 @@ def slide_transformation_coverage() -> html.Div:
                         className="coverage-sector-path",
                     ),
                     html.P(
-                        [html.Strong("Propagates to · "), effect],
+                        [html.Strong("Affects · "), effect],
                         className="coverage-sector-effect",
                     ),
                     html.Div(
                         [
-                            html.Span("Still study-defined"),
+                            html.Span("You still define"),
                             html.B(outside),
                         ],
                         className="coverage-sector-outside",
@@ -4623,7 +4632,7 @@ def slide_transformation_coverage() -> html.Div:
         (
             "2",
             "premise rules",
-            "Map model variables; derive shares, efficiencies and learning",
+            "Map model variables; calculate shares, efficiencies and technology improvements",
             "coverage-flow-rules",
         ),
         (
@@ -4643,8 +4652,8 @@ def slide_transformation_coverage() -> html.Div:
         [
             eyebrow("From IAM to premise · transformation coverage"),
             title(
-                "premise transforms the background selectively",
-                "IAM evidence changes mapped markets, technologies and efficiencies—not the foreground model",
+                "premise updates selected parts of the background database",
+                "IAM evidence updates mapped markets, technologies and efficiencies. It does not change the foreground model.",
             ),
             html.Div(
                 [
@@ -4677,7 +4686,7 @@ def slide_transformation_coverage() -> html.Div:
                         [
                             html.Strong("Five applied examples"),
                             html.Span(
-                                "Counts are mapped IMAGE variable aliases in premise 2.4.6—not a model-quality ranking."
+                                "Counts show mapped IMAGE variables in premise 2.4.6. They do not rank model quality."
                             ),
                         ],
                         className="coverage-examples-heading",
@@ -4690,8 +4699,8 @@ def slide_transformation_coverage() -> html.Div:
                 [
                     html.Div(
                         [
-                            html.Strong("premise does not decide"),
-                            html.Span("These remain explicit study choices"),
+                            html.Strong("premise does not make these choices"),
+                            html.Span("The LCA study must define them"),
                         ]
                     ),
                     html.Div(
@@ -4719,23 +4728,25 @@ def slide_lcia_evidence() -> html.Div:
         [
             eyebrow("Prospective impact assessment · evidence layers"),
             title(
-                "Unit impact, deployment and cause are different questions",
-                "Use actual units, keep boundaries visible and inspect contributors before explaining a score",
+                "Unit impact, deployment and causes are different questions",
+                "Keep units and boundaries visible, then inspect the main contributors before explaining a score",
             ),
             graph(lcia_evidence_figure(), "graph-frame lcia-evidence-graph"),
             html.Div(
                 [
                     html.Span("Intensity · Brightway functional unit"),
                     html.Span("Deployment · IAM system activity"),
-                    html.Span("Cause · additive activity contributions + residual"),
+                    html.Span(
+                        "Main causes · activity contributions + remaining difference"
+                    ),
                 ],
                 className="lcia-reading-strip",
             ),
             source_note(
-                "IMAGE 3.4 · premise 2.4.6 · ecoinvent 3.12 cutoff · IPCC 2021 GWP100 including biogenic CO₂ · contribution residual reconciles to the stored score."
+                "IMAGE 3.4 · premise 2.4.6 · ecoinvent 3.12 cutoff · IPCC 2021 GWP100 including biogenic CO₂ · the remaining difference makes the listed contributions add up to the stored score."
             ),
             takeaway(
-                "A striking LCIA result is an observation to diagnose—not evidence that one visible pathway trend caused it."
+                "An unusual LCIA result is something to investigate. One visible pathway trend does not, by itself, explain the result."
             ),
         ],
         className="slide lcia-evidence-slide",
@@ -4789,8 +4800,8 @@ def slide_process_system_boundary() -> html.Div:
         [
             eyebrow("Applied evidence · analytical boundary"),
             title(
-                "Match boundaries before turning intensity into total impact",
-                "The unit result and IAM activity are both valid—but they answer different questions until four coordinates align",
+                "Match boundaries before calculating total impact",
+                "The unit result and IAM activity answer different questions until their geography, product boundary, year and scope match",
             ),
             html.Div(
                 [
@@ -4815,7 +4826,9 @@ def slide_process_system_boundary() -> html.Div:
                             html.Span("IAM deployment activity"),
                             html.H2(f"{activity:.1f} EJ/yr"),
                             html.Strong("IMAGE WEU + CEU generation · 2060"),
-                            html.P("Answers: how large is the regional electricity system?"),
+                            html.P(
+                                "Answers: how large is the regional electricity system?"
+                            ),
                         ],
                         className="boundary-evidence-card boundary-activity-card",
                     ),
@@ -4843,9 +4856,11 @@ def slide_process_system_boundary() -> html.Div:
                                     (
                                         "✓ match"
                                         if status == "match"
-                                        else "△ resolve"
-                                        if status == "conditional"
-                                        else "✕ mismatch"
+                                        else (
+                                            "△ resolve"
+                                            if status == "conditional"
+                                            else "✕ mismatch"
+                                        )
                                     ),
                                     className=f"boundary-gate-status boundary-{status}",
                                 ),
@@ -4884,7 +4899,7 @@ def slide_process_system_boundary() -> html.Div:
                 "Example: workshop IMAGE 3.4 SSP1-L 2060 pathway and premise 2.4.6 + ecoinvent 3.12 cutoff electricity result. The displayed IAM activity is WEU + CEU generation; the LCIA functional unit is CH low-voltage supply."
             ),
             takeaway(
-                "Absolute system impact is a constructed result—not a direct IAM output—and is defensible only after the activity and LCA boundaries match."
+                "Total system impact must be calculated; it is not a direct IAM output. The result is well supported only when the activity and LCA boundaries match."
             ),
         ],
         className="slide process-system-slide",
@@ -4940,13 +4955,18 @@ def slide_result_tracer(capstone: dict | None = None) -> html.Div:
     score = float(row["score"])
     score_text = f"{score:.3f}" if abs(score) >= 0.01 else f"{score:.2e}"
     scenario_color = NARRATIVES[scenario_key]["color"]
-    mapping_status = transformation["status"].replace("_", " ")
+    mapping_status = {
+        "validated_against_premise_2.4.6_smoke_build": (
+            "checked in a premise 2.4.6 test build"
+        ),
+        "teaching_summary": "teaching summary; not checked in a test build",
+    }.get(transformation["status"], transformation["status"].replace("_", " "))
     return html.Div(
         [
             eyebrow("Applied evidence · interactive audit trail"),
             title(
-                "Trace one result from IAM signal to LCIA score",
-                "Select one evidence point; every panel follows the same scenario, year, case and indicator",
+                "Trace an LCA result back to the scenario data",
+                "Select one result; every panel then follows the same scenario, year, case and indicator",
             ),
             capstone_controls(case_key, scenario_key, year, indicator_key),
             html.Div(
@@ -5036,7 +5056,7 @@ def slide_result_tracer(capstone: dict | None = None) -> html.Div:
                                     html.Div(
                                         [
                                             html.Strong(
-                                                "How does the unit result evolve?"
+                                                "How does the unit result change over time?"
                                             ),
                                             html.Small(
                                                 f"{indicator['label']} across four scenarios"
@@ -5074,7 +5094,7 @@ def slide_result_tracer(capstone: dict | None = None) -> html.Div:
                                                 "Why is the selected result different?"
                                             ),
                                             html.Small(
-                                                "Additive activity contributions plus reconciled residual"
+                                                "Activity contributions plus the remaining difference"
                                             ),
                                         ]
                                     ),
@@ -5140,7 +5160,7 @@ def slide_result_tracer(capstone: dict | None = None) -> html.Div:
                                         [
                                             html.Strong("Contributors"),
                                             html.Span(
-                                                f"{contribution_count} rows + residual"
+                                                f"{contribution_count} rows + remaining difference"
                                             ),
                                         ]
                                     ),
@@ -5161,7 +5181,7 @@ def slide_result_tracer(capstone: dict | None = None) -> html.Div:
                 className="tracer-bottom-grid",
             ),
             source_note(
-                "Calculated evidence: IMAGE 3.4 · premise 2.4.6 · ecoinvent 3.12 cutoff · 2020/2040/2060. Muted series provide context; the selected point, score card and contribution residual refer to the same evidence tuple."
+                "Calculated evidence: IMAGE 3.4 · premise 2.4.6 · ecoinvent 3.12 cutoff · 2020/2040/2060. Faded series provide context. The selected point, score card and contribution chart all use the same scenario, year, case and indicator."
             ),
         ],
         className="slide result-tracer-slide",
@@ -5198,8 +5218,8 @@ def slide_steel_causal_chain() -> html.Div:
         [
             eyebrow("Applied case · steel"),
             title(
-                "Steel connects route choice, inventory intensity and total demand",
-                "IMAGE SSP2-VLHO supplies the WEU route pathway; premise maps WEU production inventories; Brightway diagnoses one kilogram from the WEU market",
+                "Steel links production routes, unit impact and total output",
+                "IMAGE supplies the SSP2-VLHO steel-route pathway for WEU. premise updates WEU production inventories, and Brightway calculates one kilogram from the WEU market.",
             ),
             graph(steel_causal_chain_figure(), "graph-frame steel-causal-graph"),
             html.Div(
@@ -5260,10 +5280,10 @@ def slide_pv_inventory_resolution() -> html.Div:
     ]
     return html.Div(
         [
-            eyebrow("Applied case · technology resolution"),
+            eyebrow("Applied case · technology detail"),
             title(
-                "IAM says ‘solar’; LCA needs a module technology",
-                "Prospective inventories complete the scenario below the IAM’s technology resolution",
+                "The IAM says solar; the LCA needs a specific module technology",
+                "Prospective inventories add details that the IAM does not provide",
             ),
             html.Div(
                 [
@@ -5278,7 +5298,7 @@ def slide_pv_inventory_resolution() -> html.Div:
                         [
                             html.Div(
                                 [
-                                    html.Strong("Resolution gap"),
+                                    html.Strong("Missing detail"),
                                     html.P(
                                         "The IAM reports aggregate solar deployment; it does not prescribe the future c-Si, CdTe, CIGS, perovskite or tandem market mix."
                                     ),
@@ -5304,7 +5324,7 @@ def slide_pv_inventory_resolution() -> html.Div:
                             ),
                             html.Div(
                                 [
-                                    html.Strong("Study-defined assumptions"),
+                                    html.Strong("Assumptions defined by the LCA study"),
                                     html.Span("subtechnology shares"),
                                     html.Span("efficiency curve"),
                                     html.Span("lifetime"),
@@ -5322,7 +5342,7 @@ def slide_pv_inventory_resolution() -> html.Div:
                 "Source figure: provided presentation_IEA_PVPS_Task_12_2026.pptx, slide 10. The figure lists its underlying IEA, Fraunhofer, NREL, ITRPV and literature sources; shaded bands are reported min–max ranges."
             ),
             takeaway(
-                "Scenario completion is unavoidable: every detail added below IAM resolution must be visible, sourced and tested rather than mistaken for an IAM result."
+                "You must add details that the IAM does not provide. Make each added assumption visible, cite its source and test its influence instead of presenting it as an IAM result."
             ),
         ],
         className="slide pv-resolution-slide",
@@ -5334,8 +5354,8 @@ def slide_pv_indicator_uncertainty() -> html.Div:
         [
             eyebrow("Applied case · uncertainty propagation"),
             title(
-                "PV uncertainty is indicator-specific",
-                "The same subtechnology uncertainty can barely move climate results while materially changing resource conclusions",
+                "PV uncertainty affects indicators differently",
+                "Uncertainty about module technology may have little effect on climate results but a large effect on resource results",
             ),
             html.Div(
                 [
@@ -5351,7 +5371,7 @@ def slide_pv_indicator_uncertainty() -> html.Div:
                     ),
                     html.Div(
                         [
-                            html.Strong("2 · Climate response · Europe / USA / China"),
+                            html.Strong("2 · Climate impact · Europe / USA / China"),
                             html.Div(
                                 html.Img(
                                     src=asset_url("pv-system-uncertainty.png"),
@@ -5364,7 +5384,7 @@ def slide_pv_indicator_uncertainty() -> html.Div:
                     ),
                     html.Div(
                         [
-                            html.Strong("3 · Non-climate response · index to 2020"),
+                            html.Strong("3 · Other impacts · index relative to 2020"),
                             html.Div(
                                 html.Img(
                                     src=asset_url("pv-system-uncertainty.png"),
@@ -5381,11 +5401,11 @@ def slide_pv_indicator_uncertainty() -> html.Div:
             html.Div(
                 [
                     info_card(
-                        "Climate is comparatively robust",
-                        "Electricity decarbonization dominates the climate result, so alternative PV subtechnology shares produce narrow climate bands.",
+                        "Climate results are less sensitive",
+                        "Cleaner electricity dominates the climate result, so alternative PV module shares produce a narrow range.",
                     ),
                     info_card(
-                        "Minerals are highly sensitive",
+                        "Mineral results are highly sensitive",
                         "Material composition and manufacturing choices strongly affect mineral-resource results even under the same deployment pathway.",
                         "concept-accent",
                     ),
@@ -5400,7 +5420,7 @@ def slide_pv_indicator_uncertainty() -> html.Div:
                 "Source figures: provided presentation_IEA_PVPS_Task_12_2026.pptx, slides 12–13. Market-share bands derive from 1,000 pseudo-random trajectories; system panels show the source study’s medians and uncertainty bands."
             ),
             takeaway(
-                "Sensitivity analysis should follow the decision indicator: a detail that is negligible for GWP may dominate material-risk conclusions."
+                "Focus sensitivity analysis on the indicators that matter for the decision. A detail with little effect on GWP may strongly affect conclusions about material supply."
             ),
         ],
         className="slide pv-uncertainty-slide",
@@ -5418,20 +5438,20 @@ def slide_system_tradeoffs() -> html.Div:
             "The same pathways can increase resource pressures through bioenergy, electrification and infrastructure.",
         ),
         (
-            "Model structure remains visible",
-            "Marker shape identifies IAM; line style identifies SSP; colour groups warming outcomes.",
+            "Symbols show model choices",
+            "Marker shape identifies the IAM, line style identifies the SSP and colour groups the warming outcomes.",
         ),
         (
-            "Equal warming is not equal footprint",
-            "Pathways near the same temperature outcome still span materially different environmental trajectories.",
+            "Equal warming does not mean equal impacts",
+            "Pathways with similar temperatures can still produce very different environmental outcomes.",
         ),
     ]
     return html.Div(
         [
             eyebrow("Applied evidence · system perspective"),
             title(
-                "Similar warming does not mean a similar footprint",
-                "System-wide prospective LCA reveals trade-offs that a climate target alone cannot rank",
+                "Similar warming can still have very different impacts",
+                "System-wide prospective LCA shows trade-offs that a climate target alone cannot compare",
             ),
             html.Div(
                 [
@@ -5460,9 +5480,11 @@ def slide_system_tradeoffs() -> html.Div:
                             ),
                             html.Div(
                                 [
-                                    html.Strong("Representative indicators enlarged"),
+                                    html.Strong(
+                                        "Selected indicators shown at larger scale"
+                                    ),
                                     html.Span(
-                                        "Human health, land use and mineral scarcity expose different responses to pathways with similar warming."
+                                        "Human health, land use and mineral scarcity show different outcomes for pathways with similar warming."
                                     ),
                                 ],
                                 className="tradeoff-selected-note",
@@ -5527,7 +5549,7 @@ def slide_system_tradeoffs() -> html.Div:
                 "Source figure: provided ESD_PEA_course_Sacchi_280426.pptx, slide 30; Hahn Menacho et al. (2026, in review). The source compares IMAGE, MESSAGE and REMIND across SSP and GMST groups."
             ),
             takeaway(
-                "A scenario range should test environmental mechanisms—not merely bracket temperature—because transition design controls burden shifting."
+                "Choose scenarios that represent different technologies and resource demands, not only different temperatures. The design of the transition determines where impacts move."
             ),
         ],
         className="slide system-tradeoff-slide",
@@ -5540,7 +5562,7 @@ def slide_audit_chain() -> html.Div:
             "01",
             "Scenario identity",
             "Which model, pathway, climate objective and year?",
-            "Record the model-native label and narrative.",
+            "Record the exact label used by the model and its narrative.",
         ),
         (
             "02",
@@ -5552,7 +5574,7 @@ def slide_audit_chain() -> html.Div:
             "03",
             "Transformation coverage",
             "Which relevant sectors and variables were actually mapped?",
-            "List transformed and unmapped levers.",
+            "List the factors that were updated and those that were not mapped.",
         ),
         (
             "04",
@@ -5569,28 +5591,28 @@ def slide_audit_chain() -> html.Div:
         (
             "06",
             "LCIA method",
-            "Which method tuple, unit and carbon convention were used?",
+            "Which method version, unit and carbon convention were used?",
             "Keep biogenic carbon and indicator variants explicit.",
         ),
         (
             "07",
             "Sensitivity",
             "Would another IAM, pathway or technology assumption change the decision?",
-            "Test controlled contrasts, not arbitrary breadth.",
+            "Change one assumption at a time instead of testing unrelated scenarios.",
         ),
         (
             "08",
             "Interpretation",
             "What changed, why, and what remains outside?",
-            "Report contributors, residual and conditional wording.",
+            "Report the main contributors, the remaining difference and the conditions that apply.",
         ),
     ]
     return html.Div(
         [
             eyebrow("Applied evidence · reporting discipline"),
             title(
-                "Audit the chain before reporting the result",
-                "A prospective score is defensible only when every inference can be traced to a model, mapping, inventory or study choice",
+                "Check the full chain before reporting a result",
+                "A prospective score can be trusted only when every step links to a model, mapping, inventory or explicit study choice",
             ),
             html.Div(
                 [
@@ -5613,9 +5635,9 @@ def slide_audit_chain() -> html.Div:
             ),
             html.Div(
                 [
-                    html.Strong("Minimum evidence receipt"),
+                    html.Strong("Minimum reporting statement"),
                     html.P(
-                        "For [functional unit] in [location, year], the [model + pathway] background built with [premise + source database] changes [mapped levers]. The result changes because [contributors]; [foreground and unmapped assumptions] remain study-defined."
+                        "For [functional unit] in [location, year], the [model + pathway] background built with [premise + source database] changes [mapped factors]. The result changes because of [contributors]; [foreground and unmapped assumptions] remain defined by the study."
                     ),
                     html.Div(
                         [
@@ -5632,7 +5654,7 @@ def slide_audit_chain() -> html.Div:
                 className="audit-report-template",
             ),
             takeaway(
-                "Traceability converts a scenario-dependent number into conditional evidence that another analyst can reproduce and challenge."
+                "A clear audit trail turns a scenario-dependent number into evidence that another analyst can reproduce, question and improve."
             ),
         ],
         className="slide audit-chain-slide",
@@ -5648,7 +5670,7 @@ def slide_case_library() -> html.Div:
                 (
                     "ST",
                     "Steel",
-                    "Can route change outrun growth in steel demand?",
+                    "Can cleaner production routes offset growth in steel demand?",
                     "IMAGE + premise",
                     "routes · electricity · hydrogen · CCS",
                 ),
@@ -5663,7 +5685,7 @@ def slide_case_library() -> html.Div:
         ),
         (
             "Technology + supply chain",
-            "Use when IAM signals need subtechnology or material-supply evidence.",
+            "Use when IAM results need more detail about technologies or material supply.",
             [
                 (
                     "EV",
@@ -5675,7 +5697,7 @@ def slide_case_library() -> html.Div:
                 (
                     "PV",
                     "Solar PV",
-                    "Which conclusions depend on choices below IAM resolution?",
+                    "Which conclusions depend on technology details that the IAM does not provide?",
                     "IAM/ESM + external inventories",
                     "module technology · efficiency · materials",
                 ),
@@ -5688,7 +5710,7 @@ def slide_case_library() -> html.Div:
                 (
                     "H₂",
                     "Hydrogen + ammonia",
-                    "Where do scale, infrastructure and lock-in dominate?",
+                    "Where do scale and long-lived infrastructure shape the result?",
                     "IEA scenarios + premise",
                     "regional routes · electricity · CCS",
                 ),
@@ -5706,8 +5728,8 @@ def slide_case_library() -> html.Div:
         [
             eyebrow("Applied evidence · case library"),
             title(
-                "Choose the scenario source that resolves the decision lever",
-                "Cases differ because the decision requires different sector, technology and geographic resolution",
+                "Choose a scenario source with the detail your decision needs",
+                "Different decisions require different levels of sector, technology and geographic detail",
             ),
             html.Div(
                 [
@@ -5738,7 +5760,7 @@ def slide_case_library() -> html.Div:
                                             [
                                                 html.Span("Evidence source"),
                                                 html.B(source),
-                                                html.Span("Scenario lever"),
+                                                html.Span("Scenario factors"),
                                                 html.B(levers),
                                             ],
                                             className="case-library-case-details",
@@ -5757,13 +5779,13 @@ def slide_case_library() -> html.Div:
             ),
             html.Div(
                 [
-                    html.Strong("Selection logic"),
+                    html.Strong("How to choose"),
                     *[
                         item
                         for index, item in enumerate(
                             [
                                 html.Span("Decision question"),
-                                html.Span("Required resolution"),
+                                html.Span("Required detail"),
                                 html.Span("Scenario source"),
                                 html.Span("premise mapping"),
                                 html.Span("Study-defined foreground"),
@@ -5785,7 +5807,7 @@ def slide_case_library() -> html.Div:
                 "Cases synthesized from the provided Background scenarios, ESD_PEA, Paris premise and IEA PVPS presentations."
             ),
             takeaway(
-                "Start from the decision—not a favourite model—then select the evidence source and resolution that can represent its decisive lever."
+                "Start with the decision, not a favourite model. Then choose a source with enough detail to represent the factors that could change that decision."
             ),
         ],
         className="slide case-library-slide",
@@ -5813,7 +5835,7 @@ def _legacy_slide_premise_library() -> html.Div:
     outputs = [
         (
             "Scenario databases",
-            "A transformed inventory for each model–pathway–year coordinate",
+            "A transformed inventory for each model, pathway and year combination",
         ),
         (
             "Interoperable packages",
@@ -5824,7 +5846,7 @@ def _legacy_slide_premise_library() -> html.Div:
         [
             eyebrow("Premise · library identity"),
             title(
-                "Premise is the translation layer—not the scenario model",
+                "Premise translates scenarios; it is not a scenario model",
                 "An open-source Python library that converts quantified pathways into internally consistent prospective life-cycle inventories",
             ),
             html.Div(
@@ -5880,8 +5902,15 @@ def _legacy_slide_premise_library() -> html.Div:
                 [
                     html.Div([html.Strong("6"), html.Span("linked IAM models")]),
                     html.Div([html.Strong("≈30"), html.Span("IAM scenarios")]),
-                    html.Div([html.Strong("2,300+"), html.Span("added technology datasets")]),
-                    html.Div([html.Strong("3.6–3.11"), html.Span("ecoinvent versions in the supplied 2026 deck")]),
+                    html.Div(
+                        [html.Strong("2,300+"), html.Span("added technology datasets")]
+                    ),
+                    html.Div(
+                        [
+                            html.Strong("3.6–3.11"),
+                            html.Span("ecoinvent versions in the supplied 2026 deck"),
+                        ]
+                    ),
                 ],
                 className="premise-library-stats",
             ),
@@ -5912,7 +5941,7 @@ def _legacy_slide_premise_library() -> html.Div:
                 "Synthesized from Paris Premise introduction slides 13–23 and Background scenarios slides 9–19. Statistics reflect the supplied 2026 presentations."
             ),
             takeaway(
-                "Premise operationalizes selected scenario evidence inside LCI databases; it does not turn an LCA model into an IAM."
+                "Premise uses selected scenario data to update life-cycle inventory databases. It does not turn an LCA model into an IAM."
             ),
         ],
         className="slide premise-library-slide",
@@ -5924,7 +5953,7 @@ def _legacy_slide_premise_history() -> html.Div:
         (
             "2018",
             "Background matters",
-            "IMAGE pathways are coupled to ecoinvent, demonstrating how IAM change can propagate through product systems.",
+            "IMAGE pathways are linked to ecoinvent, showing how IAM changes can flow through product systems.",
             "METHOD",
         ),
         (
@@ -5956,7 +5985,7 @@ def _legacy_slide_premise_history() -> html.Div:
         [
             eyebrow("Premise · development history"),
             title(
-                "From research coupling to open scenario infrastructure",
+                "From one-off research links to shared scenario tools",
                 "The library grew by separating reusable transformation rules from individual prospective-LCA case studies",
             ),
             html.Div(
@@ -5980,7 +6009,7 @@ def _legacy_slide_premise_history() -> html.Div:
                         [
                             html.Strong("Research lineage"),
                             html.Span(
-                                "THEMIS, wurst and early IMAGE/REMIND couplings showed the value—and maintenance burden—of scenario-adjusted backgrounds."
+                                "THEMIS, wurst and early IMAGE/REMIND links showed both the value and the maintenance burden of scenario-adjusted backgrounds."
                             ),
                         ]
                     ),
@@ -5988,7 +6017,7 @@ def _legacy_slide_premise_history() -> html.Div:
                         [
                             html.Strong("Infrastructure shift"),
                             html.Span(
-                                "Versioned mappings, inventories and exports make the coupling inspectable, repeatable and usable beyond one publication."
+                                "Versioned mappings, inventories and exports make the link easy to inspect, repeat and reuse beyond one publication."
                             ),
                         ]
                     ),
@@ -6018,7 +6047,7 @@ def _legacy_slide_premise_workflow() -> html.Div:
     steps = [
         (
             "1",
-            "Resolve the coordinate",
+            "Define the scenario",
             "Model · pathway · year · region",
         ),
         (
@@ -6046,21 +6075,33 @@ def _legacy_slide_premise_workflow() -> html.Div:
         [
             eyebrow("Premise · executable workflow"),
             title(
-                "A build turns scenario coordinates into inventory changes",
+                "A build converts scenario choices into inventory changes",
                 "Three evidence inputs pass through documented mappings before any prospective database is calculated",
             ),
             html.Div(
                 [
                     html.Div(
-                        [html.Span("A"), html.Strong("Baseline LCI"), html.P("ecoinvent version + system model")],
+                        [
+                            html.Span("A"),
+                            html.Strong("Baseline LCI"),
+                            html.P("ecoinvent version + system model"),
+                        ],
                         className="premise-workflow-input",
                     ),
                     html.Div(
-                        [html.Span("B"), html.Strong("Scenario data"), html.P("IAM/ESM variables + regions + years")],
+                        [
+                            html.Span("B"),
+                            html.Strong("Scenario data"),
+                            html.P("IAM/ESM variables + regions + years"),
+                        ],
                         className="premise-workflow-input",
                     ),
                     html.Div(
-                        [html.Span("C"), html.Strong("Added evidence"), html.P("new inventories + external datapackages")],
+                        [
+                            html.Span("C"),
+                            html.Strong("Added evidence"),
+                            html.P("new inventories + external datapackages"),
+                        ],
                         className="premise-workflow-input",
                     ),
                 ],
@@ -6095,7 +6136,7 @@ def _legacy_slide_premise_workflow() -> html.Div:
                             html.Code(
                                 "ndb = NewDatabase(scenarios=..., source_db=..., source_version=...)\n"
                                 "ndb.update()\n"
-                                "ndb.write_db_to_brightway(\"scenario_database\")"
+                                'ndb.write_db_to_brightway("scenario_database")'
                             )
                         ],
                         className="premise-code-card",
@@ -6103,13 +6144,28 @@ def _legacy_slide_premise_workflow() -> html.Div:
                     html.Div(
                         [
                             html.Div(
-                                [html.Strong("Build contract"), html.Span("model · pathway · year · database version · system model")]
+                                [
+                                    html.Strong("Build contract"),
+                                    html.Span(
+                                        "model · pathway · year · database version · system model"
+                                    ),
+                                ]
                             ),
                             html.Div(
-                                [html.Strong("Validation"), html.Span("mapped variables · links · new activities · one LCIA smoke test")]
+                                [
+                                    html.Strong("Validation"),
+                                    html.Span(
+                                        "mapped variables · links · new activities · one LCIA smoke test"
+                                    ),
+                                ]
                             ),
                             html.Div(
-                                [html.Strong("Reproducibility"), html.Span("code + versions + scenario source + transformation scope")]
+                                [
+                                    html.Strong("Reproducibility"),
+                                    html.Span(
+                                        "code + versions + scenario source + transformation scope"
+                                    ),
+                                ]
                             ),
                         ],
                         className="premise-workflow-contract",
@@ -6121,7 +6177,7 @@ def _legacy_slide_premise_workflow() -> html.Div:
                 "Workflow adapted from the five-stage diagrams in the supplied Paris, Background scenarios and IEA PVPS presentations; API pattern follows Premise NewDatabase."
             ),
             takeaway(
-                "A prospective database is a build artefact with an explicit input coordinate, transformation scope and version record."
+                "A prospective database is a build output with an explicit scenario, transformation scope and version record."
             ),
         ],
         className="slide premise-workflow-slide",
@@ -6181,7 +6237,7 @@ def _legacy_slide_premise_ecosystem() -> html.Div:
         [
             eyebrow("Premise · software ecosystem"),
             title(
-                "Brightway computes; Activity Browser makes scenarios explorable",
+                "Premise changes inventories; Brightway calculates results",
                 "Premise changes inventory data, while neighbouring tools store, calculate, compare and scale the results",
             ),
             html.Div(
@@ -6211,7 +6267,10 @@ def _legacy_slide_premise_ecosystem() -> html.Div:
                 [
                     html.Div(
                         [
-                            html.Span(str(index), className="premise-ecosystem-destination-number"),
+                            html.Span(
+                                str(index),
+                                className="premise-ecosystem-destination-number",
+                            ),
                             html.Div(
                                 [
                                     html.Strong(heading),
@@ -6222,7 +6281,9 @@ def _legacy_slide_premise_ecosystem() -> html.Div:
                         ],
                         className="premise-ecosystem-destination",
                     )
-                    for index, (heading, interface, detail) in enumerate(destinations, 1)
+                    for index, (heading, interface, detail) in enumerate(
+                        destinations, 1
+                    )
                 ],
                 className="premise-ecosystem-destinations",
             ),
@@ -6230,7 +6291,7 @@ def _legacy_slide_premise_ecosystem() -> html.Div:
                 [
                     html.Strong("Superstructure idea"),
                     html.Span(
-                        "Store the exchanges that differ across scenarios once, then select the scenario column during calculation—ideal for year and pathway comparisons in Activity Browser."
+                        "Store the exchanges that differ across scenarios once, then select the scenario column during calculation. This works well for comparing years and pathways in Activity Browser."
                     ),
                 ],
                 className="premise-superstructure-note",
@@ -6277,7 +6338,7 @@ def _legacy_slide_premise_analysis_modes() -> html.Div:
         [
             eyebrow("Premise · analytical possibilities"),
             title(
-                "The same databases support three analytical scales",
+                "One set of databases supports three scales of analysis",
                 "The database is shared; the functional unit, activity scaling and interpretation determine the question answered",
             ),
             html.Div(
@@ -6358,7 +6419,7 @@ def slide_premise_library() -> html.Div:
         (
             "01",
             "A Python library",
-            "A programmable, versioned workflow—not a collection of pre-made forecasts.",
+            "A programmable, versioned workflow rather than a collection of ready-made forecasts.",
             "blue",
         ),
         (
@@ -6370,7 +6431,7 @@ def slide_premise_library() -> html.Div:
         (
             "03",
             "A database generator",
-            "Produces one transformed inventory for each model–pathway–year coordinate.",
+            "Produces one transformed inventory for each model, pathway and year combination.",
             "amber",
         ),
     ]
@@ -6378,8 +6439,8 @@ def slide_premise_library() -> html.Div:
         [
             eyebrow("Premise · library identity"),
             title(
-                "Premise is the translation layer—not the scenario model",
-                "An open-source Python library that converts quantified pathways into internally consistent prospective life-cycle inventories",
+                "Premise translates scenarios; it is not a scenario model",
+                "This open-source Python library converts quantified pathways into consistent prospective life-cycle inventories",
             ),
             html.Div(
                 [
@@ -6404,8 +6465,15 @@ def slide_premise_library() -> html.Div:
                                 [
                                     html.Span([html.Strong("6"), " linked IAM models"]),
                                     html.Span([html.Strong("≈30"), " IAM scenarios"]),
-                                    html.Span([html.Strong("2,300+"), " added datasets"]),
-                                    html.Span([html.Strong("3.6–3.11"), " ecoinvent range in the supplied deck"]),
+                                    html.Span(
+                                        [html.Strong("2,300+"), " added datasets"]
+                                    ),
+                                    html.Span(
+                                        [
+                                            html.Strong("3.6–3.11"),
+                                            " ecoinvent range in the supplied deck",
+                                        ]
+                                    ),
                                 ],
                                 className="premise-library-stat-ribbon",
                             ),
@@ -6418,7 +6486,9 @@ def slide_premise_library() -> html.Div:
                                 html.Div(
                                     [
                                         html.Span(number),
-                                        html.Div([html.Strong(heading), html.P(detail)]),
+                                        html.Div(
+                                            [html.Strong(heading), html.P(detail)]
+                                        ),
                                     ],
                                     className=f"premise-library-story premise-library-story-{color}",
                                 )
@@ -6443,7 +6513,7 @@ def slide_premise_library() -> html.Div:
                 "Synthesized from Paris Premise introduction slides 13–23 and Background scenarios slides 9–19. Statistics reflect the supplied 2026 presentations."
             ),
             takeaway(
-                "Premise operationalizes selected scenario evidence inside LCI databases; it does not turn an LCA model into an IAM."
+                "Premise applies selected scenario evidence to LCI databases. It does not turn an LCA model into an IAM."
             ),
         ],
         className="slide premise-library-slide premise-library-visual-slide",
@@ -6452,28 +6522,58 @@ def slide_premise_library() -> html.Div:
 
 def slide_premise_history() -> html.Div:
     milestones = [
-        ("2018", "PAPER", "≋", "Background matters", "IMAGE pathways are linked to ecoinvent, propagating energy-system change through product systems."),
-        ("2020", "CODE", "</>", "Automation emerges", "Reusable rules replace one-off database modifications."),
-        ("2022", "RELEASE", "v1", "Open method + library", "A versioned package makes the workflow reproducible."),
-        ("2023–24", "CONNECT", "⇄", "Interoperability grows", "User scenarios, more exports and openLCA broaden access."),
-        ("2025–26", "SCALE", "6×", "Coverage expands", "Six IAMs and more sector transformations expand coverage."),
+        (
+            "2018",
+            "PAPER",
+            "≋",
+            "Background matters",
+            "IMAGE pathways are linked to ecoinvent, so energy-system changes flow through product systems.",
+        ),
+        (
+            "2020",
+            "CODE",
+            "</>",
+            "Automated updates",
+            "Reusable rules replace one-off database modifications.",
+        ),
+        (
+            "2022",
+            "RELEASE",
+            "v1",
+            "Open method + library",
+            "A versioned package makes the workflow reproducible.",
+        ),
+        (
+            "2023–24",
+            "CONNECT",
+            "⇄",
+            "More tools connect",
+            "User scenarios, more exports and openLCA broaden access.",
+        ),
+        (
+            "2025–26",
+            "SCALE",
+            "6×",
+            "Coverage expands",
+            "Six IAMs and more sector transformations expand coverage.",
+        ),
     ]
     return html.Div(
         [
             eyebrow("Premise · development history"),
             title(
-                "From research coupling to open scenario infrastructure",
-                "The library grew by separating reusable transformation rules from individual prospective-LCA case studies",
+                "From one-off research links to shared scenario tools",
+                "The library grew by turning rules from individual prospective-LCA studies into reusable tools",
             ),
             html.Div(
                 [
                     html.Div(
                         [
-                            html.Span("CASE-SPECIFIC METHODS"),
+                            html.Span("ONE-OFF STUDY METHODS"),
                             html.I("→"),
                             html.Span("REUSABLE LIBRARY"),
                             html.I("→"),
-                            html.Span("SHARED INFRASTRUCTURE"),
+                            html.Span("SHARED TOOLS"),
                         ],
                         className="premise-history-era-ribbon",
                     ),
@@ -6481,9 +6581,15 @@ def slide_premise_history() -> html.Div:
                         [
                             html.Div(
                                 [
-                                    html.Div(icon, className="premise-history-visual-icon"),
-                                    html.Span(tag, className="premise-history-visual-tag"),
-                                    html.Strong(year, className="premise-history-visual-year"),
+                                    html.Div(
+                                        icon, className="premise-history-visual-icon"
+                                    ),
+                                    html.Span(
+                                        tag, className="premise-history-visual-tag"
+                                    ),
+                                    html.Strong(
+                                        year, className="premise-history-visual-year"
+                                    ),
                                     html.H3(heading),
                                     html.P(detail),
                                 ],
@@ -6500,7 +6606,7 @@ def slide_premise_history() -> html.Div:
                 [
                     html.Strong("What changed?"),
                     html.Span(
-                        "Bespoke study scripts became versioned mappings, inventories and exports that can be inspected and reused."
+                        "One-off study scripts became versioned mappings, inventories and exports that others can inspect and reuse."
                     ),
                     html.I(
                         "Coverage still follows the scenario variables and LCI evidence available."
@@ -6512,7 +6618,7 @@ def slide_premise_history() -> html.Div:
                 "Timeline reconstructed from the supplied Paris Premise introduction and Background scenarios decks; method lineage includes Mendoza Beltran et al. (2018) and Sacchi et al. (2022)."
             ),
             takeaway(
-                "Premise turns lessons from individual IAM–LCA studies into maintained, reusable transformation infrastructure."
+                "Premise turns lessons from individual IAM–LCA studies into maintained, reusable transformation tools."
             ),
         ],
         className="slide premise-history-slide premise-history-visual-slide",
@@ -6524,8 +6630,8 @@ def slide_premise_workflow() -> html.Div:
         [
             eyebrow("Premise · executable workflow"),
             title(
-                "A build turns scenario coordinates into inventory changes",
-                "Scenario evidence and inventory data pass through mapping, update and relinking rules before any prospective database is calculated",
+                "A build converts scenario choices into inventory changes",
+                "Mapping, update and relinking rules combine scenario evidence with inventory data before the prospective database is used",
             ),
             html.Div(
                 [
@@ -6541,8 +6647,8 @@ def slide_premise_workflow() -> html.Div:
                     ),
                     html.Div(
                         [
-                            html.Span("THE BUILD RECEIPT"),
-                            html.H2("Three calls create the artefact"),
+                            html.Span("BUILD RECORD"),
+                            html.H2("Three calls create the output"),
                             html.Pre(
                                 html.Code(
                                     "ndb = NewDatabase(\n"
@@ -6552,16 +6658,31 @@ def slide_premise_workflow() -> html.Div:
                                     ")\n\n"
                                     "ndb.update()\n\n"
                                     "ndb.write_db_to_brightway(\n"
-                                    "  \"scenario_database\"\n"
+                                    '  "scenario_database"\n'
                                     ")"
                                 ),
                                 className="premise-build-code",
                             ),
                             html.Ol(
                                 [
-                                    html.Li([html.Strong("Coordinate"), " · model, pathway, year, region"]),
-                                    html.Li([html.Strong("Scope"), " · mapped sectors and variables"]),
-                                    html.Li([html.Strong("Versions"), " · library, source database, system model"]),
+                                    html.Li(
+                                        [
+                                            html.Strong("Scenario"),
+                                            " · model, pathway, year, region",
+                                        ]
+                                    ),
+                                    html.Li(
+                                        [
+                                            html.Strong("Scope"),
+                                            " · mapped sectors and variables",
+                                        ]
+                                    ),
+                                    html.Li(
+                                        [
+                                            html.Strong("Versions"),
+                                            " · library, source database, system model",
+                                        ]
+                                    ),
                                 ],
                                 className="premise-build-receipt-list",
                             ),
@@ -6573,11 +6694,15 @@ def slide_premise_workflow() -> html.Div:
             ),
             html.Div(
                 [
-                    html.Span([html.Strong("INPUT"), " coordinate + LCI + added evidence"]),
+                    html.Span(
+                        [html.Strong("INPUT"), " scenario + LCI + added evidence"]
+                    ),
                     html.I("→"),
                     html.Span([html.Strong("TRANSFORM"), " map + update + relink"]),
                     html.I("→"),
-                    html.Span([html.Strong("OUTPUT"), " database + superstructure + package"]),
+                    html.Span(
+                        [html.Strong("OUTPUT"), " database + superstructure + package"]
+                    ),
                 ],
                 className="premise-engine-summary-ribbon",
             ),
@@ -6585,7 +6710,7 @@ def slide_premise_workflow() -> html.Div:
                 "Workflow adapted from the supplied Paris, Background scenarios and IEA PVPS presentations; API pattern follows Premise NewDatabase."
             ),
             takeaway(
-                "A prospective database is a build artefact with an explicit input coordinate, transformation scope and version record."
+                "A prospective database is a build output with an explicit scenario, transformation scope and version record."
             ),
         ],
         className="slide premise-workflow-slide premise-engine-slide",
@@ -6596,17 +6721,27 @@ def slide_premise_ecosystem() -> html.Div:
     roles = [
         ("Transform", "Premise + wurst", "Map and relink inventory data.", "teal"),
         ("Store + calculate", "Brightway", "Store projects and run LCI/LCIA.", "blue"),
-        ("Explore", "Activity Browser", "Inspect activities and switch scenarios.", "red"),
+        (
+            "Explore",
+            "Activity Browser",
+            "Inspect activities and switch scenarios.",
+            "red",
+        ),
         ("Scale", "Pathways", "Scale inventories with scenario activity.", "amber"),
-        ("Temporalize", "Trails", "Run time-explicit LCA from scenario inventories.", "orange"),
+        (
+            "Add time",
+            "Trails",
+            "Run time-explicit LCA from scenario inventories.",
+            "orange",
+        ),
         ("Exchange", "unfold · openLCA", "Exchange scenario inventories.", "purple"),
     ]
     return html.Div(
         [
             eyebrow("Premise · software ecosystem"),
             title(
-                "Brightway computes; Activity Browser makes scenarios explorable",
-                "Premise changes inventory data, while neighbouring tools store, calculate, compare, exchange and scale the results",
+                "Premise changes inventories; Brightway calculates results",
+                "Other connected tools store, inspect, compare, exchange and scale the scenario results",
             ),
             html.Div(
                 [
@@ -6646,7 +6781,9 @@ def slide_premise_ecosystem() -> html.Div:
                             *[
                                 html.Div(
                                     [
-                                        html.I(className=f"premise-role-dot premise-role-{color}"),
+                                        html.I(
+                                            className=f"premise-role-dot premise-role-{color}"
+                                        ),
                                         html.Div(
                                             [
                                                 html.Small(action),
@@ -6667,7 +6804,7 @@ def slide_premise_ecosystem() -> html.Div:
             ),
             html.Div(
                 [
-                    html.Strong("Superstructure idea"),
+                    html.Strong("Compare scenarios efficiently"),
                     html.Span(
                         "Store only exchanges that differ across scenarios, then select the pathway/year column during calculation."
                     ),
@@ -6687,9 +6824,27 @@ def slide_premise_ecosystem() -> html.Div:
 
 def slide_premise_analysis_modes() -> html.Div:
     modes = [
-        ("01", "IAM activity", "How much is produced?", "Electricity output by technology, in EJ.", "blue"),
-        ("02", "Process LCA", "What is the impact per unit?", "Prospective intensity relative to 2025.", "teal"),
-        ("03", "System LCA", "What is the total burden?", "Activity × intensity, relative to 2025.", "amber"),
+        (
+            "01",
+            "IAM activity",
+            "How much is produced?",
+            "Electricity output by technology, in EJ.",
+            "blue",
+        ),
+        (
+            "02",
+            "Process LCA",
+            "What is the impact per unit?",
+            "Prospective intensity relative to 2025.",
+            "teal",
+        ),
+        (
+            "03",
+            "System LCA",
+            "What is the total burden?",
+            "Activity × intensity, relative to 2025.",
+            "amber",
+        ),
     ]
     indicators = [
         ("Acidification", "#1f77b4"),
@@ -6705,7 +6860,7 @@ def slide_premise_analysis_modes() -> html.Div:
         [
             eyebrow("Premise · analytical possibilities"),
             title(
-                "The same databases support three analytical scales",
+                "One set of databases supports three scales of analysis",
                 "A REMIND electricity example connects IAM production volumes, prospective unit scores and system-wide impacts",
             ),
             html.Div(
@@ -6731,13 +6886,15 @@ def slide_premise_analysis_modes() -> html.Div:
                                 ],
                                 className="premise-analysis-curve-legend",
                                 role="list",
-                                **{"aria-label": "Environmental indicator curve colours"},
+                                **{
+                                    "aria-label": "Environmental indicator curve colours"
+                                },
                             ),
                             html.Img(
                                 src=asset_url("premise-analysis-electricity.png"),
                                 alt="Electricity production volume, prospective per-unit environmental intensity and activity-scaled system impacts in REMIND SSP2-1000",
                                 className="premise-analysis-example-image",
-                            )
+                            ),
                         ],
                         className="premise-analysis-example-panel",
                     ),
@@ -6747,7 +6904,11 @@ def slide_premise_analysis_modes() -> html.Div:
                                 [
                                     html.Span(number),
                                     html.Div(
-                                        [html.H2(heading), html.Strong(question), html.P(detail)]
+                                        [
+                                            html.H2(heading),
+                                            html.Strong(question),
+                                            html.P(detail),
+                                        ]
                                     ),
                                 ],
                                 className=f"premise-analysis-evidence-card premise-analysis-evidence-card-{color}",
@@ -6838,7 +6999,7 @@ def slide_resources() -> html.Div:
                 ),
                 (
                     "Trails · GitHub",
-                    "Time-explicit LCA from deeply temporalized inventories",
+                    "Time-explicit LCA with inventories that describe when exchanges occur",
                     "https://github.com/Laboratory-for-Energy-Systems-Analysis/trails",
                 ),
             ],
@@ -6893,9 +7054,7 @@ def slide_resources() -> html.Div:
                             *[
                                 html.A(
                                     [
-                                        html.Div(
-                                            [html.Strong(label), html.Span("↗")]
-                                        ),
+                                        html.Div([html.Strong(label), html.Span("↗")]),
                                         html.P(description),
                                         html.Small(url.replace("https://", "")),
                                     ],
@@ -6953,7 +7112,7 @@ def slide_detective(reveal: int) -> html.Div:
             for s in ANONYMOUS_ORDER
         ]
     prompt = (
-        "Names revealed. Which clues were diagnostic—and which misled you?"
+        "Names revealed. Which clues helped, and which were misleading?"
         if names_visible
         else "Assign A–D to the four stories. Justify each answer with two clues."
     )
@@ -7127,7 +7286,7 @@ def slide_cross_iam() -> html.Div:
                 [
                     info_card(
                         "Shared framing",
-                        "SSP2 and a medium-emissions label define a common experiment—not identical inputs.",
+                        "SSP2 and a medium-emissions label define a common experiment, but not identical inputs.",
                     ),
                     info_card(
                         "Structural causes",
@@ -7140,7 +7299,7 @@ def slide_cross_iam() -> html.Div:
                     ),
                     info_card(
                         "pLCA consequence",
-                        "A difference matters only if it propagates through a premise transformation used by the product system.",
+                        "A difference matters only if a premise transformation carries it into the product system.",
                     ),
                 ],
                 className="four-card-grid",
@@ -7197,7 +7356,7 @@ def slide_r10() -> html.Div:
                         [
                             html.Div("R10 Europe", className="region-heading"),
                             html.P(
-                                "A documented country grouping—not a cosmetic relabelling."
+                                "A documented country grouping, not just a different label."
                             ),
                             html.A(
                                 "Open the common definition",
@@ -7454,7 +7613,7 @@ def slide_selection(votes: dict[str, int]) -> html.Div:
                 className="two-column selection-layout",
             ),
             takeaway(
-                "Choose scenarios to test a decision—not to declare one future correct."
+                "Choose scenarios to test a decision, not to declare one future correct."
             ),
         ],
         className="slide",

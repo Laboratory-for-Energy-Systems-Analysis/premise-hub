@@ -7,7 +7,7 @@
     "line_dash": "solid",
     "storyline": "International cooperation, resource efficiency and cleaner technologies advance early, while energy and material demand grow more slowly.",
     "pathway": "Strong early mitigation; CO₂ falls rapidly, reaches net zero late in the century and becomes net negative in this IMAGE implementation.",
-    "watch": "Coordinated action and technology diffusion are assumptions, not observed inevitabilities.",
+    "watch": "Cooperation between countries and the spread of technology are assumptions, not outcomes you can take for granted.",
     "evidence_status": "awaiting_owner_signoff"
   },
   "SSP2-M": {
@@ -27,9 +27,9 @@
     "anonymous_id": "D",
     "color": "#C44E52",
     "line_dash": "dot",
-    "storyline": "Countries prioritise security and self-sufficiency; cooperation weakens, development slows and technology diffuses less evenly.",
+    "storyline": "Countries prioritise security and self-sufficiency; cooperation weakens, development slows and technology spreads less evenly.",
     "pathway": "A high-emissions pathway with persistent fossil use and high late-century warming in this IMAGE implementation.",
-    "watch": "High is a stress-test world, not a synonym for business as usual.",
+    "watch": "Use this high-emissions world to test difficult conditions; it is not a synonym for business as usual.",
     "evidence_status": "awaiting_owner_signoff"
   },
   "SSP2-VLHO": {

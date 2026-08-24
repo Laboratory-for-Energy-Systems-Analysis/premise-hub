@@ -14,7 +14,6 @@ from playwright.sync_api import sync_playwright
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from workshop.config import LAST_SLIDE
 
-
 TEXT_AUDIT_SCRIPT = r"""
 root => {
   const rows = [];
@@ -69,6 +68,20 @@ root => {
 """
 
 
+def launch_chromium(playwright):
+    expected = Path(playwright.chromium.executable_path)
+    if expected.is_file():
+        return playwright.chromium.launch()
+    installed = sorted(
+        (Path.home() / "Library" / "Caches" / "ms-playwright").glob(
+            "chromium_headless_shell-*/chrome-headless-shell-mac-arm64/chrome-headless-shell"
+        )
+    )
+    if installed:
+        return playwright.chromium.launch(executable_path=str(installed[-1]))
+    return playwright.chromium.launch()
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--url", default="http://127.0.0.1:8050")
@@ -80,7 +93,7 @@ def main() -> None:
 
     report: list[dict[str, object]] = []
     with sync_playwright() as playwright:
-        browser = playwright.chromium.launch()
+        browser = launch_chromium(playwright)
         page = browser.new_page(viewport={"width": args.width, "height": args.height})
         page.goto(args.url, wait_until="networkidle")
         for slide in range(LAST_SLIDE + 1):

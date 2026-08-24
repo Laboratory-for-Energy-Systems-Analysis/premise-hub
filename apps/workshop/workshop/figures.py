@@ -178,6 +178,17 @@ END_USE_GROUP_ORDER = {
     ],
 }
 
+END_USE_LABELS = {
+    "MEA CCS": "MEA carbon capture",
+    "On-site CCS": "On-site carbon capture",
+    "Oxyfuel CCS": "Oxyfuel carbon capture",
+    "Conventional BF/BOF": "Blast furnace / basic oxygen furnace",
+    "Advanced fossil primary": "Advanced fossil-based primary steel",
+    "Primary with CCS": "Primary steel with carbon capture",
+    "Hydrogen + electrowinning": "Hydrogen / electrowinning",
+    "Secondary steel": "Recycled steel",
+}
+
 STEEL_WEU_ROUTE_ORDER = [
     "Other primary",
     "Primary with CCS",
@@ -247,12 +258,12 @@ def scenario_trajectory(
 
 def detective_figure(clue: int, reveal: bool) -> tuple[go.Figure, str]:
     sequence = [
-        ("Population", "Clue 1 — population"),
-        ("Gross Domestic Product", "Clue 2 — economic activity"),
-        ("Carbon Dioxide emissions", "Clue 3 — annual CO₂ emissions"),
-        ("GMST increase", "Clue 4 — global-mean surface temperature"),
-        ("Final Energy", "Clue 5 — final-energy demand"),
-        ("Carbon Dioxide Removal", "Clue 6 — reported carbon removal"),
+        ("Population", "Clue 1: population"),
+        ("Gross Domestic Product", "Clue 2: economic activity"),
+        ("Carbon Dioxide emissions", "Clue 3: annual CO₂ emissions"),
+        ("GMST increase", "Clue 4: global mean surface temperature"),
+        ("Final Energy", "Clue 5: final-energy demand"),
+        ("Carbon Dioxide Removal", "Clue 6: reported carbon removal"),
     ]
     sector, title = sequence[min(clue, len(sequence) - 1)]
     return scenario_trajectory(sector, title, reveal), title
@@ -1070,17 +1081,17 @@ def end_use_transformation_figure(domain: str) -> go.Figure:
             "Powertrain share",
             "Energy / passenger-km",
             1_000_000,
-            "million activity units",
+            "million model activity units",
         ),
         "Cement": (
             "Cement output by kiln route",
             "Kiln-route share",
-            "Energy proxy / tonne",
+            "Estimated sector energy / tonne",
             1,
             "Mt cement/yr",
         ),
         "Steel": (
-            "Reported output allocation by route",
+            "Reported steel output by route",
             "Steel-route share",
             "Energy / tonne crude steel",
             1,
@@ -1088,7 +1099,7 @@ def end_use_transformation_figure(domain: str) -> go.Figure:
         ),
         "Space heating": (
             "Delivered energy by carrier",
-            "Carrier share · technology proxy",
+            "Carrier share (technology estimate)",
             "Heating energy / person",
             1,
             "EJ/yr",
@@ -1112,19 +1123,20 @@ def end_use_transformation_figure(domain: str) -> go.Figure:
         data = mix[mix["group"].eq(group)].sort_values("year")
         if data.empty:
             continue
+        display_group = END_USE_LABELS.get(group, group)
         fig.add_trace(
             go.Scatter(
                 x=data["year"],
                 y=data["value"] / absolute_scale,
                 customdata=data["share"],
-                name=group,
+                name=display_group,
                 legendgroup=group,
                 mode="lines",
                 line={"width": 0.8, "color": END_USE_COLORS[group]},
                 stackgroup="absolute",
                 fillcolor=END_USE_COLORS[group],
                 hovertemplate=(
-                    f"{group}<br>%{{x}}: <b>%{{y:.2f}} {absolute_unit}</b>"
+                    f"{display_group}<br>%{{x}}: <b>%{{y:.2f}} {absolute_unit}</b>"
                     "<br>%{customdata:.1%} of reported mix<extra></extra>"
                 ),
             ),
@@ -1136,7 +1148,7 @@ def end_use_transformation_figure(domain: str) -> go.Figure:
                 x=data["year"],
                 y=data["share"],
                 customdata=data["value"],
-                name=group,
+                name=display_group,
                 legendgroup=group,
                 showlegend=False,
                 mode="lines",
@@ -1144,7 +1156,7 @@ def end_use_transformation_figure(domain: str) -> go.Figure:
                 stackgroup="technology",
                 fillcolor=END_USE_COLORS[group],
                 hovertemplate=(
-                    f"{group}<br>%{{x}}: <b>%{{y:.1%}}</b>"
+                    f"{display_group}<br>%{{x}}: <b>%{{y:.1%}}</b>"
                     "<br>Reported activity: %{customdata:.2f}<extra></extra>"
                 ),
             ),
@@ -1360,7 +1372,7 @@ def energy_emissions_change_figure() -> go.Figure:
     fig.update_yaxes(range=[96, 166], dtick=10)
     fig = _base_layout(
         fig,
-        "Energy and CO₂ rose together—but not one-for-one",
+        "Energy use and CO₂ emissions both rose, but at different rates",
         "Index · 2000 = 100",
     )
     fig.update_layout(
@@ -1611,7 +1623,7 @@ def integration_matrix_figure() -> go.Figure:
             y=systems,
             customdata=text,
             hovertemplate=(
-                "System: %{y}<br>Lever: %{x}<br>Direct role: %{customdata}"
+                "System: %{y}<br>Option: %{x}<br>Direct role: %{customdata}"
                 "<extra></extra>"
             ),
             colorscale=[
@@ -2845,7 +2857,7 @@ def _capstone_contribution_components(
     labels = [_short_contributor_name(name) for name in data["contributor_name"]]
     score = float(score_row["score"].iloc[0])
     residual = score - sum(values)
-    labels.append("All other activities + residual")
+    labels.append("All other activities + remaining difference")
     values.append(residual)
     return labels, values, str(score_row["unit"].iloc[0]), score
 
@@ -3348,8 +3360,7 @@ def cdr_overshoot_summary_figure() -> go.Figure:
                     },
                     marker={"size": 5, "color": narrative["color"]},
                     hovertemplate=(
-                        f"{scenario}<br>%{{x}}: %{{y:.2f}} Gt CO₂/yr"
-                        "<extra></extra>"
+                        f"{scenario}<br>%{{x}}: %{{y:.2f}} Gt CO₂/yr" "<extra></extra>"
                     ),
                 ),
                 row=1,
@@ -3377,9 +3388,11 @@ def cdr_overshoot_summary_figure() -> go.Figure:
         (
             "not reported"
             if cumulative_totals[scenario] is None
-            else "<0.1"
-            if cumulative_totals[scenario] < 0.1
-            else f"{cumulative_totals[scenario]:.0f}"
+            else (
+                "<0.1"
+                if cumulative_totals[scenario] < 0.1
+                else f"{cumulative_totals[scenario]:.0f}"
+            )
         )
         for scenario in scenarios
     ]
@@ -3389,16 +3402,20 @@ def cdr_overshoot_summary_figure() -> go.Figure:
             y=bar_values,
             marker={
                 "color": [
-                    NARRATIVES[scenario]["color"]
-                    if cumulative_totals[scenario] is not None
-                    else "rgba(255,255,255,0)"
+                    (
+                        NARRATIVES[scenario]["color"]
+                        if cumulative_totals[scenario] is not None
+                        else "rgba(255,255,255,0)"
+                    )
                     for scenario in scenarios
                 ],
                 "line": {
                     "color": [
-                        NARRATIVES[scenario]["color"]
-                        if cumulative_totals[scenario] is not None
-                        else "#9AA6AD"
+                        (
+                            NARRATIVES[scenario]["color"]
+                            if cumulative_totals[scenario] is not None
+                            else "#9AA6AD"
+                        )
                         for scenario in scenarios
                     ],
                     "width": [1, 1, 1, 2],
@@ -3448,8 +3465,7 @@ def cdr_overshoot_summary_figure() -> go.Figure:
                 legendgroup=scenario,
                 showlegend=False,
                 hovertemplate=(
-                    f"{scenario}<br>%{{text}} °C above 1850–1900"
-                    "<extra></extra>"
+                    f"{scenario}<br>%{{text}} °C above 1850–1900" "<extra></extra>"
                 ),
             ),
             row=1,
@@ -3544,7 +3560,7 @@ def lcia_evidence_figure() -> go.Figure:
             labels.append(name[:30])
     contribution_values = contribution_data["contribution"].tolist()
     residual = float(scores["SSP2-VLHO"] - sum(contribution_values))
-    labels.append("All other activities + residual")
+    labels.append("All other activities + remaining difference")
     contribution_values.append(residual)
     colors = [NARRATIVES[scenario]["color"] for scenario in scenarios]
     fig = make_subplots(
@@ -3553,7 +3569,7 @@ def lcia_evidence_figure() -> go.Figure:
         subplot_titles=(
             "1 kWh CH low voltage · 2060",
             "WEU + CEU generation · 2060",
-            "Why SSP2-VLHO is negative",
+            "Main contributors to the SSP2-VLHO result",
         ),
         horizontal_spacing=0.11,
     )
@@ -3622,7 +3638,7 @@ def lcia_comparison_figure() -> go.Figure:
     if frame.empty:
         fig = go.Figure()
         fig.add_annotation(
-            text="Run the documented <i>Premise</i>/Brightway pipeline to populate validated results",
+            text="Run the documented <i>Premise</i>/Brightway workflow and add the checked results",
             x=0.5,
             y=0.55,
             xref="paper",

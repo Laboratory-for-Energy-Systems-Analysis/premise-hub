@@ -4685,6 +4685,7 @@ def _fair_flow_label(contributor: str) -> str:
         "Carbon dioxide, in air": "Atmospheric CO₂ uptake",
         "Carbon dioxide, fossil": "Fossil CO₂",
         "Carbon dioxide, non-fossil": "Biogenic CO₂ release",
+        "Carbon dioxide, non-fossil, resource correction": "Non-fossil CO2",
         "Carbon dioxide, from soil or biomass stock": "Biogenic CO₂",
         "Methane, fossil": "Fossil CH₄",
         "Methane, non-fossil": "Biogenic CH₄",
@@ -5987,7 +5988,7 @@ def _routing_graph_slide(index: int, case: str):
             "file": "beccs-routing.html",
             "preview": "beccs-routing-preview.png",
             "lead": (
-                "The graph opens at depth 3. Select Branch to isolate one annual input; "
+                "The graph opens at depth 2. Select Branch to isolate one annual input; "
                 "increase Depth to reveal more supply-chain layers. It covers construction "
                 "in 2027–2029, operation in 2030–2049 and forest regrowth through 2131."
             ),

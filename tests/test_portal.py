@@ -15,7 +15,7 @@ from apps.lca_time.workshop.config import (
     CORE_SLIDE_COUNT,
     LAST_SLIDE,
 )
-from apps.lca_time.workshop.slides import render_slide
+from apps.lca_time.workshop.slides import render_fair_response_figure, render_slide
 
 client = Client(application, Response)
 
@@ -199,6 +199,23 @@ def test_lca_time_deck_contract() -> None:
     assert "1 ÷ 0.831" in slide_seven
     assert "= 1.20 t CO₂ captured" in slide_seven
     assert "The same storage service does not imply" not in slide_seven
+
+    slide_fifteen = repr(render_slide(14))
+    assert "The graph opens at depth 2." in slide_fifteen
+    slide_sixteen = repr(render_slide(15))
+    assert "The graph opens at depth 3." in slide_sixteen
+
+    routing_assets = (
+        Path(__file__).resolve().parents[1] / "apps/lca_time/assets/routing"
+    )
+    assert "sel.value = '2';" in (routing_assets / "beccs-routing.html").read_text()
+    assert "sel.value = '3';" in (routing_assets / "daccs-routing.html").read_text()
+
+    for case in ("BECCS", "DACCS"):
+        figure = render_fair_response_figure(case, contribution_view="elementary_flow")
+        trace_names = {trace.name for trace in figure.data}
+        assert "Non-fossil CO2" in trace_names
+        assert "Carbon dioxide, non-fossil, resource correction" not in trace_names
 
 
 def test_publication_catalog_contract() -> None:

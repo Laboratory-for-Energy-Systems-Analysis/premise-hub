@@ -41,7 +41,7 @@ landing = create_landing_app()
 application = DispatcherMiddleware(
     landing,
     {
-        "/lca-time": _protect_presentation(lca_time_server, "/lca-time/"),
+        "/lca-time": lca_time_server,
         "/scenarios": scenario_server,
         "/workshop": _protect_presentation(workshop_server, "/workshop/"),
     },

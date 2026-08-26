@@ -15,6 +15,7 @@ from apps.lca_time.workshop.config import (
     CORE_SLIDE_COUNT,
     LAST_SLIDE,
 )
+from apps.lca_time.workshop.slides import render_slide
 
 client = Client(application, Response)
 
@@ -102,16 +103,14 @@ def test_public_routes_and_prefixes() -> None:
     assert premise_logo.status_code == 200
     assert premise_logo.data.startswith(b"\x89PNG\r\n\x1a\n")
 
-    for prefix in ["/workshop", "/lca-time"]:
-        protected = client.get(f"{prefix}/")
-        assert protected.status_code == 401
-        assert "Protected presentation" in protected.text
-        assert "Enter the password to continue." in protected.text
-        assert "event date" not in protected.text.casefold()
-        assert "DDMMYYYY" not in protected.text
+    protected = client.get("/workshop/")
+    assert protected.status_code == 401
+    assert "Protected presentation" in protected.text
+    assert "Enter the password to continue." in protected.text
+    assert "event date" not in protected.text.casefold()
+    assert "DDMMYYYY" not in protected.text
 
     unlock_presentation(client, "/workshop", "03092026")
-    unlock_presentation(client, "/lca-time", "27082026")
 
     for prefix in ["/scenarios", "/workshop", "/lca-time"]:
         index = client.get(f"{prefix}/")
@@ -131,7 +130,7 @@ def test_public_routes_and_prefixes() -> None:
     assert client.get("/lca-time/assets/routing/beccs-routing.html").status_code == 200
 
 
-def test_presentation_passwords_protect_every_deck_route() -> None:
+def test_workshop_password_protects_every_deck_route() -> None:
     auth_client = Client(application, Response, use_cookies=True)
 
     workshop_asset = auth_client.get("/workshop/assets/styles.css")
@@ -149,10 +148,10 @@ def test_presentation_passwords_protect_every_deck_route() -> None:
     assert auth_client.get("/workshop/_dash-layout").status_code == 200
     assert auth_client.get("/workshop/assets/styles.css").status_code == 200
 
-    # Each presentation has a separate cookie and its own event-date password.
-    assert auth_client.get("/lca-time/").status_code == 401
-    unlock_presentation(auth_client, "/lca-time", "27082026")
+    # The LCA-through-time presentation is public and needs no session cookie.
+    assert auth_client.get("/lca-time/").status_code == 200
     assert auth_client.get("/lca-time/_dash-layout").status_code == 200
+    assert auth_client.get("/lca-time/assets/styles.css").status_code == 200
 
 
 def test_resource_catalog_contract() -> None:
@@ -189,6 +188,10 @@ def test_lca_time_deck_contract() -> None:
     assert CORE_SLIDE_COUNT == 24
     assert APPENDIX_SLIDE_COUNT == 2
     assert LAST_SLIDE == 25
+
+    slide_two = repr(render_slide(1))
+    assert "Sacchi et al. (2026) · TRAILS preprint" in slide_two
+    assert "https://www.researchsquare.com/article/rs-10139523/v1" in slide_two
 
 
 def test_publication_catalog_contract() -> None:

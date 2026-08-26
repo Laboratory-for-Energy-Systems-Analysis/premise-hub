@@ -214,7 +214,7 @@ def main() -> None:
         if args.output:
             page.screenshot(path=args.output / "workshop.png")
 
-        unlock_presentation(page, f"{base}/lca-time/", "27082026")
+        page.goto(f"{base}/lca-time/", wait_until="networkidle")
         page.locator(".slide").wait_for()
         page.get_by_role(
             "heading", name="How time changes LCA results"
@@ -222,6 +222,9 @@ def main() -> None:
         page.locator("#next-button").click()
         page.get_by_role(
             "heading", name="One study, three treatments of time"
+        ).wait_for()
+        page.get_by_role(
+            "link", name="Sacchi et al. (2026) · TRAILS preprint"
         ).wait_for()
         if args.output:
             page.screenshot(path=args.output / "lca-through-time.png")

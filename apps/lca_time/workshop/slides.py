@@ -330,6 +330,11 @@ def _package_slide(index: int):
                                             "https://doi.org/10.1007/s11367-025-02539-3",
                                             "Time-explicit life cycle assessment: a flexible framework for coherent consideration of temporal dynamics",
                                         ),
+                                        (
+                                            "Sacchi et al. (2026) · TRAILS preprint",
+                                            "https://www.researchsquare.com/article/rs-10139523/v1",
+                                            "Deep temporalisation of life cycle assessment",
+                                        ),
                                     ]
                                 ),
                             ],

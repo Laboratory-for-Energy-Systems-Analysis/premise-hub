@@ -193,6 +193,13 @@ def test_lca_time_deck_contract() -> None:
     assert "Sacchi et al. (2026) · TRAILS preprint" in slide_two
     assert "https://www.researchsquare.com/article/rs-10139523/v1" in slide_two
 
+    slide_seven = repr(render_slide(6))
+    assert "1 ÷ 0.963" in slide_seven
+    assert "= 1.04 t CO₂ captured" in slide_seven
+    assert "1 ÷ 0.831" in slide_seven
+    assert "= 1.20 t CO₂ captured" in slide_seven
+    assert "The same storage service does not imply" not in slide_seven
+
 
 def test_publication_catalog_contract() -> None:
     catalog = publications()

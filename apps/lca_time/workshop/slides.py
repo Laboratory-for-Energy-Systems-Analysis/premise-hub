@@ -1184,22 +1184,6 @@ def _contribution_panel(case: str, subtitle: str, tone: str, view: str):
 
 def render_static_contribution_view(view: str = "step"):
     view = view if view in {"step", "location", "activity"} else "step"
-    takeaway = {
-        "step": (
-            "For greenfield BECCS, forest regrowth and avoided Northern European energy "
-            "outweigh harvest, plant, capture and transport burdens. For DACCS, "
-            "electricity for capture and sorbent regeneration dominates. The baseline "
-            "does not assign a flux to residues, roots or soil carbon."
-        ),
-        "location": (
-            "This view locates the contributing activities, not the eventual atmospheric climate effect. "
-            "Lower-ranked locations remain in the exact ‘Other locations’ balance."
-        ),
-        "activity": (
-            "Repeated activities are combined across locations. The five largest absolute activity scores "
-            "are shown; ‘Other activities’ preserves the exact total."
-        ),
-    }[view]
     content = [
         html.Div(
             [
@@ -1296,12 +1280,31 @@ def render_static_contribution_view(view: str = "step"):
         [
             html.Div(
                 [
-                    html.Strong(
-                        "The same storage service does not imply the same GWP100 score. "
+                    html.Div(
+                        [
+                            html.Strong("Capture needed for 1 net t CO₂ removed"),
+                            html.Span("Invert each system’s LCA net-removal ratio."),
+                        ],
+                        className="capture-scaling-intro",
                     ),
-                    html.Span(takeaway),
+                    html.Div(
+                        [
+                            html.Strong("BECCS"),
+                            html.Span("1 ÷ 0.963"),
+                            html.B("= 1.04 t CO₂ captured"),
+                        ],
+                        className="capture-scaling-equation capture-scaling-beccs",
+                    ),
+                    html.Div(
+                        [
+                            html.Strong("DACCS"),
+                            html.Span("1 ÷ 0.831"),
+                            html.B("= 1.20 t CO₂ captured"),
+                        ],
+                        className="capture-scaling-equation capture-scaling-daccs",
+                    ),
                 ],
-                className="contribution-takeaway",
+                className="contribution-takeaway capture-scaling",
             ),
             html.Div(
                 "Characterised activity contributions · uptake-only baseline plus a separate sensitivity calculation · IPCC 2021 GWP100 including biogenic CO₂ · SSP2-NPi · Northern Europe · 2025 · functional unit: 1 net tonne stored after transport loss",

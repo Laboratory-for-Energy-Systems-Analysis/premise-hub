@@ -12,7 +12,7 @@ from pathlib import Path
 from playwright.sync_api import sync_playwright
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from workshop.config import LAST_SLIDE
+from workshop.config import CORE_LAST_SLIDE, LAST_SLIDE
 
 TEXT_AUDIT_SCRIPT = r"""
 root => {
@@ -131,7 +131,10 @@ def main() -> None:
                 }
             )
             if slide < LAST_SLIDE:
-                page.locator("#next-button").click()
+                if slide == CORE_LAST_SLIDE:
+                    page.get_by_role("button", name="Backup", exact=True).click()
+                else:
+                    page.locator("#next-button").click()
         browser.close()
 
     payload = {

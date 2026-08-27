@@ -9,7 +9,15 @@ from apps.workshop.app import _make_print_safe, app, server
 from apps.workshop.workshop.config import (
     ANONYMOUS_ORDER,
     ANONYMOUS_SLIDE,
+    APPENDIX_SLIDE_COUNT,
+    APPENDIX_SLIDE_TITLES,
+    APPENDIX_START_SLIDE,
+    BACKUP_LINKS,
+    CHAPTERS,
     CORE_SCENARIOS,
+    CORE_LAST_SLIDE,
+    CORE_SLIDE_COUNT,
+    CORE_SLIDE_TITLES,
     LAST_SLIDE,
     RESULT_TRACER_SLIDE,
     SLIDE_TITLES,
@@ -89,7 +97,13 @@ class WorkshopSmokeTests(unittest.TestCase):
 
         collect_ids(app.layout)
         self.assertTrue(
-            {"pdf-export-button", "pdf-export-trigger", "print-deck"} <= component_ids
+            {
+                "backup-return-store",
+                "pdf-export-button",
+                "pdf-export-trigger",
+                "print-deck",
+            }
+            <= component_ids
         )
 
         header = next(
@@ -167,129 +181,100 @@ class WorkshopSmokeTests(unittest.TestCase):
             )
             self.assertIsNotNone(rendered)
 
+    def test_backup_links_have_a_reversible_navigation_control(self) -> None:
+        def has_pattern_id(component, pattern_type: str) -> bool:
+            component_id = getattr(component, "id", None)
+            if (
+                isinstance(component_id, dict)
+                and component_id.get("type") == pattern_type
+            ):
+                return True
+            children = getattr(component, "children", None)
+            if children is None:
+                return False
+            if not isinstance(children, (list, tuple)):
+                children = [children]
+            return any(
+                has_pattern_id(child, pattern_type)
+                for child in children
+                if hasattr(child, "to_plotly_json")
+            )
+
+        votes = {"A": 0, "B": 0, "C": 0, "D": 0}
+        self.assertEqual(len(BACKUP_LINKS), 11)
+        for origin_title, link in BACKUP_LINKS.items():
+            origin = SLIDE_TITLES.index(origin_title)
+            target = SLIDE_TITLES.index(link["target"])
+            self.assertLess(origin, APPENDIX_START_SLIDE)
+            self.assertGreaterEqual(target, APPENDIX_START_SLIDE)
+            core_slide = render_slide(origin, 1, votes)
+            self.assertIn("has-backup-link", core_slide.className)
+            self.assertTrue(has_pattern_id(core_slide, "backup-button"))
+
+        backup_slide = render_slide(APPENDIX_START_SLIDE, 1, votes)
+        self.assertIn("backup-slide", backup_slide.className)
+        self.assertTrue(has_pattern_id(backup_slide, "return-from-backup"))
+
     def test_climate_introduction_contract(self) -> None:
         self.assertEqual(len(SLIDE_TITLES), 52)
-        self.assertEqual(SLIDE_TITLES[5], "A target date is not a pathway")
-        self.assertEqual(SLIDE_TITLES[6], "An IAM is a structured thought experiment")
+        self.assertEqual(CORE_SLIDE_COUNT, 30)
+        self.assertEqual(APPENDIX_SLIDE_COUNT, 22)
+        self.assertEqual(CORE_LAST_SLIDE, 29)
+        self.assertEqual(APPENDIX_START_SLIDE, 30)
+        self.assertEqual(SLIDE_TITLES, CORE_SLIDE_TITLES + APPENDIX_SLIDE_TITLES)
+        self.assertFalse(set(CORE_SLIDE_TITLES) & set(APPENDIX_SLIDE_TITLES))
+        self.assertEqual(CORE_SLIDE_TITLES[0], "IAM scenarios for prospective LCA")
         self.assertEqual(
-            SLIDE_TITLES[7], "IAMs represent different parts of the system"
+            CORE_SLIDE_TITLES[-1],
+            "Resources for building and documenting scenarios",
         )
-        self.assertEqual(
-            SLIDE_TITLES[8], "IAMs can answer the same question differently"
-        )
-        self.assertEqual(SLIDE_TITLES[9], "From emissions scenarios to policy evidence")
-        self.assertEqual(SLIDE_TITLES[10], "SSPs differ before climate policy is added")
-        self.assertEqual(
-            SLIDE_TITLES[11], "SSP1–SSP3: from cooperation to fragmentation"
-        )
-        self.assertEqual(
-            SLIDE_TITLES[12], "Fast innovation does not guarantee sustainability"
-        )
-        self.assertEqual(
-            SLIDE_TITLES[13],
+        self.assertEqual(CHAPTERS[-1]["name"], "Backup")
+        self.assertEqual(CHAPTERS[-1]["start"], APPENDIX_START_SLIDE)
+        self.assertEqual(sum(chapter["minutes"] for chapter in CHAPTERS), 75)
+
+        required_core = {
+            "A target date is not a pathway",
+            "An IAM is a structured thought experiment",
+            "IAMs represent different parts of the system",
+            "SSPs differ before climate policy is added",
             "RCPs define radiative-forcing experiments",
-        )
-        self.assertEqual(
-            SLIDE_TITLES[14], "CMIP7 families describe how emissions change over time"
-        )
-        self.assertEqual(
-            SLIDE_TITLES[15], "A quantitative scenario combines three layers"
-        )
-        self.assertEqual(
-            SLIDE_TITLES[16], "Choose a pathway before seeing its assumptions"
-        )
-        self.assertEqual(SLIDE_TITLES[17], "Investment changes the system over time")
-        self.assertEqual(SLIDE_TITLES[18], "First, compare the whole energy system")
-        self.assertEqual(SLIDE_TITLES[19], "Then examine the electricity chain")
-        self.assertEqual(
-            SLIDE_TITLES[23],
-            "Passenger cars: electrification reduces energy per kilometre",
-        )
-        self.assertEqual(
-            SLIDE_TITLES[26],
-            "Space heating: electricity and heat networks replace fossil boilers",
-        )
-        self.assertEqual(
-            SLIDE_TITLES[27],
+            "CMIP7 families describe how emissions change over time",
+            "A quantitative scenario combines three layers",
+            "Choose a pathway before seeing its assumptions",
+            "First, compare the whole energy system",
             "Premise gets different levels of detail from each IAM",
-        )
+            "What IAMs leave out",
+            "Explore how scenarios change each sector",
+            "Premise updates selected parts of the background database",
+            "Trace an LCA result back to the scenario data",
+            "Premise translates scenarios; it is not a scenario model",
+        }
+        self.assertTrue(required_core <= set(CORE_SLIDE_TITLES))
+
+        expected_backup = {
+            "From emissions scenarios to policy evidence",
+            "Fast innovation does not guarantee sustainability",
+            "Investment changes the system over time",
+            "Then examine the electricity chain",
+            "Primary energy: resources entering the system",
+            "Passenger cars: electrification reduces energy per kilometre",
+            "Cement: lower emissions require a different kiln mix",
+            "Low warming in 2100 can depend on large future removals",
+            "The IAM says solar; the LCA needs a specific module technology",
+            "PV uncertainty affects indicators differently",
+        }
+        self.assertTrue(expected_backup <= set(APPENDIX_SLIDE_TITLES))
         self.assertNotIn("Mapped IAM detail varies by model and sector", SLIDE_TITLES)
-        self.assertEqual(
-            SLIDE_TITLES[29], "Can you explain why the LCA result changed?"
-        )
-        self.assertEqual(
-            SLIDE_TITLES[30], "Six IAMs group countries into different regions"
-        )
-        self.assertEqual(
-            SLIDE_TITLES[31],
-            "A Swiss inventory can map to different IAM regions",
-        )
-        self.assertEqual(SLIDE_TITLES[32], "Change one dimension at a time")
-        self.assertEqual(SLIDE_TITLES[33], "Explore how scenarios change each sector")
-        self.assertEqual(
-            SLIDE_TITLES[36],
-            "Turn a scenario result into a well-supported LCA statement",
-        )
-        self.assertEqual(
-            SLIDE_TITLES[37],
-            "Unit impact, deployment and causes are different questions",
-        )
-        self.assertEqual(
-            SLIDE_TITLES[38],
-            "Match boundaries before calculating total impact",
-        )
         self.assertEqual(
             SLIDE_TITLES[RESULT_TRACER_SLIDE],
             "Trace an LCA result back to the scenario data",
         )
         self.assertEqual(
-            SLIDE_TITLES[40],
-            "Steel links production routes, unit impact and total output",
-        )
-        self.assertEqual(
-            SLIDE_TITLES[41],
-            "The IAM says solar; the LCA needs a specific module technology",
-        )
-        self.assertEqual(
-            SLIDE_TITLES[42], "PV uncertainty affects indicators differently"
-        )
-        self.assertEqual(
-            SLIDE_TITLES[43], "Similar warming can still have very different impacts"
-        )
-        self.assertEqual(
-            SLIDE_TITLES[44], "Check the full chain before reporting a result"
-        )
-        self.assertEqual(
-            SLIDE_TITLES[45],
-            "Choose a scenario source with the detail your decision needs",
-        )
-        self.assertEqual(
-            SLIDE_TITLES[46],
-            "Premise translates scenarios; it is not a scenario model",
-        )
-        self.assertEqual(
-            SLIDE_TITLES[47],
-            "From one-off research links to shared scenario tools",
-        )
-        self.assertEqual(
-            SLIDE_TITLES[48],
-            "A build converts scenario choices into inventory changes",
-        )
-        self.assertEqual(
-            SLIDE_TITLES[49],
-            "Premise changes inventories; Brightway calculates results",
-        )
-        self.assertEqual(
-            SLIDE_TITLES[50],
-            "One set of databases supports three scales of analysis",
-        )
-        self.assertEqual(
-            SLIDE_TITLES[51], "Resources for building and documenting scenarios"
-        )
-        self.assertEqual(
             SLIDE_TITLES[ANONYMOUS_SLIDE],
             "Choose a pathway before seeing its assumptions",
         )
+        self.assertLess(ANONYMOUS_SLIDE, APPENDIX_START_SLIDE)
+        self.assertLess(RESULT_TRACER_SLIDE, APPENDIX_START_SLIDE)
         population = ssp_baseline_comparison_figure("population")
         self.assertEqual(len(population.data), 5)
         self.assertAlmostEqual(float(population.data[2].y[-1]), 12.6)

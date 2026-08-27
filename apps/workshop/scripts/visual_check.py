@@ -16,6 +16,7 @@ from playwright.sync_api import sync_playwright
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from workshop.config import (
     ANONYMOUS_SLIDE,
+    CORE_LAST_SLIDE,
     FIRST_SECTOR_SLIDE,
     IAM_MAP_SLIDE,
     LAST_SLIDE,
@@ -79,6 +80,17 @@ def main() -> None:
                     ),
                 )
             )
+            if page.locator(".backup-link-button").count():
+                origin_label = page.locator("#slide-label").text_content()
+                page.locator(".backup-link-button").click()
+                page.wait_for_selector(".backup-slide")
+                assert page.locator(".backup-return-button").count() == 1
+                page.locator(".backup-return-button").click()
+                page.wait_for_function(
+                    "label => document.querySelector('#slide-label')?.textContent === label",
+                    arg=origin_label,
+                )
+                assert page.locator(".backup-slide").count() == 0
             if slide == ANONYMOUS_SLIDE:
                 page.locator("#reveal-button").click()
                 page.wait_for_timeout(500)
@@ -221,7 +233,10 @@ def main() -> None:
                     path=args.output / f"slide-{slide + 1:02d}-cement-ssp2-m-metals.png"
                 )
             if slide < LAST_SLIDE:
-                page.locator("#next-button").click()
+                if slide == CORE_LAST_SLIDE:
+                    page.get_by_role("button", name="Backup", exact=True).click()
+                else:
+                    page.locator("#next-button").click()
                 page.wait_for_timeout(250)
         browser.close()
 

@@ -7,7 +7,10 @@ from dash.exceptions import PreventUpdate
 
 from .workshop.config import (
     ANONYMOUS_SLIDE,
+    APPENDIX_START_SLIDE,
     CHAPTERS,
+    CORE_LAST_SLIDE,
+    CORE_SLIDE_COUNT,
     LAST_SLIDE,
     chapter_for_slide,
 )
@@ -79,6 +82,7 @@ app.layout = html.Div(
     [
         dcc.Store(id="slide-store", data=0, storage_type="session"),
         dcc.Store(id="reveal-store", data=0, storage_type="session"),
+        dcc.Store(id="backup-return-store", data=0, storage_type="session"),
         dcc.Store(
             id="vote-store",
             data={"A": 0, "B": 0, "C": 0, "D": 0},
@@ -223,30 +227,75 @@ app.clientside_callback(
 @app.callback(
     Output("slide-store", "data"),
     Output("reveal-store", "data"),
+    Output("backup-return-store", "data"),
     Input("previous-button", "n_clicks"),
     Input("next-button", "n_clicks"),
     Input("reveal-button", "n_clicks"),
     Input({"type": "chapter-button", "slide": ALL}, "n_clicks"),
+    Input({"type": "backup-button", "slide": ALL}, "n_clicks"),
+    Input({"type": "return-from-backup", "slide": ALL}, "n_clicks"),
     State("slide-store", "data"),
     State("reveal-store", "data"),
+    State("backup-return-store", "data"),
     prevent_initial_call=True,
 )
 def navigate(
-    previous_clicks, next_clicks, reveal_clicks, chapter_clicks, slide, reveal
+    previous_clicks,
+    next_clicks,
+    reveal_clicks,
+    chapter_clicks,
+    backup_clicks,
+    return_clicks,
+    slide,
+    reveal,
+    backup_return,
 ):
-    del previous_clicks, next_clicks, reveal_clicks, chapter_clicks
+    del (
+        previous_clicks,
+        next_clicks,
+        reveal_clicks,
+        chapter_clicks,
+        backup_clicks,
+        return_clicks,
+    )
     trigger = ctx.triggered_id
+    trigger_value = ctx.triggered[0].get("value") if ctx.triggered else None
     slide = int(slide or 0)
     reveal = int(reveal or 0)
+    backup_return = int(backup_return or 0)
     if trigger == "previous-button":
-        return max(0, slide - 1), 0
+        return max(0, slide - 1), 0, backup_return
     if trigger == "next-button":
-        return min(LAST_SLIDE, slide + 1), 0
+        if slide == CORE_LAST_SLIDE:
+            return CORE_LAST_SLIDE, 0, backup_return
+        return min(LAST_SLIDE, slide + 1), 0, backup_return
     if trigger == "reveal-button":
         if slide == ANONYMOUS_SLIDE:
-            return slide, 0 if reveal else 1
+            return slide, 0 if reveal else 1, backup_return
     if isinstance(trigger, dict) and trigger.get("type") == "chapter-button":
-        return int(trigger["slide"]), 0
+        target = int(trigger["slide"])
+        if target >= APPENDIX_START_SLIDE:
+            origin = slide if slide < APPENDIX_START_SLIDE else backup_return
+        else:
+            origin = target
+        return target, 0, origin
+    if isinstance(trigger, dict) and trigger.get("type") == "backup-button":
+        if not trigger_value:
+            raise PreventUpdate
+        target = int(trigger["slide"])
+        if target < APPENDIX_START_SLIDE or target > LAST_SLIDE:
+            raise PreventUpdate
+        origin = slide if slide < APPENDIX_START_SLIDE else backup_return
+        return target, 0, origin
+    if isinstance(trigger, dict) and trigger.get("type") == "return-from-backup":
+        if not trigger_value:
+            raise PreventUpdate
+        target = (
+            backup_return
+            if 0 <= backup_return < APPENDIX_START_SLIDE
+            else CORE_LAST_SLIDE
+        )
+        return target, 0, target
     raise PreventUpdate
 
 
@@ -378,7 +427,12 @@ def display_slide(slide, reveal, votes, explore, iam_map, capstone):
     slide = int(slide or 0)
     reveal = int(reveal or 0)
     votes = votes or {"A": 0, "B": 0, "C": 0, "D": 0}
-    progress = 100 * slide / LAST_SLIDE if LAST_SLIDE else 100
+    if slide < CORE_SLIDE_COUNT:
+        progress = 100 * slide / CORE_LAST_SLIDE if CORE_LAST_SLIDE else 100
+    else:
+        appendix_offset = slide - APPENDIX_START_SLIDE
+        appendix_span = LAST_SLIDE - APPENDIX_START_SLIDE
+        progress = 100 * appendix_offset / appendix_span if appendix_span else 100
     show_reveal = slide == ANONYMOUS_SLIDE
     if slide == ANONYMOUS_SLIDE:
         reveal_text = "Hide labels" if reveal else "Reveal labels"
@@ -389,7 +443,7 @@ def display_slide(slide, reveal, votes, explore, iam_map, capstone):
         style_premise_text(slide_label(slide)),
         {"width": f"{progress:.2f}%"},
         slide == 0,
-        slide == LAST_SLIDE,
+        slide in {CORE_LAST_SLIDE, LAST_SLIDE},
         "Next →",
         {"visibility": "visible" if show_reveal else "hidden"},
         reveal_text,

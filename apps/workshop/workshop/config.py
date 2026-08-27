@@ -35,7 +35,7 @@ CORE_SCENARIOS = ["SSP1-L", "SSP2-VLHO", "SSP2-M", "SSP3-H"]
 ANONYMOUS_ORDER = CORE_SCENARIOS.copy()
 CORE_YEARS = [2020, 2040, 2060]
 
-SLIDE_TITLES = [
+CORE_SLIDE_TITLES = [
     "IAM scenarios for prospective LCA",
     "People need services, not fuel",
     "Emissions come from a connected system",
@@ -45,59 +45,120 @@ SLIDE_TITLES = [
     "An IAM is a structured thought experiment",
     "IAMs represent different parts of the system",
     "IAMs can answer the same question differently",
-    "From emissions scenarios to policy evidence",
     "SSPs differ before climate policy is added",
     "SSP1–SSP3: from cooperation to fragmentation",
-    "Fast innovation does not guarantee sustainability",
     "RCPs define radiative-forcing experiments",
     "CMIP7 families describe how emissions change over time",
     "A quantitative scenario combines three layers",
     "Choose a pathway before seeing its assumptions",
-    "Investment changes the system over time",
     "First, compare the whole energy system",
+    "Steel: recycled and electric routes replace blast furnaces",
+    "Premise gets different levels of detail from each IAM",
+    "What IAMs leave out",
+    "A Swiss inventory can map to different IAM regions",
+    "Change one dimension at a time",
+    "Explore how scenarios change each sector",
+    "Premise updates selected parts of the background database",
+    "Turn a scenario result into a well-supported LCA statement",
+    "Unit impact, deployment and causes are different questions",
+    "Trace an LCA result back to the scenario data",
+    "Similar warming can still have very different impacts",
+    "Premise translates scenarios; it is not a scenario model",
+    "A build converts scenario choices into inventory changes",
+    "Resources for building and documenting scenarios",
+]
+
+APPENDIX_SLIDE_TITLES = [
+    # Framework and policy history.
+    "From emissions scenarios to policy evidence",
+    "Fast innovation does not guarantee sustainability",
+    # Energy-accounting detail.
+    "Investment changes the system over time",
     "Then examine the electricity chain",
     "Primary energy: resources entering the system",
     "Secondary energy: carriers produced after conversion",
     "Final energy: energy delivered to users",
+    # Additional sector examples.
     "Passenger cars: electrification reduces energy per kilometre",
     "Cement: lower emissions require a different kiln mix",
-    "Steel: recycled and electric routes replace blast furnaces",
     "Space heating: electricity and heat networks replace fossil boilers",
-    "Premise gets different levels of detail from each IAM",
-    "What IAMs leave out",
+    # Model, narrative and geography detail.
     "Can you explain why the LCA result changed?",
     "Six IAMs group countries into different regions",
-    "A Swiss inventory can map to different IAM regions",
-    "Change one dimension at a time",
-    "Explore how scenarios change each sector",
+    # Additional interpretation and applied cases.
     "Low warming in 2100 can depend on large future removals",
-    "Premise updates selected parts of the background database",
-    "Turn a scenario result into a well-supported LCA statement",
-    "Unit impact, deployment and causes are different questions",
     "Match boundaries before calculating total impact",
-    "Trace an LCA result back to the scenario data",
     "Steel links production routes, unit impact and total output",
     "The IAM says solar; the LCA needs a specific module technology",
     "PV uncertainty affects indicators differently",
-    "Similar warming can still have very different impacts",
     "Check the full chain before reporting a result",
     "Choose a scenario source with the detail your decision needs",
-    "Premise translates scenarios; it is not a scenario model",
+    # Premise history and extended workflow context.
     "From one-off research links to shared scenario tools",
-    "A build converts scenario choices into inventory changes",
     "Premise changes inventories; Brightway calculates results",
     "One set of databases supports three scales of analysis",
-    "Resources for building and documenting scenarios",
 ]
 
+SLIDE_TITLES = CORE_SLIDE_TITLES + APPENDIX_SLIDE_TITLES
+
+# Keep the live narrative lean while preserving a direct route to the most useful
+# supporting material. Each core slide exposes at most one compact detail link;
+# related backup slides remain sequential once the presenter opens that section.
+BACKUP_LINKS = {
+    "IAMs can answer the same question differently": {
+        "label": "Policy-history detail",
+        "target": "From emissions scenarios to policy evidence",
+    },
+    "SSP1–SSP3: from cooperation to fragmentation": {
+        "label": "SSP4–SSP5 detail",
+        "target": "Fast innovation does not guarantee sustainability",
+    },
+    "First, compare the whole energy system": {
+        "label": "Energy-chain detail",
+        "target": "Investment changes the system over time",
+    },
+    "Steel: recycled and electric routes replace blast furnaces": {
+        "label": "More sector examples",
+        "target": "Passenger cars: electrification reduces energy per kilometre",
+    },
+    "A Swiss inventory can map to different IAM regions": {
+        "label": "Six-IAM region detail",
+        "target": "Six IAMs group countries into different regions",
+    },
+    "Explore how scenarios change each sector": {
+        "label": "Carbon-removal detail",
+        "target": "Low warming in 2100 can depend on large future removals",
+    },
+    "Unit impact, deployment and causes are different questions": {
+        "label": "Boundary-matching detail",
+        "target": "Match boundaries before calculating total impact",
+    },
+    "Trace an LCA result back to the scenario data": {
+        "label": "Steel causal chain",
+        "target": "Steel links production routes, unit impact and total output",
+    },
+    "Similar warming can still have very different impacts": {
+        "label": "PV uncertainty case",
+        "target": "The IAM says solar; the LCA needs a specific module technology",
+    },
+    "Premise translates scenarios; it is not a scenario model": {
+        "label": "Premise history",
+        "target": "From one-off research links to shared scenario tools",
+    },
+    "A build converts scenario choices into inventory changes": {
+        "label": "Brightway hand-off",
+        "target": "Premise changes inventories; Brightway calculates results",
+    },
+}
+
 CHAPTERS = [
-    {"name": "Why IAMs", "start": 0, "end": 16},
-    {"name": "IAM theory", "start": 17, "end": 29},
-    {"name": "Scenario frameworks", "start": 30, "end": 32},
-    {"name": "Read the pathways", "start": 33, "end": 34},
-    {"name": "From IAM to Premise", "start": 35, "end": 36},
-    {"name": "LCIA trade-offs", "start": 37, "end": 37},
-    {"name": "Applied cases", "start": 38, "end": 51},
+    {"name": "Why IAMs", "start": 0, "end": 8, "minutes": 16},
+    {"name": "Scenario frameworks", "start": 9, "end": 14, "minutes": 15},
+    {"name": "Read the pathways", "start": 15, "end": 21, "minutes": 18},
+    {"name": "From IAM to Premise", "start": 22, "end": 23, "minutes": 8},
+    {"name": "LCIA and interpretation", "start": 24, "end": 26, "minutes": 11},
+    {"name": "Build and report", "start": 27, "end": 29, "minutes": 7},
+    {"name": "Backup", "start": 30, "end": 51, "minutes": 0},
 ]
 
 ANONYMOUS_SLIDE = SLIDE_TITLES.index("Choose a pathway before seeing its assumptions")
@@ -106,6 +167,10 @@ IAM_MAP_SLIDE = SLIDE_TITLES.index("Six IAMs group countries into different regi
 RESULT_TRACER_SLIDE = SLIDE_TITLES.index(
     "Trace an LCA result back to the scenario data"
 )
+CORE_SLIDE_COUNT = len(CORE_SLIDE_TITLES)
+APPENDIX_SLIDE_COUNT = len(APPENDIX_SLIDE_TITLES)
+CORE_LAST_SLIDE = CORE_SLIDE_COUNT - 1
+APPENDIX_START_SLIDE = CORE_SLIDE_COUNT
 LAST_SLIDE = len(SLIDE_TITLES) - 1
 
 

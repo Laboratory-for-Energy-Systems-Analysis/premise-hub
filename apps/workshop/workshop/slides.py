@@ -7,7 +7,11 @@ from dash.development.base_component import Component
 
 from .config import (
     ANONYMOUS_ORDER,
+    APPENDIX_SLIDE_COUNT,
+    APPENDIX_START_SLIDE,
+    BACKUP_LINKS,
     CORE_SCENARIOS,
+    CORE_SLIDE_COUNT,
     NARRATIVES,
     PREMISE_TRANSFORMATIONS,
     REGION_MAPPING,
@@ -7634,62 +7638,117 @@ def render_slide(
     year = int(explore.get("year", 2060))
     mode = str(explore.get("mode", "share"))
     iam_map = str(iam_map or "image")
-    renderers = [
-        slide_welcome,
-        slide_energy_climate,
-        slide_emissions_system,
-        slide_warming_budget,
-        slide_why_integrate,
-        slide_net_zero_pathway,
-        slide_iam_definition,
-        slide_iam_system_coverage,
-        slide_model_architecture,
-        slide_iam_history_policy,
-        slide_ssp_quantitative,
-        slide_ssp_1_to_3,
-        slide_ssp_4_to_5,
-        slide_forcing_families,
-        slide_emission_families,
-        slide_scenario_combinations,
-        lambda: slide_anonymous(reveal),
-        slide_mechanics,
-        slide_total_energy_accounting_chain,
-        slide_energy_accounting_chain,
-        slide_primary_energy_layer,
-        slide_secondary_energy_layer,
-        slide_final_energy_layer,
-        slide_passenger_car_transformation,
-        slide_cement_transformation,
-        slide_steel_transformation,
-        slide_space_heating_transformation,
-        slide_model_landscape,
-        slide_limitations,
-        slide_narratives,
-        lambda: slide_iam_region_explorer(iam_map),
-        slide_applied_geography,
-        slide_controlled_comparisons,
-        lambda: slide_sector_explorer(sector, year, mode),
-        slide_cdr_summary,
-        slide_transformation_coverage,
-        slide_vocabulary,
-        slide_lcia_evidence,
-        slide_process_system_boundary,
-        lambda: slide_result_tracer(capstone),
-        slide_steel_causal_chain,
-        slide_pv_inventory_resolution,
-        slide_pv_indicator_uncertainty,
-        slide_system_tradeoffs,
-        slide_audit_chain,
-        slide_case_library,
-        slide_premise_library,
-        slide_premise_history,
-        slide_premise_workflow,
-        slide_premise_ecosystem,
-        slide_premise_analysis_modes,
-        slide_resources,
-    ]
-    return _style_premise_mentions(renderers[index]())
+    renderers = {
+        "IAM scenarios for prospective LCA": slide_welcome,
+        "People need services, not fuel": slide_energy_climate,
+        "Emissions come from a connected system": slide_emissions_system,
+        "CO₂ accumulates, so the full pathway matters": slide_warming_budget,
+        "Why do we need integrated assessment?": slide_why_integrate,
+        "A target date is not a pathway": slide_net_zero_pathway,
+        "An IAM is a structured thought experiment": slide_iam_definition,
+        "IAMs represent different parts of the system": slide_iam_system_coverage,
+        "IAMs can answer the same question differently": slide_model_architecture,
+        "From emissions scenarios to policy evidence": slide_iam_history_policy,
+        "SSPs differ before climate policy is added": slide_ssp_quantitative,
+        "SSP1–SSP3: from cooperation to fragmentation": slide_ssp_1_to_3,
+        "Fast innovation does not guarantee sustainability": slide_ssp_4_to_5,
+        "RCPs define radiative-forcing experiments": slide_forcing_families,
+        "CMIP7 families describe how emissions change over time": slide_emission_families,
+        "A quantitative scenario combines three layers": slide_scenario_combinations,
+        "Choose a pathway before seeing its assumptions": lambda: slide_anonymous(
+            reveal
+        ),
+        "Investment changes the system over time": slide_mechanics,
+        "First, compare the whole energy system": slide_total_energy_accounting_chain,
+        "Then examine the electricity chain": slide_energy_accounting_chain,
+        "Primary energy: resources entering the system": slide_primary_energy_layer,
+        "Secondary energy: carriers produced after conversion": slide_secondary_energy_layer,
+        "Final energy: energy delivered to users": slide_final_energy_layer,
+        "Passenger cars: electrification reduces energy per kilometre": slide_passenger_car_transformation,
+        "Cement: lower emissions require a different kiln mix": slide_cement_transformation,
+        "Steel: recycled and electric routes replace blast furnaces": slide_steel_transformation,
+        "Space heating: electricity and heat networks replace fossil boilers": slide_space_heating_transformation,
+        "Premise gets different levels of detail from each IAM": slide_model_landscape,
+        "What IAMs leave out": slide_limitations,
+        "Can you explain why the LCA result changed?": slide_narratives,
+        "Six IAMs group countries into different regions": lambda: slide_iam_region_explorer(
+            iam_map
+        ),
+        "A Swiss inventory can map to different IAM regions": slide_applied_geography,
+        "Change one dimension at a time": slide_controlled_comparisons,
+        "Explore how scenarios change each sector": lambda: slide_sector_explorer(
+            sector, year, mode
+        ),
+        "Low warming in 2100 can depend on large future removals": slide_cdr_summary,
+        "Premise updates selected parts of the background database": slide_transformation_coverage,
+        "Turn a scenario result into a well-supported LCA statement": slide_vocabulary,
+        "Unit impact, deployment and causes are different questions": slide_lcia_evidence,
+        "Match boundaries before calculating total impact": slide_process_system_boundary,
+        "Trace an LCA result back to the scenario data": lambda: slide_result_tracer(
+            capstone
+        ),
+        "Steel links production routes, unit impact and total output": slide_steel_causal_chain,
+        "The IAM says solar; the LCA needs a specific module technology": slide_pv_inventory_resolution,
+        "PV uncertainty affects indicators differently": slide_pv_indicator_uncertainty,
+        "Similar warming can still have very different impacts": slide_system_tradeoffs,
+        "Check the full chain before reporting a result": slide_audit_chain,
+        "Choose a scenario source with the detail your decision needs": slide_case_library,
+        "Premise translates scenarios; it is not a scenario model": slide_premise_library,
+        "From one-off research links to shared scenario tools": slide_premise_history,
+        "A build converts scenario choices into inventory changes": slide_premise_workflow,
+        "Premise changes inventories; Brightway calculates results": slide_premise_ecosystem,
+        "One set of databases supports three scales of analysis": slide_premise_analysis_modes,
+        "Resources for building and documenting scenarios": slide_resources,
+    }
+    slide_title = SLIDE_TITLES[index]
+    rendered = _style_premise_mentions(renderers[slide_title]())
+    if index >= APPENDIX_START_SLIDE:
+        rendered.className = f"{rendered.className or ''} backup-slide".strip()
+        children = rendered.children
+        if not isinstance(children, (list, tuple)):
+            children = [children]
+        rendered.children = [
+            html.Div(
+                [
+                    html.Span("Backup", className="backup-slide-marker"),
+                    html.Button(
+                        "← Return to original slide",
+                        id={"type": "return-from-backup", "slide": index},
+                        n_clicks=0,
+                        className="backup-return-button",
+                    ),
+                ],
+                className="backup-slide-toolbar",
+            ),
+            *children,
+        ]
+    elif slide_title in BACKUP_LINKS:
+        link = BACKUP_LINKS[slide_title]
+        rendered.className = f"{rendered.className or ''} has-backup-link".strip()
+        children = rendered.children
+        if not isinstance(children, (list, tuple)):
+            children = [children]
+        rendered.children = [
+            html.Button(
+                [
+                    html.Span("Backup", className="backup-link-kicker"),
+                    html.Span(str(link["label"])),
+                ],
+                id={
+                    "type": "backup-button",
+                    "slide": SLIDE_TITLES.index(str(link["target"])),
+                },
+                n_clicks=0,
+                className="backup-link-button",
+            ),
+            *children,
+        ]
+    return rendered
 
 
 def slide_label(index: int) -> str:
-    return f"{index + 1:02d} · {SLIDE_TITLES[index]}"
+    if index < APPENDIX_START_SLIDE:
+        counter = f"{index + 1:02d}/{CORE_SLIDE_COUNT}"
+    else:
+        counter = f"B{index - APPENDIX_START_SLIDE + 1:02d}/" f"{APPENDIX_SLIDE_COUNT}"
+    return f"{counter} · {SLIDE_TITLES[index]}"

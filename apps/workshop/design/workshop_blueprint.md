@@ -42,17 +42,24 @@ The framework chapter distinguishes:
 
 ## Chapter sequence
 
-| Chapter | Presenter states | Audience action |
-|---|---|---|
-| Why IAMs | Energy services; present energy/emissions trends; sectoral GHGs; cumulative CO₂ and carbon budgets; cross-sector coupling; net-zero commitments map; IAM definition; policy history; opening vote; vocabulary | Translate a political endpoint into the questions a quantified pathway must answer, then choose an anonymous pathway and identify missing evidence |
-| IAM theory | System map; stock–flow mechanics; model landscape; limitations | Classify inputs/outputs and identify a consequential omission |
-| Scenario frameworks | Narrative axes; AR5–AR7 bridge; seven CMIP7 families | Decode the layers of a scenario name |
-| Read the pathways | Detective; same-SSP comparison; electricity; transport; steel; CDR; cross-IAM; R10 | Infer scenario identities and compare absolute, share and cumulative views |
-| From IAM to premise | Transformation chain; sector coverage | Identify where an IAM variable becomes an inventory parameter |
-| LCIA trade-offs | Electricity, steel and DAC scores and contributions | Contrast process intensity with system-scale deployment |
-| Choose and report | Contrastive selection method and revised vote | Defend an anchor and contrast in three sentences |
+The live path contains 30 states and budgets 75 minutes of speaking. The
+remaining 15 minutes of a 90-minute slot are reserved for interactions,
+transitions and questions. Twenty-two supporting states remain available in a
+separate backup chapter.
 
-Chapter names, rather than timing categories, appear in the application header.
+| Chapter | Core states | Minutes | Audience action |
+|---|---:|---:|---|
+| Why IAMs | 1–9 | 16 | Translate a political endpoint into the questions a quantified pathway must answer |
+| Scenario frameworks | 10–15 | 15 | Decode socioeconomic narrative, forcing/emissions family, IAM implementation and pathway |
+| Read the pathways | 16–22 | 18 | Choose an anonymous pathway, compare the system and interrogate sector results |
+| From IAM to Premise | 23–24 | 8 | Identify where IAM evidence becomes an inventory parameter and a supportable statement |
+| LCIA and interpretation | 25–27 | 11 | Separate unit impact, deployment and causes, then trace a result to evidence |
+| Build and report | 28–30 | 7 | State the role of Premise, follow the build hand-off and retain the reporting resources |
+| Backup | B1–B22 | 0 | Open supporting theory, accounting layers, sector examples, cases and workflow detail as needed |
+
+Chapter names appear in the application header. The live **Next** sequence stops
+at core state 30. Contextual buttons open the most relevant backup group and
+store the originating core state; every backup state includes a return button.
 
 ## Interaction model
 

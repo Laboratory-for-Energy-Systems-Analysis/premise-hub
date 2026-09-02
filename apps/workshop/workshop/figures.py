@@ -1658,8 +1658,11 @@ def sector_mitigation_potential_figure() -> go.Figure:
     remaining_2030 = [
         total - reduction for total, reduction in zip(current, potential_2030)
     ]
-    remaining_2050 = [
-        total - reduction for total, reduction in zip(current, potential_2050)
+    remaining_after_both = [
+        total - reduction_2030 - reduction_2050
+        for total, reduction_2030, reduction_2050 in zip(
+            current, potential_2030, potential_2050
+        )
     ]
     positions = [0, 1, 2]
     fig = go.Figure()
@@ -1703,18 +1706,19 @@ def sector_mitigation_potential_figure() -> go.Figure:
         go.Bar(
             x=[position + 0.14 for position in positions],
             y=potential_2050,
-            base=remaining_2050,
+            base=remaining_after_both,
             width=0.27,
-            name="2050 demand-side potential",
+            name="Additional 2050 demand-side potential",
             showlegend=False,
             marker_color="#D99614",
             text=[f"{value:.1f}" for value in potential_2050],
             textposition="inside",
             textfont={"color": "#17232C", "size": 10},
-            customdata=list(zip(sectors, current)),
+            customdata=list(zip(sectors, current, potential_2030)),
             hovertemplate=(
                 "%{customdata[0]}<br>2019 footprint: %{customdata[1]:.1f} Gt CO₂-eq/yr"
-                "<br>2050 demand-side potential: %{y:.1f} Gt CO₂-eq/yr"
+                "<br>2030 economic potential: %{customdata[2]:.1f} Gt CO₂-eq/yr"
+                "<br>Additional 2050 demand-side potential: %{y:.1f} Gt CO₂-eq/yr"
                 "<br>Technical potential versus stated-policies baselines"
                 "<extra></extra>"
             ),
@@ -1732,8 +1736,8 @@ def sector_mitigation_potential_figure() -> go.Figure:
         template="plotly_white",
         title={
             "text": (
-                "<b>One footprint, two reduction assessments</b><br>"
-                "<sup>Coloured strips descend from the 2019 total</sup>"
+                "<b>One footprint, cumulative reduction potential</b><br>"
+                "<sup>Blue descends from 2019; yellow continues from the blue endpoint</sup>"
             ),
             "x": 0,
             "xanchor": "left",

@@ -514,7 +514,10 @@ select {
   line-height: 1;
 }
 
-.limitations-slide .source-note { margin-top: 5px; font-size: 10px; line-height: 1.15; }
+.limitations-source-row { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; margin-top: 5px; }
+.limitations-source-row .source-note { flex: 1 1 auto; min-width: 0; margin-top: 0; }
+.limitations-source-row .recommended-reading-link { max-width: 390px; text-align: right; white-space: normal; }
+.limitations-slide .source-note { font-size: 10px; line-height: 1.15; }
 .limitations-slide .takeaway { margin-top: 6px; }
 
 .family-list { display: grid; gap: 8px; align-content: center; }
@@ -6040,6 +6043,8 @@ select {
 
   .limitations-slide .limitation-model-label,
   .limitations-slide .limitation-model-chip { font-size: 9px; }
+  .limitations-source-row { gap: 8px; margin-top: 3px; }
+  .limitations-source-row .recommended-reading-link { font-size: 10px; }
 
   .traceability-slide .traceability-coordinate strong,
   .traceability-slide .traceability-evidence-card > strong,
@@ -7860,6 +7865,8 @@ select {
   .limitations-slide .limitation-card p { font-size: 10px; line-height: 1.18; }
   .limitations-slide .limitation-model-label,
   .limitations-slide .limitation-model-chip { font-size: 9px; }
+  .limitations-source-row { gap: 8px; margin-top: 3px; }
+  .limitations-source-row .recommended-reading-link { font-size: 8px; }
 
   .system-tradeoff-slide .tradeoff-read-card strong,
   .system-tradeoff-slide .tradeoff-finding-card strong { font-size: 12px; }

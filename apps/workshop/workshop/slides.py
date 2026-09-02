@@ -733,10 +733,10 @@ def slide_why_integrate() -> html.Div:
                                             html.Div(
                                                 [
                                                     html.Strong(
-                                                        "2050 demand-side potential"
+                                                        "Additional 2050 demand-side potential"
                                                     ),
                                                     html.Span(
-                                                        "Measures that avoid demand, shift activities or improve efficiency by 2050. These include behaviour, infrastructure and end-use technology, but exclude cleaner energy supply."
+                                                        "Shown below the blue segment: measures that avoid demand, shift activities or improve efficiency by 2050, excluding cleaner energy supply."
                                                     ),
                                                 ]
                                             ),
@@ -856,7 +856,7 @@ def slide_why_integrate() -> html.Div:
                 className="integration-stat-grid",
             ),
             source_note(
-                "2019 totals include electricity and heat reassigned to end-use sectors (IPCC AR6 WGIII Figure 2.12). Table 12.4: 2030 economic potential; Figure SPM.6 / Chapter 5: 2050 demand-side potential. The strips compare scale; they are not sequential reductions or residual forecasts."
+                "2019 totals include electricity and heat reassigned to end-use sectors (IPCC AR6 WGIII Figure 2.12). Blue: Table 12.4 economic potential by 2030. Yellow: Figure SPM.6 / Chapter 5 demand-side potential by 2050, positioned after blue to show the additional opportunity. The combined endpoint is a teaching comparison, not an assessed residual-emissions forecast."
             ),
             takeaway(
                 "We need IAMs because separate sector plans can each look feasible but still conflict when combined."
@@ -3718,8 +3718,21 @@ def slide_limitations() -> html.Div:
                 ],
                 className="limitations-grid",
             ),
-            source_note(
-                "Model tags reflect typical global versions described in the official IMAGE, MESSAGEix–GLOBIOM, REMIND 2.1, TIAM-UCL 4.1.1 and GCAM 8.2 documentation. The tags are questions to investigate, not complete lists of limitations or model rankings. Other versions and model links can change them."
+            html.Div(
+                [
+                    source_note(
+                        "Model tags reflect typical global versions described in the official IMAGE, MESSAGEix–GLOBIOM, REMIND 2.1, TIAM-UCL 4.1.1 and GCAM 8.2 documentation. The tags are questions to investigate, not complete lists of limitations or model rankings. Other versions and model links can change them."
+                    ),
+                    html.A(
+                        "Recommended reading · de Bortoli et al. (2025) ↗",
+                        href="https://www.sciencedirect.com/science/article/pii/S1364032125005970",
+                        target="_blank",
+                        rel="noopener noreferrer",
+                        className="recommended-reading-link",
+                        title="More rationality and inclusivity are imperative in reference transition scenarios based on IAMs and shared socioeconomic pathways: recommendations for prospective LCA",
+                    ),
+                ],
+                className="limitations-source-row",
             ),
             takeaway(
                 "Ask which missing factor could change your LCA conclusion. Then test it through sensitivity analysis, an external constraint or another model."

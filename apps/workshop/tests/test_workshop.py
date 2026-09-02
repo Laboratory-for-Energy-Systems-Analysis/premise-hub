@@ -177,6 +177,26 @@ class WorkshopSmokeTests(unittest.TestCase):
             links,
         )
 
+    def test_limitations_slide_links_to_de_bortoli_critique(self) -> None:
+        rendered = render_slide(14, 1, {"A": 0, "B": 0, "C": 0, "D": 0})
+        links = []
+
+        def collect_links(component) -> None:
+            href = getattr(component, "href", None)
+            if href:
+                links.append(href)
+            children = getattr(component, "children", None)
+            if not isinstance(children, (list, tuple)):
+                children = [] if children is None else [children]
+            for child in children:
+                collect_links(child)
+
+        collect_links(rendered)
+        self.assertIn(
+            "https://www.sciencedirect.com/science/article/pii/S1364032125005970",
+            links,
+        )
+
     def test_print_slide_trees_do_not_duplicate_callback_ids(self) -> None:
         tree = html.Div(
             [
@@ -313,17 +333,25 @@ class WorkshopSmokeTests(unittest.TestCase):
             "PV uncertainty affects indicators differently",
         }
         self.assertTrue(expected_backup <= set(APPENDIX_SLIDE_TITLES))
+        self.assertEqual(CORE_SLIDE_TITLES[14], "What IAMs leave out")
         self.assertEqual(
-            CORE_SLIDE_TITLES[15], "Investment changes the system over time"
+            CORE_SLIDE_TITLES[15], "Choose a pathway before seeing its assumptions"
         )
         self.assertEqual(
-            CORE_SLIDE_TITLES[16], "First, compare the whole energy system"
+            CORE_SLIDE_TITLES[16], "Investment changes the system over time"
+        )
+        self.assertEqual(
+            CORE_SLIDE_TITLES[17], "First, compare the whole energy system"
         )
         self.assertEqual(
             BACKUP_LINKS["First, compare the whole energy system"]["target"],
             "Then examine the electricity chain",
         )
         self.assertNotIn("Investment changes the system over time", BACKUP_LINKS)
+        self.assertEqual(
+            CORE_SLIDE_TITLES[23],
+            "Premise translates scenarios; it is not a scenario model",
+        )
         self.assertEqual(
             CORE_SLIDE_TITLES[27],
             "The IAM says solar; the LCA needs a specific module technology",
@@ -340,6 +368,10 @@ class WorkshopSmokeTests(unittest.TestCase):
         )
         self.assertNotIn(
             "Similar warming can still have very different impacts", BACKUP_LINKS
+        )
+        self.assertEqual(
+            CORE_SLIDE_TITLES[29],
+            "Turn a scenario result into a well-supported LCA statement",
         )
         self.assertNotIn(
             "From one-off research links to shared scenario tools", SLIDE_TITLES
@@ -393,8 +425,9 @@ class WorkshopSmokeTests(unittest.TestCase):
             )
             self.assertAlmostEqual(
                 float(mitigation.data[2].base[index] + mitigation.data[2].y[index]),
-                total,
+                float(mitigation.data[1].base[index]),
             )
+            self.assertGreaterEqual(float(mitigation.data[2].base[index]), 0)
         budget = carbon_budget_figure()
         self.assertEqual(list(budget.data[0].x), [2400, 2400])
         self.assertEqual(list(budget.data[1].x), [500, 1150])

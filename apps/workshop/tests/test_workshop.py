@@ -319,9 +319,10 @@ class WorkshopSmokeTests(unittest.TestCase):
             CORE_SLIDE_TITLES[16], "First, compare the whole energy system"
         )
         self.assertEqual(
-            BACKUP_LINKS["Investment changes the system over time"]["target"],
+            BACKUP_LINKS["First, compare the whole energy system"]["target"],
             "Then examine the electricity chain",
         )
+        self.assertNotIn("Investment changes the system over time", BACKUP_LINKS)
         self.assertNotIn("Mapped IAM detail varies by model and sector", SLIDE_TITLES)
         self.assertEqual(
             SLIDE_TITLES[RESULT_TRACER_SLIDE],
@@ -439,14 +440,14 @@ class WorkshopSmokeTests(unittest.TestCase):
                 "IMAGE",
                 "MESSAGE",
                 "REMIND",
-                "TIAM-UCL",
             ],
         )
-        self.assertEqual(sum(bool(trace.showlegend) for trace in figure.data), 8)
+        self.assertEqual(sum(bool(trace.showlegend) for trace in figure.data), 7)
         self.assertEqual(sum(trace.xaxis == "x" for trace in figure.data), 4)
-        self.assertEqual(sum(trace.xaxis == "x2" for trace in figure.data), 4)
-        self.assertGreater(float(figure.data[-2].y[0]), 30)
-        self.assertLess(float(figure.data[-2].y[0]), 40)
+        self.assertEqual(sum(trace.xaxis == "x2" for trace in figure.data), 3)
+        remind = next(trace for trace in figure.data if trace.name == "REMIND")
+        self.assertGreater(float(remind.y[0]), 30)
+        self.assertLess(float(remind.y[0]), 40)
 
     def test_applied_geography_is_auditable(self) -> None:
         mapping = image_region_mapping()

@@ -113,7 +113,7 @@ BACKUP_LINKS = {
         "label": "SSP4–SSP5 detail",
         "target": "Fast innovation does not guarantee sustainability",
     },
-    "Investment changes the system over time": {
+    "First, compare the whole energy system": {
         "label": "Energy-chain detail",
         "target": "Then examine the electricity chain",
     },

@@ -4314,8 +4314,8 @@ def slide_controlled_comparisons() -> html.Div:
         (
             "Model-structure experiment",
             "Hold SSP2 + low objective",
-            "Vary four IAMs",
-            "IMAGE SSP2-L, MESSAGE SSP2-L, REMIND SSP2-PkBudg1000 and TIAM-UCL SSP2-RCP26 all peak at 1.82–1.92°C; native constraint names still differ.",
+            "Vary three IAMs",
+            "IMAGE SSP2-L, MESSAGE SSP2-L and REMIND SSP2-PkBudg1000 all peak at 1.82–1.92°C; native constraint names still differ.",
         ),
     ]
     return html.Div(
@@ -4543,50 +4543,50 @@ def slide_transformation_coverage() -> html.Div:
             "EL",
             "Electricity",
             "Electricity",
-            "Generation mix + efficiency",
-            "Regional markets + power plants",
-            "Every electricity-consuming activity",
-            "Device demand + foreground exchanges",
+            "Regional generator shares and power-plant efficiencies",
+            "Rebuilds grid markets and adjusts power-plant efficiencies",
+            "Background activities buying grid electricity use the new mix",
+            "Foreground kWh demand and device performance",
         ),
         (
             "steel",
             "ST",
             "Steel",
             "Steel",
-            "Route shares + production",
-            "Steel markets + production routes",
-            "Steel-intensive products",
-            "Product mass, lifetime + design",
+            "Regional output by blast-furnace, scrap and emerging routes",
+            "Rebuilds steel markets and adjusts route-specific inputs",
+            "Background products buying steel use the new route mix",
+            "Steel mass per product, lifetime and design",
         ),
         (
             "transport",
             "TR",
             "Transport",
             "Passenger cars",
-            "Fleet mix + energy intensity",
-            "Vehicles + operation + fuels",
-            "Passenger transport services",
-            "Mobility demand, occupancy + lifetime",
+            "Vehicle shares and energy use per passenger-kilometre",
+            "Updates vehicle fleets, operation datasets and energy supply",
+            "Background transport services use the future fleet and energy mix",
+            "Travel demand, occupancy, lifetime and modal choice",
         ),
         (
             "cement",
             "CE",
             "Cement",
             "Cement",
-            "Kiln mix + CCS + efficiency",
-            "Clinker + cement production",
-            "Buildings and infrastructure",
-            "Material demand + structural design",
+            "Clinker-kiln shares, carbon capture and kiln energy use",
+            "Updates clinker and cement production and their regional markets",
+            "Background construction activities use the new cement supply",
+            "Concrete quantity, structural design and service life",
         ),
         (
             "dac",
             "CDR",
             "Carbon removal",
             "Carbon removal",
-            "Deployment + cumulative learning",
-            "Solvent + sorbent DAC inventories",
-            "Removal burdens and credits",
-            "Removal service + permanence boundary",
+            "Regional DAC deployment and learning-driven input changes",
+            "Updates solvent and sorbent DAC datasets and their market shares",
+            "Linked removal services use the scenario-specific DAC mix",
+            "Removal quantity, storage permanence and crediting method",
         ),
     ]
     cards = []
@@ -4610,7 +4610,7 @@ def slide_transformation_coverage() -> html.Div:
                                 [
                                     html.Strong(label),
                                     html.Span(
-                                        f"{image_counts[mapping_sector]} IMAGE aliases mapped"
+                                        f"{image_counts[mapping_sector]} mapped IMAGE variables"
                                     ),
                                 ]
                             ),
@@ -4619,21 +4619,21 @@ def slide_transformation_coverage() -> html.Div:
                     ),
                     html.Div(
                         [
-                            html.Span("IAM signal"),
+                            html.Span("IAM supplies"),
                             html.B(signal),
                             html.I("premise maps ↓"),
-                            html.Span("Inventory change"),
+                            html.Span("Premise updates"),
                             html.B(inventory),
                         ],
                         className="coverage-sector-path",
                     ),
                     html.P(
-                        [html.Strong("Affects · "), effect],
+                        [html.Strong("Inherited by · "), effect],
                         className="coverage-sector-effect",
                     ),
                     html.Div(
                         [
-                            html.Span("You still define"),
+                            html.Span("Your study specifies"),
                             html.B(outside),
                         ],
                         className="coverage-sector-outside",
@@ -4645,26 +4645,26 @@ def slide_transformation_coverage() -> html.Div:
     flow_steps = [
         (
             "1",
-            "IAM evidence",
-            "Regional activity, technology shares and efficiency pathways",
+            "IAM trajectory",
+            "Regional time series for production, technology shares and efficiency",
             "coverage-flow-iam",
         ),
         (
             "2",
-            "premise rules",
-            "Map model variables; calculate shares, efficiencies and technology improvements",
+            "Mapping + calculation",
+            "Links IAM variables to datasets and calculates the required changes",
             "coverage-flow-rules",
         ),
         (
             "3",
-            "Background database",
-            "Update markets, suppliers and selected production datasets",
+            "Updated background",
+            "Replaces suppliers or adjusts efficiency and emissions in mapped datasets",
             "coverage-flow-database",
         ),
         (
             "4",
-            "Your LCA model",
-            "Combine the transformed background with foreground choices",
+            "Foreground LCA",
+            "Keeps your product system, but links it to the transformed background",
             "coverage-flow-study",
         ),
     ]
@@ -4672,8 +4672,8 @@ def slide_transformation_coverage() -> html.Div:
         [
             eyebrow("From IAM to premise · transformation coverage"),
             title(
-                "premise updates selected parts of the background database",
-                "IAM evidence updates mapped markets, technologies and efficiencies. It does not change the foreground model.",
+                "premise changes datasets only where a transformation rule exists",
+                "Mapped datasets change directly; other datasets may change indirectly when they consume updated electricity, fuels or materials",
             ),
             html.Div(
                 [
@@ -4704,9 +4704,9 @@ def slide_transformation_coverage() -> html.Div:
                 [
                     html.Div(
                         [
-                            html.Strong("Five applied examples"),
+                            html.Strong("Five direct transformation routes"),
                             html.Span(
-                                "Counts show mapped IMAGE variables in premise 2.4.6. They do not rank model quality."
+                                "Counts indicate mapping breadth in premise 2.4.6, not how many ecoinvent datasets change."
                             ),
                         ],
                         className="coverage-examples-heading",
@@ -4719,24 +4719,27 @@ def slide_transformation_coverage() -> html.Div:
                 [
                     html.Div(
                         [
-                            html.Strong("premise does not make these choices"),
-                            html.Span("The LCA study must define them"),
-                        ]
+                            html.Strong("Your foreground stays yours"),
+                            html.Span(
+                                "You choose the functional unit, product demand, foreground technologies and exchanges, lifetime, use and end-of-life."
+                            ),
+                        ],
+                        className="coverage-boundary-study",
                     ),
                     html.Div(
                         [
-                            html.Span("Functional unit"),
-                            html.Span("Foreground demand"),
-                            html.Span("Lifetime + design"),
-                            html.Span("Unmapped processes"),
+                            html.Strong("If a process has no direct mapping"),
+                            html.Span(
+                                "Its own technology and efficiency remain as in the source database. Its impact can still change when it buys an updated input such as electricity, fuel, steel or cement."
+                            ),
                         ],
-                        className="coverage-boundary-chips",
+                        className="coverage-boundary-unmapped",
                     ),
                 ],
                 className="coverage-boundary",
             ),
             takeaway(
-                "Prospective LCA changes only where scenario evidence is mapped; everything else remains a study assumption."
+                "A scenario label does not update the whole database. Trace each result change to a direct premise mapping, an updated input or an assumption in your foreground model."
             ),
         ],
         className="slide coverage-slide",
@@ -5927,8 +5930,8 @@ def _legacy_slide_premise_library() -> html.Div:
                     ),
                     html.Div(
                         [
-                            html.Strong("3.6–3.11"),
-                            html.Span("ecoinvent versions in the supplied 2026 deck"),
+                            html.Strong("3.6–3.12"),
+                            html.Span("supported ecoinvent versions"),
                         ]
                     ),
                 ],
@@ -6490,8 +6493,8 @@ def slide_premise_library() -> html.Div:
                                     ),
                                     html.Span(
                                         [
-                                            html.Strong("3.6–3.11"),
-                                            " ecoinvent range in the supplied deck",
+                                            html.Strong("3.6–3.12"),
+                                            " supported ecoinvent versions",
                                         ]
                                     ),
                                 ],
@@ -6530,7 +6533,7 @@ def slide_premise_library() -> html.Div:
                 className="premise-library-visual-layout",
             ),
             source_note(
-                "Synthesized from Paris Premise introduction slides 13–23 and Background scenarios slides 9–19. Statistics reflect the supplied 2026 presentations."
+                "Synthesized from Paris Premise introduction slides 13–23 and Background scenarios slides 9–19. The ecoinvent range reflects premise 2.4.6 support."
             ),
             takeaway(
                 "Premise applies selected scenario evidence to LCI databases. It does not turn an LCA model into an IAM."

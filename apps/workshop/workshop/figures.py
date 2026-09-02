@@ -3273,7 +3273,6 @@ def controlled_comparison_figure() -> go.Figure:
         ("IMAGE", "image", "SSP2-L", "#008A82", "solid"),
         ("MESSAGE", "message", "SSP2-L", "#3366A3", "dash"),
         ("REMIND", "remind", "SSP2-PkBudg1000", "#C44E52", "dot"),
-        ("TIAM-UCL", "tiam-ucl", "SSP2-RCP26", "#7656A8", "dashdot"),
     ]
     for label, model, scenario, color, dash in model_specs:
         data = context_series("Carbon Dioxide emissions", [scenario], model=model)

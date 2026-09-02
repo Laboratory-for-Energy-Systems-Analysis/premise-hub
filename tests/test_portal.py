@@ -20,14 +20,6 @@ from apps.lca_time.workshop.slides import render_fair_response_figure, render_sl
 client = Client(application, Response)
 
 
-def unlock_presentation(test_client: Client, prefix: str, password: str) -> None:
-    response = test_client.post(
-        f"{prefix}/", data={"password": password}, follow_redirects=False
-    )
-    assert response.status_code == 303
-    assert response.headers["Location"] == f"{prefix}/"
-
-
 def test_landing_and_health() -> None:
     landing = client.get("/")
     publication_count = sum(item["kind"] == "application" for item in publications())
@@ -103,15 +95,6 @@ def test_public_routes_and_prefixes() -> None:
     assert premise_logo.status_code == 200
     assert premise_logo.data.startswith(b"\x89PNG\r\n\x1a\n")
 
-    protected = client.get("/workshop/")
-    assert protected.status_code == 401
-    assert "Protected presentation" in protected.text
-    assert "Enter the password to continue." in protected.text
-    assert "event date" not in protected.text.casefold()
-    assert "DDMMYYYY" not in protected.text
-
-    unlock_presentation(client, "/workshop", "03092026")
-
     for prefix in ["/scenarios", "/workshop", "/lca-time"]:
         index = client.get(f"{prefix}/")
         assert index.status_code == 200
@@ -130,28 +113,16 @@ def test_public_routes_and_prefixes() -> None:
     assert client.get("/lca-time/assets/routing/beccs-routing.html").status_code == 200
 
 
-def test_workshop_password_protects_every_deck_route() -> None:
-    auth_client = Client(application, Response, use_cookies=True)
+def test_workshop_deck_routes_are_public() -> None:
+    public_client = Client(application, Response, use_cookies=False)
 
-    workshop_asset = auth_client.get("/workshop/assets/styles.css")
-    workshop_api = auth_client.get("/workshop/_dash-layout")
-    assert workshop_asset.status_code == 401
-    assert workshop_api.status_code == 401
-    assert workshop_asset.headers["Cache-Control"] == "no-store"
-    assert workshop_asset.headers["X-Robots-Tag"] == "noindex, nofollow"
-
-    wrong_password = auth_client.post("/workshop/", data={"password": "27082026"})
-    assert wrong_password.status_code == 401
-    assert "That password is not correct." in wrong_password.text
-
-    unlock_presentation(auth_client, "/workshop", "03092026")
-    assert auth_client.get("/workshop/_dash-layout").status_code == 200
-    assert auth_client.get("/workshop/assets/styles.css").status_code == 200
-
-    # The LCA-through-time presentation is public and needs no session cookie.
-    assert auth_client.get("/lca-time/").status_code == 200
-    assert auth_client.get("/lca-time/_dash-layout").status_code == 200
-    assert auth_client.get("/lca-time/assets/styles.css").status_code == 200
+    for path in [
+        "/workshop/",
+        "/workshop/_dash-layout",
+        "/workshop/_dash-dependencies",
+        "/workshop/assets/styles.css",
+    ]:
+        assert public_client.get(path).status_code == 200
 
 
 def test_resource_catalog_contract() -> None:

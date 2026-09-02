@@ -14,10 +14,8 @@ The deployed service exposes:
   and time-explicit LCA;
 - `/health` — a lightweight service health endpoint.
 
-The IAM workshop requires its event date (`DDMMYYYY`) as the password. The LCA
-through time presentation is public. Presentation dates and routes are defined
-in `portal/presentations.yaml`; the WSGI composition applies the password gate
-to every route below the workshop prefix.
+Both presentations are public. Their dates and routes are defined in
+`portal/presentations.yaml`.
 
 ## Local development
 

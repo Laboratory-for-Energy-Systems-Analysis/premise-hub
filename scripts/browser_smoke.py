@@ -21,14 +21,6 @@ def launch_chromium(playwright):
     return playwright.chromium.launch()
 
 
-def unlock_presentation(page, url: str, password: str) -> None:
-    page.goto(url, wait_until="networkidle")
-    page.get_by_label("Password", exact=True).fill(password)
-    page.get_by_role("button", name="Open presentation").click()
-    page.wait_for_url(url)
-    page.wait_for_load_state("networkidle")
-
-
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--url", default="http://127.0.0.1:8050")
@@ -205,7 +197,7 @@ def main() -> None:
         assert len(removal_contract) > 1, removal_contract
         assert all(group == "1" for group in removal_contract), removal_contract
 
-        unlock_presentation(page, f"{base}/workshop/", "03092026")
+        page.goto(f"{base}/workshop/", wait_until="networkidle")
         page.locator(".slide").wait_for()
         page.locator("#next-button").click()
         page.get_by_role(

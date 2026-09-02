@@ -63,9 +63,11 @@ CORE_SLIDE_TITLES = [
     "Turn a scenario result into a well-supported LCA statement",
     "Unit impact, deployment and causes are different questions",
     "Trace an LCA result back to the scenario data",
+    "The IAM says solar; the LCA needs a specific module technology",
     "Similar warming can still have very different impacts",
     "Premise translates scenarios; it is not a scenario model",
     "A build converts scenario choices into inventory changes",
+    "Premise changes inventories; Brightway calculates results",
     "Resources for building and documenting scenarios",
 ]
 
@@ -89,13 +91,10 @@ APPENDIX_SLIDE_TITLES = [
     "Low warming in 2100 can depend on large future removals",
     "Match boundaries before calculating total impact",
     "Steel links production routes, unit impact and total output",
-    "The IAM says solar; the LCA needs a specific module technology",
     "PV uncertainty affects indicators differently",
     "Check the full chain before reporting a result",
     "Choose a scenario source with the detail your decision needs",
-    # Premise history and extended workflow context.
-    "From one-off research links to shared scenario tools",
-    "Premise changes inventories; Brightway calculates results",
+    # Extended workflow context.
     "One set of databases supports three scales of analysis",
 ]
 
@@ -137,17 +136,13 @@ BACKUP_LINKS = {
         "label": "Steel causal chain",
         "target": "Steel links production routes, unit impact and total output",
     },
-    "Similar warming can still have very different impacts": {
-        "label": "PV uncertainty case",
-        "target": "The IAM says solar; the LCA needs a specific module technology",
+    "The IAM says solar; the LCA needs a specific module technology": {
+        "label": "Indicator uncertainty",
+        "target": "PV uncertainty affects indicators differently",
     },
-    "Premise translates scenarios; it is not a scenario model": {
-        "label": "Premise history",
-        "target": "From one-off research links to shared scenario tools",
-    },
-    "A build converts scenario choices into inventory changes": {
-        "label": "Brightway hand-off",
-        "target": "Premise changes inventories; Brightway calculates results",
+    "Premise changes inventories; Brightway calculates results": {
+        "label": "Analysis modes",
+        "target": "One set of databases supports three scales of analysis",
     },
 }
 
@@ -156,9 +151,9 @@ CHAPTERS = [
     {"name": "Scenario frameworks", "start": 9, "end": 14, "minutes": 15},
     {"name": "Read the pathways", "start": 15, "end": 22, "minutes": 18},
     {"name": "From IAM to Premise", "start": 23, "end": 24, "minutes": 8},
-    {"name": "LCIA and interpretation", "start": 25, "end": 27, "minutes": 11},
-    {"name": "Build and report", "start": 28, "end": 30, "minutes": 7},
-    {"name": "Backup", "start": 31, "end": 51, "minutes": 0},
+    {"name": "LCIA and interpretation", "start": 25, "end": 28, "minutes": 11},
+    {"name": "Build and report", "start": 29, "end": 32, "minutes": 7},
+    {"name": "Backup", "start": 33, "end": 50, "minutes": 0},
 ]
 
 ANONYMOUS_SLIDE = SLIDE_TITLES.index("Choose a pathway before seeing its assumptions")

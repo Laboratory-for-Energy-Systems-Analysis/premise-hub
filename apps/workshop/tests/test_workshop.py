@@ -131,10 +131,10 @@ class WorkshopSmokeTests(unittest.TestCase):
         )
 
     def test_slide_numbers_distinguish_core_and_backup_decks(self) -> None:
-        self.assertEqual(slide_number(0), "01 / 31")
-        self.assertEqual(slide_number(CORE_LAST_SLIDE), "31 / 31")
-        self.assertEqual(slide_number(APPENDIX_START_SLIDE), "B01 / 21")
-        self.assertEqual(slide_number(LAST_SLIDE), "B21 / 21")
+        self.assertEqual(slide_number(0), "01 / 33")
+        self.assertEqual(slide_number(CORE_LAST_SLIDE), "33 / 33")
+        self.assertEqual(slide_number(APPENDIX_START_SLIDE), "B01 / 18")
+        self.assertEqual(slide_number(LAST_SLIDE), "B18 / 18")
 
     def test_ssp_baseline_legend_and_challenge_labels(self) -> None:
         figure = ssp_baseline_comparison_figure("population")
@@ -249,7 +249,7 @@ class WorkshopSmokeTests(unittest.TestCase):
             )
 
         votes = {"A": 0, "B": 0, "C": 0, "D": 0}
-        self.assertEqual(len(BACKUP_LINKS), 11)
+        self.assertEqual(len(BACKUP_LINKS), 10)
         for origin_title, link in BACKUP_LINKS.items():
             origin = SLIDE_TITLES.index(origin_title)
             target = SLIDE_TITLES.index(link["target"])
@@ -264,11 +264,11 @@ class WorkshopSmokeTests(unittest.TestCase):
         self.assertTrue(has_pattern_id(backup_slide, "return-from-backup"))
 
     def test_climate_introduction_contract(self) -> None:
-        self.assertEqual(len(SLIDE_TITLES), 52)
-        self.assertEqual(CORE_SLIDE_COUNT, 31)
-        self.assertEqual(APPENDIX_SLIDE_COUNT, 21)
-        self.assertEqual(CORE_LAST_SLIDE, 30)
-        self.assertEqual(APPENDIX_START_SLIDE, 31)
+        self.assertEqual(len(SLIDE_TITLES), 51)
+        self.assertEqual(CORE_SLIDE_COUNT, 33)
+        self.assertEqual(APPENDIX_SLIDE_COUNT, 18)
+        self.assertEqual(CORE_LAST_SLIDE, 32)
+        self.assertEqual(APPENDIX_START_SLIDE, 33)
         self.assertEqual(SLIDE_TITLES, CORE_SLIDE_TITLES + APPENDIX_SLIDE_TITLES)
         self.assertFalse(set(CORE_SLIDE_TITLES) & set(APPENDIX_SLIDE_TITLES))
         self.assertEqual(CORE_SLIDE_TITLES[0], "IAM scenarios for prospective LCA")
@@ -296,7 +296,9 @@ class WorkshopSmokeTests(unittest.TestCase):
             "Explore how scenarios change each sector",
             "Premise updates selected parts of the background database",
             "Trace an LCA result back to the scenario data",
+            "The IAM says solar; the LCA needs a specific module technology",
             "Premise translates scenarios; it is not a scenario model",
+            "Premise changes inventories; Brightway calculates results",
         }
         self.assertTrue(required_core <= set(CORE_SLIDE_TITLES))
 
@@ -308,7 +310,6 @@ class WorkshopSmokeTests(unittest.TestCase):
             "Passenger cars: electrification reduces energy per kilometre",
             "Cement: lower emissions require a different kiln mix",
             "Low warming in 2100 can depend on large future removals",
-            "The IAM says solar; the LCA needs a specific module technology",
             "PV uncertainty affects indicators differently",
         }
         self.assertTrue(expected_backup <= set(APPENDIX_SLIDE_TITLES))
@@ -323,6 +324,36 @@ class WorkshopSmokeTests(unittest.TestCase):
             "Then examine the electricity chain",
         )
         self.assertNotIn("Investment changes the system over time", BACKUP_LINKS)
+        self.assertEqual(
+            CORE_SLIDE_TITLES[27],
+            "The IAM says solar; the LCA needs a specific module technology",
+        )
+        self.assertEqual(
+            CORE_SLIDE_TITLES[28],
+            "Similar warming can still have very different impacts",
+        )
+        self.assertEqual(
+            BACKUP_LINKS[
+                "The IAM says solar; the LCA needs a specific module technology"
+            ]["target"],
+            "PV uncertainty affects indicators differently",
+        )
+        self.assertNotIn(
+            "Similar warming can still have very different impacts", BACKUP_LINKS
+        )
+        self.assertNotIn(
+            "From one-off research links to shared scenario tools", SLIDE_TITLES
+        )
+        self.assertEqual(
+            CORE_SLIDE_TITLES[-2],
+            "Premise changes inventories; Brightway calculates results",
+        )
+        self.assertEqual(
+            BACKUP_LINKS["Premise changes inventories; Brightway calculates results"][
+                "target"
+            ],
+            "One set of databases supports three scales of analysis",
+        )
         self.assertNotIn("Mapped IAM detail varies by model and sector", SLIDE_TITLES)
         self.assertEqual(
             SLIDE_TITLES[RESULT_TRACER_SLIDE],

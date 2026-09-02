@@ -42,13 +42,13 @@ python3 -m venv .venv
 ```
 
 Open <http://127.0.0.1:8050>. Use the visible Back, Reveal, and Next controls.
-The live Next sequence stops at the end of the 31-slide core. Compact detail
+The live Next sequence stops at the end of the 33-slide core. Compact detail
 buttons open related backup slides and remember their origin; every backup slide
 has a **Return to original slide** button. The **Backup** chapter in the header
 also exposes the complete appendix directly.
 The footer's **Export PDF** button prepares all presenter states, reveals the
 anonymous scenario labels, and opens the browser print dialog with a 16:9 PDF
-layout. The PDF retains all 52 core and backup states. Interactive slides use
+layout. The PDF retains all 51 core and backup states. Interactive slides use
 their currently selected state in the export.
 
 For a production-like local run:

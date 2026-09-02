@@ -1603,8 +1603,8 @@ def slide_ssp_quantitative() -> html.Div:
                     html.Div(
                         [
                             html.Strong(code),
-                            html.Span(f"mitigation {mitigation}"),
-                            html.Span(f"adaptation {adaptation}"),
+                            html.Span(f"mitigation challenge {mitigation}"),
+                            html.Span(f"adaptation challenge {adaptation}"),
                         ],
                         className=f"ssp-challenge-summary ssp-challenge-summary-{code.lower()}",
                     )
@@ -2255,8 +2255,24 @@ def slide_emission_families() -> html.Div:
                 ],
                 className="forcing-trajectory-panel forcing-trajectory-pair-panel",
             ),
-            source_note(
-                "Source: Van Vuuren et al. (2026), ScenarioMIP-CMIP7, doi:10.5194/gmd-19-2627-2026. Curves are central teaching approximations."
+            html.Div(
+                [
+                    source_note(
+                        "Source: Van Vuuren et al. (2026), ScenarioMIP-CMIP7, doi:10.5194/gmd-19-2627-2026. Curves are central teaching approximations."
+                    ),
+                    html.A(
+                        "Recommended reading · Carbon Brief: how CMIP7 differs from earlier scenarios ↗",
+                        href=(
+                            "https://www.carbonbrief.org/explainer-the-cmip7-"
+                            "emissions-scenarios-and-how-they-explore-future-climate-change"
+                        ),
+                        target="_blank",
+                        rel="noopener noreferrer",
+                        className="recommended-reading-link",
+                        title="Explainer: The CMIP7 emissions scenarios – and how they explore future climate change",
+                    ),
+                ],
+                className="forcing-source-row",
             ),
             takeaway(
                 "The family describes the emissions experiment, not the society producing it. GMST is the uncertain climate response."

@@ -2008,7 +2008,7 @@ def ssp_baseline_comparison_figure(metric: str) -> go.Figure:
         legend={
             "orientation": "h",
             "x": 0,
-            "y": 1.12,
+            "y": 1.06,
             "font": {"size": 8},
         },
         hovermode="x unified",

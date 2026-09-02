@@ -136,6 +136,47 @@ class WorkshopSmokeTests(unittest.TestCase):
         self.assertEqual(slide_number(APPENDIX_START_SLIDE), "B01 / 22")
         self.assertEqual(slide_number(LAST_SLIDE), "B22 / 22")
 
+    def test_ssp_baseline_legend_and_challenge_labels(self) -> None:
+        figure = ssp_baseline_comparison_figure("population")
+        self.assertEqual(figure.layout.legend.y, 1.06)
+
+        rendered = render_slide(9, 1, {"A": 0, "B": 0, "C": 0, "D": 0})
+
+        def text_content(component) -> str:
+            if isinstance(component, str):
+                return component
+            children = getattr(component, "children", None)
+            if isinstance(children, (list, tuple)):
+                return " ".join(text_content(child) for child in children)
+            if children is None:
+                return ""
+            return text_content(children)
+
+        text = text_content(rendered)
+        self.assertIn("mitigation challenge low", text)
+        self.assertIn("adaptation challenge high", text)
+
+    def test_cmip7_slide_links_to_recommended_reading(self) -> None:
+        rendered = render_slide(12, 1, {"A": 0, "B": 0, "C": 0, "D": 0})
+        links = []
+
+        def collect_links(component) -> None:
+            href = getattr(component, "href", None)
+            if href:
+                links.append(href)
+            children = getattr(component, "children", None)
+            if not isinstance(children, (list, tuple)):
+                children = [] if children is None else [children]
+            for child in children:
+                collect_links(child)
+
+        collect_links(rendered)
+        self.assertIn(
+            "https://www.carbonbrief.org/explainer-the-cmip7-emissions-"
+            "scenarios-and-how-they-explore-future-climate-change",
+            links,
+        )
+
     def test_print_slide_trees_do_not_duplicate_callback_ids(self) -> None:
         tree = html.Div(
             [

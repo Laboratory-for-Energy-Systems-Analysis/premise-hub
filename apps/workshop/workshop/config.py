@@ -51,6 +51,7 @@ CORE_SLIDE_TITLES = [
     "CMIP7 families describe how emissions change over time",
     "A quantitative scenario combines three layers",
     "Choose a pathway before seeing its assumptions",
+    "Investment changes the system over time",
     "First, compare the whole energy system",
     "Steel: recycled and electric routes replace blast furnaces",
     "Premise gets different levels of detail from each IAM",
@@ -73,7 +74,6 @@ APPENDIX_SLIDE_TITLES = [
     "From emissions scenarios to policy evidence",
     "Fast innovation does not guarantee sustainability",
     # Energy-accounting detail.
-    "Investment changes the system over time",
     "Then examine the electricity chain",
     "Primary energy: resources entering the system",
     "Secondary energy: carriers produced after conversion",
@@ -113,9 +113,9 @@ BACKUP_LINKS = {
         "label": "SSP4–SSP5 detail",
         "target": "Fast innovation does not guarantee sustainability",
     },
-    "First, compare the whole energy system": {
+    "Investment changes the system over time": {
         "label": "Energy-chain detail",
-        "target": "Investment changes the system over time",
+        "target": "Then examine the electricity chain",
     },
     "Steel: recycled and electric routes replace blast furnaces": {
         "label": "More sector examples",
@@ -154,11 +154,11 @@ BACKUP_LINKS = {
 CHAPTERS = [
     {"name": "Why IAMs", "start": 0, "end": 8, "minutes": 16},
     {"name": "Scenario frameworks", "start": 9, "end": 14, "minutes": 15},
-    {"name": "Read the pathways", "start": 15, "end": 21, "minutes": 18},
-    {"name": "From IAM to Premise", "start": 22, "end": 23, "minutes": 8},
-    {"name": "LCIA and interpretation", "start": 24, "end": 26, "minutes": 11},
-    {"name": "Build and report", "start": 27, "end": 29, "minutes": 7},
-    {"name": "Backup", "start": 30, "end": 51, "minutes": 0},
+    {"name": "Read the pathways", "start": 15, "end": 22, "minutes": 18},
+    {"name": "From IAM to Premise", "start": 23, "end": 24, "minutes": 8},
+    {"name": "LCIA and interpretation", "start": 25, "end": 27, "minutes": 11},
+    {"name": "Build and report", "start": 28, "end": 30, "minutes": 7},
+    {"name": "Backup", "start": 31, "end": 51, "minutes": 0},
 ]
 
 ANONYMOUS_SLIDE = SLIDE_TITLES.index("Choose a pathway before seeing its assumptions")

@@ -131,10 +131,10 @@ class WorkshopSmokeTests(unittest.TestCase):
         )
 
     def test_slide_numbers_distinguish_core_and_backup_decks(self) -> None:
-        self.assertEqual(slide_number(0), "01 / 30")
-        self.assertEqual(slide_number(CORE_LAST_SLIDE), "30 / 30")
-        self.assertEqual(slide_number(APPENDIX_START_SLIDE), "B01 / 22")
-        self.assertEqual(slide_number(LAST_SLIDE), "B22 / 22")
+        self.assertEqual(slide_number(0), "01 / 31")
+        self.assertEqual(slide_number(CORE_LAST_SLIDE), "31 / 31")
+        self.assertEqual(slide_number(APPENDIX_START_SLIDE), "B01 / 21")
+        self.assertEqual(slide_number(LAST_SLIDE), "B21 / 21")
 
     def test_ssp_baseline_legend_and_challenge_labels(self) -> None:
         figure = ssp_baseline_comparison_figure("population")
@@ -265,10 +265,10 @@ class WorkshopSmokeTests(unittest.TestCase):
 
     def test_climate_introduction_contract(self) -> None:
         self.assertEqual(len(SLIDE_TITLES), 52)
-        self.assertEqual(CORE_SLIDE_COUNT, 30)
-        self.assertEqual(APPENDIX_SLIDE_COUNT, 22)
-        self.assertEqual(CORE_LAST_SLIDE, 29)
-        self.assertEqual(APPENDIX_START_SLIDE, 30)
+        self.assertEqual(CORE_SLIDE_COUNT, 31)
+        self.assertEqual(APPENDIX_SLIDE_COUNT, 21)
+        self.assertEqual(CORE_LAST_SLIDE, 30)
+        self.assertEqual(APPENDIX_START_SLIDE, 31)
         self.assertEqual(SLIDE_TITLES, CORE_SLIDE_TITLES + APPENDIX_SLIDE_TITLES)
         self.assertFalse(set(CORE_SLIDE_TITLES) & set(APPENDIX_SLIDE_TITLES))
         self.assertEqual(CORE_SLIDE_TITLES[0], "IAM scenarios for prospective LCA")
@@ -289,6 +289,7 @@ class WorkshopSmokeTests(unittest.TestCase):
             "CMIP7 families describe how emissions change over time",
             "A quantitative scenario combines three layers",
             "Choose a pathway before seeing its assumptions",
+            "Investment changes the system over time",
             "First, compare the whole energy system",
             "Premise gets different levels of detail from each IAM",
             "What IAMs leave out",
@@ -302,7 +303,6 @@ class WorkshopSmokeTests(unittest.TestCase):
         expected_backup = {
             "From emissions scenarios to policy evidence",
             "Fast innovation does not guarantee sustainability",
-            "Investment changes the system over time",
             "Then examine the electricity chain",
             "Primary energy: resources entering the system",
             "Passenger cars: electrification reduces energy per kilometre",
@@ -312,6 +312,16 @@ class WorkshopSmokeTests(unittest.TestCase):
             "PV uncertainty affects indicators differently",
         }
         self.assertTrue(expected_backup <= set(APPENDIX_SLIDE_TITLES))
+        self.assertEqual(
+            CORE_SLIDE_TITLES[15], "Investment changes the system over time"
+        )
+        self.assertEqual(
+            CORE_SLIDE_TITLES[16], "First, compare the whole energy system"
+        )
+        self.assertEqual(
+            BACKUP_LINKS["Investment changes the system over time"]["target"],
+            "Then examine the electricity chain",
+        )
         self.assertNotIn("Mapped IAM detail varies by model and sector", SLIDE_TITLES)
         self.assertEqual(
             SLIDE_TITLES[RESULT_TRACER_SLIDE],

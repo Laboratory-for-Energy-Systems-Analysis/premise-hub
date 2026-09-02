@@ -17,8 +17,8 @@ The dashboard includes:
 - four climate-and-energy motivation states and an explicit rationale for IAMs;
 - a sourced net-zero target-year map and an explicit pledge → pathway → investment → inventory bridge;
 - a definition of IAMs plus a policy-history timeline from IS92 to CMIP7;
-- six core chapters with 30 presenter states (a 75-minute speaking plan), plus
-  22 clearly marked backup states;
+- six core chapters with 31 presenter states (a 75-minute speaking plan), plus
+  21 clearly marked backup states;
 - theory views for IAM boundaries, stocks and flows, model structure and limitations;
 - ten IMAGE energy-accounting states covering primary, secondary and final energy, four end-use transformations and their premise mappings;
 - the AR5 → AR6 → AR7 terminology bridge and seven CMIP7 emission families;
@@ -42,7 +42,7 @@ python3 -m venv .venv
 ```
 
 Open <http://127.0.0.1:8050>. Use the visible Back, Reveal, and Next controls.
-The live Next sequence stops at the end of the 30-slide core. Compact detail
+The live Next sequence stops at the end of the 31-slide core. Compact detail
 buttons open related backup slides and remember their origin; every backup slide
 has a **Return to original slide** button. The **Backup** chapter in the header
 also exposes the complete appendix directly.

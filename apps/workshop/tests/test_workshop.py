@@ -72,7 +72,7 @@ from apps.workshop.workshop.figures import (
     steel_causal_chain_figure,
     total_energy_system_figure,
 )
-from apps.workshop.workshop.slides import render_slide
+from apps.workshop.workshop.slides import render_slide, slide_number
 
 
 class WorkshopSmokeTests(unittest.TestCase):
@@ -102,6 +102,7 @@ class WorkshopSmokeTests(unittest.TestCase):
                 "pdf-export-button",
                 "pdf-export-trigger",
                 "print-deck",
+                "slide-number",
             }
             <= component_ids
         )
@@ -128,6 +129,12 @@ class WorkshopSmokeTests(unittest.TestCase):
                 for child in footer.children
             )
         )
+
+    def test_slide_numbers_distinguish_core_and_backup_decks(self) -> None:
+        self.assertEqual(slide_number(0), "01 / 30")
+        self.assertEqual(slide_number(CORE_LAST_SLIDE), "30 / 30")
+        self.assertEqual(slide_number(APPENDIX_START_SLIDE), "B01 / 22")
+        self.assertEqual(slide_number(LAST_SLIDE), "B22 / 22")
 
     def test_print_slide_trees_do_not_duplicate_callback_ids(self) -> None:
         tree = html.Div(

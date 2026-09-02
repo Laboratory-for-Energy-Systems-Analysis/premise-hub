@@ -7746,9 +7746,11 @@ def render_slide(
     return rendered
 
 
-def slide_label(index: int) -> str:
+def slide_number(index: int) -> str:
     if index < APPENDIX_START_SLIDE:
-        counter = f"{index + 1:02d}/{CORE_SLIDE_COUNT}"
-    else:
-        counter = f"B{index - APPENDIX_START_SLIDE + 1:02d}/" f"{APPENDIX_SLIDE_COUNT}"
-    return f"{counter} · {SLIDE_TITLES[index]}"
+        return f"{index + 1:02d} / {CORE_SLIDE_COUNT}"
+    return f"B{index - APPENDIX_START_SLIDE + 1:02d} / {APPENDIX_SLIDE_COUNT}"
+
+
+def slide_label(index: int) -> str:
+    return f"{slide_number(index)} · {SLIDE_TITLES[index]}"

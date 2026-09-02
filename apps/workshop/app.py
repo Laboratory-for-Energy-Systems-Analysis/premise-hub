@@ -18,6 +18,7 @@ from .workshop.slides import (
     configure_asset_prefix,
     render_slide,
     slide_label,
+    slide_number,
     style_premise_text,
 )
 
@@ -61,16 +62,19 @@ def render_pdf_deck(votes, explore, capstone, iam_map):
     """Render every presenter state for the browser's PDF print view."""
     return [
         html.Section(
-            _make_print_safe(
-                render_slide(
-                    index,
-                    1,  # A static export needs the anonymous labels revealed.
-                    votes,
-                    explore,
-                    capstone,
-                    iam_map,
-                )
-            ),
+            [
+                _make_print_safe(
+                    render_slide(
+                        index,
+                        1,  # A static export needs the anonymous labels revealed.
+                        votes,
+                        explore,
+                        capstone,
+                        iam_map,
+                    )
+                ),
+                html.Span(slide_number(index), className="print-slide-number"),
+            ],
             className="print-page",
             **{"aria-label": slide_label(index)},
         )
@@ -182,6 +186,7 @@ app.layout = html.Div(
                     **{"aria-label": "Export the presentation as a PDF"},
                 ),
                 html.Div(id="chapter-label", className="footer-hint"),
+                html.Div(id="slide-number", className="slide-number"),
                 html.Button(
                     "Next →",
                     id="next-button",
@@ -416,6 +421,7 @@ def record_vote(clicks, votes):
     Output("reveal-button", "style"),
     Output("reveal-button", "children"),
     Output("chapter-label", "children"),
+    Output("slide-number", "children"),
     Input("slide-store", "data"),
     Input("reveal-store", "data"),
     Input("vote-store", "data"),
@@ -448,6 +454,7 @@ def display_slide(slide, reveal, votes, explore, iam_map, capstone):
         {"visibility": "visible" if show_reveal else "hidden"},
         reveal_text,
         style_premise_text(chapter_for_slide(slide)),
+        slide_number(slide),
     )
 
 

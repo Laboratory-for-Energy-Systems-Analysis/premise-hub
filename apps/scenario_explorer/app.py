@@ -1175,6 +1175,8 @@ def _comparison_card(
     sector: str,
     mode: str,
     y_range: tuple[float, float] | None,
+    slide_number: int,
+    slide_count: int,
 ) -> html.Article:
     model = pair["model"]
     scenario = pair["scenario"]
@@ -1214,18 +1216,35 @@ def _comparison_card(
                         ]
                     ),
                     html.Div(
-                        className="result-badges",
+                        className="result-card-meta",
                         children=[
-                            (
-                                html.Span(
-                                    "Derived World", className="badge badge-derived"
-                                )
-                                if derived
-                                else None
-                            ),
                             html.Span(
-                                UNITS.get(sector, {}).get("label", "Value"),
-                                className="badge",
+                                f"{slide_number:02d} / {slide_count:02d}",
+                                className="slide-number",
+                                **{
+                                    "aria-label": (
+                                        f"Slide {slide_number} of {slide_count}"
+                                    )
+                                },
+                            ),
+                            html.Div(
+                                className="result-badges",
+                                children=[
+                                    (
+                                        html.Span(
+                                            "Derived World",
+                                            className="badge badge-derived",
+                                        )
+                                        if derived
+                                        else None
+                                    ),
+                                    html.Span(
+                                        UNITS.get(sector, {}).get(
+                                            "label", "Value"
+                                        ),
+                                        className="badge",
+                                    ),
+                                ],
                             ),
                         ],
                     ),
@@ -1264,6 +1283,8 @@ def _single_series_comparison_card(
     sector: str,
     mode: str,
     y_range: tuple[float, float] | None,
+    slide_number: int,
+    slide_count: int,
 ) -> html.Article:
     derived = not frame.loc[
         frame["region_source"].eq("derived") & frame["region"].eq("World")
@@ -1289,18 +1310,35 @@ def _single_series_comparison_card(
                         ]
                     ),
                     html.Div(
-                        className="result-badges",
+                        className="result-card-meta",
                         children=[
-                            (
-                                html.Span(
-                                    "Derived World", className="badge badge-derived"
-                                )
-                                if derived
-                                else None
-                            ),
                             html.Span(
-                                UNITS.get(sector, {}).get("label", "Value"),
-                                className="badge",
+                                f"{slide_number:02d} / {slide_count:02d}",
+                                className="slide-number",
+                                **{
+                                    "aria-label": (
+                                        f"Slide {slide_number} of {slide_count}"
+                                    )
+                                },
+                            ),
+                            html.Div(
+                                className="result-badges",
+                                children=[
+                                    (
+                                        html.Span(
+                                            "Derived World",
+                                            className="badge badge-derived",
+                                        )
+                                        if derived
+                                        else None
+                                    ),
+                                    html.Span(
+                                        UNITS.get(sector, {}).get(
+                                            "label", "Value"
+                                        ),
+                                        className="badge",
+                                    ),
+                                ],
                             ),
                         ],
                     ),
@@ -1407,12 +1445,28 @@ def update_graphs(
     combined = is_single_series_comparison(raw)
     if combined:
         cards = [
-            _single_series_comparison_card(raw, pairs, selected_sector, mode, y_range)
+            _single_series_comparison_card(
+                raw,
+                pairs,
+                selected_sector,
+                mode,
+                y_range,
+                slide_number=1,
+                slide_count=1,
+            )
         ]
     else:
         cards = [
-            _comparison_card(raw, pair, selected_sector, mode, y_range)
-            for pair in pairs
+            _comparison_card(
+                raw,
+                pair,
+                selected_sector,
+                mode,
+                y_range,
+                slide_number=index,
+                slide_count=len(pairs),
+            )
+            for index, pair in enumerate(pairs, start=1)
         ]
     grid_class = "results-grid single-result" if len(cards) == 1 else "results-grid"
     status = (

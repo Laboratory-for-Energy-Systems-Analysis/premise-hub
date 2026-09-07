@@ -22,6 +22,13 @@ historical years and rejects any two-order-of-magnitude scale mismatch. This
 guards against mixing IAM files that express the same mapped sector in
 incompatible units.
 
+The 2.4.9 export includes a sector-classification correction: `methane, from
+biomass` (biomethane) and `methane, synthetic` belong to `Gas`, alongside natural
+gas, rather than the generic `Fuels` sector. This correction preserves all source
+values, regions, years, and pathways. The generator also recognizes the legacy
+`biomethane` label and fossil/coal methane supplier names. Supplier mixes retain
+one chart per pathway, including when only one supplier is present.
+
 Every sector exposed by the 2.4.9 explorer has an explicit entry in
 `units.yaml`; chart axes and result badges therefore show physical units rather
 than the generic `Value` fallback.

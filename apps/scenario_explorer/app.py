@@ -1404,7 +1404,12 @@ def update_graphs(
             ),
         ],
     )
-    combined = is_single_series_comparison(raw)
+    # A one-supplier mix is still a composition: relative curves would all be
+    # 100% and hide each other if overlaid. Only combine indicator pathways.
+    combined = (
+        SECTOR_BEHAVIOR.get(selected_sector, {}).get("chart") == "indicator"
+        and is_single_series_comparison(raw)
+    )
     if combined:
         cards = [
             _single_series_comparison_card(raw, pairs, selected_sector, mode, y_range)

@@ -58,6 +58,14 @@ SCENARIOS = [
 ]
 
 OTHER_VARIABLES = {"CO2", "gdp", "population", "GMST"}
+GAS_SUPPLIERS = {
+    "natural gas",
+    "biomethane",
+    "methane, fossil",
+    "methane, from biomass",
+    "methane, synthetic",
+    "methane, from coal",
+}
 
 
 def version_string() -> str:
@@ -175,9 +183,9 @@ def normalize_dataset(frame: pd.DataFrame) -> pd.DataFrame:
     frame.loc[variables.str.contains("liquefied", na=False), "sector"] = "LPG"
     frame.loc[variables.str.contains("kerosene", na=False), "sector"] = "Kerosene"
     frame.loc[variables.str.contains("hydrogen", na=False), "sector"] = "Hydrogen"
-    frame.loc[variables.eq("natural gas") | variables.eq("biomethane"), "sector"] = (
-        "Gas"
-    )
+    # Include current premise methane names as well as the legacy biomethane
+    # label. Exact matching keeps heat and transport demand out of gas supply.
+    frame.loc[variables.isin(GAS_SUPPLIERS), "sector"] = "Gas"
     frame.loc[variables.eq("heavy fuel oil"), "sector"] = "Oil"
 
     replacements = (

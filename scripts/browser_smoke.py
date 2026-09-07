@@ -201,7 +201,7 @@ def main() -> None:
         page.locator(".slide").wait_for()
         page.locator("#next-button").click()
         page.get_by_role(
-            "heading", name="Societies demand services—not tonnes of fuel"
+            "heading", name="People need services, not fuel", exact=True
         ).wait_for()
         if args.output:
             page.screenshot(path=args.output / "workshop.png")

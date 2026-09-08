@@ -1,0 +1,347 @@
+{
+  "basis": "IAM secondary gas production by energy",
+  "model": "remind-eu",
+  "location": "ENC",
+  "variables": {
+    "Biomethane": "SE|Gases|+|Biomass",
+    "Fossil gas": "SE|Gases|+|Fossil",
+    "Hydrogen-derived gas": "SE|Gases|+|Hydrogen"
+  },
+  "denominator": "SE|Gases",
+  "sources": {
+    "SSP2-NPi": {
+      "filename": "remind-eu_SSP2-NPi.csv",
+      "sha256": "812cb12ec53aa7deb6865de904e5116c20989271dccdeca2d89e747fd5bbbd0e"
+    },
+    "SSP2-PkBudg1000": {
+      "filename": "remind-eu_SSP2-PkBudg1000.csv",
+      "sha256": "0b3c4be351d36714063940b4704afb64aa34178dfe0966a8c85767799d00961e"
+    }
+  },
+  "rows": [
+    {
+      "pathway": "SSP2-NPi",
+      "year": 2020,
+      "sector": "Gas",
+      "category": "Biomethane",
+      "share": 0.19336773719570444,
+      "energy_ej_per_year": 0.0345325,
+      "total_energy_ej_per_year": 0.1785846
+    },
+    {
+      "pathway": "SSP2-NPi",
+      "year": 2020,
+      "sector": "Gas",
+      "category": "Fossil gas",
+      "share": 0.8065527486692581,
+      "energy_ej_per_year": 0.1440379,
+      "total_energy_ej_per_year": 0.1785846
+    },
+    {
+      "pathway": "SSP2-NPi",
+      "year": 2020,
+      "sector": "Gas",
+      "category": "Hydrogen-derived gas",
+      "share": 7.951413503739964e-05,
+      "energy_ej_per_year": 1.42e-05,
+      "total_energy_ej_per_year": 0.1785846
+    },
+    {
+      "pathway": "SSP2-NPi",
+      "year": 2025,
+      "sector": "Gas",
+      "category": "Biomethane",
+      "share": 0.5473365817940917,
+      "energy_ej_per_year": 0.1130238,
+      "total_energy_ej_per_year": 0.2064978
+    },
+    {
+      "pathway": "SSP2-NPi",
+      "year": 2025,
+      "sector": "Gas",
+      "category": "Fossil gas",
+      "share": 0.45252588647433534,
+      "energy_ej_per_year": 0.0934456,
+      "total_energy_ej_per_year": 0.2064978
+    },
+    {
+      "pathway": "SSP2-NPi",
+      "year": 2025,
+      "sector": "Gas",
+      "category": "Hydrogen-derived gas",
+      "share": 0.00013753173157292716,
+      "energy_ej_per_year": 2.84e-05,
+      "total_energy_ej_per_year": 0.2064978
+    },
+    {
+      "pathway": "SSP2-NPi",
+      "year": 2030,
+      "sector": "Gas",
+      "category": "Biomethane",
+      "share": 0.9989591114662776,
+      "energy_ej_per_year": 0.2070111,
+      "total_energy_ej_per_year": 0.2072268
+    },
+    {
+      "pathway": "SSP2-NPi",
+      "year": 2030,
+      "sector": "Gas",
+      "category": "Fossil gas",
+      "share": 0.0008888811678798303,
+      "energy_ej_per_year": 0.0001842,
+      "total_energy_ej_per_year": 0.2072268
+    },
+    {
+      "pathway": "SSP2-NPi",
+      "year": 2030,
+      "sector": "Gas",
+      "category": "Hydrogen-derived gas",
+      "share": 0.00015200736584264197,
+      "energy_ej_per_year": 3.15e-05,
+      "total_energy_ej_per_year": 0.2072268
+    },
+    {
+      "pathway": "SSP2-NPi",
+      "year": 2035,
+      "sector": "Gas",
+      "category": "Biomethane",
+      "share": 0.9991486871670354,
+      "energy_ej_per_year": 0.2079719,
+      "total_energy_ej_per_year": 0.2081491
+    },
+    {
+      "pathway": "SSP2-NPi",
+      "year": 2035,
+      "sector": "Gas",
+      "category": "Fossil gas",
+      "share": 0.0007014202799819937,
+      "energy_ej_per_year": 0.000146,
+      "total_energy_ej_per_year": 0.2081491
+    },
+    {
+      "pathway": "SSP2-NPi",
+      "year": 2035,
+      "sector": "Gas",
+      "category": "Hydrogen-derived gas",
+      "share": 0.00014989255298245344,
+      "energy_ej_per_year": 3.12e-05,
+      "total_energy_ej_per_year": 0.2081491
+    },
+    {
+      "pathway": "SSP2-NPi",
+      "year": 2040,
+      "sector": "Gas",
+      "category": "Biomethane",
+      "share": 0.9993229092091628,
+      "energy_ej_per_year": 0.205889,
+      "total_energy_ej_per_year": 0.2060285
+    },
+    {
+      "pathway": "SSP2-NPi",
+      "year": 2040,
+      "sector": "Gas",
+      "category": "Fossil gas",
+      "share": 0.0005256554311660766,
+      "energy_ej_per_year": 0.0001083,
+      "total_energy_ej_per_year": 0.2060285
+    },
+    {
+      "pathway": "SSP2-NPi",
+      "year": 2040,
+      "sector": "Gas",
+      "category": "Hydrogen-derived gas",
+      "share": 0.00015143535967111345,
+      "energy_ej_per_year": 3.12e-05,
+      "total_energy_ej_per_year": 0.2060285
+    },
+    {
+      "pathway": "SSP2-NPi",
+      "year": 2050,
+      "sector": "Gas",
+      "category": "Biomethane",
+      "share": 0.9996084575254411,
+      "energy_ej_per_year": 0.192241,
+      "total_energy_ej_per_year": 0.1923163
+    },
+    {
+      "pathway": "SSP2-NPi",
+      "year": 2050,
+      "sector": "Gas",
+      "category": "Fossil gas",
+      "share": 0.00022151008520858605,
+      "energy_ej_per_year": 4.26e-05,
+      "total_energy_ej_per_year": 0.1923163
+    },
+    {
+      "pathway": "SSP2-NPi",
+      "year": 2050,
+      "sector": "Gas",
+      "category": "Hydrogen-derived gas",
+      "share": 0.00017055236607609444,
+      "energy_ej_per_year": 3.28e-05,
+      "total_energy_ej_per_year": 0.1923163
+    },
+    {
+      "pathway": "SSP2-PkBudg1000",
+      "year": 2020,
+      "sector": "Gas",
+      "category": "Biomethane",
+      "share": 0.19336773719570444,
+      "energy_ej_per_year": 0.0345325,
+      "total_energy_ej_per_year": 0.1785846
+    },
+    {
+      "pathway": "SSP2-PkBudg1000",
+      "year": 2020,
+      "sector": "Gas",
+      "category": "Fossil gas",
+      "share": 0.8065527486692581,
+      "energy_ej_per_year": 0.1440379,
+      "total_energy_ej_per_year": 0.1785846
+    },
+    {
+      "pathway": "SSP2-PkBudg1000",
+      "year": 2020,
+      "sector": "Gas",
+      "category": "Hydrogen-derived gas",
+      "share": 7.951413503739964e-05,
+      "energy_ej_per_year": 1.42e-05,
+      "total_energy_ej_per_year": 0.1785846
+    },
+    {
+      "pathway": "SSP2-PkBudg1000",
+      "year": 2025,
+      "sector": "Gas",
+      "category": "Biomethane",
+      "share": 0.5473365817940917,
+      "energy_ej_per_year": 0.1130238,
+      "total_energy_ej_per_year": 0.2064978
+    },
+    {
+      "pathway": "SSP2-PkBudg1000",
+      "year": 2025,
+      "sector": "Gas",
+      "category": "Fossil gas",
+      "share": 0.45252588647433534,
+      "energy_ej_per_year": 0.0934456,
+      "total_energy_ej_per_year": 0.2064978
+    },
+    {
+      "pathway": "SSP2-PkBudg1000",
+      "year": 2025,
+      "sector": "Gas",
+      "category": "Hydrogen-derived gas",
+      "share": 0.00013753173157292716,
+      "energy_ej_per_year": 2.84e-05,
+      "total_energy_ej_per_year": 0.2064978
+    },
+    {
+      "pathway": "SSP2-PkBudg1000",
+      "year": 2030,
+      "sector": "Gas",
+      "category": "Biomethane",
+      "share": 0.9986629607268734,
+      "energy_ej_per_year": 0.1611109,
+      "total_energy_ej_per_year": 0.1613266
+    },
+    {
+      "pathway": "SSP2-PkBudg1000",
+      "year": 2030,
+      "sector": "Gas",
+      "category": "Fossil gas",
+      "share": 0.0011417831901248772,
+      "energy_ej_per_year": 0.0001842,
+      "total_energy_ej_per_year": 0.1613266
+    },
+    {
+      "pathway": "SSP2-PkBudg1000",
+      "year": 2030,
+      "sector": "Gas",
+      "category": "Hydrogen-derived gas",
+      "share": 0.00019525608300181125,
+      "energy_ej_per_year": 3.15e-05,
+      "total_energy_ej_per_year": 0.1613266
+    },
+    {
+      "pathway": "SSP2-PkBudg1000",
+      "year": 2035,
+      "sector": "Gas",
+      "category": "Biomethane",
+      "share": 0.9994876426513184,
+      "energy_ej_per_year": 0.1603527,
+      "total_energy_ej_per_year": 0.1604349
+    },
+    {
+      "pathway": "SSP2-PkBudg1000",
+      "year": 2035,
+      "sector": "Gas",
+      "category": "Fossil gas",
+      "share": 0.0003185092520393007,
+      "energy_ej_per_year": 5.11e-05,
+      "total_energy_ej_per_year": 0.1604349
+    },
+    {
+      "pathway": "SSP2-PkBudg1000",
+      "year": 2035,
+      "sector": "Gas",
+      "category": "Hydrogen-derived gas",
+      "share": 0.00019447140241929904,
+      "energy_ej_per_year": 3.12e-05,
+      "total_energy_ej_per_year": 0.1604349
+    },
+    {
+      "pathway": "SSP2-PkBudg1000",
+      "year": 2040,
+      "sector": "Gas",
+      "category": "Biomethane",
+      "share": 0.9995632826753857,
+      "energy_ej_per_year": 0.1583857,
+      "total_energy_ej_per_year": 0.1584549
+    },
+    {
+      "pathway": "SSP2-PkBudg1000",
+      "year": 2040,
+      "sector": "Gas",
+      "category": "Fossil gas",
+      "share": 0.00024044696629766575,
+      "energy_ej_per_year": 3.81e-05,
+      "total_energy_ej_per_year": 0.1584549
+    },
+    {
+      "pathway": "SSP2-PkBudg1000",
+      "year": 2040,
+      "sector": "Gas",
+      "category": "Hydrogen-derived gas",
+      "share": 0.00019690145271619873,
+      "energy_ej_per_year": 3.12e-05,
+      "total_energy_ej_per_year": 0.1584549
+    },
+    {
+      "pathway": "SSP2-PkBudg1000",
+      "year": 2050,
+      "sector": "Gas",
+      "category": "Biomethane",
+      "share": 0.9996656350813758,
+      "energy_ej_per_year": 0.1461985,
+      "total_energy_ej_per_year": 0.1462474
+    },
+    {
+      "pathway": "SSP2-PkBudg1000",
+      "year": 2050,
+      "sector": "Gas",
+      "category": "Fossil gas",
+      "share": 0.00011008742719528688,
+      "energy_ej_per_year": 1.61e-05,
+      "total_energy_ej_per_year": 0.1462474
+    },
+    {
+      "pathway": "SSP2-PkBudg1000",
+      "year": 2050,
+      "sector": "Gas",
+      "category": "Hydrogen-derived gas",
+      "share": 0.00022427749142890744,
+      "energy_ej_per_year": 3.28e-05,
+      "total_energy_ej_per_year": 0.1462474
+    }
+  ]
+}

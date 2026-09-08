@@ -1,0 +1,6 @@
+.slide-10 .result-layout{grid-template-rows:42px minmax(0,1fr);gap:8px}
+.slide-10 .prospective-toolbar{padding:5px 12px;align-items:center;justify-content:flex-start;gap:28px}
+.prospective-toolbar label{font-size:12px;cursor:pointer;margin-right:12px}
+.prospective-toolbar input{margin-right:5px;accent-color:#174f61}
+.slide-10 .slide-lead{font-size:16px}
+.slide-10 .static-four-controls{min-height:130px}

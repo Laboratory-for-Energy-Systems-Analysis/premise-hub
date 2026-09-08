@@ -1,0 +1,44 @@
+.static-stage-layout{min-height:0;display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr) 166px;gap:10px}
+.static-stage-layout .result-chart{height:100%;min-height:0}
+.static-stage-key{min-height:0;overflow:auto;border:1px solid #d7e1e4;border-radius:12px;padding:12px;background:#f8fafb;display:grid;grid-template-columns:210px minmax(0,1fr);column-gap:18px}
+.static-stage-key>div:last-child{grid-column:2;overflow:auto;min-height:0}
+.static-detail-toggle{display:flex;gap:4px;margin-bottom:9px}
+.static-detail-toggle label{cursor:pointer;font-size:10px;font-weight:650;padding:6px 4px;background:white;border:1px solid #cedce0;border-radius:6px;white-space:nowrap}
+.static-detail-toggle label:has(input:checked){background:#e2f0ef;border-color:#397d6e;color:#175c52}
+.static-detail-toggle input{margin:0 4px 0 0;accent-color:#397d6e;vertical-align:middle}
+.carbon-balance-heading{display:flex;justify-content:space-between;gap:12px;font-size:13px;color:#173d50}
+.carbon-balance-heading>span{color:#617681;font-size:12px}
+.carbon-balance-diagram{width:100%;height:80px;display:block;object-fit:contain}
+.carbon-accounting-bridge{display:flex;justify-content:space-between;gap:12px;font-size:12px;padding:5px 0;border-top:1px solid #d7e1e4;color:#276d5b}
+.carbon-balance-panel small{display:block;font-size:11px;color:#617681;line-height:1.4}
+.subprocess-key-table{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px}
+.static-stage-key h3{font-size:16px;margin:0 0 8px;color:#0b3b52}
+.static-stage-key p{font-size:12px;color:#617681;margin:8px 0 12px}
+.subprocess-key-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px;padding:8px;border:1px solid #e1e8eb;border-radius:7px;font-size:12px;align-items:center;background:white}
+.subprocess-key-row>span:first-child{grid-column:1/-1;min-height:30px}
+.subprocess-key-row>span[data-system]::before{content:attr(data-system) ' ';font-size:10px;color:#687f88}
+.subprocess-key-row>span:not(:first-child),.subprocess-key-row>b{text-align:right;font-variant-numeric:tabular-nums}
+.subprocess-key-row>span:first-child{display:flex;align-items:center;gap:7px;line-height:1.3}
+.subprocess-key-row i{width:10px;height:10px;border-radius:2px;flex-shrink:0}
+.subprocess-key-head{display:none}
+.static-stage-hint{font-size:13px;color:#506975}
+.slide-08 .result-toolbar{min-height:34px!important}
+.slide-08 .result-layout{grid-template-rows:minmax(0,1fr)}
+.slide-08 .static-stage-layout .js-plotly-plot{height:100%}
+@media(max-width:1200px){.static-stage-key{grid-template-columns:180px minmax(0,1fr);padding:8px}.subprocess-key-row{font-size:11px}}
+.static-four-layout{grid-template-rows:minmax(0,1fr) 145px}
+.static-four-controls{display:grid;grid-template-columns:minmax(0,3.18fr) minmax(0,1fr);grid-template-rows:minmax(0,1fr);gap:16px;min-height:0}
+.static-four-controls .static-stage-key{grid-template-columns:190px minmax(0,1fr)}
+.static-four-controls .static-stage-key h3{font-size:14px}
+.static-compact-legend{display:flex;gap:9px 14px;flex-wrap:wrap;align-content:flex-start;padding:3px 0;font-size:12px;color:#294b5b}
+.static-compact-legend>span{display:flex;gap:6px;align-items:center;line-height:1.4}
+.static-compact-legend i{width:10px;height:10px;flex-shrink:0;border-radius:2px}
+.static-sensitivity-controls{min-width:0;min-height:0;display:grid;grid-template-rows:16px 32px 16px 32px 27px;box-sizing:border-box;border:1px solid #dbc69e;background:#fffbf2;border-radius:12px;padding:9px 12px;color:#173d50}
+.static-sensitivity-controls>div:first-child{display:flex;justify-content:space-between;align-items:center;gap:6px}
+.static-sensitivity-controls strong{font-size:12px}
+.sensitivity-preview-badge{font-size:9px;color:#90631c;text-transform:uppercase;letter-spacing:.4px}
+.static-sensitivity-controls>div:not(:first-child){padding:5px 10px 15px!important;min-height:0}
+.static-sensitivity-controls .rc-slider-mark-text{font-size:10px;color:#596d77;white-space:nowrap}
+.static-sensitivity-controls p{font-size:10px;line-height:1.3;margin:4px 0 0;color:#90631c}
+.static-sensitivity-controls .rc-slider-track{background:#d5b877}
+.static-sensitivity-controls .rc-slider-handle{border-color:#b38a3b}

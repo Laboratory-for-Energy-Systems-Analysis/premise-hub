@@ -1,0 +1,22 @@
+/* Slide 7: diagram-led analytical questions, not invented comparison results. */
+.slide-07 .slide-body>.investigation-map{display:grid;grid-template-rows:auto minmax(0,1fr) auto auto;gap:12px;min-height:0}
+.investigation-phases{display:grid;grid-template-columns:2fr 3fr;gap:20px;font-size:12px;font-weight:750;letter-spacing:.1em}
+.investigation-phases span{padding:9px 14px;border-bottom:2px solid #cbdde3;color:#426879}
+.investigation-phases .investigation-phase-time{border-color:#d5c9e4;color:#7656a8}
+.investigation-cards{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px;min-height:0}
+.investigation-card{position:relative;display:grid;grid-template-rows:64px minmax(100px,1fr) 58px 36px;gap:8px;min-height:0;padding:17px 16px 14px;border:1px solid #dae5e8;border-top:4px solid #008a82;border-radius:12px;background:linear-gradient(180deg,#f3f8f9,white)}
+.investigation-future{border-top-color:#4193b8}
+.investigation-dated,.investigation-response,.investigation-pulse{border-top-color:#7656a8;background:linear-gradient(180deg,#f5f2f9,white)}
+.investigation-card:not(:last-child)::after{content:'→';position:absolute;right:-16px;top:45%;z-index:1;font-size:20px;color:#75919d;background:white;border-radius:50%}
+.investigation-card-heading{display:flex;align-items:start;gap:10px}
+.investigation-card-heading small{color:#6d8996;font-size:13px;font-weight:700;padding-top:4px}
+.investigation-card h2{margin:0;font-size:21px;line-height:1.16;color:#0b3b52;font-weight:650}
+.investigation-art{height:100%;width:100%;min-height:0;object-fit:contain}
+.investigation-prompt{font-size:19px;line-height:1.23;color:#0b3b52;align-self:center;font-weight:600}
+.investigation-metric{font-size:12px;line-height:1.25;color:#56717e;border-top:1px solid #e0e8eb;padding-top:9px}
+.investigation-anchor{display:grid;grid-template-columns:1.6fr 1.3fr 1fr 1fr;align-items:center;gap:16px;padding:16px 22px;background:#0b3b52;color:white;border-radius:12px}
+.investigation-anchor-copy{display:grid;gap:6px}.investigation-anchor-copy strong{font-size:23px}.investigation-anchor-copy span{font-size:13px;color:#c8dce5;max-width:260px;line-height:1.35}
+.investigation-option{display:flex;align-items:center;gap:12px;font-size:18px;line-height:1.25;border-left:1px solid #3a5e70;padding-left:16px}
+.investigation-option img{width:104px;height:56px;padding:4px;background:#f5f9fa;border-radius:8px}
+.investigation-disclaimer{font-size:11px;color:#64818e;text-align:right}
+@media(max-width:1250px){.investigation-card{padding:12px;grid-template-rows:60px minmax(85px,1fr) 52px 40px}.investigation-card h2{font-size:18px}.investigation-prompt{font-size:16px}.investigation-option{font-size:16px;gap:8px;padding-left:10px}.investigation-option img{width:75px}.investigation-anchor{gap:10px;padding:14px}}

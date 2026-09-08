@@ -1,0 +1,25 @@
+{
+  "year": 2025,
+  "functional_unit": "1000 kg grey clinker",
+  "scope": "Direct operating electricity requested by root stage services only; excludes embedded upstream electricity and infrastructure production. Internal H2 is not an explicit single-output exchange, so no H2 mass is inferred.",
+  "systems": {
+    "BAU": {
+      "direct_electricity_kwh": 61.5,
+      "capture_electricity_kwh": 0,
+      "hydrogen_stage_electricity_kwh": 0,
+      "storage_electricity_kwh": 0
+    },
+    "CCS": {
+      "direct_electricity_kwh": 381.2,
+      "capture_electricity_kwh": 39.4,
+      "hydrogen_stage_electricity_kwh": 0,
+      "storage_electricity_kwh": 281.3
+    },
+    "CCUS": {
+      "direct_electricity_kwh": 1303.7,
+      "capture_electricity_kwh": 39.4,
+      "hydrogen_stage_electricity_kwh": 909.7,
+      "storage_electricity_kwh": 277.9
+    }
+  }
+}

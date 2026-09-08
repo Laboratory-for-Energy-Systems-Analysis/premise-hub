@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0.0",
+  "technology": "industrial heat pump for capture-heat deficit",
+  "coefficient_of_performance": 2.59,
+  "status": "workbook-derived fixed assumption",
+  "provenance_review_status": "requires reconciliation; approved COP retained unchanged",
+  "provenance_review_note": "Main article uses COP 2.85. Capture plant!E42 is capture capacity, not heat duty. The baseline electricity used below is not the gas-boiler electricity coefficient in Capture plant!E5. See docs/HEAT_SOURCE_RECONSTRUCTION.md. Do not treat this derivation as independently verified.",
+  "derivation": "2.33 GJ useful capture heat divided by the incremental heat-pump electricity above the gas-boiler capture electricity: (283.5138653587134 - 33.747322) kWh",
+  "source_cells": [
+    "Capture plant!E42",
+    "Capture plant!E44"
+  ],
+  "time_policy": "fixed in prospective-static and every 2035-2064 time-explicit operating year",
+  "sensitivity_use": "The wind heat-pump avoided-heat option uses the same COP with wind electricity."
+}

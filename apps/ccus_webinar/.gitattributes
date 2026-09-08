@@ -1,0 +1,3 @@
+# Runtime hashes cover exact bytes. Do not normalize data on checkout.
+data/** -text
+data/**/*.csv whitespace=cr-at-eol

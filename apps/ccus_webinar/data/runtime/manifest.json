@@ -1,0 +1,203 @@
+{
+  "schema_version": "2.1.0",
+  "status": "approved",
+  "bundle_id": "ccus-webinar-reviewed-2026-09-08",
+  "review": {
+    "reviewer": "Dr. Romain Sacchi",
+    "reviewed_at": "2026-09-08T13:52:09.092185+00:00",
+    "note": "Presenter approval with explicit accepted modelling assumptions. See decision record."
+  },
+  "convergence_tested": false,
+  "gates": {
+    "source_hash": {
+      "status": "verified",
+      "basis": "Recorded checks apply to the declared webinar scope, not independent empirical validation.",
+      "evidence": [
+        "data/runtime/review-record.json"
+      ]
+    },
+    "heat_balance": {
+      "status": "accepted_assumption",
+      "basis": "Original-study integration retained, separate MTX boiler, remaining utility proxies accepted.",
+      "evidence": [
+        "data/runtime/review-record.json"
+      ]
+    },
+    "brightway_import": {
+      "status": "verified",
+      "basis": "Recorded checks apply to the declared webinar scope, not independent empirical validation.",
+      "evidence": [
+        "data/runtime/review-record.json"
+      ]
+    },
+    "exact_linking": {
+      "status": "verified",
+      "basis": "Recorded checks apply to the declared webinar scope, not independent empirical validation.",
+      "evidence": [
+        "data/runtime/review-record.json"
+      ]
+    },
+    "sensitivity_grid": {
+      "status": "verified",
+      "basis": "Recorded checks apply to the declared webinar scope, not independent empirical validation.",
+      "evidence": [
+        "data/runtime/review-record.json"
+      ]
+    },
+    "hydrogen_balance": {
+      "status": "accepted_assumption",
+      "basis": "Recorded hydrogen checks plus accepted equipment and pressure-interface proxies.",
+      "evidence": [
+        "data/runtime/review-record.json"
+      ]
+    },
+    "terminal_carbon_fates": {
+      "status": "verified",
+      "basis": "Recorded checks apply to the declared webinar scope, not independent empirical validation.",
+      "evidence": [
+        "data/runtime/review-record.json"
+      ]
+    },
+    "extraction_integrity": {
+      "status": "verified",
+      "basis": "Recorded checks apply to the declared webinar scope, not independent empirical validation.",
+      "evidence": [
+        "data/runtime/review-record.json"
+      ]
+    },
+    "background_carbon_interfaces": {
+      "status": "accepted_assumption",
+      "basis": "Wood uptake duplication and waste sign corrected. Generic wastewater composition and waste-fuel conventions accepted.",
+      "evidence": [
+        "data/runtime/review-record.json"
+      ]
+    },
+    "static_reconciliation": {
+      "status": "verified",
+      "basis": "Recorded checks apply to the declared webinar scope, not independent empirical validation.",
+      "evidence": [
+        "data/runtime/review-record.json"
+      ]
+    },
+    "physical_carbon_routing": {
+      "status": "verified",
+      "basis": "Recorded checks apply to the declared webinar scope, not independent empirical validation.",
+      "evidence": [
+        "data/runtime/review-record.json"
+      ]
+    },
+    "inventory_reconciliation": {
+      "status": "accepted_assumption",
+      "basis": "Published fuel trajectory reconciled. Original carbonate/CO and jet composition assumptions accepted.",
+      "evidence": [
+        "data/runtime/review-record.json"
+      ]
+    },
+    "model_contract": {
+      "status": "verified",
+      "basis": "Recorded checks apply to the declared webinar scope, not independent empirical validation.",
+      "evidence": [
+        "data/runtime/review-record.json"
+      ]
+    },
+    "temporal_profiles": {
+      "status": "verified",
+      "basis": "Recorded checks apply to the declared webinar scope, not independent empirical validation.",
+      "evidence": [
+        "data/runtime/review-record.json"
+      ]
+    },
+    "pulse_equivalence": {
+      "status": "verified",
+      "basis": "Recorded checks apply to the declared webinar scope, not independent empirical validation.",
+      "evidence": [
+        "data/runtime/review-record.json"
+      ]
+    },
+    "scenario_coverage": {
+      "status": "verified",
+      "basis": "Recorded checks apply to the declared webinar scope, not independent empirical validation.",
+      "evidence": [
+        "data/runtime/review-record.json"
+      ]
+    },
+    "fair_species": {
+      "status": "verified",
+      "basis": "Recorded checks apply to the declared webinar scope, not independent empirical validation.",
+      "evidence": [
+        "data/runtime/review-record.json"
+      ]
+    },
+    "trails_convergence": {
+      "status": "accepted_assumption",
+      "basis": "Presenter accepts cutoff 1e-4. Convergence NOT tested.",
+      "evidence": [
+        "data/runtime/review-record.json"
+      ]
+    },
+    "carbon_balance": {
+      "status": "verified",
+      "basis": "Recorded checks apply to the declared webinar scope, not independent empirical validation.",
+      "evidence": [
+        "data/runtime/review-record.json"
+      ]
+    }
+  },
+  "bundles": {
+    "main": {
+      "path": "data/runtime/main.json.gz",
+      "sha256": "aaa57e39be514b777266b4ccace1cb3d3fe06656fbe9d6c319b88a5537ec9847"
+    },
+    "2035-SSP2-NPi": {
+      "path": "data/runtime/2035-SSP2-NPi.json.gz",
+      "sha256": "5105c1b84ef0a35c9e4ffc9498537927b5c382c67290448b53eede171d61bc11"
+    },
+    "2035-SSP2-PkBudg1000": {
+      "path": "data/runtime/2035-SSP2-PkBudg1000.json.gz",
+      "sha256": "6cf5bca8c3b60c1b7c09b1c9fa738b15c4bc3739191150aaed0d49bf580aa43a"
+    },
+    "2050-SSP2-NPi": {
+      "path": "data/runtime/2050-SSP2-NPi.json.gz",
+      "sha256": "7511f01d07ff212cd9bc3189d64fabbe360816bb847789fb185ba7ec134058ee"
+    },
+    "2050-SSP2-PkBudg1000": {
+      "path": "data/runtime/2050-SSP2-PkBudg1000.json.gz",
+      "sha256": "584caa27bfaa732e7baf5e2f4cd6ff8aa722b74846ce3fb827774c0f4e1c6009"
+    }
+  },
+  "evidence_hashes": {
+    "data/model_contract.json": "d0dd17b10dfa57c94ace38a721489b0d8b4f636d3cdb7b14c28e0f53acaf8dbd",
+    "data/source_manifest.json": "ebb6d9c5a08159c5996f04b8cbb0115a14b52ed72953af31542b570e9dfd8fbe",
+    "data/public/bau_detail_2025.json": "1bbed091c651308c78fd67ce9d8615a9d646e2e411fc8bd57b9ab39eeaaab75f",
+    "data/public/capture_details_2025.json": "8177df4817ee5a7550aa52196261cb8560fd027ee7255baa1d09cdc8c1f4f39f",
+    "data/assumptions/component_lifetimes.json": "1504383e451f0680aa02647448382e76b50be482e65992a8678c0e4b37e5498d",
+    "data/assumptions/industrial_heat_pump.json": "e9088c5f5cdf5b8b164b880b45b4511001199d0438c41ef8807525aa67fe9ec6",
+    "data/assumptions/methanol_to_jet.json": "fe74d302a84d8ae3975fc98009809504bfed7b83e193b29f34f60f6efaf0c6d8",
+    "data/assumptions/non_fossil_uptake_profiles.json": "b6b9a2747c5b22a2ba7c424a05c857dbfa0da50e4a755144d84f511cc1e237c4",
+    "data/assumptions/non_fossil_uptake_candidate.json": "a81aabcc19600395c8cbf40890d7d85b696b407b4aabbfef1591775384b98034",
+    "data/assumptions/non_fossil_uptake_candidate.sha256": "0801b05f0c625e96f710f5565e7bd541d51d0d261bd0d4fdcd0ce719ab8af94a",
+    "data/processed/scenario_sector_mixes.csv": "62dd7d875163e500b1031c5ee38af06851fdb399b4ee32f7eee32baf1c41a863",
+    "data/processed/sector_shares_six_years.json": "b629f5798d3121983ed88bc9dafd4224a33d432de4e7cf858ffc1a78929b8639",
+    "data/processed/sector_shares_six_years.sha256": "8d8f85448965ba4f36cf671cd9408d5c4ad8d36afcc11bab8110f9224ac9b630",
+    "data/processed/gas_supply_shares.json": "41b75096216da228edba774b46a097faa9a264cf842bf0522a425fee932a55e3",
+    "data/processed/gas_supply_shares.sha256": "03050d17c365f79887c6e9046216b57303b483060109e51cc2a0d44df969225c",
+    "data/runtime/review-record.json": "6860715d5894d0fa9c282bc2300fefc36219646e2479b345fcca01ee833c0eab",
+    "data/runtime/background_gwp_six_years.json": "64e097538bb946a2bf7bf7ebb9c2d5d114f5cecb589e69efacecaba022b00a95",
+    "data/runtime/system_flows_2025.json": "0c451a3a1e7c9f72b7e9112d4b69bfc6f0d1d745edbffcee07fa5a79e28f094c",
+    "data/runtime/direct_utilities_2025.json": "a8696d4cac40fc8587a8fd38dad816d80ba0d70268f54700184abd8a1f3d7c04",
+    "data/runtime/background_gwp_six_years.sha256": "a03387b142116dde5af3ab4af000bc440c03e956294b4d59853e284efe30be83"
+  },
+  "scope": {
+    "static_sensitivity": "five grids, 55 cells each",
+    "dynamic_sensitivity": "not released",
+    "temporal": "2035–2064 production, delayed fuel use in 2065",
+    "pulse": "full precomputed five-year reference/window grid"
+  },
+  "model_hash": "1c65f7f0d80f1b7b275727c658c9c6c9df4a2e912176a4de1eec965af8b12dd1",
+  "distribution": {
+    "kind": "portable presentation export",
+    "source_manifest_sha256": "21ae0b5dc8a697c9b15c5f2386527a19f983db264a5d0c5208edade49a4a213a",
+    "verification": "Original calculation evidence checked at packaging. Runtime checks shipped artifacts only. No calculations or scientific assumptions changed.",
+    "private_inputs": "Source workbooks, raw inventories, licensed databases and calculation scripts are not distributed."
+  }
+}

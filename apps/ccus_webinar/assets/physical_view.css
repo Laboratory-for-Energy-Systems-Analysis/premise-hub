@@ -1,0 +1,5 @@
+/* Hide whole GWP-only controls, including their captions, in physical mode. */
+.temporal-toolbar > div:has(> #gwp-area[style*="none"]),
+.temporal-toolbar > div:has(> #gwp-grouping[style*="none"]),
+.temporal-toolbar > div:has(> #gwp-normalization[style*="none"]) { display: none; }
+.temporal-result-layout:has(#gwp-area[style*="none"]) .chart-reading { display: none; }

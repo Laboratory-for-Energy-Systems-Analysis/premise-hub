@@ -1,0 +1,268 @@
+{
+  "schema_version": "2.2.0",
+  "status": "public_si_carbon_illustration",
+  "basis": "Fuel-derived kiln carbon per tonne clinker in the 2025 public-SI illustration",
+  "source": {
+    "doi": "10.1016/j.jclepro.2023.138935",
+    "workbook_sha256": "a347acaa6c21c0e710dfd29678b329b420398df5a4f866dd6c68591e5a42a36b",
+    "sheet": "Scenarios",
+    "row": 17,
+    "source_cells": {
+      "capture_fraction": "T17",
+      "liquefaction_loss_fraction": "AM17/AH17",
+      "transport_loss_fraction": "AR17/(AH17-AM17)"
+    }
+  },
+  "rates": {
+    "capture_fraction": 0.9,
+    "liquefaction_loss_fraction": 0.05,
+    "transport_loss_fraction": 0.014399999999999998,
+    "methanol_kg_per_kg_co2_feed": 0.684931506849315,
+    "synthesis_co2_kg_per_kg_feed": 0.059261260691233275,
+    "synthesis_co_kg_per_kg_feed": 0.0,
+    "methanol_to_jet_carbon_yield": 0.85,
+    "jet_carbon_mass_fraction": 0.85,
+    "fuel_conversion_assumptions": {
+      "schema_version": "2.3.0",
+      "route_name": "methanol-to-X",
+      "outputs": [
+        "synthetic jet fuel",
+        "diesel blendstock",
+        "naphtha"
+      ],
+      "multi_output_policy": "explicit substitution, without allocation",
+      "off_spec_policy": "UOP jet-focused design with light-olefin recycling and separate diesel, naphtha and residual streams",
+      "carbon_yield_to_jet_fraction": 0.85,
+      "carbon_mass_fractions": {
+        "jet": 0.85,
+        "diesel": 0.85,
+        "naphtha": 0.85
+      },
+      "carbon_mass_fraction_status": "Representative composition assumptions, not UOP measurements. Distinct from carbon-to-jet yield.",
+      "uop_table_2": {
+        "methanol_feed_kt_per_year": 1200.0,
+        "methanol_mass_purity": 0.9985,
+        "saf_kt_per_year": 453.3,
+        "diesel_kt_per_year": 7.9,
+        "naphtha_kt_per_year": 15.6,
+        "reported_carbon_to_saf_yield": 0.854
+      },
+      "coproduct_scaling": "Diesel and naphtha masses per kg pure methanol use their Table 2 output divided by 1200 * 0.9985. Jet alone is recalculated at the user-selected 85% carbon yield. This adapted slate is not an exact UOP plant reproduction.",
+      "coproduct_substitution": {
+        "diesel": {
+          "name": "market for diesel, low-sulfur",
+          "product": "diesel, low-sulfur",
+          "location": "Europe without Switzerland",
+          "unit": "kilogram"
+        },
+        "naphtha": {
+          "name": "market for naphtha",
+          "product": "naphtha",
+          "location": "RER",
+          "unit": "kilogram"
+        }
+      },
+      "coproduct_use_policy": "User-approved fuel use: diesel and naphtha fully combust one year after production. Matching avoided upstream fossil production and combustion CO2 are credited in the production year. No petrochemical naphtha pool or allocation.",
+      "coproduct_combustion": {
+        "approved": true,
+        "approval_date": "2026-09-06",
+        "products": [
+          "diesel",
+          "naphtha"
+        ],
+        "use_delay_years": 1,
+        "credit_delay_years": 0,
+        "oxidation_fraction": 1.0,
+        "counterfactual_basis": "Equal-mass, composition-equivalent fossil fuel. The existing representative carbon mass fraction (0.85) applies to both synthetic and displaced fuel; this is a webinar equivalence assumption, not a measured fuel specification."
+      },
+      "residual_policy": "User-approved aggregate closure: upstream methanol residual and methanol-to-X residual are released as non-fossil CO2 in the production year. This is a webinar modelling assumption, not a quantified fate reported by UOP. No heat credit.",
+      "residual_closure": {
+        "method": "production_year_co2",
+        "approved": true,
+        "approval_date": "2026-09-06",
+        "scope": [
+          "upstream_methanol",
+          "methanol_to_x"
+        ],
+        "species": "Carbon dioxide, non-fossil",
+        "time_offset_years": 0,
+        "heat_credit_mj": 0.0
+      },
+      "uop_process_boundary": "Methanol feed through olefin production, concentration and fractionation, oligomerization, hydrogenation and product fractionation. Upstream CO2-to-methanol synthesis is outside this patent model.",
+      "uop_recycle": "Unconverted ethylene and propylene return to olefin concentration/fractionation. C4-C8 olefins recycle to oligomerization. Internal recycle is not an additional carbon input or a substitution credit.",
+      "uop_residual_streams": [
+        {
+          "stream": "135",
+          "description": "Waste gas containing light paraffins, hydrogen and CO",
+          "carbon_share": null,
+          "fate": "Not quantified by Table 2"
+        },
+        {
+          "stream": "190",
+          "description": "Saturated light gas containing hydrogen and C1-C4 paraffins",
+          "carbon_share": null,
+          "fate": "Patent permits use as fuel gas, without quantifying the heat recovered"
+        },
+        {
+          "stream": "treatment",
+          "description": "Carbon-containing treatment streams, including oxygenate-rich water and CO2-rich spent caustic in optional configurations",
+          "carbon_share": null,
+          "fate": "Configuration-dependent, quantities and treatment not specified by Table 2"
+        }
+      ],
+      "residual_heat_credit_mj": 0.0,
+      "residual_heat_credit_status": "No credit pending a quantified process energy balance, not an assertion that heat recovery is absent",
+      "release_blockers": [
+        "Rebase operating energy and hydrogen to the recycled multi-output design"
+      ],
+      "status": "user-selected literature-supported candidate design, incomplete for LCIA release",
+      "interpretation": "85% is methanol carbon retained in jet. Diesel and naphtha are additional physical products drawn from the remaining carbon. The balance remainder stays explicit. This is a simulation-informed assumption, not measured industrial performance.",
+      "sources": [
+        {
+          "citation": "UOP LLC, US20260098223A1, Table 2, improved light-gas-recycle configuration (2026)",
+          "url": "https://patents.justia.com/patent/20260098223",
+          "support": "UniSim process simulation reports 85.4% methanol-carbon yield to SAF, plus 7.9 kt/year diesel and 15.6 kt/year naphtha from 1200 kt/year methanol feed at 99.85 wt% purity. The webinar retains 85%."
+        },
+        {
+          "citation": "Elwaily et al. (2025), Sustainable aviation fuel production via the methanol pathway: a technical review",
+          "doi": "10.1039/D5SE00231A",
+          "url": "https://doi.org/10.1039/D5SE00231A",
+          "support": "Integrated methanol-to-jet concepts require recycle streams and process integration to improve jet-fuel yield."
+        },
+        {
+          "citation": "Fraunhofer ISE SAFari methanol-to-jet process development",
+          "url": "https://www.ise.fraunhofer.de/en/press-media/press-releases/2026/methanol-qualified-as-a-feedstock-for-sustainable-aviation-fuel.html",
+          "support": "The development target exceeds 85% carbon-based SAF yield using tailored catalysts and in-process stream recycling."
+        }
+      ]
+    }
+  },
+  "fuel_assumption_sha256": "fe74d302a84d8ae3975fc98009809504bfed7b83e193b29f34f60f6efaf0c6d8",
+  "methanol_assumption_sha256": "3ab86a3a056c816de7f28a5bc21cdc1c10cd6de4fc06ce1eca1b5d54ee214ae1",
+  "methanol_source": "JRC99380 Sections 3.4 and 4.1, Table 2; approved standalone process replaces SI.2 methanol intensities",
+  "molar_masses": {
+    "C": 12.011,
+    "CO2": 44.009,
+    "methanol": 32.042,
+    "CO": 28.01
+  },
+  "systems": {
+    "CCS": {
+      "fossil_fuel": {
+        "inlet_c": 75.98571012208296,
+        "uncaptured_c": 7.598571012208296,
+        "captured_c": 68.38713910987467,
+        "liquefaction_loss_c": 3.4193569554937335,
+        "transport_loss_c": 0.9355360630230852,
+        "stored_c": 64.03224609135785,
+        "jet_c": 0.0,
+        "diesel_c": 0.0,
+        "naphtha_c": 0.0,
+        "coproduct_c": 0.0,
+        "coproduct_combustion_co2_kg": 0.0,
+        "diesel_kg": 0.0,
+        "naphtha_kg": 0.0,
+        "synthesis_co2_release_c": 0.0,
+        "synthesis_co_release_c": 0.0,
+        "unresolved_synthesis_c": 0.0,
+        "non_jet_conversion_c": 0.0,
+        "assumed_residual_air_c": 0.0,
+        "assumed_residual_co2_kg": 0.0,
+        "known_air_c": 11.953464030725113,
+        "unresolved_c": 0.0,
+        "balance_residual_c": 0.0
+      },
+      "non_fossil_fuel": {
+        "inlet_c": 33.66465909584964,
+        "uncaptured_c": 3.3664659095849636,
+        "captured_c": 30.29819318626468,
+        "liquefaction_loss_c": 1.514909659313234,
+        "transport_loss_c": 0.41447928278810076,
+        "stored_c": 28.368804244163346,
+        "jet_c": 0.0,
+        "diesel_c": 0.0,
+        "naphtha_c": 0.0,
+        "coproduct_c": 0.0,
+        "coproduct_combustion_co2_kg": 0.0,
+        "diesel_kg": 0.0,
+        "naphtha_kg": 0.0,
+        "synthesis_co2_release_c": 0.0,
+        "synthesis_co_release_c": 0.0,
+        "unresolved_synthesis_c": 0.0,
+        "non_jet_conversion_c": 0.0,
+        "assumed_residual_air_c": 0.0,
+        "assumed_residual_co2_kg": 0.0,
+        "known_air_c": 5.295854851686299,
+        "unresolved_c": 0.0,
+        "balance_residual_c": 0.0
+      }
+    },
+    "CCUS": {
+      "fossil_fuel": {
+        "inlet_c": 75.98571012208296,
+        "uncaptured_c": 7.598571012208296,
+        "captured_c": 68.38713910987467,
+        "liquefaction_loss_c": 3.4193569554937335,
+        "transport_loss_c": 0.9355360630230852,
+        "stored_c": 64.03224609135785,
+        "jet_c": 0.0,
+        "diesel_c": 0.0,
+        "naphtha_c": 0.0,
+        "coproduct_c": 0.0,
+        "coproduct_combustion_co2_kg": 0.0,
+        "diesel_kg": 0.0,
+        "naphtha_kg": 0.0,
+        "synthesis_co2_release_c": 0.0,
+        "synthesis_co_release_c": 0.0,
+        "unresolved_synthesis_c": 0.0,
+        "non_jet_conversion_c": 0.0,
+        "assumed_residual_air_c": 0.0,
+        "assumed_residual_co2_kg": 0.0,
+        "known_air_c": 11.953464030725113,
+        "unresolved_c": 0.0,
+        "balance_residual_c": 0.0
+      },
+      "non_fossil_fuel": {
+        "inlet_c": 33.66465909584964,
+        "uncaptured_c": 3.3664659095849636,
+        "captured_c": 30.29819318626468,
+        "liquefaction_loss_c": 0.0,
+        "transport_loss_c": 0.0,
+        "stored_c": 0.0,
+        "jet_c": 24.22728145217308,
+        "diesel_c": 0.4261307846580452,
+        "naphtha_c": 0.841473448185507,
+        "coproduct_c": 1.2676042328435522,
+        "coproduct_combustion_co2_kg": 4.64457536285171,
+        "diesel_kg": 0.5013303348918179,
+        "naphtha_kg": 0.9899687625711847,
+        "synthesis_co2_release_c": 1.795509124884579,
+        "synthesis_co_release_c": 0.0,
+        "unresolved_synthesis_c": 2.886579864025407e-15,
+        "non_jet_conversion_c": 3.007798376363464,
+        "assumed_residual_air_c": 3.007798376363467,
+        "assumed_residual_co2_kg": 11.020747543533412,
+        "methanol_kg": 76.03721610979446,
+        "methanol_c": 28.502684061380098,
+        "jet_kg": 28.502684061380094,
+        "jet_combustion_co2_kg": 88.77016313618226,
+        "known_air_c": 8.16977341083301,
+        "unresolved_c": 0.0,
+        "balance_residual_c": 0.0
+      }
+    }
+  },
+  "assumptions": [
+    "SI.2 capture/storage intensities and approved JRC99380 methanol synthesis are applied to the 2025 fuel-derived streams. This is not a full 2025 plant inventory.",
+    "SI.2 implies 5% liquefaction loss and 1.44% transport/boil-off loss of loaded CO2 on this route. SI.1 prose instead mentions 3% injection loss. Do not combine them or silently equate them.",
+    "Permanent storage has no later leakage in the central webinar scenario.",
+    "85% methanol-carbon-to-jet yield is user-selected and informed by the UOP simulation. Product carbon mass fractions of 85% are separate representative composition assumptions, not measured yields.",
+    "Diesel and naphtha masses follow UOP Table 2 per kg pure methanol, corrected for the reported 99.85% feed purity. The jet yield is independently set to 85%, not the source 85.4%.",
+    "The methanol-stage residual and conversion residual exclude all product carbon. User-approved aggregate closure releases both as non-fossil CO2 in the production year, with no heat credit. This is a webinar assumption, not a quantified UOP fate. Historical residual field names refer to amounts before this closure, not additional terminal pools.",
+    "Diesel and naphtha combust one year after production. Equal-mass fossil production and combustion are credited in the production year, without allocation.",
+    "Jet carbon is counted as product at production and released at combustion one year later, never counted twice in the same balance.",
+    "Avoided fossil jet production/combustion is a substitution credit, not a physical sink for the captured carbon.",
+    "Calcination, capture-boiler carbon and wider upstream emissions are outside the quantified fuel-carbon ledger. Their physical routes remain on the diagram.",
+    "Published GWP results and internal engineering quantities are not used in this diagram. The shared fuel trajectory follows published SI.2; scientific release remains separately gated."
+  ]
+}

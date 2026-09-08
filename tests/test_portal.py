@@ -28,6 +28,8 @@ def test_landing_and_health() -> None:
     assert "/scenarios/" in landing.text
     assert "/workshop/" in landing.text
     assert "/lca-time/" in landing.text
+    assert "/ccus-webinar/" in landing.text
+    assert "LCA of CCS and CCUS applied to cement production" in landing.text
     assert "/ecosystem/" in landing.text
     assert 'rel="icon" href="/static/favicon.ico"' in landing.text
     assert "/static/premise-logo-transparent.png" in landing.text
@@ -142,9 +144,13 @@ def test_resource_catalog_contract() -> None:
 def test_presentation_catalog_contract() -> None:
     catalog = presentations()
     assert [item["id"] for item in catalog] == [
+        "cement-ccs-ccus-2026-09-11",
         "iam-workshop-2026-09-03",
         "lca-through-time-2026-08-27",
     ]
+    assert catalog[0]["date"] == "2026-09-11"
+    assert catalog[0]["href"] == "/ccus-webinar/"
+    catalog = catalog[1:]
     assert catalog[0]["date"] == "2026-09-03"
     assert catalog[0]["date_label"] == "3 September 2026"
     assert catalog[0]["title"] == "IAM scenarios workshop"
@@ -153,6 +159,23 @@ def test_presentation_catalog_contract() -> None:
     assert catalog[1]["date_label"] == "27 August 2026"
     assert catalog[1]["title"] == "LCA through time"
     assert catalog[1]["href"] == "/lca-time/"
+
+
+def test_ccus_webinar_password_only_access() -> None:
+    visitor = Client(application, Response)
+    page = visitor.get('/ccus-webinar/')
+    assert page.status_code == 200
+    assert 'name="password"' in page.text
+    assert 'username' not in page.text
+    assert 'action="/ccus-webinar/login"' in page.text
+    assert visitor.get('/ccus-webinar/_dash-layout').status_code == 401
+    assert visitor.post('/ccus-webinar/login', data={'password': 'wrong'}).status_code == 401
+    response = visitor.post('/ccus-webinar/login', data={'password': '2026-09-11'})
+    assert response.status_code == 303
+    assert response.headers['Location'] == '/ccus-webinar/'
+    assert 'Path=/ccus-webinar/' in response.headers['Set-Cookie']
+    assert visitor.get('/ccus-webinar/_dash-layout').status_code == 200
+    assert visitor.get('/ccus-webinar/assets/styles.css').status_code == 200
 
 
 def test_lca_time_deck_contract() -> None:

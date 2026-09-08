@@ -1,0 +1,10 @@
+/* Slide 4 has one integrated source-derived inventory diagram. */
+.bau-detail-layout{display:grid;grid-template-rows:minmax(0,1fr) auto auto;gap:7px;min-height:0}
+.bau-public-basis{margin:0;padding-inline:12px;color:#52727e;font-size:12px;line-height:1.3}
+.bau-detail-figure{margin:0;min-height:0;overflow:hidden}
+.bau-detail-key{display:flex;align-items:center;gap:20px;padding:5px 12px;color:#52727e;font-size:13px}
+.bau-detail-key>strong{color:#0b3b52}
+.bau-detail-key>span{display:inline-flex;align-items:center;gap:7px}
+.bau-detail-key i{display:inline-block;width:8px;height:8px;border-radius:50%}
+.bau-arrow-key{margin-left:auto}
+@media(max-width:1250px){.bau-detail-key{font-size:11px;gap:12px}}

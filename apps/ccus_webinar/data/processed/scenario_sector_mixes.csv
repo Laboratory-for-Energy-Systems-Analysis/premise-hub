@@ -1,0 +1,181 @@
+pathway,year,sector,category,share,market_name,reference_product,market_unit,location
+SSP2-NPi,2025,Electricity,Hydro,0.3378125493042028,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
+SSP2-NPi,2025,Electricity,Wind,0.3000734245549499,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
+SSP2-NPi,2025,Electricity,Solar,0.03695705983390536,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
+SSP2-NPi,2025,Electricity,Nuclear,0.16266645657280737,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
+SSP2-NPi,2025,Electricity,Biomass,0.15446010514574954,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
+SSP2-NPi,2025,Electricity,Natural gas,0.0070690424329356225,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
+SSP2-NPi,2025,Electricity,Coal and oil,0.0009600423003409457,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
+SSP2-NPi,2025,Electricity,Other,1.319855108336753e-06,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
+SSP2-NPi,2025,District heat,Electric,0.26893089002167125,"market for heat, district or industrial","heat, district or industrial",megajoule,ENC
+SSP2-NPi,2025,District heat,Biomass,0.3694449306481602,"market for heat, district or industrial","heat, district or industrial",megajoule,ENC
+SSP2-NPi,2025,District heat,Recovered heat,0.07698126626112027,"market for heat, district or industrial","heat, district or industrial",megajoule,ENC
+SSP2-NPi,2025,District heat,Hydrogen,0.0008988838689016051,"market for heat, district or industrial","heat, district or industrial",megajoule,ENC
+SSP2-NPi,2025,District heat,Natural gas,0.044165828276953686,"market for heat, district or industrial","heat, district or industrial",megajoule,ENC
+SSP2-NPi,2025,District heat,Oil,0.1909706498394049,"market for heat, district or industrial","heat, district or industrial",megajoule,ENC
+SSP2-NPi,2025,District heat,Coal,0.048607551083788246,"market for heat, district or industrial","heat, district or industrial",megajoule,ENC
+SSP2-NPi,2025,District heat,Other,0.0,"market for heat, district or industrial","heat, district or industrial",megajoule,ENC
+SSP2-NPi,2025,Cement clinker,Conventional,1.0,market for clinker,clinker,kilogram,ENC
+SSP2-NPi,2025,Cement clinker,CCS,0.0,market for clinker,clinker,kilogram,ENC
+SSP2-NPi,2025,Steel,BF–BOF,0.5689474626624815,"market for steel, low-alloyed","steel, low-alloyed",kilogram,ENC
+SSP2-NPi,2025,Steel,BF–BOF + CCS,0.0,"market for steel, low-alloyed","steel, low-alloyed",kilogram,ENC
+SSP2-NPi,2025,Steel,DRI–EAF,0.0,"market for steel, low-alloyed","steel, low-alloyed",kilogram,ENC
+SSP2-NPi,2025,Steel,H₂–DRI/EAF,0.0,"market for steel, low-alloyed","steel, low-alloyed",kilogram,ENC
+SSP2-NPi,2025,Steel,Scrap EAF,0.4310525373375185,"market for steel, low-alloyed","steel, low-alloyed",kilogram,ENC
+SSP2-NPi,2025,Steel,Electrowinning,0.0,"market for steel, low-alloyed","steel, low-alloyed",kilogram,ENC
+SSP2-NPi,2025,Steel,Other,0.0,"market for steel, low-alloyed","steel, low-alloyed",kilogram,ENC
+SSP2-NPi,2025,Truck transport,Battery electric,0.0352296740813627,"market for transport, freight, lorry","transport, freight, lorry",ton kilometer,ENC
+SSP2-NPi,2025,Truck transport,Diesel truck,0.9625446655778841,"market for transport, freight, lorry","transport, freight, lorry",ton kilometer,ENC
+SSP2-NPi,2025,Truck transport,Fuel cell,0.0010677202936561644,"market for transport, freight, lorry","transport, freight, lorry",ton kilometer,ENC
+SSP2-NPi,2025,Truck transport,Compressed gas,0.0011579400470971908,"market for transport, freight, lorry","transport, freight, lorry",ton kilometer,ENC
+SSP2-NPi,2025,Truck transport,Other,0.0,"market for transport, freight, lorry","transport, freight, lorry",ton kilometer,ENC
+SSP2-NPi,2030,Electricity,Hydro,0.31600886413396384,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
+SSP2-NPi,2030,Electricity,Wind,0.340110662062443,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
+SSP2-NPi,2030,Electricity,Solar,0.07006666145574778,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
+SSP2-NPi,2030,Electricity,Nuclear,0.12483402067759736,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
+SSP2-NPi,2030,Electricity,Biomass,0.14307685893279556,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
+SSP2-NPi,2030,Electricity,Natural gas,0.005538896549615055,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
+SSP2-NPi,2030,Electricity,Coal and oil,0.0003614718838791992,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
+SSP2-NPi,2030,Electricity,Other,2.5643039581551183e-06,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
+SSP2-NPi,2030,District heat,Electric,0.29981625229446285,"market for heat, district or industrial","heat, district or industrial",megajoule,ENC
+SSP2-NPi,2030,District heat,Biomass,0.3893598965322165,"market for heat, district or industrial","heat, district or industrial",megajoule,ENC
+SSP2-NPi,2030,District heat,Recovered heat,0.0775947999469749,"market for heat, district or industrial","heat, district or industrial",megajoule,ENC
+SSP2-NPi,2030,District heat,Hydrogen,0.00482437114597123,"market for heat, district or industrial","heat, district or industrial",megajoule,ENC
+SSP2-NPi,2030,District heat,Natural gas,8.812619839298131e-05,"market for heat, district or industrial","heat, district or industrial",megajoule,ENC
+SSP2-NPi,2030,District heat,Oil,0.17898189970684122,"market for heat, district or industrial","heat, district or industrial",megajoule,ENC
+SSP2-NPi,2030,District heat,Coal,0.049334654175140526,"market for heat, district or industrial","heat, district or industrial",megajoule,ENC
+SSP2-NPi,2030,District heat,Other,0.0,"market for heat, district or industrial","heat, district or industrial",megajoule,ENC
+SSP2-NPi,2030,Cement clinker,Conventional,1.0,market for clinker,clinker,kilogram,ENC
+SSP2-NPi,2030,Cement clinker,CCS,0.0,market for clinker,clinker,kilogram,ENC
+SSP2-NPi,2030,Steel,BF–BOF,0.5527764337904622,"market for steel, low-alloyed","steel, low-alloyed",kilogram,ENC
+SSP2-NPi,2030,Steel,BF–BOF + CCS,0.0,"market for steel, low-alloyed","steel, low-alloyed",kilogram,ENC
+SSP2-NPi,2030,Steel,DRI–EAF,0.0,"market for steel, low-alloyed","steel, low-alloyed",kilogram,ENC
+SSP2-NPi,2030,Steel,H₂–DRI/EAF,0.0,"market for steel, low-alloyed","steel, low-alloyed",kilogram,ENC
+SSP2-NPi,2030,Steel,Scrap EAF,0.44722356620953785,"market for steel, low-alloyed","steel, low-alloyed",kilogram,ENC
+SSP2-NPi,2030,Steel,Electrowinning,0.0,"market for steel, low-alloyed","steel, low-alloyed",kilogram,ENC
+SSP2-NPi,2030,Steel,Other,0.0,"market for steel, low-alloyed","steel, low-alloyed",kilogram,ENC
+SSP2-NPi,2030,Truck transport,Battery electric,0.1708291148495621,"market for transport, freight, lorry","transport, freight, lorry",ton kilometer,ENC
+SSP2-NPi,2030,Truck transport,Diesel truck,0.8219704463388153,"market for transport, freight, lorry","transport, freight, lorry",ton kilometer,ENC
+SSP2-NPi,2030,Truck transport,Fuel cell,0.0033386959479325354,"market for transport, freight, lorry","transport, freight, lorry",ton kilometer,ENC
+SSP2-NPi,2030,Truck transport,Compressed gas,0.0038617428636901264,"market for transport, freight, lorry","transport, freight, lorry",ton kilometer,ENC
+SSP2-NPi,2030,Truck transport,Other,0.0,"market for transport, freight, lorry","transport, freight, lorry",ton kilometer,ENC
+SSP2-NPi,2050,Electricity,Hydro,0.2544913026495432,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
+SSP2-NPi,2050,Electricity,Wind,0.497742125876136,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
+SSP2-NPi,2050,Electricity,Solar,0.17993646167555866,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
+SSP2-NPi,2050,Electricity,Nuclear,0.014775106865665202,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
+SSP2-NPi,2050,Electricity,Biomass,0.05020395309112623,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
+SSP2-NPi,2050,Electricity,Natural gas,0.002826248330862049,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
+SSP2-NPi,2050,Electricity,Coal and oil,1.9181833365165685e-05,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
+SSP2-NPi,2050,Electricity,Other,5.619677743700886e-06,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
+SSP2-NPi,2050,District heat,Electric,0.35219825536205873,"market for heat, district or industrial","heat, district or industrial",megajoule,ENC
+SSP2-NPi,2050,District heat,Biomass,0.4314840971612906,"market for heat, district or industrial","heat, district or industrial",megajoule,ENC
+SSP2-NPi,2050,District heat,Recovered heat,0.054417781950251515,"market for heat, district or industrial","heat, district or industrial",megajoule,ENC
+SSP2-NPi,2050,District heat,Hydrogen,0.049892019246061264,"market for heat, district or industrial","heat, district or industrial",megajoule,ENC
+SSP2-NPi,2050,District heat,Natural gas,2.0622944822393022e-05,"market for heat, district or industrial","heat, district or industrial",megajoule,ENC
+SSP2-NPi,2050,District heat,Oil,0.06575048077690128,"market for heat, district or industrial","heat, district or industrial",megajoule,ENC
+SSP2-NPi,2050,District heat,Coal,0.04623674255861431,"market for heat, district or industrial","heat, district or industrial",megajoule,ENC
+SSP2-NPi,2050,District heat,Other,0.0,"market for heat, district or industrial","heat, district or industrial",megajoule,ENC
+SSP2-NPi,2050,Cement clinker,Conventional,0.8152757094677494,market for clinker,clinker,kilogram,ENC
+SSP2-NPi,2050,Cement clinker,CCS,0.18472429053225067,market for clinker,clinker,kilogram,ENC
+SSP2-NPi,2050,Steel,BF–BOF,0.601146201308255,"market for steel, low-alloyed","steel, low-alloyed",kilogram,ENC
+SSP2-NPi,2050,Steel,BF–BOF + CCS,0.0,"market for steel, low-alloyed","steel, low-alloyed",kilogram,ENC
+SSP2-NPi,2050,Steel,DRI–EAF,0.0,"market for steel, low-alloyed","steel, low-alloyed",kilogram,ENC
+SSP2-NPi,2050,Steel,H₂–DRI/EAF,0.0,"market for steel, low-alloyed","steel, low-alloyed",kilogram,ENC
+SSP2-NPi,2050,Steel,Scrap EAF,0.39885379869174503,"market for steel, low-alloyed","steel, low-alloyed",kilogram,ENC
+SSP2-NPi,2050,Steel,Electrowinning,0.0,"market for steel, low-alloyed","steel, low-alloyed",kilogram,ENC
+SSP2-NPi,2050,Steel,Other,0.0,"market for steel, low-alloyed","steel, low-alloyed",kilogram,ENC
+SSP2-NPi,2050,Truck transport,Battery electric,0.8708172408126814,"market for transport, freight, lorry","transport, freight, lorry",ton kilometer,ENC
+SSP2-NPi,2050,Truck transport,Diesel truck,0.11477382985802465,"market for transport, freight, lorry","transport, freight, lorry",ton kilometer,ENC
+SSP2-NPi,2050,Truck transport,Fuel cell,0.009829860970483936,"market for transport, freight, lorry","transport, freight, lorry",ton kilometer,ENC
+SSP2-NPi,2050,Truck transport,Compressed gas,0.004579068358810073,"market for transport, freight, lorry","transport, freight, lorry",ton kilometer,ENC
+SSP2-NPi,2050,Truck transport,Other,0.0,"market for transport, freight, lorry","transport, freight, lorry",ton kilometer,ENC
+SSP2-PkBudg1000,2025,Electricity,Hydro,0.3378125493042028,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
+SSP2-PkBudg1000,2025,Electricity,Wind,0.3000734245549499,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
+SSP2-PkBudg1000,2025,Electricity,Solar,0.03695705983390537,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
+SSP2-PkBudg1000,2025,Electricity,Nuclear,0.16266645657280737,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
+SSP2-PkBudg1000,2025,Electricity,Biomass,0.15446010514574954,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
+SSP2-PkBudg1000,2025,Electricity,Natural gas,0.007069042432935622,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
+SSP2-PkBudg1000,2025,Electricity,Coal and oil,0.0009600423003409492,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
+SSP2-PkBudg1000,2025,Electricity,Other,1.319855108336753e-06,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
+SSP2-PkBudg1000,2025,District heat,Electric,0.26893089002167125,"market for heat, district or industrial","heat, district or industrial",megajoule,ENC
+SSP2-PkBudg1000,2025,District heat,Biomass,0.3694449306481602,"market for heat, district or industrial","heat, district or industrial",megajoule,ENC
+SSP2-PkBudg1000,2025,District heat,Recovered heat,0.07698126626112027,"market for heat, district or industrial","heat, district or industrial",megajoule,ENC
+SSP2-PkBudg1000,2025,District heat,Hydrogen,0.0008988838689016051,"market for heat, district or industrial","heat, district or industrial",megajoule,ENC
+SSP2-PkBudg1000,2025,District heat,Natural gas,0.044165828276953686,"market for heat, district or industrial","heat, district or industrial",megajoule,ENC
+SSP2-PkBudg1000,2025,District heat,Oil,0.1909706498394049,"market for heat, district or industrial","heat, district or industrial",megajoule,ENC
+SSP2-PkBudg1000,2025,District heat,Coal,0.04860755108378825,"market for heat, district or industrial","heat, district or industrial",megajoule,ENC
+SSP2-PkBudg1000,2025,District heat,Other,0.0,"market for heat, district or industrial","heat, district or industrial",megajoule,ENC
+SSP2-PkBudg1000,2025,Cement clinker,Conventional,1.0,market for clinker,clinker,kilogram,ENC
+SSP2-PkBudg1000,2025,Cement clinker,CCS,0.0,market for clinker,clinker,kilogram,ENC
+SSP2-PkBudg1000,2025,Steel,BF–BOF,0.5689474626624815,"market for steel, low-alloyed","steel, low-alloyed",kilogram,ENC
+SSP2-PkBudg1000,2025,Steel,BF–BOF + CCS,0.0,"market for steel, low-alloyed","steel, low-alloyed",kilogram,ENC
+SSP2-PkBudg1000,2025,Steel,DRI–EAF,0.0,"market for steel, low-alloyed","steel, low-alloyed",kilogram,ENC
+SSP2-PkBudg1000,2025,Steel,H₂–DRI/EAF,0.0,"market for steel, low-alloyed","steel, low-alloyed",kilogram,ENC
+SSP2-PkBudg1000,2025,Steel,Scrap EAF,0.4310525373375185,"market for steel, low-alloyed","steel, low-alloyed",kilogram,ENC
+SSP2-PkBudg1000,2025,Steel,Electrowinning,0.0,"market for steel, low-alloyed","steel, low-alloyed",kilogram,ENC
+SSP2-PkBudg1000,2025,Steel,Other,0.0,"market for steel, low-alloyed","steel, low-alloyed",kilogram,ENC
+SSP2-PkBudg1000,2025,Truck transport,Battery electric,0.03674361098915624,"market for transport, freight, lorry","transport, freight, lorry",ton kilometer,ENC
+SSP2-PkBudg1000,2025,Truck transport,Diesel truck,0.9611703556600797,"market for transport, freight, lorry","transport, freight, lorry",ton kilometer,ENC
+SSP2-PkBudg1000,2025,Truck transport,Fuel cell,0.001049966991292299,"market for transport, freight, lorry","transport, freight, lorry",ton kilometer,ENC
+SSP2-PkBudg1000,2025,Truck transport,Compressed gas,0.0010360663594719162,"market for transport, freight, lorry","transport, freight, lorry",ton kilometer,ENC
+SSP2-PkBudg1000,2025,Truck transport,Other,0.0,"market for transport, freight, lorry","transport, freight, lorry",ton kilometer,ENC
+SSP2-PkBudg1000,2030,Electricity,Hydro,0.34013835366116274,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
+SSP2-PkBudg1000,2030,Electricity,Wind,0.3146155281783297,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
+SSP2-PkBudg1000,2030,Electricity,Solar,0.05470794169703707,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
+SSP2-PkBudg1000,2030,Electricity,Nuclear,0.13007418102467025,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
+SSP2-PkBudg1000,2030,Electricity,Biomass,0.15484689011897268,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
+SSP2-PkBudg1000,2030,Electricity,Natural gas,0.00522405048493512,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
+SSP2-PkBudg1000,2030,Electricity,Coal and oil,0.00039028612094973037,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
+SSP2-PkBudg1000,2030,Electricity,Other,2.7687139426281455e-06,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
+SSP2-PkBudg1000,2030,District heat,Electric,0.3348167685087052,"market for heat, district or industrial","heat, district or industrial",megajoule,ENC
+SSP2-PkBudg1000,2030,District heat,Biomass,0.3629113572392884,"market for heat, district or industrial","heat, district or industrial",megajoule,ENC
+SSP2-PkBudg1000,2030,District heat,Recovered heat,0.08064224893059396,"market for heat, district or industrial","heat, district or industrial",megajoule,ENC
+SSP2-PkBudg1000,2030,District heat,Hydrogen,0.006743721536935889,"market for heat, district or industrial","heat, district or industrial",megajoule,ENC
+SSP2-PkBudg1000,2030,District heat,Natural gas,0.00010560624622858916,"market for heat, district or industrial","heat, district or industrial",megajoule,ENC
+SSP2-PkBudg1000,2030,District heat,Oil,0.18306221933669167,"market for heat, district or industrial","heat, district or industrial",megajoule,ENC
+SSP2-PkBudg1000,2030,District heat,Coal,0.031718078201556234,"market for heat, district or industrial","heat, district or industrial",megajoule,ENC
+SSP2-PkBudg1000,2030,District heat,Other,0.0,"market for heat, district or industrial","heat, district or industrial",megajoule,ENC
+SSP2-PkBudg1000,2030,Cement clinker,Conventional,1.0,market for clinker,clinker,kilogram,ENC
+SSP2-PkBudg1000,2030,Cement clinker,CCS,0.0,market for clinker,clinker,kilogram,ENC
+SSP2-PkBudg1000,2030,Steel,BF–BOF,0.24044719088513403,"market for steel, low-alloyed","steel, low-alloyed",kilogram,ENC
+SSP2-PkBudg1000,2030,Steel,BF–BOF + CCS,0.0,"market for steel, low-alloyed","steel, low-alloyed",kilogram,ENC
+SSP2-PkBudg1000,2030,Steel,DRI–EAF,0.17894334572104967,"market for steel, low-alloyed","steel, low-alloyed",kilogram,ENC
+SSP2-PkBudg1000,2030,Steel,H₂–DRI/EAF,0.0,"market for steel, low-alloyed","steel, low-alloyed",kilogram,ENC
+SSP2-PkBudg1000,2030,Steel,Scrap EAF,0.5806094633938164,"market for steel, low-alloyed","steel, low-alloyed",kilogram,ENC
+SSP2-PkBudg1000,2030,Steel,Electrowinning,0.0,"market for steel, low-alloyed","steel, low-alloyed",kilogram,ENC
+SSP2-PkBudg1000,2030,Steel,Other,0.0,"market for steel, low-alloyed","steel, low-alloyed",kilogram,ENC
+SSP2-PkBudg1000,2030,Truck transport,Battery electric,0.1966908749707109,"market for transport, freight, lorry","transport, freight, lorry",ton kilometer,ENC
+SSP2-PkBudg1000,2030,Truck transport,Diesel truck,0.7961926306506886,"market for transport, freight, lorry","transport, freight, lorry",ton kilometer,ENC
+SSP2-PkBudg1000,2030,Truck transport,Fuel cell,0.003711090709068213,"market for transport, freight, lorry","transport, freight, lorry",ton kilometer,ENC
+SSP2-PkBudg1000,2030,Truck transport,Compressed gas,0.0034054036695322894,"market for transport, freight, lorry","transport, freight, lorry",ton kilometer,ENC
+SSP2-PkBudg1000,2030,Truck transport,Other,0.0,"market for transport, freight, lorry","transport, freight, lorry",ton kilometer,ENC
+SSP2-PkBudg1000,2050,Electricity,Hydro,0.5052746114138588,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
+SSP2-PkBudg1000,2050,Electricity,Wind,0.22004364657526546,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
+SSP2-PkBudg1000,2050,Electricity,Solar,0.22011058665588507,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
+SSP2-PkBudg1000,2050,Electricity,Nuclear,0.0,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
+SSP2-PkBudg1000,2050,Electricity,Biomass,0.05437762460043857,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
+SSP2-PkBudg1000,2050,Electricity,Natural gas,0.00015954737006591545,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
+SSP2-PkBudg1000,2050,Electricity,Coal and oil,2.628322183840048e-05,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
+SSP2-PkBudg1000,2050,Electricity,Other,7.700162647968892e-06,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
+SSP2-PkBudg1000,2050,District heat,Electric,0.3924916200032941,"market for heat, district or industrial","heat, district or industrial",megajoule,ENC
+SSP2-PkBudg1000,2050,District heat,Biomass,0.4761682160068823,"market for heat, district or industrial","heat, district or industrial",megajoule,ENC
+SSP2-PkBudg1000,2050,District heat,Recovered heat,0.03814692653489557,"market for heat, district or industrial","heat, district or industrial",megajoule,ENC
+SSP2-PkBudg1000,2050,District heat,Hydrogen,0.06712311755604096,"market for heat, district or industrial","heat, district or industrial",megajoule,ENC
+SSP2-PkBudg1000,2050,District heat,Natural gas,0.0,"market for heat, district or industrial","heat, district or industrial",megajoule,ENC
+SSP2-PkBudg1000,2050,District heat,Oil,0.0002439669860969698,"market for heat, district or industrial","heat, district or industrial",megajoule,ENC
+SSP2-PkBudg1000,2050,District heat,Coal,0.025826152912790168,"market for heat, district or industrial","heat, district or industrial",megajoule,ENC
+SSP2-PkBudg1000,2050,District heat,Other,0.0,"market for heat, district or industrial","heat, district or industrial",megajoule,ENC
+SSP2-PkBudg1000,2050,Cement clinker,Conventional,0.7744380134013671,market for clinker,clinker,kilogram,ENC
+SSP2-PkBudg1000,2050,Cement clinker,CCS,0.22556198659863286,market for clinker,clinker,kilogram,ENC
+SSP2-PkBudg1000,2050,Steel,BF–BOF,0.15734374932209277,"market for steel, low-alloyed","steel, low-alloyed",kilogram,ENC
+SSP2-PkBudg1000,2050,Steel,BF–BOF + CCS,0.0,"market for steel, low-alloyed","steel, low-alloyed",kilogram,ENC
+SSP2-PkBudg1000,2050,Steel,DRI–EAF,0.2887669732345494,"market for steel, low-alloyed","steel, low-alloyed",kilogram,ENC
+SSP2-PkBudg1000,2050,Steel,H₂–DRI/EAF,0.0,"market for steel, low-alloyed","steel, low-alloyed",kilogram,ENC
+SSP2-PkBudg1000,2050,Steel,Scrap EAF,0.5538892774433579,"market for steel, low-alloyed","steel, low-alloyed",kilogram,ENC
+SSP2-PkBudg1000,2050,Steel,Electrowinning,0.0,"market for steel, low-alloyed","steel, low-alloyed",kilogram,ENC
+SSP2-PkBudg1000,2050,Steel,Other,0.0,"market for steel, low-alloyed","steel, low-alloyed",kilogram,ENC
+SSP2-PkBudg1000,2050,Truck transport,Battery electric,0.9294402214329889,"market for transport, freight, lorry","transport, freight, lorry",ton kilometer,ENC
+SSP2-PkBudg1000,2050,Truck transport,Diesel truck,0.0520355775741126,"market for transport, freight, lorry","transport, freight, lorry",ton kilometer,ENC
+SSP2-PkBudg1000,2050,Truck transport,Fuel cell,0.015828154789621653,"market for transport, freight, lorry","transport, freight, lorry",ton kilometer,ENC
+SSP2-PkBudg1000,2050,Truck transport,Compressed gas,0.0026960462032771123,"market for transport, freight, lorry","transport, freight, lorry",ton kilometer,ENC
+SSP2-PkBudg1000,2050,Truck transport,Other,0.0,"market for transport, freight, lorry","transport, freight, lorry",ton kilometer,ENC

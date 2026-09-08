@@ -1,0 +1,24 @@
+/* Presentation readability. No data or calculation changes. */
+.investigation-phases {grid-template-columns:3fr 2fr}
+.capture-detail-uop {grid-template-rows:minmax(285px,1fr) auto auto auto auto;gap:5px}
+.capture-detail-uop .uop-route {padding:5px 10px;gap:3px 10px}
+.capture-detail-uop .uop-branches {display:none}
+.capture-detail-uop .uop-route>a {grid-row:auto}
+.capture-detail-uop .uop-steps>span:not(.uop-arrow) {padding:2px 6px}
+.capture-detail-uop .uop-heat-service {padding-top:2px}
+.capture-detail-uop .carbon-ledger {padding:5px 12px}
+.capture-detail-uop .capture-basis-note {font-size:12px;line-height:1.25}
+.capture-detail-uop .capture-fuel-use {flex-wrap:wrap;gap:3px 10px;font-size:13px}
+.capture-detail-uop .capture-fuel-use>span:last-child {font-size:12px}
+.capture-detail-uop .carbon-ledger-heading span {font-size:12px}
+.slide-04 .bau-basis-note {font-size:14px}
+.uptake-assumption-list {font-size:13px;line-height:1.35}
+.slide-22 .evidence-table th:first-child {width:15%}
+.slide-22 .evidence-table th:nth-child(2) {width:43%}
+.slide-22 .evidence-table th:nth-child(3) {width:16%}
+.slide-22 .evidence-table td {padding:8px 12px;font-size:14px}
+.slide-12 .slide-source,.slide-14 .slide-source {font-size:11px}
+.pulse-window-note {font-size:13px}
+.pulse-endpoint span {font-size:12px}
+.synthesis-matrix th small {font-size:12px;line-height:1.4}
+.slide-18 .resource-group a {line-height:1.4}

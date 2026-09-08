@@ -1,0 +1,30 @@
+.capture-detail-layout{display:grid;grid-template-rows:minmax(0,1fr) auto auto auto;gap:7px;min-height:0}
+.capture-detail-figure{margin:0;min-height:0;overflow:hidden}
+.carbon-ledger{padding:8px 14px;background:#f3f7f8;border:1px solid #d6e1e5;border-radius:10px}
+.carbon-ledger-heading{display:flex;align-items:baseline;gap:16px;margin-bottom:4px}
+.carbon-ledger-heading strong{font-size:15px;color:#0b3b52}
+.carbon-ledger-heading span{font-size:12px;color:#52727e}
+.carbon-ledger table{border-collapse:collapse;width:100%;table-layout:fixed;font-size:14px;color:#0b3b52}
+.carbon-ledger th,.carbon-ledger td{padding:3px 10px;text-align:right}
+.carbon-ledger th:first-child{width:23%;text-align:left}
+.carbon-ledger thead th{font-size:11px;color:#52727e;font-weight:600}
+.carbon-ledger tbody th{font-weight:600}
+.carbon-ledger tbody tr+tr{border-top:1px solid #dce6e9}
+.carbon-ledger .carbon-inlet{font-weight:700}
+.carbon-ledger .carbon-known_air_c{color:#a8474c}
+.carbon-ledger .carbon-stored_c{color:#267aa0}
+.carbon-ledger .carbon-jet_c{color:#3e7654}
+.carbon-ledger .carbon-diesel_c,.carbon-ledger .carbon-naphtha_c{color:#3e7654}
+.carbon-ledger .carbon-unresolved_c{color:#966616}
+.capture-balance-note,.capture-basis-note{margin:0;padding-inline:8px;font-size:12px;line-height:1.3;color:#52727e}
+.capture-balance-note{color:#234a5b}
+.capture-fuel-use{display:flex;align-items:baseline;gap:12px;padding:2px 8px;font-size:13px;color:#3e7654}
+.capture-fuel-use>span:last-child{margin-left:auto;font-size:12px;color:#52727e}
+.capture-detail-uop{grid-template-rows:minmax(0,1fr) auto auto auto auto}
+.uop-route{display:grid;grid-template-columns:175px 1fr;gap:5px 12px;padding:8px 14px;border:1px solid #cbdcd2;border-radius:10px;background:#f5f9f6;font-size:12px;color:#315b43}
+.uop-route>a{grid-row:1/3;align-self:center;color:#315b43;font-weight:650}
+.uop-steps{display:flex;align-items:center;justify-content:space-between;gap:8px;font-weight:600}
+.uop-steps>span:not(.uop-arrow){padding:4px 10px;background:white;border:1px solid #d7e5dc;border-radius:6px}
+.uop-branches{display:flex;justify-content:space-between;gap:12px;font-size:11px;color:#52727e}
+.uop-heat-service{grid-column:1/-1;display:flex;align-items:center;gap:12px;font-size:12px;color:#52727e;border-top:1px solid #dce8df;padding-top:5px}
+.uop-heat-service strong{white-space:nowrap}

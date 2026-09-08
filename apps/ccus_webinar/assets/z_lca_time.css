@@ -1,0 +1,116 @@
+/* Presentation grammar adapted from ../lca_time/assets/styles.css.
+   Keep these rules together: typography, illustrations, controls and plots
+   are one system and should be reviewed at presentation size. */
+:root{--ink:#17232c;--deep:#0b3b52;--blue:#006b8f;--muted:#5b6a74;--line:#d9e0e4;--surface-soft:#f3f6f7}
+html,body{font-family:Arial,Helvetica,sans-serif}
+.app-header{padding-inline:34px}
+.chapter-button{font-size:12px;font-weight:700}
+.redesigned-slide{background:#fff;padding:25px 35px 25px;gap:12px;box-shadow:0 14px 36px rgba(20,42,55,.08)}
+.redesigned-slide::before{display:none}
+.redesigned-slide .slide-heading h1{color:var(--deep);font-size:clamp(29px,2.65vw,46px);line-height:1.06;letter-spacing:-.025em}
+.redesigned-slide .slide-eyebrow{display:block;font-size:13px;letter-spacing:.12em;margin-bottom:9px}
+.redesigned-slide .slide-lead{font-size:clamp(15px,1.25vw,20px);line-height:1.3;margin-top:10px}
+.redesigned-slide .slide-body{gap:12px}
+.slide-source,.slide-source .source-link{font-size:9px;bottom:9px}
+.nav-button{min-height:43px;font-size:13px;padding:10px 18px}
+.footer-hint{font-size:12px;font-weight:500}
+
+/* SVG illustrations replace pseudo-element icons and generic linear chains. */
+.illustrated-system{margin:0;padding:10px;border:1px solid #d6e1e5;border-radius:15px;background:linear-gradient(#fbfdfd,#f3f7f8);min-height:0;overflow:hidden}
+.system-svg{display:block;width:100%;height:100%;object-fit:contain}
+.illustrated-compact{min-height:118px;padding:9px 12px;border-left:5px solid #879aa3}
+.illustrated-ccs{border-left-color:#4193b8}
+.illustrated-ccus{border-left-color:#3e7654}
+.illustrated-detailed{display:flex;align-items:center;min-height:0;padding:8px}
+.scenario-stack{align-content:center;gap:16px}
+.detailed-system-layout{gap:12px;grid-template-rows:minmax(0,1fr) auto}
+.diagram-callouts{gap:12px}
+.diagram-callouts>div{padding:12px 13px;border:1px solid #d6e1e5;background:#f4f8f9;grid-template-columns:28px 1fr;min-height:56px}
+.diagram-callouts strong{font-size:12px;line-height:1.3}
+.diagram-callouts span{font-size:10px;width:28px;height:28px}
+.illustrated-icon{width:48px;height:48px}
+.illustrated-concept-icon{width:100px;height:100px}
+.concept-cards>div{gap:16px;background:#f6f9fa;border-top-width:4px}
+.concept-cards small{font-size:13px}
+.concept-cards strong{font-size:28px;max-width:92%;line-height:1.18}
+.concept-flow{padding:18px 24px}
+.concept-flow span{font-size:18px}
+.project-timeline{padding:8px 12px;grid-template-columns:170px 1fr;gap:4px 10px}
+.timeline-caption{font-size:9px}.timeline-row{height:15px}.timeline-row span{font-size:8px;top:2px}
+.timeline-row i{height:7px;top:4px}.timeline-axis{font-size:8px}
+
+/* A light cover follows lca_time, with the three options present immediately. */
+.title-slide{background:radial-gradient(circle at 85% 25%,rgba(0,138,130,.10),transparent 40%),linear-gradient(135deg,#fff,#f7fafb);padding:0}
+.title-slide .cover-copy{grid-template-columns:52% 48%;padding:42px 42px 35px}
+.title-slide h1{color:var(--deep);font-size:clamp(44px,4.0vw,67px);line-height:1.01;margin-top:17px;max-width:670px}
+.title-slide h2{color:var(--muted);font-size:clamp(23px,1.9vw,32px);line-height:1.2;margin-top:20px;padding-right:22px}
+.cover-kicker{color:var(--blue);font-size:13px}
+.cover-presenter{border-top:1px solid var(--line);padding-top:20px;gap:5px}
+.cover-presenter strong{color:var(--ink);font-size:18px}.cover-presenter span{color:var(--muted);font-size:13px}
+.cover-system-stack{padding-left:30px;gap:18px}
+.cover-route{background:rgba(255,255,255,.92);border:1px solid #d2e0e5;border-left:5px solid #879aa3;border-radius:14px;display:grid;grid-template-columns:1fr 1.3fr;align-items:center;padding:20px 18px;min-height:145px;box-shadow:0 6px 18px rgba(20,42,55,.05)}
+.cover-route-ccs{border-left-color:#4193b8}.cover-route-ccus{border-left-color:#3e7654}
+.cover-route-heading{display:grid;gap:6px}.cover-route-heading strong{font-size:23px;color:var(--deep)}.cover-route-heading span{font-size:12px;color:var(--muted);line-height:1.4;max-width:150px}
+.cover-route-nodes{display:grid;grid-template-columns:1fr 1fr;position:relative;gap:22px}.cover-route-nodes::before{position:absolute;left:45%;top:26px;content:'→';font-size:25px;color:#78909a}
+.cover-route-nodes>div{display:grid;justify-items:center;gap:7px;text-align:center}.cover-route-nodes img{height:58px;width:58px}.cover-route-nodes span{font-size:12px;font-weight:700;color:var(--deep)}
+
+/* Actual segmented controls, including clear checked and keyboard states. */
+.result-toolbar{padding:8px 12px;gap:18px;border-radius:11px;background:#f4f7f8;min-height:62px;align-items:center}
+.chart-control{font-size:9px;letter-spacing:.06em;gap:5px;font-weight:700;min-width:0}
+.chart-control>span{padding-left:2px}
+.contribution-view-toggle{display:inline-flex;flex-wrap:wrap;gap:2px;padding:3px;border:1px solid #cddade;border-radius:9px;background:#eaf0f2;width:fit-content}
+.chart-control .contribution-view-toggle label{position:relative;display:inline-flex!important;align-items:center;justify-content:center;padding:7px 10px;min-height:30px;border:0;border-radius:6px;font-size:12px;font-weight:700;line-height:1.1;background:transparent;color:var(--muted);cursor:pointer;white-space:nowrap;letter-spacing:0}
+.contribution-view-toggle input{position:absolute;width:1px;height:1px;opacity:0}
+.chart-control .contribution-view-toggle label:has(input:checked){background:white;color:var(--deep);box-shadow:0 2px 5px rgba(20,42,55,.12)}
+.chart-control .contribution-view-toggle label:hover{color:var(--blue)}
+.chart-control .contribution-view-toggle label:has(input:focus-visible){outline:2px solid #4193b8;outline-offset:2px}
+.chart-control .contribution-view-toggle label:has(input:disabled){opacity:.42;cursor:not-allowed}
+.temporal-toolbar{display:flex;flex-wrap:wrap;gap:18px;padding-right:127px}
+.candidate-evidence-badge{font-size:8px;letter-spacing:.03em;top:9px;right:9px;padding:4px 6px;opacity:.8}
+.pulse-toolbar{grid-template-columns:auto auto auto minmax(160px,1fr) minmax(210px,1fr);gap:12px;padding-right:126px;min-height:75px}
+.pulse-toolbar .chart-control:nth-child(n+4){padding-inline:10px}
+.pulse-toolbar .rc-slider-mark-text{font-size:9px!important}
+.rc-slider-rail{background:#d0dce1;height:4px}.rc-slider-track{background:#4193b8;height:4px}
+.rc-slider-handle{width:14px;height:14px;margin-top:-5px;border:2px solid #006b8f;background:white;box-shadow:0 1px 4px rgba(0,0,0,.1)}
+.result-chart{border-radius:12px;background:#fbfcfc}
+.result-layout{gap:10px}.result-layout.temporal-result-layout{gap:8px}
+.takeaway-box{min-height:46px;padding:10px 13px;gap:14px;border-left-width:4px;border-radius:0 9px 9px 0}
+.takeaway-box>span{font-size:10px;white-space:nowrap}.takeaway-box strong{font-size:13px;line-height:1.35;font-weight:700}
+.chart-reading{display:flex;align-items:center;gap:15px;min-height:33px;padding:6px 11px;color:#5b6a74;background:#edf4f5;border-radius:8px;font-size:11px;font-variant-numeric:tabular-nums}
+.chart-reading b{color:var(--deep)}.chart-reading .reading-values{display:flex;gap:20px;flex:1}.chart-reading button{margin-left:auto;border:1px solid #cddade;border-radius:6px;background:white;color:var(--deep);font-size:11px;padding:5px 10px;cursor:pointer}
+.result-layout:has(.chart-reading){grid-template-rows:auto minmax(0,1fr) auto auto}
+.redesigned-slide:has(.result-layout){gap:8px;padding-top:22px;padding-bottom:22px}
+.redesigned-slide:has(.result-layout) .slide-heading h1{font-size:clamp(29px,2.4vw,40px)}
+.redesigned-slide:has(.result-layout) .slide-heading .slide-lead{font-size:17px;margin-top:8px}
+.redesigned-slide:has(.result-layout) .result-toolbar{min-height:56px;padding-block:6px}
+.redesigned-slide:has(.result-layout) .takeaway-box{min-height:40px;padding-block:8px}
+.redesigned-slide:has(.result-layout) .chart-reading{min-height:30px;padding-block:4px}
+
+/* Give synthesis and supporting slides the same readable density. */
+.rank-river{gap:12px}.rank-river>div{padding:18px 15px;gap:17px;align-content:center;border-top-width:4px;background:#fbfcfc}
+.rank-river>div>strong{font-size:18px}.rank-river>div>small{width:30px;height:30px;font-size:13px}
+.rank-stack{gap:14px}.rank-stack>span{padding:15px 10px;display:grid;grid-template-columns:1fr;gap:7px}.rank-stack>span>strong{font-size:18px}.rank-stack>span>small{font-size:12px;line-height:1.3;text-align:left}
+.synthesis-key>span{font-size:12px;padding:12px;line-height:1.3}
+.adaptation-steps small{font-size:11px}.adaptation-steps strong{font-size:19px;line-height:1.25}.paper-journal{font-size:12px}.paper-card p{font-size:16px}.paper-tags span{font-size:11px}.paper-card .source-link{font-size:13px}
+.inquiry-step small{font-size:12px}.inquiry-step strong{font-size:21px}
+.resource-atlas h2{font-size:20px;line-height:1.2;margin-bottom:14px}.resource-atlas .source-link{font-size:14px;line-height:1.4;padding:13px 11px}.resource-atlas .resource-group{gap:12px}
+.assumption-grid strong,.lifetime-grid span,.sector-evolution-grid span{font-size:19px}.assumption-grid span,.lifetime-grid strong,.sector-evolution-grid strong{font-size:14px;line-height:1.35}
+
+@media(max-width:1250px){
+ .chapter-button{font-size:10px;padding-inline:5px}.app-header{padding-inline:20px}
+ .redesigned-slide{padding:20px 25px}.redesigned-slide .slide-heading h1{font-size:31px}
+ .chart-control .contribution-view-toggle label{font-size:10px;padding:6px}
+ .temporal-toolbar{gap:10px}.pulse-toolbar{grid-template-columns:auto auto auto minmax(130px,1fr) minmax(150px,1fr);padding-right:110px}
+ .takeaway-box strong{font-size:11px}.cover-route{padding:12px;grid-template-columns:1fr 1.2fr}
+ .cover-route-heading span{font-size:10px}.cover-route-heading strong{font-size:20px}
+}
+/* Lay out the curated deck offscreen before opening the print dialog. Plotly
+   cannot measure a display:none container. These dimensions match print media. */
+body.ccus-webinar-printing .print-deck{display:block}
+.print-page{width:16in;height:9in}
+.print-page>.webinar-slide{width:100%;height:100%;border:0;border-radius:0;box-shadow:none}
+@media print{
+ .chart-reading button{display:none}.chart-reading .reading-values{font-size:10px}
+ .print-page>.redesigned-slide{width:100%;height:100%;box-shadow:none}
+ .illustrated-system{break-inside:avoid}.candidate-evidence-badge{font-size:8px}
+}

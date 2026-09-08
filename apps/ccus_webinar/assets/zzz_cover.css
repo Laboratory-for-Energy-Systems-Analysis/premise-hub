@@ -1,0 +1,12 @@
+/* Slide 1 only: align the same industrial starting point in all three routes. */
+.title-slide .cover-copy{grid-template-columns:47% 53%;grid-template-rows:auto auto 1fr auto;column-gap:10px;padding:38px 38px 34px}
+.title-slide h1{grid-row:1;font-size:clamp(42px,3.65vw,62px);line-height:1.06;margin-top:14px;padding-right:24px}
+.title-slide h2{grid-row:2;font-size:clamp(24px,1.95vw,33px);line-height:1.25;color:#426270;margin-top:24px;padding-right:28px}
+.title-slide .cover-presenter{grid-row:4;padding-top:20px;margin-right:24px;gap:6px}
+.title-slide .cover-system-stack{grid-row:1/5;padding-left:12px;gap:16px;min-height:0;align-content:center}
+.title-slide .cover-route{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(0,1fr);gap:12px;padding:17px 20px 12px;min-height:0;border-radius:12px;box-shadow:0 5px 15px rgba(20,42,55,.035)}
+.title-slide .cover-route-heading{display:grid;grid-template-columns:72px minmax(0,1fr);gap:12px;align-items:start}
+.title-slide .cover-route-heading strong{font-size:24px;line-height:1.25}
+.title-slide .cover-route-heading span{font-size:17px;line-height:1.35;max-width:none;color:#426270}
+.title-slide .cover-route-illustration{display:block;width:100%;height:auto;min-height:0;object-fit:contain}
+@media(max-width:1250px){.title-slide .cover-copy{padding:30px}.title-slide .cover-route{padding:14px;gap:8px}.title-slide .cover-route-heading{grid-template-columns:58px 1fr;gap:8px}.title-slide .cover-route-heading strong{font-size:21px}.title-slide .cover-route-heading span{font-size:15px}}

@@ -1,0 +1,661 @@
+{
+  "schema_version": "1.0.0",
+  "status": "public_si_illustration",
+  "year": 2025,
+  "basis": "one tonne of grey clinker",
+  "source": {
+    "doi": "10.1016/j.jclepro.2023.138935",
+    "workbook": "SI.2. Inventories and results.xlsb",
+    "archive_sha256": "153d8606945a2c7a2b12d6c2a68995165d0e31e1d9a78de010bec1b5e5740c9b",
+    "workbook_sha256": "a347acaa6c21c0e710dfd29678b329b420398df5a4f866dd6c68591e5a42a36b",
+    "sheets": [
+      "Fuel mixes",
+      "Energy vector specs"
+    ]
+  },
+  "annualization": "2025 masses interpolated halfway between published 2020 and 2030 fuel masses. Shared trajectory uses 2020/2030/2040/2050 anchors, frozen after 2050. Not measured 2025 plant data.",
+  "limestone_as_chalk_slurry": {
+    "value": 1300,
+    "unit": "kg",
+    "approximate": true,
+    "status": "rounded_display_approved_by_presenter"
+  },
+  "kiln_energy": {
+    "value": 4.460000000000001,
+    "unit": "GJ"
+  },
+  "fuels": [
+    {
+      "name": "Coal",
+      "value": 35.098260869565216,
+      "unit": "kg",
+      "energy_gj": 0.8879859999999999,
+      "lhv_mj_per_kg": 25.3,
+      "co2_kg_per_kg": 2.36,
+      "non_fossil_carbon_fraction": 0.0,
+      "support_points": [
+        {
+          "year": 2020,
+          "kiln_energy_gj": 4.46,
+          "energy_share": 0.2586,
+          "mass_kg": 45.587193675889324,
+          "source_cells": [
+            "Fuel mixes!E7",
+            "Fuel mixes!F7"
+          ]
+        },
+        {
+          "year": 2030,
+          "kiln_energy_gj": 4.46,
+          "energy_share": 0.1396,
+          "mass_kg": 24.609328063241104,
+          "source_cells": [
+            "Fuel mixes!E8",
+            "Fuel mixes!F8"
+          ]
+        },
+        {
+          "year": 2040,
+          "kiln_energy_gj": 4.4,
+          "energy_share": 0.1396,
+          "mass_kg": 24.278260869565216,
+          "source_cells": [
+            "Fuel mixes!E9",
+            "Fuel mixes!F9"
+          ]
+        },
+        {
+          "year": 2050,
+          "kiln_energy_gj": 4.4,
+          "energy_share": 0.0,
+          "mass_kg": 0.0,
+          "source_cells": [
+            "Fuel mixes!E10",
+            "Fuel mixes!F10"
+          ]
+        }
+      ],
+      "specification_cells": [
+        "Energy vector specs!C4",
+        "Energy vector specs!E4",
+        "Energy vector specs!F4"
+      ]
+    },
+    {
+      "name": "Petroleum coke",
+      "value": 15.175511488825936,
+      "unit": "kg",
+      "energy_gj": 0.482126,
+      "lhv_mj_per_kg": 31.77,
+      "co2_kg_per_kg": 3.017,
+      "non_fossil_carbon_fraction": 0.0,
+      "support_points": [
+        {
+          "year": 2020,
+          "kiln_energy_gj": 4.46,
+          "energy_share": 0.1404,
+          "mass_kg": 19.709915014164306,
+          "source_cells": [
+            "Fuel mixes!E7",
+            "Fuel mixes!G7"
+          ]
+        },
+        {
+          "year": 2030,
+          "kiln_energy_gj": 4.46,
+          "energy_share": 0.0758,
+          "mass_kg": 10.641107963487569,
+          "source_cells": [
+            "Fuel mixes!E8",
+            "Fuel mixes!G8"
+          ]
+        },
+        {
+          "year": 2040,
+          "kiln_energy_gj": 4.4,
+          "energy_share": 0.0758,
+          "mass_kg": 10.497954044696256,
+          "source_cells": [
+            "Fuel mixes!E9",
+            "Fuel mixes!G9"
+          ]
+        },
+        {
+          "year": 2050,
+          "kiln_energy_gj": 4.4,
+          "energy_share": 0.0,
+          "mass_kg": 0.0,
+          "source_cells": [
+            "Fuel mixes!E10",
+            "Fuel mixes!G10"
+          ]
+        }
+      ],
+      "specification_cells": [
+        "Energy vector specs!C5",
+        "Energy vector specs!E5",
+        "Energy vector specs!F5"
+      ]
+    },
+    {
+      "name": "Natural gas",
+      "value": 0.0,
+      "unit": "kg",
+      "energy_gj": 0.0,
+      "lhv_mj_per_kg": 47.1,
+      "co2_kg_per_kg": 2.68,
+      "non_fossil_carbon_fraction": 0.0,
+      "support_points": [
+        {
+          "year": 2020,
+          "kiln_energy_gj": 4.46,
+          "energy_share": 0.0,
+          "mass_kg": 0.0,
+          "source_cells": [
+            "Fuel mixes!E7",
+            "Fuel mixes!H7"
+          ]
+        },
+        {
+          "year": 2030,
+          "kiln_energy_gj": 4.46,
+          "energy_share": 0.0,
+          "mass_kg": 0.0,
+          "source_cells": [
+            "Fuel mixes!E8",
+            "Fuel mixes!H8"
+          ]
+        },
+        {
+          "year": 2040,
+          "kiln_energy_gj": 4.4,
+          "energy_share": 0.0,
+          "mass_kg": 0.0,
+          "source_cells": [
+            "Fuel mixes!E9",
+            "Fuel mixes!H9"
+          ]
+        },
+        {
+          "year": 2050,
+          "kiln_energy_gj": 4.4,
+          "energy_share": 0.0,
+          "mass_kg": 0.0,
+          "source_cells": [
+            "Fuel mixes!E10",
+            "Fuel mixes!H10"
+          ]
+        }
+      ],
+      "specification_cells": [
+        "Energy vector specs!C13",
+        "Energy vector specs!E13",
+        "Energy vector specs!F13"
+      ]
+    },
+    {
+      "name": "Fuel oil",
+      "value": 0.5046986469864698,
+      "unit": "kg",
+      "energy_gj": 0.020516,
+      "lhv_mj_per_kg": 40.65,
+      "co2_kg_per_kg": 3.213,
+      "non_fossil_carbon_fraction": 0.0,
+      "support_points": [
+        {
+          "year": 2020,
+          "kiln_energy_gj": 4.46,
+          "energy_share": 0.0022,
+          "mass_kg": 0.2413776137761378,
+          "source_cells": [
+            "Fuel mixes!E7",
+            "Fuel mixes!I7"
+          ]
+        },
+        {
+          "year": 2030,
+          "kiln_energy_gj": 4.46,
+          "energy_share": 0.007,
+          "mass_kg": 0.768019680196802,
+          "source_cells": [
+            "Fuel mixes!E8",
+            "Fuel mixes!I8"
+          ]
+        },
+        {
+          "year": 2040,
+          "kiln_energy_gj": 4.4,
+          "energy_share": 0.007,
+          "mass_kg": 0.7576875768757688,
+          "source_cells": [
+            "Fuel mixes!E9",
+            "Fuel mixes!I9"
+          ]
+        },
+        {
+          "year": 2050,
+          "kiln_energy_gj": 4.4,
+          "energy_share": 0.007,
+          "mass_kg": 0.7576875768757688,
+          "source_cells": [
+            "Fuel mixes!E10",
+            "Fuel mixes!I10"
+          ]
+        }
+      ],
+      "specification_cells": [
+        "Energy vector specs!C6",
+        "Energy vector specs!E6",
+        "Energy vector specs!F6"
+      ]
+    },
+    {
+      "name": "Gas oil",
+      "value": 0.1927237245609144,
+      "unit": "kg",
+      "energy_gj": 0.006912999999999999,
+      "lhv_mj_per_kg": 35.87,
+      "co2_kg_per_kg": 2.65,
+      "non_fossil_carbon_fraction": 0.0,
+      "support_points": [
+        {
+          "year": 2020,
+          "kiln_energy_gj": 4.46,
+          "energy_share": 0.0031,
+          "mass_kg": 0.3854474491218288,
+          "source_cells": [
+            "Fuel mixes!E7",
+            "Fuel mixes!J7"
+          ]
+        },
+        {
+          "year": 2030,
+          "kiln_energy_gj": 4.46,
+          "energy_share": 0.0,
+          "mass_kg": 0.0,
+          "source_cells": [
+            "Fuel mixes!E8",
+            "Fuel mixes!J8"
+          ]
+        },
+        {
+          "year": 2040,
+          "kiln_energy_gj": 4.4,
+          "energy_share": 0.0,
+          "mass_kg": 0.0,
+          "source_cells": [
+            "Fuel mixes!E9",
+            "Fuel mixes!J9"
+          ]
+        },
+        {
+          "year": 2050,
+          "kiln_energy_gj": 4.4,
+          "energy_share": 0.0,
+          "mass_kg": 0.0,
+          "source_cells": [
+            "Fuel mixes!E10",
+            "Fuel mixes!J10"
+          ]
+        }
+      ],
+      "specification_cells": [
+        "Energy vector specs!C7",
+        "Energy vector specs!E7",
+        "Energy vector specs!F7"
+      ]
+    },
+    {
+      "name": "RDF",
+      "value": 123.30886363636364,
+      "unit": "kg",
+      "energy_gj": 2.7127950000000003,
+      "lhv_mj_per_kg": 22.0,
+      "co2_kg_per_kg": 1.9,
+      "non_fossil_carbon_fraction": 0.37,
+      "support_points": [
+        {
+          "year": 2020,
+          "kiln_energy_gj": 4.46,
+          "energy_share": 0.5557,
+          "mass_kg": 112.65554545454546,
+          "source_cells": [
+            "Fuel mixes!E7",
+            "Fuel mixes!K7"
+          ]
+        },
+        {
+          "year": 2030,
+          "kiln_energy_gj": 4.46,
+          "energy_share": 0.6608,
+          "mass_kg": 133.96218181818182,
+          "source_cells": [
+            "Fuel mixes!E8",
+            "Fuel mixes!K8"
+          ]
+        },
+        {
+          "year": 2040,
+          "kiln_energy_gj": 4.4,
+          "energy_share": 0.6608,
+          "mass_kg": 132.16000000000003,
+          "source_cells": [
+            "Fuel mixes!E9",
+            "Fuel mixes!K9"
+          ]
+        },
+        {
+          "year": 2050,
+          "kiln_energy_gj": 4.4,
+          "energy_share": 0.6608,
+          "mass_kg": 132.16000000000003,
+          "source_cells": [
+            "Fuel mixes!E10",
+            "Fuel mixes!K10"
+          ]
+        }
+      ],
+      "specification_cells": [
+        "Energy vector specs!C8",
+        "Energy vector specs!E8",
+        "Energy vector specs!F8"
+      ]
+    },
+    {
+      "name": "Paper sludge",
+      "value": 0.6219123505976096,
+      "unit": "kg",
+      "energy_gj": 0.0015609999999999999,
+      "lhv_mj_per_kg": 2.51,
+      "co2_kg_per_kg": 0.51,
+      "non_fossil_carbon_fraction": 0.79,
+      "support_points": [
+        {
+          "year": 2020,
+          "kiln_energy_gj": 4.46,
+          "energy_share": 0.0007,
+          "mass_kg": 1.2438247011952193,
+          "source_cells": [
+            "Fuel mixes!E7",
+            "Fuel mixes!L7"
+          ]
+        },
+        {
+          "year": 2030,
+          "kiln_energy_gj": 4.46,
+          "energy_share": 0.0,
+          "mass_kg": 0.0,
+          "source_cells": [
+            "Fuel mixes!E8",
+            "Fuel mixes!L8"
+          ]
+        },
+        {
+          "year": 2040,
+          "kiln_energy_gj": 4.4,
+          "energy_share": 0.0,
+          "mass_kg": 0.0,
+          "source_cells": [
+            "Fuel mixes!E9",
+            "Fuel mixes!L9"
+          ]
+        },
+        {
+          "year": 2050,
+          "kiln_energy_gj": 4.4,
+          "energy_share": 0.0,
+          "mass_kg": 0.0,
+          "source_cells": [
+            "Fuel mixes!E10",
+            "Fuel mixes!L10"
+          ]
+        }
+      ],
+      "specification_cells": [
+        "Energy vector specs!C9",
+        "Energy vector specs!E9",
+        "Energy vector specs!F9"
+      ]
+    },
+    {
+      "name": "Sewage sludge",
+      "value": 1.138377392889699,
+      "unit": "kg",
+      "energy_gj": 0.012487999999999997,
+      "lhv_mj_per_kg": 10.97,
+      "co2_kg_per_kg": 0.99,
+      "non_fossil_carbon_fraction": 1.0,
+      "support_points": [
+        {
+          "year": 2020,
+          "kiln_energy_gj": 4.46,
+          "energy_share": 0.0056,
+          "mass_kg": 2.276754785779398,
+          "source_cells": [
+            "Fuel mixes!E7",
+            "Fuel mixes!M7"
+          ]
+        },
+        {
+          "year": 2030,
+          "kiln_energy_gj": 4.46,
+          "energy_share": 0.0,
+          "mass_kg": 0.0,
+          "source_cells": [
+            "Fuel mixes!E8",
+            "Fuel mixes!M8"
+          ]
+        },
+        {
+          "year": 2040,
+          "kiln_energy_gj": 4.4,
+          "energy_share": 0.0,
+          "mass_kg": 0.0,
+          "source_cells": [
+            "Fuel mixes!E9",
+            "Fuel mixes!M9"
+          ]
+        },
+        {
+          "year": 2050,
+          "kiln_energy_gj": 4.4,
+          "energy_share": 0.0,
+          "mass_kg": 0.0,
+          "source_cells": [
+            "Fuel mixes!E10",
+            "Fuel mixes!M10"
+          ]
+        }
+      ],
+      "specification_cells": [
+        "Energy vector specs!C10",
+        "Energy vector specs!E10",
+        "Energy vector specs!F10"
+      ]
+    },
+    {
+      "name": "Meat and bone meal",
+      "value": 14.638567990373044,
+      "unit": "kg",
+      "energy_gj": 0.243293,
+      "lhv_mj_per_kg": 16.62,
+      "co2_kg_per_kg": 1.46,
+      "non_fossil_carbon_fraction": 1.0,
+      "support_points": [
+        {
+          "year": 2020,
+          "kiln_energy_gj": 4.46,
+          "energy_share": 0.032,
+          "mass_kg": 8.587244283995187,
+          "source_cells": [
+            "Fuel mixes!E7",
+            "Fuel mixes!N7"
+          ]
+        },
+        {
+          "year": 2030,
+          "kiln_energy_gj": 4.46,
+          "energy_share": 0.0771,
+          "mass_kg": 20.6898916967509,
+          "source_cells": [
+            "Fuel mixes!E8",
+            "Fuel mixes!N8"
+          ]
+        },
+        {
+          "year": 2040,
+          "kiln_energy_gj": 4.4,
+          "energy_share": 0.0771,
+          "mass_kg": 20.411552346570396,
+          "source_cells": [
+            "Fuel mixes!E9",
+            "Fuel mixes!N9"
+          ]
+        },
+        {
+          "year": 2050,
+          "kiln_energy_gj": 4.4,
+          "energy_share": 0.143,
+          "mass_kg": 37.85800240673886,
+          "source_cells": [
+            "Fuel mixes!E10",
+            "Fuel mixes!N10"
+          ]
+        }
+      ],
+      "specification_cells": [
+        "Energy vector specs!C11",
+        "Energy vector specs!E11",
+        "Energy vector specs!F11"
+      ]
+    },
+    {
+      "name": "Cement-bound wood fiber board",
+      "value": 1.9796344647519581,
+      "unit": "kg",
+      "energy_gj": 0.007582,
+      "lhv_mj_per_kg": 3.83,
+      "co2_kg_per_kg": 0.75,
+      "non_fossil_carbon_fraction": 1.0,
+      "support_points": [
+        {
+          "year": 2020,
+          "kiln_energy_gj": 4.46,
+          "energy_share": 0.0017,
+          "mass_kg": 1.9796344647519581,
+          "source_cells": [
+            "Fuel mixes!E7",
+            "Fuel mixes!O7"
+          ]
+        },
+        {
+          "year": 2030,
+          "kiln_energy_gj": 4.46,
+          "energy_share": 0.0017,
+          "mass_kg": 1.9796344647519581,
+          "source_cells": [
+            "Fuel mixes!E8",
+            "Fuel mixes!O8"
+          ]
+        },
+        {
+          "year": 2040,
+          "kiln_energy_gj": 4.4,
+          "energy_share": 0.0017,
+          "mass_kg": 1.9530026109660572,
+          "source_cells": [
+            "Fuel mixes!E9",
+            "Fuel mixes!O9"
+          ]
+        },
+        {
+          "year": 2050,
+          "kiln_energy_gj": 4.4,
+          "energy_share": 0.077,
+          "mass_kg": 88.45953002610966,
+          "source_cells": [
+            "Fuel mixes!E10",
+            "Fuel mixes!O10"
+          ]
+        }
+      ],
+      "specification_cells": [
+        "Energy vector specs!C12",
+        "Energy vector specs!E12",
+        "Energy vector specs!F12"
+      ]
+    },
+    {
+      "name": "Wood chips",
+      "value": 6.7791999999999994,
+      "unit": "kg",
+      "energy_gj": 0.08474,
+      "lhv_mj_per_kg": 12.5,
+      "co2_kg_per_kg": 1.8333333333333335,
+      "non_fossil_carbon_fraction": 1.0,
+      "support_points": [
+        {
+          "year": 2020,
+          "kiln_energy_gj": 4.46,
+          "energy_share": 0.0,
+          "mass_kg": 0.0,
+          "source_cells": [
+            "Fuel mixes!E7",
+            "Fuel mixes!P7"
+          ]
+        },
+        {
+          "year": 2030,
+          "kiln_energy_gj": 4.46,
+          "energy_share": 0.038,
+          "mass_kg": 13.558399999999999,
+          "source_cells": [
+            "Fuel mixes!E8",
+            "Fuel mixes!P8"
+          ]
+        },
+        {
+          "year": 2040,
+          "kiln_energy_gj": 4.4,
+          "energy_share": 0.038,
+          "mass_kg": 13.376,
+          "source_cells": [
+            "Fuel mixes!E9",
+            "Fuel mixes!P9"
+          ]
+        },
+        {
+          "year": 2050,
+          "kiln_energy_gj": 4.4,
+          "energy_share": 0.1122,
+          "mass_kg": 39.4944,
+          "source_cells": [
+            "Fuel mixes!E10",
+            "Fuel mixes!P10"
+          ]
+        }
+      ],
+      "specification_cells": [
+        "Energy vector specs!C16",
+        "Energy vector specs!E16",
+        "Energy vector specs!F16"
+      ]
+    }
+  ],
+  "emissions": {
+    "fuel_fossil": {
+      "value": 278.416045022292,
+      "unit": "kg"
+    },
+    "fuel_non_fossil": {
+      "value": 123.34926168922215,
+      "unit": "kg"
+    }
+  },
+  "notes": [
+    "Fuel CO2 is derived from public emission factors and carbon fractions, not from LCIA scores.",
+    "No exact chalk, calcination, operating-electricity or heat-export quantity is included.",
+    "The rounded chalk display is presenter-approved, not a published measurement or a general confidentiality guarantee.",
+    "Shared published fuel trajectory approved 2026-09-08; scientific release remains separately gated."
+  ]
+}

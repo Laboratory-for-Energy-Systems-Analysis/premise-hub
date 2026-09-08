@@ -1,0 +1,37 @@
+.pulse-linked-layout {display:grid; grid-template-rows:auto minmax(0,1fr); gap:10px; min-height:0}
+.pulse-linked-layout .pulse-toolbar {grid-template-columns:auto auto auto minmax(400px,1fr);padding-right:15px;padding-top:22px}
+.pulse-linked-layout .pulse-toolbar .chart-control:last-of-type {min-width:0}
+.pulse-handle-key {display:flex;justify-content:space-between;font-size:11px;color:#52727e;margin-top:19px}
+.pulse-reference-key {color:#aa7000}
+#pulse-window .rc-slider-handle {width:17px;height:17px;margin-top:-6px}
+#pulse-window .rc-slider-handle-2 {border-color:#d18a12;background:#fff3d8}
+#pulse-window .rc-slider-track {background:#93becd}
+#pulse-window .rc-slider-handle::after {position:absolute;inset:0;text-align:center;line-height:13px;font-size:9px;font-weight:700}
+#pulse-window .rc-slider-handle-1::after {content:'1'}
+#pulse-window .rc-slider-handle-2::after {content:'2';color:#aa7000}
+#pulse-window .rc-slider-handle-3::after {content:'3'}
+.pulse-linked-grid {display:grid; grid-template-columns:minmax(0,1fr) 225px; gap:20px; min-height:0}
+.pulse-linked-chart {min-height:0;height:100%}
+.pulse-linked-chart .js-plotly-plot,.pulse-linked-chart .plot-container {height:100%!important}
+.pulse-side-column {display:flex;flex-direction:column;gap:7px;justify-content:flex-start;min-height:0}
+.pulse-window-label {font-size:13px;font-weight:700;color:#52727e}
+#pulse-endpoints {display:grid;gap:9px}
+.pulse-endpoint {display:grid;gap:2px;background:#f2f6f7;border-left:4px solid;padding:7px 12px;border-radius:0 9px 9px 0}
+.pulse-endpoint small {font-size:13px;font-weight:700;color:#17313b}
+.pulse-endpoint strong {font-size:27px;font-weight:600;color:#17313b}
+.pulse-endpoint span,.pulse-side-column>small {font-size:11px;color:#627780;line-height:1.4}
+.pulse-window-note {margin:0;padding:9px;background:#edf3f8;font-size:12px;line-height:1.35;border-radius:8px;color:#315d6b}
+.synthesis-rebuilt {grid-template-rows:auto auto;align-content:space-between;gap:24px}
+.synthesis-takeaways {margin:10px 0 0;padding-left:23px;font-size:17px;line-height:1.4;color:#17313b}
+.synthesis-takeaways li + li {margin-top:7px}
+.synthesis-takeaways li::marker {color:#397b9e}
+.climate-concept {display:grid;grid-template-rows:minmax(0,1fr) auto;min-height:0;gap:12px}
+.climate-concept .explanation-svg {min-height:0;width:100%;height:100%;object-fit:contain}
+.pulse-formula {display:flex;gap:28px;align-items:center;justify-content:center;background:#f1f4fa;border-radius:12px;padding:12px 20px}
+.pulse-formula .katex {font-size:1.35em}
+.pulse-formula p {margin:0}
+.pulse-formula-notes {font-size:13px;color:#52727e;line-height:1.6}
+.response-equation {display:flex;align-items:center;gap:10px;font-family:Georgia,serif;font-size:25px;color:#17313b;white-space:nowrap}
+.response-fraction {display:grid;text-align:center;gap:5px;font-size:23px}
+.response-fraction>span:first-child {border-bottom:1.5px solid #17313b;padding-bottom:6px}
+.response-equation sub,.response-equation sup {font-size:12px}

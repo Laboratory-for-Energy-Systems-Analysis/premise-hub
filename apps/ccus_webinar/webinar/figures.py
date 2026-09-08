@@ -78,6 +78,8 @@ def _contributor_label(name):
 
 def _contributor_color(value: str) -> str:
     carbon_colors = {'Kiln CO₂ · fossil':'#bc7056','Kiln CO₂ · non-fossil':'#78ab60',
+        'CO₂ to storage · fossil':'#426a9c','CO₂ to storage · non-fossil':'#269f9a',
+        'CO₂ to utilisation · non-fossil':'#755aa6',
         'Captured CO₂ · fossil':'#426a9c','Captured CO₂ · non-fossil':'#269f9a',
         'Storage CO₂ losses':'#dca44a','Conversion CO₂ release':'#a98aca','Fuel CO₂ release (+1 y)':'#dc8391'}
     if value in carbon_colors:
@@ -393,7 +395,7 @@ def render_temporal_gwp(
             )
         prepared[system] = (total_by_year, by_contributor)
     from .temporal_carbon_presentation import load_carbon_display, split_carbon
-    carbon_display = load_carbon_display(bundle)
+    carbon_display = load_carbon_display(bundle, public=True)
     if carbon_display:
         for system, (_, by_contributor) in prepared.items():
             split_carbon(by_contributor,system=system,grouping=grouping,factor=factor,payload=carbon_display)
@@ -432,6 +434,10 @@ def render_temporal_gwp(
         "Carbon dioxide, fossil": "Other CO₂ · fossil",
         "Carbon dioxide, non-fossil": "Other CO₂ · non-fossil",
     } if carbon_display else {}
+    if carbon_display and not carbon_display['releases']:
+        # Losses and fuel releases remain within their original stage totals.
+        for stage in ('capture', 'storage', 'methanol', 'synthetic_fuel'):
+            carbon_detail_labels.pop(stage, None)
     legend_seen = set()
     for panel, system in enumerate(SYSTEMS, start=1):
         total_by_year, by_contributor = prepared[system]
@@ -607,7 +613,7 @@ def render_temporal_gwp(
         hovermode="x unified",
     )
     # Display window only: retain earlier events in the cumulative calculation.
-    fig.update_xaxes(range=[2000, max(global_years)])
+    fig.update_xaxes(range=[2006, max(global_years)])
     fig = temporal_style(fig, kind="gwp", unit=gwp_unit, area_mode=area_mode)
     # The shared style rebuilds legend visibility, so apply the residual filter
     # afterward as well. The traces and their numerical values stay intact.

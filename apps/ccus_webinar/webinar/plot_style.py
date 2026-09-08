@@ -232,6 +232,8 @@ def compact_gwp_legend(figure, *, grouping, negligible_labels, unit):
         }),
         "Kiln CO₂": ("#b85f43", {"Kiln CO₂ · fossil", "Kiln CO₂ · non-fossil"}),
         "Captured CO₂": ("#397b9e", {"Captured CO₂ · fossil", "Captured CO₂ · non-fossil"}),
+        "CO₂ to storage": ("#397b9e", {"CO₂ to storage · fossil", "CO₂ to storage · non-fossil"}),
+        "CO₂ to utilisation": ("#755aa6", {"CO₂ to utilisation · non-fossil"}),
         "Heat balance": ("#2f8f83", {"Heat balance"}),
         "Capture & storage": ("#315b91", {
             "Capture", "Storage chain", "Capture utilities & materials",
@@ -248,7 +250,7 @@ def compact_gwp_legend(figure, *, grouping, negligible_labels, unit):
     }
     if grouping == "flow":
         groups = {key: value for key, value in groups.items()
-                  if key in {"Kiln CO₂", "Captured CO₂", "CO₂ releases"}}
+                  if key in {"Kiln CO₂", "Captured CO₂", "CO₂ to storage", "CO₂ to utilisation", "CO₂ releases"}}
         groups.update({
             "Other CO₂": ("#ac852e", set()),
             "Methane": ("#755aa6", set()),
@@ -278,6 +280,11 @@ def compact_gwp_legend(figure, *, grouping, negligible_labels, unit):
         trace.fillcolor = rgba(color, 0.58 if trace.stackgroup else 0.23)
         trace.hoverinfo = None
         trace.hovertemplate = "%{x}<br>%{y:,.0f} " + unit + "<extra>%{fullData.name}</extra>"
+        if trace.name.startswith('CO₂ to '):
+            trace.hovertemplate = ("%{x}<br>%{y:,.0f} " + unit
+                + "<br>Display offset of gross kiln CO₂; not an additional removal."
+                + "<br>Losses and later releases remain in their original stages."
+                + "<extra>%{fullData.name}</extra>")
         if trace.name not in negligible_labels:
             visible_groups.add(group)
     # Empty proxy traces do not enter stacks, axis fitting, or the net readout.

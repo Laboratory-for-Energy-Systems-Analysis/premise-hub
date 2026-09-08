@@ -1,0 +1,729 @@
+{
+  "presentation_only": true,
+  "unit": "kg CO2-eq/t clinker",
+  "source_bundle_sha256": "2ae9989bf31c5482949e63bf6637cc90f6f442d70ca57993bd5782527816f0d7",
+  "note": "Gross kiln CO2 and equal negative captured transfers are a zero-sum display decomposition. Transfers to storage precede storage losses; utilisation is not permanent storage.",
+  "rows": [
+    {
+      "system": "BAU",
+      "year": 2035,
+      "gross_score_fossil": 24.973606736640242,
+      "captured_score_fossil": 0.0,
+      "gross_score_non_fossil": 4.990353554359213,
+      "captured_score_non_fossil": 0.0
+    },
+    {
+      "system": "BAU",
+      "year": 2036,
+      "gross_score_fossil": 24.9622613278589,
+      "captured_score_fossil": 0.0,
+      "gross_score_non_fossil": 4.983594610493264,
+      "captured_score_non_fossil": 0.0
+    },
+    {
+      "system": "BAU",
+      "year": 2037,
+      "gross_score_fossil": 24.950915919077556,
+      "captured_score_fossil": 0.0,
+      "gross_score_non_fossil": 4.976835666627315,
+      "captured_score_non_fossil": 0.0
+    },
+    {
+      "system": "BAU",
+      "year": 2038,
+      "gross_score_fossil": 24.939570510296214,
+      "captured_score_fossil": 0.0,
+      "gross_score_non_fossil": 4.970076722761365,
+      "captured_score_non_fossil": 0.0
+    },
+    {
+      "system": "BAU",
+      "year": 2039,
+      "gross_score_fossil": 24.928225101514876,
+      "captured_score_fossil": 0.0,
+      "gross_score_non_fossil": 4.963317778895416,
+      "captured_score_non_fossil": 0.0
+    },
+    {
+      "system": "BAU",
+      "year": 2040,
+      "gross_score_fossil": 24.91687969273353,
+      "captured_score_fossil": 0.0,
+      "gross_score_non_fossil": 4.956558835029466,
+      "captured_score_non_fossil": 0.0
+    },
+    {
+      "system": "BAU",
+      "year": 2041,
+      "gross_score_fossil": 24.62031628271679,
+      "captured_score_fossil": 0.0,
+      "gross_score_non_fossil": 5.417343654971257,
+      "captured_score_non_fossil": 0.0
+    },
+    {
+      "system": "BAU",
+      "year": 2042,
+      "gross_score_fossil": 24.323752872700044,
+      "captured_score_fossil": 0.0,
+      "gross_score_non_fossil": 5.878128474913046,
+      "captured_score_non_fossil": 0.0
+    },
+    {
+      "system": "BAU",
+      "year": 2043,
+      "gross_score_fossil": 24.027189462683303,
+      "captured_score_fossil": 0.0,
+      "gross_score_non_fossil": 6.338913294854836,
+      "captured_score_non_fossil": 0.0
+    },
+    {
+      "system": "BAU",
+      "year": 2044,
+      "gross_score_fossil": 23.73062605266656,
+      "captured_score_fossil": 0.0,
+      "gross_score_non_fossil": 6.799698114796628,
+      "captured_score_non_fossil": 0.0
+    },
+    {
+      "system": "BAU",
+      "year": 2045,
+      "gross_score_fossil": 23.434062642649824,
+      "captured_score_fossil": 0.0,
+      "gross_score_non_fossil": 7.260482934738417,
+      "captured_score_non_fossil": 0.0
+    },
+    {
+      "system": "BAU",
+      "year": 2046,
+      "gross_score_fossil": 23.137499232633083,
+      "captured_score_fossil": 0.0,
+      "gross_score_non_fossil": 7.721267754680206,
+      "captured_score_non_fossil": 0.0
+    },
+    {
+      "system": "BAU",
+      "year": 2047,
+      "gross_score_fossil": 22.84093582261634,
+      "captured_score_fossil": 0.0,
+      "gross_score_non_fossil": 8.182052574621997,
+      "captured_score_non_fossil": 0.0
+    },
+    {
+      "system": "BAU",
+      "year": 2048,
+      "gross_score_fossil": 22.5443724125996,
+      "captured_score_fossil": 0.0,
+      "gross_score_non_fossil": 8.642837394563788,
+      "captured_score_non_fossil": 0.0
+    },
+    {
+      "system": "BAU",
+      "year": 2049,
+      "gross_score_fossil": 22.24780900258286,
+      "captured_score_fossil": 0.0,
+      "gross_score_non_fossil": 9.103622214505577,
+      "captured_score_non_fossil": 0.0
+    },
+    {
+      "system": "BAU",
+      "year": 2050,
+      "gross_score_fossil": 21.951245592566117,
+      "captured_score_fossil": 0.0,
+      "gross_score_non_fossil": 9.564407034447367,
+      "captured_score_non_fossil": 0.0
+    },
+    {
+      "system": "BAU",
+      "year": 2051,
+      "gross_score_fossil": 21.951245592566117,
+      "captured_score_fossil": 0.0,
+      "gross_score_non_fossil": 9.564407034447367,
+      "captured_score_non_fossil": 0.0
+    },
+    {
+      "system": "BAU",
+      "year": 2052,
+      "gross_score_fossil": 21.951245592566117,
+      "captured_score_fossil": 0.0,
+      "gross_score_non_fossil": 9.564407034447367,
+      "captured_score_non_fossil": 0.0
+    },
+    {
+      "system": "BAU",
+      "year": 2053,
+      "gross_score_fossil": 21.951245592566117,
+      "captured_score_fossil": 0.0,
+      "gross_score_non_fossil": 9.564407034447367,
+      "captured_score_non_fossil": 0.0
+    },
+    {
+      "system": "BAU",
+      "year": 2054,
+      "gross_score_fossil": 21.951245592566117,
+      "captured_score_fossil": 0.0,
+      "gross_score_non_fossil": 9.564407034447367,
+      "captured_score_non_fossil": 0.0
+    },
+    {
+      "system": "BAU",
+      "year": 2055,
+      "gross_score_fossil": 21.951245592566117,
+      "captured_score_fossil": 0.0,
+      "gross_score_non_fossil": 9.564407034447367,
+      "captured_score_non_fossil": 0.0
+    },
+    {
+      "system": "BAU",
+      "year": 2056,
+      "gross_score_fossil": 21.951245592566117,
+      "captured_score_fossil": 0.0,
+      "gross_score_non_fossil": 9.564407034447367,
+      "captured_score_non_fossil": 0.0
+    },
+    {
+      "system": "BAU",
+      "year": 2057,
+      "gross_score_fossil": 21.951245592566117,
+      "captured_score_fossil": 0.0,
+      "gross_score_non_fossil": 9.564407034447367,
+      "captured_score_non_fossil": 0.0
+    },
+    {
+      "system": "BAU",
+      "year": 2058,
+      "gross_score_fossil": 21.951245592566117,
+      "captured_score_fossil": 0.0,
+      "gross_score_non_fossil": 9.564407034447367,
+      "captured_score_non_fossil": 0.0
+    },
+    {
+      "system": "BAU",
+      "year": 2059,
+      "gross_score_fossil": 21.951245592566117,
+      "captured_score_fossil": 0.0,
+      "gross_score_non_fossil": 9.564407034447367,
+      "captured_score_non_fossil": 0.0
+    },
+    {
+      "system": "BAU",
+      "year": 2060,
+      "gross_score_fossil": 21.951245592566117,
+      "captured_score_fossil": 0.0,
+      "gross_score_non_fossil": 9.564407034447367,
+      "captured_score_non_fossil": 0.0
+    },
+    {
+      "system": "BAU",
+      "year": 2061,
+      "gross_score_fossil": 21.951245592566117,
+      "captured_score_fossil": 0.0,
+      "gross_score_non_fossil": 9.564407034447367,
+      "captured_score_non_fossil": 0.0
+    },
+    {
+      "system": "BAU",
+      "year": 2062,
+      "gross_score_fossil": 21.951245592566117,
+      "captured_score_fossil": 0.0,
+      "gross_score_non_fossil": 9.564407034447367,
+      "captured_score_non_fossil": 0.0
+    },
+    {
+      "system": "BAU",
+      "year": 2063,
+      "gross_score_fossil": 21.951245592566117,
+      "captured_score_fossil": 0.0,
+      "gross_score_non_fossil": 9.564407034447367,
+      "captured_score_non_fossil": 0.0
+    },
+    {
+      "system": "BAU",
+      "year": 2064,
+      "gross_score_fossil": 21.951245592566117,
+      "captured_score_fossil": 0.0,
+      "gross_score_non_fossil": 9.564407034447367,
+      "captured_score_non_fossil": 0.0
+    },
+    {
+      "system": "CCS",
+      "year": 2035,
+      "gross_score_fossil": 24.973606736640242,
+      "captured_score_fossil": 22.47624606297622,
+      "gross_score_non_fossil": 4.990353554359213,
+      "captured_score_non_fossil": 4.491318198923292
+    },
+    {
+      "system": "CCS",
+      "year": 2036,
+      "gross_score_fossil": 24.9622613278589,
+      "captured_score_fossil": 22.46603519507301,
+      "gross_score_non_fossil": 4.983594610493264,
+      "captured_score_non_fossil": 4.4852351494439375
+    },
+    {
+      "system": "CCS",
+      "year": 2037,
+      "gross_score_fossil": 24.950915919077556,
+      "captured_score_fossil": 22.4558243271698,
+      "gross_score_non_fossil": 4.976835666627315,
+      "captured_score_non_fossil": 4.479152099964583
+    },
+    {
+      "system": "CCS",
+      "year": 2038,
+      "gross_score_fossil": 24.939570510296214,
+      "captured_score_fossil": 22.445613459266593,
+      "gross_score_non_fossil": 4.970076722761365,
+      "captured_score_non_fossil": 4.473069050485229
+    },
+    {
+      "system": "CCS",
+      "year": 2039,
+      "gross_score_fossil": 24.928225101514876,
+      "captured_score_fossil": 22.43540259136339,
+      "gross_score_non_fossil": 4.963317778895416,
+      "captured_score_non_fossil": 4.466986001005874
+    },
+    {
+      "system": "CCS",
+      "year": 2040,
+      "gross_score_fossil": 24.91687969273353,
+      "captured_score_fossil": 22.425191723460177,
+      "gross_score_non_fossil": 4.956558835029466,
+      "captured_score_non_fossil": 4.46090295152652
+    },
+    {
+      "system": "CCS",
+      "year": 2041,
+      "gross_score_fossil": 24.62031628271679,
+      "captured_score_fossil": 22.15828465444511,
+      "gross_score_non_fossil": 5.417343654971257,
+      "captured_score_non_fossil": 4.875609289474131
+    },
+    {
+      "system": "CCS",
+      "year": 2042,
+      "gross_score_fossil": 24.323752872700044,
+      "captured_score_fossil": 21.89137758543004,
+      "gross_score_non_fossil": 5.878128474913046,
+      "captured_score_non_fossil": 5.290315627421742
+    },
+    {
+      "system": "CCS",
+      "year": 2043,
+      "gross_score_fossil": 24.027189462683303,
+      "captured_score_fossil": 21.624470516414974,
+      "gross_score_non_fossil": 6.338913294854836,
+      "captured_score_non_fossil": 5.705021965369353
+    },
+    {
+      "system": "CCS",
+      "year": 2044,
+      "gross_score_fossil": 23.73062605266656,
+      "captured_score_fossil": 21.357563447399905,
+      "gross_score_non_fossil": 6.799698114796628,
+      "captured_score_non_fossil": 6.119728303316965
+    },
+    {
+      "system": "CCS",
+      "year": 2045,
+      "gross_score_fossil": 23.434062642649824,
+      "captured_score_fossil": 21.090656378384843,
+      "gross_score_non_fossil": 7.260482934738417,
+      "captured_score_non_fossil": 6.534434641264576
+    },
+    {
+      "system": "CCS",
+      "year": 2046,
+      "gross_score_fossil": 23.137499232633083,
+      "captured_score_fossil": 20.823749309369774,
+      "gross_score_non_fossil": 7.721267754680206,
+      "captured_score_non_fossil": 6.949140979212186
+    },
+    {
+      "system": "CCS",
+      "year": 2047,
+      "gross_score_fossil": 22.84093582261634,
+      "captured_score_fossil": 20.556842240354708,
+      "gross_score_non_fossil": 8.182052574621997,
+      "captured_score_non_fossil": 7.363847317159797
+    },
+    {
+      "system": "CCS",
+      "year": 2048,
+      "gross_score_fossil": 22.5443724125996,
+      "captured_score_fossil": 20.28993517133964,
+      "gross_score_non_fossil": 8.642837394563788,
+      "captured_score_non_fossil": 7.77855365510741
+    },
+    {
+      "system": "CCS",
+      "year": 2049,
+      "gross_score_fossil": 22.24780900258286,
+      "captured_score_fossil": 20.023028102324574,
+      "gross_score_non_fossil": 9.103622214505577,
+      "captured_score_non_fossil": 8.19325999305502
+    },
+    {
+      "system": "CCS",
+      "year": 2050,
+      "gross_score_fossil": 21.951245592566117,
+      "captured_score_fossil": 19.756121033309505,
+      "gross_score_non_fossil": 9.564407034447367,
+      "captured_score_non_fossil": 8.60796633100263
+    },
+    {
+      "system": "CCS",
+      "year": 2051,
+      "gross_score_fossil": 21.951245592566117,
+      "captured_score_fossil": 19.756121033309505,
+      "gross_score_non_fossil": 9.564407034447367,
+      "captured_score_non_fossil": 8.60796633100263
+    },
+    {
+      "system": "CCS",
+      "year": 2052,
+      "gross_score_fossil": 21.951245592566117,
+      "captured_score_fossil": 19.756121033309505,
+      "gross_score_non_fossil": 9.564407034447367,
+      "captured_score_non_fossil": 8.60796633100263
+    },
+    {
+      "system": "CCS",
+      "year": 2053,
+      "gross_score_fossil": 21.951245592566117,
+      "captured_score_fossil": 19.756121033309505,
+      "gross_score_non_fossil": 9.564407034447367,
+      "captured_score_non_fossil": 8.60796633100263
+    },
+    {
+      "system": "CCS",
+      "year": 2054,
+      "gross_score_fossil": 21.951245592566117,
+      "captured_score_fossil": 19.756121033309505,
+      "gross_score_non_fossil": 9.564407034447367,
+      "captured_score_non_fossil": 8.60796633100263
+    },
+    {
+      "system": "CCS",
+      "year": 2055,
+      "gross_score_fossil": 21.951245592566117,
+      "captured_score_fossil": 19.756121033309505,
+      "gross_score_non_fossil": 9.564407034447367,
+      "captured_score_non_fossil": 8.60796633100263
+    },
+    {
+      "system": "CCS",
+      "year": 2056,
+      "gross_score_fossil": 21.951245592566117,
+      "captured_score_fossil": 19.756121033309505,
+      "gross_score_non_fossil": 9.564407034447367,
+      "captured_score_non_fossil": 8.60796633100263
+    },
+    {
+      "system": "CCS",
+      "year": 2057,
+      "gross_score_fossil": 21.951245592566117,
+      "captured_score_fossil": 19.756121033309505,
+      "gross_score_non_fossil": 9.564407034447367,
+      "captured_score_non_fossil": 8.60796633100263
+    },
+    {
+      "system": "CCS",
+      "year": 2058,
+      "gross_score_fossil": 21.951245592566117,
+      "captured_score_fossil": 19.756121033309505,
+      "gross_score_non_fossil": 9.564407034447367,
+      "captured_score_non_fossil": 8.60796633100263
+    },
+    {
+      "system": "CCS",
+      "year": 2059,
+      "gross_score_fossil": 21.951245592566117,
+      "captured_score_fossil": 19.756121033309505,
+      "gross_score_non_fossil": 9.564407034447367,
+      "captured_score_non_fossil": 8.60796633100263
+    },
+    {
+      "system": "CCS",
+      "year": 2060,
+      "gross_score_fossil": 21.951245592566117,
+      "captured_score_fossil": 19.756121033309505,
+      "gross_score_non_fossil": 9.564407034447367,
+      "captured_score_non_fossil": 8.60796633100263
+    },
+    {
+      "system": "CCS",
+      "year": 2061,
+      "gross_score_fossil": 21.951245592566117,
+      "captured_score_fossil": 19.756121033309505,
+      "gross_score_non_fossil": 9.564407034447367,
+      "captured_score_non_fossil": 8.60796633100263
+    },
+    {
+      "system": "CCS",
+      "year": 2062,
+      "gross_score_fossil": 21.951245592566117,
+      "captured_score_fossil": 19.756121033309505,
+      "gross_score_non_fossil": 9.564407034447367,
+      "captured_score_non_fossil": 8.60796633100263
+    },
+    {
+      "system": "CCS",
+      "year": 2063,
+      "gross_score_fossil": 21.951245592566117,
+      "captured_score_fossil": 19.756121033309505,
+      "gross_score_non_fossil": 9.564407034447367,
+      "captured_score_non_fossil": 8.60796633100263
+    },
+    {
+      "system": "CCS",
+      "year": 2064,
+      "gross_score_fossil": 21.951245592566117,
+      "captured_score_fossil": 19.756121033309505,
+      "gross_score_non_fossil": 9.564407034447367,
+      "captured_score_non_fossil": 8.60796633100263
+    },
+    {
+      "system": "CCUS",
+      "year": 2035,
+      "gross_score_fossil": 24.973606736640242,
+      "captured_score_fossil": 22.47624606297622,
+      "gross_score_non_fossil": 4.990353554359213,
+      "captured_score_non_fossil": 4.491318198923292
+    },
+    {
+      "system": "CCUS",
+      "year": 2036,
+      "gross_score_fossil": 24.9622613278589,
+      "captured_score_fossil": 22.46603519507301,
+      "gross_score_non_fossil": 4.983594610493264,
+      "captured_score_non_fossil": 4.4852351494439375
+    },
+    {
+      "system": "CCUS",
+      "year": 2037,
+      "gross_score_fossil": 24.950915919077556,
+      "captured_score_fossil": 22.4558243271698,
+      "gross_score_non_fossil": 4.976835666627315,
+      "captured_score_non_fossil": 4.479152099964583
+    },
+    {
+      "system": "CCUS",
+      "year": 2038,
+      "gross_score_fossil": 24.939570510296214,
+      "captured_score_fossil": 22.445613459266593,
+      "gross_score_non_fossil": 4.970076722761365,
+      "captured_score_non_fossil": 4.473069050485229
+    },
+    {
+      "system": "CCUS",
+      "year": 2039,
+      "gross_score_fossil": 24.928225101514876,
+      "captured_score_fossil": 22.43540259136339,
+      "gross_score_non_fossil": 4.963317778895416,
+      "captured_score_non_fossil": 4.466986001005874
+    },
+    {
+      "system": "CCUS",
+      "year": 2040,
+      "gross_score_fossil": 24.91687969273353,
+      "captured_score_fossil": 22.425191723460177,
+      "gross_score_non_fossil": 4.956558835029466,
+      "captured_score_non_fossil": 4.46090295152652
+    },
+    {
+      "system": "CCUS",
+      "year": 2041,
+      "gross_score_fossil": 24.62031628271679,
+      "captured_score_fossil": 22.15828465444511,
+      "gross_score_non_fossil": 5.417343654971257,
+      "captured_score_non_fossil": 4.875609289474131
+    },
+    {
+      "system": "CCUS",
+      "year": 2042,
+      "gross_score_fossil": 24.323752872700044,
+      "captured_score_fossil": 21.89137758543004,
+      "gross_score_non_fossil": 5.878128474913046,
+      "captured_score_non_fossil": 5.290315627421742
+    },
+    {
+      "system": "CCUS",
+      "year": 2043,
+      "gross_score_fossil": 24.027189462683303,
+      "captured_score_fossil": 21.624470516414974,
+      "gross_score_non_fossil": 6.338913294854836,
+      "captured_score_non_fossil": 5.705021965369353
+    },
+    {
+      "system": "CCUS",
+      "year": 2044,
+      "gross_score_fossil": 23.73062605266656,
+      "captured_score_fossil": 21.357563447399905,
+      "gross_score_non_fossil": 6.799698114796628,
+      "captured_score_non_fossil": 6.119728303316965
+    },
+    {
+      "system": "CCUS",
+      "year": 2045,
+      "gross_score_fossil": 23.434062642649824,
+      "captured_score_fossil": 21.090656378384843,
+      "gross_score_non_fossil": 7.260482934738417,
+      "captured_score_non_fossil": 6.534434641264576
+    },
+    {
+      "system": "CCUS",
+      "year": 2046,
+      "gross_score_fossil": 23.137499232633083,
+      "captured_score_fossil": 20.823749309369774,
+      "gross_score_non_fossil": 7.721267754680206,
+      "captured_score_non_fossil": 6.949140979212186
+    },
+    {
+      "system": "CCUS",
+      "year": 2047,
+      "gross_score_fossil": 22.84093582261634,
+      "captured_score_fossil": 20.556842240354708,
+      "gross_score_non_fossil": 8.182052574621997,
+      "captured_score_non_fossil": 7.363847317159797
+    },
+    {
+      "system": "CCUS",
+      "year": 2048,
+      "gross_score_fossil": 22.5443724125996,
+      "captured_score_fossil": 20.28993517133964,
+      "gross_score_non_fossil": 8.642837394563788,
+      "captured_score_non_fossil": 7.77855365510741
+    },
+    {
+      "system": "CCUS",
+      "year": 2049,
+      "gross_score_fossil": 22.24780900258286,
+      "captured_score_fossil": 20.023028102324574,
+      "gross_score_non_fossil": 9.103622214505577,
+      "captured_score_non_fossil": 8.19325999305502
+    },
+    {
+      "system": "CCUS",
+      "year": 2050,
+      "gross_score_fossil": 21.951245592566117,
+      "captured_score_fossil": 19.756121033309505,
+      "gross_score_non_fossil": 9.564407034447367,
+      "captured_score_non_fossil": 8.60796633100263
+    },
+    {
+      "system": "CCUS",
+      "year": 2051,
+      "gross_score_fossil": 21.951245592566117,
+      "captured_score_fossil": 19.756121033309505,
+      "gross_score_non_fossil": 9.564407034447367,
+      "captured_score_non_fossil": 8.60796633100263
+    },
+    {
+      "system": "CCUS",
+      "year": 2052,
+      "gross_score_fossil": 21.951245592566117,
+      "captured_score_fossil": 19.756121033309505,
+      "gross_score_non_fossil": 9.564407034447367,
+      "captured_score_non_fossil": 8.60796633100263
+    },
+    {
+      "system": "CCUS",
+      "year": 2053,
+      "gross_score_fossil": 21.951245592566117,
+      "captured_score_fossil": 19.756121033309505,
+      "gross_score_non_fossil": 9.564407034447367,
+      "captured_score_non_fossil": 8.60796633100263
+    },
+    {
+      "system": "CCUS",
+      "year": 2054,
+      "gross_score_fossil": 21.951245592566117,
+      "captured_score_fossil": 19.756121033309505,
+      "gross_score_non_fossil": 9.564407034447367,
+      "captured_score_non_fossil": 8.60796633100263
+    },
+    {
+      "system": "CCUS",
+      "year": 2055,
+      "gross_score_fossil": 21.951245592566117,
+      "captured_score_fossil": 19.756121033309505,
+      "gross_score_non_fossil": 9.564407034447367,
+      "captured_score_non_fossil": 8.60796633100263
+    },
+    {
+      "system": "CCUS",
+      "year": 2056,
+      "gross_score_fossil": 21.951245592566117,
+      "captured_score_fossil": 19.756121033309505,
+      "gross_score_non_fossil": 9.564407034447367,
+      "captured_score_non_fossil": 8.60796633100263
+    },
+    {
+      "system": "CCUS",
+      "year": 2057,
+      "gross_score_fossil": 21.951245592566117,
+      "captured_score_fossil": 19.756121033309505,
+      "gross_score_non_fossil": 9.564407034447367,
+      "captured_score_non_fossil": 8.60796633100263
+    },
+    {
+      "system": "CCUS",
+      "year": 2058,
+      "gross_score_fossil": 21.951245592566117,
+      "captured_score_fossil": 19.756121033309505,
+      "gross_score_non_fossil": 9.564407034447367,
+      "captured_score_non_fossil": 8.60796633100263
+    },
+    {
+      "system": "CCUS",
+      "year": 2059,
+      "gross_score_fossil": 21.951245592566117,
+      "captured_score_fossil": 19.756121033309505,
+      "gross_score_non_fossil": 9.564407034447367,
+      "captured_score_non_fossil": 8.60796633100263
+    },
+    {
+      "system": "CCUS",
+      "year": 2060,
+      "gross_score_fossil": 21.951245592566117,
+      "captured_score_fossil": 19.756121033309505,
+      "gross_score_non_fossil": 9.564407034447367,
+      "captured_score_non_fossil": 8.60796633100263
+    },
+    {
+      "system": "CCUS",
+      "year": 2061,
+      "gross_score_fossil": 21.951245592566117,
+      "captured_score_fossil": 19.756121033309505,
+      "gross_score_non_fossil": 9.564407034447367,
+      "captured_score_non_fossil": 8.60796633100263
+    },
+    {
+      "system": "CCUS",
+      "year": 2062,
+      "gross_score_fossil": 21.951245592566117,
+      "captured_score_fossil": 19.756121033309505,
+      "gross_score_non_fossil": 9.564407034447367,
+      "captured_score_non_fossil": 8.60796633100263
+    },
+    {
+      "system": "CCUS",
+      "year": 2063,
+      "gross_score_fossil": 21.951245592566117,
+      "captured_score_fossil": 19.756121033309505,
+      "gross_score_non_fossil": 9.564407034447367,
+      "captured_score_non_fossil": 8.60796633100263
+    },
+    {
+      "system": "CCUS",
+      "year": 2064,
+      "gross_score_fossil": 21.951245592566117,
+      "captured_score_fossil": 19.756121033309505,
+      "gross_score_non_fossil": 9.564407034447367,
+      "captured_score_non_fossil": 8.60796633100263
+    }
+  ],
+  "releases": []
+}

@@ -63,9 +63,15 @@ def timeline_art():
             b += _text(930, y-21, 'Kiln CO₂ to air', 'note', 'middle')
             b += _icon('atmosphere', 1290, y-27, 45, 'fossil')
         if i == 2:
+            # Extra CCUS equipment fits above the timeline, beside capture.
+            b += '<g><title>Additional CCUS activities: hydrogen production, methanol synthesis and conversion to fuels</title>'
+            for kind, left in (('hydrogen', 380), ('methanol', 414), ('jet', 448)):
+                b += _icon(kind, left, y-32, 31, 'bio')
+            b += _text(490, y-24, 'H₂ · methanol · fuels', 'note')
+            b += '</g>'
             for year in (2045,2055):
                 b += f'<circle cx="{x(year)}" cy="{y}" r="7" fill="white" stroke="#d6a742" stroke-width="3"/>'
-            b += _text(615, y-24, 'Uncaptured CO₂ + residuals + losses', 'note', 'middle')
+            b += _text(800, y-24, 'Uncaptured CO₂ + residuals + losses', 'note', 'middle')
             b += _text(1040, y-24, 'Fuel CO₂ to air (+1 yr)', 'note', 'middle')
             b += _arrow(f'M{x(2060)} {y}v-20', 'bio')
     b += _text(320, 330, '◆ Initial equipment', 'note')

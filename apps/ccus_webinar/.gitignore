@@ -42,6 +42,8 @@
 !/data/public/component_lifetimes.json
 !/data/public/uptake_profiles.json
 !/data/public/uptake_profiles.sha256
+!/data/public/temporal_carbon_display.json
+!/data/public/temporal_carbon_display.sha256
 !/data/assumptions/
 /data/assumptions/*
 !/data/assumptions/methanol_to_jet.json

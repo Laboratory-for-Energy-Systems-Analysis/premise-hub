@@ -22,12 +22,18 @@ def split_carbon(by_contributor, *, system, grouping, factor, payload):
         for origin in ('fossil','non_fossil'):
             flow='Carbon dioxide, '+origin.replace('_','-')
             parent='clinker' if grouping=='stage' else flow
-            gross=row['kiln_gross_'+origin]/30*factor
-            captured=gross*row['capture_efficiency']
+            if 'gross_score_'+origin in row:
+                gross = row['gross_score_'+origin]*factor
+                captured = row['captured_score_'+origin]*factor
+            else:
+                gross=row['kiln_gross_'+origin]/30*factor
+                captured=gross*row['capture_efficiency']
             year=row['year']
             add(parent,year,-(gross-captured))
             add('Kiln CO₂ · '+origin.replace('_','-'),year,gross)
-            add('Captured CO₂ · '+origin.replace('_','-'),year,-captured)
+            destination = ('utilisation' if system == 'CCUS' and origin == 'non_fossil' else 'storage')
+            label = ('CO₂ to '+destination+' · ' if payload.get('presentation_only') else 'Captured CO₂ · ')
+            add(label+origin.replace('_','-'),year,-captured)
     for row in payload['releases']:
         if row['system']!=system:
             continue
@@ -39,8 +45,16 @@ def split_carbon(by_contributor, *, system, grouping, factor, payload):
         assert isclose(before.get(year,0),sum(v.get(year,0) for v in by_contributor.values()),abs_tol=1e-7,rel_tol=1e-10), 'Carbon display changed an annual total'
     return by_contributor
 
-def load_carbon_display(bundle):
+def load_carbon_display(bundle, *, public=False):
     if bundle.approved:
+        if public:
+            path = Path(__file__).resolve().parents[1]/'data/public/temporal_carbon_display.json'
+            if file_sha256(path) != path.with_suffix('.sha256').read_text().strip():
+                raise ValueError('Changed public carbon display')
+            payload = json.loads(path.read_text())
+            if payload['source_bundle_sha256'] != bundle.manifest['bundles']['main']['sha256']:
+                raise ValueError('Carbon display does not match released results')
+            return payload
         # Public results never load private physical inventory exports, even
         # when a developer's local calculation files happen to be present.
         return None

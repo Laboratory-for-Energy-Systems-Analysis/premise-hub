@@ -387,8 +387,8 @@ def _development_bundle() -> ResultBundle | None:
 
 from .release import load_release_bundle
 
-RESULT_BUNDLE: ResultBundle = load_release_bundle() or _development_bundle() or load_result_bundle(
-    RESULT_MANIFEST
+RESULT_BUNDLE: ResultBundle = load_release_bundle() or ResultBundle(
+    'stale', 'public-release-missing', 'The public result bundle is unavailable.', {}, {}
 )
 
 

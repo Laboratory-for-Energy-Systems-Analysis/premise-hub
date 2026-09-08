@@ -52,8 +52,8 @@ SYSTEM_DESCRIPTIONS = {
 }
 
 STUDY_URL = "https://doi.org/10.1016/j.jclepro.2023.138935"
-SYSTEM_FLOW_PATH = ROOT / "data/runtime/system_flows_2025.json"
-COMPONENT_LIFETIME_PATH = ROOT / "data/assumptions/component_lifetimes.json"
+SYSTEM_FLOW_PATH = ROOT / "data/public/bau_detail_2025.json"
+COMPONENT_LIFETIME_PATH = ROOT / "data/public/component_lifetimes.json"
 
 
 def _engineering_flows() -> dict[str, list[dict]]:
@@ -1314,7 +1314,7 @@ def _appendix(index: int, state: dict):
     elif appendix == 0:
         body = editorial.concept("primer")
     elif appendix == 1:
-        body = editorial.quantity_table(ENGINEERING_FLOWS)
+        body = editorial.public_inventory_table()
     elif appendix == 2:
         body = editorial.assumptions()
     elif appendix == 3:

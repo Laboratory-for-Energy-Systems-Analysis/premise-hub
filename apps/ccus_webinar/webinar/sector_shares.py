@@ -14,7 +14,7 @@ def load_sector_shares(root=APP):
             return []
         artifact = json.loads(payload)
         packages = {r['pathway']: r['sha256'] for r in json.loads(
-            (root / 'data/source_manifest.json').read_text())['trails_packages']}
+            (root / 'data/public/source_manifest.json').read_text())['trails_packages']}
         if artifact['packages'] != packages or artifact['year_policy'] != 'exact package anchors':
             return []
         return artifact['rows']

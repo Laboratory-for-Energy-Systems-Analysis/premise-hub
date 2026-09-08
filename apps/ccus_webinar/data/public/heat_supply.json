@@ -1,0 +1,7 @@
+{
+  "capture": "Recovered kiln heat and supplementary heat supply.",
+  "fuel_conversion": "A separate natural-gas boiler supplies the adapted fuel-conversion process.",
+  "export_credit": "Natural-gas boiler in the current case; electricity-powered industrial heat pump in future cases.",
+  "accounting": "Internally used heat receives no export credit.",
+  "disclosure": "Private utility coefficients are used in calculations but not exported."
+}

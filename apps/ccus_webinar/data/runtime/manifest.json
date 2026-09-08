@@ -146,7 +146,7 @@
   "bundles": {
     "main": {
       "path": "data/runtime/main.json.gz",
-      "sha256": "aaa57e39be514b777266b4ccace1cb3d3fe06656fbe9d6c319b88a5537ec9847"
+      "sha256": "2ae9989bf31c5482949e63bf6637cc90f6f442d70ca57993bd5782527816f0d7"
     },
     "2035-SSP2-NPi": {
       "path": "data/runtime/2035-SSP2-NPi.json.gz",
@@ -165,39 +165,29 @@
       "sha256": "584caa27bfaa732e7baf5e2f4cd6ff8aa722b74846ce3fb827774c0f4e1c6009"
     }
   },
+  "distribution": {
+    "kind": "public presentation export",
+    "privacy_policy": "Public-source input illustrations and calculated climate results only. Private engineering inputs, their derivations and physical-inventory payloads are not distributed.",
+    "verification": "Hashes verify distributed artifacts. Scientific approval and accepted assumptions are unchanged; original evidence is retained privately.",
+    "result_parity": "All five calculated result-table sets are identical to the preceding reviewed release."
+  },
   "evidence_hashes": {
-    "data/model_contract.json": "d0dd17b10dfa57c94ace38a721489b0d8b4f636d3cdb7b14c28e0f53acaf8dbd",
-    "data/source_manifest.json": "ebb6d9c5a08159c5996f04b8cbb0115a14b52ed72953af31542b570e9dfd8fbe",
+    "data/public/source_manifest.json": "972647c37e8c21c56654f6fd00a1bd000f58c74e256241ad63ba23d8aa3f2938",
+    "data/public/component_lifetimes.json": "15186362710df17d891e39969d7717480ec44630d9aa841ab02d208ab22609f8",
     "data/public/bau_detail_2025.json": "1bbed091c651308c78fd67ce9d8615a9d646e2e411fc8bd57b9ab39eeaaab75f",
+    "data/public/uptake_profiles.json": "7ca3cac48bc454f145b11849927bf39e411ee65b1930982bd8c2c40603c8221d",
+    "data/public/model_contract.json": "7c89ffa3c05705c6ce0365660997095b2c2766f9b6fb3342ced76d36d2dae47c",
+    "data/public/heat_supply.json": "f018301c5d1777fb3a71b96bbf2eb9a7ba62a8fed972cb5ca541b1aed31bd53d",
+    "data/public/uptake_profiles.sha256": "1ac2cba5f3886ea3c1bee3d49c52fcae0eef5006ce87ddb5ba13eac12d62f188",
     "data/public/capture_details_2025.json": "8177df4817ee5a7550aa52196261cb8560fd027ee7255baa1d09cdc8c1f4f39f",
-    "data/assumptions/component_lifetimes.json": "1504383e451f0680aa02647448382e76b50be482e65992a8678c0e4b37e5498d",
-    "data/assumptions/industrial_heat_pump.json": "e9088c5f5cdf5b8b164b880b45b4511001199d0438c41ef8807525aa67fe9ec6",
     "data/assumptions/methanol_to_jet.json": "fe74d302a84d8ae3975fc98009809504bfed7b83e193b29f34f60f6efaf0c6d8",
-    "data/assumptions/non_fossil_uptake_profiles.json": "b6b9a2747c5b22a2ba7c424a05c857dbfa0da50e4a755144d84f511cc1e237c4",
-    "data/assumptions/non_fossil_uptake_candidate.json": "a81aabcc19600395c8cbf40890d7d85b696b407b4aabbfef1591775384b98034",
-    "data/assumptions/non_fossil_uptake_candidate.sha256": "0801b05f0c625e96f710f5565e7bd541d51d0d261bd0d4fdcd0ce719ab8af94a",
     "data/processed/scenario_sector_mixes.csv": "62dd7d875163e500b1031c5ee38af06851fdb399b4ee32f7eee32baf1c41a863",
     "data/processed/sector_shares_six_years.json": "b629f5798d3121983ed88bc9dafd4224a33d432de4e7cf858ffc1a78929b8639",
     "data/processed/sector_shares_six_years.sha256": "8d8f85448965ba4f36cf671cd9408d5c4ad8d36afcc11bab8110f9224ac9b630",
     "data/processed/gas_supply_shares.json": "41b75096216da228edba774b46a097faa9a264cf842bf0522a425fee932a55e3",
     "data/processed/gas_supply_shares.sha256": "03050d17c365f79887c6e9046216b57303b483060109e51cc2a0d44df969225c",
-    "data/runtime/review-record.json": "6860715d5894d0fa9c282bc2300fefc36219646e2479b345fcca01ee833c0eab",
     "data/runtime/background_gwp_six_years.json": "64e097538bb946a2bf7bf7ebb9c2d5d114f5cecb589e69efacecaba022b00a95",
-    "data/runtime/system_flows_2025.json": "0c451a3a1e7c9f72b7e9112d4b69bfc6f0d1d745edbffcee07fa5a79e28f094c",
-    "data/runtime/direct_utilities_2025.json": "a8696d4cac40fc8587a8fd38dad816d80ba0d70268f54700184abd8a1f3d7c04",
-    "data/runtime/background_gwp_six_years.sha256": "a03387b142116dde5af3ab4af000bc440c03e956294b4d59853e284efe30be83"
-  },
-  "scope": {
-    "static_sensitivity": "five grids, 55 cells each",
-    "dynamic_sensitivity": "not released",
-    "temporal": "2035–2064 production, delayed fuel use in 2065",
-    "pulse": "full precomputed five-year reference/window grid"
-  },
-  "model_hash": "1c65f7f0d80f1b7b275727c658c9c6c9df4a2e912176a4de1eec965af8b12dd1",
-  "distribution": {
-    "kind": "portable presentation export",
-    "source_manifest_sha256": "21ae0b5dc8a697c9b15c5f2386527a19f983db264a5d0c5208edade49a4a213a",
-    "verification": "Original calculation evidence checked at packaging. Runtime checks shipped artifacts only. No calculations or scientific assumptions changed.",
-    "private_inputs": "Source workbooks, raw inventories, licensed databases and calculation scripts are not distributed."
+    "data/runtime/background_gwp_six_years.sha256": "a03387b142116dde5af3ab4af000bc440c03e956294b4d59853e284efe30be83",
+    "data/runtime/review-record.json": "6a5d2eafcc5ba9ec2b22a575369548029d3903c56284df9cc2f1726011177621"
   }
 }

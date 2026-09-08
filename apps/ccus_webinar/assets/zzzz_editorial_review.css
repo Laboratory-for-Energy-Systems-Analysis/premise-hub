@@ -22,3 +22,8 @@
 .pulse-endpoint span {font-size:12px}
 .synthesis-matrix th small {font-size:12px;line-height:1.4}
 .slide-18 .resource-group a {line-height:1.4}
+.public-inventory {grid-template-rows:auto minmax(0,1fr) auto auto;gap:8px}
+.public-inventory h2 {margin:0;font-size:24px}
+.public-inventory p {margin:0;font-size:13px}
+.public-inventory .evidence-table td {padding:6px 10px;font-size:14px}
+.public-inventory .evidence-table th {padding:8px 10px;font-size:13px}

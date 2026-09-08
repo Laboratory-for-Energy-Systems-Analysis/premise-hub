@@ -1,78 +1,5 @@
 {
-  "schema_version": "1.0.0",
-  "status": "candidate_not_used_in_lca",
-  "parent_sha256": "b6b9a2747c5b22a2ba7c424a05c857dbfa0da50e4a755144d84f511cc1e237c4",
-  "description": "Historical uptake only. Growth plus residence hypotheses, total uptake unchanged. Not a reconstruction of Aalborg fuel histories.",
-  "parameters": {
-    "rotation_years": 40,
-    "richards_shape": 3,
-    "richards_rate_per_year": 0.07,
-    "residence_shape": 2,
-    "rdf_paper_half_life": 2,
-    "paper_sludge_rotation_years": 15,
-    "paper_sludge_species_proxy": "short-rotation wood; species uncalibrated",
-    "paper_sludge_richards_rate_per_year": 0.18666666666666668,
-    "paper_sludge_richards_shape": 3,
-    "paper_sludge_post_consumer_service_years": 0,
-    "paper_sludge_manufacturing_storage_delay_years": 1,
-    "paper_sludge_origin_status": "user-selected industrial production residue hypothesis; not source-verified",
-    "board_rotation_years": 15,
-    "board_species_proxy": "short-rotation wood; species uncalibrated",
-    "board_richards_rate_per_year": 0.18666666666666668,
-    "board_richards_shape": 3,
-    "board_post_consumer_service_years": 0,
-    "board_manufacturing_storage_delay_years": 1,
-    "board_origin_status": "user-selected industrial-scrap hypothesis; not source-verified",
-    "rdf_paper_truncated_tail": 1.4551915228366858e-11,
-    "residence_warning": "Stock-outflow distributions used as backward-age proxies assume stationary inflows and no selective collection. Not directly inferred from IPCC."
-  },
-  "sensitivity_ranges": {
-    "rotation_years": [
-      20,
-      40,
-      60
-    ],
-    "richards_rate_per_year": [
-      0.04,
-      0.07,
-      0.1
-    ],
-    "board_rotation_years": [
-      10,
-      15,
-      20
-    ],
-    "board_manufacturing_storage_delay_years": [
-      0,
-      1,
-      2
-    ],
-    "paper_sludge_rotation_years": [
-      10,
-      15,
-      20
-    ],
-    "paper_sludge_manufacturing_storage_delay_years": [
-      0,
-      1,
-      2
-    ],
-    "rdf_paper_half_life": [
-      0,
-      2,
-      4
-    ],
-    "rdf_carbon_fraction_endmembers": [
-      "all paper",
-      "all wood",
-      "all short-cycle"
-    ],
-    "mbm_previous_year_fraction": [
-      0,
-      0.75,
-      1
-    ]
-  },
+  "description": "Webinar historical-uptake hypotheses, not measured fuel histories. Fuel properties from published SI.2.",
   "sources": [
     {
       "url": "https://cdn.forestresearch.gov.uk/2022/02/frmg002_short_rotation_forestry.pdf",
@@ -93,10 +20,7 @@
   ],
   "profiles": [
     {
-      "column": 56,
       "fuel": "refuse-derived fuel",
-      "kg_co2_per_kg_fuel": 1.9,
-      "biogenic_fraction": 0.37,
       "offsets": [
         -51,
         -50,
@@ -203,13 +127,12 @@
         0.007295824120870622,
         0.2546196968876609
       ],
-      "basis": "Illustrative non-fossil carbon mix: 50% paper, 25% wood, 25% short-cycle organics. These are carbon fractions, not wet-mass or energy shares; site composition is unknown."
+      "lhv_mj_per_kg": 22.0,
+      "kg_co2_per_kg_fuel": 1.9,
+      "biogenic_fraction": 0.37
     },
     {
-      "column": 57,
       "fuel": "paper sludge",
-      "kg_co2_per_kg_fuel": 0.51,
-      "biogenic_fraction": 0.79,
       "offsets": [
         -16,
         -15,
@@ -244,26 +167,24 @@
         0.046020991386153676,
         0.0393360679847182
       ],
-      "basis": "Industrial paper-production residue hypothesis: 15-year short-rotation wood growth plus 1-year manufacturing/storage delay, with no post-consumer service life. Species, primary-sludge origin, delay and growth shape are proxies, not verified supplier facts."
+      "lhv_mj_per_kg": 2.51,
+      "kg_co2_per_kg_fuel": 0.51,
+      "biogenic_fraction": 0.79
     },
     {
-      "column": 58,
       "fuel": "sewage sludge",
-      "kg_co2_per_kg_fuel": 0.99,
-      "biogenic_fraction": 1.0,
       "offsets": [
         -1
       ],
       "weights": [
         1.0
       ],
-      "basis": "Retained one-year historical pulse at annual resolution. No unsupported smooth curve introduced."
+      "lhv_mj_per_kg": 10.97,
+      "kg_co2_per_kg_fuel": 0.99,
+      "biogenic_fraction": 1.0
     },
     {
-      "column": 59,
       "fuel": "meat and bone meal",
-      "kg_co2_per_kg_fuel": 1.46,
-      "biogenic_fraction": 1.0,
       "offsets": [
         -2,
         -1
@@ -272,13 +193,12 @@
         0.25,
         0.75
       ],
-      "basis": "Short-cycle feed-carbon hypothesis, 75% one year and 25% two years before combustion. Not inferred from measured species mix."
+      "lhv_mj_per_kg": 16.62,
+      "kg_co2_per_kg_fuel": 1.46,
+      "biogenic_fraction": 1.0
     },
     {
-      "column": 60,
       "fuel": "cement-bound wood fibre board",
-      "kg_co2_per_kg_fuel": 0.75,
-      "biogenic_fraction": 1.0,
       "offsets": [
         -16,
         -15,
@@ -313,13 +233,12 @@
         0.046020991386153676,
         0.0393360679847182
       ],
-      "basis": "Industrial production scrap hypothesis: 15-year short-rotation wood growth plus 1-year manufacturing/storage delay, with no post-consumer service life. Species, origin, delay and growth shape are proxies, not verified supplier facts."
+      "lhv_mj_per_kg": 3.83,
+      "kg_co2_per_kg_fuel": 0.75,
+      "biogenic_fraction": 1.0
     },
     {
-      "column": 61,
       "fuel": "wood chips",
-      "kg_co2_per_kg_fuel": 1.8333333333333335,
-      "biogenic_fraction": 1.0,
       "offsets": [
         -40,
         -39,
@@ -404,7 +323,9 @@
         0.014888283549541323,
         0.014018120958704692
       ],
-      "basis": "Chapman\u2013Richards annual growth increments, 40-year rotation. Species, rate and shape are uncalibrated proxies."
+      "lhv_mj_per_kg": 12.5,
+      "kg_co2_per_kg_fuel": 1.8333333333333335,
+      "biogenic_fraction": 1.0
     }
   ]
 }

@@ -1,0 +1,119 @@
+{
+  "functional_unit": {
+    "amount": 1000.0,
+    "unit": "kilogram",
+    "product": "grey clinker",
+    "location": "Aalborg, Denmark",
+    "reporting_label": "1 tonne of grey clinker"
+  },
+  "systems": [
+    "BAU",
+    "CCS",
+    "CCUS"
+  ],
+  "multi_output_policy": "substitution",
+  "background": {
+    "ecoinvent_version": "3.12",
+    "system_model": "cutoff",
+    "iam_model": "remind-eu",
+    "region": "ENC",
+    "region_members": [
+      "AX",
+      "DK",
+      "FO",
+      "FI",
+      "SE"
+    ],
+    "pathways": [
+      "SSP2-NPi",
+      "SSP2-PkBudg1000"
+    ]
+  },
+  "lenses": {
+    "current_static": {
+      "year": 2025,
+      "pathways": [
+        "SSP2-NPi"
+      ]
+    },
+    "prospective_static": {
+      "year": 2035,
+      "pathways": [
+        "SSP2-NPi",
+        "SSP2-PkBudg1000"
+      ]
+    },
+    "time_explicit": {
+      "first_operation_year": 2035,
+      "last_operation_year": 2064,
+      "last_fuel_use_year": 2065,
+      "pathways": [
+        "SSP2-PkBudg1000"
+      ],
+      "climate_horizon_end": 2200
+    }
+  },
+  "production": {
+    "clinker_tonnes_per_day": 4500.0,
+    "operating_days_per_year": 365.0,
+    "annual_clinker_tonnes": 1642500.0,
+    "campaign_clinker_tonnes": 49275000.0,
+    "normalized_temporal_basis": "one tonne distributed across campaign production"
+  },
+  "climate": {
+    "static_method_family": "IPCC 2021",
+    "indicator": "GWP100",
+    "include_non_fossil_co2": true,
+    "time_explicit_model": "FaIR",
+    "fair_quantiles": [
+      2.5,
+      50.0,
+      97.5
+    ],
+    "uncertainty_scope": "FaIR climate-model ensemble only",
+    "pulse_reference_year": 2035,
+    "pulse_default_window": [
+      2025,
+      2100
+    ],
+    "pulse_grid_step_years": 5
+  },
+  "display_defaults": {
+    "prospective_pathway": "SSP2-NPi",
+    "contribution_grouping": "process stage",
+    "area_mode": "stacked",
+    "temporal_grouping": "root activity",
+    "normalization": "per tonne",
+    "fair_metric": "radiative forcing",
+    "pulse_metric": "forcing-equivalent CO2 pulse",
+    "uncertainty": false
+  },
+  "schema_version": "public-1.0",
+  "disclosure": "Public modelling scope. Private engineering coefficients and source-cell references are not distributed.",
+  "foreground": {
+    "shared_across_systems": true,
+    "interpolation": "linear between 2020, 2030, 2040 and 2050",
+    "post_2050_policy": "freeze at 2050 values",
+    "capture_efficiency_policy": "fixed and identical for fossil and non-fossil CO2",
+    "storage_label": "existing depleted North Sea gas field",
+    "storage_leakage": 0.0,
+    "storage_loss_policy": "5% of captured CO2 entering liquefaction, then 1.44% of the remainder during transport; zero additional injection loss and post-injection leakage",
+    "hydrogen_pathway": "PEM electrolysis",
+    "pem_kwh_per_kg_h2": {
+      "2025": 55.0,
+      "2050": 50.0,
+      "post_2050": 50.0
+    },
+    "synthetic_fuel": "methanol-to-X",
+    "synthetic_fuel_outputs": [
+      "synthetic jet fuel",
+      "diesel blendstock",
+      "naphtha"
+    ],
+    "synthetic_fuel_design": "UOP US20260098223A1 Table 2 adapted to 85% methanol-carbon-to-jet yield",
+    "coproduct_policy": "diesel and naphtha fuel use at production year +1; equal-mass composition-equivalent avoided fossil production and combustion credited in production year, without allocation",
+    "residual_carbon_policy": "User-approved aggregate closure: methanol-synthesis and methanol-to-X residual carbon becomes non-fossil CO2 in the production year, with no heat credit. This is a webinar assumption, not a UOP-reported fate.",
+    "methanol_to_jet_carbon_yield_fraction": 0.85,
+    "synthetic_fuel_use_delay_years": 1
+  }
+}

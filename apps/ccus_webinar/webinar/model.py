@@ -57,7 +57,7 @@ def normalize_result_state(payload: dict | None = None) -> dict:
 
 
 def project_timeline(stage: str) -> tuple[dict, ...]:
-    root = Path(__file__).resolve().parents[1] / "data/assumptions"
+    root = Path(__file__).resolve().parents[1] / "data/public"
     components = json.loads((root / "component_lifetimes.json").read_text())[
         "components"
     ]
@@ -65,7 +65,7 @@ def project_timeline(stage: str) -> tuple[dict, ...]:
         {
             year
             for component in components
-            if component["column"] != 100
+            if component["component"] != 'storage-site drilling'
             for year in range(
                 component["first_year"] + component["lifetime_years"],
                 2065,
@@ -73,7 +73,7 @@ def project_timeline(stage: str) -> tuple[dict, ...]:
             )
         }
     )
-    profiles = json.loads((root / "non_fossil_uptake_profiles.json").read_text())[
+    profiles = json.loads((root / "uptake_profiles.json").read_text())[
         "profiles"
     ]
     rows = [

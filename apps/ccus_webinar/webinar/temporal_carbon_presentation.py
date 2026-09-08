@@ -40,8 +40,10 @@ def split_carbon(by_contributor, *, system, grouping, factor, payload):
     return by_contributor
 
 def load_carbon_display(bundle):
-    if bundle.approved and 'physical_carbon_display' in bundle.payloads:
-        return bundle.payloads['physical_carbon_display']
+    if bundle.approved:
+        # Public results never load private physical inventory exports, even
+        # when a developer's local calculation files happen to be present.
+        return None
     if not bundle.payloads.get('temporal_diagnostic_manifest'):
         return None
     folder=Path(__file__).resolve().parents[1]/'generated/results/temporal_diagnostic'

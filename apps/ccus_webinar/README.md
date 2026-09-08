@@ -32,20 +32,28 @@ protection for confidential data. No username is required.
 `data/runtime/manifest.json` describes the reviewed 8 September 2026 release.
 The five compressed result bundles contain the unchanged precomputed tables.
 No Brightway, premise or TRAILS calculation runs during a presentation.
-The physical-carbon decomposition is included for the optional chart view.
+The public release omits private physical-inventory payloads. Climate-result
+tables, including their contribution scores, remain unchanged.
 
 The original calculation evidence was hash-checked before packaging. At runtime,
 the application checks the hashes of the distributed data and result bundles.
-`data/runtime/review-record.json` retains the historical review and evidence
-fingerprints, not the private source files. Accepted assumptions are distinct
+`data/runtime/review-record.json` retains the review statuses, not private
+source records or their derivations. Accepted assumptions are distinct
 from verified checks. Routing convergence was **not tested**: the reviewer
 accepted the default cutoff of 1e-4. Changed release artifacts fail closed.
 
 The Git allowlist excludes internal Excel files, full inventories, licensed
 background databases, local calculation scripts, diagnostic exports and tests.
 Only app modules, referenced visual assets, display data and result bundles are
-distributed. Engineering display tables are rounded to the precision shown on
-the slides and omit internal workbook column references.
+distributed. Input illustrations use published SI data and explicit public
+webinar assumptions. The appendix does not export private utility coefficients,
+heat-pump derivations or engineering flow tables. Rounding is not a privacy measure.
+
+The permission to publish calculated climate results is separate from permission
+to publish input data. Detailed results can still support inferences about a
+system; this is not a guarantee against reverse engineering. The password gate
+does not protect files in this public repository. A privacy regression test
+checks distributed data and compressed payloads before release.
 
 The process model is adapted from Gallego Dávila, Sacchi and Pizzol (2023),
 *Preconditions for achieving carbon neutrality in cement production through CCUS*,

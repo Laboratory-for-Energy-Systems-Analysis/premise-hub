@@ -11,7 +11,7 @@ from ..lca_model.results import ResultBundle, REQUIRED_GATES, file_sha256
 
 APP = Path(__file__).resolve().parents[1]
 PORTABLE_MANIFEST = APP/'data/runtime/manifest.json'
-MANIFEST = PORTABLE_MANIFEST if PORTABLE_MANIFEST.exists() else APP/'generated/releases/webinar-2026-09-08/manifest.json'
+MANIFEST = PORTABLE_MANIFEST
 MAIN_TABLES = {'static_totals', 'static_contributions', 'static_subprocesses',
     'temporal_totals', 'temporal_contributions', 'fair_responses', 'pulse_equivalence', 'pulse_reference'}
 EXPECTED_BUNDLES = {'main', *(f'{y}-{p}' for y in (2035,2050) for p in ('SSP2-NPi','SSP2-PkBudg1000'))}
@@ -65,9 +65,13 @@ def load_release_bundle(key='main'):
         return None
     try:
         meta = release_manifest()
+        if meta.get('distribution', {}).get('kind') != 'public presentation export':
+            raise ValueError('A privacy-reviewed public export is required')
         path = safe_path(APP, meta['bundles'][key]['path'])
         content = gzip.decompress(path.read_bytes()) if path.suffix == '.gz' else path.read_bytes()
         raw = json.loads(content)
+        if set(raw.get('payloads', {})) - {'current_static_sensitivity'}:
+            raise ValueError('Unapproved public payload')
         tables = {k:tuple(v) for k,v in raw['tables'].items()}
         required = MAIN_TABLES if key=='main' else {'static_totals','static_subprocesses'}
         if not required <= tables.keys() or any(not tables[k] for k in required):

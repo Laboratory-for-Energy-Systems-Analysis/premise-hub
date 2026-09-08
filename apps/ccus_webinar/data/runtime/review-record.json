@@ -1,427 +1,87 @@
 {
-  "source_manifest_sha256": "21ae0b5dc8a697c9b15c5f2386527a19f983db264a5d0c5208edade49a4a213a",
   "review": {
     "reviewer": "Dr. Romain Sacchi",
     "reviewed_at": "2026-09-08T13:52:09.092185+00:00",
     "note": "Presenter approval with explicit accepted modelling assumptions. See decision record."
   },
+  "convergence_tested": false,
   "gates": {
     "source_hash": {
       "status": "verified",
-      "basis": "Recorded checks apply to the declared webinar scope, not independent empirical validation.",
-      "evidence": [
-        "docs/WEBINAR_RELEASE_DECISIONS.md",
-        "generated/results/carbon_interfaces_validation.json",
-        "generated/reports/final_carbon_ledger.json",
-        "generated/results/mtx_gas_heat_current_static/manifest.json",
-        "generated/results/prospective_diagnostic/2035/SSP2-NPi/manifest.json",
-        "generated/results/prospective_diagnostic/2035/SSP2-PkBudg1000/manifest.json",
-        "generated/results/prospective_diagnostic/2050/SSP2-NPi/manifest.json",
-        "generated/results/prospective_diagnostic/2050/SSP2-PkBudg1000/manifest.json",
-        "generated/results/temporal_diagnostic/manifest.json",
-        "generated/results/fair_diagnostic/manifest.json",
-        "generated/results/pulse_multiyear/manifest.json"
-      ]
+      "basis": "Recorded checks apply to the declared webinar scope, not independent empirical validation."
     },
     "heat_balance": {
       "status": "accepted_assumption",
-      "basis": "Original-study integration retained, separate MTX boiler, remaining utility proxies accepted.",
-      "evidence": [
-        "docs/WEBINAR_RELEASE_DECISIONS.md",
-        "generated/results/carbon_interfaces_validation.json",
-        "generated/reports/final_carbon_ledger.json",
-        "generated/results/mtx_gas_heat_current_static/manifest.json",
-        "generated/results/prospective_diagnostic/2035/SSP2-NPi/manifest.json",
-        "generated/results/prospective_diagnostic/2035/SSP2-PkBudg1000/manifest.json",
-        "generated/results/prospective_diagnostic/2050/SSP2-NPi/manifest.json",
-        "generated/results/prospective_diagnostic/2050/SSP2-PkBudg1000/manifest.json",
-        "generated/results/temporal_diagnostic/manifest.json",
-        "generated/results/fair_diagnostic/manifest.json",
-        "generated/results/pulse_multiyear/manifest.json"
-      ]
+      "basis": "Original-study integration retained, separate MTX boiler, remaining utility proxies accepted."
     },
     "brightway_import": {
       "status": "verified",
-      "basis": "Recorded checks apply to the declared webinar scope, not independent empirical validation.",
-      "evidence": [
-        "docs/WEBINAR_RELEASE_DECISIONS.md",
-        "generated/results/carbon_interfaces_validation.json",
-        "generated/reports/final_carbon_ledger.json",
-        "generated/results/mtx_gas_heat_current_static/manifest.json",
-        "generated/results/prospective_diagnostic/2035/SSP2-NPi/manifest.json",
-        "generated/results/prospective_diagnostic/2035/SSP2-PkBudg1000/manifest.json",
-        "generated/results/prospective_diagnostic/2050/SSP2-NPi/manifest.json",
-        "generated/results/prospective_diagnostic/2050/SSP2-PkBudg1000/manifest.json",
-        "generated/results/temporal_diagnostic/manifest.json",
-        "generated/results/fair_diagnostic/manifest.json",
-        "generated/results/pulse_multiyear/manifest.json"
-      ]
+      "basis": "Recorded checks apply to the declared webinar scope, not independent empirical validation."
     },
     "exact_linking": {
       "status": "verified",
-      "basis": "Recorded checks apply to the declared webinar scope, not independent empirical validation.",
-      "evidence": [
-        "docs/WEBINAR_RELEASE_DECISIONS.md",
-        "generated/results/carbon_interfaces_validation.json",
-        "generated/reports/final_carbon_ledger.json",
-        "generated/results/mtx_gas_heat_current_static/manifest.json",
-        "generated/results/prospective_diagnostic/2035/SSP2-NPi/manifest.json",
-        "generated/results/prospective_diagnostic/2035/SSP2-PkBudg1000/manifest.json",
-        "generated/results/prospective_diagnostic/2050/SSP2-NPi/manifest.json",
-        "generated/results/prospective_diagnostic/2050/SSP2-PkBudg1000/manifest.json",
-        "generated/results/temporal_diagnostic/manifest.json",
-        "generated/results/fair_diagnostic/manifest.json",
-        "generated/results/pulse_multiyear/manifest.json"
-      ]
+      "basis": "Recorded checks apply to the declared webinar scope, not independent empirical validation."
     },
     "sensitivity_grid": {
       "status": "verified",
-      "basis": "Recorded checks apply to the declared webinar scope, not independent empirical validation.",
-      "evidence": [
-        "docs/WEBINAR_RELEASE_DECISIONS.md",
-        "generated/results/carbon_interfaces_validation.json",
-        "generated/reports/final_carbon_ledger.json",
-        "generated/results/mtx_gas_heat_current_static/manifest.json",
-        "generated/results/prospective_diagnostic/2035/SSP2-NPi/manifest.json",
-        "generated/results/prospective_diagnostic/2035/SSP2-PkBudg1000/manifest.json",
-        "generated/results/prospective_diagnostic/2050/SSP2-NPi/manifest.json",
-        "generated/results/prospective_diagnostic/2050/SSP2-PkBudg1000/manifest.json",
-        "generated/results/temporal_diagnostic/manifest.json",
-        "generated/results/fair_diagnostic/manifest.json",
-        "generated/results/pulse_multiyear/manifest.json"
-      ]
+      "basis": "Recorded checks apply to the declared webinar scope, not independent empirical validation."
     },
     "hydrogen_balance": {
       "status": "accepted_assumption",
-      "basis": "Recorded hydrogen checks plus accepted equipment and pressure-interface proxies.",
-      "evidence": [
-        "docs/WEBINAR_RELEASE_DECISIONS.md",
-        "generated/results/carbon_interfaces_validation.json",
-        "generated/reports/final_carbon_ledger.json",
-        "generated/results/mtx_gas_heat_current_static/manifest.json",
-        "generated/results/prospective_diagnostic/2035/SSP2-NPi/manifest.json",
-        "generated/results/prospective_diagnostic/2035/SSP2-PkBudg1000/manifest.json",
-        "generated/results/prospective_diagnostic/2050/SSP2-NPi/manifest.json",
-        "generated/results/prospective_diagnostic/2050/SSP2-PkBudg1000/manifest.json",
-        "generated/results/temporal_diagnostic/manifest.json",
-        "generated/results/fair_diagnostic/manifest.json",
-        "generated/results/pulse_multiyear/manifest.json"
-      ]
+      "basis": "Recorded hydrogen checks plus accepted equipment and pressure-interface proxies."
     },
     "terminal_carbon_fates": {
       "status": "verified",
-      "basis": "Recorded checks apply to the declared webinar scope, not independent empirical validation.",
-      "evidence": [
-        "docs/WEBINAR_RELEASE_DECISIONS.md",
-        "generated/results/carbon_interfaces_validation.json",
-        "generated/reports/final_carbon_ledger.json",
-        "generated/results/mtx_gas_heat_current_static/manifest.json",
-        "generated/results/prospective_diagnostic/2035/SSP2-NPi/manifest.json",
-        "generated/results/prospective_diagnostic/2035/SSP2-PkBudg1000/manifest.json",
-        "generated/results/prospective_diagnostic/2050/SSP2-NPi/manifest.json",
-        "generated/results/prospective_diagnostic/2050/SSP2-PkBudg1000/manifest.json",
-        "generated/results/temporal_diagnostic/manifest.json",
-        "generated/results/fair_diagnostic/manifest.json",
-        "generated/results/pulse_multiyear/manifest.json"
-      ]
+      "basis": "Recorded checks apply to the declared webinar scope, not independent empirical validation."
     },
     "extraction_integrity": {
       "status": "verified",
-      "basis": "Recorded checks apply to the declared webinar scope, not independent empirical validation.",
-      "evidence": [
-        "docs/WEBINAR_RELEASE_DECISIONS.md",
-        "generated/results/carbon_interfaces_validation.json",
-        "generated/reports/final_carbon_ledger.json",
-        "generated/results/mtx_gas_heat_current_static/manifest.json",
-        "generated/results/prospective_diagnostic/2035/SSP2-NPi/manifest.json",
-        "generated/results/prospective_diagnostic/2035/SSP2-PkBudg1000/manifest.json",
-        "generated/results/prospective_diagnostic/2050/SSP2-NPi/manifest.json",
-        "generated/results/prospective_diagnostic/2050/SSP2-PkBudg1000/manifest.json",
-        "generated/results/temporal_diagnostic/manifest.json",
-        "generated/results/fair_diagnostic/manifest.json",
-        "generated/results/pulse_multiyear/manifest.json"
-      ]
+      "basis": "Recorded checks apply to the declared webinar scope, not independent empirical validation."
     },
     "background_carbon_interfaces": {
       "status": "accepted_assumption",
-      "basis": "Wood uptake duplication and waste sign corrected. Generic wastewater composition and waste-fuel conventions accepted.",
-      "evidence": [
-        "docs/WEBINAR_RELEASE_DECISIONS.md",
-        "generated/results/carbon_interfaces_validation.json",
-        "generated/reports/final_carbon_ledger.json",
-        "generated/results/mtx_gas_heat_current_static/manifest.json",
-        "generated/results/prospective_diagnostic/2035/SSP2-NPi/manifest.json",
-        "generated/results/prospective_diagnostic/2035/SSP2-PkBudg1000/manifest.json",
-        "generated/results/prospective_diagnostic/2050/SSP2-NPi/manifest.json",
-        "generated/results/prospective_diagnostic/2050/SSP2-PkBudg1000/manifest.json",
-        "generated/results/temporal_diagnostic/manifest.json",
-        "generated/results/fair_diagnostic/manifest.json",
-        "generated/results/pulse_multiyear/manifest.json"
-      ]
+      "basis": "Wood uptake duplication and waste sign corrected. Generic wastewater composition and waste-fuel conventions accepted."
     },
     "static_reconciliation": {
       "status": "verified",
-      "basis": "Recorded checks apply to the declared webinar scope, not independent empirical validation.",
-      "evidence": [
-        "docs/WEBINAR_RELEASE_DECISIONS.md",
-        "generated/results/carbon_interfaces_validation.json",
-        "generated/reports/final_carbon_ledger.json",
-        "generated/results/mtx_gas_heat_current_static/manifest.json",
-        "generated/results/prospective_diagnostic/2035/SSP2-NPi/manifest.json",
-        "generated/results/prospective_diagnostic/2035/SSP2-PkBudg1000/manifest.json",
-        "generated/results/prospective_diagnostic/2050/SSP2-NPi/manifest.json",
-        "generated/results/prospective_diagnostic/2050/SSP2-PkBudg1000/manifest.json",
-        "generated/results/temporal_diagnostic/manifest.json",
-        "generated/results/fair_diagnostic/manifest.json",
-        "generated/results/pulse_multiyear/manifest.json"
-      ]
+      "basis": "Recorded checks apply to the declared webinar scope, not independent empirical validation."
     },
     "physical_carbon_routing": {
       "status": "verified",
-      "basis": "Recorded checks apply to the declared webinar scope, not independent empirical validation.",
-      "evidence": [
-        "docs/WEBINAR_RELEASE_DECISIONS.md",
-        "generated/results/carbon_interfaces_validation.json",
-        "generated/reports/final_carbon_ledger.json",
-        "generated/results/mtx_gas_heat_current_static/manifest.json",
-        "generated/results/prospective_diagnostic/2035/SSP2-NPi/manifest.json",
-        "generated/results/prospective_diagnostic/2035/SSP2-PkBudg1000/manifest.json",
-        "generated/results/prospective_diagnostic/2050/SSP2-NPi/manifest.json",
-        "generated/results/prospective_diagnostic/2050/SSP2-PkBudg1000/manifest.json",
-        "generated/results/temporal_diagnostic/manifest.json",
-        "generated/results/fair_diagnostic/manifest.json",
-        "generated/results/pulse_multiyear/manifest.json"
-      ]
+      "basis": "Recorded checks apply to the declared webinar scope, not independent empirical validation."
     },
     "inventory_reconciliation": {
       "status": "accepted_assumption",
-      "basis": "Published fuel trajectory reconciled. Original carbonate/CO and jet composition assumptions accepted.",
-      "evidence": [
-        "docs/WEBINAR_RELEASE_DECISIONS.md",
-        "generated/results/carbon_interfaces_validation.json",
-        "generated/reports/final_carbon_ledger.json",
-        "generated/results/mtx_gas_heat_current_static/manifest.json",
-        "generated/results/prospective_diagnostic/2035/SSP2-NPi/manifest.json",
-        "generated/results/prospective_diagnostic/2035/SSP2-PkBudg1000/manifest.json",
-        "generated/results/prospective_diagnostic/2050/SSP2-NPi/manifest.json",
-        "generated/results/prospective_diagnostic/2050/SSP2-PkBudg1000/manifest.json",
-        "generated/results/temporal_diagnostic/manifest.json",
-        "generated/results/fair_diagnostic/manifest.json",
-        "generated/results/pulse_multiyear/manifest.json"
-      ]
+      "basis": "Published fuel trajectory reconciled. Original carbonate/CO and jet composition assumptions accepted."
     },
     "model_contract": {
       "status": "verified",
-      "basis": "Recorded checks apply to the declared webinar scope, not independent empirical validation.",
-      "evidence": [
-        "docs/WEBINAR_RELEASE_DECISIONS.md",
-        "generated/results/carbon_interfaces_validation.json",
-        "generated/reports/final_carbon_ledger.json",
-        "generated/results/mtx_gas_heat_current_static/manifest.json",
-        "generated/results/prospective_diagnostic/2035/SSP2-NPi/manifest.json",
-        "generated/results/prospective_diagnostic/2035/SSP2-PkBudg1000/manifest.json",
-        "generated/results/prospective_diagnostic/2050/SSP2-NPi/manifest.json",
-        "generated/results/prospective_diagnostic/2050/SSP2-PkBudg1000/manifest.json",
-        "generated/results/temporal_diagnostic/manifest.json",
-        "generated/results/fair_diagnostic/manifest.json",
-        "generated/results/pulse_multiyear/manifest.json"
-      ]
+      "basis": "Recorded checks apply to the declared webinar scope, not independent empirical validation."
     },
     "temporal_profiles": {
       "status": "verified",
-      "basis": "Recorded checks apply to the declared webinar scope, not independent empirical validation.",
-      "evidence": [
-        "docs/WEBINAR_RELEASE_DECISIONS.md",
-        "generated/results/carbon_interfaces_validation.json",
-        "generated/reports/final_carbon_ledger.json",
-        "generated/results/mtx_gas_heat_current_static/manifest.json",
-        "generated/results/prospective_diagnostic/2035/SSP2-NPi/manifest.json",
-        "generated/results/prospective_diagnostic/2035/SSP2-PkBudg1000/manifest.json",
-        "generated/results/prospective_diagnostic/2050/SSP2-NPi/manifest.json",
-        "generated/results/prospective_diagnostic/2050/SSP2-PkBudg1000/manifest.json",
-        "generated/results/temporal_diagnostic/manifest.json",
-        "generated/results/fair_diagnostic/manifest.json",
-        "generated/results/pulse_multiyear/manifest.json"
-      ]
+      "basis": "Recorded checks apply to the declared webinar scope, not independent empirical validation."
     },
     "pulse_equivalence": {
       "status": "verified",
-      "basis": "Recorded checks apply to the declared webinar scope, not independent empirical validation.",
-      "evidence": [
-        "docs/WEBINAR_RELEASE_DECISIONS.md",
-        "generated/results/carbon_interfaces_validation.json",
-        "generated/reports/final_carbon_ledger.json",
-        "generated/results/mtx_gas_heat_current_static/manifest.json",
-        "generated/results/prospective_diagnostic/2035/SSP2-NPi/manifest.json",
-        "generated/results/prospective_diagnostic/2035/SSP2-PkBudg1000/manifest.json",
-        "generated/results/prospective_diagnostic/2050/SSP2-NPi/manifest.json",
-        "generated/results/prospective_diagnostic/2050/SSP2-PkBudg1000/manifest.json",
-        "generated/results/temporal_diagnostic/manifest.json",
-        "generated/results/fair_diagnostic/manifest.json",
-        "generated/results/pulse_multiyear/manifest.json"
-      ]
+      "basis": "Recorded checks apply to the declared webinar scope, not independent empirical validation."
     },
     "scenario_coverage": {
       "status": "verified",
-      "basis": "Recorded checks apply to the declared webinar scope, not independent empirical validation.",
-      "evidence": [
-        "docs/WEBINAR_RELEASE_DECISIONS.md",
-        "generated/results/carbon_interfaces_validation.json",
-        "generated/reports/final_carbon_ledger.json",
-        "generated/results/mtx_gas_heat_current_static/manifest.json",
-        "generated/results/prospective_diagnostic/2035/SSP2-NPi/manifest.json",
-        "generated/results/prospective_diagnostic/2035/SSP2-PkBudg1000/manifest.json",
-        "generated/results/prospective_diagnostic/2050/SSP2-NPi/manifest.json",
-        "generated/results/prospective_diagnostic/2050/SSP2-PkBudg1000/manifest.json",
-        "generated/results/temporal_diagnostic/manifest.json",
-        "generated/results/fair_diagnostic/manifest.json",
-        "generated/results/pulse_multiyear/manifest.json"
-      ]
+      "basis": "Recorded checks apply to the declared webinar scope, not independent empirical validation."
     },
     "fair_species": {
       "status": "verified",
-      "basis": "Recorded checks apply to the declared webinar scope, not independent empirical validation.",
-      "evidence": [
-        "docs/WEBINAR_RELEASE_DECISIONS.md",
-        "generated/results/carbon_interfaces_validation.json",
-        "generated/reports/final_carbon_ledger.json",
-        "generated/results/mtx_gas_heat_current_static/manifest.json",
-        "generated/results/prospective_diagnostic/2035/SSP2-NPi/manifest.json",
-        "generated/results/prospective_diagnostic/2035/SSP2-PkBudg1000/manifest.json",
-        "generated/results/prospective_diagnostic/2050/SSP2-NPi/manifest.json",
-        "generated/results/prospective_diagnostic/2050/SSP2-PkBudg1000/manifest.json",
-        "generated/results/temporal_diagnostic/manifest.json",
-        "generated/results/fair_diagnostic/manifest.json",
-        "generated/results/pulse_multiyear/manifest.json"
-      ]
+      "basis": "Recorded checks apply to the declared webinar scope, not independent empirical validation."
     },
     "trails_convergence": {
       "status": "accepted_assumption",
-      "basis": "Presenter accepts cutoff 1e-4. Convergence NOT tested.",
-      "evidence": [
-        "docs/WEBINAR_RELEASE_DECISIONS.md",
-        "generated/results/carbon_interfaces_validation.json",
-        "generated/reports/final_carbon_ledger.json",
-        "generated/results/mtx_gas_heat_current_static/manifest.json",
-        "generated/results/prospective_diagnostic/2035/SSP2-NPi/manifest.json",
-        "generated/results/prospective_diagnostic/2035/SSP2-PkBudg1000/manifest.json",
-        "generated/results/prospective_diagnostic/2050/SSP2-NPi/manifest.json",
-        "generated/results/prospective_diagnostic/2050/SSP2-PkBudg1000/manifest.json",
-        "generated/results/temporal_diagnostic/manifest.json",
-        "generated/results/fair_diagnostic/manifest.json",
-        "generated/results/pulse_multiyear/manifest.json"
-      ]
+      "basis": "Presenter accepts cutoff 1e-4. Convergence NOT tested."
     },
     "carbon_balance": {
       "status": "verified",
-      "basis": "Recorded checks apply to the declared webinar scope, not independent empirical validation.",
-      "evidence": [
-        "docs/WEBINAR_RELEASE_DECISIONS.md",
-        "generated/results/carbon_interfaces_validation.json",
-        "generated/reports/final_carbon_ledger.json",
-        "generated/results/mtx_gas_heat_current_static/manifest.json",
-        "generated/results/prospective_diagnostic/2035/SSP2-NPi/manifest.json",
-        "generated/results/prospective_diagnostic/2035/SSP2-PkBudg1000/manifest.json",
-        "generated/results/prospective_diagnostic/2050/SSP2-NPi/manifest.json",
-        "generated/results/prospective_diagnostic/2050/SSP2-PkBudg1000/manifest.json",
-        "generated/results/temporal_diagnostic/manifest.json",
-        "generated/results/fair_diagnostic/manifest.json",
-        "generated/results/pulse_multiyear/manifest.json"
-      ]
+      "basis": "Recorded checks apply to the declared webinar scope, not independent empirical validation."
     }
   },
-  "convergence_tested": false,
-  "original_evidence_hashes": {
-    "docs/WEBINAR_RELEASE_DECISIONS.md": "0169eb7ecda91b9b71c6ad33a4de0de999f26b46532ba8a148a74a759a1e687c",
-    "generated/results/carbon_interfaces_validation.json": "12c114c99008a15008b1e8c9543bc4e29fb3299581a8008027c91ac8826e432d",
-    "generated/reports/final_carbon_ledger.json": "a117331c657dd574f0fec911006538510d9a7df143ece5671ddb2079ade3d491",
-    "generated/results/mtx_gas_heat_current_static/manifest.json": "05297903879ed09e45ace4d953f7079147d0b2e7738180e16f113ace91e36fc1",
-    "data/current_static_sensitivity_contract.json": "53265045637cc74f002d39e9d0f62e9e1d2fae3eaea71f5f1383112bb35c82e9",
-    "data/mappings/provider_crosswalk.csv": "a4d43ea75f48f08095f582bdca32c40868dd1fa71449af7df6314f6bbc0737ef",
-    "generated/extracted/scenarios.csv": "650b383d6645838dab518287a8eb25c125b5363fa1cee81a4ee4ca466ebd169a",
-    "data/assumptions/non_fossil_uptake_profiles.json": "b6b9a2747c5b22a2ba7c424a05c857dbfa0da50e4a755144d84f511cc1e237c4",
-    "lca_model/current_sensitivity.py": "19bb2d0496f8d661fae966daa5868028c806f68b42f288caafedfc95afebb2ae",
-    "lca_model/sensitivity.py": "8c6c8e77542501d97a003edbc1d74cf332dbd4abe139ad944b353bedd349801a",
-    "dev/precompute_current_sensitivity.py": "c218f18b06a02c443665f5d215735d40220411d38bde403398ebc60ac9c65dfb",
-    "lca_model/boiler_capture.py": "e89b89637c0a09e870a535307f25d1d9d2cc31294ad55cfd65e51350d599066f",
-    "lca_model/inventory.py": "f75db5261434c38b453b2aedc543a87858eb2de0a987012b0669e610b66338ff",
-    "lca_model/foreground.py": "a4a0ec28b9a5a950898e19ab2ef3f61a823ef726ca955c7fbe8f2eac463ff256",
-    "lca_model/methanol.py": "d8e0b434b11de56ab225bfa534a25e8710fada43d25f058ebe78c0841fa42f5a",
-    "lca_model/mtx_utilities.py": "e57b6ac9b51ab0c13d7fd50f3d08aa0cdeaf2592fbbd27213ef1e52d3004c6f0",
-    "data/engineering_corrections.json": "98a7f81d555dc69aa4ba09feb98308da38dd34247949baf716a5aa5f1e68bd40",
-    "data/model_contract.json": "d0dd17b10dfa57c94ace38a721489b0d8b4f636d3cdb7b14c28e0f53acaf8dbd",
-    "generated/inventories/mtx_gas_heat_candidate/matrix_validation.json": "f7052de2b4bd7beeaaa63e1bdcbfdf05489fa0e776e38e1011aa9511fc9d0ca4",
-    "lca_model/scientific_review.py": "3c839f12d1d79b7b78dbe686c178936d91d19d6189deeffeb6a353c52f71f9e4",
-    "lca_model/custom_inventories.py": "26819286f033f3bea1ff1faad390b6c1797a46c0528a2b1e108ed532ca7b4099",
-    "lca_model/results.py": "4934c075736f52d54053bf78e018132a1cf3b0c4542a4c397ad24edd0ebf60e5",
-    "lca_model/prospective_grid.py": "dadc4a2302ff0794984fe9fa3dab7659ebb4afba7d085908181e63023988c240",
-    "lca_model/subprocesses.py": "802370978680cf61ca01235fe8b54e96b917efc971c0db77a45bb7a9ecbda244",
-    "lca_model/carbon_balance.py": "02701420622fab0bd07b2931d2f395ffaf14a17a65fb827b64df3234d71f877f",
-    "lca_model/pulse_grid.py": "6919658dfa35318487cd0cdd911fbc8403e52261a754c1fd3c746543a89b0c96",
-    "lca_model/carbon_interfaces.py": "4a13e036ad142f2b390fd64b9cadacc613f5bd193d2a0d4c4ce9eb09ff47df39",
-    "lca_model/__init__.py": "3f0b2ca9159114372d02b7d5935979db1c0c213c064a69ebbf0337c1f552dc75",
-    "lca_model/temporal_contract.py": "c38786857ad0855dbae845c3725f839202f203306e7cf66ffd879127ae7746b3",
-    "lca_model/thermal_grades.py": "81769a5160e8127bea44d335aa5e305e4f873b2ee31f6b26a9c4eec1e6230473",
-    "lca_model/providers.py": "2bb9316fa814e3c55174c047a7ccfd197322470d5604b9899fe0910995f0a8c8",
-    "lca_model/published_fuels.py": "2145ec1dd39a761688ba89efadd896a8cb1cd4f837af517d7e0a6b993b7c0ca0",
-    "lca_model/pipeline.py": "491b3daec71e5e89daa60e51dd701f77c20e7057030661079c6bd23ff8a863ad",
-    "lca_model/utility_review.py": "95ee2dba62f821c7818c2d685ebe527d7bc73a21e76fe70483c2da1e29636c71",
-    "lca_model/storage.py": "89f4b44ca0232da7bd68228b5cff08c2e13a1d01ecf3fab8a86b1a98ae3c2f15",
-    "lca_model/contracts.py": "9fc4867130e6db26d90213faebfc0457907ff55d311d3210e1015ace9e06ca9d",
-    "lca_model/parameters.py": "a3882540f3a9fca8c7ccacaf0f240f90ae0d7db531a91674908b78d41a7c6c51",
-    "lca_model/synthetic_fuels.py": "3537c3718a8925d941fbae2c3a7107cca1998390923302d427fa54277ab66e25",
-    "lca_model/engineering_checks.py": "6b1522fe2535349100b6bea8ef04fe0025a7fb946265120b1867f697e15cc62e",
-    "lca_model/capture_heat.py": "b057b28568b501edb79f9f2596a4d064b0a9fa25f7ca248a586bdb134b33985b",
-    "lca_model/scenario_table.py": "ff1795f87645866421ab6a0a7aaf813bf4d0fa255ad8d4e369d305eb17dadba9",
-    "lca_model/physical_carbon.py": "8d87cb3844c4358ab745cd3dee647c4971075c80db43067bd8693758587b781a",
-    "lca_model/validation.py": "581f84210e89d7b2d0e7b58a408c7794323a9396a1b53d1ef8176d05943b7c7a",
-    "data/assumptions/standalone_methanol_candidate.json": "3ab86a3a056c816de7f28a5bc21cdc1c10cd6de4fc06ce1eca1b5d54ee214ae1",
-    "data/assumptions/mtx_utility_proxy.json": "c4738e16147df5e2714800fc2c28efb202a296bc10efc4c2bc44e71ad8cfec4e",
-    "data/assumptions/industrial_heat_pump.json": "e9088c5f5cdf5b8b164b880b45b4511001199d0438c41ef8807525aa67fe9ec6",
-    "data/assumptions/component_lifetimes.json": "1504383e451f0680aa02647448382e76b50be482e65992a8678c0e4b37e5498d",
-    "data/assumptions/mtx_utility_reference.json": "2b4e8c5c5ad16b3b895d5affdfcbebee39af012582ef78758e222dd73687c62a",
-    "data/assumptions/methanol_to_jet.json": "fe74d302a84d8ae3975fc98009809504bfed7b83e193b29f34f60f6efaf0c6d8",
-    "data/assumptions/non_fossil_uptake_candidate.json": "a81aabcc19600395c8cbf40890d7d85b696b407b4aabbfef1591775384b98034",
-    "data/assumptions/original_capture_utilities.json": "225de72076c1687425543a17ef93b53856985c5bda9f379cd355d2f143019643",
-    "data/assumptions/published_kiln_fuels.json": "4f0a5d5a1945af030a2489fb0e5874ceffea2a580ac6efdf4a79736ec4156959",
-    "data/assumptions/storage_losses.json": "2fe27d300ccf5a68821b8949c0e87636da7c91d3ddb0db28d433c3747ed2c49e",
-    "dev/build_boiler_capture_candidate.py": "28bce2bb5853b19eccce3df45d222af67f9726dac2db4206cd9ed8c86b5d7138",
-    "scripts/build_inventory.py": "076ec3c56da61a93ae80267d53889e2bc67a103b4e908423fdbfa3a919333f4f",
-    "data/source_manifest.json": "ebb6d9c5a08159c5996f04b8cbb0115a14b52ed72953af31542b570e9dfd8fbe",
-    "generated/results/prospective_diagnostic/2035/SSP2-NPi/manifest.json": "da705c892027af282053717037e7817a57bad5656ddd74c7ab9464811f5eaaf1",
-    "data/prospective_static_sensitivity_contract.json": "8f2e46d2243f9b680f14cf63877aa81ed80b377136ee28daa1e29122eff34005",
-    "dev/precompute_prospective_sensitivity.py": "feb92bded0005a060cfdddc46042550c30bb6f38b2f9eff2be11601e476185e6",
-    "generated/inventories/mtx_gas_heat_candidate/inventory_manifest_candidate.json": "f5d054ba6f6fd7b6034f06f0437cab09719f37126d0b67eece646f90691c41f2",
-    "generated/results/prospective_diagnostic/2035/SSP2-PkBudg1000/manifest.json": "5efaa23382ba597801b60cbbf20ba541a4d329712c5f2ffab5e00568f63ac597",
-    "generated/results/prospective_diagnostic/2050/SSP2-NPi/manifest.json": "b3cad1ced22296321b4d6e3627fc0c1cf0f96e61e20df491bce31f4359cf0067",
-    "generated/results/prospective_diagnostic/2050/SSP2-PkBudg1000/manifest.json": "7689ef5b1a9286b894d68bd5660cfe159f0b6c06d2618503482fa9abecdd89de",
-    "generated/results/temporal_diagnostic/manifest.json": "3467e21ec53aa99a0854c1d0d805a51d3e361e390647401967786195b8ab534f",
-    "dev/prepare_slide12_inventory.py": "afe4b8cf9f99749deb1631559d141da30435967150c619ac2ab933af59e66b4e",
-    "dev/temporal_import_adapter.py": "be806a89a9e7d2ca7d545d3c681c61d8717336fefabcc4c6996dcb0325d70794",
-    "generated/inventories/slide12_diagnostic/a81aabcc1960/preparation_manifest.json": "d4e0d3fdc3a9be5aa3b217fa5f057585578cd310a0df033ca6978704e3694f71",
-    "generated/inventories/slide12_diagnostic/a81aabcc1960/foreground_temporal.xlsx": "8d0a9d15aac2f86dfde4aa2fc1d8668aeea767fde906516225b86a05efb65717",
-    "dev/calculate_slide12.py": "26ae32ed9c932a8c067033a19cc4e356b550d7d478a0c630253859501f81c882",
-    "dev/temporal_index.py": "ec6c83266b2c30be101e9cf90aca39fcb025d2a560ce045b9263d06d12fc572e",
-    "scripts/run_temporal_lca.py": "bad76c19d87d9657598b6c827bb8a572b6f1e74f85aaca6f5296479d21b40b88",
-    "generated/results/fair_diagnostic/manifest.json": "a60eb06e38885dbd807d447482ea81286b8c77f4ffcd874d0858d849f4eb6d18",
-    "generated/results/temporal_diagnostic/results.json": "94f058ace339c43f258f20e851bfe630dac63cd51865578d1f573de25fafdb6e",
-    "dev/calculate_slide14.py": "dec487faf1c880b6ec6249ab474ca530d5136ec0d9f440a4a9567ed0695bed5f",
-    "dev/slide14_climate.py": "491ecefcb0369278dc4976cf583e55d3a627ad7cdc3867b3a1e31acfa30746e2",
-    "generated/results/fair_diagnostic/BAU-species.json": "3d533376fbf4f673c7d7de2f45dc38f69ee1b4bb0fd17202bf5dc986ab277c69",
-    "generated/results/fair_diagnostic/CCS-species.json": "2cad12836d0cc06da0e5165bfdf837ceaca2c00880d9cd1fb17ee6bc0ff30e8c",
-    "generated/results/fair_diagnostic/CCUS-species.json": "1bf574e4b6bd4bf1193e6780dd0e89eb9c3865a58fa60d222d129636c2205dad",
-    "generated/results/pulse_multiyear/manifest.json": "aac208421eb4651e45f2bc07e355d510151a05b195724f1690b9987282c98119",
-    "generated/results/fair_diagnostic/climate_ensemble.npz": "bbcdd575bbc5a6ef93167a28c56432dd96977a284633f9324d9a5d3c1159da6c",
-    "dev/calculate_pulse_years.py": "b2baf6c42f4428a3388761805e5fbcd4dcb382c1a1c84d7806bbdb7cf52cbfcd",
-    "dev/reuse_pulse_references.py": "55e2a841ea901bdee4d1221d610b2d1b22b3dafae4adef465d9d8d8bed76cc12",
-    "generated/results/pulse_multiyear/reference_reuse_provenance.json": "150c206d71de9606bc6a83d7a160d32286232c93d60e088a04e8633eef888000",
-    "data/public/bau_detail_2025.json": "1bbed091c651308c78fd67ce9d8615a9d646e2e411fc8bd57b9ab39eeaaab75f",
-    "data/public/capture_details_2025.json": "8177df4817ee5a7550aa52196261cb8560fd027ee7255baa1d09cdc8c1f4f39f",
-    "data/engineering/bau_detail_2025.json": "766ac7fb8042f81d60cc507baa07f2cd553812c5261c9ace639e8df5e71aedec",
-    "data/engineering/system_flows_2025.json": "9e3961a6ffd3ea3434175e6ba032bb07280216d1dc9325a6739239591f96b50f",
-    "data/engineering/direct_utilities_2025.json": "d61ed4db983036619f5a66f14728078fb76ac665aaae9c2ae5e4ab7c2db96ba8",
-    "generated/results/temporal_diagnostic/physical_flows.json": "b32da459643a6414fdc524864929dd70533221ab5fa722a5c04aa66969ed7a54",
-    "generated/results/temporal_diagnostic/physical_flows.sha256": "74475756e75de0e19ff97b58eff985739d1e6340992d52f3cdcbb2ee59e8eb74"
-  },
-  "note": "Historical evidence references are provenance, not files distributed with this app. Original evidence validated before packaging."
+  "note": "Calculation review is unchanged. Original private evidence is retained offline. This export removes private input disclosures without changing calculated result tables."
 }

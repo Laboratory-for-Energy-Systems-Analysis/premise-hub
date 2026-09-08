@@ -34,7 +34,7 @@ def load_scores(root=APP):
                 or artifact["mix_source_sha256"] != hashlib.sha256(mixes.read_bytes()).hexdigest()):
             return []
         packages = {r["pathway"]: r["sha256"] for r in json.loads(
-            (root / "data/source_manifest.json").read_text())["trails_packages"]}
+            (root / "data/public/source_manifest.json").read_text())["trails_packages"]}
         with mixes.open(newline="") as stream:
             identities = {(r["pathway"], r["sector"], *indicator_identity(r))
                           for r in csv.DictReader(stream)}

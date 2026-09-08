@@ -1,13 +1,4 @@
 {
-  "schema_version": "1.0.0",
-  "foreground_source": {
-    "path": "dev/scenarios_16_05_2022.xlsb",
-    "sha256": "7cdb4ad3d6e50a231eb71464c727a2f51b8beed0a42192e5b507ab989b7139b5",
-    "format": "Excel Binary Workbook",
-    "read_policy": "cached values only; source is immutable",
-    "expected_sheets": 14,
-    "expected_scenario_rows": 94
-  },
   "publication": {
     "citation": "Gallego Dávila, J., Sacchi, R., & Pizzol, M. (2023). Preconditions for achieving carbon neutrality in cement production through CCUS. Journal of Cleaner Production 425, 138935.",
     "doi": "10.1016/j.jclepro.2023.138935",
@@ -41,11 +32,6 @@
       "sha256": "a69a4f1d809711761f9cef9754968f80752adab2bcb46e60c91c0ca837310152"
     }
   ],
-  "annual_background": {
-    "anchor_years": [2005, 2010, 2015, 2020, 2025, 2030, 2035, 2040, 2045, 2050, 2055, 2060, 2070, 2080, 2090, 2100],
-    "interpolation_start": 2005,
-    "interpolation_end": 2100
-  },
   "software_reference": {
     "premise": "2.5.1",
     "trails": "1.0.1"

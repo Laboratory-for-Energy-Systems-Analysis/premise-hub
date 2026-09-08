@@ -14,16 +14,15 @@ from .diagrams import _svg, _text, _icon, _arrow, _node, icon_uri
 
 ROOT = Path(__file__).resolve().parents[1]
 EVIDENCE = {
-    "contract": "data/model_contract.json",
-    "quantities": "data/runtime/system_flows_2025.json",
+    "contract": "data/public/model_contract.json",
+    "quantities": "data/public/bau_detail_2025.json",
     "bau-public": "data/public/bau_detail_2025.json",
     "capture-public": "data/public/capture_details_2025.json",
-    "utilities": "data/runtime/direct_utilities_2025.json",
-    "lifetimes": "data/assumptions/component_lifetimes.json",
-    "heat-pump": "data/assumptions/industrial_heat_pump.json",
+    "lifetimes": "data/public/component_lifetimes.json",
+    "heat-pump": "data/public/heat_supply.json",
     "jet-yield": "data/assumptions/methanol_to_jet.json",
-    "uptake": "data/assumptions/non_fossil_uptake_profiles.json",
-    "uptake-revised": "data/assumptions/non_fossil_uptake_candidate.json",
+    "uptake": "data/public/uptake_profiles.json",
+    "uptake-revised": "data/public/uptake_profiles.json",
 }
 
 
@@ -301,6 +300,18 @@ def roadmap():
     )
 
 
+def public_inventory_table():
+    data = read_json(EVIDENCE['bau-public'])
+    rows = [(r['name'], f"{r['value']:.1f}", f"{r['lhv_mj_per_kg']:.2f}",
+             f"{r['non_fossil_carbon_fraction']:.0%}") for r in data['fuels']]
+    return html.Div([
+        html.H2('The published SI documents the kiln fuel mix'),
+        table(('Fuel', 'kg / t clinker', 'MJ / kg fuel', 'Non-fossil carbon share'), rows),
+        html.P('2025 illustration interpolated between the published 2020 and 2030 fuel mixes.'),
+        link('Published SI fuel inputs and sources', 'bau-public'),
+    ], className='evidence-layout public-inventory')
+
+
 def quantity_table(flows):
     keys = (
         "Kiln energy",
@@ -398,7 +409,7 @@ def assumptions():
     fuels = candidate_profiles()
     uptake = html.Div([
         html.Div([html.Strong(f['fuel'] + ': '),
-                  '15-year growth + 1-year delay' if f['column'] in (57, 60) else
+                  '15-year growth + 1-year delay' if f['fuel'] in ('paper sludge', 'cement-bound wood fibre board') else
                   f"{abs(min(f['offsets']))}-year historical window" ])
         for f in fuels
     ], className="uptake-assumption-list")
@@ -414,7 +425,7 @@ def assumptions():
             html.Div([
                 html.Div("Capture: recovered kiln heat plus the boiler supply."),
                 html.Div("Fuel conversion: separate natural-gas boiler."),
-                html.Div(f"Export credit: gas boiler in 2025, industrial heat pump in future cases (COP {hp['coefficient_of_performance']})."),
+                html.Div("Export credit: gas boiler in 2025, industrial heat pump in future cases."),
             ]),
             link("Heat-pump assumption", "heat-pump"),
             "Heat used internally is not also credited as an export.",
@@ -467,19 +478,19 @@ def lifetime_calendar():
         name = row["component"]
         status = (
             " (equipment burden excluded)"
-            if row["column"] == 68
-            else " (existing site)" if row["column"] == 100 else ""
+            if row["component"] == 'heat exchanger'
+            else " (existing site)" if row["component"] == 'storage-site drilling' else ""
         )
         b += _text(16, y + 5, name + status, "label")
-        if row["column"] == 100:
+        if row["component"] == 'storage-site drilling':
             b += _text(440, y + 5, "Existing site: no new drilling scheduled", "note")
         years = (
             []
-            if row["column"] == 100
+            if row["component"] == 'storage-site drilling'
             else list(range(row["first_year"], 2065, row["lifetime_years"]))
         )
         for year in years:
-            b += f'<circle cx="{x(year)}" cy="{y}" r="7" fill="{"white" if row["column"]==68 else "#008a82"}" stroke="#008a82" stroke-width="2"/>'
+            b += f'<circle cx="{x(year)}" cy="{y}" r="7" fill="#008a82" stroke="#008a82" stroke-width="2"/>'
     b += _text(
         18,
         384,

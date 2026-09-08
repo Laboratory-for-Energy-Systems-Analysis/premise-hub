@@ -1,0 +1,35 @@
+{
+  "description": "Public webinar component schedules. Private equipment details are omitted.",
+  "components": [
+    {
+      "component": "storage-site drilling",
+      "lifetime_years": 30,
+      "first_year": 2035
+    },
+    {
+      "component": "PEM electrolyzer balance of plant",
+      "lifetime_years": 20,
+      "first_year": 2035
+    },
+    {
+      "component": "PEM electrolyzer stack",
+      "lifetime_years": 10,
+      "first_year": 2035
+    },
+    {
+      "component": "hydrogen diaphragm compressor",
+      "lifetime_years": 15,
+      "first_year": 2035
+    },
+    {
+      "component": "hydrogen storage tank",
+      "lifetime_years": 30,
+      "first_year": 2035
+    },
+    {
+      "component": "methanol production facility",
+      "lifetime_years": 30,
+      "first_year": 2035
+    }
+  ]
+}

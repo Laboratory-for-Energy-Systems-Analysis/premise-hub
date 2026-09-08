@@ -1,16 +1,10 @@
-"""Explicit local diagnostic preview of newly calculated prospective grids."""
-from collections import defaultdict
-import json
-import os
-from pathlib import Path
+"""Display of reviewed public prospective result grids."""
 
 import plotly.graph_objects as go
 
-from ..lca_model.results import ResultBundle, file_sha256
-from .carbon_presentation import gross_kiln_transfer_view
+from ..lca_model.results import ResultBundle
 from .static_stages import render_stage_comparison, sensitivity_cell, STAGES
 
-APP = Path(__file__).resolve().parents[1]
 PATHWAYS = ("SSP2-NPi", "SSP2-PkBudg1000")
 YEARS = (2035, 2050)
 
@@ -30,49 +24,8 @@ def load_prospective_bundle(year=2035, pathway="SSP2-NPi"):
     released = load_release_bundle(f'{year}-{pathway}')
     if released is not None:
         return released
-    background = {}
-    try:
-        if (os.environ.get("CCUS_WEBINAR_DIAGNOSTIC_PREVIEW") != "mtx-gas-heat"
-                or os.environ.get("CCUS_WEBINAR_SHOW_CANDIDATE_RESULTS") != "1"):
-            raise ValueError("Prospective diagnostic preview is not enabled")
-        from ..lca_model.prospective_grid import validate_grid_payload
-        from ..lca_model.pipeline import METHOD
-        if year not in YEARS or pathway not in PATHWAYS:
-            raise ValueError("Unsupported year or pathway")
-        folder = APP / f"generated/results/prospective_diagnostic/{year}/{pathway}"
-        manifest = json.loads((folder / "manifest.json").read_text())
-        if not manifest.get("diagnostic_only") or not manifest.get("publication_hold"):
-            raise ValueError("Missing diagnostic review status")
-        if file_sha256(folder / "grid.json") != manifest["output_sha256"]:
-            raise ValueError("Prospective grid changed")
-        for name, digest in manifest["input_hashes"].items():
-            path = (APP / name).resolve()
-            if not path.is_relative_to(APP.resolve()) or file_sha256(path) != digest:
-                raise ValueError(f"Changed prospective calculation input: {name}")
-        for check in ("exact_links", "matrix_coefficients", "forward_adjoint_all_roots", "complete_grid_and_contributions"):
-            if manifest["checks"].get(check) != "passed":
-                raise ValueError(f"Missing calculation check: {check}")
-        grid = json.loads((folder / "grid.json").read_text())
-        if grid["year"] != year or grid["pathway"] != pathway or grid["method"] != METHOD:
-            raise ValueError("Unexpected prospective result identity")
-        validate_grid_payload(grid)
-        for row in [*grid["baseline_contributions"], *(r for c in grid["cells"] for r in c["contributions"])]:
-            if row.get("stage") == "synthetic_fuel" and row.get("subprocess") == "heat production, natural gas, at industrial furnace low-NOx >100kW":
-                row["subprocess"] = "MTX gas-boiler heat"
-        grid["baseline_contributions"] = gross_kiln_transfer_view(grid["baseline_contributions"])
-        for cell in grid["cells"]:
-            cell["contributions"] = gross_kiln_transfer_view(cell["contributions"])
-        grid["presentation_decomposition"] = "gross kiln CO2 and equal captured transfers"
-        context = dict(lens="prospective_static", pathway=pathway, year=year)
-        details = tuple({**r, **context} for r in grid["baseline_contributions"])
-        totals = tuple(dict(**context, system=s, score=v) for s,v in grid["baseline_scores"].items())
-        return ResultBundle("candidate", f"prospective-{year}-{pathway}",
-            "Diagnostic results: engineering review remains open", manifest,
-            {"static_subprocesses":details, "static_totals":totals},
-            payloads={"current_static_sensitivity":grid})
-    except (OSError, ValueError, KeyError, TypeError) as exc:
-        return ResultBundle("invalidated", "prospective-unavailable", str(exc), {}, background)
-
+    return ResultBundle('stale', 'public-release-missing',
+                        'The public prospective result bundle is unavailable.', {}, {})
 
 def prospective_figure(bundle, current, selected, pathway, electricity, share, reference=False):
     fig = render_stage_comparison(bundle, selected, "prospective_static", pathway,

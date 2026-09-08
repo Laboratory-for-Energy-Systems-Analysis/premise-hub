@@ -12,13 +12,11 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def candidate_profiles():
-    path=ROOT/'data/assumptions/non_fossil_uptake_candidate.json'
+    path=ROOT/'data/public/uptake_profiles.json'
     raw=path.read_bytes()
     if hashlib.sha256(raw).hexdigest() != path.with_suffix('.sha256').read_text().strip():
         raise ValueError('Candidate uptake artifact changed')
     candidate=json.loads(raw)
-    if candidate['parent_sha256'] != hashlib.sha256((ROOT/'data/assumptions/non_fossil_uptake_profiles.json').read_bytes()).hexdigest():
-        raise ValueError('Candidate uptake parent changed')
     return candidate['profiles']
 
 
@@ -77,7 +75,6 @@ def timeline_art():
 
 
 def uptake_figure():
-    from .runtime_parameters import UPTAKE_FUEL_LHV
     profiles = candidate_profiles()
     low=2035+min(min(p['offsets']) for p in profiles)-1
     years = list(range(low,2036))
@@ -86,10 +83,10 @@ def uptake_figure():
     labels = ['RDF','Paper sludge','Sewage sludge','Meat & bone meal','Wood board','Wood chips']
     totals = {}
     for p,color,label in zip(profiles,colors,labels):
-        if p['column'] == 61:
+        if p['fuel'] == 'wood chips':
             continue  # Wood-chip uptake and dates are retained in its supplier.
         weights = dict(zip(p['offsets'],p['weights']))
-        lhv = UPTAKE_FUEL_LHV[p['column']]
+        lhv = p['lhv_mj_per_kg']
         total = 1000/lhv*p['kg_co2_per_kg_fuel']*p['biogenic_fraction']
         totals[p['fuel']] = total
         values = [-total*weights.get(y-2035,0) for y in years]

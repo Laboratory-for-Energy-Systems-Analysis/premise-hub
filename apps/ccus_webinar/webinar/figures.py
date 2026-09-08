@@ -733,7 +733,7 @@ def render_fair_response(
             )
         contribution_series[system] = by_contributor
     from .temporal_carbon_presentation import load_carbon_display, split_carbon
-    carbon_display = load_carbon_display(bundle)
+    carbon_display = load_carbon_display(bundle, public=True)
     if carbon_display:
         for system, contributors in contribution_series.items():
             split_carbon(contributors, system=system, grouping=grouping,
@@ -759,6 +759,11 @@ def render_fair_response(
                     compact[label][year] += value
             contribution_series[system] = compact
     bau_years, bau_values = response_series["BAU"]
+    carbon_labels = {
+        'clinker': 'Other kiln emissions',
+        'Carbon dioxide, fossil': 'Other CO₂ · fossil',
+        'Carbon dioxide, non-fossil': 'Other CO₂ · non-fossil',
+    } if carbon_display else {}
     annual_extent = 0.0
     for panel, system in enumerate(SYSTEMS, start=1):
         by_contributor = contribution_series[system]
@@ -773,7 +778,7 @@ def render_fair_response(
                 values = [yearly.get(year, 0.0) for year in years]
                 annual_extent = max(annual_extent, *(abs(v) for v in values))
                 color = _contributor_color(contributor)
-                label = _contributor_label(contributor)
+                label = carbon_labels.get(contributor, _contributor_label(contributor))
                 if area_mode == "stacked":
                     for sign, signed in (
                         ("positive", [max(v, 0) for v in values]),
@@ -1003,7 +1008,7 @@ def render_fair_response(
     magnitude = defaultdict(float)
     for contributors in contribution_series.values():
         for name, values in contributors.items():
-            magnitude[_contributor_label(name)] += sum(abs(v) for v in values.values()) / factor
+            magnitude[carbon_labels.get(name, _contributor_label(name))] += sum(abs(v) for v in values.values()) / factor
     compact_gwp_legend(fig, grouping=grouping,
         negligible_labels={name for name, value in magnitude.items() if value < .001},
         unit=annual_axis_unit)

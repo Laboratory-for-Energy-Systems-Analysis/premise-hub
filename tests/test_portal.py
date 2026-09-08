@@ -170,7 +170,8 @@ def test_ccus_webinar_password_only_access() -> None:
     assert 'action="/ccus-webinar/login"' in page.text
     assert visitor.get('/ccus-webinar/_dash-layout').status_code == 401
     assert visitor.post('/ccus-webinar/login', data={'password': 'wrong'}).status_code == 401
-    response = visitor.post('/ccus-webinar/login', data={'password': '2026-09-11'})
+    assert visitor.post('/ccus-webinar/login', data={'password': '2026-09-11'}).status_code == 401
+    response = visitor.post('/ccus-webinar/login', data={'password': '11092026'})
     assert response.status_code == 303
     assert response.headers['Location'] == '/ccus-webinar/'
     assert 'Path=/ccus-webinar/' in response.headers['Set-Cookie']

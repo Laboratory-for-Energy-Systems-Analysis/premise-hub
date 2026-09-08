@@ -10,6 +10,7 @@ from flask import make_response, redirect, render_template_string, request
 from itsdangerous import BadSignature, URLSafeTimedSerializer
 
 WEBINAR_DATE = '2026-09-11'
+DEFAULT_PASSWORD = '11092026'
 COOKIE = 'ccus_webinar_access'
 MAX_AGE = 12 * 60 * 60
 LOGIN = '''<!doctype html><html lang="en"><head><meta charset="utf-8">
@@ -58,7 +59,7 @@ def install_password_gate(server):
     login_path = prefix + '/login'
 
     def password():
-        return os.environ.get('CCUS_WEBINAR_PASSWORD', WEBINAR_DATE)
+        return os.environ.get('CCUS_WEBINAR_PASSWORD', DEFAULT_PASSWORD)
 
     def fingerprint():
         return hmac.new(key.encode(), password().encode(), hashlib.sha256).hexdigest()

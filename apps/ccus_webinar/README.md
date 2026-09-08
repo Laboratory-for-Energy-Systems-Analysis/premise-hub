@@ -17,7 +17,7 @@ gunicorn apps.ccus_webinar.app:server --bind 127.0.0.1:8050 --workers 1 --thread
 ```
 
 Open `http://127.0.0.1:8050/`. The password-only screen uses the webinar date,
-`2026-09-11`. The companion `/presenter` page shows notes and timers. The main
+`11092026` (DDMMYYYY). The companion `/presenter` page shows notes and timers. The main
 portal serves the application at `/ccus-webinar/` and lists it under Talks & workshops.
 
 Set `CCUS_WEBINAR_PASSWORD` to override the shared password. Set a long random

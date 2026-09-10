@@ -12,9 +12,10 @@ The deployed service exposes:
 - `/workshop/` — the interactive IAM workshop;
 - `/lca-time/` — the LCSS presentation comparing conventional, prospective,
   and time-explicit LCA;
+- `/ccus-webinar/` — the cement CCS and CCUS webinar;
 - `/health` — a lightweight service health endpoint.
 
-Both presentations are public. Their dates and routes are defined in
+All presentations are public. Their dates and routes are defined in
 `portal/presentations.yaml`.
 
 ## Local development

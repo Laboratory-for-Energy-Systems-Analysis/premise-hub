@@ -70,8 +70,7 @@ def test_removed_downloads_cannot_be_requested():
     from portal.wsgi import application
     from werkzeug.test import Client
     from werkzeug.wrappers import Response
-    client = Client(application, Response)
-    client.post('/ccus-webinar/login', data={'password': '11092026'})
+    client = Client(application, Response, use_cookies=False)
     assert client.get('/ccus-webinar/evidence/utilities').status_code == 404
     heat = client.get('/ccus-webinar/evidence/heat-pump')
     assert heat.status_code == 200

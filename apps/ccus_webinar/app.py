@@ -51,8 +51,6 @@ app = Dash(
     assets_folder="assets",
 )
 server = app.server
-from .webinar.access import install_password_gate
-install_password_gate(server)
 
 
 @server.get("/evidence/<name>")

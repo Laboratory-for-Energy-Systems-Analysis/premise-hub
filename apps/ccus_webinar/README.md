@@ -16,16 +16,9 @@ Install the repository's root requirements, then run from the repository root:
 gunicorn apps.ccus_webinar.app:server --bind 127.0.0.1:8050 --workers 1 --threads 4
 ```
 
-Open `http://127.0.0.1:8050/`. The password-only screen uses the webinar date,
-`11092026` (DDMMYYYY). The companion `/presenter` page shows notes and timers. The main
+Open `http://127.0.0.1:8050/`. The webinar opens directly without a password.
+The companion `/presenter` page shows notes and timers. The main
 portal serves the application at `/ccus-webinar/` and lists it under Talks & workshops.
-
-Set `CCUS_WEBINAR_PASSWORD` to override the shared password. Set a long random
-`CCUS_WEBINAR_SECRET_KEY` consistently across deployment instances. Local runs
-generate a private signing key under the ignored `generated/access/` directory.
-Cookies expire after 12 hours. Changing the password invalidates existing access.
-Use HTTPS for public deployment. A date password is an event access gate, not
-protection for confidential data. No username is required.
 
 ## App-only release
 
@@ -51,8 +44,7 @@ heat-pump derivations or engineering flow tables. Rounding is not a privacy meas
 
 The permission to publish calculated climate results is separate from permission
 to publish input data. Detailed results can still support inferences about a
-system; this is not a guarantee against reverse engineering. The password gate
-does not protect files in this public repository. A privacy regression test
+system; this is not a guarantee against reverse engineering. A privacy regression test
 checks distributed data and compressed payloads before release.
 
 The process model is adapted from Gallego Dávila, Sacchi and Pizzol (2023),

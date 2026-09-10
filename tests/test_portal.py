@@ -30,6 +30,7 @@ def test_landing_and_health() -> None:
     assert "/lca-time/" in landing.text
     assert "/ccus-webinar/" in landing.text
     assert "LCA of CCS and CCUS applied to cement production" in landing.text
+    assert "password required" not in landing.text
     assert "/ecosystem/" in landing.text
     assert 'rel="icon" href="/static/favicon.ico"' in landing.text
     assert "/static/premise-logo-transparent.png" in landing.text
@@ -161,22 +162,22 @@ def test_presentation_catalog_contract() -> None:
     assert catalog[1]["href"] == "/lca-time/"
 
 
-def test_ccus_webinar_password_only_access() -> None:
-    visitor = Client(application, Response)
-    page = visitor.get('/ccus-webinar/')
+def test_ccus_webinar_routes_are_public() -> None:
+    visitor = Client(application, Response, use_cookies=False)
+    page = visitor.get("/ccus-webinar/")
     assert page.status_code == 200
-    assert 'name="password"' in page.text
-    assert 'username' not in page.text
-    assert 'action="/ccus-webinar/login"' in page.text
-    assert visitor.get('/ccus-webinar/_dash-layout').status_code == 401
-    assert visitor.post('/ccus-webinar/login', data={'password': 'wrong'}).status_code == 401
-    assert visitor.post('/ccus-webinar/login', data={'password': '2026-09-11'}).status_code == 401
-    response = visitor.post('/ccus-webinar/login', data={'password': '11092026'})
-    assert response.status_code == 303
-    assert response.headers['Location'] == '/ccus-webinar/'
-    assert 'Path=/ccus-webinar/' in response.headers['Set-Cookie']
-    assert visitor.get('/ccus-webinar/_dash-layout').status_code == 200
-    assert visitor.get('/ccus-webinar/assets/styles.css').status_code == 200
+    assert 'name="password"' not in page.text
+    assert "/ccus-webinar/_dash-component-suites/" in page.text
+    for path in [
+        "/ccus-webinar/presenter",
+        "/ccus-webinar/_dash-layout",
+        "/ccus-webinar/_dash-dependencies",
+        "/ccus-webinar/assets/styles.css",
+        "/ccus-webinar/health",
+    ]:
+        response = visitor.get(path)
+        assert response.status_code == 200, path
+        assert "Set-Cookie" not in response.headers
 
 
 def test_lca_time_deck_contract() -> None:

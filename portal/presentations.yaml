@@ -3,7 +3,7 @@
 # catalog grows. Use kind: external only with an HTTPS href.
 - id: cement-ccs-ccus-2026-09-11
   title: LCA of CCS and CCUS applied to cement production
-  summary: What integrating time reveals about climate benefits of CCS and CCUS. COST Action TrANsMIT webinar · password required.
+  summary: What integrating time reveals about climate benefits of CCS and CCUS. COST Action TrANsMIT webinar.
   date: 2026-09-11
   href: /ccus-webinar/
   kind: hosted

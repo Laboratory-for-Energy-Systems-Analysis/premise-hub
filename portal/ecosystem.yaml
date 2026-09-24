@@ -1,7 +1,7 @@
 metadata:
   title: Open-source Brightway ecosystem
   version: "2.2"
-  verified_on: "2026-08-18"
+  verified_on: "2026-09-24"
   source_note: Curated from official documentation and public source repositories; the main catalog includes reusable software with an explicit Brightway data or calculation path.
 
 stages:
@@ -484,6 +484,20 @@ tools:
     links:
       source: https://github.com/polca/premise
       docs: https://premise.readthedocs.io/
+
+  - id: mescal
+    name: mescal
+    summary: Couples energy system models with life-cycle assessment.
+    description: Maps life-cycle inventories to energy-system technologies and resources, regionalizes and harmonizes databases, removes double counting, and calculates impact indicators for energy system models.
+    stage: inventory
+    group: cross-framework
+    status: active
+    order: 25
+    tags: [energy system models, LCA, inventory transformation, double counting]
+    links:
+      source: https://github.com/matthieu-str/mescal
+      docs: https://mescal.readthedocs.io/en/latest/
+      package: https://pypi.org/project/mescal/
 
   - id: shrecc
     name: SHRECC
@@ -1127,6 +1141,18 @@ relationships:
     target: wurst
     type: depends-on
     summary: Premise uses Wurst operations to transform and relink inventories.
+  - source: mescal
+    target: bw2calc
+    type: depends-on
+    summary: mescal uses Brightway calculations to derive life-cycle impact indicators for energy system models.
+  - source: mescal
+    target: wurst
+    type: depends-on
+    summary: mescal uses Wurst to transform and relink life-cycle inventory datasets.
+  - source: premise
+    target: mescal
+    type: data-flow
+    summary: mescal can use premise's additional inventories for energy-system technologies not covered by ecoinvent.
   - source: premise
     target: shrecc
     type: data-flow

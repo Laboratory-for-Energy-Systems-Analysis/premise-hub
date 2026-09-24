@@ -39,7 +39,7 @@ def test_ecosystem_catalog_contract() -> None:
         relationship_type["id"] for relationship_type in catalog["relationship_types"]
     }
 
-    assert catalog["metadata"]["verified_on"] == "2026-08-18"
+    assert catalog["metadata"]["verified_on"] == "2026-09-24"
     assert len(tool_ids) >= 65
     assert {
         "bw2data",

@@ -1,0 +1,82 @@
+{
+  "premise_mapping_commit": "79bdc95bafcfec24b02a713239a919c6e467f674",
+  "iam_variable": "Production|Industry|Steel|+|DRI-NG-EAF",
+  "market": "market for steel, low-alloyed",
+  "supplier": "steel production, natural gas-based direct reduction iron-electric arc furnace, low-alloyed",
+  "rows": [
+    {
+      "pathway": "SSP2-NPi",
+      "region": "ENC",
+      "year": 2025,
+      "iam_file": "remind-eu_SSP2-NPi.csv",
+      "iam_encrypted_sha256": "812cb12ec53aa7deb6865de904e5116c20989271dccdeca2d89e747fd5bbbd0e",
+      "production_Mt_per_year": {
+        "BF-BOF": 5.6043602,
+        "BF-BOF-CCS": 0.0,
+        "DRI-H2-EAF": 0.0,
+        "DRI-NG-EAF": 0.0,
+        "DRI-NG-EAF-CCS": 0.0,
+        "SCRAP-EAF": 4.24604
+      },
+      "total_Mt_per_year": 9.8504002,
+      "gas_dri_share": 0.0,
+      "exported_market_share": 0.0
+    },
+    {
+      "pathway": "SSP2-NPi",
+      "region": "ENC",
+      "year": 2030,
+      "iam_file": "remind-eu_SSP2-NPi.csv",
+      "iam_encrypted_sha256": "812cb12ec53aa7deb6865de904e5116c20989271dccdeca2d89e747fd5bbbd0e",
+      "production_Mt_per_year": {
+        "BF-BOF": 5.8523975,
+        "BF-BOF-CCS": 0.0,
+        "DRI-H2-EAF": 0.0,
+        "DRI-NG-EAF": 0.0,
+        "DRI-NG-EAF-CCS": 0.0,
+        "SCRAP-EAF": 4.73488
+      },
+      "total_Mt_per_year": 10.5872775,
+      "gas_dri_share": 0.0,
+      "exported_market_share": 0.0
+    },
+    {
+      "pathway": "SSP2-PkBudg1000",
+      "region": "ENC",
+      "year": 2025,
+      "iam_file": "remind-eu_SSP2-PkBudg1000.csv",
+      "iam_encrypted_sha256": "0b3c4be351d36714063940b4704afb64aa34178dfe0966a8c85767799d00961e",
+      "production_Mt_per_year": {
+        "BF-BOF": 5.6043602,
+        "BF-BOF-CCS": 0.0,
+        "DRI-H2-EAF": 0.0,
+        "DRI-NG-EAF": 0.0,
+        "DRI-NG-EAF-CCS": 0.0,
+        "SCRAP-EAF": 4.24604
+      },
+      "total_Mt_per_year": 9.8504002,
+      "gas_dri_share": 0.0,
+      "exported_market_share": 0.0
+    },
+    {
+      "pathway": "SSP2-PkBudg1000",
+      "region": "ENC",
+      "year": 2030,
+      "iam_file": "remind-eu_SSP2-PkBudg1000.csv",
+      "iam_encrypted_sha256": "0b3c4be351d36714063940b4704afb64aa34178dfe0966a8c85767799d00961e",
+      "production_Mt_per_year": {
+        "BF-BOF": 2.1355802,
+        "BF-BOF-CCS": 0.0,
+        "DRI-H2-EAF": 0.0,
+        "DRI-NG-EAF": 1.5893214,
+        "DRI-NG-EAF-CCS": 0.0,
+        "SCRAP-EAF": 5.1568
+      },
+      "total_Mt_per_year": 8.8817016,
+      "gas_dri_share": 0.17894334572104967,
+      "exported_market_share": 0.17894334572104967
+    }
+  ],
+  "conclusion": "The 2025–2030 PkBudg1000 jump originates in the IAM production trajectory. The exported ENC market and slide shares reproduce it; no interpolation or plotting error was found.",
+  "interpretation": "Modelled natural-gas DRI-EAF, not hydrogen DRI; these are conditional scenario shares, not observed plant-level deployment forecasts."
+}

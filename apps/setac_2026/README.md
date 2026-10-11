@@ -31,6 +31,11 @@ venv/bin/gunicorn apps.setac_2026.app:server --bind 127.0.0.1:8050 --workers 1 -
 ```
 
 Open `http://127.0.0.1:8050/`. The portal mounts the app at `/setac-2026/`.
+Enter the presentation password to unlock the deck. The password gate also covers
+presenter notes, Dash callbacks, assets and exports, including standalone mode.
+The deployment stores a salted scrypt verifier; `SETAC_2026_PASSWORD_HASH` can
+override it. Session cookies are scoped to this presentation, HttpOnly and Secure
+over HTTPS. The single-worker server renews sessions after a restart or deployment.
 Use the arrow keys, Page Up/Down, space bar, or navigation buttons. Navigation
 stops at main slide twelve; **Backup slides** opens the appendix separately.
 Keyboard navigation yields to focused inputs, sliders, buttons and links.
@@ -94,6 +99,9 @@ pages; select **Include backup** for fourteen. Forest sensitivity is absent from
 the main deck and default export.
 
 For a reproducible browser check and PDF artifact:
+
+Set `SETAC_2026_PASSWORD` in the shell before running the browser check; the
+script reads it to authenticate and does not write it to the report.
 
 ```sh
 venv/bin/python apps/setac_2026/scripts/browser_check.py \
@@ -168,6 +176,12 @@ small aggregate extracts stored in the SETAC app; inventory packages remain loca
   heat uses the single `market for heat, district or industrial` with reference
   product `heat, district or industrial`, in MJ. The export does not distinguish
   the two uses. This is not the DAC heat-pump inventory.
+  The steel check in `data/steel_mix_audit.json` traces the ENC PkBudg1000
+  gas-based DRI share from the encrypted IAM production file through the original
+  premise mapping and exported market: 0% in 2025 and 17.894% in 2030
+  (1.5893214 / 8.8817016 Mt/year). NPi remains at zero in both years. The jump
+  is present in the source scenario; it is not interpolation or a plotting error.
+  These modelled shares do not establish a plant-level deployment forecast.
 - The current-static bars stack process contributions on either side of zero,
   with diamonds marking the net GWP100 scores. BECCS uses the reviewed
   foreground-step attribution; DACCS uses the existing activity contributions

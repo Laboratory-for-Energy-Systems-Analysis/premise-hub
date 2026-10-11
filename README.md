@@ -17,7 +17,8 @@ The deployed service exposes:
   presenter notes and a PDF fallback;
 - `/health` — a lightweight service health endpoint.
 
-All presentations are public. Their dates and routes are defined in
+The SETAC presentation requires a password; the other presentations are public.
+Their dates and routes are defined in
 `portal/presentations.yaml`.
 
 ## Local development

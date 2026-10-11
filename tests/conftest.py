@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import os
+from werkzeug.security import generate_password_hash
 
 # Dash bakes request prefixes into its index at import time.  Set the mounted
 # production prefixes before pytest imports either application, independent of
@@ -8,3 +9,4 @@ import os
 os.environ.setdefault("SCENARIO_REQUESTS_PREFIX", "/scenarios/")
 os.environ.setdefault("WORKSHOP_REQUESTS_PREFIX", "/workshop/")
 os.environ.setdefault("SETAC_2026_REQUESTS_PREFIX", "/setac-2026/")
+os.environ["SETAC_2026_PASSWORD_HASH"] = generate_password_hash("test-setac-password")

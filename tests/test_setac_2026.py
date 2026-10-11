@@ -30,8 +30,85 @@ from apps.setac_2026.figures import (
 from portal.wsgi import application
 
 
+@pytest.mark.parametrize(
+    "path",
+    (
+        "/",
+        "/presenter",
+        "/health",
+        "/_dash-layout",
+        "/_dash-dependencies",
+        "/_dash-update-component",
+        "/assets/styles.css",
+        "/shared/case-pathways.svg",
+        "/system-flows.svg",
+    ),
+)
+def test_setac_routes_require_password(path):
+    client = Client(application, Response)
+    response = client.get("/setac-2026" + path)
+    assert response.status_code == 401
+    assert 'type="password"' in response.text
+    assert "test-setac-password" not in response.text
+    assert response.headers["Cache-Control"] == "no-store"
+    if path == "/_dash-update-component":
+        assert client.post("/setac-2026" + path, json={}).status_code == 401
+
+
+def test_setac_password_login_and_cookie_scope():
+    client = Client(application, Response)
+    assert client.post("/setac-2026/", data={"password": "wrong"}).status_code == 401
+    assert client.post("/setac-2026/", data={"password": "错误"}).status_code == 401
+    response = client.post(
+        "/setac-2026/",
+        data={"password": "test-setac-password"},
+        headers={"X-Forwarded-Proto": "https"},
+    )
+    assert response.status_code == 303
+    assert response.headers["Location"] == "/setac-2026/"
+    cookie = response.headers["Set-Cookie"]
+    for attribute in ("HttpOnly", "Secure", "SameSite=Lax", "Path=/setac-2026"):
+        assert attribute in cookie
+    assert client.get("/setac-2026/health").json["core_slides"] == CORE_COUNT
+    client.set_cookie(
+        "premise_presentation_setac_time_explicit_lca_2026_10_19",
+        "forged",
+        path="/setac-2026",
+    )
+    assert client.get("/setac-2026/").status_code == 401
+    assert client.get("/").status_code == 200
+    assert client.get("/lca-time/").status_code == 200
+
+
+def test_standalone_password_gate_redirects_to_local_root():
+    from portal.auth import PresentationPasswordGate
+    from werkzeug.security import generate_password_hash
+
+    gate = PresentationPasswordGate(
+        Response("private slides"),
+        presentation_id="test",
+        title="Test deck",
+        password_hash=generate_password_hash("test-password"),
+        mount_path="/",
+    )
+    client = Client(gate, Response)
+    assert client.get("/").status_code == 401
+    response = client.post("/", data={"password": "test-password"})
+    assert response.headers["Location"] == "/"
+    assert client.get("/presenter").text == "private slides"
+    # Public password hashes cannot be used as bearer cookies.
+    client.set_cookie("premise_presentation_test", gate.password_hash)
+    assert client.get("/").status_code == 401
+
+
 def test_mounted_app_and_presenter():
     client = Client(application, Response)
+    assert (
+        client.post(
+            "/setac-2026/", data={"password": "test-setac-password"}
+        ).status_code
+        == 303
+    )
     for path in (
         "/",
         "/presenter",

@@ -1,12 +1,13 @@
 from __future__ import annotations
 
-import hashlib
 import hmac
 import re
+import secrets
 from html import escape
 from typing import Callable, Iterable
 
 from werkzeug.wrappers import Request, Response
+from werkzeug.security import check_password_hash
 
 StartResponse = Callable[[str, list[tuple[str, str]]], Callable[..., object]]
 WSGIApp = Callable[[dict[str, object], StartResponse], Iterable[bytes]]
@@ -21,35 +22,37 @@ class PresentationPasswordGate:
         *,
         presentation_id: str,
         title: str,
-        password: str,
+        password_hash: str,
         mount_path: str,
     ) -> None:
         self.app = app
         self.title = title
-        self.password = password
+        self.password_hash = password_hash
         self.mount_path = mount_path.rstrip("/") or "/"
+        self.login_path = self.mount_path.rstrip("/") + "/"
         safe_id = re.sub(r"[^a-z0-9]+", "_", presentation_id.casefold()).strip("_")
         self.cookie_name = f"premise_presentation_{safe_id}"
-        self.cookie_value = hmac.new(
-            password.encode("utf-8"),
-            f"premise-hub:{presentation_id}".encode("utf-8"),
-            hashlib.sha256,
-        ).hexdigest()
+        # This bearer token is private to the running worker and cannot be
+        # reconstructed from the password verifier stored in configuration.
+        # The portal uses one Gunicorn worker; restarts require a fresh login.
+        self.cookie_value = secrets.token_urlsafe(32)
 
     def __call__(
         self, environ: dict[str, object], start_response: StartResponse
     ) -> Iterable[bytes]:
         request = Request(environ)
         supplied_cookie = request.cookies.get(self.cookie_name, "")
-        if hmac.compare_digest(supplied_cookie, self.cookie_value):
+        if hmac.compare_digest(supplied_cookie.encode(), self.cookie_value.encode()):
             return self.app(environ, start_response)
 
         error = False
-        if request.method == "POST":
-            supplied_password = request.form.get("password", "").strip()
-            if hmac.compare_digest(supplied_password, self.password):
+        if request.method == "POST" and request.path == "/":
+            supplied_password = request.form.get("password", "")
+            if len(supplied_password) <= 1024 and check_password_hash(
+                self.password_hash, supplied_password
+            ):
                 response = Response(status=303)
-                response.headers["Location"] = f"{self.mount_path}/"
+                response.headers["Location"] = self.login_path
                 response.set_cookie(
                     self.cookie_name,
                     self.cookie_value,
@@ -86,7 +89,7 @@ class PresentationPasswordGate:
 
     def _login_page(self, *, error: bool) -> str:
         title = escape(self.title)
-        action = escape(f"{self.mount_path}/", quote=True)
+        action = escape(self.login_path, quote=True)
         error_markup = (
             '<p class="error" role="alert">That password is not correct.</p>'
             if error

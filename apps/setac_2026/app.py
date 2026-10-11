@@ -7,6 +7,9 @@ from dash import ALL, ClientsideFunction, Dash, Input, Output, State, ctx, dcc, 
 from dash.exceptions import PreventUpdate
 from flask import Response, abort, render_template, send_from_directory
 
+from portal.auth import PresentationPasswordGate
+
+from .access import password_hash
 from .deck import (
     ALL_SLIDES,
     CORE_COUNT,
@@ -60,6 +63,13 @@ app = Dash(
     external_stylesheets=[REQUESTS_PREFIX + "shared/styles.css"],
 )
 server = app.server
+server.wsgi_app = PresentationPasswordGate(
+    server.wsgi_app,
+    presentation_id="setac-time-explicit-lca-2026-10-19",
+    title="How time integration changes LCA: the case of CDR",
+    password_hash=password_hash(),
+    mount_path=REQUESTS_PREFIX,
+)
 
 
 @server.get("/shared/<path:filename>")

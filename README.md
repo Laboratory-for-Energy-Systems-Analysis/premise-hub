@@ -13,6 +13,8 @@ The deployed service exposes:
 - `/lca-time/` — the LCSS presentation comparing conventional, prospective,
   and time-explicit LCA;
 - `/ccus-webinar/` — the cement CCS and CCUS webinar;
+- `/setac-2026/` — the twelve-slide, 12-minute SETAC CDR presentation, with
+  presenter notes and a PDF fallback;
 - `/health` — a lightweight service health endpoint.
 
 All presentations are public. Their dates and routes are defined in

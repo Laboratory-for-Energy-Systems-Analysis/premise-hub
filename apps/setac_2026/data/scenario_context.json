@@ -1,0 +1,13 @@
+{
+  "source": "apps/scenario_explorer/data/structured_data (2, 4, 9).csv.gz",
+  "source_sha256": "c1b55b66386228da2b48bf742112eed0ad1d063bca8cf48e50ae2d8d907ccf0e",
+  "premise_version": "2.4.9",
+  "premise_source_commit": "50ea06e40466f185b0b1c77de9f4bbbd6288f19a",
+  "model": "REMIND-EU",
+  "rows": 129,
+  "notes": [
+    "Source values and units are retained without interpolation or filling.",
+    "GMST is available only for World (MAGICC7 median).",
+    "ENC SSP2-NPi CO2 has no 2100 row in the source export."
+  ]
+}

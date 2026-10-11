@@ -72,6 +72,7 @@ def test_landing_and_health() -> None:
             "landing": "ok",
             "ecosystem": "ok",
             "lca_time": "ok",
+            "setac_2026": "ok",
             "scenarios": "ok",
             "workshop": "ok",
         },
@@ -145,10 +146,14 @@ def test_resource_catalog_contract() -> None:
 def test_presentation_catalog_contract() -> None:
     catalog = presentations()
     assert [item["id"] for item in catalog] == [
+        "setac-time-explicit-lca-2026-10-19",
         "cement-ccs-ccus-2026-09-11",
         "iam-workshop-2026-09-03",
         "lca-through-time-2026-08-27",
     ]
+    assert catalog[0]["date"] == "2026-10-19"
+    assert catalog[0]["href"] == "/setac-2026/"
+    catalog = catalog[1:]
     assert catalog[0]["date"] == "2026-09-11"
     assert catalog[0]["href"] == "/ccus-webinar/"
     catalog = catalog[1:]

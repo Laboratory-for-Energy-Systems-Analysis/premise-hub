@@ -1,6 +1,12 @@
 # Add new presentations here using an ISO date (YYYY-MM-DD). The home page
 # displays the newest entries first and becomes vertically scrollable as the
 # catalog grows. Use kind: external only with an HTTPS href.
+- id: setac-time-explicit-lca-2026-10-19
+  title: "How time integration changes LCA: the case of CDR"
+  summary: SETAC Europe LCA Case Study Symposium, Bruges. Prospective backgrounds, temporal inventories, radiative forcing and CO₂-pulse equivalence in 12 minutes.
+  date: 2026-10-19
+  href: /setac-2026/
+  kind: hosted
 - id: cement-ccs-ccus-2026-09-11
   title: LCA of CCS and CCUS applied to cement production
   summary: What integrating time reveals about climate benefits of CCS and CCUS. COST Action TrANsMIT webinar.

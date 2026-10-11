@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Presenter · SETAC 2026</title>
+  <style>
+    * { box-sizing:border-box; } body { margin:0; padding:32px; background:#edf2f4; color:#173747; font:18px/1.5 Arial,sans-serif; }
+    main { max-width:1100px; margin:auto; } header { display:flex; justify-content:space-between; align-items:center; gap:20px; }
+    h1 { font-size:30px; line-height:1.2; } h2 { font-size:22px; } .timer { font:700 54px/1 monospace; font-variant-numeric:tabular-nums; }
+    button,select,a { font:inherit; } button { background:white; border:1px solid #aebfc7; border-radius:5px; padding:7px 14px; cursor:pointer; }
+    a { color:#17668b; } .actions { display:flex; gap:10px; margin:20px 0; } article { background:white; padding:28px; border-left:5px solid #2583ac; }
+    .meta { color:#60747e; font-size:15px; } #notes { font-size:22px; line-height:1.6; } select { width:100%; padding:10px; margin-bottom:20px; }
+    .over { color:#b53d32; } table { width:100%; border-collapse:collapse; font-size:15px; } td { padding:7px; border-bottom:1px solid #d4dfe3; }
+    td:first-child { width:70px; } td:last-child { width:100px; text-align:right; } .hint { font-size:14px; color:#60747e; }
+  </style>
+</head>
+<body><main>
+  <header><div><strong>SETAC Europe · Romain Sacchi</strong><div class="meta">12 minutes speaking · questions afterwards</div></div><div id="timer" class="timer">12:00</div></header>
+  <div class="actions"><button id="start">Start timer</button><button id="reset">Reset</button><a href="{{ deck_url }}" target="_blank" rel="noopener">Open presentation</a></div>
+  <p class="hint">Notes follow the presentation in another tab on the same browser. Manual selection here changes only the notes.</p>
+  <select id="selection" aria-label="Speaker notes slide">{% for slide in slides %}<option value="{{ loop.index0 }}">{{ loop.index }}. {{ slide.title }}</option>{% endfor %}</select>
+  <article><div id="pace" class="meta"></div><h1 id="title"></h1><div id="notes"></div></article>
+  {% set planned_seconds = slides[:core_count]|sum(attribute='seconds') %}
+  {% set margin_seconds = talk_seconds - planned_seconds %}
+  <h2>Speaking plan · {{ planned_seconds // 60 }}:{{ '%02d' % (planned_seconds % 60) }} + {{ margin_seconds // 60 }}:{{ '%02d' % (margin_seconds % 60) }} margin</h2>
+  <table>{% for slide in slides[:core_count] %}<tr><td>{{ loop.index }} / {{ core_count }}</td><td>{{ slide.title }}</td><td>{{ slide.seconds // 60 }}:{{ '%02d' % (slide.seconds % 60) }}</td></tr>{% endfor %}</table>
+</main>
+<script>
+  const slides = {{ slides|tojson }};
+  const coreCount = {{ core_count }};
+  const talkSeconds = {{ talk_seconds }};
+  const selection = document.getElementById('selection');
+  function clock(seconds) { const v = Math.max(0, Math.floor(seconds)); return `${Math.floor(v / 60)}:${String(v % 60).padStart(2,'0')}`; }
+  function show(index) {
+    index = Math.max(0, Math.min(slides.length - 1, Number(index) || 0));
+    const slide = slides[index]; selection.value = index;
+    document.getElementById('title').textContent = slide.title;
+    document.getElementById('notes').textContent = slide.notes;
+    const before = slides.slice(0,index).reduce((sum,s) => sum+s.seconds,0);
+    document.getElementById('pace').textContent = index < coreCount ? `Slide ${index+1} / ${coreCount} · ${clock(slide.seconds)} · target ${clock(before)}–${clock(before+slide.seconds)}` : 'Backup · outside the speaking plan';
+  }
+  selection.addEventListener('change', () => show(selection.value));
+  window.addEventListener('storage', event => { if(event.key === 'setac-2026-slide' && event.newValue) { try { show(JSON.parse(event.newValue).index); } catch (_) {} } });
+  try { show(JSON.parse(localStorage.getItem('setac-2026-slide') || '{}').index); } catch (_) { show(0); }
+  let elapsed = 0, started = null;
+  const start = document.getElementById('start');
+  start.addEventListener('click', () => {
+    if(started === null) { started = Date.now(); start.textContent = 'Pause timer'; }
+    else { elapsed += (Date.now()-started)/1000; started = null; start.textContent = 'Resume timer'; }
+  });
+  document.getElementById('reset').addEventListener('click', () => { elapsed=0; started=null; start.textContent='Start timer'; });
+  setInterval(() => {
+    const left = talkSeconds - elapsed - (started === null ? 0 : (Date.now()-started)/1000);
+    const timer = document.getElementById('timer'); timer.textContent = (left < 0 ? '+' : '') + clock(Math.abs(left)); timer.classList.toggle('over', left < 0);
+  },200);
+</script></body></html>

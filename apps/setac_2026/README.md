@@ -42,7 +42,17 @@ Keyboard navigation yields to focused inputs, sliders, buttons and links.
 
 **Presenter** opens notes, the speaking plan and a 12-minute timer in another
 tab. Notes follow slide changes in the same browser. The timer starts manually.
+Each main slide has a short audience-guidance cue; detailed assumptions remain
+available in an expandable section. The cues specify one visual comparison or
+interaction to prioritize on each of the detailed slides.
 Direct slide links use zero-based fragments, e.g. `#slide-9` for pulse equivalence.
+
+Slide two combines the research question with the broader CDR motivation:
+different uptake schedules, storage duration and possible re-release, and
+life-cycle emission dates. The qualitative examples are based on
+[IPCC AR6 WG III, Chapter 12](https://www.ipcc.ch/report/ar6/wg3/chapter/chapter-12/),
+Cross-Chapter Box 8 and Section 12.3. BECCS and DACCS remain the only quantified
+cases. This replaces the repeated system diagram without adding a slide.
 
 Slide five has four plots. The left panel selects GMST, CO₂ emissions or
 population and World or Northern Europe (ENC). GMST is global, so selecting it
@@ -71,8 +81,12 @@ and 2100**. They move in five-year steps and stay at least five years apart.
 The curve, scores, settings and 2100/2300 comparison update together. A comparison
 endpoint at or before the selected reference pulse is marked unavailable.
 
-Slide eleven concludes with five takeaway sentences on the left and a thank-you
-message, Romain Sacchi’s name, PSI affiliation and email address on the right.
+Slide eleven concludes with four takeaway sentences on the left. The right
+returns to uptake, storage and emissions with an outlook for biochar, enhanced
+weathering and ecosystem restoration, followed by the thank-you message,
+Romain Sacchi’s name, PSI affiliation and email address. These future applications
+would require their own inventories and uptake/release profiles; they are not
+new results or changes to the current storage assumptions.
 A frame below the takeaways reports net tonnes of CO₂ stored needed for a
 −1 t CO₂-eq GWP100 score and a −1 t CO₂-pulse-equivalent score, for both systems.
 It divides −1000 by the existing kg-equivalent-per-net-tonne cohort scores.
@@ -117,16 +131,16 @@ explicit `--browser` executable.
 | Slide | Content | Time |
 | --- | --- | --- |
 | 1 | Title and motivation | 0:20 |
-| 2 | Does timing change the BECCS–DACCS comparison? | 0:25 |
-| 3 | BECCS and DACCS: material, energy and CO₂ flows | 0:45 |
-| 4 | BECCS has the lower GWP100 score in 2025 | 1:05 |
+| 2 | Can including time change LCA conclusions? | 0:40 |
+| 3 | BECCS and DACCS: material, energy and CO₂ flows | 0:35 |
+| 4 | BECCS has the lower GWP100 score in 2025 | 0:55 |
 | 5 | Future electricity, heat and material supply | 0:55 |
-| 6 | CDR scores with 2025, 2030 and 2050 backgrounds | 0:55 |
+| 6 | CDR scores with 2025, 2030 and 2050 backgrounds | 0:45 |
 | 7 | TRAILS: matrices and supply chains through time | 0:50 |
 | 8 | When do emissions and CO₂ removals occur? | 1:00 |
 | 9 | GWP100 does not distinguish emission dates, but radiative forcing does | 1:00 |
 | 10 | Comparing CDR with CO₂-pulse equivalents | 2:15 |
-| 11 | Conclusions and contact details | 0:30 |
+| 11 | Conclusions: timing matters for CDR | 0:45 |
 | 12 | Data sources and model versions | — |
 
 The GWP claim is scoped to a fixed-calendar climate question. Standard GWP100

@@ -86,11 +86,13 @@ def main():
                 if overflow:
                     overflows.append({"slide": index + 1, "elements": overflow})
                 assert presenter.locator("#selection").input_value() == str(index)
+                assert presenter.locator("#cue-text").inner_text()
+                assert not presenter.locator("#technical-notes").evaluate("e => e.open")
                 if page.locator("#pulse-window").count():
                     pulse_slide = index + 1
                 if page.locator("#stage .closing-takeaways").count():
                     closing_slide = index + 1
-                    assert page.locator("#stage .closing-takeaways li").count() == 5
+                    assert page.locator("#stage .closing-takeaways li").count() == 4
                     assert (
                         page.locator("#stage .closing-contact a").get_attribute("href")
                         == "mailto:romain.sacchi@psi.ch"

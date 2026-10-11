@@ -10,6 +10,9 @@
     button,select,a { font:inherit; } button { background:white; border:1px solid #aebfc7; border-radius:5px; padding:7px 14px; cursor:pointer; }
     a { color:#17668b; } .actions { display:flex; gap:10px; margin:20px 0; } article { background:white; padding:28px; border-left:5px solid #2583ac; }
     .meta { color:#60747e; font-size:15px; } #notes { font-size:22px; line-height:1.6; } select { width:100%; padding:10px; margin-bottom:20px; }
+    #cue { font-size:25px; line-height:1.4; background:#e5f2f0; border-left:4px solid #197e76; padding:18px 22px; margin:0 0 24px; }
+    #cue span { display:block; color:#197e76; font-size:14px; font-weight:bold; margin-bottom:8px; }
+    summary { cursor:pointer; color:#17668b; font-size:17px; padding:8px 0; }
     .over { color:#b53d32; } table { width:100%; border-collapse:collapse; font-size:15px; } td { padding:7px; border-bottom:1px solid #d4dfe3; }
     td:first-child { width:70px; } td:last-child { width:100px; text-align:right; } .hint { font-size:14px; color:#60747e; }
   </style>
@@ -19,7 +22,11 @@
   <div class="actions"><button id="start">Start timer</button><button id="reset">Reset</button><a href="{{ deck_url }}" target="_blank" rel="noopener">Open presentation</a></div>
   <p class="hint">Notes follow the presentation in another tab on the same browser. Manual selection here changes only the notes.</p>
   <select id="selection" aria-label="Speaker notes slide">{% for slide in slides %}<option value="{{ loop.index0 }}">{{ loop.index }}. {{ slide.title }}</option>{% endfor %}</select>
-  <article><div id="pace" class="meta"></div><h1 id="title"></h1><div id="notes"></div></article>
+  <article>
+    <div id="pace" class="meta"></div><h1 id="title"></h1>
+    <div id="cue"><span>Guide the audience</span><div id="cue-text"></div></div>
+    <details id="technical-notes"><summary>Technical notes and assumptions</summary><div id="notes"></div></details>
+  </article>
   {% set planned_seconds = slides[:core_count]|sum(attribute='seconds') %}
   {% set margin_seconds = talk_seconds - planned_seconds %}
   <h2>Speaking plan · {{ planned_seconds // 60 }}:{{ '%02d' % (planned_seconds % 60) }} + {{ margin_seconds // 60 }}:{{ '%02d' % (margin_seconds % 60) }} margin</h2>
@@ -35,6 +42,9 @@
     index = Math.max(0, Math.min(slides.length - 1, Number(index) || 0));
     const slide = slides[index]; selection.value = index;
     document.getElementById('title').textContent = slide.title;
+    document.getElementById('cue').hidden = !slide.cue;
+    document.getElementById('cue-text').textContent = slide.cue || '';
+    document.getElementById('technical-notes').open = !slide.cue;
     document.getElementById('notes').textContent = slide.notes;
     const before = slides.slice(0,index).reduce((sum,s) => sum+s.seconds,0);
     document.getElementById('pace').textContent = index < coreCount ? `Slide ${index+1} / ${coreCount} · ${clock(slide.seconds)} · target ${clock(before)}–${clock(before+slide.seconds)}` : 'Backup · outside the speaking plan';

@@ -32,72 +32,84 @@ SLIDES = [
         title=TITLE,
         phase="SETAC Europe LCA Case Study Symposium",
         seconds=20,
+        cue="Introduce the question: how does adding time change what LCA tells us about carbon dioxide removal?",
         notes="Introduce the title and the contribution: connecting future backgrounds, dated inventories and climate response. We follow the same BECCS and DACCS examples through three treatments of time. Move to the research question before discussing results.",
     ),
     dict(
-        title="Does timing change the BECCS–DACCS comparison?",
-        phase="Research question / Future supply chains and emission dates",
-        seconds=25,
-        notes="Pose the question: can the comparison between BECCS and DACCS change when we include future supply chains, the dates of emissions and removals, and the resulting climate response? Follow the same cases from current static to prospective static and then time-explicit assessment. The next slide introduces the physical systems. This is a methods illustration under fixed assumptions, not a universal technology ranking.",
+        title="Can including time change LCA conclusions?",
+        phase="Why timing matters / Different CDR methods, different time profiles",
+        seconds=40,
+        cue="Point to uptake, storage and emissions: each has its own timing. Use BECCS and DACCS to test whether including those dates changes an LCA conclusion.",
+        notes="Start broadly: CDR includes forests, soil carbon, biochar, enhanced weathering and engineered capture and storage. These methods differ in the timing of uptake, the duration of storage and possible re-release, and their life-cycle emissions. The examples illustrate these differences; they are not a quantitative comparison. IPCC AR6 WG III Chapter 12, Cross-Chapter Box 8 and Section 12.3 provide the broader context. Ask whether including time changes LCA conclusions. Test that question with the existing BECCS and DACCS cases, moving from current static to prospective static and then time-explicit assessment. The next slide introduces the physical systems and functional unit. Other CDR methods and alternative storage-release profiles are an outlook, not additional modeled results in this talk.",
     ),
     dict(
         title="BECCS and DACCS: material, energy and CO₂ flows",
         phase="CDR systems / Inputs and outputs per tonne stored",
-        seconds=45,
+        seconds=35,
+        cue="Point to wood and exported energy for BECCS, then electricity and heat for DACCS. Both routes deliver one net tonne to storage; the next slide accounts for life-cycle emissions.",
         notes="Use the original lca_time system artwork to follow the selected 2025 physical flows. Both routes capture 1.029 tonnes of CO₂, lose 0.029 tonnes along the 2,000 km transport chain and store one tonne. This is physical net storage, before subtracting supply-chain GHG burdens. BECCS uses 0.630 tonnes of dry wood chips (12.85 GJ): forest uptake is 1.143 tonnes, 90% is captured and 0.114 tonnes return to the atmosphere at the stack. The new CHP supplies capture heat internally and exports 0.564 MWh electricity and 0.249 GJ heat; the reference leaves the mature forest standing and buys equivalent market energy. Capture also requires chemicals and cooling water. DACCS captures from air, uses 3.086 kg make-up sorbent and 1.854 MWh capture electricity, of which 1.134 MWh drives a heat pump supplying 12.243 GJ heat at COP 3. The heat is produced from the shown electricity, not an additional energy input. Both routes use a further 0.139 MWh for compression and storage. These are selected operating flows from the existing reviewed inventory, not a complete life-cycle inventory or a GWP balance. Point to the different dependencies, then move to the stacked LCA results.",
     ),
     dict(
         title="BECCS has the lower GWP100 score in 2025",
         phase="01 / Static LCA with Northern European supply chains",
-        seconds=65,
+        seconds=55,
+        cue="Start at zero, then point to the white diamonds. BECCS has the lower net GWP100 score with 2025 supply chains. The stacks explain the total, but contain no emission dates.",
         notes="Read the stacked bars from zero: emissions extend upward; CO₂ uptake and avoided-energy credits extend downward. White diamonds mark the net GWP100 scores, about −963 for BECCS and −831 for DACCS. Do not mistake the bottom of the negative stack for the net score. BECCS includes forest regrowth, residual stack emissions, harvesting, transport loss and CHP+CCS supply-chain burdens, with an avoided-energy credit. DACCS includes direct capture, upstream biogenic uptake, electricity supply, transport loss and other supply-chain contributions. The upstream uptake is inherited supply-chain accounting, not extra DAC operation; read it together with the energy burdens. The BECCS forest reference is held fixed. Under the 2025 background BECCS has the more negative GWP100 total, but the bars do not tell us when the removals or emissions occur.",
     ),
     dict(
         title="Future electricity, heat and material supply",
         phase="02 / Prospective backgrounds from REMIND-EU and premise",
         seconds=55,
+        cue="Follow REMIND-EU → premise → supply mixes. Use electricity under PkBudg1000 as the main example; one switch to NPi shows why the scenario matters. Leave the other selectors for questions.",
         notes="Introduce integrated assessment models: scenarios connect socioeconomic assumptions and climate policy to future energy and industrial systems. premise maps the REMIND-EU SSP2 pathways into changes in ecoinvent supply mixes, process efficiency and emissions. These are conditional scenarios, not forecasts. The plots show premise-generated market shares in Northern Europe (ENC), every five years from 2025 through 2050. Start with PkBudg1000: solar expands, market heat supply shifts away from oil toward electric and biomass routes, and steel shifts from BF–BOF toward direct reduction and scrap EAF. Switch to NPi to show that the direction and scale differ across sectors. The third selector also exposes clinker CCS and truck electrification. Hover for exact shares. All six snapshots are extracted from the original scenario packages at their respective years, without interpolating market shares. Steel abbreviations: BF–BOF is blast furnace/basic oxygen furnace; DRI–EAF here is natural gas-based direct reduced iron/electric arc furnace. The ENC PkBudg1000 share rises from 0% in 2025 to 17.89% in 2030 in the original IAM output: 1.5893214 Mt/year divided by 8.8817016 Mt/year total steel. The same values were verified in the exported premise market; this is a scenario trajectory, not a plant-level deployment forecast. NPi has zero DRI in both years. The heat shares come from the single ENC market named “market for heat, district or industrial”; the export does not distinguish district and industrial uses. This is not the DAC heat pump itself. The left plot compares GMST, CO₂ emissions or population across both pathways, for World or Northern Europe. GMST is global and therefore fixes the region to World. The selected pathway is highlighted and drives the three mix plots. The PDF fixes World GMST and PkBudg1000 mixes for electricity, heat and steel. Spend about 55 seconds here and move to the consequences for CDR scores.",
     ),
     dict(
         title="CDR scores with 2025, 2030 and 2050 backgrounds",
         phase="02 / Prospective static LCA under two SSP2 scenarios",
-        seconds=55,
+        seconds=45,
+        cue="Follow the white diamonds from 2025 to 2050, especially for DACCS. Future supply chains change the scores, but each bar is still a static snapshot.",
         notes="Each cluster is a background year; the left hatched stack uses NPi and the right solid stack uses PkBudg1000. The two panels show BECCS and DACCS. White diamonds and labels mark the net scores. Each bar is a separate static snapshot, not a plant cohort. Both systems improve under these backgrounds, with a larger change for DACCS. These stacks group the existing activity contributions consistently for every year; they differ from the explicit 2025 BECCS foreground-step attribution on slide 4. Electricity and heat activities can contribute on either side of zero, including substitution effects; do not interpret one activity category as the complete foreground avoided-energy service. All retained activity contributions and the source Other remainder are included, and opposite signs are stacked separately. This adds a future background year, but still does not tell us when the project's individual emissions and removals occur.",
     ),
     dict(
         title="TRAILS: matrices and supply chains through time",
         phase="03 / Annual backgrounds and temporal routing",
         seconds=50,
+        cue="Point to the year dimension in the matrices, then one dated path in the graph. TRAILS connects each demand to its year's supply chain and retains the dates of the resulting emissions.",
         notes="Introduce TRAILS: Temporal Routing and Aggregation of Impacts across Life-cycle Systems. On the left, premise supplies scenario-year snapshots. TRAILS interpolates annual technosphere A and biosphere B matrices: the third dimension is year. A links activities and products; B links activities and elementary flows. On the right, temporal distributions turn exchanges into demands and emissions in particular years. Each graph node is an activity in a calendar year; depth runs downward and years run horizontally. This is the schematic from the longer talk, not a BECCS or DACCS result. Explicit routing stops at a selected frontier, and remaining demand is still solved using annual background matrices; it is not discarded. Outside the scenario horizon, available endpoint backgrounds are used while the actual inventory dates are retained. The output keeps activity, elementary flow and year, ready for annual characterization or climate modelling of the dated gas inventory. Spend 50 seconds, then show the plant-cohort timelines and results.",
     ),
     dict(
         title="When do emissions and CO₂ removals occur?",
         phase="03 / Time-explicit LCA for plants operating in 2030–2049",
         seconds=60,
+        cue="Compare uptake during DACCS operation with the long BECCS regrowth tail. The red curves add GWP100 contributions; they are not the climate response.",
         notes="Move to complete plants commissioned in 2030. Construction is in 2027–2029, operation in 2030–2049, and end-of-life in 2050. TRAILS combines dated foreground and background exchanges with annual scenario matrices. Every BECCS harvest has an 83-year replacement-stand regrowth tail, reaching 2132 for the final harvest. DACCS captures during operation. The stacked areas separate uptake, energy, CO₂ and stack emissions, materials and other supply-chain contributions. Uptake contains forest regrowth and direct air capture. Energy includes biomass supply, electricity and compression, as well as avoided electricity and heat. The CO₂ and stack-emissions category contains the complete residual stack-emission branch and CO₂ transport losses; the branch-level GWP data do not separate individual stack gases. Materials includes chemicals, sorbent, construction and their end-of-life branches. Bundled pipeline/storage and remaining supply-chain branches stay in Other. Negative supply-chain values remain with their source category, so energy credits are not relabelled as uptake. Both panels start in 2000. The red line shows cumulative net GWP100 on each right-hand axis, accumulated over the full inventory including upstream contributions before 2000. Its endpoint closes to the cohort total. Both cases use the same annual and cumulative scales; zeros align between the axes. Cumulative GWP100 remains a sum of characterized inventory, not a climate-response trajectory. Small pre-operation DACCS contributions belong to upstream biogenic timing, not early DAC operation. These remain characterized inventories, not forcing trajectories.",
     ),
     dict(
         title="GWP100 does not distinguish emission dates, but radiative forcing does",
         phase="04 / Coupling temporal TRAILS inventories to the FaIR climate model",
         seconds=60,
+        cue="Follow TRAILS → FaIR → radiative forcing. Point first to the earlier DACCS response, then the later BECCS response. Gas identity and calendar year both enter the climate model.",
         notes="GWP100 has a time horizon, but its standard factors are not indexed to the calendar date of each emission. Point to the coupling diagram: temporal TRAILS inventories provide annual emissions and removals, retaining the individual gas and its calendar year. These flows are combined with the background scenario in the FaIR climate model to calculate time-resolved radiative forcing. Use the FaIR trajectories to show the information lost in a single GWP total. FaIR evaluates a scenario with the project perturbation against the same scenario without it. The vertical axis is the change in global radiative forcing per physical lifetime net storage: positive values add forcing, negative values reduce it. DACCS gives an earlier reduction during operation; the modeled BECCS benefit builds with forest regrowth. Shading identifies operation. These are the existing median display trajectories from 841 calibrated configurations. We pass the dated gas inventory, not its CO₂-equivalent sum, to FaIR. A dated GWP inventory remains useful bookkeeping, but its sum cannot answer a fixed-calendar climate question. This is a limitation for the question being asked, not a claim that GWP100 is undefined.",
     ),
     dict(
         title="Comparing CDR with CO₂-pulse equivalents",
         phase="05 / Integrated radiative forcing relative to a dated CO₂ pulse",
         seconds=135,
+        cue="Keep the 2020 start and 2030 pulse fixed; move only the endpoint from 2100 to 2300. The ranking changes. State the window whenever quoting a CO₂-pulse equivalent.",
         notes="Ask: what signed mass of a CO₂ pulse in 2030 gives the same integrated forcing over our chosen calendar window? Divide the system's integrated forcing by the response per kilogram of the reference pulse over exactly the same window. Negative values denote a removal-equivalent cooling benefit. The three handles select the window start, reference-pulse year and window end, in that order. The slider starts at 2000; defaults are 2020, 2030 and 2100. Handles remain five years apart so the reference pulse stays strictly inside the window. At the default endpoint of 2100, the equivalents are about −429 for BECCS and −823 for DACCS. Move the endpoint to 2300: about −1051 and −895. Changing the window start or pulse year updates the curve, values and endpoint comparison together. The comparison changes with the window. Ratios are calculated separately for all 841 configurations and then summarized; they are not ratios of the plotted median curves. This is a dated metric of integrated forcing, not physical tonnes stored or an identical climate trajectory. In a PDF, use the two endpoint rows already visible beneath the chart. Answer the research question using the endpoint comparison: here the ranking depends on the assessment window. Keep the forcing curve alongside the scalar, then move to the next slide for the conclusions and contact details.",
     ),
     dict(
-        title="Conclusions",
-        phase="06 / Time-explicit LCA for CDR",
-        seconds=30,
-        notes="Start with the two methodological steps: prospective LCA better represents future operating conditions and anticipates system-wide changes; dynamic LCA reveals how impacts unfold over long-lived operations in a rapidly changing system. Then connect these steps to the results: future supply chains and emission timing can change the comparison between BECCS and DACCS; radiative forcing shows when climate effects occur; CO₂-pulse equivalents account for timing while expressing the result in a mass unit. State the scenario, reference-pulse year and assessment window. The framed comparison scales the time-explicit cohort scores to a −1 tonne target: BECCS needs 1.02 net tonnes stored for −1 t CO₂-eq and 2.33 for −1 t CO₂-pulse-eq; DACCS needs 1.10 and 1.21 respectively. GWP100 uses the full temporal cohort; pulse equivalence uses the default 2020–2100 window and 2030 reference pulse. Amounts are −1000 kg-equivalent divided by each per-net-tonne score, using linear scaling of the existing results. They refer to atmospheric CO₂ reaching storage after transport loss, not gross capture or gross forest uptake. Thank the audience, then show the final sources slide. Backup material follows only through the backup control.",
+        title="Conclusions: timing matters for CDR",
+        phase="06 / Conclusions and next steps for other CDR methods",
+        seconds=45,
+        cue="Answer the opening question: yes, in these cases the conclusion changes with the assessment window. Return to uptake, storage and emissions: the next step is to represent these dates for other CDR methods too.",
+        notes="Connect the two methodological steps: prospective LCA represents future operating conditions; dynamic LCA reveals how impacts unfold over long-lived operations. Radiative forcing shows when climate effects occur, and CO₂-pulse equivalents summarize integrated forcing for a stated scenario, pulse year and window. Briefly point to the framed comparison: at the default settings, BECCS needs 2.33 net tonnes stored for a −1 t CO₂-pulse-equivalent score and DACCS 1.21. The GWP100 amounts are 1.02 and 1.10. Return to the opening: the broader contribution is a way to compare CDR methods with different uptake schedules, storage duration and possible re-release, alongside evolving supply chains. A next application could evaluate biochar, enhanced weathering or ecosystem restoration under a common climate window, using method-specific inventories and uptake/release profiles. These applications and release profiles have not been calculated here; the current results retain the existing geological-storage and forest assumptions. The table scales the existing cohort scores linearly as −1000 kg-equivalent divided by each per-net-tonne score. GWP100 uses the full temporal cohort; pulse equivalence uses the 2020–2100 window and 2030 reference pulse. The physical amounts reach storage after transport loss, before subtracting life-cycle GHG burdens, which are included in the scores. Thank the audience, then leave the sources slide available for questions.",
     ),
     dict(
         title="Data sources and model versions",
         phase="References / Inventory data, methods and software",
         seconds=0,
+        cue="Leave these sources available for questions; no additional speaking segment is needed.",
         notes="All case-study values are read directly from the reviewed lca_time artifacts in this repository. The SETAC app adds presentation views only; it does not rerun or change the LCA or FaIR model. The longer presentation has the detailed inventories and attribution views. This is the final main slide and is included in the default PDF export. Keep it available for questions without adding a separate speaking segment.",
     ),
 ]
@@ -305,18 +317,41 @@ def _cover():
 def _research_question():
     return html.Div(
         [
+            html.Div(
+                [
+                    html.Div(
+                        [
+                            html.Span(label, className="small-label"),
+                            html.H2(question),
+                            text(example),
+                        ],
+                        className="cdr-timing-card",
+                    )
+                    for label, question, example in (
+                        (
+                            "CO₂ uptake",
+                            "When is CO₂ removed?",
+                            "Forests absorb CO₂ as they grow. DAC captures it during operation. Weathering depends on mineral reaction rates.",
+                        ),
+                        (
+                            "Storage and release",
+                            "How long does it stay stored?",
+                            "Vegetation and soil carbon can be re-released. Geological and mineral storage offer much longer retention.",
+                        ),
+                        (
+                            "Life-cycle emissions",
+                            "When are GHG emitted?",
+                            "Construction, energy use and transport emit at different stages, while their supply chains change.",
+                        ),
+                    )
+                ],
+                className="cdr-timing-cards",
+            ),
             callout(
                 [
-                    html.Strong("Compare BECCS and DACCS for "),
-                    "1 net tonne of atmospheric CO₂ stored after transport loss",
+                    html.Strong("Test case: BECCS and DACCS. "),
+                    "Does the conclusion change as we add time?",
                 ]
-            ),
-            html.Figure(
-                shared_image(
-                    "case-pathways.svg",
-                    "BECCS and DACCS carbon pathways leading to permanent geological storage.",
-                ),
-                className="case-system-map setac-case-map",
             ),
             html.Div(
                 [
@@ -327,6 +362,18 @@ def _research_question():
                     ),
                 ],
                 className="question-steps",
+            ),
+            text(
+                [
+                    "CDR characteristics: ",
+                    html.A(
+                        "IPCC AR6 WG III, Chapter 12 · Cross-Chapter Box 8",
+                        href="https://www.ipcc.ch/report/ar6/wg3/chapter/chapter-12/",
+                        target="_blank",
+                        rel="noopener noreferrer",
+                    ),
+                ],
+                "source",
             ),
         ],
         className="stack question-stack",
@@ -976,22 +1023,14 @@ def _closing():
                                 [
                                     "Moving from ",
                                     html.Strong("current to prospective LCA"),
-                                    " better represents future operating conditions and anticipates system-wide changes.",
+                                    " represents future operating conditions and anticipates system-wide changes.",
                                 ]
                             ),
                             html.Li(
                                 [
                                     "Moving from ",
                                     html.Strong("static to dynamic LCA"),
-                                    " reveals how impacts unfold over long-lived operations in a rapidly changing system.",
-                                ]
-                            ),
-                            html.Li(
-                                [
-                                    html.Strong(
-                                        "Future supply chains and emission timing"
-                                    ),
-                                    " can change the ranking of BECCS and DACCS.",
+                                    " reveals how long-lived operations interact with a changing system.",
                                 ]
                             ),
                             html.Li(
@@ -1003,7 +1042,7 @@ def _closing():
                             html.Li(
                                 [
                                     html.Strong("CO₂-pulse equivalents"),
-                                    " express climate effects as a CO₂ mass for a stated scenario, reference year and assessment window.",
+                                    " express integrated forcing as a CO₂ mass for a stated scenario, pulse year and window.",
                                 ]
                             ),
                         ],
@@ -1015,6 +1054,27 @@ def _closing():
             ),
             html.Div(
                 [
+                    html.Div(
+                        [
+                            html.Span(
+                                "Beyond BECCS and DACCS", className="small-label"
+                            ),
+                            html.H3("Next: other CDR methods"),
+                            text(
+                                "Apply the same approach to biochar, enhanced weathering and ecosystem restoration."
+                            ),
+                            text(
+                                [
+                                    "Represent ",
+                                    html.Strong(
+                                        "uptake, storage and possible re-release"
+                                    ),
+                                    ", plus changing supply chains, to compare climate effects over a common time window.",
+                                ]
+                            ),
+                        ],
+                        className="closing-outlook",
+                    ),
                     html.H2("Thank you"),
                     html.P("Romain Sacchi", className="closing-name"),
                     html.Address(

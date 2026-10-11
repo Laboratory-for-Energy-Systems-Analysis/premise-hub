@@ -1114,7 +1114,6 @@ def _sensitivity():
 
 REFERENCES = [
     ("premise · Sacchi et al. (2022)", "https://doi.org/10.1016/j.rser.2022.112311"),
-    ("Dynamic LCA · Levasseur et al. (2010)", "https://doi.org/10.1021/es9030003"),
     (
         "Emission metrics · IPCC AR6 WG I, §7.6",
         "https://www.ipcc.ch/report/ar6/wg1/chapter/chapter-7/",

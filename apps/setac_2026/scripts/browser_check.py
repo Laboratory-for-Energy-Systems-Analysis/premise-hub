@@ -85,6 +85,12 @@ def main():
                         == "mailto:romain.sacchi@psi.ch"
                     )
                 if page.locator("#mix-pathway").count():
+                    assert page.locator(
+                        "#stage .mix-panels .js-plotly-plot"
+                    ).evaluate_all(
+                        """plots => plots.length === 3 && plots.every(plot =>
+                            plot.data.every(trace => trace.x.join(',') === '2025,2030,2035,2040,2045,2050'))"""
+                    )
                     for indicator, region in (
                         ("CO₂ emissions", "World"),
                         ("CO₂ emissions", "Northern Europe"),
@@ -259,6 +265,10 @@ def main():
                 "Steel",
             ]
             assert all(meta["pathway"] == "SSP2-PkBudg1000" for meta in mix_meta)
+            assert page.locator("#print-deck .mix-panels .js-plotly-plot").evaluate_all(
+                """plots => plots.every(plot => plot.data.every(trace =>
+                    trace.x.join(',') === '2025,2030,2035,2040,2045,2050'))"""
+            )
             assert page.locator("#print-deck .mix-panels .js-plotly-plot").evaluate_all(
                 """plots => plots.every(plot => [...plot.querySelectorAll('.legendtext')].every(label =>
                     label.getBoundingClientRect().bottom <= plot.getBoundingClientRect().bottom + 1))"""

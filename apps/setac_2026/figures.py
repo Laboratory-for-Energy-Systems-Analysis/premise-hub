@@ -1,4 +1,4 @@
-"""Presentation views of the unchanged, reviewed lca_time result tables."""
+"""Presentation views of lca_time results and scenario market extracts."""
 
 from __future__ import annotations
 
@@ -15,6 +15,7 @@ CASES = ("BECCS", "DACCS")
 COLOURS = {"BECCS": "#3e7654", "DACCS": "#3292b5"}
 PATHWAYS = ("SSP2-NPi", "SSP2-PkBudg1000")
 SNAPSHOT_YEARS = (2025, 2030, 2050)
+MIX_YEARS = (2025, 2030, 2035, 2040, 2045, 2050)
 MIX_SECTORS = (
     "Electricity",
     "District heat",
@@ -321,12 +322,32 @@ def scenario_context_note(indicator, region):
     return "Annual net CO₂ emissions."
 
 
+@lru_cache(maxsize=1)
+def sector_mix_rows():
+    """Read ENC market shares extracted from the original scenario packages."""
+    with (Path(__file__).parent / "data/sector_mixes.csv").open(newline="") as stream:
+        return tuple(csv.DictReader(stream))
+
+
+def sector_mix(sector, pathway, year):
+    shares = {
+        row["category"]: float(row["share"])
+        for row in sector_mix_rows()
+        if row["sector"] == sector
+        and row["pathway"] == pathway
+        and int(row["year"]) == year
+    }
+    if not shares:
+        raise LookupError(f"No sector mix for {sector}, {pathway}, {year}.")
+    return shares
+
+
 def mix_figure(sector, pathway=PATHWAYS[1]):
     """Display the actual market shares, grouping only consistently tiny routes."""
     snapshots = {
-        (path, year): dict(results.scenario_sector_mix(sector, path, year))
+        (path, year): sector_mix(sector, path, year)
         for path in PATHWAYS
-        for year in SNAPSHOT_YEARS
+        for year in MIX_YEARS
     }
     categories = list(dict.fromkeys(cat for row in snapshots.values() for cat in row))
     major = [
@@ -350,10 +371,10 @@ def mix_figure(sector, pathway=PATHWAYS[1]):
                 if category == "Other"
                 else snapshots[pathway, year].get(category, 0.0)
             )
-            for year in SNAPSHOT_YEARS
+            for year in MIX_YEARS
         ]
         fig.add_bar(
-            x=[str(year) for year in SNAPSHOT_YEARS],
+            x=[str(year) for year in MIX_YEARS],
             y=values,
             name=category,
             marker_color=MIX_COLOURS[category],
@@ -385,7 +406,13 @@ def mix_figure(sector, pathway=PATHWAYS[1]):
         ),
         meta=dict(sector=sector, pathway=pathway),
     )
-    fig.update_xaxes(type="category", tickfont_size=13, fixedrange=True)
+    fig.update_xaxes(
+        type="category",
+        tickmode="array",
+        tickvals=[str(year) for year in MIX_YEARS],
+        tickfont_size=10,
+        fixedrange=True,
+    )
     fig.update_yaxes(
         range=[0, 1], tickvals=[0, 0.5, 1], tickformat=".0%", fixedrange=True
     )

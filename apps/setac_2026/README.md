@@ -45,8 +45,9 @@ resets the region to World and disables the regional option. The two scenario
 trajectories span 2020–2100. Switching SSP2-NPi / SSP2-PkBudg1000 highlights that
 trajectory and updates the three market-mix plots to its right. The rightmost
 selector chooses steel, cement clinker or truck transport. Hover for exact
-values. Mixes use the stored 2025, 2030 and 2050 Northern European snapshots,
-without interpolating technology shares.
+values. Mixes show Northern European snapshots every five years from 2025 to 2050,
+including 2035, 2040 and 2045 extracted from the original scenario packages.
+Technology shares are not interpolated.
 
 Slide seven introduces TRAILS with 3D annual technosphere and biosphere stacks,
 and a dated supply-graph schematic adapted from the original `lca_time` artwork.
@@ -137,7 +138,8 @@ and [FaIR's model description](https://doi.org/10.5194/gmd-14-3007-2021).
 [source data contract](../lca_time/data/README.md) documents the reviewed
 processed artifacts, assumptions, units and reproduction workflow. No source
 table, inventory, model or existing presentation is modified. This app depends
-on `apps/lca_time/` being present; there is no duplicate result bundle.
+on `apps/lca_time/` being present. The additional sector-mix snapshots are
+small aggregate extracts stored in the SETAC app; inventory packages remain local.
 
 - System-flow slide: original `case-pathways.svg` artwork annotated with selected
   operating flows from `system_inventory_2025.json`, the same reviewed inventory
@@ -153,7 +155,14 @@ on `apps/lca_time/` being present; there is no duplicate result bundle.
   FaIR responses later in the talk. The ENC NPi CO₂ series has no 2100 source
   row: it ends at 2090 and is not extrapolated or filled with zero.
   Regenerate with `python apps/setac_2026/scripts/extract_scenario_context.py`.
-- Mixes: `scenario_sector_mixes.csv`, from premise-generated ENC markets.
+- Mixes: `data/sector_mixes.csv`, from premise-generated ENC markets at
+  2025, 2030, 2035, 2040, 2045 and 2050. The original source-project extractor
+  reads each year directly from the reviewed packages; it preserves the original
+  market selection and technology classification. All 180 existing rows for
+  2025, 2030 and 2050 match `lca_time/data/processed/scenario_sector_mixes.csv`.
+  `data/sector_mixes.json` records package and extractor hashes, version metadata
+  and baseline verification. Regenerate with
+  `python apps/setac_2026/scripts/extract_sector_mixes.py --source-project /path/to/FSLCI_workshop_2026`.
   Display categories below 1% in every sector snapshot across both pathways are
   combined into Other, retaining all shares. Electricity uses high-voltage supply;
   heat uses the single `market for heat, district or industrial` with reference

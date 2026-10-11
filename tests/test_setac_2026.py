@@ -10,6 +10,7 @@ from apps.setac_2026.deck import ALL_SLIDES, CORE_COUNT, SLIDES
 from apps.setac_2026.figures import (
     CASES,
     MIX_SECTORS,
+    MIX_YEARS,
     PATHWAYS,
     SNAPSHOT_YEARS,
     forcing_figure,
@@ -20,6 +21,8 @@ from apps.setac_2026.figures import (
     removal_requirements,
     scenario_context_figure,
     scenario_context_rows,
+    sector_mix,
+    sector_mix_rows,
     static_figure,
     static_score,
     temporal_figure,
@@ -192,8 +195,13 @@ def test_prospective_stacks_preserve_each_snapshot_and_sign():
 @pytest.mark.parametrize("pathway", PATHWAYS)
 def test_mix_charts_preserve_regional_market_shares(sector, pathway):
     figure = mix_figure(sector, pathway)
-    for i, year in enumerate(SNAPSHOT_YEARS):
-        expected = dict(results.scenario_sector_mix(sector, pathway, year))
+    assert MIX_YEARS == (2025, 2030, 2035, 2040, 2045, 2050)
+    for trace in figure.data:
+        assert trace.x == tuple(str(year) for year in MIX_YEARS)
+    for i, year in enumerate(MIX_YEARS):
+        expected = sector_mix(sector, pathway, year)
+        if year in SNAPSHOT_YEARS:
+            assert expected == dict(results.scenario_sector_mix(sector, pathway, year))
         assert sum(trace.y[i] for trace in figure.data) == pytest.approx(1)
         major = set()
         for trace in figure.data:
@@ -207,7 +215,7 @@ def test_mix_charts_preserve_regional_market_shares(sector, pathway):
         assert remainder == pytest.approx(
             sum(v for k, v in expected.items() if k not in major)
         )
-    assert {r["location"] for r in results.scenario_sector_mix_rows()} == {"ENC"}
+    assert {r["location"] for r in sector_mix_rows()} == {"ENC"}
 
 
 def test_mix_controls_change_scenario_and_material_together():

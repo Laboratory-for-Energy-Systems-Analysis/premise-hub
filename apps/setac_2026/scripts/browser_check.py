@@ -73,7 +73,12 @@ def main():
                     "() => !document.querySelector('#stage [data-dash-is-loading=true]')"
                 )
                 page.wait_for_function(
-                    "() => [...document.querySelectorAll('#stage .dash-graph')].every(r => { const p=r.querySelector('.js-plotly-plot'); return p && p._fullLayout && p._fullData && p._fullData.length; })",
+                    """() => [...document.querySelectorAll('#stage .dash-graph')].every(root => {
+                        const plot = root.querySelector('.js-plotly-plot');
+                        return plot && plot._fullLayout && plot._fullData && plot._fullData.length &&
+                            Math.abs(plot._fullLayout.width - root.clientWidth) < 3 &&
+                            Math.abs(plot._fullLayout.height - root.clientHeight) < 3;
+                    })""",
                     polling=100,
                 )
                 page.screenshot(path=str(args.output / f"slide-{index+1:02d}.png"))

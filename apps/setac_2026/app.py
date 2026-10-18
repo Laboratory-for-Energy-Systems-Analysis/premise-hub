@@ -29,6 +29,7 @@ from .figures import (
     pulse_figure,
     scenario_context_figure,
     scenario_context_note,
+    temporal_figure,
 )
 from .system_flows import system_flow_svg
 
@@ -208,13 +209,6 @@ app.layout = html.Div(
                 html.Div(
                     [
                         html.Span(id="slide-counter"),
-                        html.A(
-                            "Presenter",
-                            href=REQUESTS_PREFIX + "presenter",
-                            target="_blank",
-                            rel="noopener",
-                            className="footer-link",
-                        ),
                         html.Button(
                             "Full screen",
                             id="fullscreen-button",
@@ -307,6 +301,11 @@ def update_forcing(end):
     return forcing_figure(end if end in (2140, 2300) else 2300)
 
 
+@app.callback(Output("temporal-chart", "figure"), Input("temporal-view", "value"))
+def update_temporal(view):
+    return temporal_figure("unstacked" if view == "unstacked" else "stacked")
+
+
 @app.callback(
     Output("mix-electricity", "figure"),
     Output("mix-heat", "figure"),
@@ -376,7 +375,7 @@ def update_pulse(window):
         pulse_configuration(start, reference, end),
         pulse_window_labels(start, reference, end),
         pulse_comparison(start, reference),
-        pulse_takeaway(start, reference),
+        pulse_takeaway(start, reference, end),
         [start, reference, end],
     )
 

@@ -3,13 +3,14 @@
 from __future__ import annotations
 
 import csv
+import math
 from functools import lru_cache
 from pathlib import Path
 
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
-from apps.lca_time.workshop import results
+from . import results
 
 CASES = ("BECCS", "DACCS")
 COLOURS = {"BECCS": "#3e7654", "DACCS": "#3292b5"}
@@ -57,6 +58,23 @@ REFERENCE_YEAR = 2030
 DEFAULT_END = 2100
 METRIC = "radiative forcing"
 BECCS_REFERENCE = "new CHP+CCS vs standing forest and Northern European energy"
+
+
+def regrowth_end():
+    return max(
+        int(row["impact_year"])
+        for row in results.cohort_temporal_score_rows()
+        if row["case"] == "BECCS" and row["contributor"] == "Forest regrowth"
+    )
+
+
+def inventory_start():
+    return min(int(row["impact_year"]) for row in results.cohort_temporal_score_rows())
+
+
+def temporal_years():
+    years = [int(row["impact_year"]) for row in results.cohort_temporal_score_rows()]
+    return range(min(2000, min(years)) // 10 * 10, math.ceil(max(years) / 10) * 10 + 1)
 
 
 def static_score(case, pathway="SSP2-NPi", year=2025):
@@ -194,14 +212,17 @@ def pulse_value(case, end=DEFAULT_END, *, start=WINDOW_START, reference=REFERENC
 
 
 def removal_requirements(case):
-    """Net tonnes stored needed for a −1 t score, scaling the cohort results.
+    """Net tonnes stored needed for a −1 t score in each assessment.
 
-    Both source scores are kg-equivalent per net tonne stored after transport
+    All source scores are kg-equivalent per net tonne stored after transport
     loss. This inversion gives physical net storage, not gross captured CO₂ or
-    forest uptake. Pulse equivalence uses the presentation's default window.
+    forest uptake. GWP100 uses the current (NPi, 2025) and prospective
+    (PkBudg1000, 2030) static snapshots; pulse equivalence uses the temporal
+    cohort and the presentation's default window.
     """
     scores = {
-        "gwp100": results.cohort_temporal_total(case, "per_tonne"),
+        "current_static": static_score(case, "SSP2-NPi", 2025),
+        "prospective_static": static_score(case, "SSP2-PkBudg1000", 2030),
         "pulse": pulse_value(case),
     }
     if any(score >= 0 for score in scores.values()):
@@ -628,9 +649,10 @@ def temporal_contributions(case):
     Uptake contains only the explicit forest-regrowth and direct-capture roots.
     Energy includes avoided electricity/heat and biomass supply. Upstream
     biogenic uptake and credits stay with their source service or material.
-    Keep positive and negative annual root scores separate in every category.
+    Energy uses signed elementary-flow scores before root totals are netted.
+    The other categories retain signed annual root scores.
     """
-    years = range(1880, 2141)
+    years = temporal_years()
     grouped = {
         (label, sign): dict.fromkeys(years, 0.0)
         for label, _ in TEMPORAL_CATEGORIES
@@ -643,15 +665,23 @@ def temporal_contributions(case):
             label = DACCS_TEMPORAL_PRODUCTS[contributor.split(" | ")[1]]
         else:
             raise ValueError(f"Unknown CDR case: {case}")
+        if label == "Energy":
+            continue
         for year, value in series:
             values = grouped[label, 1 if value >= 0 else -1]
             if year not in values:
                 raise ValueError(f"Temporal chart would omit year {year}")
             values[year] += value
+    for row in results.energy_flow_rows():
+        if row["case"] == case:
+            grouped["Energy", int(row["sign"])][int(row["impact_year"])] += float(
+                row["score_per_net_tonne_kg_co2eq"]
+            )
     return grouped
 
 
-def temporal_figure():
+def temporal_figure(view="stacked"):
+    stacked = view != "unstacked"
     fig = make_subplots(
         rows=1,
         cols=2,
@@ -660,7 +690,7 @@ def temporal_figure():
         horizontal_spacing=0.19,
         subplot_titles=CASES,
     )
-    years = list(range(1880, 2141))
+    years = list(temporal_years())
     cumulative_colour = "#c62828"
     for col, case in enumerate(CASES, 1):
         contributions = temporal_contributions(case)
@@ -669,20 +699,40 @@ def temporal_figure():
                 values = contributions[label, sign]
                 if not any(values.values()):
                     continue
-                shown = any(t.name == label and t.showlegend for t in fig.data)
+                name = (
+                    f"Energy ({'+' if sign > 0 else '−'})"
+                    if label == "Energy"
+                    else label
+                )
+                negative_energy = label == "Energy" and sign < 0
+                shown = any(t.name == name and t.showlegend for t in fig.data)
                 fig.add_scatter(
                     x=years,
                     y=[values[y] for y in years],
-                    name=label,
+                    name=name,
                     meta=dict(case=case, category=label, sign=sign),
                     mode="lines",
-                    stackgroup="emissions" if sign > 0 else "uptake-and-credits",
-                    fillcolor=colour,
-                    line=dict(color=colour, width=1),
-                    legendgroup=label,
+                    stackgroup=(
+                        ("emissions" if sign > 0 else "uptake-and-credits")
+                        if stacked
+                        else None
+                    ),
+                    fill=None if stacked else "none",
+                    fillcolor="#f4dfae" if negative_energy else colour,
+                    fillpattern=(
+                        dict(shape="/", fgcolor="#b58730", size=7, solidity=0.15)
+                        if negative_energy and stacked
+                        else None
+                    ),
+                    line=dict(
+                        color=colour,
+                        width=1 if stacked else 2,
+                        dash="dash" if negative_energy and not stacked else "solid",
+                    ),
+                    legendgroup=name,
                     legendrank=rank,
                     showlegend=not shown,
-                    hovertemplate=f"{case} · %{{x}}<br>%{{y:.2f}} kg CO₂-eq<extra>{label}</extra>",
+                    hovertemplate=f"{case} · %{{x}}<br>%{{y:.2f}} kg CO₂-eq<extra>{name}</extra>",
                     row=1,
                     col=col,
                     secondary_y=False,
@@ -697,7 +747,7 @@ def temporal_figure():
         fig.add_scatter(
             x=years,
             y=cumulative,
-            name="Cumulative GWP100",
+            name="Cumulative GWP100 · accounting sum",
             meta=dict(case=case, category="cumulative"),
             mode="lines",
             line=dict(color=cumulative_colour, width=3),
@@ -709,6 +759,34 @@ def temporal_figure():
             col=col,
             secondary_y=True,
         )
+        fig.add_annotation(
+            x=0.98,
+            xref="x domain" if col == 1 else "x2 domain",
+            y=cumulative[-1],
+            yref="y2" if col == 1 else "y4",
+            text=f"GWP100 total: {cumulative[-1]:,.0f}".replace("-", "−"),
+            showarrow=False,
+            xanchor="right",
+            yanchor="top",
+            yshift=-9,
+            font=dict(size=12, color=cumulative_colour),
+        )
+        if case == "BECCS":
+            fig.add_annotation(
+                x=0.99,
+                y=0.99,
+                xref="x domain",
+                yref="y domain",
+                text="Standing-forest reference<br>Removal credited during<br>post-harvest regrowth",
+                showarrow=False,
+                xanchor="right",
+                yanchor="top",
+                align="left",
+                bgcolor="rgba(255,255,255,.94)",
+                bordercolor="#cbded0",
+                borderpad=5,
+                font=dict(size=12, color=COLOURS[case]),
+            )
         fig.add_vrect(
             x0=2030,
             x1=2049,
@@ -720,6 +798,7 @@ def temporal_figure():
         )
     frame(fig, ytitle=None, xtitle=None)
     fig.update_layout(
+        meta=dict(view="stacked" if stacked else "unstacked"),
         margin=dict(l=76, r=95, t=36, b=65),
         legend=dict(
             y=-0.1,
@@ -734,7 +813,7 @@ def temporal_figure():
     )
     # Use the same scale for each case, with zero aligned between annual and
     # cumulative axes. Only the annual axes draw grid and zero lines.
-    fig.update_yaxes(range=[-60, 15], dtick=20, secondary_y=False)
+    fig.update_yaxes(range=[-70, 30], dtick=20, secondary_y=False)
     fig.update_yaxes(
         title_text="Annual GWP100<br>(kg CO₂-eq / net t stored)",
         title_font_size=12,
@@ -743,7 +822,7 @@ def temporal_figure():
         secondary_y=False,
     )
     fig.update_yaxes(
-        range=[-1200, 300],
+        range=[-1400, 600],
         dtick=400,
         title_text="Cumulative GWP100<br>(kg CO₂-eq / net t stored)",
         title_font=dict(size=12, color=cumulative_colour),
@@ -753,24 +832,57 @@ def temporal_figure():
         zeroline=False,
         secondary_y=True,
     )
-    fig.update_xaxes(range=[2000, 2140], tickvals=[2000, 2030, 2060, 2090, 2132])
-    fig.update_annotations(font=dict(size=18, color="#0b3b52"))
+    fig.update_xaxes(
+        range=[2000, years[-1]],
+        tickvals=sorted({2000, 2030, 2060, 2090, regrowth_end(), years[-1]}),
+    )
+    fig.update_annotations(
+        font=dict(size=18, color="#0b3b52"), selector=dict(yref="paper")
+    )
     return fig
 
 
 def forcing_figure(end=2300, reference=False):
-    fig = go.Figure()
+    shading, curves = [], []
     for case in CASES:
-        series = dict(results.cohort_fair_total_series(case, METRIC, "process"))
-        years = list(range(FAIR_START, 2301))
-        fig.add_scatter(
-            x=years,
-            y=[series.get(y, 0.0) * 1e12 for y in years],
-            name=case,
-            mode="lines",
-            line=dict(color=COLOURS[case], width=4),
-            hovertemplate="%{x}: %{y:.3f} pW m⁻²<extra>%{fullData.name}</extra>",
+        series = dict(results.cohort_fair_total_series(case, METRIC, "total"))
+        years = sorted(series)
+        values = [series[y] * 1e12 for y in years]
+        shade_years, shade_values = [], []
+        for i, (year, value) in enumerate(zip(years, values, strict=True)):
+            # Follow the line exactly where it crosses zero between years.
+            if i and values[i - 1] * value < 0:
+                fraction = -values[i - 1] / (value - values[i - 1])
+                shade_years.append(years[i - 1] + fraction * (year - years[i - 1]))
+                shade_values.append(0.0)
+            shade_years.append(year)
+            shade_values.append(min(value, 0.0))
+        rgb = [int(COLOURS[case][i : i + 2], 16) for i in (1, 3, 5)]
+        shading.append(
+            go.Scatter(
+                x=shade_years,
+                y=shade_values,
+                mode="lines",
+                line=dict(width=0),
+                fill="tozeroy",
+                fillcolor=f"rgba({rgb[0]},{rgb[1]},{rgb[2]},0.12)",
+                legendgroup=case,
+                showlegend=False,
+                hoverinfo="skip",
+            )
         )
+        curves.append(
+            go.Scatter(
+                x=years,
+                y=values,
+                name=case,
+                legendgroup=case,
+                mode="lines",
+                line=dict(color=COLOURS[case], width=4),
+                hovertemplate="%{x}: %{y:.3f} pW m⁻²<extra>%{fullData.name}</extra>",
+            )
+        )
+    fig = go.Figure(data=shading + curves)
     if reference:
         series = results.co2_reference_pulse_series(METRIC, pulse_year=REFERENCE_YEAR)
         fig.add_scatter(
@@ -783,7 +895,7 @@ def forcing_figure(end=2300, reference=False):
     fig.add_vrect(x0=2030, x1=2049, line_width=0, fillcolor="#7e929e", opacity=0.10)
     frame(fig, ytitle="Δ forcing · pW m⁻² / net t stored")
     fig.update_xaxes(range=[FAIR_START, int(end)])
-    fig.update_yaxes(range=[-1.08, 1.9] if reference else [-1.08, 0.15])
+    fig.update_yaxes(range=[-1.08, 1.9] if reference else [-1.08, 0.25])
     return fig
 
 

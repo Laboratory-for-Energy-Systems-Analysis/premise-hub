@@ -1,0 +1,63 @@
+{
+  "calculation_timestamp": "2026-10-14T17:27:05.528224+00:00",
+  "trails_version": "1.1.1",
+  "scenario": "REMIND|SSP2-PkBudg1000",
+  "window_start": 2020,
+  "reference_year": 2030,
+  "window_end": 2100,
+  "forest_temporal_exchanges_preserved": true,
+  "package_sha256": "bd298b3e30d84adbb9dfe11c87654a318d7b8aed94e0357fa932a6e3dbcf9780",
+  "foreground_sha256": "b415e812667642b99e696df215332c4a41d63a525b5bf2a783cf70635ede2752",
+  "cohort_foreground_sha256": "3c8ba7d100ddfff906e11ca6aa1375ee7ef53879370099f04a5a01845bf492b7",
+  "config_sha256": "1e7e057f8d19c1ad1d98bd5c0baa9beefa9c04946495356e87eae49671dcda2a",
+  "cases": {
+    "BECCS": {
+      "denominator_net_stored_tonnes": 149394.49520357835,
+      "config_count": 841,
+      "radiative forcing": {
+        "trails_config_first_kg_co2_per_net_tonne": {
+          "median": -219.0050575925882,
+          "p025": -248.615801525549,
+          "p975": -191.60070338680987
+        },
+        "median_trajectory_ratio_diagnostic_kg_co2_per_net_tonne": -246.74445477705044,
+        "diagnostic_minus_config_first_kg_co2_per_net_tonne": -27.739397184462234,
+        "diagnostic_relative_difference_percent": -12.666098897161277
+      },
+      "temperature anomaly": {
+        "trails_config_first_kg_co2_per_net_tonne": {
+          "median": -154.54214498763233,
+          "p025": -193.30167606655957,
+          "p975": -109.9586484416079
+        },
+        "median_trajectory_ratio_diagnostic_kg_co2_per_net_tonne": -161.76754036857224,
+        "diagnostic_minus_config_first_kg_co2_per_net_tonne": -7.225395380939915,
+        "diagnostic_relative_difference_percent": -4.675355956472681
+      }
+    },
+    "DACCS": {
+      "denominator_net_stored_tonnes": 1944000.0,
+      "config_count": 841,
+      "radiative forcing": {
+        "trails_config_first_kg_co2_per_net_tonne": {
+          "median": -792.0452490043891,
+          "p025": -812.6396570940797,
+          "p975": -774.0619887143287
+        },
+        "median_trajectory_ratio_diagnostic_kg_co2_per_net_tonne": -787.7949009355419,
+        "diagnostic_minus_config_first_kg_co2_per_net_tonne": 4.250348068847188,
+        "diagnostic_relative_difference_percent": 0.5366294506772094
+      },
+      "temperature anomaly": {
+        "trails_config_first_kg_co2_per_net_tonne": {
+          "median": -769.8483489143443,
+          "p025": -793.7455311130774,
+          "p975": -740.7320751996107
+        },
+        "median_trajectory_ratio_diagnostic_kg_co2_per_net_tonne": -758.3774442947756,
+        "diagnostic_minus_config_first_kg_co2_per_net_tonne": 11.470904619568728,
+        "diagnostic_relative_difference_percent": 1.4900213315707216
+      }
+    }
+  }
+}

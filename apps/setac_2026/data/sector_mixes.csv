@@ -179,14 +179,14 @@ SSP2-NPi,2050,Truck transport,Diesel truck,0.11477382985802465,"market for trans
 SSP2-NPi,2050,Truck transport,Fuel cell,0.009829860970483936,"market for transport, freight, lorry","transport, freight, lorry",ton kilometer,ENC
 SSP2-NPi,2050,Truck transport,Compressed gas,0.004579068358810073,"market for transport, freight, lorry","transport, freight, lorry",ton kilometer,ENC
 SSP2-NPi,2050,Truck transport,Other,0.0,"market for transport, freight, lorry","transport, freight, lorry",ton kilometer,ENC
-SSP2-PkBudg1000,2025,Electricity,Hydro,0.3378125493042028,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
-SSP2-PkBudg1000,2025,Electricity,Wind,0.3000734245549499,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
-SSP2-PkBudg1000,2025,Electricity,Solar,0.03695705983390537,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
+SSP2-PkBudg1000,2025,Electricity,Hydro,0.33781254930420285,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
+SSP2-PkBudg1000,2025,Electricity,Wind,0.30007342455494995,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
+SSP2-PkBudg1000,2025,Electricity,Solar,0.036957059833905376,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
 SSP2-PkBudg1000,2025,Electricity,Nuclear,0.16266645657280737,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
-SSP2-PkBudg1000,2025,Electricity,Biomass,0.15446010514574954,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
-SSP2-PkBudg1000,2025,Electricity,Natural gas,0.007069042432935622,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
-SSP2-PkBudg1000,2025,Electricity,Coal and oil,0.0009600423003409492,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
-SSP2-PkBudg1000,2025,Electricity,Other,1.319855108336753e-06,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
+SSP2-PkBudg1000,2025,Electricity,Biomass,0.15446010514574957,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
+SSP2-PkBudg1000,2025,Electricity,Natural gas,0.007069042432935624,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
+SSP2-PkBudg1000,2025,Electricity,Coal and oil,0.0009600423003409459,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
+SSP2-PkBudg1000,2025,Electricity,Other,1.3198551083367533e-06,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
 SSP2-PkBudg1000,2025,District heat,Electric,0.26893089002167125,"market for heat, district or industrial","heat, district or industrial",megajoule,ENC
 SSP2-PkBudg1000,2025,District heat,Biomass,0.3694449306481602,"market for heat, district or industrial","heat, district or industrial",megajoule,ENC
 SSP2-PkBudg1000,2025,District heat,Recovered heat,0.07698126626112027,"market for heat, district or industrial","heat, district or industrial",megajoule,ENC
@@ -209,14 +209,14 @@ SSP2-PkBudg1000,2025,Truck transport,Diesel truck,0.9611703556600797,"market for
 SSP2-PkBudg1000,2025,Truck transport,Fuel cell,0.001049966991292299,"market for transport, freight, lorry","transport, freight, lorry",ton kilometer,ENC
 SSP2-PkBudg1000,2025,Truck transport,Compressed gas,0.0010360663594719162,"market for transport, freight, lorry","transport, freight, lorry",ton kilometer,ENC
 SSP2-PkBudg1000,2025,Truck transport,Other,0.0,"market for transport, freight, lorry","transport, freight, lorry",ton kilometer,ENC
-SSP2-PkBudg1000,2030,Electricity,Hydro,0.34013835366116274,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
-SSP2-PkBudg1000,2030,Electricity,Wind,0.3146155281783297,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
-SSP2-PkBudg1000,2030,Electricity,Solar,0.05470794169703707,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
-SSP2-PkBudg1000,2030,Electricity,Nuclear,0.13007418102467025,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
+SSP2-PkBudg1000,2030,Electricity,Hydro,0.3401383536611628,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
+SSP2-PkBudg1000,2030,Electricity,Wind,0.31461552817832983,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
+SSP2-PkBudg1000,2030,Electricity,Solar,0.05470794169703708,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
+SSP2-PkBudg1000,2030,Electricity,Nuclear,0.13007418102467028,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
 SSP2-PkBudg1000,2030,Electricity,Biomass,0.15484689011897268,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
-SSP2-PkBudg1000,2030,Electricity,Natural gas,0.00522405048493512,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
-SSP2-PkBudg1000,2030,Electricity,Coal and oil,0.00039028612094973037,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
-SSP2-PkBudg1000,2030,Electricity,Other,2.7687139426281455e-06,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
+SSP2-PkBudg1000,2030,Electricity,Natural gas,0.005224050484935121,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
+SSP2-PkBudg1000,2030,Electricity,Coal and oil,0.0003902861209497304,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
+SSP2-PkBudg1000,2030,Electricity,Other,2.768713942628146e-06,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
 SSP2-PkBudg1000,2030,District heat,Electric,0.3348167685087052,"market for heat, district or industrial","heat, district or industrial",megajoule,ENC
 SSP2-PkBudg1000,2030,District heat,Biomass,0.3629113572392884,"market for heat, district or industrial","heat, district or industrial",megajoule,ENC
 SSP2-PkBudg1000,2030,District heat,Recovered heat,0.08064224893059396,"market for heat, district or industrial","heat, district or industrial",megajoule,ENC
@@ -240,12 +240,12 @@ SSP2-PkBudg1000,2030,Truck transport,Fuel cell,0.003711090709068213,"market for 
 SSP2-PkBudg1000,2030,Truck transport,Compressed gas,0.0034054036695322894,"market for transport, freight, lorry","transport, freight, lorry",ton kilometer,ENC
 SSP2-PkBudg1000,2030,Truck transport,Other,0.0,"market for transport, freight, lorry","transport, freight, lorry",ton kilometer,ENC
 SSP2-PkBudg1000,2035,Electricity,Hydro,0.4827626544169609,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
-SSP2-PkBudg1000,2035,Electricity,Wind,0.3190264559656731,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
+SSP2-PkBudg1000,2035,Electricity,Wind,0.31902645596567303,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
 SSP2-PkBudg1000,2035,Electricity,Solar,0.07822357724117601,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
 SSP2-PkBudg1000,2035,Electricity,Nuclear,0.0,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
 SSP2-PkBudg1000,2035,Electricity,Biomass,0.11597764286895315,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
 SSP2-PkBudg1000,2035,Electricity,Natural gas,0.003967950047900688,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
-SSP2-PkBudg1000,2035,Electricity,Coal and oil,3.76293162640756e-05,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
+SSP2-PkBudg1000,2035,Electricity,Coal and oil,3.7629316264075585e-05,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
 SSP2-PkBudg1000,2035,Electricity,Other,4.0901430721821294e-06,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
 SSP2-PkBudg1000,2035,District heat,Electric,0.3359548050588343,"market for heat, district or industrial","heat, district or industrial",megajoule,ENC
 SSP2-PkBudg1000,2035,District heat,Biomass,0.4137594721151318,"market for heat, district or industrial","heat, district or industrial",megajoule,ENC
@@ -269,14 +269,14 @@ SSP2-PkBudg1000,2035,Truck transport,Diesel truck,0.5065018357877864,"market for
 SSP2-PkBudg1000,2035,Truck transport,Fuel cell,0.007458582420676128,"market for transport, freight, lorry","transport, freight, lorry",ton kilometer,ENC
 SSP2-PkBudg1000,2035,Truck transport,Compressed gas,0.004632037067920055,"market for transport, freight, lorry","transport, freight, lorry",ton kilometer,ENC
 SSP2-PkBudg1000,2035,Truck transport,Other,0.0,"market for transport, freight, lorry","transport, freight, lorry",ton kilometer,ENC
-SSP2-PkBudg1000,2040,Electricity,Hydro,0.4897280397709436,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
-SSP2-PkBudg1000,2040,Electricity,Wind,0.28956910249743617,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
-SSP2-PkBudg1000,2040,Electricity,Solar,0.12012864702482626,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
+SSP2-PkBudg1000,2040,Electricity,Hydro,0.48972803977094365,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
+SSP2-PkBudg1000,2040,Electricity,Wind,0.2895691024974362,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
+SSP2-PkBudg1000,2040,Electricity,Solar,0.12012864702482627,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
 SSP2-PkBudg1000,2040,Electricity,Nuclear,0.0,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
-SSP2-PkBudg1000,2040,Electricity,Biomass,0.09808228837475873,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
-SSP2-PkBudg1000,2040,Electricity,Natural gas,0.002452681045210792,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
+SSP2-PkBudg1000,2040,Electricity,Biomass,0.09808228837475874,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
+SSP2-PkBudg1000,2040,Electricity,Natural gas,0.002452681045210793,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
 SSP2-PkBudg1000,2040,Electricity,Coal and oil,3.3908496563670704e-05,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
-SSP2-PkBudg1000,2040,Electricity,Other,5.332790260755333e-06,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
+SSP2-PkBudg1000,2040,Electricity,Other,5.332790260755334e-06,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
 SSP2-PkBudg1000,2040,District heat,Electric,0.3726475857144086,"market for heat, district or industrial","heat, district or industrial",megajoule,ENC
 SSP2-PkBudg1000,2040,District heat,Biomass,0.4280088807665057,"market for heat, district or industrial","heat, district or industrial",megajoule,ENC
 SSP2-PkBudg1000,2040,District heat,Recovered heat,0.043723671962001984,"market for heat, district or industrial","heat, district or industrial",megajoule,ENC
@@ -303,7 +303,7 @@ SSP2-PkBudg1000,2045,Electricity,Hydro,0.4961743874563083,"market group for elec
 SSP2-PkBudg1000,2045,Electricity,Wind,0.24990970082929714,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
 SSP2-PkBudg1000,2045,Electricity,Solar,0.17619960452298292,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
 SSP2-PkBudg1000,2045,Electricity,Nuclear,0.0,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
-SSP2-PkBudg1000,2045,Electricity,Biomass,0.0766845621061223,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
+SSP2-PkBudg1000,2045,Electricity,Biomass,0.07668456210612232,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
 SSP2-PkBudg1000,2045,Electricity,Natural gas,0.000994958405786585,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
 SSP2-PkBudg1000,2045,Electricity,Coal and oil,3.0217629591690094e-05,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
 SSP2-PkBudg1000,2045,Electricity,Other,6.5690499112369765e-06,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
@@ -330,13 +330,13 @@ SSP2-PkBudg1000,2045,Truck transport,Fuel cell,0.013357685761773748,"market for 
 SSP2-PkBudg1000,2045,Truck transport,Compressed gas,0.004040179413232844,"market for transport, freight, lorry","transport, freight, lorry",ton kilometer,ENC
 SSP2-PkBudg1000,2045,Truck transport,Other,0.0,"market for transport, freight, lorry","transport, freight, lorry",ton kilometer,ENC
 SSP2-PkBudg1000,2050,Electricity,Hydro,0.5052746114138588,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
-SSP2-PkBudg1000,2050,Electricity,Wind,0.22004364657526546,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
-SSP2-PkBudg1000,2050,Electricity,Solar,0.22011058665588507,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
+SSP2-PkBudg1000,2050,Electricity,Wind,0.22004364657526548,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
+SSP2-PkBudg1000,2050,Electricity,Solar,0.22011058665588518,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
 SSP2-PkBudg1000,2050,Electricity,Nuclear,0.0,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
 SSP2-PkBudg1000,2050,Electricity,Biomass,0.05437762460043857,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
-SSP2-PkBudg1000,2050,Electricity,Natural gas,0.00015954737006591545,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
-SSP2-PkBudg1000,2050,Electricity,Coal and oil,2.628322183840048e-05,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
-SSP2-PkBudg1000,2050,Electricity,Other,7.700162647968892e-06,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
+SSP2-PkBudg1000,2050,Electricity,Natural gas,0.00015954737006591542,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
+SSP2-PkBudg1000,2050,Electricity,Coal and oil,2.628322183840049e-05,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
+SSP2-PkBudg1000,2050,Electricity,Other,7.700162647968894e-06,"market group for electricity, high voltage","electricity, high voltage",kilowatt hour,ENC
 SSP2-PkBudg1000,2050,District heat,Electric,0.3924916200032941,"market for heat, district or industrial","heat, district or industrial",megajoule,ENC
 SSP2-PkBudg1000,2050,District heat,Biomass,0.4761682160068823,"market for heat, district or industrial","heat, district or industrial",megajoule,ENC
 SSP2-PkBudg1000,2050,District heat,Recovered heat,0.03814692653489557,"market for heat, district or industrial","heat, district or industrial",megajoule,ENC

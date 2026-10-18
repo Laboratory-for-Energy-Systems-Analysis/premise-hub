@@ -1,0 +1,52 @@
+{
+  "package_sha256": "bd298b3e30d84adbb9dfe11c87654a318d7b8aed94e0357fa932a6e3dbcf9780",
+  "reference_year": 2030,
+  "window_start": 2020,
+  "config_count": 841,
+  "cases": {
+    "BECCS": {
+      "auto_scale": 6990.888930708434,
+      "values_kg_co2_per_net_tonne": {
+        "1.0": {
+          "2100": -219.00505759258814,
+          "2140": -537.8275817607323,
+          "2300": -822.94977225032
+        },
+        "0.1": {
+          "2100": -218.99084298771135,
+          "2140": -537.7915370112399,
+          "2300": -822.9026156216312
+        }
+      }
+    },
+    "DACCS": {
+      "auto_scale": 332.66587691829704,
+      "values_kg_co2_per_net_tonne": {
+        "1.0": {
+          "2100": -792.045249004389,
+          "2140": -841.0483567964131,
+          "2300": -888.6496157484106
+        },
+        "0.1": {
+          "2100": -792.0159979813012,
+          "2140": -841.0188160502855,
+          "2300": -888.6217393999386
+        }
+      }
+    }
+  },
+  "total_response": {
+    "csv_sha256": "8b19798d73bab1ccd9687397e1687a0bc5704638f0195b19e1fdf0d7767e8f2f",
+    "summary_convention": "Total all-gas scenario perturbation per configuration, then pointwise ensemble quantiles.",
+    "scenario": "REMIND|SSP2-PkBudg1000",
+    "display_window": [
+      1940,
+      2300
+    ],
+    "timebounds_years": [
+      1940.5,
+      2299.5
+    ],
+    "config_csv_sha256": "089f82b6605cac45b3157a50f905dd68d5e50fa52eec057c8e0afa41217c4967"
+  }
+}

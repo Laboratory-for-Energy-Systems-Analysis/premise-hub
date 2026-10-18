@@ -1,0 +1,419 @@
+{
+  "source_project": "/Users/romain/GitHub/FSLCI_workshop_2026",
+  "source_commit": "44fb086199a3358d7f20e22846d06a3ec41d2172",
+  "new_package": {
+    "scenario": {
+      "model": "remind-eu",
+      "pathway": "SSP2-PkBudg1000"
+    },
+    "years": [
+      2005,
+      2010,
+      2015,
+      2020,
+      2025,
+      2030,
+      2035,
+      2040,
+      2045,
+      2050,
+      2055,
+      2060,
+      2070,
+      2080,
+      2090,
+      2100
+    ],
+    "project": "ecoinvent-3.12-cutoff",
+    "source_database": "ecoinvent-3.12-cutoff",
+    "source_version": "3.12",
+    "system_model": "cutoff",
+    "biosphere": "ecoinvent-3.12-biosphere",
+    "premise_version": [
+      2,
+      5,
+      4
+    ],
+    "premise_source": "/Users/romain/GitHub/premise/premise/__init__.py",
+    "git_commit": "0ae8390aec60339d551c8088df9aa0b05793ba49",
+    "temporal_table_sha256": "10ea19bf54dfe937b43a68fec5e930b9a17caa727cc1ac92bd21955c64423431",
+    "encrypted_iam": true,
+    "transformations": "all",
+    "use_absolute_efficiency": false,
+    "generate_reports": false,
+    "started_at": "2026-10-14T16:46:03+0200",
+    "status": "complete",
+    "validation": {
+      "archive_integrity": "passed",
+      "resource_count": 67,
+      "years": [
+        {
+          "year": 2005,
+          "activities": 49625,
+          "biosphere_flows": 9850,
+          "matrix_rows": {
+            "A_matrix.csv": 590878,
+            "B_matrix.csv": 978170
+          },
+          "verified_forest_uptake_exchanges": 927,
+          "verified_spruce_uptake_exchanges": 210
+        },
+        {
+          "year": 2010,
+          "activities": 49625,
+          "biosphere_flows": 9850,
+          "matrix_rows": {
+            "A_matrix.csv": 591067,
+            "B_matrix.csv": 978238
+          },
+          "verified_forest_uptake_exchanges": 927,
+          "verified_spruce_uptake_exchanges": 210
+        },
+        {
+          "year": 2015,
+          "activities": 49625,
+          "biosphere_flows": 9850,
+          "matrix_rows": {
+            "A_matrix.csv": 591334,
+            "B_matrix.csv": 978289
+          },
+          "verified_forest_uptake_exchanges": 927,
+          "verified_spruce_uptake_exchanges": 210
+        },
+        {
+          "year": 2020,
+          "activities": 49625,
+          "biosphere_flows": 9850,
+          "matrix_rows": {
+            "A_matrix.csv": 592036,
+            "B_matrix.csv": 978408
+          },
+          "verified_forest_uptake_exchanges": 927,
+          "verified_spruce_uptake_exchanges": 210
+        },
+        {
+          "year": 2025,
+          "activities": 49625,
+          "biosphere_flows": 9850,
+          "matrix_rows": {
+            "A_matrix.csv": 592891,
+            "B_matrix.csv": 978412
+          },
+          "verified_forest_uptake_exchanges": 927,
+          "verified_spruce_uptake_exchanges": 210
+        },
+        {
+          "year": 2030,
+          "activities": 49625,
+          "biosphere_flows": 9850,
+          "matrix_rows": {
+            "A_matrix.csv": 593656,
+            "B_matrix.csv": 978412
+          },
+          "verified_forest_uptake_exchanges": 927,
+          "verified_spruce_uptake_exchanges": 210
+        },
+        {
+          "year": 2035,
+          "activities": 49625,
+          "biosphere_flows": 9850,
+          "matrix_rows": {
+            "A_matrix.csv": 593756,
+            "B_matrix.csv": 978412
+          },
+          "verified_forest_uptake_exchanges": 927,
+          "verified_spruce_uptake_exchanges": 210
+        },
+        {
+          "year": 2040,
+          "activities": 49625,
+          "biosphere_flows": 9850,
+          "matrix_rows": {
+            "A_matrix.csv": 593763,
+            "B_matrix.csv": 978412
+          },
+          "verified_forest_uptake_exchanges": 927,
+          "verified_spruce_uptake_exchanges": 210
+        },
+        {
+          "year": 2045,
+          "activities": 49625,
+          "biosphere_flows": 9850,
+          "matrix_rows": {
+            "A_matrix.csv": 593774,
+            "B_matrix.csv": 978412
+          },
+          "verified_forest_uptake_exchanges": 927,
+          "verified_spruce_uptake_exchanges": 210
+        },
+        {
+          "year": 2050,
+          "activities": 49625,
+          "biosphere_flows": 9850,
+          "matrix_rows": {
+            "A_matrix.csv": 593758,
+            "B_matrix.csv": 978412
+          },
+          "verified_forest_uptake_exchanges": 927,
+          "verified_spruce_uptake_exchanges": 210
+        },
+        {
+          "year": 2055,
+          "activities": 49625,
+          "biosphere_flows": 9850,
+          "matrix_rows": {
+            "A_matrix.csv": 593742,
+            "B_matrix.csv": 978412
+          },
+          "verified_forest_uptake_exchanges": 927,
+          "verified_spruce_uptake_exchanges": 210
+        },
+        {
+          "year": 2060,
+          "activities": 49625,
+          "biosphere_flows": 9850,
+          "matrix_rows": {
+            "A_matrix.csv": 593731,
+            "B_matrix.csv": 978412
+          },
+          "verified_forest_uptake_exchanges": 927,
+          "verified_spruce_uptake_exchanges": 210
+        },
+        {
+          "year": 2070,
+          "activities": 49625,
+          "biosphere_flows": 9850,
+          "matrix_rows": {
+            "A_matrix.csv": 593702,
+            "B_matrix.csv": 978412
+          },
+          "verified_forest_uptake_exchanges": 927,
+          "verified_spruce_uptake_exchanges": 210
+        },
+        {
+          "year": 2080,
+          "activities": 49625,
+          "biosphere_flows": 9850,
+          "matrix_rows": {
+            "A_matrix.csv": 591450,
+            "B_matrix.csv": 978412
+          },
+          "verified_forest_uptake_exchanges": 927,
+          "verified_spruce_uptake_exchanges": 210
+        },
+        {
+          "year": 2090,
+          "activities": 49625,
+          "biosphere_flows": 9850,
+          "matrix_rows": {
+            "A_matrix.csv": 590934,
+            "B_matrix.csv": 978412
+          },
+          "verified_forest_uptake_exchanges": 927,
+          "verified_spruce_uptake_exchanges": 210
+        },
+        {
+          "year": 2100,
+          "activities": 49625,
+          "biosphere_flows": 9850,
+          "matrix_rows": {
+            "A_matrix.csv": 590590,
+            "B_matrix.csv": 978412
+          },
+          "verified_forest_uptake_exchanges": 927,
+          "verified_spruce_uptake_exchanges": 210
+        }
+      ],
+      "descriptor_valid": true,
+      "temporal_assignment_audit": {
+        "file": "trails_temp/temporal_distribution_faulty_exchanges.csv",
+        "unassigned_exchange_count": 64,
+        "distinct_cases": [
+          {
+            "case": {
+              "calling_dataset_name": "electric installation production, utility scale, open ground",
+              "calling_dataset_reference_product": "electric installation, utility scale, open ground",
+              "calling_dataset_location": "RER",
+              "exchange_name": "treatment of used cable",
+              "exchange_reference_product": "used cable",
+              "exchange_categories": "",
+              "exchange_location": "GLO",
+              "reason": "Missing dataset lifetime in temporal CSV (tag: end_of_life)."
+            },
+            "occurrences": 16
+          },
+          {
+            "case": {
+              "calling_dataset_name": "electricity production, nuclear, Evolutionary Power Reactor (EPR)",
+              "calling_dataset_reference_product": "electricity, high voltage",
+              "calling_dataset_location": "CH",
+              "exchange_name": "EPR decommissioning",
+              "exchange_reference_product": "EPR decommissioning",
+              "exchange_categories": "",
+              "exchange_location": "CH",
+              "reason": "Missing dataset lifetime in temporal CSV (tag: end_of_life)."
+            },
+            "occurrences": 16
+          },
+          {
+            "case": {
+              "calling_dataset_name": "electricity production, nuclear, Evolutionary Power Reactor (EPR)",
+              "calling_dataset_reference_product": "electricity, high voltage",
+              "calling_dataset_location": "FR",
+              "exchange_name": "EPR decommissioning",
+              "exchange_reference_product": "EPR decommissioning",
+              "exchange_categories": "",
+              "exchange_location": "FR",
+              "reason": "Missing dataset lifetime in temporal CSV (tag: end_of_life)."
+            },
+            "occurrences": 16
+          },
+          {
+            "case": {
+              "calling_dataset_name": "electricity production, nuclear, Evolutionary Power Reactor (EPR)",
+              "calling_dataset_reference_product": "electricity, high voltage",
+              "calling_dataset_location": "RER",
+              "exchange_name": "EPR decommissioning",
+              "exchange_reference_product": "EPR decommissioning",
+              "exchange_categories": "",
+              "exchange_location": "RER",
+              "reason": "Missing dataset lifetime in temporal CSV (tag: end_of_life)."
+            },
+            "occurrences": 16
+          }
+        ]
+      }
+    },
+    "archive": "/Users/romain/GitHub/premise/export/trails/remind-eu-SSP2-PkBudg1000-all-years-20261014/trails_remind-eu_SSP2-PkBudg1000.zip",
+    "archive_bytes": 378184741,
+    "archive_sha256": "bd298b3e30d84adbb9dfe11c87654a318d7b8aed94e0357fa932a6e3dbcf9780",
+    "elapsed_seconds": 2539.8857761248946,
+    "encrypted_iam_file": "/Users/romain/GitHub/premise/premise/data/iam_output_files/remind-eu_SSP2-PkBudg1000.csv",
+    "encrypted_iam_sha256": "0b3c4be351d36714063940b4704afb64aa34178dfe0966a8c85767799d00961e",
+    "source_patch": "build_source.patch",
+    "source_patch_sha256": "17e3e126cd11b181d417cb1b3fc6a6aa9f2f4d8108657a1b049c45f3efc95755",
+    "validation_fix": "Car fuel energy above the inherited 4.26 MJ/km plausibility screen is reported as a warning without changing inventory amounts. Fuel accounting, energy-floor and CO2 validation errors remain blocking.",
+    "focused_tests": {
+      "passed": 92
+    }
+  },
+  "comparison_package": {
+    "path": "/Users/romain/GitHub/FSLCI_workshop_2026/data/local/trails_packages/lcss2026_remind_eu_ssp2_npi.zip",
+    "pathway": "SSP2-NPi",
+    "size_bytes": 376098173,
+    "sha256": "cfe68ecd5570e74237fe54e13e4f4f5a7269fc0eee30beb6c1b547166a910263",
+    "resource_count": 67,
+    "A_shape_after_annual_interpolation": [
+      96,
+      49197,
+      49197
+    ],
+    "A_nnz_after_annual_interpolation": 53211273,
+    "B_shape_after_annual_interpolation": [
+      96,
+      49197,
+      9847
+    ],
+    "B_nnz_after_annual_interpolation": 92687420,
+    "zip_integrity": "passed",
+    "trails_annual_load": "passed",
+    "premise_version": "2.4.9.1"
+  },
+  "source_script_hashes": {
+    "scripts/build_system_inventory.py": "b0539ce7af3959c245c9e1089f43c59f8b8ba1a874eb71eee94468a3b66b8e3b",
+    "scripts/build_trails_packages.py": "1000129bb556d96b8b91da682577ab723417578f84f14ab57ef0f1e1c97f2a87",
+    "scripts/calculate_co2_reference_pulse.py": "4ee4c3b830585ce0c418d31a44148862d346fb39115158b0912ea5a7ee65d4cf",
+    "scripts/calculate_cohort_fair_responses.py": "447c23cabb6b298574c3709ad7cac00fa21219883e694be8240c1f7a4852a012",
+    "scripts/calculate_cohort_pulse_equivalence_grid.py": "5b455877f3609351a1d51e23bcf628f80dbeb5fb3c913d9ba9092c9d3e465d40",
+    "scripts/calculate_cohort_temporal_scores.py": "7123c5381e06c0b5f5aae5b24f512d4e8a928094a9f4ae931f37090a8e325669",
+    "scripts/calculate_lifetime_results.py": "2375c7121b6f8c15971a44094a0b1e8a342edfbd68fd017e2a9925039954b088",
+    "scripts/calculate_scenario_sector_indicators.py": "390778d43b5de9d3219002bff69b0e1a8d659829b65b61745eb36532500a002e",
+    "scripts/calculate_static_results.py": "6ac42f10fb34096d42fb9d62b5abb6a2350ff1cab8583b2e46c24e0693ec9ec1",
+    "scripts/calculate_temporal_results.py": "23a1fa4518bf806d2756ac1b134162a74a8755cf50f19a2db0b615457a23b959",
+    "scripts/extract_scenario_sector_mixes.py": "2724556201ce3b5f62b6c72180b9f3bbb3474af9202ddf8e5460e0b8ce457e54",
+    "scripts/generate_cover_iam_background.py": "dbc8db62287ff2637c75b7a03249beb673f7684b4b550ec3d6fa71e3f86aafaa",
+    "scripts/generate_routing_graphs.py": "ed57a4d1a8a02a5d7dfc5b3f70297cefd3a10ebfd490921ddd336e3606987779",
+    "scripts/generate_slide8_iam_chart.py": "a12d6d15068ff83dc02bf00fc39a759b4e4b8ad9904d4854f85ca1f9788822db",
+    "scripts/prepare_foreground_inventories.py": "ab014cfbf9edff9fc13428f37324ae954bf8d9ebc12d0be84bb5f76452ef6496",
+    "scripts/prepare_routing_cohorts.py": "db0cbda0329e1af209ff5d8485bd96f99caa9515ec3591bbe1d8abbf1d3d30ea",
+    "scripts/validate_cohort_pulse_equivalence.py": "19c08261b53d8a0ef092d9e1d62a79310c5559ff3eb0d89deb76cb580e219eb4",
+    "scripts/validate_trails_packages.py": "68d2b49fbc510536ac6d6e8e3ed7e826c02a05f2188fbeaec665b624a71e8a98",
+    "scripts/visual_check.py": "61f0e6e50169632c6d3ef30a62fe386099d00cba361ab7b03e2a5f03368c1d34"
+  },
+  "notes": [
+    "Static NPi comparison retains its original background package and uses the regenerated foreground.",
+    "Forest uptake offsets are already post-harvest and are copied without a second rotation shift.",
+    "Reviewed functional units, transport, standing-forest reference and cohort routing schedule are retained.",
+    "Original calculation project and long lca_time presentation are not modified."
+  ],
+  "trails_version": "1.1.1",
+  "trails_source": "/Users/romain/GitHub/trails/trails/__init__.py",
+  "trails_commit": "7bec4c1e1eaa34ae191184aad79f12bcb6f19706",
+  "published_at": "2026-10-14T19:09:10.970457+00:00",
+  "workflow_script_hashes": {
+    "regenerate_results.py": "49fbf7341b04b0acb09c416853751db3f49aa2dda5f9641b6ecbb55c3cc9252d",
+    "calculate_cohort_outputs.py": "d26b60c76d64efa77282ecc488e4049114a8443974f6dd2902b999a1b16ba092",
+    "diagnose_fair_sign_change.py": "ef34952e9748a9a0a26a3cab39e1024260d6b12f905a44c5f125fbde03222ba9",
+    "audit_energy_and_pulse.py": "67e34f681508613a03502ac0b9b98798702ae64ee4bc33de3513cd36c4fc3e31",
+    "audit_beccs_pulse_balance.py": "c2dda62629e7f3b27844998e796a4efc0edd5b3f9937a95b67c3ecdba5f167dd"
+  },
+  "foreground_sha256": "b415e812667642b99e696df215332c4a41d63a525b5bf2a783cf70635ede2752",
+  "cohort_foreground_sha256": "3c8ba7d100ddfff906e11ca6aa1375ee7ef53879370099f04a5a01845bf492b7",
+  "fair_sign_diagnostic": {
+    "trails_fix_commit": "de32b19d2552892e98b246149409fa40c0f3e0c2",
+    "description": "Legacy abs(inventory amount) for resource uptake; known incorrect for avoided uptake. This is a controlled comparison, not a valid result.",
+    "script": "apps/setac_2026/scripts/diagnose_fair_sign_change.py",
+    "window": [
+      2020,
+      2030,
+      2100
+    ],
+    "cases": {
+      "BECCS": {
+        "legacy_mapping_only_kg_co2_per_net_tonne": -427.61156251472903,
+        "corrected_kg_co2_per_net_tonne": -219.0050575925882
+      },
+      "DACCS": {
+        "legacy_mapping_only_kg_co2_per_net_tonne": -792.5382751902149,
+        "corrected_kg_co2_per_net_tonne": -792.0452490043891
+      }
+    }
+  },
+  "output_sha256": {
+    "beccs_carbon_balance_audit.json": "673788d1cdb38cc0fb32e868890f910731562e2f2aac0f8c492539cc2643be8c",
+    "co2_reference_pulse.csv": "7c98eaea8bcab85f05a20660af0f672644f08aede25a9f35105e7e964371bc3c",
+    "cohort_fair_responses.csv": "8b19798d73bab1ccd9687397e1687a0bc5704638f0195b19e1fdf0d7767e8f2f",
+    "cohort_pulse_equivalence_grid.npz": "221c7c8cd8d6140807ab9cb34bc2427f75203fc94bcbb1f7881a121b8f92fa88",
+    "cohort_pulse_equivalence_validation.json": "ced7e098adcb91e02dedb2894071841e747dd68b7690f31e935f19652971a8d4",
+    "cohort_temporal_scores.csv": "c125b435a5cc423215fd1119f51aae71c50bdad52544f2510d814e494ea43d27",
+    "energy_flow_signs.csv": "5118c12c2c1d9f07be626b9ea74c76c4fe563595fc9158afca19062ac25290df",
+    "energy_flow_signs.json": "bcf5ac06f05210f13f76c6e383863626052820561581dd8a95656eb08cfd7be8",
+    "process_step_attribution_2025.json": "176ec4a5f36e9ca3a9f44427d52852e7c45ed118ca51348f10514c27a32d9ca4",
+    "pulse_integration_audit.json": "101e2259083b7d733cf26a2144a08c5115cd1edfb8f7c14ad2651e66cd1cc4bc",
+    "static_contributions.csv": "9b02a6bef00a142e10df48d34f7411cce3931ffc29e7dc3ccd5e13f7678fdef2",
+    "static_lcia.csv": "04138ee96e9286115465e15a764ec785a59d2b8d30b9668793ddaf0eb8804b90",
+    "system_inventory_2025.json": "660f0863041f388fddd6d85fc31b8afa209c65dcc544e58918e463aea51a68b4"
+  },
+  "default_pulse_kg_co2eq": {
+    "BECCS": -219.0050506591797,
+    "DACCS": -792.0452270507812
+  },
+  "temporal_totals_kg_co2eq": {
+    "BECCS": -975.6917473850033,
+    "DACCS": -911.2161526699775
+  },
+  "forcing_summary": {
+    "csv_sha256": "8b19798d73bab1ccd9687397e1687a0bc5704638f0195b19e1fdf0d7767e8f2f",
+    "summary_convention": "Total all-gas scenario perturbation per configuration, then pointwise ensemble quantiles.",
+    "scenario": "REMIND|SSP2-PkBudg1000",
+    "display_window": [
+      1940,
+      2300
+    ],
+    "timebounds_years": [
+      1940.5,
+      2299.5
+    ],
+    "config_csv_sha256": "089f82b6605cac45b3157a50f905dd68d5e50fa52eec057c8e0afa41217c4967"
+  }
+}

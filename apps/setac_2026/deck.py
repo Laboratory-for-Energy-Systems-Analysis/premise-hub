@@ -4,7 +4,7 @@ import os
 
 from dash import dcc, html
 
-from apps.lca_time.workshop import results
+from . import results
 from .figures import (
     CASES,
     DEFAULT_END,
@@ -17,6 +17,8 @@ from .figures import (
     prospective_figure,
     pulse_figure,
     pulse_value,
+    regrowth_end,
+    inventory_start,
     removal_requirements,
     scenario_context_figure,
     scenario_context_note,
@@ -45,8 +47,8 @@ SLIDES = [
     dict(
         title="BECCS and DACCS: material, energy and CO₂ flows",
         phase="CDR systems / Inputs and outputs per tonne stored",
-        seconds=35,
-        cue="Point to wood and exported energy for BECCS, then electricity and heat for DACCS. Both routes deliver one net tonne to storage; the next slide accounts for life-cycle emissions.",
+        seconds=45,
+        cue="One comparison: BECCS depends on biomass; DACCS depends on electricity and heat. Both deliver one net tonne to storage. Follow the two paths without reading the numerical inputs.",
         notes="Use the original lca_time system artwork to follow the selected 2025 physical flows. Both routes capture 1.029 tonnes of CO₂, lose 0.029 tonnes along the 2,000 km transport chain and store one tonne. This is physical net storage, before subtracting supply-chain GHG burdens. BECCS uses 0.630 tonnes of dry wood chips (12.85 GJ): forest uptake is 1.143 tonnes, 90% is captured and 0.114 tonnes return to the atmosphere at the stack. The new CHP supplies capture heat internally and exports 0.564 MWh electricity and 0.249 GJ heat; the reference leaves the mature forest standing and buys equivalent market energy. Capture also requires chemicals and cooling water. DACCS captures from air, uses 3.086 kg make-up sorbent and 1.854 MWh capture electricity, of which 1.134 MWh drives a heat pump supplying 12.243 GJ heat at COP 3. The heat is produced from the shown electricity, not an additional energy input. Both routes use a further 0.139 MWh for compression and storage. These are selected operating flows from the existing reviewed inventory, not a complete life-cycle inventory or a GWP balance. Point to the different dependencies, then move to the stacked LCA results.",
     ),
     dict(
@@ -59,58 +61,58 @@ SLIDES = [
     dict(
         title="Future electricity, heat and material supply",
         phase="02 / Prospective backgrounds from REMIND-EU and premise",
-        seconds=55,
-        cue="Follow REMIND-EU → premise → supply mixes. Use electricity under PkBudg1000 as the main example; one switch to NPi shows why the scenario matters. Leave the other selectors for questions.",
-        notes="Introduce integrated assessment models: scenarios connect socioeconomic assumptions and climate policy to future energy and industrial systems. premise maps the REMIND-EU SSP2 pathways into changes in ecoinvent supply mixes, process efficiency and emissions. These are conditional scenarios, not forecasts. The plots show premise-generated market shares in Northern Europe (ENC), every five years from 2025 through 2050. Start with PkBudg1000: solar expands, market heat supply shifts away from oil toward electric and biomass routes, and steel shifts from BF–BOF toward direct reduction and scrap EAF. Switch to NPi to show that the direction and scale differ across sectors. The third selector also exposes clinker CCS and truck electrification. Hover for exact shares. All six snapshots are extracted from the original scenario packages at their respective years, without interpolating market shares. Steel abbreviations: BF–BOF is blast furnace/basic oxygen furnace; DRI–EAF here is natural gas-based direct reduced iron/electric arc furnace. The ENC PkBudg1000 share rises from 0% in 2025 to 17.89% in 2030 in the original IAM output: 1.5893214 Mt/year divided by 8.8817016 Mt/year total steel. The same values were verified in the exported premise market; this is a scenario trajectory, not a plant-level deployment forecast. NPi has zero DRI in both years. The heat shares come from the single ENC market named “market for heat, district or industrial”; the export does not distinguish district and industrial uses. This is not the DAC heat pump itself. The left plot compares GMST, CO₂ emissions or population across both pathways, for World or Northern Europe. GMST is global and therefore fixes the region to World. The selected pathway is highlighted and drives the three mix plots. The PDF fixes World GMST and PkBudg1000 mixes for electricity, heat and steel. Spend about 55 seconds here and move to the consequences for CDR scores.",
+        seconds=40,
+        cue="Follow REMIND-EU → premise → future supply mixes. Point only to the changing electricity mix under PkBudg1000. Keep all selectors fixed during the talk; use them for questions.",
+        notes="Introduce integrated assessment models: scenarios connect socioeconomic assumptions and climate policy to future energy and industrial systems. premise maps the REMIND-EU SSP2 pathways into changes in ecoinvent supply mixes, process efficiency and emissions. These are conditional scenarios, not forecasts. The plots show premise-generated market shares in Northern Europe (ENC), every five years from 2025 through 2050. Start with PkBudg1000: solar expands, market heat supply shifts away from oil toward electric and biomass routes, and steel shifts from BF–BOF toward direct reduction and scrap EAF. For questions, switching to NPi shows that the direction and scale differ across sectors. The third selector also exposes clinker CCS and truck electrification. Hover for exact shares. All six snapshots are extracted from the original scenario packages at their respective years, without interpolating market shares. Steel abbreviations: BF–BOF is blast furnace/basic oxygen furnace; DRI–EAF here is natural gas-based direct reduced iron/electric arc furnace. The ENC PkBudg1000 share rises from 0% in 2025 to 17.89% in 2030 in the original IAM output: 1.5893214 Mt/year divided by 8.8817016 Mt/year total steel. The same values were verified in the exported premise market; this is a scenario trajectory, not a plant-level deployment forecast. NPi has zero DRI in both years. The heat shares come from the single ENC market named “market for heat, district or industrial”; the export does not distinguish district and industrial uses. This is not the DAC heat pump itself. The left plot compares GMST, CO₂ emissions or population across both pathways, for World or Northern Europe. GMST is global and therefore fixes the region to World. The selected pathway is highlighted and drives the three mix plots. The PDF fixes World GMST and PkBudg1000 mixes for electricity, heat and steel. Spend about 40 seconds on the electricity example; keep the remaining charts as context and move to the consequences for CDR scores.",
     ),
     dict(
         title="CDR scores with 2025, 2030 and 2050 backgrounds",
         phase="02 / Prospective static LCA under two SSP2 scenarios",
-        seconds=45,
-        cue="Follow the white diamonds from 2025 to 2050, especially for DACCS. Future supply chains change the scores, but each bar is still a static snapshot.",
+        seconds=40,
+        cue="Follow only the net-score diamonds from 2025 to 2050: DACCS improves more. Each bar still uses one background year. Leave individual contributions and scenario contrasts for questions.",
         notes="Each cluster is a background year; the left hatched stack uses NPi and the right solid stack uses PkBudg1000. The two panels show BECCS and DACCS. White diamonds and labels mark the net scores. Each bar is a separate static snapshot, not a plant cohort. Both systems improve under these backgrounds, with a larger change for DACCS. These stacks group the existing activity contributions consistently for every year; they differ from the explicit 2025 BECCS foreground-step attribution on slide 4. Electricity and heat activities can contribute on either side of zero, including substitution effects; do not interpret one activity category as the complete foreground avoided-energy service. All retained activity contributions and the source Other remainder are included, and opposite signs are stacked separately. This adds a future background year, but still does not tell us when the project's individual emissions and removals occur.",
     ),
     dict(
         title="TRAILS: matrices and supply chains through time",
         phase="03 / Annual backgrounds and temporal routing",
-        seconds=50,
-        cue="Point to the year dimension in the matrices, then one dated path in the graph. TRAILS connects each demand to its year's supply chain and retains the dates of the resulting emissions.",
-        notes="Introduce TRAILS: Temporal Routing and Aggregation of Impacts across Life-cycle Systems. On the left, premise supplies scenario-year snapshots. TRAILS interpolates annual technosphere A and biosphere B matrices: the third dimension is year. A links activities and products; B links activities and elementary flows. On the right, temporal distributions turn exchanges into demands and emissions in particular years. Each graph node is an activity in a calendar year; depth runs downward and years run horizontally. This is the schematic from the longer talk, not a BECCS or DACCS result. Explicit routing stops at a selected frontier, and remaining demand is still solved using annual background matrices; it is not discarded. Outside the scenario horizon, available endpoint backgrounds are used while the actual inventory dates are retained. The output keeps activity, elementary flow and year, ready for annual characterization or climate modelling of the dated gas inventory. Spend 50 seconds, then show the plant-cohort timelines and results.",
+        seconds=35,
+        cue="Follow one dated path through the supply graph and its corresponding annual matrix slice. TRAILS connects a demand to the supply chain in its year and retains the emission dates.",
+        notes="Introduce TRAILS: Temporal Routing and Aggregation of Impacts across Life-cycle Systems. On the left, premise supplies scenario-year snapshots. TRAILS interpolates annual technosphere A and biosphere B matrices: the third dimension is year. A links activities and products; B links activities and elementary flows. On the right, temporal distributions turn exchanges into demands and emissions in particular years. Each graph node is an activity in a calendar year; depth runs downward and years run horizontally. This is the schematic from the longer talk, not a BECCS or DACCS result. Explicit routing stops at a selected frontier, and remaining demand is still solved using annual background matrices; it is not discarded. Outside the scenario horizon, available endpoint backgrounds are used while the actual inventory dates are retained. The output keeps activity, elementary flow and year, ready for annual characterization or climate modelling of the dated gas inventory. In the talk, spend 35 seconds on one dated path and its annual matrix slice; reserve routing-frontier details for questions.",
     ),
     dict(
         title="When do emissions and CO₂ removals occur?",
         phase="03 / Time-explicit LCA for plants operating in 2030–2049",
-        seconds=60,
-        cue="Compare uptake during DACCS operation with the long BECCS regrowth tail. The red curves add GWP100 contributions; they are not the climate response.",
-        notes="Move to complete plants commissioned in 2030. Construction is in 2027–2029, operation in 2030–2049, and end-of-life in 2050. TRAILS combines dated foreground and background exchanges with annual scenario matrices. Every BECCS harvest has an 83-year replacement-stand regrowth tail, reaching 2132 for the final harvest. DACCS captures during operation. The stacked areas separate uptake, energy, CO₂ and stack emissions, materials and other supply-chain contributions. Uptake contains forest regrowth and direct air capture. Energy includes biomass supply, electricity and compression, as well as avoided electricity and heat. The CO₂ and stack-emissions category contains the complete residual stack-emission branch and CO₂ transport losses; the branch-level GWP data do not separate individual stack gases. Materials includes chemicals, sorbent, construction and their end-of-life branches. Bundled pipeline/storage and remaining supply-chain branches stay in Other. Negative supply-chain values remain with their source category, so energy credits are not relabelled as uptake. Both panels start in 2000. The red line shows cumulative net GWP100 on each right-hand axis, accumulated over the full inventory including upstream contributions before 2000. Its endpoint closes to the cohort total. Both cases use the same annual and cumulative scales; zeros align between the axes. Cumulative GWP100 remains a sum of characterized inventory, not a climate-response trajectory. Small pre-operation DACCS contributions belong to upstream biogenic timing, not early DAC operation. These remain characterized inventories, not forcing trajectories.",
+        seconds=70,
+        cue="Point first to the standing-forest reference: BECCS removal is credited during post-harvest regrowth, whereas DACCS captures during operation. Read the red GWP100 totals: BECCS still has the lower score. These are accounting sums, not climate-response curves. Keep the stacked view for the talk.",
+        notes=f"Move to complete plants commissioned in 2030. Construction is in 2027–2029, operation in 2030–2049, and end-of-life in 2050. TRAILS combines dated foreground and background exchanges with annual scenario matrices. Every BECCS harvest has an 83-year replacement-stand regrowth profile, reaching the {regrowth_end()} annual bin for the final harvest. The new DACCS background has a longer upstream tail; both plots extend to cover the complete inventory. DACCS captures during operation. The stacked areas separate uptake, energy, CO₂ and stack emissions, materials and other supply-chain contributions. Energy is split into positive and negative elementary-flow contributions before netting within each annual root. Its negative band is hatched. For DACCS, the full energy branch is approximately +237 and −190 kg CO₂-eq per net tonne stored, net +47. The negative 2050 electricity contribution is upstream carbon dioxide uptake; it can occur after the DAC plant stops operating because background biomass uptake has its own time profile. Uptake contains forest regrowth and direct air capture. Energy includes biomass supply, electricity and compression, as well as avoided electricity and heat. The CO₂ and stack-emissions category contains the complete residual stack-emission branch and CO₂ transport losses; the branch-level GWP data do not separate individual stack gases. Materials includes chemicals, sorbent, construction and their end-of-life branches. Bundled pipeline/storage and remaining supply-chain branches stay in Other. Negative supply-chain values remain with their source category; explicit DAC and foreground forest regrowth remain in Uptake. Both panels start in 2000. The red line shows cumulative net GWP100 on each right-hand axis, accumulated over the full inventory including upstream contributions before 2000. Its endpoint closes to the cohort total. Use the Stacked areas / Unstacked lines switch to inspect overlapping contributions without changing their values. Both cases and both views use the same annual and cumulative scales; zeros align between the axes. The PDF defaults to stacked areas. Cumulative GWP100 remains a sum of characterized inventory, not a climate-response trajectory. Small pre-operation DACCS contributions belong to upstream biogenic timing, not early DAC operation. These remain characterized inventories, not forcing trajectories.",
     ),
     dict(
         title="GWP100 does not distinguish emission dates, but radiative forcing does",
         phase="04 / Coupling temporal TRAILS inventories to the FaIR climate model",
-        seconds=60,
-        cue="Follow TRAILS → FaIR → radiative forcing. Point first to the earlier DACCS response, then the later BECCS response. Gas identity and calendar year both enter the climate model.",
-        notes="GWP100 has a time horizon, but its standard factors are not indexed to the calendar date of each emission. Point to the coupling diagram: temporal TRAILS inventories provide annual emissions and removals, retaining the individual gas and its calendar year. These flows are combined with the background scenario in the FaIR climate model to calculate time-resolved radiative forcing. Use the FaIR trajectories to show the information lost in a single GWP total. FaIR evaluates a scenario with the project perturbation against the same scenario without it. The vertical axis is the change in global radiative forcing per physical lifetime net storage: positive values add forcing, negative values reduce it. DACCS gives an earlier reduction during operation; the modeled BECCS benefit builds with forest regrowth. Shading identifies operation. These are the existing median display trajectories from 841 calibrated configurations. We pass the dated gas inventory, not its CO₂-equivalent sum, to FaIR. A dated GWP inventory remains useful bookkeeping, but its sum cannot answer a fixed-calendar climate question. This is a limitation for the question being asked, not a claim that GWP100 is undefined.",
+        seconds=80,
+        cue="Follow the same dated inventories from TRAILS into FaIR. DACCS reduces forcing earlier; the BECCS benefit builds during regrowth. GWP100 remains defined, but its total does not answer when the climate effect occurs. Keep the displayed horizon fixed.",
+        notes="GWP100 has a time horizon, but its standard factors are not indexed to the calendar date of each emission. Point to the coupling diagram: temporal TRAILS inventories provide annual emissions and removals, retaining the individual gas and its calendar year. These flows are combined with the background scenario in the FaIR climate model to calculate time-resolved radiative forcing. Use the FaIR trajectories to show the information lost in a single GWP total. FaIR evaluates a scenario with the project perturbation against the same scenario without it. The vertical axis is the change in global radiative forcing per physical lifetime net storage: positive values add forcing, negative values reduce it. DACCS gives an earlier reduction during operation; the modeled BECCS benefit builds with forest regrowth. The grey vertical band identifies operation; the coloured fill marks negative forcing. The displayed curve is the pointwise median of the total all-gas perturbation across the same 841 calibrated configurations used on slide 10. All gases are combined within each configuration before taking the median. Slide 10 integrates and divides within each configuration before taking its median; it does not divide the areas under these median curves. We pass the dated gas inventory, not its CO₂-equivalent sum, to FaIR. A dated GWP inventory remains useful bookkeeping, but its sum cannot answer a fixed-calendar climate question. This is a limitation for the question being asked, not a claim that GWP100 is undefined.",
     ),
     dict(
         title="Comparing CDR with CO₂-pulse equivalents",
         phase="05 / Integrated radiative forcing relative to a dated CO₂ pulse",
-        seconds=135,
-        cue="Keep the 2020 start and 2030 pulse fixed; move only the endpoint from 2100 to 2300. The ranking changes. State the window whenever quoting a CO₂-pulse equivalent.",
-        notes="Ask: what signed mass of a CO₂ pulse in 2030 gives the same integrated forcing over our chosen calendar window? Divide the system's integrated forcing by the response per kilogram of the reference pulse over exactly the same window. Negative values denote a removal-equivalent cooling benefit. The three handles select the window start, reference-pulse year and window end, in that order. The slider starts at 2000; defaults are 2020, 2030 and 2100. Handles remain five years apart so the reference pulse stays strictly inside the window. At the default endpoint of 2100, the equivalents are about −429 for BECCS and −823 for DACCS. Move the endpoint to 2300: about −1051 and −895. Changing the window start or pulse year updates the curve, values and endpoint comparison together. The comparison changes with the window. Ratios are calculated separately for all 841 configurations and then summarized; they are not ratios of the plotted median curves. This is a dated metric of integrated forcing, not physical tonnes stored or an identical climate trajectory. In a PDF, use the two endpoint rows already visible beneath the chart. Answer the research question using the endpoint comparison: here the ranking depends on the assessment window. Keep the forcing curve alongside the scalar, then move to the next slide for the conclusions and contact details.",
+        seconds=145,
+        cue="Keep the 2020 start and 2030 pulse fixed; move the endpoint from 2100 to 2300. BECCS approaches DACCS, but DACCS retains the lower equivalent. GWP100 favours BECCS. State the window with every pulse equivalent.",
+        notes=f"Ask: what signed mass of a CO₂ pulse in 2030 gives the same integrated forcing over our chosen calendar window? Divide the system's integrated forcing by the response per kilogram of the reference pulse over exactly the same window. Negative values denote a removal-equivalent cooling benefit. The three handles select the window start, reference-pulse year and window end, in that order. The slider starts at 2000; defaults are 2020, 2030 and 2100. Handles remain five years apart so the reference pulse stays strictly inside the window. At the default endpoint of 2100, the equivalents are about {pulse_value('BECCS'):,.0f} for BECCS and {pulse_value('DACCS'):,.0f} for DACCS. Move the endpoint to 2300: about {pulse_value('BECCS', 2300):,.0f} and {pulse_value('DACCS', 2300):,.0f}. For comparison with earlier results: with the same 2030 reference pulse, the old result was −429 at a 2100 endpoint and −757 at 2140; the regenerated results are −219 and −538. The difference combines the chosen endpoint and the corrected sign of avoided resource uptake in the FaIR mapping. Independent direct integration of the FaIR ensembles reproduces the new values, and a tenfold smaller numerical perturbation changes the default BECCS result by only 0.014 kg. Changing the window start or pulse year updates the curve, values and endpoint comparison together. The gap narrows with the longer window, while DACCS retains the lower pulse equivalent at both endpoints. Ratios are calculated separately for all 841 configurations and then summarized; they are not ratios of the plotted median curves. The carbon-balance audit explains the default BECCS result: in the configuration giving the median total, forest regrowth contributes about −392 kg CO₂-pulse-eq, residual stack and transport CO₂ +127, other CO₂ +15, and other climate-active species +31, giving −219. The direct carbon mass balance still closes to −1000 kg CO₂ per net tonne stored. Historical forest uptake cancels against the standing-forest reference; the credited uptake occurs during replacement-stand regrowth, with a mass-weighted year of 2081. Although 89% has occurred by 2100, it has much less time to affect integrated forcing than a 2030 pulse. These values are conditional on the stated forest reference and timing assumptions. Define integrated cooling effect as reduced time-integrated radiative forcing. Equal integrated forcing does not imply identical temperature trajectories. This is a dated climate metric rather than physical tonnes stored. In a PDF, use the two endpoint rows already visible beneath the chart. Answer the research question: GWP100 favours BECCS, whereas integrated forcing favours DACCS over both displayed windows. Keep the forcing curve alongside the scalar, then move to the next slide for the conclusions and contact details.",
     ),
     dict(
         title="Conclusions: timing matters for CDR",
         phase="06 / Conclusions and next steps for other CDR methods",
-        seconds=45,
-        cue="Answer the opening question: yes, in these cases the conclusion changes with the assessment window. Return to uptake, storage and emissions: the next step is to represent these dates for other CDR methods too.",
-        notes="Connect the two methodological steps: prospective LCA represents future operating conditions; dynamic LCA reveals how impacts unfold over long-lived operations. Radiative forcing shows when climate effects occur, and CO₂-pulse equivalents summarize integrated forcing for a stated scenario, pulse year and window. Briefly point to the framed comparison: at the default settings, BECCS needs 2.33 net tonnes stored for a −1 t CO₂-pulse-equivalent score and DACCS 1.21. The GWP100 amounts are 1.02 and 1.10. Return to the opening: the broader contribution is a way to compare CDR methods with different uptake schedules, storage duration and possible re-release, alongside evolving supply chains. A next application could evaluate biochar, enhanced weathering or ecosystem restoration under a common climate window, using method-specific inventories and uptake/release profiles. These applications and release profiles have not been calculated here; the current results retain the existing geological-storage and forest assumptions. The table scales the existing cohort scores linearly as −1000 kg-equivalent divided by each per-net-tonne score. GWP100 uses the full temporal cohort; pulse equivalence uses the 2020–2100 window and 2030 reference pulse. The physical amounts reach storage after transport loss, before subtracting life-cycle GHG burdens, which are included in the scores. Thank the audience, then leave the sources slide available for questions.",
+        seconds=55,
+        cue="Answer the opening question: for these systems and assumptions, GWP100 favours BECCS, while integrated forcing over 2020–2100 favours DACCS. The table targets different metric scores; 4.57 t is conditional on this window and the 2030 reference pulse. Close with the outlook for other CDR methods.",
+        notes=f"Connect the two methodological steps: prospective LCA represents future operating conditions; dynamic LCA reveals how impacts unfold over long-lived operations. Radiative forcing shows when climate effects occur, and CO₂-pulse equivalents summarize integrated forcing for a stated scenario, pulse year and window. The ranking changes when the dated inventory is assessed using a fixed-calendar climate criterion, rather than merely by calculating a temporal GWP inventory. Briefly point to the framed comparison: at the default settings, BECCS needs {removal_requirements('BECCS')['pulse']:.2f} net tonnes stored for a −1 t CO₂-pulse-equivalent score and DACCS {removal_requirements('DACCS')['pulse']:.2f}. For current static LCA (2025, NPi), the GWP100 amounts are {removal_requirements('BECCS')['current_static']:.2f} and {removal_requirements('DACCS')['current_static']:.2f}. For prospective static LCA (2030, PkBudg1000), they are {removal_requirements('BECCS')['prospective_static']:.2f} and {removal_requirements('DACCS')['prospective_static']:.2f}. Return to the opening: the broader contribution is a way to compare CDR methods with different uptake schedules, storage duration and possible re-release, alongside evolving supply chains. A next application could evaluate biochar, enhanced weathering or ocean alkalinization under a common climate window, using method-specific inventories and uptake/release profiles. These applications and release profiles have not been calculated here; the current results retain the existing geological-storage and forest assumptions. The table scales the corresponding scores linearly as −1000 kg-equivalent divided by each per-net-tonne score. GWP100 uses the 2025 and 2030 static snapshots; pulse equivalence uses the temporal 2030 cohort, 2020–2100 window and 2030 reference pulse. The physical amounts reach storage after transport loss, before subtracting life-cycle GHG burdens, which are included in the scores. Acknowledge support through the Horizon Europe UPTAKE project, grant agreement 101081521. Thank the audience, then leave the sources slide available for questions.",
     ),
     dict(
         title="Data sources and model versions",
         phase="References / Inventory data, methods and software",
         seconds=0,
         cue="Leave these sources available for questions; no additional speaking segment is needed.",
-        notes="All case-study values are read directly from the reviewed lca_time artifacts in this repository. The SETAC app adds presentation views only; it does not rerun or change the LCA or FaIR model. The longer presentation has the detailed inventories and attribution views. This is the final main slide and is included in the default PDF export. Keep it available for questions without adding a separate speaking segment.",
+        notes="SETAC results were regenerated on 14 October 2026 from the new REMIND-EU SSP2-PkBudg1000 package (premise 2.5.4), with TRAILS 1.1.1. The NPi comparison retains its original premise 2.4.9.1 background and was recalculated with the regenerated foreground. FaIR uses 841 calibrated configurations; the default pulse-equivalence result is independently checked with the public TRAILS function. This version includes the signed-uptake fix in the TRAILS-to-FaIR mapping: avoided resource uptake now has the correct sign. With the same new inventory, the legacy mapping gives BECCS −428 versus −219 with the correction. The update is therefore not solely a background-package effect. Package, foreground and output hashes are recorded in the SETAC data manifest. Market shares and IAM context are unchanged. The longer presentation retains its earlier results. This is the final main slide and is included in the default PDF export. Keep it available for questions without adding a separate speaking segment.",
     ),
 ]
 CORE_COUNT = len(SLIDES)
@@ -119,7 +121,7 @@ BACKUPS = [
         title="Functional unit, reference systems and timing",
         phase="Backup / Assumptions used in the comparison",
         seconds=0,
-        notes="These are the assumptions of the reused LCA-through-time results. The reference forest remains at constant mature carbon stock; shared pre-decision forest history cancels. Upstream timing can precede commissioning. Pulse-equivalence controls span 2000–2300; the defaults are a 2020 window start, a 2030 reference pulse and a 2100 endpoint. Ratios are taken configuration by configuration. The temporal inventory extends to 1882; the stored FaIR response starts in 1940.",
+        notes=f"These are the assumptions of the regenerated SETAC results. The reference forest remains at constant mature carbon stock; shared pre-decision forest history cancels. Upstream timing can precede commissioning. Pulse-equivalence controls span 2000–2300; the defaults are a 2020 window start, a 2030 reference pulse and a 2100 endpoint. Ratios are taken configuration by configuration. The characterized inventory begins in {inventory_start()}; the stored FaIR response starts in 1940.",
     ),
     dict(
         title="BECCS sensitivity to additional forest-carbon losses",
@@ -247,30 +249,43 @@ def pulse_comparison(start=WINDOW_START, reference=REFERENCE_YEAR):
     ]
 
 
-def pulse_takeaway(start=WINDOW_START, reference=REFERENCE_YEAR):
-    if reference >= 2100:
-        headline = "The 2100 endpoint precedes the reference pulse."
-    else:
-        winners = [
-            min(
-                CASES,
-                key=lambda case: pulse_value(
-                    case, end, start=start, reference=reference
-                ),
-            )
-            for end in (2100, 2300)
+def pulse_takeaway(start=WINDOW_START, reference=REFERENCE_YEAR, end=DEFAULT_END):
+    sentences = []
+    for case in CASES:
+        score = pulse_value(case, end, start=start, reference=reference)
+        subject = [
+            "One average tonne of CO₂ stored by ",
+            html.Strong(case, className=f"{case.lower()}-text"),
         ]
-        headline = (
-            f"{winners[0]} ranks first to 2100; {winners[1]} to 2300."
-            if winners[0] != winners[1]
-            else f"{winners[0]} has the lower equivalent at both endpoints."
+        if score == 0:
+            sentences.append(
+                text(
+                    subject
+                    + [
+                        f" has zero net integrated forcing over {start}–{end}, equivalent to a zero-tonne CO₂ pulse in {reference}."
+                    ],
+                    f"pulse-interpretation {case.lower()}",
+                )
+            )
+            continue
+        effect, action = (
+            ("cooling", "removal") if score < 0 else ("warming", "emission")
         )
-    return [
-        html.Strong(headline),
-        text(
-            "Report the scenario, reference-pulse year and assessment window with each result."
-        ),
-    ]
+        sentences.append(
+            text(
+                subject
+                + [
+                    f" has the same integrated {effect} effect over {start}–{end} as a one-off {action} of about ",
+                    html.Strong(
+                        f"{abs(score) / 1000:.3g} tonnes of CO₂",
+                        className="pulse-equivalent",
+                    ),
+                    f" in {reference}.",
+                ],
+                f"pulse-interpretation {case.lower()}",
+            )
+        )
+    return sentences
 
 
 def _cover():
@@ -673,7 +688,7 @@ def _trails():
     )
 
 
-def _temporal():
+def _temporal(print_mode=False):
     return html.Div(
         [
             html.Div(
@@ -683,19 +698,28 @@ def _temporal():
                         ("2027–2029", "Construction"),
                         ("2030–2049", "Operation"),
                         ("2050", "End-of-life"),
-                        ("→ 2132", "Final BECCS regrowth tail"),
+                        (f"→ {regrowth_end()}", "Final BECCS regrowth tail"),
+                    )
+                ]
+                + [
+                    (
+                        html.Span("Stacked areas", className="print-setting")
+                        if print_mode
+                        else dcc.RadioItems(
+                            id="temporal-view",
+                            options=[
+                                {"label": "Stacked areas", "value": "stacked"},
+                                {"label": "Unstacked lines", "value": "unstacked"},
+                            ],
+                            value="stacked",
+                            inline=True,
+                            className="segmented",
+                        )
                     )
                 ],
                 className="timeline",
             ),
-            graph(temporal_figure()),
-            callout(
-                "TRAILS assigns exchanges to years and uses each year's background supply chains."
-            ),
-            text(
-                "2030 cohorts · SSP2-PkBudg1000 · GWP100 per lifetime net tonne stored. Uptake: forest regrowth and DAC. Energy includes avoided supply; supply-chain categories retain upstream biogenic uptake. Red line: cumulative net GWP100 (right axis), including contributions before the 2000 view start.",
-                "source",
-            ),
+            graph(temporal_figure(), None if print_mode else "temporal-chart"),
         ],
         className="stack temporal-stack",
     )
@@ -867,7 +891,7 @@ def _forcing(print_mode):
                                 "Negative Δ forcing means a cooling influence relative to the scenario."
                             ),
                             text(
-                                "SSP2-PkBudg1000 · median display trajectories · 841 FaIR configurations",
+                                "SSP2-PkBudg1000 · median total response · 841 FaIR configurations",
                                 "source",
                             ),
                         ],
@@ -929,6 +953,10 @@ def _pulse(print_mode):
                             html.Span(
                                 "Forcing per kg of a CO₂ pulse over the same window"
                             ),
+                            html.Span(
+                                "Equal integrated forcing ≠ identical temperature paths.",
+                                className="pulse-metric-note",
+                            ),
                         ],
                         className="equation",
                     ),
@@ -944,7 +972,7 @@ def _pulse(print_mode):
                     html.Div(
                         pulse_takeaway(),
                         **({} if print_mode else {"id": "pulse-takeaway"}),
-                        className="callout pulse-takeaway",
+                        className="pulse-takeaway",
                     ),
                 ],
                 className="pulse-concept",
@@ -970,31 +998,54 @@ def _closing_removal_table():
     amounts = {case: removal_requirements(case) for case in CASES}
     return html.Div(
         [
-            html.H3("CO₂ storage needed for each climate target"),
+            html.H3("CO₂ storage required for a −1 t-equivalent score"),
             text(
-                "Life-cycle GHG emissions are included in both target scores.",
+                "All target scores include life-cycle GHG emissions.",
                 "removal-unit",
             ),
             html.Table(
                 [
                     html.Thead(
                         html.Tr(
-                            [html.Th("Target score", scope="col")]
+                            [html.Th("Assessment / target", scope="col")]
                             + [html.Th(case, scope="col") for case in CASES]
                         )
                     ),
                     html.Tbody(
                         [
                             html.Tr(
-                                [html.Th(label, scope="row")]
+                                [
+                                    html.Th(
+                                        [
+                                            label,
+                                            html.Span(
+                                                target, className="removal-target"
+                                            ),
+                                        ],
+                                        scope="row",
+                                    )
+                                ]
                                 + [
                                     html.Td(f"{amounts[case][metric]:.2f} t")
                                     for case in CASES
                                 ]
                             )
-                            for metric, label in (
-                                ("gwp100", "−1 t CO₂-eq · GWP100"),
-                                ("pulse", "−1 t CO₂-pulse-eq"),
+                            for metric, label, target in (
+                                (
+                                    "current_static",
+                                    "Current static LCA (2025)",
+                                    "−1 t CO₂-eq · GWP100",
+                                ),
+                                (
+                                    "prospective_static",
+                                    "Prospective static LCA (2030)",
+                                    "−1 t CO₂-eq · GWP100",
+                                ),
+                                (
+                                    "pulse",
+                                    "Time-explicit LCA (2030-2050, 2020–2100 window)",
+                                    "−1 t CO₂-pulse-eq · reference pulse: 2030",
+                                ),
                             )
                         ]
                     ),
@@ -1003,12 +1054,38 @@ def _closing_removal_table():
                     "aria-label": "CO₂ storage required for a minus-one-tonne life-cycle climate score"
                 },
             ),
-            text(
-                "Amounts: t CO₂ stored after transport loss · target ÷ score\n2030 cohorts · SSP2-PkBudg1000\nPulse: 2020–2100 window; 2030 reference year.",
-                "removal-basis",
-            ),
         ],
         className="closing-removal-frame",
+    )
+
+
+def _funding():
+    return html.Div(
+        [
+            html.Img(
+                src=os.getenv("SETAC_2026_REQUESTS_PREFIX", "/")
+                + "assets/eu-emblem.jpg",
+                alt="European Union emblem",
+                className="funding-eu-emblem",
+            ),
+            html.Div(
+                [
+                    html.Strong("Horizon Europe · UPTAKE"),
+                    text(
+                        [
+                            "Funded by the European Union through UPTAKE, ",
+                            html.A(
+                                "grant agreement 101081521",
+                                href="https://cordis.europa.eu/project/id/101081521",
+                                target="_blank",
+                            ),
+                            ".",
+                        ]
+                    ),
+                ]
+            ),
+        ],
+        className="funding-acknowledgement",
     )
 
 
@@ -1017,6 +1094,7 @@ def _closing():
         [
             html.Div(
                 [
+                    _closing_removal_table(),
                     html.Ul(
                         [
                             html.Li(
@@ -1035,8 +1113,11 @@ def _closing():
                             ),
                             html.Li(
                                 [
-                                    html.Strong("Radiative forcing"),
-                                    " shows when climate effects occur; a GWP100 total does not.",
+                                    "For these systems and assumptions, ",
+                                    html.Strong("GWP100 favours BECCS"),
+                                    "; integrated forcing over 2020–2100 favours ",
+                                    html.Strong("DACCS"),
+                                    ".",
                                 ]
                             ),
                             html.Li(
@@ -1048,7 +1129,6 @@ def _closing():
                         ],
                         className="closing-takeaways",
                     ),
-                    _closing_removal_table(),
                 ],
                 className="closing-summary",
             ),
@@ -1061,7 +1141,7 @@ def _closing():
                             ),
                             html.H3("Next: other CDR methods"),
                             text(
-                                "Apply the same approach to biochar, enhanced weathering and ecosystem restoration."
+                                "Apply the same approach to biochar, enhanced weathering and ocean alkalinization."
                             ),
                             text(
                                 [
@@ -1087,6 +1167,7 @@ def _closing():
                             ),
                         ]
                     ),
+                    _funding(),
                 ],
                 className="closing-contact",
             ),
@@ -1117,10 +1198,10 @@ def _accounting():
                 [
                     html.H2("Plant lifetime, forest regrowth and FaIR settings"),
                     text(
-                        "Construction: 2027–2029. Operation: 2030–2049. End-of-life: 2050. Every BECCS harvest starts 83 years of replacement-stand regrowth; the final tail ends in 2132."
+                        f"Construction: 2027–2029. Operation: 2030–2049. End-of-life: 2050. Every BECCS harvest starts an 83-year replacement-stand regrowth profile; its annual bins end in {regrowth_end()}."
                     ),
                     text(
-                        "Generic upstream distributions can predate commissioning. Temporal inventories begin as early as 1882. The stored FaIR response spans 1940–2300. Pulse-equivalence controls span 2000–2300, defaulting to a 2020–2100 window and a 2030 reference pulse."
+                        f"Generic upstream distributions can predate commissioning. The characterized inventory starts in {inventory_start()}. The stored FaIR response spans 1940–2300. Pulse-equivalence controls span 2000–2300, defaulting to a 2020–2100 window and a 2030 reference pulse."
                     ),
                     text(
                         "Pulse equivalents use the same scenario and window for system and reference. For each FaIR configuration: integrate, divide by the per-kg pulse response, then take the ensemble median."
@@ -1213,15 +1294,16 @@ def _sources():
                         "Static: SSP2-NPi and SSP2-PkBudg1000. Temporal and FaIR: SSP2-PkBudg1000; 2030 plant cohorts."
                     ),
                     text(
-                        "premise 2.4.9.1 · TRAILS 1.0.1 · FaIR ensemble: 841 calibrated configurations"
+                        "premise: PkBudg1000 2.5.4; NPi 2.4.9.1 · TRAILS 1.1.1 · FaIR: 841 calibrated configurations"
                     ),
                     text(
-                        "Source: LCA-through-time processed artifacts. Values and model assumptions are reused without recalculation."
+                        "Results regenerated 14 October 2026 with the updated PkBudg1000 package; the original NPi background remains the comparison."
                     ),
                     text(
                         "The forest sensitivity is a separate presentation-level screen. It does not modify any of the source result files.",
                         "source",
                     ),
+                    _funding(),
                 ],
                 className="backup-card",
             ),
@@ -1243,7 +1325,7 @@ def render_slide(index, *, print_mode=False):
         lambda: _premise(print_mode),
         _prospective,
         _trails,
-        _temporal,
+        lambda: _temporal(print_mode),
         lambda: _forcing(print_mode),
         lambda: _pulse(print_mode),
         _closing,

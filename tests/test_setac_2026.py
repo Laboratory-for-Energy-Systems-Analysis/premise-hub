@@ -1,11 +1,20 @@
 from __future__ import annotations
 
+import hashlib
+import json
+
 import pytest
 from werkzeug.test import Client
 from werkzeug.wrappers import Response
 
-from apps.lca_time.workshop import results
-from apps.setac_2026.app import pdf_deck, update_context, update_mixes, update_pulse
+from apps.setac_2026 import results
+from apps.setac_2026.app import (
+    pdf_deck,
+    update_context,
+    update_mixes,
+    update_pulse,
+    update_temporal,
+)
 from apps.setac_2026.deck import ALL_SLIDES, CORE_COUNT, SLIDES
 from apps.setac_2026.figures import (
     CASES,
@@ -26,8 +35,69 @@ from apps.setac_2026.figures import (
     static_figure,
     static_score,
     temporal_figure,
+    temporal_years,
 )
 from portal.wsgi import application
+
+
+def test_regenerated_dataset_is_isolated_and_uses_consistent_inputs():
+    from apps.lca_time.workshop import results as original
+
+    manifest = json.loads((results.ROOT / "data/regeneration.json").read_text())
+    new_hash = manifest["new_package"]["archive_sha256"]
+    foreground_hash = manifest["foreground_sha256"]
+    assert results.STATIC_RESULTS != original.STATIC_RESULTS
+    assert results.cohort_temporal_score_rows is not original.cohort_temporal_score_rows
+    for name, digest in manifest["output_sha256"].items():
+        path = results.ROOT / "data/processed" / name
+        with path.open("rb") as stream:
+            assert hashlib.file_digest(stream, "sha256").hexdigest() == digest
+    for row in results.static_rows():
+        assert row["foreground_sha256"] == foreground_hash
+        expected = (
+            new_hash
+            if row["pathway"] == "SSP2-PkBudg1000"
+            else manifest["comparison_package"]["sha256"]
+        )
+        assert row["package_sha256"] == expected
+    for row in (
+        *results.cohort_temporal_score_rows(),
+        *results.cohort_fair_response_rows(),
+    ):
+        assert row["package_sha256"] == new_hash
+        assert row["foreground_sha256"] == foreground_hash
+    grid = json.loads(results.cohort_pulse_equivalence_grid()["metadata_json"])
+    assert grid["package_sha256"] == new_hash
+    assert grid["foreground_sha256"] == foreground_hash
+    summary = manifest["forcing_summary"]
+    assert summary["scenario"] == grid["scenario"]
+    assert (
+        summary["csv_sha256"] == manifest["output_sha256"]["cohort_fair_responses.csv"]
+    )
+    assert {r["contribution_view"] for r in results.cohort_fair_response_rows()} == {
+        "total"
+    }
+
+
+@pytest.mark.parametrize("case", CASES)
+def test_default_pulse_matches_independent_trails_calculation(case):
+    validation = json.loads(
+        (
+            results.ROOT / "data/processed/cohort_pulse_equivalence_validation.json"
+        ).read_text()
+    )
+    expected = validation["cases"][case]["radiative forcing"][
+        "trails_config_first_kg_co2_per_net_tonne"
+    ]["median"]
+    assert pulse_value(case) == pytest.approx(expected, abs=0.02)
+    integration = json.loads(
+        (results.ROOT / "data/processed/pulse_integration_audit.json").read_text()
+    )["cases"][case]["values_kg_co2_per_net_tonne"]
+    for end in (2100, 2140, 2300):
+        assert pulse_value(case, end) == pytest.approx(
+            integration["1.0"][str(end)], abs=0.02
+        )
+        assert abs(integration["1.0"][str(end)] - integration["0.1"][str(end)]) < 0.1
 
 
 @pytest.mark.parametrize(
@@ -139,23 +209,30 @@ def test_mounted_app_and_presenter():
 
 def test_default_pdf_is_complete_main_talk_without_sensitive_backup_topic():
     assert CORE_COUNT == 12
-    assert sum(slide["seconds"] for slide in SLIDES) == 600
+    assert sum(slide["seconds"] for slide in SLIDES) == 625  # 1:35 buffer in 12 min.
     deck = pdf_deck()
     assert len(deck) == 12
     assert len(pdf_deck(True)) == len(ALL_SLIDES) == 14
     content = repr(deck)
     assert "BECCS sensitivity to additional forest-carbon losses" not in content
     assert "Data sources and model versions" in repr(deck[-1])
+    for slide in (deck[-2], deck[-1]):
+        assert "Horizon Europe" in repr(slide)
+        assert "UPTAKE" in repr(slide)
+        assert "101081521" in repr(slide)
     assert "pulse-window" not in content  # Static results need no control interaction.
     assert "context-indicator" not in content
     assert "context-region" not in content
     assert "mix-pathway" not in content
     assert "mix-material-sector" not in content
+    assert "temporal-view" not in content
     assert "2100" in content and "2300" in content
     assert "−" in content
 
 
 def test_temporal_presentation_preserves_full_inventory_totals():
+    from apps.setac_2026.figures import BECCS_TEMPORAL_GROUPS, DACCS_TEMPORAL_PRODUCTS
+
     figure = temporal_figure()
     for case in CASES:
         traces = [
@@ -169,13 +246,27 @@ def test_temporal_presentation_preserves_full_inventory_totals():
         # Category stacking preserves both signs in every year, including
         # upstream contributions outside the requested 2000-onward view.
         raw = results.cohort_temporal_score_series(case, "per_tonne")
+        energy = [row for row in results.energy_flow_rows() if row["case"] == case]
         for sign in (-1, 1):
             expected = {}
             plotted = {}
-            for _, series in raw:
+            for label, series in raw:
+                category = (
+                    BECCS_TEMPORAL_GROUPS[label]
+                    if case == "BECCS"
+                    else DACCS_TEMPORAL_PRODUCTS[label.split(" | ")[1]]
+                )
+                if category == "Energy":
+                    continue
                 for year, value in series:
                     if value * sign > 0:
                         expected[year] = expected.get(year, 0.0) + value
+            for row in energy:
+                if int(row["sign"]) == sign:
+                    year = int(row["impact_year"])
+                    expected[year] = expected.get(year, 0.0) + float(
+                        row["score_per_net_tonne_kg_co2eq"]
+                    )
             for trace in traces:
                 if trace.meta["sign"] != sign:
                     continue
@@ -184,6 +275,9 @@ def test_temporal_presentation_preserves_full_inventory_totals():
                     plotted[year] = plotted.get(year, 0.0) + value
             for year in set(plotted) | set(expected):
                 assert plotted.get(year, 0) == pytest.approx(expected.get(year, 0))
+            # Both positive and negative stack extrema must remain visible.
+            lower, upper = figure.layout.yaxis.range
+            assert all(lower <= value <= upper for value in plotted.values())
         uptake = sum(sum(t.y) for t in traces if t.name == "Uptake")
         expected_uptake = sum(
             value
@@ -192,9 +286,38 @@ def test_temporal_presentation_preserves_full_inventory_totals():
             for _, value in series
         )
         assert uptake == pytest.approx(expected_uptake)
-    assert figure.layout.xaxis.range == (2000, 2140)
-    assert figure.layout.xaxis2.range == (2000, 2140)
-    assert min(figure.data[0].x) <= 1882
+    assert figure.layout.xaxis.range == (2000, temporal_years()[-1])
+    assert figure.layout.xaxis2.range == figure.layout.xaxis.range
+    raw_years = [
+        int(row["impact_year"]) for row in results.cohort_temporal_score_rows()
+    ]
+    assert min(figure.data[0].x) <= min(raw_years)
+    assert max(figure.data[0].x) >= max(raw_years)
+
+
+@pytest.mark.parametrize("case", CASES)
+def test_energy_flow_signs_close_to_published_annual_root_scores(case):
+    grouped = {}
+    for row in results.energy_flow_rows():
+        if row["case"] != case:
+            continue
+        value = float(row["score_per_net_tonne_kg_co2eq"])
+        assert value * int(row["sign"]) > 0
+        key = row["root_activity_index"], row["impact_year"]
+        grouped[key] = grouped.get(key, 0.0) + value
+    root_ids = {root for root, year in grouped}
+    expected = {}
+    for row in results.cohort_temporal_score_rows():
+        if row["case"] == case and row["root_activity_index"] in root_ids:
+            key = row["root_activity_index"], row["impact_year"]
+            expected[key] = expected.get(key, 0.0) + float(
+                row["score_per_net_tonne_kg_co2eq"]
+            )
+    assert root_ids
+    for key in grouped.keys() | expected.keys():
+        assert grouped.get(key, 0) == pytest.approx(expected.get(key, 0), abs=2e-6)
+    figure = temporal_figure()
+    assert {"Energy (+)", "Energy (−)"} <= {t.name for t in figure.data if t.showlegend}
 
 
 def test_temporal_cumulative_gwp_closes_and_includes_earlier_inventory():
@@ -221,15 +344,39 @@ def test_temporal_cumulative_gwp_closes_and_includes_earlier_inventory():
             sum(value for year, value in annual.items() if year <= 2000)
         )
     assert figure.layout.yaxis2.range == figure.layout.yaxis4.range
+    annual_range = figure.layout.yaxis.range
+    cumulative_range = figure.layout.yaxis2.range
+    assert annual_range[0] / annual_range[1] == pytest.approx(
+        cumulative_range[0] / cumulative_range[1]
+    )
+
+
+def test_temporal_view_switch_preserves_all_values_and_scales():
+    stacked = update_temporal("stacked")
+    unstacked = update_temporal("unstacked")
+    assert unstacked.layout.meta["view"] == "unstacked"
+    assert update_temporal(None).layout.meta["view"] == "stacked"
+    for first, second in zip(stacked.data, unstacked.data, strict=True):
+        assert tuple(first.x) == tuple(second.x)
+        assert tuple(first.y) == tuple(second.y)
+        assert first.yaxis == second.yaxis
+        assert not second.stackgroup
+        if first.meta["category"] != "cumulative":
+            assert first.stackgroup
+            assert second.fill == "none"
+    for axis in ("xaxis", "xaxis2", "yaxis", "yaxis2", "yaxis3", "yaxis4"):
+        assert stacked.layout[axis].range == unstacked.layout[axis].range
 
 
 @pytest.mark.parametrize("case", CASES)
 def test_required_removal_reaches_negative_one_tonne_in_each_metric(case):
     amounts = removal_requirements(case)
-    assert amounts["gwp100"] > 0
-    assert amounts["pulse"] > 0
-    assert amounts["gwp100"] * results.cohort_temporal_total(
-        case, "per_tonne"
+    assert all(amount > 0 for amount in amounts.values())
+    assert amounts["current_static"] * static_score(
+        case, "SSP2-NPi", 2025
+    ) == pytest.approx(-1000)
+    assert amounts["prospective_static"] * static_score(
+        case, "SSP2-PkBudg1000", 2030
     ) == pytest.approx(-1000)
     assert amounts["pulse"] * results.cohort_co2_pulse_equivalent(
         case, "radiative forcing", 2020, 2100, reference_year=2030
@@ -335,13 +482,29 @@ def test_static_stacks_close_to_reviewed_totals_and_preserve_attribution():
 
 def test_forcing_preserves_stored_response_and_units():
     figure = forcing_figure()
-    for case, trace in zip(CASES, figure.data, strict=True):
+    curves = [trace for trace in figure.data if trace.name in CASES]
+    for case, trace in zip(CASES, curves, strict=True):
         plotted = dict(zip(trace.x, trace.y, strict=True))
-        expected = results.cohort_fair_total_series(
-            case, "radiative forcing", "process"
-        )
+        expected = results.cohort_fair_total_series(case, "radiative forcing", "total")
         for year, value in expected:
             assert plotted[year] == pytest.approx(value * 1e12)
+        assert trace.x[0] == 1940.5 and trace.x[-1] == 2299.5
+        assert trace.y[-1] < 0  # Never append an artificial zero at the horizon.
+        assert min(trace.y) >= figure.layout.yaxis.range[0]
+        assert max(trace.y) <= figure.layout.yaxis.range[1]
+
+
+@pytest.mark.parametrize("metric", ["radiative forcing", "temperature anomaly"])
+def test_total_response_quantiles_share_exact_times_and_are_ordered(metric):
+    for case in CASES:
+        series = [
+            results.cohort_fair_total_series(case, metric, "total", q)
+            for q in (2.5, 50, 97.5)
+        ]
+        assert all(len(s) == 360 for s in series)
+        for low, median, high in zip(*series, strict=True):
+            assert low[0] == median[0] == high[0]
+            assert low[1] <= median[1] <= high[1]
 
 
 @pytest.mark.parametrize("end", [2050, 2100, 2140, 2300])
@@ -358,9 +521,12 @@ def test_pulse_values_use_configuration_first_grid(end):
         )
         assert pulse_value(case, end) == expected
         assert figure.data[2 * i + 1].y[0] == expected
-    # The slide's two fixed endpoint rows illustrate a change in comparison.
+    # Corrected signed uptake removes the former ranking reversal at 2300.
     assert pulse_value("BECCS", 2100) > pulse_value("DACCS", 2100)
-    assert pulse_value("BECCS", 2300) < pulse_value("DACCS", 2300)
+    assert pulse_value("BECCS", 2300) > pulse_value("DACCS", 2300)
+    assert pulse_value("BECCS", 2300) - pulse_value("DACCS", 2300) < (
+        pulse_value("BECCS", 2100) - pulse_value("DACCS", 2100)
+    )
 
 
 def test_context_extract_retains_source_values_and_gaps():
@@ -414,6 +580,8 @@ def test_gmst_cannot_be_mislabelled_as_regional_temperature():
 @pytest.mark.parametrize(
     "window",
     [
+        [2020, 2030, 2050],
+        [2020, 2030, 2100],
         [2000, 2010, 2100],
         [2020, 2040, 2140],
         [2050, 2060, 2300],
@@ -432,6 +600,15 @@ def test_all_pulse_handles_use_the_configuration_first_grid(window):
         assert figure.data[2 * i + 1].y[0] == pulse_value(
             case, end, start=start, reference=reference
         )
+        score = figure.data[2 * i + 1].y[0]
+        sentence = repr(takeaway[i])
+        assert case in sentence
+        assert f"{start}–{end}" in sentence and f"in {reference}" in sentence
+        assert f"{abs(score) / 1000:.3g} tonnes of CO₂" in sentence
+        assert ("cooling effect" in sentence) == (score < 0)
+        assert ("one-off removal" in sentence) == (score < 0)
+        assert ("warming effect" in sentence) == (score > 0)
+        assert ("one-off emission" in sentence) == (score > 0)
     assert str(start) in repr(config) and str(reference) in repr(labels)
     assert ("—" in repr(comparison)) == (reference >= 2100)
 

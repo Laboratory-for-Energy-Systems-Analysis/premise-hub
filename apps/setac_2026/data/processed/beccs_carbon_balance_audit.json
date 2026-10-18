@@ -1,0 +1,77 @@
+{
+  "provenance": {
+    "package_sha256": "bd298b3e30d84adbb9dfe11c87654a318d7b8aed94e0357fa932a6e3dbcf9780",
+    "foreground_sha256": "b415e812667642b99e696df215332c4a41d63a525b5bf2a783cf70635ede2752",
+    "cohort_foreground_sha256": "3c8ba7d100ddfff906e11ca6aa1375ee7ef53879370099f04a5a01845bf492b7",
+    "config_sha256": "1e7e057f8d19c1ad1d98bd5c0baa9beefa9c04946495356e87eae49671dcda2a",
+    "csv_sha256": "99b817f639ccdd1dddf1662d996041f198be6443ce6a502f42d5f84a6b3671a6",
+    "denominator_net_stored_tonnes": 149394.49520357835,
+    "lci_diagnostics": "{'phase_seconds': {'solve_and_accumulate': 16.944885208038613, 'solve_and_supply': 14.82466783421114, 'inventory_accumulation': 2.1138707459904253, 'score_accumulation': 1.9923783838748932e-05, 'solve_loop_other': 0.006326704053208232, 'direct_biosphere_inputs': 0.4108509160578251, 'finalize_inventory': 0.5809067499358207}, 'inventory': {'backend': 'factorized', 'store': '/var/folders/cn/pys1j9rn0y7djkhv3hfdtrs00000gn/T/trails-factorized-inventory-xcrrxn9w', 'owned_store': True, 'factor_count': 105, 'temporal_factor_count': 20, 'factor_candidate_entries': 248323584, 'temporal_factor_candidate_entries': 360, 'temporal_factor_pulse_entries': 15120, 'factor_bytes_written': 2246137376, 'temporal_factor_bytes_written': 166820080, 'factor_write_seconds': 0.8533393749967217, 'temporal_factor_write_seconds': 0.08022104320116341, 'explicit_correction_entries': 90659, 'dask_block_count': 1248, 'corrections': {'backend': 'chunked', 'store': '/private/var/folders/cn/pys1j9rn0y7djkhv3hfdtrs00000gn/T/trails-factorized-inventory-xcrrxn9w/corrections/run-feafb665b0e94a689230a8196e0cd00d', 'owned_store': False, 'raw_entries': 90659, 'canonical_entries': 90659, 'peak_buffer_bytes': 1087908, 'bytes_written': 1087908, 'bytes_merged': 0, 'run_target_entries': 2000000, 'memory_budget': 268435456, 'free_disk_bytes': 156490760192, 'append_seconds': 0.009853134164586663, 'online_flush_seconds': 0.0, 'finalize_flush_seconds': 0.005267084110528231, 'online_merge_seconds': 0.0, 'finalize_merge_seconds': 0.0, 'online_compaction_count': 0, 'finalize_compaction_count': 0, 'dask_block_count': 1248, 'logical_partition_count': 40, 'storage_file_count': 25}, 'backend_selection': {'requested': 'factorized', 'selected': 'factorized', 'reason': 'explicit_backend'}}, 'years_solved': 105, 'seconds_per_year': 0.16137985912417727, 'solver_mode': 'iterative', 'total_seconds': 18.103126167086884}"
+  },
+  "window_start": 2020,
+  "reference_year": 2030,
+  "denominator_net_stored_tonnes": 149394.49520357835,
+  "physical_balance_kg_per_net_tonne": {
+    "forest_regrowth_co2": -1143.118351903869,
+    "captured_co2": 1028.80658436214,
+    "residual_stack_co2": 114.31184270690441,
+    "transport_loss_co2": 28.80658436214003,
+    "direct_net_atmospheric_co2": -999.9999248348247,
+    "all_inventory_net_co2": -987.368688392887
+  },
+  "forest_timing": {
+    "first_year": 2030,
+    "last_year": 2131,
+    "uptake_weighted_year": 2080.5844512036824,
+    "fraction_by_2100": 0.8905657738817062
+  },
+  "ensemble_median_pulse_equivalents": {
+    "full_inventory": {
+      "2100": -219.00505759258814,
+      "2140": -537.8275817607322,
+      "2300": -822.94977225032
+    },
+    "forest_regrowth": {
+      "2100": -392.3991965574006,
+      "2140": -711.2389208227099,
+      "2300": -991.4716429817363
+    },
+    "residual_stack_and_transport_co2": {
+      "2100": 127.24261724096918,
+      "2140": 133.53370341605333,
+      "2300": 139.5563583525769
+    },
+    "other_supply_chain_co2": {
+      "2100": 14.569924263921306,
+      "2140": 13.808271847273321,
+      "2300": 13.07300691051913
+    },
+    "non_co2_species": {
+      "2100": 31.534008084605702,
+      "2140": 26.30248994964002,
+      "2300": 15.97078539899226
+    },
+    "all_co2_only": {
+      "2100": -250.57494559836522,
+      "2140": -563.8852046980434,
+      "2300": -838.8254664420624
+    },
+    "diagnostic_regrowth_during_operation": {
+      "2100": -843.0664858595785,
+      "2140": -893.1129430830719,
+      "2300": -946.130122191861
+    }
+  },
+  "representative_config": {
+    "name": "447451",
+    "contributions": {
+      "forest_regrowth": -392.1312673659507,
+      "residual_stack_and_transport_co2": 127.21741424280427,
+      "other_supply_chain_co2": 14.573307132657275,
+      "non_co2_species": 31.327416563536705
+    },
+    "full_result": -219.00505759258814,
+    "nonadditivity_residual": 0.008071834364272945
+  },
+  "diagnostic_note": "Advancing regrowth to operation changes the physical timing assumption; it is not a correction or an alternative baseline result."
+}

@@ -63,6 +63,7 @@ def main():
             page.bring_to_front()
             page.set_default_timeout(15000)
             pulse_slide = None
+            default_pulse_cards = None
             closing_slide = None
             for index in range(core_count):
                 print(f"Checking slide {index+1}", flush=True)
@@ -90,11 +91,25 @@ def main():
                 assert not presenter.locator("#technical-notes").evaluate("e => e.open")
                 if page.locator("#pulse-window").count():
                     pulse_slide = index + 1
+                    default_pulse_cards = page.locator("#pulse-values").inner_text()
+                if page.locator("#temporal-view").count():
+                    page.get_by_text("Unstacked lines", exact=True).click()
+                    page.wait_for_function("""() => {
+                            const p=document.querySelector('#temporal-chart .js-plotly-plot');
+                            return p._fullLayout.meta.view === 'unstacked' && p.data.every(t => !t.stackgroup);
+                        }""")
+                    page.screenshot(path=str(args.output / "temporal-unstacked.png"))
+                    page.get_by_text("Stacked areas", exact=True).click()
+                    page.wait_for_function(
+                        "() => document.querySelector('#temporal-chart .js-plotly-plot')._fullLayout.meta.view === 'stacked'"
+                    )
                 if page.locator("#stage .closing-takeaways").count():
                     closing_slide = index + 1
                     assert page.locator("#stage .closing-takeaways li").count() == 4
                     assert (
-                        page.locator("#stage .closing-contact a").get_attribute("href")
+                        page.locator("#stage .closing-contact address a").get_attribute(
+                            "href"
+                        )
                         == "mailto:romain.sacchi@psi.ch"
                     )
                 if page.locator("#mix-pathway").count():
@@ -204,6 +219,7 @@ def main():
                     str(expected) in page.locator("#pulse-configuration").inner_text()
                 )
                 assert str(expected) in page.locator("#pulse-comparison").inner_text()
+                assert str(expected) in page.locator("#pulse-takeaway").inner_text()
                 assert page.locator(f".setac-slide-{pulse_slide}").count() == 1
             page.screenshot(path=str(args.output / "pulse-three-handles.png"))
             # Restore the default start and reference before checking the far endpoint.
@@ -215,14 +231,23 @@ def main():
             handles.nth(2).focus()
             handles.nth(2).press("End")
             page.wait_for_function(
-                "() => document.querySelector('#pulse-values').textContent.includes('-1,051')",
+                """() => {
+                    const plot = document.querySelector('#pulse-chart .js-plotly-plot');
+                    const cards = document.querySelector('#pulse-values').textContent;
+                    return plot._fullLayout.meta.end === 2300 && [1, 3].every(i =>
+                        cards.includes(Math.round(plot.data[i].y[0]).toLocaleString('en-US'))
+                    );
+                }""",
                 polling=100,
                 timeout=15000,
             )
-            assert "-895" in page.locator("#pulse-values").inner_text()
             assert (
                 page.locator(f".setac-slide-{pulse_slide}").count() == 1
             )  # Arrow keys stay in slider.
+            takeaway = page.locator("#pulse-takeaway").inner_text()
+            assert "2020–2300" in takeaway
+            assert "0.823 tonnes of CO₂" in takeaway
+            assert "0.889 tonnes of CO₂" in takeaway
             page.screenshot(path=str(args.output / "pulse-2300.png"))
             # Capture the actual export callback, but suppress the interactive dialog.
             page.evaluate("window.print = () => { window.__printCalled = true; }")
@@ -242,8 +267,10 @@ def main():
             # The print deck has no repeated IDs or live controls and uses defaults.
             assert page.locator("#print-deck #pulse-window").count() == 0
             assert (
-                "-429"
-                in page.locator(f"#print-deck .setac-slide-{pulse_slide}").inner_text()
+                page.locator(
+                    f"#print-deck .setac-slide-{pulse_slide} .pulse-values"
+                ).inner_text()
+                == default_pulse_cards
             )
             assert (
                 "Thank you"

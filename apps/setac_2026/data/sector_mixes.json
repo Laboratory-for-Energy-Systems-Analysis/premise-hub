@@ -1,23 +1,6 @@
 {
-  "source_project": "FSLCI_workshop_2026",
-  "extractor": "scripts/extract_scenario_sector_mixes.py",
-  "extractor_sha256": "2724556201ce3b5f62b6c72180b9f3bbb3474af9202ddf8e5460e0b8ce457e54",
-  "packages": [
-    {
-      "pathway": "SSP2-NPi",
-      "file": "lcss2026_remind_eu_ssp2_npi.zip",
-      "sha256": "cfe68ecd5570e74237fe54e13e4f4f5a7269fc0eee30beb6c1b547166a910263"
-    },
-    {
-      "pathway": "SSP2-PkBudg1000",
-      "file": "lcss2026_remind_eu_ssp2_pkbudg1000.zip",
-      "sha256": "a69a4f1d809711761f9cef9754968f80752adab2bcb46e60c91c0ca837310152"
-    }
-  ],
   "model": "remind-eu",
-  "premise_version": "2.4.9.1",
-  "premise_source_commit": "79bdc95bafcfec24b02a713239a919c6e467f674",
-  "source_package_validation_trails_version": "1.0.1",
+  "location": "ENC",
   "years": [
     2025,
     2030,
@@ -26,14 +9,23 @@
     2045,
     2050
   ],
-  "location": "ENC",
-  "rows": 360,
-  "reviewed_baseline_sha256": "62dd7d875163e500b1031c5ee38af06851fdb399b4ee32f7eee32baf1c41a863",
-  "reviewed_rows_verified": 180,
+  "packages": [
+    {
+      "pathway": "SSP2-NPi",
+      "file": "lcss2026_remind_eu_ssp2_npi.zip",
+      "sha256": "cfe68ecd5570e74237fe54e13e4f4f5a7269fc0eee30beb6c1b547166a910263",
+      "premise_version": "2.4.9.1"
+    },
+    {
+      "pathway": "SSP2-PkBudg1000",
+      "file": "trails_remind-eu_SSP2-PkBudg1000.zip",
+      "sha256": "bd298b3e30d84adbb9dfe11c87654a318d7b8aed94e0357fa932a6e3dbcf9780",
+      "premise_version": "2.5.4"
+    }
+  ],
+  "extractor_sha256": "2724556201ce3b5f62b6c72180b9f3bbb3474af9202ddf8e5460e0b8ce457e54",
   "notes": [
-    "Technology shares extracted directly from each package's anchor-year market exchanges; no interpolation.",
-    "Uses the original extractor's market selection and technology grouping.",
-    "All 2025, 2030 and 2050 shares and market identities verified against the reviewed lca_time export.",
-    "Each sector/pathway/year sums to one. No LCA or climate calculations were rerun."
+    "Shares extracted from each anchor-year market; no interpolation.",
+    "PkBudg1000 regenerated from the 14 October 2026 package; original NPi background retained."
   ]
 }

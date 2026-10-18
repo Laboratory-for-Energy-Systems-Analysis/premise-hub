@@ -1,0 +1,9 @@
+{
+  "package_sha256": "bd298b3e30d84adbb9dfe11c87654a318d7b8aed94e0357fa932a6e3dbcf9780",
+  "foreground_sha256": "b415e812667642b99e696df215332c4a41d63a525b5bf2a783cf70635ede2752",
+  "cohort_foreground_sha256": "3c8ba7d100ddfff906e11ca6aa1375ee7ef53879370099f04a5a01845bf492b7",
+  "config_sha256": "1e7e057f8d19c1ad1d98bd5c0baa9beefa9c04946495356e87eae49671dcda2a",
+  "csv_sha256": "5118c12c2c1d9f07be626b9ea74c76c4fe563595fc9158afca19062ac25290df",
+  "script_sha256": "b1943d00b3f8d2685b165844f84dccdfaac4e558012e89beebf9447378fcaf7b",
+  "convention": "Characterize activity-reduced flow/year/root inventory, then separate positive and negative scores; not gross activity-level emissions."
+}

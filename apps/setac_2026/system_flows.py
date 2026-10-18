@@ -4,7 +4,7 @@ from functools import lru_cache
 from pathlib import Path
 import xml.etree.ElementTree as ET
 
-from apps.lca_time.workshop.system_inventory import case_inventory
+from .results import case_inventory
 
 NS = "http://www.w3.org/2000/svg"
 SOURCE = Path(__file__).resolve().parents[1] / "lca_time/assets/case-pathways.svg"

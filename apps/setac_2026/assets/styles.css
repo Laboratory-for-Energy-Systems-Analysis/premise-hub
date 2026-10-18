@@ -103,7 +103,9 @@ button:focus-visible,a:focus-visible { outline:3px solid var(--amber); outline-o
 .timeline>div { display:flex; flex-direction:column; gap:.3cqw; }
 .timeline strong { font-size:1.6cqw; color:var(--psi-deep); }
 .timeline span { color:var(--muted); font-size:1.06cqw; }
-.temporal-stack .callout { padding:.65cqw 1cqw; }
+.temporal-stack { display:grid; grid-template-rows:auto minmax(0,1fr); }
+.temporal-stack .timeline { grid-template-columns:repeat(4,minmax(0,1fr)) auto; align-items:center; }
+.temporal-stack .timeline>.segmented { flex-direction:row; align-items:center; gap:.7cqw; white-space:nowrap; }
 .trails-stack { display:grid; grid-template-rows:auto minmax(0,1fr) auto; gap:.8cqw; }
 .trails-intro { display:flex; align-items:center; gap:1.4cqw; }
 .trails-intro-logo { width:5.6cqw; height:4.8cqw; object-fit:contain; flex-shrink:0; }
@@ -139,12 +141,13 @@ button:focus-visible,a:focus-visible { outline:3px solid var(--amber); outline-o
 .setac-slide .forcing-narrative h2 { font-size:1.8cqw; margin:0; }
 .setac-slide .forcing-narrative p { font-size:1.2cqw; margin:0; }
 .setac-slide .forcing-narrative .callout { font-size:1.2cqw; padding:.8cqw 1cqw; }
-.pulse-layout { display:grid; grid-template-columns:.9fr 1.45fr; grid-template-rows:minmax(0,1fr); gap:1cqw 1.5cqw; height:100%; }
+.pulse-layout { display:grid; grid-template-columns:1fr 1.35fr; grid-template-rows:minmax(0,1fr); gap:1cqw 1.5cqw; height:100%; }
 .pulse-concept { display:flex; flex-direction:column; gap:.4cqw; padding:1.1cqw; background:var(--surface-soft); border:1px solid var(--line); border-radius:14px; }
 .setac-slide .pulse-concept h2 { font-size:1.8cqw; margin-bottom:.4cqw; }
 .setac-slide .pulse-concept p { margin-bottom:0; font-size:1.18cqw; }
 .equation { padding:.8cqw; background:#e6f0f3; color:var(--psi-deep); border-radius:10px; text-align:center; font-size:1.2cqw; line-height:1.35; margin-bottom:.4cqw; }
 .equation hr { margin:.6cqw 0; border:0; border-top:1px solid #608797; }
+.pulse-metric-note { display:block; margin-top:.45cqw; font-size:1cqw; color:var(--muted); }
 .pulse-values { display:grid; grid-template-columns:1fr 1fr; gap:.65cqw; margin-top:.5cqw; }
 .pulse-values .score { font-size:3cqw; }
 .pulse-values .score-unit { font-size:.9cqw; }
@@ -165,8 +168,11 @@ button:focus-visible,a:focus-visible { outline:3px solid var(--amber); outline-o
 .endpoint-comparison th,.endpoint-comparison td { padding:.35cqw .45cqw; text-align:right; border-bottom:1px solid var(--line); }
 .endpoint-comparison th { font-size:.92cqw; color:var(--muted); }
 .endpoint-comparison th:first-child,.endpoint-comparison td:first-child { text-align:left; }
-.setac-slide .pulse-takeaway { margin-top:auto; padding:.65cqw .8cqw; font-size:1.2cqw; }
-.setac-slide .pulse-takeaway p { margin-top:.3cqw; font-size:1.05cqw; }
+.setac-slide .pulse-takeaway { display:grid; gap:.6cqw; margin-top:auto; }
+.setac-slide .pulse-takeaway .pulse-interpretation { margin:0; padding:.5cqw .75cqw; border:1px solid #cbded0; border-left:4px solid var(--forest); border-radius:9px; background:#eef5f0; color:var(--ink); font-size:1.2cqw; line-height:1.32; }
+.setac-slide .pulse-takeaway .pulse-interpretation.daccs { border-color:#cce0e9; border-left-color:var(--sky); background:#edf5f9; }
+.pulse-equivalent { color:var(--forest); background:rgba(255,255,255,.8); border-radius:4px; padding:0 .15cqw; font-size:1.35cqw; white-space:nowrap; }
+.daccs .pulse-equivalent { color:var(--sky); }
 .backup-card { background:var(--surface-soft); border:1px solid var(--line); border-radius:14px; padding:1.8cqw; }
 .setac-slide .backup-card p { font-size:1.25cqw; }
 .references { font-size:1.3cqw; line-height:1.4; margin:0; padding-left:1.7cqw; display:flex; flex-direction:column; gap:.9cqw; }
@@ -183,19 +189,23 @@ button:focus-visible,a:focus-visible { outline:3px solid var(--amber); outline-o
 .closing-removal-frame th,.closing-removal-frame td { text-align:right; padding:.45cqw .3cqw; border-bottom:1px solid var(--line); }
 .closing-removal-frame th:first-child { text-align:left; }
 .closing-removal-frame tbody th { font-weight:500; }
+.closing-removal-frame .removal-target { display:block; font-size:.9cqw; color:var(--muted); margin-top:.15cqw; }
 .closing-removal-frame td { font-size:1.45cqw; font-weight:750; font-variant-numeric:tabular-nums; color:var(--psi-deep); }
-.setac-slide .closing-removal-frame .removal-basis { margin:.65cqw 0 0; color:var(--muted); font-size:.88cqw; line-height:1.35; white-space:pre-line; }
 .closing-contact { display:flex; flex-direction:column; justify-content:center; padding:1.8cqw 2cqw; border:1px solid var(--line); border-top:5px solid var(--teal); border-radius:18px; background:var(--surface-soft); }
-.closing-outlook { padding-bottom:1cqw; margin-bottom:1.3cqw; border-bottom:1px solid var(--line); }
+.closing-outlook { padding-bottom:.6cqw; margin-bottom:.8cqw; border-bottom:1px solid var(--line); }
 .closing-outlook .small-label { color:var(--teal); }
 .setac-slide .closing-outlook h3 { margin:.4cqw 0 .7cqw; font-size:1.65cqw; }
 .setac-slide .closing-outlook p { font-size:1.2cqw; margin:0 0 .7cqw; }
 .setac-slide .closing-outlook p:last-child { margin-bottom:0; }
-.setac-slide .closing-contact h2 { font-size:3.6cqw; margin:0 0 .9cqw; }
+.setac-slide .closing-contact h2 { font-size:3.6cqw; margin:0 0 .7cqw; }
 .setac-slide .closing-contact .closing-name { font-size:2cqw; font-weight:750; color:var(--psi-deep); margin:0 0 .8cqw; text-decoration:underline; text-underline-offset:.25em; }
 .closing-contact address { font-style:normal; }
 .setac-slide .closing-contact address p { margin:0 0 .4cqw; color:var(--muted); font-size:1.2cqw; }
 .closing-contact address a { display:inline-block; margin-top:.5cqw; font-size:1.5cqw; }
+.funding-acknowledgement { display:flex; align-items:center; gap:1cqw; margin-top:1cqw; padding-top:.7cqw; border-top:1px solid var(--line); }
+.funding-eu-emblem { display:block; flex:0 0 auto; width:5.5cqw; height:auto; object-fit:contain; }
+.setac-slide .funding-acknowledgement strong { color:var(--psi-deep); font-size:1.05cqw; }
+.setac-slide .funding-acknowledgement p { font-size:.95cqw; line-height:1.35; margin:.3cqw 0 0; color:var(--muted); }
 
 /* lca_time uses 1536×864 (16:9) print pages. Give every chart that real size
    while it renders off screen, before opening the print dialog. */

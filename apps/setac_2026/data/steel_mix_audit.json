@@ -77,6 +77,8 @@
       "exported_market_share": 0.17894334572104967
     }
   ],
-  "conclusion": "The 2025–2030 PkBudg1000 jump originates in the IAM production trajectory. The exported ENC market and slide shares reproduce it; no interpolation or plotting error was found.",
-  "interpretation": "Modelled natural-gas DRI-EAF, not hydrogen DRI; these are conditional scenario shares, not observed plant-level deployment forecasts."
+  "conclusion": "The 2025\u20132030 PkBudg1000 jump originates in the IAM production trajectory. The exported ENC market and slide shares reproduce it; no interpolation or plotting error was found.",
+  "interpretation": "Modelled natural-gas DRI-EAF, not hydrogen DRI; these are conditional scenario shares, not observed plant-level deployment forecasts.",
+  "regenerated_package_sha256": "bd298b3e30d84adbb9dfe11c87654a318d7b8aed94e0357fa932a6e3dbcf9780",
+  "regenerated_package_check": "14 October 2026: all sector mix shares reproduce the existing extract; underlying IAM input hash unchanged."
 }

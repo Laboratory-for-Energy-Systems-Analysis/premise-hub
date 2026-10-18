@@ -9,5 +9,10 @@
     "Source values and units are retained without interpolation or filling.",
     "GMST is available only for World (MAGICC7 median).",
     "ENC SSP2-NPi CO2 has no 2100 row in the source export."
-  ]
+  ],
+  "regeneration_check": {
+    "package_sha256": "bd298b3e30d84adbb9dfe11c87654a318d7b8aed94e0357fa932a6e3dbcf9780",
+    "iam_encrypted_sha256": "0b3c4be351d36714063940b4704afb64aa34178dfe0966a8c85767799d00961e",
+    "note": "New inventory package uses the unchanged IAM input; the scenario context extract is retained."
+  }
 }

@@ -4,7 +4,6 @@ from __future__ import annotations
 
 import argparse
 import json
-import os
 import traceback
 from pathlib import Path
 
@@ -16,7 +15,6 @@ def main():
     parser.add_argument("--url", default="http://127.0.0.1:8050/setac-2026/")
     parser.add_argument("--output", type=Path, default=Path("build/setac-2026"))
     parser.add_argument("--browser", type=Path)
-    parser.add_argument("--password-env", default="SETAC_2026_PASSWORD")
     args = parser.parse_args()
     args.output.mkdir(parents=True, exist_ok=True)
     errors = []
@@ -46,15 +44,9 @@ def main():
                 ),
             )
             base = args.url.rstrip("/") + "/"
-            locked = context.request.get(base)
-            if locked.status == 401:
-                password = os.getenv(args.password_env)
-                if not password:
-                    raise RuntimeError(
-                        f"Set {args.password_env} to unlock the presentation"
-                    )
-                login = context.request.post(base, form={"password": password})
-                assert login.status == 200, "Presentation login failed"
+            landing = context.request.get(base)
+            assert landing.status == 200, "Presentation must open without a password"
+            assert 'type="password"' not in landing.text()
             core_count = context.request.get(base + "health").json()["core_slides"]
             page.goto(base, wait_until="networkidle")
             page.locator(".setac-slide-1").wait_for()

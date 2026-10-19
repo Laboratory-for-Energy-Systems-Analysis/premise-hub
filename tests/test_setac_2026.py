@@ -108,44 +108,34 @@ def test_default_pulse_matches_independent_trails_calculation(case):
         "/health",
         "/_dash-layout",
         "/_dash-dependencies",
-        "/_dash-update-component",
         "/assets/styles.css",
         "/shared/case-pathways.svg",
         "/system-flows.svg",
     ),
 )
-def test_setac_routes_require_password(path):
+def test_setac_routes_are_public(path):
     client = Client(application, Response)
     response = client.get("/setac-2026" + path)
-    assert response.status_code == 401
-    assert 'type="password"' in response.text
-    assert "test-setac-password" not in response.text
-    assert response.headers["Cache-Control"] == "no-store"
-    if path == "/_dash-update-component":
-        assert client.post("/setac-2026" + path, json={}).status_code == 401
+    assert response.status_code == 200
+    assert 'type="password"' not in response.text
+    assert "Set-Cookie" not in response.headers
 
 
-def test_setac_password_login_and_cookie_scope():
+def test_setac_callback_works_without_login():
     client = Client(application, Response)
-    assert client.post("/setac-2026/", data={"password": "wrong"}).status_code == 401
-    assert client.post("/setac-2026/", data={"password": "错误"}).status_code == 401
     response = client.post(
-        "/setac-2026/",
-        data={"password": "test-setac-password"},
-        headers={"X-Forwarded-Proto": "https"},
+        "/setac-2026/_dash-update-component",
+        json={
+            "output": "forcing-chart.figure",
+            "outputs": {"id": "forcing-chart", "property": "figure"},
+            "inputs": [{"id": "forcing-horizon", "property": "value", "value": 2300}],
+            "state": [],
+            "changedPropIds": ["forcing-horizon.value"],
+        },
     )
-    assert response.status_code == 303
-    assert response.headers["Location"] == "/setac-2026/"
-    cookie = response.headers["Set-Cookie"]
-    for attribute in ("HttpOnly", "Secure", "SameSite=Lax", "Path=/setac-2026"):
-        assert attribute in cookie
+    assert response.status_code == 200
+    assert response.json["response"]["forcing-chart"]["figure"]["data"]
     assert client.get("/setac-2026/health").json["core_slides"] == CORE_COUNT
-    client.set_cookie(
-        "premise_presentation_setac_time_explicit_lca_2026_10_19",
-        "forged",
-        path="/setac-2026",
-    )
-    assert client.get("/setac-2026/").status_code == 401
     assert client.get("/").status_code == 200
     assert client.get("/lca-time/").status_code == 200
 
@@ -173,12 +163,6 @@ def test_standalone_password_gate_redirects_to_local_root():
 
 def test_mounted_app_and_presenter():
     client = Client(application, Response)
-    assert (
-        client.post(
-            "/setac-2026/", data={"password": "test-setac-password"}
-        ).status_code
-        == 303
-    )
     for path in (
         "/",
         "/presenter",

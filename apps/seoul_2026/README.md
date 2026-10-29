@@ -3,6 +3,12 @@
 For the complete task brief, accepted decisions, portability details and current
 continuation state, read [the Codex handover](../../CODEX_HANDOVER_SEOUL_2026.md).
 
+Deployment consumes tracked public artifacts only. Cement utility labels are
+the rounded display values in `data/cement_process_display.json`; runtime does
+not read the research-only CCUS capture-utility assumptions. The unused legacy
+CCUS pathway SVG route has been removed. Check a clean checkout when validating
+portability, so ignored local research files cannot hide missing dependencies.
+
 Final geography decision (29 October): retain **REMIND-EU and the existing
 Northern European case setup**, with each case's original documented location,
 inventory and results. The proposed move to South Korea and IMAGE build are

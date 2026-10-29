@@ -4,6 +4,20 @@ Updated 29 October 2026. This records the task, accepted decisions and working
 state so another Codex instance can continue without the previous conversation.
 Read this file, then [the app README](apps/seoul_2026/README.md), before editing.
 
+## Deployment portability fix
+
+The initial push `e511818` exposed two dependencies on ignored local CCUS files:
+`original_capture_utilities.json` and an unused `ccus-pathways.svg` route.
+The first broke the process-map and closing-table render on a clean deployment.
+Runtime now reads only the already displayed, rounded 2025 cement utility labels
+from `data/cement_process_display.json` (**44.8 kWh electricity / 2.95 GJ gas
+input per stored tonne**). These are teaching labels, never LCA coefficients.
+Private assumptions, exact coefficients and source-cell metadata stay outside
+the public repo. The unused legacy SVG route is removed; all current figures
+use the actual retained process maps. No scientific results or displayed amounts
+change. Verify from a clean checkout, since tests in the research workspace
+can otherwise read ignored files.
+
 ## Latest addition: presenter introduction after the cover
 
 New slide **2**, stable key `about`, introduces Romain Sacchi with his supplied

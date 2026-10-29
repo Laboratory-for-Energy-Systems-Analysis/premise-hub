@@ -570,7 +570,8 @@ def test_mounted_routes_assets_and_presenter_are_self_contained():
         "assets/styles.css",
         "shared/styles.css",
         "shared/setac.css",
-        "shared/ccus-pathways.svg",
+        "assets/edges-logo.png",
+        "assets/romain-sacchi-portrait.png",
     ):
         response = client.get("/seoul-2026/" + path)
         assert response.status_code == 200, path

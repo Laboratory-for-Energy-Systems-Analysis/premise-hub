@@ -22,7 +22,6 @@ ROOT = Path(__file__).resolve().parent
 REQUESTS_PREFIX = os.getenv("SEOUL_2026_REQUESTS_PREFIX", "/")
 LCA_ASSETS = ROOT.parent / "lca_time/assets"
 SETAC_ASSETS = ROOT.parent / "setac_2026/assets"
-CCUS_ASSETS = ROOT.parent / "ccus_webinar/assets"
 SHARED = {
     name: LCA_ASSETS / name
     for name in (
@@ -49,7 +48,6 @@ SHARED.update(
     }
 )
 SHARED["setac.css"] = SETAC_ASSETS / "styles.css"
-SHARED["ccus-pathways.svg"] = CCUS_ASSETS / "ccus-pathways.svg"
 SHARED["routing-vis.min.js"] = LCA_ASSETS / "routing/lib/vis-9.1.2/vis-network.min.js"
 SHARED.update(
     {

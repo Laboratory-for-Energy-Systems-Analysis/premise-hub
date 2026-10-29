@@ -78,9 +78,7 @@ def process_quantities(case):
     public = root.parent / "ccus_webinar/data/public"
     bau = json.loads((public / "bau_detail_2025.json").read_text())
     capture = json.loads((public / "capture_details_2025.json").read_text())
-    utilities = json.loads(
-        (public.parent / "assumptions/original_capture_utilities.json").read_text()
-    )["technologies"]["Gas boiler"]
+    display = json.loads((root / "data/cement_process_display.json").read_text())
     molar = capture["molar_masses"]["CO2"] / capture["molar_masses"]["C"]
     from .cement_basis import cement_scale
 
@@ -120,8 +118,8 @@ def process_quantities(case):
         **{k: v for k, v in total.items() if k != "inlet_co2_kg"},
         "known_air_co2_kg": gross - stored,
         "capture_fraction": eta,
-        "capture_kwh_per_t_captured": utilities["electricity_kwh_per_t"],
-        "capture_gas_gj_per_t_captured": utilities["gas_input_kwh_per_t"] * 0.0036,
+        "capture_electricity_label": display["capture_electricity_label"],
+        "capture_gas_label": display["capture_gas_label"],
         "origins": {"fossil": route(gross - non_gross), "non_fossil": route(non_gross)},
     }
 
@@ -412,13 +410,13 @@ def process_uri(case):
             355,
             [
                 "Capture electricity",
-                f"{q['capture_kwh_per_t_captured'] * q['captured_co2_kg'] / 1000:.1f} kWh electricity",
+                q["capture_electricity_label"],
             ],
             "electricity",
             supplier=True,
         )
         body += _arrow("M720 98V210", "electricity")
-        body += _tag(15, 20, 225, ["Capture gas boiler", f"{q['capture_gas_gj_per_t_captured'] * q['captured_co2_kg'] / 1000:.2f} GJ gas input", "Fossil CO₂ recaptured"], "material")
+        body += _tag(15, 20, 225, ["Capture gas boiler", q["capture_gas_label"], "Fossil CO₂ recaptured"], "material")
         body += _arrow("M125 126V154H620V210", "heat")
         body += label(240, 145, "Boiler heat", 19, FLOW["heat"])
         body += _arrow("M385 210V183H660V210", "heat")

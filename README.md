@@ -15,6 +15,9 @@ The deployed service exposes:
 - `/ccus-webinar/` — the cement CCS and CCUS webinar;
 - `/setac-2026/` — the twelve-slide, 12-minute SETAC CDR presentation, with
   presenter notes and a PDF fallback;
+- `/seoul-2026/` — the Seoul National University guest lecture: 70 minutes of
+  teaching and 20 minutes of discussion, with equations, CDR examples,
+  speaker notes, phase timers and PDF export;
 - `/health` — a lightweight service health endpoint.
 
 The presentations are public. Their dates and routes are defined in

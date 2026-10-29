@@ -1,0 +1,108 @@
+{
+  "checked": "2026-10-29",
+  "user_confirmed_role": "Scientist \u00b7 Technology Assessment Group, Laboratory for Energy Systems Analysis, PSI",
+  "user_confirmed_interests": [
+    "industrial ecology",
+    "future energy/mobility systems",
+    "climate timing",
+    "open-source tools"
+  ],
+  "user_confirmed_projects": [
+    "premise",
+    "TRAILS",
+    "carculator",
+    "EDGES"
+  ],
+  "portrait": {
+    "supplied_filename": "portrait_romain_sacchi_resized.png",
+    "repository_file": "assets/romain-sacchi-portrait.png",
+    "sha256": "09ecb7e540e383db43470d3357a4f5c2b820d2fc1c28e92456ed7612d3e0faaf",
+    "transformation": "Unmodified supplied file; displayed using CSS object-fit."
+  },
+  "role_sources": [
+    "https://github.com/romainsacchi",
+    "https://github.com/Laboratory-for-Energy-Systems-Analysis",
+    "https://www.psi.ch/en/ta/people/romain-sacchi"
+  ],
+  "role_note": "User confirmed Scientist; PSI web biography retains an older PostDoc label.",
+  "projects": [
+    {
+      "name": "premise",
+      "description": "Future LCA databases",
+      "url": "https://github.com/polca/premise"
+    },
+    {
+      "name": "TRAILS",
+      "description": "Time-explicit LCA",
+      "url": "https://github.com/Laboratory-for-Energy-Systems-Analysis/trails"
+    },
+    {
+      "name": "carculator",
+      "description": "Vehicle life-cycle models",
+      "url": "https://github.com/Laboratory-for-Energy-Systems-Analysis/carculator"
+    },
+    {
+      "name": "EDGES",
+      "description": "Context-aware impact assessment",
+      "url": "https://github.com/Laboratory-for-Energy-Systems-Analysis/edges"
+    }
+  ],
+  "publications": [
+    {
+      "display_title": "premise: databases for prospective LCA",
+      "venue_and_year": "Renewable & Sustainable Energy Reviews \u00b7 2022",
+      "doi_url": "https://doi.org/10.1016/j.rser.2022.112311"
+    },
+    {
+      "display_title": "How to make climate-neutral aviation fly",
+      "venue_and_year": "Nature Communications \u00b7 2023",
+      "doi_url": "https://doi.org/10.1038/s41467-023-39749-y"
+    },
+    {
+      "display_title": "Electrification of passenger cars: when, where and how?",
+      "venue_and_year": "Renewable & Sustainable Energy Reviews \u00b7 2022",
+      "doi_url": "https://doi.org/10.1016/j.rser.2022.112475"
+    }
+  ],
+  "publication_note": "Selected coauthored publications; premise and passenger-car titles shortened. Metadata also present in portal/publications.yaml.",
+  "full_record": "https://orcid.org/0000-0003-1440-0905",
+  "career": [
+    {
+      "year": 2012,
+      "event": "MSc in Environmental Sciences",
+      "institution": "Aalborg University"
+    },
+    {
+      "year": 2018,
+      "event": "Industrial PhD in Industrial Ecology",
+      "institution": "Aalborg University"
+    },
+    {
+      "year": 2019,
+      "month": 6,
+      "event": "Joined PSI",
+      "institution": "Technology Assessment Group"
+    }
+  ],
+  "career_source": "https://www.psi.ch/en/ta/people/romain-sacchi",
+  "switzerland_map": {
+    "source": "Natural Earth 1:10m admin-0 map units",
+    "source_url": "https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-admin-0-details/",
+    "license": "public domain",
+    "simplification_degrees": 0.008,
+    "psi_marker_lon_lat": [
+      8.23,
+      47.54
+    ],
+    "marker_precision": "Approximate campus location at country scale",
+    "psi_location_source": "https://www.psi.ch/en/about/how-to-find-us",
+    "file": "data/switzerland_outline.geojson",
+    "sha256": "37e11b59c62d28b7cef138aeaac3082846d5fbc9f08ddc782aa00c193b017607"
+  },
+  "edges_logo": {
+    "source": "https://github.com/Laboratory-for-Energy-Systems-Analysis/edges/blob/main/assets/permanent/edges_logo_tight_frame.png",
+    "repository_file": "assets/edges-logo.png",
+    "transformation": "Unmodified source PNG",
+    "sha256": "5785829b5728dea80e509ff48f1f73f989d8ad91978b415125f68de66a9b3134"
+  }
+}

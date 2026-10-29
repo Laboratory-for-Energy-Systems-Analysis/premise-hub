@@ -1,0 +1,512 @@
+{
+  "scope": "Direct foreground exchanges and full static LCA per signed supplier edge at the foreground boundary. Root suppliers include their entire upstream chains; no elementary-flow disaggregation of suppliers.",
+  "calculated_at": "2026-10-28T13:20:44.331533+00:00",
+  "method": "IPCC 2021 (incl. biogenic CO2) no LT - climate change: total (incl. biogenic CO2) no LT - global warming potential (GWP100) no LT",
+  "trails_version": "1.1.1",
+  "trails_source": "/Users/romain/GitHub/trails/trails/__init__.py",
+  "extraction_script_sha256": "f30200328a144c9033b0d5c68cb1927ac4d33b655ad7a8dfffc91d8ea5c883e0",
+  "source_snapshot_hashes": {
+    "inventories/remind-eu/SSP2-NPi/2025/A_matrix_index.csv": "48c143cff00bcb318ab37f8d6801c4fd8398392bbdd6a4e0a95ad9aa160be252",
+    "inventories/remind-eu/SSP2-NPi/2025/B_matrix.csv": "b74e1f0d95714661c84cebc9d94f5a0e767935861df18550a79896d7fa695d24",
+    "inventories/remind-eu/SSP2-NPi/2025/A_matrix.csv": "086c04b5c00dc7b2c556102b69d299b66b4b8869898d2e4883f3a262e56cf3f5",
+    "inventories/remind-eu/SSP2-NPi/2025/B_matrix_index.csv": "e16b736bf544de4af1932fb333fd8ac06a3bb1bed57afd94445463c94d660f2c"
+  },
+  "foreground_sha256": "b415e812667642b99e696df215332c4a41d63a525b5bf2a783cf70635ede2752",
+  "cache_source": "/Users/romain/Library/Application Support/trails/cache/interp_31c40820e920",
+  "year": 2025,
+  "pathway": "SSP2-NPi",
+  "cases": {
+    "DACCS": {
+      "total": -831.1765028340764,
+      "source_total": -831.176502834084,
+      "suppliers": [
+        {
+          "activity": "market group for electricity, medium voltage",
+          "reference_product": "electricity, medium voltage",
+          "location": "ENC",
+          "foreground_parent": "carbon dioxide, captured and stored, with a sorbent-based direct air capture system, 100ktCO2, with heat pump heat, and grid electricity",
+          "score": 95.81005993710384
+        },
+        {
+          "activity": "direct air capture system, sorbent-based, 100ktCO2",
+          "reference_product": "direct air capture system",
+          "location": "ENC",
+          "foreground_parent": "carbon dioxide, captured and stored, with a sorbent-based direct air capture system, 100ktCO2, with heat pump heat, and grid electricity",
+          "score": 6.914761921766977
+        },
+        {
+          "activity": "treatment of direct air capture system, sorbent-based, 100ktCO2",
+          "reference_product": "direct air capture system",
+          "location": "ENC",
+          "foreground_parent": "carbon dioxide, captured and stored, with a sorbent-based direct air capture system, 100ktCO2, with heat pump heat, and grid electricity",
+          "score": 0.2283320190217707
+        },
+        {
+          "activity": "amine-based silica production, for sorbent-based direct air capture system",
+          "reference_product": "amine-based silica",
+          "location": "ENC",
+          "foreground_parent": "carbon dioxide, captured and stored, with a sorbent-based direct air capture system, 100ktCO2, with heat pump heat, and grid electricity",
+          "score": 34.895044011003016
+        },
+        {
+          "activity": "carbon dioxide compression, transport and storage",
+          "reference_product": "carbon dioxide, stored",
+          "location": "ENC",
+          "foreground_parent": "carbon dioxide, captured and stored, with a sorbent-based direct air capture system, 100ktCO2, with heat pump heat, and grid electricity",
+          "score": 7.051930475682157
+        },
+        {
+          "activity": "market for bitumen seal",
+          "reference_product": "bitumen seal",
+          "location": "GLO",
+          "foreground_parent": "carbon dioxide transport extension, pipeline 50 to 2000 km, LCSS 2026",
+          "score": 0.05527845845085196
+        },
+        {
+          "activity": "treatment of waste polyethylene, municipal incineration",
+          "reference_product": "waste polyethylene",
+          "location": "GLO",
+          "foreground_parent": "carbon dioxide transport extension, pipeline 50 to 2000 km, LCSS 2026",
+          "score": 0.3121287318872581
+        },
+        {
+          "activity": "treatment of waste bitumen, sanitary landfill",
+          "reference_product": "waste bitumen",
+          "location": "Europe without Switzerland",
+          "foreground_parent": "carbon dioxide transport extension, pipeline 50 to 2000 km, LCSS 2026",
+          "score": 0.0056391051231710326
+        },
+        {
+          "activity": "market for reinforcing steel",
+          "reference_product": "reinforcing steel",
+          "location": "GLO",
+          "foreground_parent": "carbon dioxide transport extension, pipeline 50 to 2000 km, LCSS 2026",
+          "score": 11.932388865750202
+        },
+        {
+          "activity": "treatment of waste reinforcement steel, recycling",
+          "reference_product": "waste reinforcement steel",
+          "location": "CH",
+          "foreground_parent": "carbon dioxide transport extension, pipeline 50 to 2000 km, LCSS 2026",
+          "score": 0.650828965840541
+        },
+        {
+          "activity": "market for sand",
+          "reference_product": "sand",
+          "location": "CH",
+          "foreground_parent": "carbon dioxide transport extension, pipeline 50 to 2000 km, LCSS 2026",
+          "score": 0.17404630781058392
+        },
+        {
+          "activity": "market for drawing of pipe, steel",
+          "reference_product": "drawing of pipe, steel",
+          "location": "GLO",
+          "foreground_parent": "carbon dioxide transport extension, pipeline 50 to 2000 km, LCSS 2026",
+          "score": 2.2119072848670385
+        },
+        {
+          "activity": "market for diesel, burned in diesel-electric generating set, 10MW",
+          "reference_product": "diesel, burned in diesel-electric generating set, 10MW",
+          "location": "GLO",
+          "foreground_parent": "carbon dioxide transport extension, pipeline 50 to 2000 km, LCSS 2026",
+          "score": 6.7864129532393145
+        },
+        {
+          "activity": "market for transport, freight, lorry, unspecified",
+          "reference_product": "transport, freight, lorry, diesel, unspecified",
+          "location": "RER",
+          "foreground_parent": "carbon dioxide transport extension, pipeline 50 to 2000 km, LCSS 2026",
+          "score": 0.669912565942027
+        },
+        {
+          "activity": "market for polyethylene, low density, granulate",
+          "reference_product": "polyethylene, low density, granulate",
+          "location": "RER",
+          "foreground_parent": "carbon dioxide transport extension, pipeline 50 to 2000 km, LCSS 2026",
+          "score": 0.21554777558065913
+        },
+        {
+          "activity": "market group for electricity, medium voltage",
+          "reference_product": "electricity, medium voltage",
+          "location": "ENC",
+          "foreground_parent": "carbon dioxide transport extension, pipeline 50 to 2000 km, LCSS 2026",
+          "score": 0.909260208389709
+        }
+      ],
+      "foreground": [
+        {
+          "flow": "Carbon dioxide, in air",
+          "foreground_activity": "carbon dioxide, captured and stored, with a sorbent-based direct air capture system, 100ktCO2, with heat pump heat, and grid electricity",
+          "score": -1028.8065671920776
+        },
+        {
+          "flow": "Carbon dioxide, non-fossil",
+          "foreground_activity": "carbon dioxide transport extension, pipeline 50 to 2000 km, LCSS 2026",
+          "score": 28.8065847705421
+        }
+      ]
+    },
+    "BECCS": {
+      "total": -963.0666427810426,
+      "source_total": -963.0666427810562,
+      "suppliers": [
+        {
+          "activity": "wood chipping, terrain chipper, diesel",
+          "reference_product": "wood chipping, forwarder with terrain chipper, in forest",
+          "location": "RoW",
+          "foreground_parent": "biomass supply from existing spruce forest, project harvest and future management, LCSS 2026",
+          "score": 2.3840130338878147
+        },
+        {
+          "activity": "tree seedling production, in heated greenhouse",
+          "reference_product": "tree seedling, for planting",
+          "location": "RoW",
+          "foreground_parent": "biomass supply from existing spruce forest, project harvest and future management, LCSS 2026",
+          "score": 0.2434978960096241
+        },
+        {
+          "activity": "forwarding, forwarder",
+          "reference_product": "forwarding, forwarder",
+          "location": "FI",
+          "foreground_parent": "biomass supply from existing spruce forest, project harvest and future management, LCSS 2026",
+          "score": 2.736576787895114
+        },
+        {
+          "activity": "power sawing, without catalytic converter",
+          "reference_product": "power sawing, without catalytic converter",
+          "location": "RoW",
+          "foreground_parent": "biomass supply from existing spruce forest, project harvest and future management, LCSS 2026",
+          "score": 0.4532268912517251
+        },
+        {
+          "activity": "wood chipping, mobile chipper, at forest road",
+          "reference_product": "wood chipping, chipper, mobile, diesel, at forest road",
+          "location": "FI",
+          "foreground_parent": "biomass supply from existing spruce forest, project harvest and future management, LCSS 2026",
+          "score": 10.746977642777354
+        },
+        {
+          "activity": "tree seedling production, in unheated greenhouse",
+          "reference_product": "tree seedling, for planting",
+          "location": "RoW",
+          "foreground_parent": "biomass supply from existing spruce forest, project harvest and future management, LCSS 2026",
+          "score": 0.2522011656760034
+        },
+        {
+          "activity": "skidding, skidder",
+          "reference_product": "skidding, skidder",
+          "location": "RoW",
+          "foreground_parent": "biomass supply from existing spruce forest, project harvest and future management, LCSS 2026",
+          "score": 0.0922658921228427
+        },
+        {
+          "activity": "market for diesel, burned in building machine",
+          "reference_product": "diesel, burned in building machine",
+          "location": "GLO",
+          "foreground_parent": "biomass supply from existing spruce forest, project harvest and future management, LCSS 2026",
+          "score": 1.5654366257981511
+        },
+        {
+          "activity": "harvesting, forestry harvester",
+          "reference_product": "harvesting, forestry harvester",
+          "location": "FI",
+          "foreground_parent": "biomass supply from existing spruce forest, project harvest and future management, LCSS 2026",
+          "score": 8.414549361956738
+        },
+        {
+          "activity": "market for gravel, crushed",
+          "reference_product": "gravel, crushed",
+          "location": "RoW",
+          "foreground_parent": "biomass supply from existing spruce forest, project harvest and future management, LCSS 2026",
+          "score": 0.14965033825269758
+        },
+        {
+          "activity": "market for bitumen seal",
+          "reference_product": "bitumen seal",
+          "location": "GLO",
+          "foreground_parent": "carbon dioxide transport extension, pipeline 50 to 2000 km, LCSS 2026",
+          "score": 0.05527845845085196
+        },
+        {
+          "activity": "treatment of waste polyethylene, municipal incineration",
+          "reference_product": "waste polyethylene",
+          "location": "GLO",
+          "foreground_parent": "carbon dioxide transport extension, pipeline 50 to 2000 km, LCSS 2026",
+          "score": 0.3121287318872581
+        },
+        {
+          "activity": "treatment of waste bitumen, sanitary landfill",
+          "reference_product": "waste bitumen",
+          "location": "Europe without Switzerland",
+          "foreground_parent": "carbon dioxide transport extension, pipeline 50 to 2000 km, LCSS 2026",
+          "score": 0.0056391051231710326
+        },
+        {
+          "activity": "market for reinforcing steel",
+          "reference_product": "reinforcing steel",
+          "location": "GLO",
+          "foreground_parent": "carbon dioxide transport extension, pipeline 50 to 2000 km, LCSS 2026",
+          "score": 11.932388865750202
+        },
+        {
+          "activity": "treatment of waste reinforcement steel, recycling",
+          "reference_product": "waste reinforcement steel",
+          "location": "CH",
+          "foreground_parent": "carbon dioxide transport extension, pipeline 50 to 2000 km, LCSS 2026",
+          "score": 0.650828965840541
+        },
+        {
+          "activity": "market for sand",
+          "reference_product": "sand",
+          "location": "CH",
+          "foreground_parent": "carbon dioxide transport extension, pipeline 50 to 2000 km, LCSS 2026",
+          "score": 0.17404630781058392
+        },
+        {
+          "activity": "market for drawing of pipe, steel",
+          "reference_product": "drawing of pipe, steel",
+          "location": "GLO",
+          "foreground_parent": "carbon dioxide transport extension, pipeline 50 to 2000 km, LCSS 2026",
+          "score": 2.2119072848670385
+        },
+        {
+          "activity": "market for diesel, burned in diesel-electric generating set, 10MW",
+          "reference_product": "diesel, burned in diesel-electric generating set, 10MW",
+          "location": "GLO",
+          "foreground_parent": "carbon dioxide transport extension, pipeline 50 to 2000 km, LCSS 2026",
+          "score": 6.7864129532393145
+        },
+        {
+          "activity": "market for transport, freight, lorry, unspecified",
+          "reference_product": "transport, freight, lorry, diesel, unspecified",
+          "location": "RER",
+          "foreground_parent": "carbon dioxide transport extension, pipeline 50 to 2000 km, LCSS 2026",
+          "score": 0.669912565942027
+        },
+        {
+          "activity": "market for polyethylene, low density, granulate",
+          "reference_product": "polyethylene, low density, granulate",
+          "location": "RER",
+          "foreground_parent": "carbon dioxide transport extension, pipeline 50 to 2000 km, LCSS 2026",
+          "score": 0.21554777558065913
+        },
+        {
+          "activity": "market group for electricity, medium voltage",
+          "reference_product": "electricity, medium voltage",
+          "location": "ENC",
+          "foreground_parent": "carbon dioxide transport extension, pipeline 50 to 2000 km, LCSS 2026",
+          "score": 0.909260208389709
+        },
+        {
+          "activity": "heat pump production, heat and power co-generation unit, 160kW electrical",
+          "reference_product": "heat pump, heat and power co-generation unit, 160kW electrical",
+          "location": "RER",
+          "foreground_parent": "carbon dioxide, captured and stored, at Nordic spruce CHP, post-combustion, LCSS 2026",
+          "score": 0.0055674184537365485
+        },
+        {
+          "activity": "market for activated carbon, granular",
+          "reference_product": "activated carbon, granular",
+          "location": "GLO",
+          "foreground_parent": "carbon dioxide, captured and stored, at Nordic spruce CHP, post-combustion, LCSS 2026",
+          "score": 0.28722029941616667
+        },
+        {
+          "activity": "market for gas turbine, 10MW electrical",
+          "reference_product": "gas turbine, 10MW electrical",
+          "location": "GLO",
+          "foreground_parent": "carbon dioxide, captured and stored, at Nordic spruce CHP, post-combustion, LCSS 2026",
+          "score": 0.7376417171042678
+        },
+        {
+          "activity": "market for sodium hydroxide, without water, in 50% solution state",
+          "reference_product": "sodium hydroxide, without water, in 50% solution state",
+          "location": "RER",
+          "foreground_parent": "carbon dioxide, captured and stored, at Nordic spruce CHP, post-combustion, LCSS 2026",
+          "score": 0.228382917399031
+        },
+        {
+          "activity": "market for pump, 40W",
+          "reference_product": "pump, 40W",
+          "location": "GLO",
+          "foreground_parent": "carbon dioxide, captured and stored, at Nordic spruce CHP, post-combustion, LCSS 2026",
+          "score": 0.00011690883674498752
+        },
+        {
+          "activity": "treatment of spent solvent mixture, hazardous waste incineration",
+          "reference_product": "spent solvent mixture",
+          "location": "CH",
+          "foreground_parent": "carbon dioxide, captured and stored, at Nordic spruce CHP, post-combustion, LCSS 2026",
+          "score": 0.45637283848896737
+        },
+        {
+          "activity": "market for liquid storage tank, chemicals, organics",
+          "reference_product": "liquid storage tank, chemicals, organics",
+          "location": "GLO",
+          "foreground_parent": "carbon dioxide, captured and stored, at Nordic spruce CHP, post-combustion, LCSS 2026",
+          "score": 1.16021761111881
+        },
+        {
+          "activity": "market for absorption chiller, 100kW",
+          "reference_product": "absorption chiller, 100kW",
+          "location": "GLO",
+          "foreground_parent": "carbon dioxide, captured and stored, at Nordic spruce CHP, post-combustion, LCSS 2026",
+          "score": 0.2808605402059966
+        },
+        {
+          "activity": "market for monoethanolamine",
+          "reference_product": "monoethanolamine",
+          "location": "GLO",
+          "foreground_parent": "carbon dioxide, captured and stored, at Nordic spruce CHP, post-combustion, LCSS 2026",
+          "score": 0.9924320253298601
+        },
+        {
+          "activity": "carbon dioxide compression, transport and storage",
+          "reference_product": "carbon dioxide, stored",
+          "location": "ENC",
+          "foreground_parent": "carbon dioxide, captured and stored, at Nordic spruce CHP, post-combustion, LCSS 2026",
+          "score": 7.051930475682157
+        },
+        {
+          "activity": "market for wastewater, average",
+          "reference_product": "wastewater, average",
+          "location": "Europe without Switzerland",
+          "foreground_parent": "operation of new Nordic spruce CHP with post-combustion capture, excluding capture equipment, LCSS 2026",
+          "score": 0.0062740850777221815
+        },
+        {
+          "activity": "market for lubricating oil",
+          "reference_product": "lubricating oil",
+          "location": "RER",
+          "foreground_parent": "operation of new Nordic spruce CHP with post-combustion capture, excluding capture equipment, LCSS 2026",
+          "score": 0.05559036243453101
+        },
+        {
+          "activity": "market for water, decarbonised",
+          "reference_product": "water, decarbonised",
+          "location": "RoW",
+          "foreground_parent": "operation of new Nordic spruce CHP with post-combustion capture, excluding capture equipment, LCSS 2026",
+          "score": 0.0006989952031286242
+        },
+        {
+          "activity": "market for chemical, organic, basic precursors and materials",
+          "reference_product": "chemical, organic, basic precursors and materials",
+          "location": "GLO",
+          "foreground_parent": "operation of new Nordic spruce CHP with post-combustion capture, excluding capture equipment, LCSS 2026",
+          "score": 0.1862037045169384
+        },
+        {
+          "activity": "market for waste mineral oil",
+          "reference_product": "waste mineral oil",
+          "location": "Europe without Switzerland",
+          "foreground_parent": "operation of new Nordic spruce CHP with post-combustion capture, excluding capture equipment, LCSS 2026",
+          "score": 0.11165163271658891
+        },
+        {
+          "activity": "market for wood ash mixture, pure",
+          "reference_product": "wood ash mixture, pure",
+          "location": "Europe without Switzerland",
+          "foreground_parent": "operation of new Nordic spruce CHP with post-combustion capture, excluding capture equipment, LCSS 2026",
+          "score": 0.11159017707817111
+        },
+        {
+          "activity": "market for heat and power co-generation unit, organic Rankine cycle, 1000kW electrical",
+          "reference_product": "heat and power co-generation unit, organic Rankine cycle, 1000kW electrical",
+          "location": "GLO",
+          "foreground_parent": "operation of new Nordic spruce CHP with post-combustion capture, excluding capture equipment, LCSS 2026",
+          "score": 1.164184456848502
+        },
+        {
+          "activity": "market for chlorine, liquid",
+          "reference_product": "chlorine, liquid",
+          "location": "RER",
+          "foreground_parent": "operation of new Nordic spruce CHP with post-combustion capture, excluding capture equipment, LCSS 2026",
+          "score": 0.002178680720204878
+        },
+        {
+          "activity": "market for furnace, wood chips, with silo, 5000kW",
+          "reference_product": "furnace, wood chips, with silo, 5000kW",
+          "location": "GLO",
+          "foreground_parent": "operation of new Nordic spruce CHP with post-combustion capture, excluding capture equipment, LCSS 2026",
+          "score": 1.9386394283844295
+        },
+        {
+          "activity": "market for sodium chloride, powder",
+          "reference_product": "sodium chloride, powder",
+          "location": "GLO",
+          "foreground_parent": "operation of new Nordic spruce CHP with post-combustion capture, excluding capture equipment, LCSS 2026",
+          "score": 0.010044425174265568
+        },
+        {
+          "activity": "market for municipal solid waste",
+          "reference_product": "municipal solid waste",
+          "location": "FI",
+          "foreground_parent": "operation of new Nordic spruce CHP with post-combustion capture, excluding capture equipment, LCSS 2026",
+          "score": 0.03830913899495224
+        },
+        {
+          "activity": "market for ammonia, anhydrous, liquid",
+          "reference_product": "ammonia, anhydrous, liquid",
+          "location": "RER",
+          "foreground_parent": "operation of new Nordic spruce CHP with post-combustion capture, excluding capture equipment, LCSS 2026",
+          "score": 0.00025341477464776817
+        },
+        {
+          "activity": "market for NOx retained, by selective catalytic reduction",
+          "reference_product": "NOx retained, by selective catalytic reduction",
+          "location": "GLO",
+          "foreground_parent": "operation of new Nordic spruce CHP with post-combustion capture, excluding capture equipment, LCSS 2026",
+          "score": 1.1772780194840902
+        },
+        {
+          "activity": "market for dust collector, electrostatic precipitator, for industrial use",
+          "reference_product": "dust collector, electrostatic precipitator, for industrial use",
+          "location": "GLO",
+          "foreground_parent": "operation of new Nordic spruce CHP with post-combustion capture, excluding capture equipment, LCSS 2026",
+          "score": 0.043600548772618014
+        },
+        {
+          "activity": "market group for electricity, high voltage",
+          "reference_product": "electricity, high voltage",
+          "location": "ENC",
+          "foreground_parent": "carbon dioxide removal, BECCS, new Nordic spruce CHP with CCS vs standing forest and Northern European energy, LCSS 2026",
+          "score": -27.61623454004594
+        },
+        {
+          "activity": "market for heat, district or industrial",
+          "reference_product": "heat, district or industrial",
+          "location": "ENC",
+          "foreground_parent": "carbon dioxide removal, BECCS, new Nordic spruce CHP with CCS vs standing forest and Northern European energy, LCSS 2026",
+          "score": -10.362012926469871
+        }
+      ],
+      "foreground": [
+        {
+          "flow": "Carbon dioxide, in air",
+          "foreground_activity": "forest carbon regrowth differential, existing spruce forest vs standing stock, LCSS 2026",
+          "score": -1143.1183516397093
+        },
+        {
+          "flow": "Carbon dioxide, non-fossil",
+          "foreground_activity": "carbon dioxide transport extension, pipeline 50 to 2000 km, LCSS 2026",
+          "score": 28.8065847705421
+        },
+        {
+          "flow": "Carbon dioxide, non-fossil",
+          "foreground_activity": "operation of new Nordic spruce CHP with post-combustion capture, excluding capture equipment, LCSS 2026",
+          "score": 114.31186464642806
+        },
+        {
+          "flow": "Methane, non-fossil",
+          "foreground_activity": "operation of new Nordic spruce CHP with post-combustion capture, excluding capture equipment, LCSS 2026",
+          "score": 0.42581158382706624
+        },
+        {
+          "flow": "Dinitrogen monoxide",
+          "foreground_activity": "operation of new Nordic spruce CHP with post-combustion capture, excluding capture equipment, LCSS 2026",
+          "score": 7.4767086436594195
+        }
+      ]
+    }
+  }
+}

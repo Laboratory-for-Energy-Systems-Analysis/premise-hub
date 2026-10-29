@@ -1,0 +1,15 @@
+{
+  "basis": "One deployment: 1.25 tonnes rock, source reference potential 1 tonne eventual atmospheric CO2 uptake",
+  "source": "coastal_erw_ei312.xlsx, static reference; scale per-unit exchanges by 1000",
+  "source_sha256": "2842062c9c2058e8ae90ff1bdcb0ab5ae211feb9f52d56de053b5e550c5d1006",
+  "quantities": {
+    "rock_kg": 1250.0,
+    "eventual_uptake_kg": 1000.0,
+    "electricity_kwh": 93.12060499999998,
+    "direct_diesel_mj": 24.597464000000002,
+    "truck_tkm": 76.03,
+    "water_m3": 0.49612000000000006,
+    "nickel_upper_bound_kg": 3.2875
+  },
+  "interpretation": "Electricity is aggregate foreground demand, not grinding alone. Direct machinery diesel excludes fuel embedded in haulage/spreading providers. Truck quantity is freight service, not diesel mass. Uptake is eventual gross source potential, not a deadline or net climate score. Ni is a conservative mobilization bound, not measured release. Alkalinity is not independently quantified."
+}

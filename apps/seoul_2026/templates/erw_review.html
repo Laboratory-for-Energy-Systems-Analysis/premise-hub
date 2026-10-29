@@ -1,0 +1,18 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Coastal ERW · inventory review</title><style>body{max-width:1000px;margin:40px auto;padding:0 24px;color:#173747;font:17px/1.6 Arial,sans-serif}h1{line-height:1.2}article{padding:20px 0;border-bottom:1px solid #d9e0e4}a{color:#006b8f}code{overflow-wrap:anywhere}.status{color:#5b6a74}table{border-collapse:collapse;width:100%}td,th{text-align:left;padding:10px;border-bottom:1px solid #d9e0e4}</style></head><body>
+<a href="{{prefix}}">← Lecture</a><h1>Coastal enhanced weathering: inventory refinement record</h1><p>{{review.scope}}</p><p class="status">Reviewed {{review.reviewed_on}} · source SHA-256 <code>{{review.source_sha256}}</code></p>
+<h2>Active dated case: twenty-year supply chain</h2>
+<p>Grinding and spreading operate in {{campaign.campaign.start}}–{{campaign.campaign.end}}, with twenty equal annual batches. Across the complete campaign, the functional unit remains {{campaign.campaign.total_rock_kg}} kg rock and {{campaign.campaign.eventual_gross_uptake_kg}} kg eventual gross CO₂ uptake potential. Each year's supply chain uses its annual interpolated scenario background; each batch has its own dissolution and air–sea uptake profile.</p>
+<p>{{campaign.scope}} Construction and dismantling in the lecture diagram are schematic stages; missing equipment or end-of-life quantities have not been invented.</p>
+<p>Independent annual static closure error: {{campaign.checks.independent_annual_static_closure_kg}} kg CO₂-eq. Root contributions also reconcile year by year. FaIR was rerun with the same background and configuration input files as the original batch example.</p>
+<p><a href="{{prefix}}erw-campaign-inventory.xlsx">Download the active twenty-year campaign foreground (.xlsx)</a> · <a href="{{prefix}}erw-inventory.xlsx">Original linked reference-batch foreground (.xlsx)</a></p>
+<h2>Reference deployment</h2><p>{{review.functional_unit}}</p>
+{% for item in review.findings %}<article><h2>{{item.title}}</h2><p>{{item.evidence}}</p><p><strong>Action:</strong> {{item.action}}</p><p><strong>Status:</strong> {{item.status}}</p></article>{% endfor %}
+<h2>Temporal scenario</h2><p>{{review.temporal_scenario}}</p>
+{% if review.timing_evidence %}<h2>Timing evidence and the shaded range</h2>
+<p>{{review.timing_evidence.scope}}</p><ul>{% for item in review.timing_evidence.findings %}<li>{{item}}</li>{% endfor %}</ul>{% endif %}
+{% if review.calculation %}<h2>Source snapshots and original single-batch reference</h2><p>{{review.calculation.status}}. {{review.calculation.method}}. {{review.calculation.model}} · {{review.calculation.pathway}} · ecoinvent {{review.calculation.ecoinvent}} · TRAILS {{review.calculation.trails}}.</p>
+<table><thead><tr><th>Snapshot</th><th>Net kg CO₂-eq / 1.25 t deployment</th><th>Upstream kg CO₂-eq</th></tr></thead><tbody>{% for row in review.calculation.snapshots %}<tr><td>{{row.year}}</td><td>{{'%.2f' % row.net_kg_co2eq}}</td><td>{{'%.2f' % row.upstream_kg_co2eq}}</td></tr>{% endfor %}</tbody></table>
+<p>{{review.calculation.routed_temporal_scope}}</p><p>{{review.calculation.fair_scope}}</p><p>Static/temporal closure error: {{review.calculation.checks.static_temporal_closure_kg}} kg CO₂-eq.</p>{% endif %}
+<h2>Remaining limitations</h2><ul>{% for item in review.limitations %}<li>{{item}}</li>{% endfor %}</ul>
+<h2>Sources</h2><ul>{% for item in review.sources %}<li><a href="{{item.url}}">{{item.title}}</a></li>{% endfor %}</ul>
+<p class="status">{{review.validation}}</p></body></html>

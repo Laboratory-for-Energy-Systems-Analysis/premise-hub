@@ -1,0 +1,22 @@
+/* Identify the inventory database and its scenario transformation in slide 10. */
+.trace-transform-step .trace-premise-logo { position:absolute; right:1cqw; top:.6cqw; width:4.4cqw; height:4.4cqw; object-fit:contain; }
+.trace-transform-step h2 { padding-right:4.6cqw; }
+.trace-background-transform { display:grid; grid-template-columns:1.2fr auto 1fr; align-items:center; gap:.6cqw; background:white; border:1px solid #cbdae1; padding:.6cqw .7cqw; border-radius:10px; margin-top:.15cqw; }
+.trace-database-input,.trace-database-output { display:flex; flex-direction:column; align-items:center; gap:.3cqw; text-align:center; }
+.trace-database-brand { display:flex; align-items:center; gap:.45cqw; }
+.background-database-icon { width:2.3cqw; height:2.3cqw; object-fit:contain; flex-shrink:0; }
+.trace-ecoinvent-logo { width:8.2cqw; height:1.6cqw; object-fit:contain; }
+.trace-background-transform span { font-size:.92cqw; line-height:1.3; color:var(--psi-deep); }
+.trace-database-arrow { color:var(--teal); font-size:1.6cqw; }
+@media(min-width:701px) and (max-width:1400px) {
+ .supplier-trace .trace-steps article { padding:.8cqw 1cqw; gap:.4cqw; }
+ .supplier-trace .foreground-choice { padding:.4cqw 0; }
+}
+@media(max-width:700px) {
+ .snu-app .trace-transform-step .trace-premise-logo { width:66px; height:66px; top:9px; right:14px; }
+ .snu-app .trace-transform-step h2 { padding-right:70px; }
+ .snu-app .trace-background-transform { gap:10px; padding:10px; margin-top:4px; }
+ .snu-app .trace-database-input,.snu-app .trace-database-output { gap:6px; }
+ .snu-app .trace-database-brand { gap:6px; }.snu-app .background-database-icon { width:30px; height:30px; }
+ .snu-app .trace-ecoinvent-logo { width:95px; height:22px; }.snu-app .trace-background-transform span { font-size:13px; }.snu-app .trace-database-arrow { font-size:22px; }
+}

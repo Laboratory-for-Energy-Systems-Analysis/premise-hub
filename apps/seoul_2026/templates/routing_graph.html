@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{{ case_slug|upper }} · TRAILS temporal graph</title>
+<script src="../shared/routing-vis.min.js"></script>
+<style>
+*{box-sizing:border-box}html,body{height:100%;margin:0;font:14px Arial,sans-serif;color:#173747;background:#f8fbfc}body{display:flex;flex-direction:column}
+header{display:flex;align-items:center;flex-wrap:wrap;gap:7px;padding:9px;border-bottom:1px solid #d0e0e7;background:white;z-index:2}
+button,select{font:inherit;border:1px solid #bdd0da;border-radius:6px;padding:6px;background:white;color:#173747;max-width:45%}button{cursor:pointer}select:focus-visible,button:focus-visible{outline:3px solid #3292b5}
+label{display:flex;align-items:center;gap:5px;font-size:12px;flex-shrink:0}#depth{width:72px;max-width:none}#view{width:145px;max-width:none}#branch{max-width:100%;flex:1;min-width:100px}#graph{flex:1;min-height:0;position:relative}#status{padding:7px 10px;font-size:12px;background:#eaf2f6;line-height:1.4}#info{display:none;position:absolute;bottom:12px;left:12px;right:12px;padding:12px;background:rgba(255,255,255,.97);border:1px solid #b8d4dd;border-left:4px solid #3292b5;border-radius:8px;pointer-events:none;z-index:3}#info strong,#info span{display:block;line-height:1.4}#info span{font-size:12px;color:#526e7b}#network{position:absolute;inset:0}#service{padding:8px 10px;background:#edf5f3;color:#173747;font-weight:bold;font-size:13px;line-height:1.3}#help{position:absolute;top:10px;left:10px;font-size:12px;color:#526e7b;background:#ffffffdd;padding:6px;border-radius:5px;pointer-events:none;z-index:1}
+.vis-tooltip{background:white!important;border:1px solid #b8d4dd!important;border-radius:7px!important;font:13px/1.4 Arial!important;padding:9px!important;max-width:340px;white-space:normal!important}
+</style></head><body>
+<header>
+ <label>Levels <select id="depth" aria-label="Maximum routing level"><option value="0">0</option><option value="1">0–1</option><option value="2">0–2</option><option value="3" selected>0–3</option><option value="4">0–4</option></select></label>
+ <select id="view" aria-label="Graph representation"><option value="dated">Dated nodes</option><option value="grouped">Activity overview</option></select>
+ <button id="fit">Fit</button><button id="zoom-in" aria-label="Zoom in">+</button><button id="zoom-out" aria-label="Zoom out">−</button>
+ <select id="branch" aria-label="Supply chain branch"><option value="all">All branches</option></select>
+</header>
+<div id="service"></div><div id="graph"><div id="network"></div><div id="help">Zoom for more activity names · dashed = negative demand</div><div id="info" aria-live="polite"></div></div>
+<div id="status" role="status">Loading the TRAILS graph…</div>
+<script>
+(async function(){
+ 'use strict';
+ let raw=await fetch('./{{ case_slug }}.json?depth=3').then(r=>{if(!r.ok)throw Error('Graph not available');return r.json()});
+ let loadedDepth=raw.loaded_max_depth,fullGraphPromise;
+ document.querySelector('#service').textContent='Level 0 · '+raw.metadata.functional_unit;
+ const palette=['#3292b5','#3e7654','#c18a1b','#7656a8','#c76742','#318b84','#7d8d4a'];
+ const byId=new Map(),out=new Map(),incoming=new Map();
+ function indexGraph(){
+  byId.clear();out.clear();incoming.clear();raw.nodes.forEach(n=>byId.set(n.id,n));
+  raw.edges.forEach(e=>{if(!out.has(e.source))out.set(e.source,[]);out.get(e.source).push(e.target);if(!incoming.has(e.target))incoming.set(e.target,[]);incoming.get(e.target).push(e.source)});
+ }
+ indexGraph();
+ const caseSlug={{ case_slug|tojson }};
+ const stageNames={'clinker':'Clinker production','clinker system':'Clinker production system',
+  'capture':'Post-combustion CO₂ capture','storage':'CO₂ conditioning, transport and geological storage',
+  'kiln fuels':'Kiln fuel supply','raw materials':'Raw materials for clinker','heat recovery':'Heat recovery and substitution'};
+ function activityName(n){
+  if(n.display_name)return n.display_name;
+  if(n.depth===0)return {daccs:'CO₂ capture and geological storage, solid-sorbent DAC',
+   beccs:'CO₂ capture and geological storage at biomass CHP',
+   cement:'CO₂ capture and storage at clinker production',
+   erw:'Coastal olivine deployment and weathering'}[caseSlug];
+  const parts=n.name.split(' | ');
+  if(parts[0]==='ccus'){
+   if(parts[1]==='cutoff input')return (parts[3]||parts[2])+' (cut-off input)';
+   const stage=stageNames[parts[1]]||(parts[1].startsWith('clinker cohort')?'Clinker plant operating lifetime':parts[1]);
+   const role=parts[3]==='BAU'?'reference without capture':parts[3];
+   return stage+(parts.some(p=>p.startsWith('dated flow'))?' — timed elementary exchanges':'')+(role?' ('+role+')':'');
+  }
+  if(n.name.startsWith('operation of new Nordic spruce CHP'))return 'Biomass CHP operation (20-year service)';
+  if(caseSlug==='beccs'&&n.depth===1&&n.name==='market for heat, district or industrial')return 'Heat supply, district/industrial (displaced)';
+  if(caseSlug==='beccs'&&n.depth===1&&n.name==='market group for electricity, high voltage')return 'Electricity supply, high voltage (displaced)';
+  if(['daccs','beccs'].includes(caseSlug)&&n.depth===1&&n.name==='carbon dioxide compression, transport and storage')return 'CO₂ compression, transport and storage (lifetime service)';
+  if(n.name.startsWith('forest carbon regrowth differential'))return 'Post-harvest regrowth relative to standing forest';
+  if(n.name.startsWith('biomass supply from existing spruce forest'))return 'Spruce biomass supply, project harvest and management';
+  if(caseSlug==='erw'&&n.name.includes('solid manure loading and spreading'))return 'Loading and spreading (manure-spreader proxy)';
+  return n.name.replace(/, LCSS 2026$/,'');
+ }
+ const activityKey=n=>JSON.stringify([n.display_name||(caseSlug==='cement'?n.name.replace(/ \| \d{4}$/,''):n.name),n.product,n.location]);
+ // Integrated stored-CO2 roots expose their actual first-level suppliers.
+ function isBranchAnchor(n){
+  return n.depth===1;
+ }
+ const branchGroups=new Map(),anchorIds=new Set();
+ raw.nodes.filter(isBranchAnchor).forEach(n=>{
+  // Cement's annual foreground variants represent the same root stage.
+  const name=caseSlug==='cement'?n.name.replace(/ \| \d{4}$/,''):n.name;
+  const key=JSON.stringify([name,n.product,n.location]);
+  if(!branchGroups.has(key)){
+   const label=activityName({...n,name})+' · '+n.location;
+   branchGroups.set(key,{key,label,anchors:[]});
+  }
+  branchGroups.get(key).anchors.push(n.id);anchorIds.add(n.id);
+ });
+ const branches=[...branchGroups.values()].sort((a,b)=>a.label.localeCompare(b.label));
+ branches.forEach(branch=>{const o=document.createElement('option');o.value=branch.key;o.textContent=branch.label;document.querySelector('#branch').append(o)});
+ const depthControl=document.querySelector('#depth'),viewControl=document.querySelector('#view'),branchControl=document.querySelector('#branch');
+ let network,shownNodes=[],shownEdges=[],labelBands=[],drawnActivityLabels=[],depthScale=700,yearScale=170;
+ const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+ function title(n){return '<b>'+esc(activityName(n))+'</b><br>'+esc(n.product)+'<br>'+esc(n.location)+' · level '+n.depth+'<br>'+(n.years?esc(n.years.join(', ')):n.year)+'<br>'+(n.depth===0?esc(raw.metadata.functional_unit):'Activity demand; coefficients omitted')}
+ function color(n){if(n.depth===0)return '#103e52';let hash=0;for(const c of activityKey(n))hash=(hash*31+c.charCodeAt(0))|0;return palette[Math.abs(hash)%palette.length]}
+ function connected(seed,adjacency){const found=new Set(seed),stack=[...seed];while(stack.length){const id=stack.pop();for(const child of adjacency.get(id)||[])if(!found.has(child)){found.add(child);stack.push(child)}}return found}
+ function render(){
+  drawnActivityLabels=[];
+  document.body.dataset.activityLabels='0';
+  const depth=Number(depthControl.value),grouped=viewControl.value==='grouped';
+  let visible=null;if(branchControl.value!=='all'){
+   const seeds=branchGroups.get(branchControl.value).anchors;
+   // Walk descendants only from the selected activities, not from ancestors:
+   // otherwise reaching the functional unit would bring every branch back.
+   visible=new Set([...connected(seeds,out),...connected(seeds,incoming)]);
+  }
+  const ns=raw.nodes.filter(n=>n.depth<=depth&&(!visible||visible.has(n.id))),nsIds=new Set(ns.map(n=>n.id)),es=raw.edges.filter(e=>nsIds.has(e.source)&&nsIds.has(e.target));
+  const root=raw.nodes.find(n=>n.depth===0),mapping=new Map(),groups=new Map();
+  ns.forEach(n=>{const k=grouped?[n.depth,n.name,n.product,n.location].join('|'):n.id;mapping.set(n.id,k);if(!groups.has(k))groups.set(k,{...n,id:k,years:[]});groups.get(k).years.push(n.year)});
+  const bands={};groups.forEach(n=>{n.years=[...new Set(n.years)].sort((a,b)=>a-b);if(!bands[n.depth])bands[n.depth]=[];bands[n.depth].push(n)});
+  Object.values(bands).forEach(items=>items.sort((a,b)=>a.name.localeCompare(b.name)||a.year-b.year));
+  const largestBand=Math.max(1,...Object.values(bands).map(items=>new Set(items.map(activityKey)).size));
+  depthScale=Math.max(700,largestBand*30+200);
+  let firstYear=Infinity,lastYear=-Infinity;ns.forEach(n=>{firstYear=Math.min(firstYear,n.year);lastYear=Math.max(lastYear,n.year)});
+  const yearSpan=Math.max(1,lastYear-firstYear);
+  yearScale=Math.max(170,depthScale*Math.max(1,depth)*1.3/yearSpan);
+  shownNodes=[];Object.values(bands).forEach(items=>{
+   const names=[...new Set(items.map(activityKey))].sort(),indices=new Map(names.map((name,i)=>[name,i]));
+   items.forEach((n,i)=>{
+    const groupIndex=indices.get(activityKey(n));
+    const name=activityName(n),short=name.length>38?name.slice(0,36)+'…':name;
+    shownNodes.push({...n,x:grouped?(i-(items.length-1)/2)*56:(n.year-root.year)*yearScale,
+      y:-n.depth*depthScale+(grouped?0:(groupIndex-(names.length-1)/2)*30),
+      label:n.depth===0?'LEVEL 0 · '+raw.metadata.functional_unit:(grouped?short:''),
+      title:title(n),shape:'dot',size:n.depth===0?19:(grouped?12:8),color:color(n),
+      font:{size:17,color:'#173747',face:'Arial'},borderWidth:1,
+      fixed:true,physics:false});
+   });
+  });
+  const bandMap=new Map();shownNodes.filter(n=>n.depth>0).forEach(n=>{
+   const key=JSON.stringify([n.depth,activityKey(n)]);
+   if(!bandMap.has(key))bandMap.set(key,{name:activityName(n),location:n.location,depth:n.depth,priority:activityName(n).includes('(displaced)')?-1:anchorIds.has(n.id)?0:1,nodes:[]});
+   bandMap.get(key).nodes.push(n);
+  });
+  labelBands=[...bandMap.values()].sort((a,b)=>a.priority-b.priority||a.depth-b.depth||a.name.localeCompare(b.name));
+  const edgeMap=new Map();es.forEach(e=>{const from=mapping.get(e.source),to=mapping.get(e.target),key=[from,to,e.negative].join('|');if(!edgeMap.has(key))edgeMap.set(key,{from,to,arrows:{to:{enabled:true,scaleFactor:.45}},width:1.25,color:{color:e.negative?'#bd6157':'#819caa',opacity:.52},dashes:e.negative,smooth:false,title:e.negative?'Negative demand / substitution branch':'Supply-chain demand branch'})});shownEdges=[...edgeMap.values()];
+  const data={nodes:new vis.DataSet(shownNodes),edges:new vis.DataSet(shownEdges)};
+  if(network)network.setData(data);else{
+   network=new vis.Network(document.querySelector('#network'),data,{physics:false,interaction:{hover:true,tooltipDelay:150,hideEdgesOnDrag:true,keyboard:{enabled:true,bindToWindow:false}},layout:{improvedLayout:false},manipulation:false});
+   network.on('click',params=>{const info=document.querySelector('#info');if(!params.nodes.length){info.style.display='none';return}const n=shownNodes.find(n=>n.id===params.nodes[0]);info.innerHTML='<strong>'+esc(activityName(n))+'</strong><span>'+esc(n.product)+' · '+esc(n.location)+' · level '+n.depth+'</span><span>Calendar year'+(n.years.length>1?'s':'')+': '+esc(n.years.join(', '))+'</span>';info.style.display='block'});
+   network.on('afterDrawing',ctx=>{
+    if(viewControl.value==='grouped')return;
+    const scale=network.getScale();ctx.save();ctx.font=(12/scale)+'px Arial';ctx.fillStyle='#526e7b';
+    for(let d=0;d<=Number(depthControl.value);d++){
+      const pos=network.canvasToDOM({x:0,y:-d*depthScale});
+      const left=network.DOMtoCanvas({x:10,y:pos.y-7});ctx.fillText('Level '+d,left.x,left.y);
+    }
+    const bounds=document.querySelector('#network').getBoundingClientRect();
+    const rootPos=network.canvasToDOM({x:0,y:0});
+    ctx.font=(13/scale)+'px Arial';
+    const rootLines=[];let rootLine='';
+    for(const word of activityName(root).split(' ')){
+     const text=rootLine?rootLine+' '+word:word;
+     if(ctx.measureText(text).width*scale>240&&rootLine){rootLines.push(rootLine);rootLine=word}else rootLine=text;
+    }
+    if(rootLine)rootLines.push(rootLine);
+    const rootWidth=Math.max(...rootLines.map(t=>ctx.measureText(t).width*scale));
+    const rootBox={x:Math.max(72,Math.min(rootPos.x+9,bounds.width-rootWidth-6)),y:rootPos.y-rootLines.length*15-8,w:rootWidth,h:rootLines.length*15+5};
+    const rootLabel=network.DOMtoCanvas(rootBox);
+    ctx.fillStyle='#173747';rootLines.forEach((t,i)=>ctx.fillText(t,rootLabel.x,rootLabel.y+(13+i*15)/scale));
+    const years=[...new Set(shownNodes.map(n=>n.year))].filter(y=>y%10===0||y===root.year);
+    ctx.font=(11/scale)+'px Arial';ctx.fillStyle='#526e7b';
+    years.forEach(y=>{const p=network.canvasToDOM({x:(y-root.year)*yearScale,y:0});const c=network.DOMtoCanvas({x:p.x-12,y:bounds.height-14});ctx.fillText(String(y),c.x,c.y)});
+    // Activity-band labels stay readable at fit scale. Collision handling
+    // reveals additional names on zoom without repeating a name every year.
+    drawnActivityLabels=[];const occupied=[{x:0,y:0,w:bounds.width,h:36},rootBox];
+    const overlaps=r=>occupied.some(o=>r.x<o.x+o.w+5&&r.x+r.w+5>o.x&&r.y<o.y+o.h+4&&r.y+r.h+4>o.y);
+    ctx.font=(12/scale)+'px Arial';
+    for(const band of labelBands){
+     const points=band.nodes.map(n=>({node:n,...network.canvasToDOM(n)})).filter(p=>p.x>=50&&p.x<=bounds.width-12&&p.y>=40&&p.y<=bounds.height-35);
+     if(!points.length)continue;
+     const p=points.reduce((best,p)=>Math.abs(p.x-bounds.width*.45)<Math.abs(best.x-bounds.width*.45)?p:best);
+     const text=band.name+' · '+band.location,words=text.split(' '),lines=[];let line='';
+     for(const word of words){const next=line?line+' '+word:word;if(ctx.measureText(next).width*scale>195&&line){lines.push(line);line=word}else line=next;}
+     if(line)lines.push(line);
+     if(lines.length>2){lines.length=2;lines[1]=lines[1].replace(/\s+\S*$/,'')+'…';}
+     const w=Math.max(...lines.map(t=>ctx.measureText(t).width*scale))+12,h=lines.length*15+8;
+     const xs=[Math.max(72,Math.min(p.x+10,bounds.width-w-5)),Math.max(72,p.x-w-10)];
+     const ys=[p.y-h/2,p.y-h-8,p.y+8,...(band.priority<=0?[p.y-2*h-14,p.y+h+14]:[])];
+     const candidates=xs.flatMap(x=>ys.map(y=>({x,y,w,h})));
+     const rect=candidates.find(r=>r.x+r.w<bounds.width-3&&r.y>36&&r.y+r.h<bounds.height-32&&!overlaps(r));
+     if(!rect)continue;occupied.push(rect);const {x,y}=rect;
+     const edge=network.DOMtoCanvas({x:Math.max(x,Math.min(p.x,x+w)),y:Math.max(y,Math.min(p.y,y+h))});
+     ctx.beginPath();ctx.moveTo(p.node.x,p.node.y);ctx.lineTo(edge.x,edge.y);ctx.strokeStyle='#527b90';ctx.lineWidth=.7/scale;ctx.stroke();
+     const c=network.DOMtoCanvas({x,y});ctx.fillStyle='rgba(255,255,255,.94)';ctx.fillRect(c.x,c.y,w/scale,h/scale);
+     ctx.fillStyle='#173747';lines.forEach((t,i)=>ctx.fillText(t,c.x+6/scale,c.y+(16+i*15)/scale));
+     drawnActivityLabels.push({name:band.name,location:band.location,depth:band.depth,nodeId:p.node.id});
+    }
+    if(window.trailsGraph)window.trailsGraph.activityLabels=drawnActivityLabels;
+    document.body.dataset.activityLabels=String(drawnActivityLabels.length);
+    ctx.restore();
+   });
+  }
+  window.trailsGraph={metadata:raw.metadata,nodes:shownNodes,edges:shownEdges,network,branches,loadedDepth,activityName,activityLabels:drawnActivityLabels,orientation:'functional unit at bottom',rawNodes:raw.metadata.nodes,rawEdges:raw.metadata.edges,representation:grouped?'activity overview (calendar replicas grouped)':'dated graph'};
+  document.querySelector('#info').style.display='none';network.fit({animation:false});
+  document.querySelector('#status').textContent=shownNodes.length.toLocaleString()+' '+(grouped?'activity groups':'dated nodes')+' · '+shownEdges.length.toLocaleString()+' links · levels 0–'+depth+' · '+(grouped?'Calendar replicas grouped for this view':'Actual TRAILS routing output');
+  document.body.dataset.ready='true';
+ }
+ depthControl.addEventListener('change',async()=>{
+  if(Number(depthControl.value)>loadedDepth){
+   const controls=[...document.querySelectorAll('header select,header button')];controls.forEach(c=>c.disabled=true);
+   document.body.dataset.ready='false';document.querySelector('#status').textContent='Loading level 4…';
+   try{
+    if(!fullGraphPromise)fullGraphPromise=fetch('./{{ case_slug }}.json').then(r=>{if(!r.ok)throw Error('Graph not available');return r.json()}).catch(e=>{fullGraphPromise=null;throw e});
+    raw=await fullGraphPromise;loadedDepth=4;indexGraph();render();
+   }catch(e){depthControl.value='3';render();document.querySelector('#status').textContent='Level 4 could not load; showing levels 0–3.';}
+   finally{controls.forEach(c=>c.disabled=false)}
+  }else render();
+ });
+ [viewControl,branchControl].forEach(e=>e.addEventListener('change',render));
+ document.querySelector('#fit').onclick=()=>network.fit({animation:false});
+ document.querySelector('#zoom-in').onclick=()=>network.moveTo({scale:network.getScale()*1.5});document.querySelector('#zoom-out').onclick=()=>network.moveTo({scale:network.getScale()/1.5});
+ const query=new URLSearchParams(location.search);if(query.get('view')==='grouped')viewControl.value='grouped';
+ render();window.addEventListener('resize',()=>{network.redraw();network.fit({animation:false})});
+})().catch(e=>{document.querySelector('#status').textContent='Graph could not load: '+e.message;console.error(e)});
+</script></body></html>

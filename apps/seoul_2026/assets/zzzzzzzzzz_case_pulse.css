@@ -1,0 +1,29 @@
+.snu-slide[data-slide-key="pulse-equivalence"] .case-equivalence-explorer { gap:.5cqw; }
+.case-pulse-message { display:flex; align-items:baseline; justify-content:space-between; gap:1cqw; flex-shrink:0; }
+.case-pulse-message>strong { font-size:1.35cqw; color:var(--psi-deep); }
+.case-pulse-message>span { font-size:1cqw; color:#526e7b; }
+.case-equivalence-explorer .window-control { padding:0 1.4cqw 1.2cqw; }
+.case-equivalence-explorer .window-labels { margin-bottom:.2cqw; }
+.case-pulse-legend { display:flex; align-items:center; gap:1.5cqw; font-size:1cqw; color:#526e7b; flex-shrink:0; }
+.case-pulse-legend>span { display:flex; align-items:center; gap:.4cqw; }
+.case-pulse-legend i { width:2cqw; border-top:3px solid #3292b5; }
+.case-pulse-legend .case-pulse-reference-key { border-color:#173747; border-top-style:dashed; }
+.case-pulse-legend>output { margin-left:auto; color:var(--psi-deep); font-weight:750; }
+.case-equivalence-explorer .comparison-heading { min-height:6cqw; padding:.1cqw .2cqw .3cqw; gap:.2cqw; }
+.case-pulse-readout { display:flex; flex-direction:column; gap:.05cqw; padding:.4cqw .6cqw; margin:.2cqw .5cqw .5cqw; background:#eef4f6; border-radius:9px; flex-shrink:0; }
+.case-pulse-readout>span { color:#526e7b; font-size:.9cqw; }
+.case-pulse-readout>strong { color:var(--case-colour); font-size:2.1cqw; line-height:1.1; }
+.case-pulse-readout>small { font-size:1cqw; color:var(--psi-deep); }
+.case-pulse-readout .case-pulse-area { margin-top:.25cqw; font-size:.9cqw; }
+@media(max-width:700px) {
+ .snu-app .case-pulse-message { flex-direction:column; gap:8px; }
+ .snu-app .case-equivalence-explorer { width:100%; min-width:0; max-width:100%; }
+ .snu-app .case-pulse-message>strong { font-size:20px; }.snu-app .case-pulse-message>span { font-size:14px; }
+ .snu-app .case-pulse-legend { flex-wrap:wrap; gap:12px; font-size:14px; }.snu-app .case-pulse-legend i { width:25px; }
+ .snu-app .case-pulse-legend>output { margin-left:0; }
+ .snu-app .case-equivalence-explorer .window-control { padding:10px 16px 34px; }.snu-app .case-equivalence-explorer .window-labels { font-size:12px; margin-bottom:12px; }
+ .snu-app .case-equivalence-explorer .comparison-panel { height:540px; }
+ .snu-app .case-equivalence-explorer .comparison-heading { min-height:95px; gap:5px; }
+ .snu-app .case-pulse-readout { padding:10px 14px; margin:5px 0 10px; }
+ .snu-app .case-pulse-readout>span,.snu-app .case-pulse-readout .case-pulse-area { font-size:13px; }.snu-app .case-pulse-readout>strong { font-size:29px; }.snu-app .case-pulse-readout>small { font-size:14px; }
+}

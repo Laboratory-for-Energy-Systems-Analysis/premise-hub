@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Presenter · Seoul LCA lecture</title>
+<style>
+* { box-sizing:border-box; }
+body { margin:0; background:#edf2f4; color:#173747; font:18px/1.45 Arial,sans-serif; }
+main { max-width:1500px; height:100dvh; margin:auto; padding:24px; display:flex; flex-direction:column; gap:22px; }
+header { display:flex; justify-content:space-between; align-items:center; gap:24px; flex-shrink:0; }
+.timer-block { display:flex; align-items:baseline; gap:20px; }
+.timer { font:700 64px/1 monospace; font-variant-numeric:tabular-nums; }
+#phase-label { color:#60747e; font-size:18px; }
+.timer-controls { display:flex; align-items:center; gap:22px; flex-wrap:wrap; }
+.phases,.actions { display:flex; gap:8px; }
+button { font:inherit; color:inherit; background:white; border:1px solid #bdcdd5; border-radius:8px; padding:9px 15px; cursor:pointer; }
+.phases button { font-size:16px; }
+button.active { background:#d9eeed; border-color:#197e76; }
+#start { background:#173747; color:white; min-width:130px; }
+button:focus-visible { outline:3px solid #d99614; outline-offset:3px; }
+.presenter-grid { display:grid; grid-template-columns:minmax(0,1.3fr) minmax(420px,1fr); gap:22px; min-height:0; flex:1; }
+article,aside { background:white; border-radius:14px; min-width:0; min-height:0; }
+article { border-top:5px solid #2583ac; padding:26px 30px; display:flex; flex-direction:column; }
+#pace { color:#59727e; font-size:16px; }
+h1 { font-size:29px; line-height:1.2; margin:14px 0 24px; }
+#notes { font-size:23px; line-height:1.5; margin:0; padding-left:1.15em; overflow:auto; }
+#notes li { padding-left:5px; margin:0 0 18px; }
+aside { display:flex; flex-direction:column; overflow:hidden; }
+h2 { font-size:21px; margin:0; padding:20px 20px 14px; }
+.plan-scroll { overflow:auto; min-height:0; }
+table { width:100%; border-collapse:collapse; font-size:14px; font-variant-numeric:tabular-nums; }
+th { text-align:left; color:#59727e; font-weight:500; font-size:12px; padding:10px 12px; background:#f4f8fa; position:sticky; top:0; z-index:1; }
+td { padding:10px 12px; border-bottom:1px solid #e1e9ed; }
+td:first-child { width:32px; padding-right:0; color:#59727e; }
+td:nth-last-child(2) { text-align:right; white-space:nowrap; }
+td:last-child { white-space:nowrap; font-size:12px; color:#59727e; }
+td button { padding:0; border:0; background:none; text-align:left; font-size:14px; line-height:1.35; }
+tr[aria-current="step"] { background:#e5f2f0; }
+tr[aria-current="step"] button { font-weight:700; color:#126c68; }
+.over { color:#b53d32; }
+@media(max-width:1300px) {
+ article { padding:22px; }
+ h1 { font-size:26px; margin:12px 0 18px; }
+ #notes { font-size:20px; line-height:1.45; }
+ #notes li { margin-bottom:14px; }
+ #pace { font-size:14px; }
+}
+@media(max-width:1000px) {
+ main { padding:16px; gap:16px; }
+ .presenter-grid { grid-template-columns:minmax(0,1.1fr) minmax(350px,1fr); gap:16px; }
+ article { padding:20px; } h1 { font-size:25px; } #notes { font-size:20px; }
+ .timer { font-size:52px; } .timer-controls { gap:10px; }
+}
+@media(max-width:700px) {
+ main { height:auto; min-height:100dvh; padding:12px; }
+ header { align-items:flex-start; flex-direction:column; gap:16px; }
+ .timer-controls { width:100%; justify-content:space-between; }
+ .phases button, .actions button { font-size:14px; padding:8px 10px; }
+ #start { min-width:105px; }
+ .presenter-grid { grid-template-columns:1fr; }
+ article { padding:20px; } #notes { overflow:visible; } .plan-scroll { max-height:480px; }
+}
+</style>
+</head>
+<body><main>
+<header aria-label="Presentation timer">
+  <div class="timer-block"><div id="timer" class="timer" role="timer">70:00</div><span id="phase-label">Teaching</span></div>
+  <div class="timer-controls">
+    <div class="phases"><button id="teaching" class="active" aria-pressed="true">Teaching · 70 min</button><button id="discussion" aria-pressed="false">Discussion · 20 min</button></div>
+    <div class="actions"><button id="start">Start timer</button><button id="reset">Reset timer</button></div>
+  </div>
+</header>
+<div class="presenter-grid">
+  <article id="slide-notes" aria-labelledby="title"><div id="pace"></div><h1 id="title"></h1><ul id="notes"></ul></article>
+  <aside aria-labelledby="plan-title"><h2 id="plan-title">Time across slides</h2><div class="plan-scroll"><table>
+    <thead><tr><th scope="col">#</th><th scope="col">Slide</th><th scope="col">Time</th><th scope="col">Target</th></tr></thead>
+  <tbody>{% for slide in slides[:core_count] %}<tr data-slide-index="{{loop.index0}}"><td>{{loop.index}}</td><td><button data-slide="{{loop.index0}}" aria-controls="slide-notes">{{slide.title}}</button></td><td>{{slide.seconds//60}}:{{'%02d' % (slide.seconds%60)}}</td><td>{{'Discussion ' if slide.timing_phase == 'discussion' else ''}}{{slide.start_seconds//60}}:{{'%02d' % (slide.start_seconds%60)}}–{{slide.end_seconds//60}}:{{'%02d' % (slide.end_seconds%60)}}</td></tr>{% endfor %}</tbody>
+  </table></div></aside>
+</div>
+</main>
+<script>
+const slides = {{slides|tojson}}, coreCount = {{core_count}};
+const slideKey = 'snu-2026-slide', timerKey = 'snu-2026-timer';
+function clock(seconds) {
+  const n = Math.max(0, Math.floor(seconds));
+  return `${Math.floor(n / 60)}:${String(n % 60).padStart(2, '0')}`;
+}
+function show(value) {
+  const number = Number(value);
+  const index = Math.max(0, Math.min(slides.length - 1, Number.isInteger(number) ? number : 0));
+  const slide = slides[index];
+  document.getElementById('slide-notes').dataset.slideIndex = String(index);
+  document.getElementById('title').textContent = slide.title;
+  document.getElementById('notes').replaceChildren(...slide.notes.map(point => {
+    const item = document.createElement('li');
+    item.textContent = point;
+    return item;
+  }));
+  const slot = `${clock(slide.start_seconds)}–${clock(slide.end_seconds)}`;
+  document.getElementById('pace').textContent = index >= coreCount ? 'Backup · untimed'
+    : `Slide ${index + 1} / ${coreCount} · ${clock(slide.seconds)} · ${slide.timing_phase} target ${slot}`;
+  document.querySelectorAll('tr[data-slide-index]').forEach(row => {
+    if (Number(row.dataset.slideIndex) === index) {
+      row.setAttribute('aria-current', 'step');
+      row.scrollIntoView({block:'nearest'});
+    } else row.removeAttribute('aria-current');
+  });
+}
+document.querySelector('tbody').addEventListener('click', event => {
+  const button = event.target.closest('button[data-slide]');
+  if (button) show(button.dataset.slide);
+});
+window.addEventListener('storage', event => {
+  if (event.key === slideKey && event.newValue) {
+    try { show(JSON.parse(event.newValue).index); } catch (_) {}
+  }
+});
+try { show(JSON.parse(localStorage.getItem(slideKey) || '{}').index); }
+catch (_) { show(0); }
+let state = {phase:'teaching', elapsed:0, started:null};
+try {
+  const saved = JSON.parse(localStorage.getItem(timerKey));
+  if (saved && ['teaching','discussion'].includes(saved.phase) && Number.isFinite(saved.elapsed)
+      && (saved.started === null || Number.isFinite(saved.started))) state = saved;
+} catch (_) {}
+function save() { try { localStorage.setItem(timerKey, JSON.stringify(state)); } catch (_) {} }
+function render() {
+  const left = (state.phase === 'teaching' ? 4200 : 1200) - state.elapsed
+    - (state.started === null ? 0 : (Date.now() - state.started) / 1000);
+  const timer = document.getElementById('timer');
+  timer.textContent = (left < 0 ? '+' : '') + clock(Math.abs(left));
+  timer.classList.toggle('over', left < 0);
+  document.getElementById('start').textContent = state.started !== null ? 'Pause timer' : state.elapsed ? 'Resume timer' : 'Start timer';
+  document.getElementById('phase-label').textContent = state.phase === 'teaching' ? 'Teaching' : 'Discussion';
+  for (const phase of ['teaching','discussion']) {
+    const button = document.getElementById(phase);
+    button.classList.toggle('active', phase === state.phase);
+    button.setAttribute('aria-pressed', String(phase === state.phase));
+  }
+}
+document.getElementById('start').addEventListener('click', () => {
+  if (state.started === null) state.started = Date.now();
+  else { state.elapsed += (Date.now() - state.started) / 1000; state.started = null; }
+  save(); render();
+});
+document.getElementById('reset').addEventListener('click', () => {
+  state.elapsed = 0; state.started = null; save(); render();
+});
+for (const phase of ['teaching','discussion']) document.getElementById(phase).addEventListener('click', () => {
+  if (state.phase !== phase) { state = {phase, elapsed:0, started:null}; save(); render(); }
+});
+render(); setInterval(render, 200);
+</script>
+</body></html>

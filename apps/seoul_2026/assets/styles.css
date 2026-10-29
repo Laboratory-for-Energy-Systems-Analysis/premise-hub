@@ -1,0 +1,123 @@
+/* Reuse the LCA-through-time shell and SETAC figure/layout grammar. */
+.snu-event { display:flex; flex-direction:column; align-items:flex-end; gap:5px; color:var(--psi-deep); text-align:right; }
+.snu-event strong { font-size:14px; } .snu-event span { font-size:11px; color:var(--muted); }
+.snu-app .app-header { grid-template-columns:300px minmax(0,1fr) 210px; padding:0 24px; gap:12px; }
+.snu-app .brand-copy strong { font-size:11px; } .snu-app .brand-copy span { font-size:12px; }
+.snu-app .chapter-button { font-size:11px; padding:7px; }
+.snu-app .chapter-button[aria-current="page"] { background:#e5f2f0; color:var(--psi-deep); }
+.snu-app .app-footer { grid-template-columns:auto auto minmax(0,1fr) auto; gap:14px; }
+.snu-app .setac-footer-tools { gap:18px; font-size:12px; }
+.snu-slide { gap:1.1cqw; padding:1.65cqw 2.3cqw 1.5cqw; }
+.snu-slide h1 { font-size:3.1cqw; line-height:1.08; max-width:none; }
+.snu-slide .slide-eyebrow { font-size:1cqw; margin-bottom:.5cqw; }
+.snu-slide .slide-body { gap:1cqw; }
+.snu-slide .stack { gap:1cqw; }
+.snu-grid { display:grid; gap:1.4cqw; flex:1; min-height:0; }
+.snu-grid.cols-3 { grid-template-columns:repeat(3,minmax(0,1fr)); }
+.snu-grid.cols-2 { grid-template-columns:repeat(2,minmax(0,1fr)); }
+.snu-card { background:var(--surface-soft); border:1px solid var(--line); border-top:4px solid var(--psi-blue); border-radius:14px; padding:1.8cqw; display:flex; flex-direction:column; justify-content:center; gap:1cqw; }
+.snu-card:nth-child(2) { border-top-color:var(--teal); } .snu-card:nth-child(3) { border-top-color:var(--amber); }
+.snu-card .small-label { color:var(--muted); }
+.snu-slide .snu-card h2 { font-size:2.05cqw; margin:0; }
+.snu-slide .snu-card p { font-size:1.6cqw; line-height:1.45; margin:0; }
+.snu-visual { display:block; width:100%; min-height:0; max-height:48%; object-fit:contain; flex:1; }
+.three-system-overview { display:flex; flex-direction:column; flex:1; gap:1cqw; min-height:0; }
+.overview-carbon-key { display:flex; flex-wrap:wrap; align-items:center; gap:.8cqw 1.5cqw; font-size:1.05cqw; }
+.overview-carbon-key span { display:flex; align-items:center; gap:.4cqw; }
+.overview-carbon-key i { display:block; width:.8cqw; height:.8cqw; border-radius:50%; }
+.overview-routes { display:flex; flex-direction:column; justify-content:space-evenly; flex:1; min-height:0; gap:.5cqw; }
+.overview-route { margin:0; flex:1; min-height:0; }
+.overview-route img { display:block; width:100%; height:100%; object-fit:contain; }
+.snu-slide .equation { display:flex; flex-direction:column; align-items:center; justify-content:center; flex:1; min-height:0; gap:1.8cqw; padding:1.6cqw; font:2.9cqw/1.4 'Cambria Math',Cambria,Georgia,serif; background:#eef5f7; border:1px solid var(--line); border-radius:14px; color:var(--psi-deep); text-align:center; }
+.equation-key { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1.5cqw; }
+.equation-key>div { display:flex; flex-direction:column; gap:.4cqw; font-size:1.3cqw; line-height:1.35; }
+.equation-key strong { color:var(--psi-blue); font-size:1.7cqw; font-family:'Cambria Math',Cambria,Georgia,serif; }
+.discussion-label { color:var(--teal); font-size:1.05cqw; letter-spacing:.15em; font-weight:bold; }
+.discussion-question { font-size:2.5cqw; line-height:1.3; color:var(--psi-deep); padding:1.1cqw 0; max-width:1100px; }
+.erw-controls { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1.2cqw; font-size:1.05cqw; color:var(--muted); flex-shrink:0; }
+.erw-controls label { display:grid; gap:.5cqw; }
+.erw-controls .dash-dropdown { color:var(--ink); font-size:1.25cqw; }
+.snu-slide .source { font-size:.95cqw; }
+.snu-slide[data-slide-key="erw-sensitivity"] .callout { font-size:1.2cqw; padding:.65cqw 1cqw; }
+.snu-slide .chart { flex:1; min-height:0; }
+.comparison-table { width:100%; border-collapse:collapse; font-size:1.5cqw; line-height:1.35; flex:1; }
+.comparison-table th,.comparison-table td { text-align:left; border-bottom:1px solid var(--line); padding:1.1cqw; }
+.comparison-table thead { color:var(--psi-blue); background:var(--surface-soft); }
+.comparison-table tbody th { color:var(--psi-deep); }
+.source-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.75cqw 2cqw; height:100%; align-content:center; }
+.source-grid a { display:block; font-size:1.35cqw; line-height:1.4; padding:.8cqw 0; border-bottom:1px solid var(--line); }
+.tool-logos { display:flex; justify-content:center; align-items:center; gap:4cqw; height:7cqw; }
+.tool-logos img { width:8cqw; height:7cqw; max-height:none; flex:initial; }
+.tool-logos span { color:var(--psi-blue); font-size:3cqw; }
+.code-example { flex:1; display:flex; align-items:center; white-space:pre-wrap; background:var(--surface-soft); padding:2cqw; border-radius:12px; font:1.35cqw/1.7 monospace; }
+.snu-slide .contact { font-size:1.4cqw; color:var(--psi-blue); }
+.snu-slide.cover-slide { padding:3cqw 4cqw; grid-template-rows:1fr; }
+.snu-slide.cover-slide>.snu-visual { position:absolute; inset:0 0 0 auto; width:68%; height:100%; max-height:none; opacity:.7; }
+.snu-slide.cover-slide .cover-copy { position:relative; z-index:2; width:75%; display:flex; flex-direction:column; justify-content:center; }
+.snu-slide.cover-slide h1 { font-size:5.3cqw; max-width:900px; }
+.snu-slide.cover-slide .cover-kicker { font-size:1.1cqw; }
+.snu-slide.cover-slide .cover-subtitle { font-size:2cqw; line-height:1.4; max-width:800px; margin:2cqw 0 3cqw; }
+.cover-presenter { display:flex; flex-direction:column; gap:.6cqw; font-size:1.35cqw; }
+.cover-presenter strong { font-size:1.8cqw; color:var(--psi-deep); }
+.cover-pills { display:flex; gap:1cqw; margin-top:2cqw; }
+.cover-pills span { border:1px solid var(--line); background:rgba(255,255,255,.8); border-radius:30px; padding:.5cqw 1cqw; font-size:1.1cqw; color:var(--muted); }
+@media(max-width:1100px) {
+  .snu-app .app-header { grid-template-columns:230px minmax(0,1fr); }
+  .snu-event { display:none; } .snu-app .setac-footer-tools { gap:10px; font-size:10px; }
+  .snu-app .export-controls { gap:4px; } .snu-app .nav-button { font-size:12px; }
+}
+@media(max-width:700px) {
+  .snu-app { grid-template-rows:96px 4px minmax(0,1fr) 110px; }
+  .snu-app .app-header { grid-template-columns:1fr; grid-template-rows:48px 38px; gap:0; padding:0 12px; }
+  .snu-app .brand-copy strong { font-size:10px; } .snu-app .psi-mark { width:32px; height:32px; }
+  .snu-app .chapter-nav { justify-content:flex-start; }
+  .snu-app .slide-stage { padding:6px; overflow:auto; }
+  .snu-app .snu-slide { min-width:0; min-height:100%; height:auto; overflow:visible; padding:18px; gap:16px; }
+  .snu-app .snu-slide h1 { font-size:26px; }
+  .snu-app .snu-slide .slide-eyebrow { font-size:10px; margin-bottom:8px; }
+  .snu-app .snu-slide .stack { height:auto; gap:16px; }
+  .snu-app .snu-grid { grid-template-columns:1fr; flex:none; gap:14px; }
+  .snu-app .snu-card { padding:18px; gap:10px; }
+  .snu-app .snu-card h2 { font-size:20px; }
+  .snu-app .snu-card p { font-size:16px; }
+  .snu-app .snu-slide .source { font-size:11px; }
+  .snu-app .snu-slide .callout { font-size:16px; padding:12px; }
+  .snu-app .snu-slide .equation { font-size:22px; padding:20px 10px; min-height:180px; gap:20px; }
+  .snu-app .equation-key { grid-template-columns:1fr; gap:12px; }
+  .snu-app .equation-key>div { font-size:14px; }
+  .snu-app .equation-key strong { font-size:20px; }
+  .snu-app .snu-slide[data-slide-key="erw-sensitivity"] .callout { font-size:1.2cqw; padding:.65cqw 1cqw; }
+.snu-slide .chart { min-height:320px; }
+  .snu-app .premise-panels { display:flex; flex-direction:column; gap:14px; }
+  .snu-app .mix-panels { display:flex; flex-direction:column; gap:14px; }
+  .snu-app .context-panel,.snu-app .mix-panel { height:390px; min-height:390px; }
+  .snu-app .setac-premise-workflow { grid-template-columns:1fr; gap:10px; }
+  .snu-app .setac-premise-workflow .story-step { padding:12px; }
+  .snu-app .setac-premise-workflow h3 { font-size:18px; }
+  .snu-app .setac-premise-workflow p { font-size:13px; }
+  .snu-app .setac-premise-workflow .workflow-logo { width:50px; height:50px; flex-basis:50px; }
+  .snu-app .context-controls .mix-sector-select,.snu-app .mix-sector-select { font-size:16px; }
+  .snu-app .mix-controls { flex-wrap:wrap; font-size:13px; gap:10px; }
+  .snu-app .segmented { font-size:14px; flex-wrap:wrap; gap:10px; }
+  .snu-app .erw-controls,.snu-app .source-grid { grid-template-columns:1fr; font-size:14px; gap:12px; }
+  .snu-app .erw-controls .dash-dropdown { font-size:15px; }
+  .snu-app .source-grid a { font-size:15px; }
+  .snu-app .comparison-table { font-size:12px; }
+  .snu-app .discussion-question { font-size:23px; }
+  .snu-app .discussion-label,.snu-app .small-label { font-size:11px; }
+  .snu-app .cover-copy { width:100%; }
+  .snu-app .cover-kicker { font-size:11px !important; }
+  .snu-app .cover-subtitle { font-size:20px !important; margin:20px 0 !important; }
+  .snu-app .cover-presenter,.snu-app .cover-presenter strong { font-size:17px; }
+  .snu-app .cover-pills span { font-size:12px; padding:8px; }
+  .snu-app .app-footer { display:flex; flex-wrap:wrap; justify-content:space-between; padding:8px 12px; gap:6px; }
+  .snu-app .setac-footer-tools { width:100%; order:4; justify-content:space-between; flex-wrap:wrap; }
+  .snu-app .nav-button { min-width:0; padding:10px 12px; font-size:11px; }
+  .snu-app .export-controls { font-size:9px; }
+  .snu-app .print-status { display:none; }
+}
+@media print {
+  @page { size:16in 9in; margin:0; }
+  .snu-app .print-deck .snu-slide { width:16in; height:9in; min-width:0; min-height:0; }
+  .snu-slide .source a { color:inherit; }
+}

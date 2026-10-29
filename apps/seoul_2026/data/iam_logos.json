@@ -1,0 +1,78 @@
+{
+  "scope": "Examples of widely used IAM families. Official model-family or team marks are labelled explicitly; artwork is copied unchanged from the cited primary pages. This list does not assert identical model coverage or which models supplied this lecture results.",
+  "models": [
+    {
+      "name": "REMIND–MAgPIE",
+      "filename": "magpie.png",
+      "image_alt": "MAgPIE model logo",
+      "caption": "PIK · MAgPIE mark",
+      "kind": "model-family component mark",
+      "homepage": "https://www.pik-potsdam.de/en/institute/departments/transformation-pathways/models/remind",
+      "source_page": "https://rse.pik-potsdam.de/doc/magpie/4.10.0/",
+      "asset_url": "https://rse.pik-potsdam.de/doc/magpie/4.10.0/images/logo.png",
+      "sha256": "ebb0a33a42a7f033fed9ea86c4145d4aa58792080ad75d99c3112362446e9ae4",
+      "accessed": "2026-10-29"
+    },
+    {
+      "name": "IMAGE",
+      "filename": "pbl.svg",
+      "image_alt": "Government of the Netherlands mark used by PBL",
+      "caption": "PBL · team mark",
+      "kind": "official host institution mark, not a separate IMAGE logo",
+      "homepage": "https://www.pbl.nl/en/image/home",
+      "source_page": "https://www.pbl.nl/en/image/home",
+      "asset_url": "https://www.pbl.nl/logo.svg",
+      "sha256": "c02fa85d402724b607bd6c7ce230f476705b4afb036c2b5056739d1c900a37e8",
+      "accessed": "2026-10-29"
+    },
+    {
+      "name": "MESSAGEix–GLOBIOM",
+      "filename": "messageix.svg",
+      "image_alt": "MESSAGEix and IIASA logo",
+      "caption": "IIASA · MESSAGEix mark",
+      "kind": "model-family component and institution mark",
+      "homepage": "https://docs.messageix.org/",
+      "source_page": "https://docs.messageix.org/en/stable/",
+      "asset_url": "https://docs.messageix.org/en/stable/_static/combined-logo-white.svg",
+      "dark": true,
+      "sha256": "b76ed832fb43cd01316ec7c4bb27f7cf9a09b232319079f313c3374a5a63c782",
+      "accessed": "2026-10-29"
+    },
+    {
+      "name": "GCAM",
+      "filename": "gcam.gif",
+      "image_alt": "University of Maryland seal used on GCAM documentation",
+      "caption": "JGCRI · UMD team mark",
+      "kind": "official partner institution mark, not a separate GCAM logo",
+      "homepage": "https://jgcri.github.io/gcam-doc/",
+      "source_page": "https://jgcri.github.io/gcam-doc/",
+      "asset_url": "https://jgcri.github.io/gcam-doc/images/logo.gif",
+      "sha256": "469a3a6d7f317a8a1e23e52e8abb68a98e4722db789455f1ef0d55fbc1263130",
+      "accessed": "2026-10-29"
+    },
+    {
+      "name": "AIM/CGE",
+      "filename": "aim-official.png",
+      "image_alt": "AIM Asia-Pacific Integrated Model logo",
+      "caption": "AIM model family",
+      "kind": "model-family mark",
+      "homepage": "https://www-iam.nies.go.jp/aim/",
+      "source_page": "https://www-iam.nies.go.jp/aim/",
+      "asset_url": "https://www-iam.nies.go.jp/aim/image/aim_logo.png",
+      "sha256": "3f60ee8231c83cfbfdcee47f080cdcc0a5e4a623a5685be23f2dea9cd316e422",
+      "accessed": "2026-10-29"
+    },
+    {
+      "name": "WITCH",
+      "filename": "witch.png",
+      "image_alt": "WITCH model and RFF-CMCC logo",
+      "caption": "WITCH · RFF-CMCC mark",
+      "kind": "model and institution mark",
+      "homepage": "https://www.witchmodel.org/",
+      "source_page": "https://www.witchmodel.org/",
+      "asset_url": "https://www.witchmodel.org/wp-content/uploads/2022/01/witch-eiee-logo-new-back_h70-2.png",
+      "sha256": "44d97adf7f3ca916f0247fafefedf09c8f288753e32bd356768972c53446e8a2",
+      "accessed": "2026-10-29"
+    }
+  ]
+}

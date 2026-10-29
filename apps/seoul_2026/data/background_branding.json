@@ -1,0 +1,29 @@
+{
+  "scope": "Original wordmarks identify the database and modelling tools. Unchanged local marks are embedded as data URIs for offline teaching and PDF export.",
+  "sources": [
+    {
+      "name": "ecoinvent",
+      "local_path": "assets/ecoinvent-logo.svg",
+      "source_page": "https://ecoinvent.org/",
+      "asset_url": "https://ecoinvent.org/app/uploads/2023/09/Logo-Wordmark.svg",
+      "sha256": "6c97ab747962bd0a81fb78c04deb1221deb0c49fd9da536428de840a238393d6",
+      "accessed": "2026-10-29"
+    },
+    {
+      "name": "premise",
+      "local_path": "../workshop/assets/premise-logo-transparent.png",
+      "source_page": "https://premise.readthedocs.io/",
+      "source": "Unchanged existing workshop project mark",
+      "sha256": "7296c7aa2e05c3d011e3ff4098e1f85adc120f1c645362e8847b60ee341c3378",
+      "accessed": "2026-10-29"
+    },
+    {
+      "name": "trails",
+      "local_path": "../lca_time/assets/trails-logo.png",
+      "source_page": "https://trails.readthedocs.io/",
+      "source": "Unchanged existing LCA-through-time project mark",
+      "sha256": "212b42bed9e1aaa74921e1d84b3ad05ae84d213a14a22251b26b7e469f716760",
+      "accessed": "2026-10-29"
+    }
+  ]
+}

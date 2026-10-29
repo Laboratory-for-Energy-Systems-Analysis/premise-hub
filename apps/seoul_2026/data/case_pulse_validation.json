@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "purpose": "Illustrative area matching of displayed median curves; not configuration-first ensemble equivalents",
+  "window": [
+    2020,
+    2030,
+    2100
+  ],
+  "cases": {
+    "DACCS": {
+      "project_start": 2030,
+      "background": "REMIND|SSP2-PkBudg1000",
+      "system_area": -43.473052647570775,
+      "reference_area_per_kg": 0.05574833245269861,
+      "matched_reference_area": -43.473052647570775,
+      "equivalent_kg": -779.8090227085595,
+      "equivalent_basis": "ratio of displayed median response areas; not an ensemble quantile"
+    },
+    "BECCS": {
+      "project_start": 2030,
+      "background": "REMIND|SSP2-PkBudg1000",
+      "system_area": -12.284170130450924,
+      "reference_area_per_kg": 0.05574833245269861,
+      "matched_reference_area": -12.284170130450924,
+      "equivalent_kg": -220.3504497802478,
+      "equivalent_basis": "ratio of displayed median response areas; not an ensemble quantile"
+    },
+    "ERW": {
+      "project_start": 2030,
+      "background": "REMIND|SSP2-EU21-PkBudg1000",
+      "system_area": -46.33836993380284,
+      "reference_area_per_kg": 0.05576778233218338,
+      "matched_reference_area": -46.338369933802845,
+      "equivalent_kg": -830.9164896998448,
+      "equivalent_basis": "ratio of displayed median response areas; not an ensemble quantile"
+    },
+    "Cement + CCS": {
+      "project_start": 2035,
+      "background": "REMIND|SSP2-PkBudg1000",
+      "system_area": -41.29168573744384,
+      "reference_area_per_kg": 0.05574833245269861,
+      "matched_reference_area": -41.29168573744385,
+      "equivalent_kg": -740.6801947390811,
+      "equivalent_basis": "ratio of displayed median response areas; not an ensemble quantile"
+    }
+  },
+  "reference_conventions": {
+    "released_reference_mass_kg": 1000,
+    "native_reference_time_coordinates": "half-years; integer SETAC export + 0.5 cross-checked over 206 shared samples",
+    "cement_bundle_id": "ccus-webinar-reviewed-2026-09-08/main",
+    "erw_reference_sha256": "449ad8f97208481d3377fb60c9fea16f3d169e0f2f04b5180b9ca6a482f6f99d",
+    "erw_background": "REMIND|SSP2-EU21-PkBudg1000",
+    "erw_config_count": 841
+  }
+}

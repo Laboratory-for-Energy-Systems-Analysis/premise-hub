@@ -1,0 +1,62 @@
+{
+  "daccs": {
+    "exact_topology_and_dates_match": true,
+    "exact_edge_signs_match": true,
+    "nodes": 32216,
+    "edges": 67342,
+    "inlined_services": 2,
+    "root_normalized_kg_stored": true,
+    "root_amount": 1000,
+    "instantaneous_emission_carriers_folded": 0,
+    "annual_root_coefficients_checked": true,
+    "direct_biosphere_profiles_preserved": true,
+    "emission_carrier_biosphere_equivalent": true,
+    "scope": "Equivalent integrated foreground root; retained dated supplier demands and direct biosphere profiles. Existing numerical LCA/FaIR artifacts are unchanged.",
+    "dated_supplier_demands": 46,
+    "max_absolute_numerical_difference": 2.2737367544323206e-13,
+    "dated_supplier_demands_equivalent": true,
+    "compiler_sha256": "f1ea1c0627c18d167a2ba32e5463200faa9e7e1e556d8e17737ccbb6c9d21d11"
+  },
+  "beccs": {
+    "exact_topology_and_dates_match": true,
+    "exact_edge_signs_match": true,
+    "nodes": 65562,
+    "edges": 125716,
+    "inlined_services": 1,
+    "root_normalized_kg_stored": true,
+    "root_amount": 1000,
+    "instantaneous_emission_carriers_folded": 0,
+    "annual_root_coefficients_checked": true,
+    "direct_biosphere_profiles_preserved": true,
+    "emission_carrier_biosphere_equivalent": true,
+    "scope": "Equivalent integrated foreground root; retained dated supplier demands and direct biosphere profiles. Existing numerical LCA/FaIR artifacts are unchanged.",
+    "dated_supplier_demands": 138,
+    "max_absolute_numerical_difference": 0.0,
+    "dated_supplier_demands_equivalent": true,
+    "compiler_sha256": "f1ea1c0627c18d167a2ba32e5463200faa9e7e1e556d8e17737ccbb6c9d21d11"
+  },
+  "cement": {
+    "exact_topology_and_dates_match": true,
+    "exact_edge_signs_match": true,
+    "nodes": 34097,
+    "edges": 93138,
+    "inlined_services": 2,
+    "root_normalized_kg_stored": true,
+    "root_amount": 1000,
+    "instantaneous_emission_carriers_folded": 120,
+    "annual_root_coefficients_checked": true,
+    "direct_biosphere_profiles_preserved": true,
+    "emission_carrier_biosphere_equivalent": true,
+    "scope": "Equivalent integrated foreground root; retained dated supplier demands and direct biosphere profiles. Existing numerical LCA/FaIR artifacts are unchanged.",
+    "dated_supplier_demands": 270,
+    "max_absolute_numerical_difference": 0.0,
+    "dated_supplier_demands_equivalent": true,
+    "compiler_sha256": "b00569a79962900b5dbd705ea65d2ebbd3f1b5cc3dc8a277dcaccf5c528cf74c"
+  },
+  "erw": {
+    "nodes": 44175,
+    "edges": 108521,
+    "exact_topology_and_dates_match": true,
+    "exact_edge_signs_match": true
+  }
+}

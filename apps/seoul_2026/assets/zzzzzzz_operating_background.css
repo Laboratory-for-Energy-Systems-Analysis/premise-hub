@@ -1,0 +1,13 @@
+/* Discussion 2 links dated emissions to an evolving operating background. */
+.operating-background-hint { display:grid; grid-template-columns:1fr 1.15fr; align-items:center; gap:1.5cqw; padding:1cqw 1.3cqw; border-left:4px solid var(--teal); border-radius:10px; background:#edf5f4; color:var(--psi-deep); flex-shrink:0; }
+.operating-background-message { display:flex; flex-direction:column; gap:.45cqw; font-size:1.25cqw; line-height:1.35; }
+.operating-background-message strong { font-size:1.5cqw; }
+.operating-background-timeline { display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:1cqw; }
+.operating-background-timeline>span { display:flex; flex-direction:column; gap:.45cqw; font-size:1.15cqw; line-height:1.3; }
+.operating-background-timeline strong { color:var(--teal); font-size:1.35cqw; }
+.operating-background-timeline>b { color:var(--teal); font-size:2.2cqw; }
+@media(max-width:700px) {
+ .snu-app .operating-background-hint { grid-template-columns:1fr; gap:18px; padding:16px; }
+ .snu-app .operating-background-message { gap:7px; font-size:16px; }.snu-app .operating-background-message strong { font-size:19px; }
+ .snu-app .operating-background-timeline { gap:12px; }.snu-app .operating-background-timeline>span { gap:6px; font-size:14px; }.snu-app .operating-background-timeline strong { font-size:16px; }.snu-app .operating-background-timeline>b { font-size:27px; }
+}

@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "service": "1 tonne CO2 physically retained in geological storage after conditioning and transport losses",
+  "comparison": "CCS minus BAU for the same associated clinker output; avoided emissions are not atmospheric removal",
+  "method": "Linear unit conversion of reviewed results. Static factors use each matching foreground; temporal and FaIR factors use equal-output mean storage over 2035\u20132064, matching the released per-tonne-clinker cohort normalization. Not a new LCA or FaIR run.",
+  "scope": "Derived normalization factors only; no private engineering inventory, provider copies or source cells exported. Requested by the presenter on 29 October 2026.",
+  "static_clinker_t_per_t_stored": {
+    "2025": 1.1351485762109934,
+    "2050": 1.2551211005126701,
+    "2035": 1.320117909129454
+  },
+  "campaign_clinker_t_per_t_stored": 1.2780630126313808,
+  "campaign_years": [
+    2035,
+    2064
+  ],
+  "source_bundle_id": "ccus-webinar-reviewed-2026-09-08",
+  "source_manifest_sha256": "21ae0b5dc8a697c9b15c5f2386527a19f983db264a5d0c5208edade49a4a213a",
+  "evidence_sha256": {
+    "generated/inventories/mtx_gas_heat_candidate/inventory_manifest_candidate.json": "f5d054ba6f6fd7b6034f06f0437cab09719f37126d0b67eece646f90691c41f2",
+    "generated/results/temporal_diagnostic/physical_flows.json": "b32da459643a6414fdc524864929dd70533221ab5fa722a5c04aa66969ed7a54",
+    "generated/results/temporal_diagnostic/manifest.json": "3467e21ec53aa99a0854c1d0d805a51d3e361e390647401967786195b8ab534f"
+  },
+  "current_capture_heat": "Gas boiler with explicit boiler-carbon recapture",
+  "future_capture_heat": "Heat pumps; no capture-boiler combustion stream",
+  "source_public_bundle_sha256": {
+    "main": "2ae9989bf31c5482949e63bf6637cc90f6f442d70ca57993bd5782527816f0d7",
+    "2035-SSP2-NPi": "5105c1b84ef0a35c9e4ffc9498537927b5c382c67290448b53eede171d61bc11",
+    "2035-SSP2-PkBudg1000": "6cf5bca8c3b60c1b7c09b1c9fa738b15c4bc3739191150aaed0d49bf580aa43a",
+    "2050-SSP2-NPi": "7511f01d07ff212cd9bc3189d64fabbe360816bb847789fb185ba7ec134058ee",
+    "2050-SSP2-PkBudg1000": "584caa27bfaa732e7baf5e2f4cd6ff8aa722b74846ce3fb827774c0f4e1c6009"
+  }
+}

@@ -1,0 +1,12 @@
+.future-comparison { display:flex; flex-direction:column; gap:.65cqw; height:100%; min-height:0; }
+.future-comparison>.comparison-grid { flex:1; min-height:0; }
+.future-scenario-controls { display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:.5cqw 1cqw; flex-shrink:0; color:var(--psi-deep); font-size:1.05cqw; }
+.future-bars-control { display:flex; align-items:center; gap:1cqw; }
+.future-pathway-picker { display:flex; gap:.8cqw; }
+.future-net-key { display:flex; flex-wrap:wrap; gap:.5cqw 1.3cqw; font-size:1cqw; }
+.future-net-key>span { display:flex; align-items:center; gap:.45cqw; }.future-net-key b { font-size:1.45cqw; line-height:1; }
+@media(max-width:700px) {
+ .snu-app .future-comparison { gap:18px; }.snu-app .future-scenario-controls { align-items:flex-start; gap:14px; font-size:16px; }
+ .snu-app .future-bars-control { flex-wrap:wrap; gap:12px; }.snu-app .future-pathway-picker { gap:12px; font-size:15px; }
+ .snu-app .future-net-key { gap:12px; font-size:14px; }.snu-app .future-net-key b { font-size:20px; }
+}

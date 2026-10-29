@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-10-29T14:49:20.856984+00:00",
+  "scenario_archive_sha256": "bd298b3e30d84adbb9dfe11c87654a318d7b8aed94e0357fa932a6e3dbcf9780",
+  "scope": "Actual TRAILS temporal_routing graph exports, fixed levels 0\u20134, normalized service at level zero. No LCI/LCIA/FaIR recomputation. Graph coefficients are not redistributed.",
+  "source_helper_sha256": {
+    "scripts/generate_routing_graphs.py": "ed57a4d1a8a02a5d7dfc5b3f70297cefd3a10ebfd490921ddd336e3606987779",
+    "workshop/temporal.py": "1ac7148bf1552862e2538b00d0c39c1de3e3c77ed18403545f11d8774a0b613b",
+    "workshop/lifetime.py": "c6d4c94504153a73cb22d79e11df4475e4f4e23d41224b70ee6c12e797f760cf"
+  },
+  "exporter_sha256": "964900b90aa631dff3b8b5e3fa27439eb2b2aed870c690632a46c0d1a936d4cd",
+  "topology_checks_sha256": "56e245856528f009f4a3141b0546b524f6df3cafa1968ae89a4af040c5b3b007",
+  "cases": {
+    "daccs": {
+      "nodes": 32216,
+      "edges": 67342,
+      "years": [
+        2005,
+        2080
+      ],
+      "functional_unit": "1 t CO2 physically stored",
+      "root_amount": 1000,
+      "depth_counts": {
+        "0": 1,
+        "1": 46,
+        "2": 238,
+        "3": 5330,
+        "4": 26601
+      },
+      "graph_sha256": "2c69a55dcdad26993e607fdaa044f5887bdfe5d8dd206b1b6ee5b42e10fc6fca",
+      "preview_sha256": "22c4cfedf3f6041444e094d04d7877af04848d24ae16a88ad46a13c2f52f1e6e",
+      "preview_representation": "Actual dated graph, levels 0\u20133; integrated functional-unit root at bottom; readable activity names; 720 x 650 at 2x; help hidden"
+    },
+    "beccs": {
+      "nodes": 65562,
+      "edges": 125716,
+      "years": [
+        2027,
+        2131
+      ],
+      "functional_unit": "1 t CO2 physically stored",
+      "root_amount": 1000,
+      "depth_counts": {
+        "0": 1,
+        "1": 138,
+        "2": 2146,
+        "3": 9930,
+        "4": 53347
+      },
+      "graph_sha256": "a85e34345a3442e9bb57805d941e2ff671bb17929c682b12cfae123c63e3fd79",
+      "preview_sha256": "97f7e90915a01846a7ed5427eed890c41ea2a18af9df293bcc6d0566f7677e65",
+      "preview_representation": "Actual dated graph, levels 0\u20133; integrated functional-unit root at bottom; readable activity names; 720 x 650 at 2x; help hidden"
+    },
+    "erw": {
+      "nodes": 44175,
+      "edges": 108521,
+      "years": [
+        2005,
+        2079
+      ],
+      "functional_unit": "1 t modelled eventual gross CO2 uptake potential",
+      "root_amount": 1000,
+      "depth_counts": {
+        "0": 1,
+        "1": 200,
+        "2": 520,
+        "3": 5929,
+        "4": 37525
+      },
+      "graph_sha256": "692b3480bda7c5fd2e28110ba14b2b0c49c597f36ca66d912117e86aea935281",
+      "preview_sha256": "9195beefd0df8fa812d818e64ade2adb8e470fb5a7a04445a3c50347264666bf",
+      "preview_representation": "Actual dated graph, levels 0\u20133; integrated functional-unit root at bottom; readable activity names; 720 x 650 at 2x; help hidden"
+    },
+    "cement": {
+      "nodes": 34097,
+      "edges": 93138,
+      "years": [
+        2005,
+        2100
+      ],
+      "functional_unit": "1 t CO2 physically stored",
+      "root_amount": 1000,
+      "depth_counts": {
+        "0": 1,
+        "1": 270,
+        "2": 1120,
+        "3": 4515,
+        "4": 28191
+      },
+      "graph_sha256": "568ec0409751b1265b0395d7ccbe374a2cb13b0caf23efbc7cc74ed0dfb6630e",
+      "preview_sha256": "05326052742472e8677f28e821e58f8b73f26366171bc6ba8db0df1ca5964844",
+      "preview_representation": "Actual dated graph, levels 0\u20133; integrated functional-unit root at bottom; readable activity names; 720 x 650 at 2x; help hidden"
+    }
+  },
+  "preview_refreshed_at": "2026-10-29T15:46:58.449636+00:00",
+  "viewer_template_sha256": "51238d91154d65fadbe3d402b18488a31d49dc2fd65b063aac4c69b966cfef0b",
+  "viewer_edge_width": 1.25,
+  "viewer_default_max_depth": 3,
+  "structure_reviewed_at": "2026-10-29T16:46:00.033963+00:00",
+  "structure_workflow_sha256": {
+    "apps/seoul_2026/scripts/routing_structure.py": "b00569a79962900b5dbd705ea65d2ebbd3f1b5cc3dc8a277dcaccf5c528cf74c",
+    "apps/seoul_2026/scripts/readable_activity_names.py": "3ff389aa09d7df8132b64ba2412b43efae081bbac7420f7d92c0ac71989c6d51",
+    "apps/seoul_2026/scripts/export_temporal_routes.py": "05b36139bd857591be9c0d4cbe6223b120b2ec628468dbc525d92e4aff5c6058"
+  }
+}

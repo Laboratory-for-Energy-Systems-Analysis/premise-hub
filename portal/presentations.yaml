@@ -1,6 +1,12 @@
 # Add new presentations here using an ISO date (YYYY-MM-DD). The home page
 # displays the newest entries first and becomes vertically scrollable as the
 # catalog grows. Use kind: external only with an HTTPS href.
+- id: seoul-time-explicit-lca-2026-10-30
+  title: Why timing matters in life cycle assessment
+  summary: Seoul National University graduate lecture. Follow DACCS, BECCS, coastal ERW and cement CCS through current, prospective static and time-explicit LCA, with IAM visuals, speaker notes and a 70-minute teaching plan.
+  date: 2026-10-30
+  href: /seoul-2026/
+  kind: hosted
 - id: setac-time-explicit-lca-2026-10-19
   title: "How time integration changes LCA: the case of CDR"
   summary: SETAC Europe LCA Case Study Symposium, Bruges. Prospective backgrounds, temporal inventories, radiative forcing and CO₂-pulse equivalence in 12 minutes.

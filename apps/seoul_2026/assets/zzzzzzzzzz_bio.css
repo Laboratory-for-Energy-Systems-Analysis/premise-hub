@@ -1,0 +1,61 @@
+.speaker-bio { display:grid; grid-template-columns:minmax(0,.75fr) minmax(0,.55fr) minmax(0,2.25fr); gap:1.6cqw; height:100%; min-height:0; }
+.bio-person { display:flex; flex-direction:column; gap:1cqw; min-height:0; }
+.bio-portrait { width:9cqw; height:12cqw; max-width:100%; min-height:0; object-fit:cover; object-position:center; border-radius:14px; }
+.bio-affiliation { display:flex; flex-direction:column; gap:.4cqw; padding:.3cqw .3cqw; }
+.snu-app .bio-role { font-size:1.8cqw; color:var(--psi-deep); }
+.snu-app .bio-affiliation p { font-size:1.07cqw; margin:0; line-height:1.4; color:#526e7b; }
+.snu-app .bio-institute { font-size:1.05cqw; line-height:1.4; color:var(--psi-deep); }
+.snu-app .bio-affiliation a { font-size:1.02cqw; margin-top:.3cqw; }
+.bio-location { display:block; margin-top:auto; }
+.bio-swiss-map { display:block; width:100%; height:auto; }
+.bio-timeline { display:flex; flex-direction:column; gap:1.6cqw; min-width:0; padding-left:.3cqw; }
+.snu-app .bio-timeline h2 { font-size:1.35cqw; color:var(--psi-deep); margin:0; }
+.bio-timeline ol { display:flex; flex-direction:column; gap:2.2cqw; list-style:none; margin:0; padding:0 0 0 1.15cqw; border-left:2px solid #c7dfe1; }
+.bio-timeline li { position:relative; display:flex; flex-direction:column; gap:.5cqw; }
+.bio-timeline li::before { content:''; position:absolute; left:-1.5cqw; top:.55cqw; width:.6cqw; height:.6cqw; border-radius:50%; background:#008a82; border:2px solid white; }
+.bio-timeline time { font-size:1.85cqw; color:#007a73; font-weight:750; }
+.bio-timeline strong { font-size:1.12cqw; line-height:1.4; color:var(--psi-deep); }
+.bio-timeline span { font-size:1cqw; line-height:1.45; color:#526e7b; }
+.bio-work { display:flex; flex-direction:column; justify-content:space-between; gap:1.2cqw; min-height:0; }
+.bio-work>section { display:flex; flex-direction:column; gap:.6cqw; }
+.snu-app .bio-work h2 { font-size:1.35cqw; margin:0; line-height:1.3; color:var(--psi-deep); }
+.bio-section-heading { display:flex; align-items:baseline; justify-content:space-between; gap:1cqw; }
+.snu-app .bio-section-heading>a { font-size:1cqw; }
+.bio-interest-grid,.bio-publication-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:.8cqw; }
+.bio-interest-grid article { display:grid; grid-template-columns:2.7cqw minmax(0,1fr); align-items:center; gap:.4cqw .6cqw; padding:.7cqw; border-radius:10px; border-top:3px solid var(--interest-colour); background:#f1f6f7; }
+.bio-interest-grid img { grid-row:1/3; width:2.7cqw; height:2.7cqw; }
+.snu-app .bio-interest-grid strong { font-size:1.13cqw; color:var(--psi-deep); }
+.snu-app .bio-interest-grid span { font-size:1cqw; color:#526e7b; line-height:1.35; }
+.bio-project-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.7cqw; }
+.bio-project { display:grid; grid-template-columns:3.4cqw minmax(0,1fr) auto; align-items:center; gap:.8cqw; padding:.6cqw .9cqw; border:1px solid #d2e1e7; border-radius:10px; text-decoration:none; background:#fbfdfd; }
+.bio-project-mark { width:3.4cqw; height:3.4cqw; object-fit:contain; }
+.bio-project>div { display:flex; flex-direction:column; gap:.3cqw; }
+.snu-app .bio-project strong { font-size:1.25cqw; color:#006f68; }
+.snu-app .bio-project span { font-size:1.05cqw; color:#526e7b; }
+.bio-project>b { color:#7295a0; }
+.bio-publication { display:flex; flex-direction:column; gap:.6cqw; padding:.9cqw; border:1px solid #d2e1e7; border-radius:10px; background:#f5f8fb; text-decoration:none; }
+.snu-app .bio-publication>span { font-size:.85cqw; line-height:1.4; color:#526e7b; }
+.snu-app .bio-publication>strong { font-size:1.13cqw; line-height:1.35; color:var(--psi-deep); }
+.snu-app .bio-publication>b { margin-top:auto; font-size:.95cqw; color:#00787a; }
+@media(max-width:700px) {
+ .speaker-bio { grid-template-columns:1fr; height:auto; gap:25px; }
+ .bio-person { display:grid; grid-template-columns:110px minmax(0,1fr); gap:16px; align-items:center; }
+ .bio-portrait { width:90px; height:120px; border-radius:12px; }
+ .bio-location { grid-column:1/-1; max-width:280px; justify-self:center; margin-top:12px; }
+ .bio-timeline { gap:16px; padding-left:0; }.snu-app .bio-timeline h2 { font-size:22px; }
+ .bio-timeline ol { gap:20px; padding-left:22px; }.bio-timeline li { gap:6px; }
+ .bio-timeline li::before { left:-28px; top:9px; width:8px; height:8px; }
+ .bio-timeline time { font-size:26px; }.bio-timeline strong { font-size:18px; }.bio-timeline span { font-size:15px; }
+ .bio-affiliation { gap:5px; padding:0; }
+ .snu-app .bio-role { font-size:23px; }.snu-app .bio-affiliation p,.snu-app .bio-institute { font-size:13px; }.snu-app .bio-affiliation a { font-size:14px; }
+ .bio-work { gap:25px; }.bio-work>section { gap:12px; }
+ .snu-app .bio-work h2 { font-size:22px; }.snu-app .bio-section-heading>a { font-size:13px; }
+ .bio-section-heading { flex-wrap:wrap; gap:8px; }
+ .bio-interest-grid,.bio-project-grid,.bio-publication-grid { grid-template-columns:1fr; gap:12px; }
+ .bio-interest-grid article { grid-template-columns:38px 1fr; gap:7px 12px; padding:14px; }
+ .bio-interest-grid img { width:38px; height:38px; }
+ .snu-app .bio-interest-grid strong { font-size:18px; }.snu-app .bio-interest-grid span { font-size:15px; }
+ .bio-project { grid-template-columns:45px 1fr auto; gap:15px; padding:14px; }.bio-project-mark { width:45px; height:45px; }.bio-project>div { gap:6px; }
+ .snu-app .bio-project strong { font-size:20px; }.snu-app .bio-project span { font-size:14px; }
+ .bio-publication { gap:10px; padding:16px; }.snu-app .bio-publication>span { font-size:13px; }.snu-app .bio-publication>strong { font-size:18px; }.snu-app .bio-publication>b { font-size:14px; }
+}

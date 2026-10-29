@@ -1,0 +1,72 @@
+/* Slide 14: the data handoff and dated demand expansion share one canvas. */
+.routing-split { display:grid; grid-template-columns:1fr 1fr; gap:2.2cqw; flex:1; min-height:0; }
+.route-left-pane,.route-right-pane { min-width:0; min-height:0; display:flex; flex-direction:column; gap:.8cqw; }
+.route-left-pane { border-right:1px solid #cfdee4; padding-right:2.2cqw; }
+.story-slide .routing-split h2 { font-size:1.5cqw; color:var(--psi-deep); margin:0; line-height:1.2; }
+.route-data-workflow { display:flex; flex-direction:column; flex:1; min-height:0; }
+.route-workflow-card { background:#f2f7f9; border:1px solid #d3e2e8; border-radius:11px; padding:.65cqw 1cqw; min-height:0; }
+.route-flow-arrow { text-align:center; color:#4b8190; font-size:1.55cqw; line-height:1.1; flex-shrink:0; }
+.route-inputs { display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:1cqw; }
+.route-inputs>div { display:flex; flex-direction:column; align-items:center; gap:.25cqw; }
+.route-inputs strong { font-size:1.25cqw; color:var(--psi-deep); }
+.route-inputs span { font-size:1.05cqw; color:#526e7b; }
+.route-inputs>div>span:first-child { font-weight:700; color:var(--psi-deep); }
+.route-inputs>b { color:#728d99; font-size:1.8cqw; }
+.route-database { display:flex; align-items:center; justify-content:center; gap:.4cqw; }
+.route-database .background-database-icon { width:2.3cqw; height:2.3cqw; }
+.route-ecoinvent { width:8.3cqw; height:2.2cqw; object-fit:contain; }
+.route-premise-card,.route-trails-card { display:grid; grid-template-columns:8cqw 1fr; align-items:center; gap:1cqw; }
+.route-premise,.route-trails { width:8cqw; height:3.2cqw; object-fit:contain; }
+.route-premise-card>div,.route-trails-card>div,.route-package-heading,.route-temporal-input { display:flex; flex-direction:column; gap:.28cqw; }
+.route-workflow-card strong { font-size:1.22cqw; color:var(--psi-deep); }
+.route-workflow-card span { font-size:1.04cqw; line-height:1.3; color:#526e7b; }
+.route-package-card { flex:1; display:flex; flex-direction:column; gap:.4cqw; padding-top:.7cqw; padding-bottom:.7cqw; }
+.route-package-matrices { flex:1; min-height:0; width:100%; object-fit:contain; }
+.route-temporal-input { border-top:1px solid #c9dce2; padding-top:.55cqw; }
+.route-trails-card { border-color:#83b8af; background:#eaf5f1; }
+.route-right-heading { display:flex; flex-direction:column; gap:.3cqw; }
+.route-right-heading>span { color:#607780; font-size:1.02cqw; }
+.route-right-pane>.lesson-switch { gap:.6cqw; }
+.route-right-pane .lesson-tabs { gap:.35cqw; }
+.route-right-pane .lesson-tabs button { padding:.48cqw .65cqw; font-size:1.06cqw; }
+.route-case-panel { display:flex; flex-direction:column; gap:.45cqw; flex:1; min-height:0; width:100%; }
+.route-case-title { display:flex; justify-content:space-between; gap:.7cqw; align-items:center; }
+.route-case-title span { font-size:1.35cqw; font-weight:750; color:var(--case-colour); }
+.route-case-title strong { font-size:1.08cqw; color:#526e7b; }
+.route-network { flex:1; width:100%; min-height:0; object-fit:contain; }
+.route-frame { flex:1; min-height:0; width:100%; border:1px solid #c6dce5; border-radius:10px; background:#f8fbfc; }
+.route-case-title>a { color:#526e7b; font-size:1.05cqw; text-decoration:none; }
+.route-print-view { flex:1; min-height:0; display:flex; flex-direction:column; gap:.4cqw; }
+.route-print-service { padding:.5cqw .8cqw; color:var(--psi-deep); background:#edf5f3; font-size:1.15cqw; border-radius:6px; }
+.route-printed-graph { flex:1; width:100%; min-height:0; object-fit:contain; }
+.route-print-caption { font-size:1.02cqw; color:#526e7b; }
+.route-event-profile { display:flex; align-items:center; gap:.8cqw; padding:.6cqw .75cqw; border-left:4px solid var(--case-colour); border-radius:0 9px 9px 0; background:#f2f7f9; }
+.route-event-profile>img { width:2.7cqw; height:2.7cqw; flex-shrink:0; }
+.route-event-profile>div { display:flex; flex-direction:column; gap:.18cqw; }
+.route-event-profile strong { color:var(--case-colour); font-size:1.13cqw; }
+.route-event-profile span { font-size:1.03cqw; line-height:1.3; color:#526e7b; }
+@media(max-width:700px) {
+ .snu-app .routing-split { grid-template-columns:1fr; gap:28px; flex:none; }
+ .snu-app .route-left-pane { border-right:0; border-bottom:1px solid #cfdee4; padding:0 0 24px; }
+ .snu-app .route-left-pane,.snu-app .route-right-pane { gap:15px; }
+ .snu-app .routing-split h2 { font-size:21px; }
+ .snu-app .route-workflow-card { padding:14px; border-radius:10px; }
+ .snu-app .route-inputs { gap:12px; }.snu-app .route-inputs>div { gap:5px; }
+ .snu-app .route-workflow-card strong { font-size:17px; }
+ .snu-app .route-workflow-card span { font-size:14px; }
+ .snu-app .route-inputs>b { font-size:25px; }
+ .snu-app .route-database { gap:5px; }.snu-app .route-database .background-database-icon { width:30px; height:30px; }
+ .snu-app .route-ecoinvent { width:92px; height:28px; }
+ .snu-app .route-premise-card,.snu-app .route-trails-card { grid-template-columns:84px 1fr; gap:12px; }
+ .snu-app .route-premise,.snu-app .route-trails { width:84px; height:50px; }
+ .snu-app .route-package-card { gap:12px; }.snu-app .route-package-matrices { flex:none; height:155px; }
+ .snu-app .route-temporal-input { padding-top:12px; gap:7px; }
+ .snu-app .route-flow-arrow { font-size:24px; }
+ .snu-app .route-right-heading>span { font-size:14px; }
+ .snu-app .route-right-pane .lesson-tabs button { font-size:14px; padding:10px; }
+ .snu-app .route-case-title span { font-size:20px; }.snu-app .route-case-title strong { font-size:14px; }
+ .snu-app .route-case-panel { gap:14px; }.snu-app .route-network { flex:none; height:auto; }
+ .snu-app .route-frame { flex:none; height:520px; }.snu-app .route-case-title>a { font-size:14px; }
+ .snu-app .route-event-profile { gap:12px; padding:12px; }.snu-app .route-event-profile>img { width:32px; height:32px; }
+ .snu-app .route-event-profile strong { font-size:16px; }.snu-app .route-event-profile span { font-size:14px; }
+}

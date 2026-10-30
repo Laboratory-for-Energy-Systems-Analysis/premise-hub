@@ -174,7 +174,7 @@ def iam_systems():
     return html.Div([panels, _iam_model_strip()], className="iam-expanded-lesson")
 
 
-def scenario_layers():
+def scenario_layers(ssp_index, pathways_index):
     original = workshop.slide_scenario_combinations()
     equation = find(original, "scenario-equation")
     parts = [c for c in equation.children
@@ -232,6 +232,7 @@ def scenario_layers():
                     html.B("SSP2 + REMIND-EU"),
                     html.Div([html.Span("NPi"), html.Small("Implemented national policies")]),
                     html.Div([html.Span("PkBudg1000"), html.Small("Carbon-budget constraint")]),
+                    html.Small("Median GMST · above 1850–1900"),
                 ], className="scenario-lecture-example"),
             ], className="scenario-model-link"),
             html.Article([
@@ -252,6 +253,10 @@ def scenario_layers():
                 html.Span([html.B("WG III"), "Mitigation pathways"]),
             ], className="scenario-ipcc-groups"),
         ], className="scenario-ipcc"),
+        html.Div([
+            html.A("SSP narratives · more detail →", href=f"#slide-{ssp_index}", className="scenario-detail-link"),
+            html.A("RCP / emissions trajectories · more detail →", href=f"#slide-{pathways_index}", className="scenario-detail-link"),
+        ], className="scenario-backup-links"),
         html.Div([
             html.A("IPCC AR6 · SSP framework", href="https://www.ipcc.ch/report/ar6/wg1/chapter/chapter-1/", target="_blank", rel="noopener noreferrer"),
             html.A("AR6 illustrative scenarios", href="https://www.ipcc.ch/report/ar6/wg1/chapter/summary-for-policymakers/", target="_blank", rel="noopener noreferrer"),

@@ -15,7 +15,7 @@ import plotly.graph_objects as go
 from .visuals import CASES, CASE, timeline, icon_svg, svg_uri
 from . import comparison as compare
 from .layout import PREFIX
-from .branding import logo, logo_uri, database_icon
+from .branding import logo, logo_uri, database_icon, tool_link
 
 
 def lesson_switch(name, panels, *, print_mode=False):
@@ -137,7 +137,7 @@ def supplier_trace():
 
     def step(number, title, main, detail):
         return html.Article([
-            html.Span(number), html.H2(title),
+            html.Span(number), html.H2(tool_link("premise", title) if number == "02" else title),
             *([logo("premise", "trace-premise-logo")] if number == "02" else []),
             html.Strong(main), html.P(detail),
             *([html.Div([
@@ -258,8 +258,10 @@ def fair_handoff():
         "without-project to obtain the climate response."
     )
     return html.Div(
-        html.Img(src=svg_uri(body,1400,142,description),alt=description,
-                 className="fair-consistency-graph"),
+        [html.Img(src=svg_uri(body,1400,142,description),alt=description,
+                  className="fair-consistency-graph"),
+         html.Div([tool_link("premise"), " → ", tool_link("trails"), " → ", tool_link("fair")],
+                  className="tool-reference-links")],
         className="fair-handoff",
         **{"data-reused-from": "/setac-2026/ · TRAILS inventories into FaIR"},
     )

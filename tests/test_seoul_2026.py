@@ -146,6 +146,82 @@ def test_pdf_defaults_and_backup_pages():
     assert "case-pulse-equivalence" in repr(pages[1])
 
 
+def test_scenario_detail_links_return_to_slide_ten_and_backups_are_untimed():
+    from apps.seoul_2026.deck import BACKUPS, presenter_slides
+
+    assert SLIDE_INDEX["scenario"] == 9
+    keys = ("ssp-narratives", "climate-trajectories")
+    assert len(BACKUPS) == 8
+    links = {getattr(c, "href", None) for c in walk(render_slide(9))}
+    for key in keys:
+        index = SLIDE_INDEX[key]
+        assert f"#slide-{index}" in links
+        assert ALL_SLIDES[index]["seconds"] == 0
+        assert 4 <= len(presenter_slides()[index]["notes"]) <= 5
+        assert "#slide-9" in {getattr(c, "href", None) for c in walk(render_slide(index))}
+    assert {p["key"] for p in presenter_slides()} == {s["key"] for s in ALL_SLIDES}
+
+
+def test_warming_labels_preserve_scenario_values_and_numeric_results():
+    from apps.seoul_2026.app import update_future_pathway, update_context
+    from apps.seoul_2026.scenario_labels import LABELS
+    from apps.setac_2026.figures import scenario_context_rows
+    from apps.seoul_2026.editorial import plain_text
+
+    rows = {r["pathway"]: float(r["value"]) for r in scenario_context_rows()
+            if r["indicator"] == "GMST" and r["region"] == "World" and int(r["year"]) == 2100}
+    assert round(rows["SSP2-NPi"], 1) == 2.6
+    assert rows["SSP2-PkBudg1000"] < 2
+    scenario = plain_text(render_slide(9))
+    assert all(label in scenario for label in LABELS.values())
+    assert "NPi" not in scenario and "PkBudg1000" not in scenario
+    # Earlier scenario-introduction slides keep their existing identifiers.
+    assert "NPi" in plain_text(render_slide(SLIDE_INDEX["pathways"]))
+    options = next(c.options for c in walk(render_slide(SLIDE_INDEX["future"]))
+                   if getattr(c, "id", None) == "future-pathway")
+    assert {o["value"] for o in options} == set(LABELS)
+    assert {o["label"] for o in options} == {"<2 °C in 2100 (default)", "~2.6 °C in 2100"}
+    for pathway in LABELS:
+        figures = update_future_pathway(pathway)[:4]
+        for figure in figures:
+            assert figure.layout.meta["bars_pathway"] == pathway
+            assert set(figure.layout.meta["scenario_net_scores"]) == set(LABELS)
+            assert {label + " net" for label in LABELS.values()} <= {t.name for t in figure.data}
+            assert all("NPi" not in str(t.customdata) and "PkBudg1000" not in str(t.customdata)
+                       for t in figure.data)
+        context = update_context("GMST", "World", pathway)[0]
+        assert {t.name for t in context.data} == set(LABELS.values())
+
+
+def test_foreground_and_tool_introductions_link_to_documentation():
+    from apps.seoul_2026.branding import TOOL_URLS
+    from apps.seoul_2026.editorial import plain_text
+
+    foreground = render_slide(SLIDE_INDEX["supply-chain"])
+    assert "Foreground systems modelled with Brightway" in " ".join(plain_text(foreground).split())
+    for key, tools in {
+        "supply-chain": ("brightway",),
+        "suppliers": ("premise",),
+        "trails": ("premise", "trails"),
+        "response": ("premise", "trails", "fair"),
+        "workflow": ("premise", "trails", "fair"),
+    }.items():
+        for print_mode in (False, True):
+            links = {getattr(c, "href", None) for c in walk(render_slide(SLIDE_INDEX[key], print_mode=print_mode))}
+            assert {TOOL_URLS[tool] for tool in tools} <= links
+
+
+def test_supplier_lesson_opens_supply_mixes_and_links_to_explorer():
+    slide = render_slide(SLIDE_INDEX["suppliers"])
+    tabs = [c for c in walk(slide) if getattr(c, "role", None) == "tab"]
+    assert tabs[0].children == "Explore supply mixes"
+    assert getattr(tabs[0], "aria-selected") == "true"
+    assert any(getattr(c, "href", None) == "/scenarios/" for c in walk(slide))
+    printed = render_slide(SLIDE_INDEX["suppliers"], print_mode=True)
+    assert "context-chart" not in {getattr(c, "id", None) for c in walk(printed)}
+    assert any(getattr(c, "className", "") == "scenario-explorer-link" for c in walk(printed))
+
+
 def test_process_carousel_and_pdf_preserve_each_technology():
     slide = render_slide(SLIDE_INDEX["supply-chain"])
     panels = [c for c in walk(slide) if getattr(c, "className", "") == "process-panel"]

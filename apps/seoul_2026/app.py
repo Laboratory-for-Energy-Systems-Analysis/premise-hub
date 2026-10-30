@@ -8,7 +8,7 @@ from dash.exceptions import PreventUpdate
 from flask import abort, render_template, send_from_directory, Response, request
 
 from apps.setac_2026.system_flows import system_flow_svg
-from apps.setac_2026.app import update_mixes, update_context
+from apps.setac_2026.app import update_mixes as source_update_mixes, update_context as source_update_context
 
 from .deck import ALL_SLIDES, CHAPTERS, CORE_COUNT, render_slide, presenter_slides
 from . import comparison as compare
@@ -17,6 +17,7 @@ from . import case_pulse as pulse_lesson
 from .routing import verified_route_path, shallow_route_json
 from .visuals import CASES
 from .layout import UPLOAD_NAME
+from .scenario_labels import warming_figure
 
 ROOT = Path(__file__).resolve().parent
 REQUESTS_PREFIX = os.getenv("SEOUL_2026_REQUESTS_PREFIX", "/")
@@ -322,6 +323,15 @@ def show_slide(current):
     )
 
 
+def update_mixes(pathway, sector):
+    return [warming_figure(figure) for figure in source_update_mixes(pathway, sector)]
+
+
+def update_context(indicator, region, pathway):
+    figure, options, value, note = source_update_context(indicator, region, pathway)
+    return warming_figure(figure), options, value, note
+
+
 app.callback(
     Output("mix-electricity", "figure"),
     Output("mix-heat", "figure"),
@@ -352,7 +362,7 @@ def update_future_pathway(pathway):
                 co2_terms=True, default_view="activities", pathway=pathway,
                 show_scenarios=True) for case in CASES]
     scores = ["2050: " + compare.number(compare.snapshot(case, 2050, pathway)) for case in CASES]
-    return figures + scores
+    return [warming_figure(figure) for figure in figures] + scores
 
 
 @app.callback(

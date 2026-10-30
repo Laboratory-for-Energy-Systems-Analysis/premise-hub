@@ -14,6 +14,18 @@ ASSETS = {
     "trails": (ROOT.parent / "lca_time/assets/trails-logo.png", "image/png"),
     "edges": (ROOT / "assets/edges-logo.png", "image/png"),
 }
+TOOL_URLS = {
+    "brightway": "https://docs.brightway.dev/en/latest/",
+    "premise": "https://premise.readthedocs.io/en/latest/",
+    "trails": "https://trails.readthedocs.io/en/latest/",
+    "fair": "https://docs.fairmodel.net/en/latest/",
+}
+
+
+def tool_link(name, label=None):
+    return html.A(label or {"brightway": "Brightway", "trails": "TRAILS", "fair": "FaIR"}.get(name, name),
+                  href=TOOL_URLS[name], target="_blank", rel="noopener noreferrer",
+                  className="tool-link")
 
 
 @lru_cache(maxsize=4)

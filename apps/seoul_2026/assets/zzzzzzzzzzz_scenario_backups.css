@@ -1,0 +1,48 @@
+/* Detail slides keep the narrative distinctions visible at lecture scale. */
+.scenario-backup { display:flex; flex-direction:column; height:100%; min-height:0; gap:.65cqw; }
+.scenario-backup-intro { font-size:1.15cqw; line-height:1.4; color:var(--muted); }
+.ssp-narrative-table { width:100%; border-collapse:collapse; flex:1; font-size:1.02cqw; line-height:1.35; }
+.ssp-narrative-table th,.ssp-narrative-table td { padding:.4cqw .85cqw; text-align:left; border-bottom:1px solid var(--line); vertical-align:middle; }
+.ssp-narrative-table thead th { background:#eaf2f5; color:var(--psi-deep); font-size:.9cqw; }
+.ssp-narrative-table tbody th { width:19%; border-left:4px solid var(--story-colour); background:#f2f7f8; }
+.ssp-narrative-table tbody th strong,.ssp-narrative-table tbody th b,.ssp-narrative-table tbody th small { display:block; }
+.ssp-narrative-table tbody th strong { color:var(--story-colour); font-size:1.25cqw; }
+.ssp-narrative-table tbody th b { font-size:1.05cqw; color:var(--psi-deep); }
+.ssp-narrative-table tbody th small { font-size:.87cqw; font-weight:400; color:var(--muted); }
+.ssp-narrative-table td:last-child { width:12%; font-size:.95cqw; white-space:nowrap; font-weight:700; }
+.scenario-backup-takeaway { padding:.7cqw .9cqw; border-left:4px solid var(--teal); background:#e8f3ef; font-size:1.08cqw; line-height:1.4; color:var(--psi-deep); }
+.scenario-backup-references { display:flex; flex-wrap:wrap; gap:.4cqw 1.4cqw; font-size:.85cqw; }
+.scenario-backup-nav,.scenario-backup-links { display:flex; flex-wrap:wrap; gap:.5cqw 1cqw; flex-shrink:0; }
+.scenario-backup-nav { justify-content:space-between; }
+.scenario-backup-nav a,.scenario-detail-link { padding:.45cqw .8cqw; border:1px solid #a7c8d3; border-radius:7px; background:#f1f7f9; font-size:1cqw; font-weight:700; text-decoration:none; }
+.scenario-backup-nav a:focus-visible,.scenario-detail-link:focus-visible { outline:3px solid #d99614; outline-offset:2px; }
+.trajectory-story-grid { display:grid; grid-template-columns:1fr 1.1fr; gap:1.3cqw; flex:1; min-height:0; }
+.trajectory-story-grid>article { display:flex; flex-direction:column; min-width:0; padding:1cqw; border:1px solid var(--line); background:#f3f7f9; border-radius:12px; gap:.65cqw; }
+.story-slide .trajectory-story-grid h2 { margin:0; color:var(--psi-deep); font-size:1.5cqw; }
+.story-slide .trajectory-story-grid p { margin:0; color:var(--muted); font-size:1cqw; line-height:1.4; }
+.trajectory-stories { display:flex; flex-direction:column; justify-content:space-evenly; flex:1; gap:.6cqw; }
+.trajectory-story { display:grid; grid-template-columns:6.2cqw 1fr; gap:.8cqw; padding:.45cqw 0 .45cqw .65cqw; border-left:3px solid var(--story-colour); }
+.trajectory-story>strong { font-size:1.1cqw; }
+.trajectory-story>div { display:flex; flex-direction:column; gap:.2cqw; }
+.trajectory-story b { font-size:1.08cqw; color:var(--psi-deep); }
+.trajectory-story span { font-size:1.02cqw; line-height:1.4; }
+@media(max-width:700px) {
+ .snu-app .scenario-backup { height:auto; gap:16px; }
+ .snu-app .scenario-backup-intro,.snu-app .scenario-backup-takeaway { font-size:15px; }
+ .snu-app .scenario-backup-takeaway { padding:12px; }
+ .snu-app .ssp-narrative-table,.snu-app .ssp-narrative-table tbody,.snu-app .ssp-narrative-table tr,.snu-app .ssp-narrative-table td,.snu-app .ssp-narrative-table tbody th { display:block; width:100%; }
+ .snu-app .ssp-narrative-table thead { display:none; }
+ .snu-app .ssp-narrative-table td,.snu-app .ssp-narrative-table th { padding:10px 12px; font-size:15px; }
+ .snu-app .ssp-narrative-table tbody th strong { font-size:20px; }.snu-app .ssp-narrative-table tbody th b { font-size:17px; }.snu-app .ssp-narrative-table tbody th small { font-size:14px; }
+ .snu-app .ssp-narrative-table td:last-child { width:100%; font-size:14px; margin-bottom:18px; }
+ .snu-app .ssp-narrative-table td:last-child::before { content:'Mitigation / adaptation: '; font-weight:400; }
+ .snu-app .scenario-backup-references { font-size:12px; gap:10px; }
+ .snu-app .scenario-backup-nav a,.snu-app .scenario-detail-link { font-size:14px; padding:9px 12px; }
+ .snu-app .scenario-backup-nav,.snu-app .scenario-backup-links { gap:10px; }
+ .snu-app .trajectory-story-grid { grid-template-columns:1fr; gap:16px; }
+ .snu-app .trajectory-story-grid>article { padding:16px; gap:12px; }
+ .snu-app .story-slide .trajectory-story-grid h2 { font-size:21px; }.snu-app .story-slide .trajectory-story-grid p { font-size:15px; }
+ .snu-app .trajectory-stories { gap:14px; }.snu-app .trajectory-story { grid-template-columns:85px 1fr; gap:12px; padding:8px 0 8px 10px; }
+ .snu-app .trajectory-story>strong,.snu-app .trajectory-story b,.snu-app .trajectory-story span { font-size:15px; }
+}
+@media print { .scenario-backup-nav,.scenario-backup-links { display:none; } }

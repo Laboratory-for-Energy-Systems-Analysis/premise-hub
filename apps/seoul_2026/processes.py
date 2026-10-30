@@ -5,7 +5,7 @@ from dash import html
 from .visuals import CASE, CASES, icon_svg, label, svg_uri
 from .carbon import ORIGINS, FOSSIL, NON_FOSSIL
 from .layout import PREFIX
-from .branding import logo_uri
+from .branding import logo_uri, tool_link
 
 FLOW = {
     "carbon": "#00877d",
@@ -624,6 +624,11 @@ def process_carousel(selected_case=None):
                     )
                     for i, case in enumerate(CASES)
                 ],
+            ),
+            html.Div(
+                ["Foreground systems modelled with ", tool_link("brightway"),
+                 " · linked to ecoinvent background suppliers"],
+                className="foreground-modelling",
             ),
             html.Div(
                 [

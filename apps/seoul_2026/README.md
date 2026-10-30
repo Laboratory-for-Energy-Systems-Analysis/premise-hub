@@ -14,7 +14,19 @@ Northern European case setup**, with each case's original documented location,
 inventory and results. The proposed move to South Korea and IMAGE build are
 cancelled; no Korean recalculations remain pending.
 
-Latest sequence: **23 core + six backup slides**, **27/33-page core/full PDFs**.
+Latest sequence: **23 core + eight backup slides**, **27/35-page core/full PDFs**.
+Slide 10 links to two untimed detail slides adapted from the IAM workshop:
+all five SSP development narratives and the four original RCPs alongside the
+five AR6 illustrative emissions pathways. Both detail slides link back to slide 10.
+From slide 10 onward, audience labels use **~2.6 °C in 2100** and **<2 °C in 2100** for the
+unchanged SSP2-NPi and SSP2-PkBudg1000 pathways. These describe the stored
+MAGICC7 median GMST in 2100 above 1850–1900 (2.5689 and 1.7560 °C), not
+temperature guarantees or replacements with AR6 illustrative scenarios.
+Original identifiers remain in form values, calculation metadata and source notes.
+Slide 5 explicitly identifies Brightway as the foreground modelling tool.
+Tool introductions link to Brightway, premise, TRAILS and FaIR documentation.
+Slide 11 opens with **Explore supply mixes** and includes a prominent link to
+the portal's scenario explorer; the tracing example remains in the second tab.
 New **slide 2** introduces Romain with the supplied portrait, confirmed Scientist
 role at PSI, a 2012/2018/2019 education/career timeline, a Switzerland map
 locating PSI near Villigen, research interests, four collaborative GitHub

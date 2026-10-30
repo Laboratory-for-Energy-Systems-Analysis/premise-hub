@@ -1,7 +1,7 @@
 """An evidence-to-result workflow with explicit analyst choices and tool roles."""
 
 from dash import html
-from .branding import logo
+from .branding import logo, tool_link
 from .visuals import icon_svg, svg_uri
 
 
@@ -22,9 +22,9 @@ def workflow_map():
     ]
     stages = (
         ("01","Frame","Foreground + reference","Specify the service and the system without the intervention.","Study definition","#527b90"),
-        ("02","Transform","ecoinvent · IAMs · premise","Translate scenario pathways into changing life-cycle suppliers.","Future supplier data","#3292b5"),
-        ("03","Date + solve","TRAILS","Route temporal exchanges and solve the year-specific supply chains.","GHG emissions by year","#008a82"),
-        ("04","Simulate","FaIR","Compare the same climate background with and without the project.","Forcing + temperature","#7656a8"),
+        ("02","Transform",["ecoinvent · IAMs · ",tool_link("premise")],"Translate scenario pathways into changing life-cycle suppliers.","Future supplier data","#3292b5"),
+        ("03","Date + solve",tool_link("trails"),"Route temporal exchanges and solve the year-specific supply chains.","GHG emissions by year","#008a82"),
+        ("04","Simulate",tool_link("fair"),"Compare the same climate background with and without the project.","Forcing + temperature","#7656a8"),
         ("05","Interpret","Trajectory + CO₂-pulse-eq","Report the response curve together with a declared comparison window.","A dated climate result","#3e7654"),
     )
     return html.Div([

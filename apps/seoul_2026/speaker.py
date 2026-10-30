@@ -1,6 +1,20 @@
 """Short, authored speaking points; detailed scientific context stays in deck.py."""
 
 POINTS = {
+    "ssp-narratives": [
+        "SSP1 pairs cooperation and inclusive development with resource efficiency; SSP2 continues uneven historical trends.",
+        "SSP3 prioritises national security and domestic supply, weakening trade, development and technology diffusion.",
+        "SSP4 concentrates wealth and technological capability among elites, leaving vulnerable groups with limited adaptive capacity.",
+        "SSP5 combines fast development and innovation with high consumption and fossil energy demand; innovation alone does not guarantee mitigation.",
+        "Read mitigation/adaptation challenges as relative socioeconomic conditions. An SSP can support multiple forcing pathways, subject to model feasibility; use the return link to resume slide 10.",
+    ],
+    "climate-trajectories": [
+        "The four original RCPs describe concentration and forcing pathways: 2.6 peaks then declines, 4.5 and 6.0 stabilise after 2100, and 8.5 keeps rising.",
+        "The suffix gives approximate forcing in W/m², not warming in degrees Celsius, and an RCP has no unique societal storyline.",
+        "In the AR6 illustrative set, SSP1-1.9 reaches net-zero CO₂ around 2050; SSP1-2.6 reaches it later, with net-negative emissions thereafter.",
+        "SSP2-4.5 declines after mid-century without reaching net zero by 2100; SSP3-7.0 and SSP5-8.5 illustrate high and very high emissions.",
+        "Similar endpoint forcing need not mean identical emissions, peak warming or impacts. Our ~2.6 °C / <2 °C labels are stored 2100 GMST medians for NPi / PkBudg1000, not AR6 scenario substitutions.",
+    ],
     "cover": [
         "Ask how time changes the assessment of long-lived systems in rapidly changing economies.",
         "Follow DACCS, BECCS, coastal ERW and cement with CCS throughout the lecture.",
@@ -28,7 +42,7 @@ POINTS = {
         "Keep each case’s service and no-project reference visible rather than ranking unlike services.",
     ],
     "supply-chain": [
-        "Trace analyst-defined foreground flows; shaded inputs connect to ecoinvent background unit processes.",
+        "We model these analyst-defined foreground systems with Brightway; shaded inputs connect to ecoinvent background unit processes. The Brightway name links to its documentation.",
         "Low-temperature solid-sorbent DAC needs 12.24 GJ capture heat from a COP-3 heat pump using 1.134 MWh, plus 0.720 MWh direct capture electricity.",
         "BECCS exports only the energy remaining after internal capture heat use.",
         "ERW uses olivine-rich rock, with eventual uptake potential governed by site-dependent dissolution and air–sea delays.",
@@ -64,9 +78,9 @@ POINTS = {
     "scenario": [
         "Read the five SSP stories as different development conditions, from sustainability through inequality and fossil-intensive growth.",
         "One storyline can underpin several climate pathways: SSP1 appears in both the 1.9 and 2.6 examples, so the two five-item lists do not map one-to-one.",
-        "The numeric suffix gives approximate radiative forcing in 2100 in W/m², while our NPi and PkBudg1000 labels describe separate REMIND-EU policy configurations under SSP2.",
+        "The numeric suffix gives approximate forcing in 2100 in W/m²; the lecture’s ~2.6 °C and <2 °C labels instead show stored median 2100 GMST above 1850–1900 for SSP2-NPi and SSP2-PkBudg1000.",
         "Research teams develop scenarios, and the IPCC assesses the evidence on climate response, impacts and adaptation, and mitigation pathways.",
-        "Use the IPCC references for the assessment framework and retain the actual model, policy configuration and source vintage for the LCA inputs.",
+        "Open the two detail links for all five SSP narratives or the RCP and emissions trajectories; each backup links back to this slide.",
     ],
     "suppliers": [
         "The logos show premise combining IAM scenario signals with ecoinvent unit processes, then updating and relinking suppliers for the foreground.",
@@ -76,8 +90,8 @@ POINTS = {
         "Open the supply-mix tab if useful, then identify the foreground choices the analyst must still supply.",
     ],
     "future": [
-        "Read the 2025 reference and the 2035/2050 future bars, which default to PkBudg1000.",
-        "Hollow grey diamonds show NPi nets and filled teal diamonds show PkBudg1000 nets at both future years.",
+        "Read the 2025 reference and the 2035/2050 future bars, which default to the <2 °C pathway (SSP2-PkBudg1000).",
+        "Hollow grey diamonds show ~2.6 °C pathway nets (SSP2-NPi); filled teal diamonds show <2 °C pathway nets at both future years.",
         "The selector changes the bar breakdown while both scenario diamonds remain; their horizontal offsets only keep close values visible.",
         "Cleaner suppliers can reduce burdens, and cleaner displaced production can reduce substitution credits.",
         "These static snapshots retain the documented source-build differences and still aggregate event dates rather than assessing a new project cohort.",

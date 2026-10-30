@@ -1,0 +1,22 @@
+.snu-slide .tool-link { color:inherit; text-decoration:underline; text-decoration-color:#5f97a9; text-underline-offset:.18em; }
+.snu-slide .tool-link:hover { color:var(--psi-blue); }
+.snu-slide .tool-link:focus-visible { outline:3px solid #d99614; outline-offset:3px; }
+.foreground-modelling { flex-shrink:0; color:var(--psi-deep); font-size:1.1cqw; line-height:1.3; }
+.tool-reference-links { font-size:.9cqw; text-align:right; color:var(--psi-deep); }
+.fair-handoff>.tool-reference-links { flex-direction:row; justify-content:flex-end; gap:.35cqw; }
+.supplier-lesson { display:flex; flex-direction:column; height:100%; min-height:0; gap:.65cqw; }
+.supplier-lesson-links { display:flex; justify-content:space-between; align-items:center; gap:1cqw; flex-shrink:0; font-size:1cqw; }
+.scenario-explorer-link { padding:.6cqw 1.1cqw; background:var(--psi-blue); color:white; border-radius:8px; font-size:1.25cqw; font-weight:700; text-decoration:none; }
+.scenario-explorer-link:hover { background:var(--psi-deep); color:white; }
+.scenario-explorer-link:focus-visible { outline:3px solid #d99614; outline-offset:3px; }
+@media(max-width:700px) {
+ .snu-app .snu-slide[data-slide-key="supply-chain"] .slide-body,.snu-app .snu-slide[data-slide-key="suppliers"] .slide-body { min-width:0; }
+ .snu-app .process-carousel { min-width:0; max-width:100%; }
+ .snu-app .process-carousel>div:nth-child(2) { min-width:0; max-width:100%; }
+ .snu-app .foreground-modelling { font-size:15px; }
+ .snu-app .tool-reference-links { font-size:13px; }
+ .snu-app .supplier-lesson { height:auto; gap:16px; min-width:0; max-width:100%; }
+ .snu-app .supplier-lesson-links { gap:12px; flex-wrap:wrap; font-size:14px; }
+ .snu-app #mix-pathway { width:100%; max-width:100%; flex-direction:column; align-items:flex-start; }
+ .snu-app .scenario-explorer-link { padding:12px 16px; font-size:16px; }
+}

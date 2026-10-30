@@ -2454,3 +2454,41 @@ ERW sensitivity keeps complete net curves. No FaIR runs were repeated.
 Final verification: 228 tests passed, including 103 focused Seoul checks;
 all 32 audience/backup pages passed browser QA without errors, failed requests
 or slide overflow. Core/full PDFs and notes were refreshed (29/35 pages).
+
+## 30 October: scenario detail, tool links and presenter countdown
+
+The current deck has **23 core + eight backup slides**, with **27/35 core/full
+PDF pages**. Slide 10 links to two new untimed backups at the end of the deck:
+`ssp-narratives` explains all five development stories and their relative
+mitigation/adaptation challenges; `climate-trajectories` distinguishes the
+four original CMIP5 RCPs from the five AR6 illustrative emissions pathways.
+Both adapt the IAM workshop's narratives, cite primary references, and link
+back to slide 10 and to each other.
+
+From slide 10 onward, audience controls, legends and hover labels use
+**~2.6 °C in 2100** / **<2 °C in 2100**. These are shorthand for this exact
+REMIND-EU export's stored MAGICC7 median GMST above 1850–1900, not universal
+definitions of NPi/PkBudg1000, guaranteed temperatures, or RCP equivalents.
+The original scenario-explorer export and its recorded SHA-256 were checked:
+World GMST in 2100 is **2.56888559381881** for SSP2-NPi and
+**1.75596596598054** for SSP2-PkBudg1000. `scenario_labels.py` changes
+presentation fields only; original scenario values, numerical results,
+calculation metadata and detailed source notes remain intact.
+
+Slide 5 now explicitly states that the foreground systems are modelled with
+Brightway. Brightway, premise, TRAILS and FaIR introductions have direct
+documentation links, including the workflow recap. Slide 11 opens with
+**Explore supply mixes** (also its default print view), keeps **Trace an input**
+as the second tab, and prominently links to `/scenarios/` in another tab.
+
+The presenter has a per-slide countdown tied to the main start/pause/reset
+controls. It resets on a different slide, survives refresh, ignores duplicate
+slide-sync events, and turns red while displaying overtime. Backups are untimed.
+
+Validation: **284 repository tests passed**. Browser checks passed the backup
+and return links, scenario switching, display labels, tool links and four
+screen sizes (1600, 1280, 1024 and 390 px), with no script errors or failed
+requests. The core/full PDFs in `build/seoul-review/` were refreshed and their
+27/35 page counts verified. The scenario-update browser report is alongside
+those exports. Separate browser clock checks covered presenter countdown,
+pause/resume, slide resets, repeated sync events, refresh persistence and overtime.

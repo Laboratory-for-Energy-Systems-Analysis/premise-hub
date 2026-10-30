@@ -13,7 +13,7 @@ from pathlib import Path
 
 from dash import html
 
-from .branding import database_icon, logo
+from .branding import database_icon, logo, tool_link
 from .layout import PREFIX
 from .visuals import CASE, CASES
 
@@ -63,7 +63,7 @@ def _workflow():
         ], className="route-workflow-card route-input-card"),
         html.Div("↓", className="route-flow-arrow", **{"aria-hidden": "true"}),
         html.Div([logo("premise", "route-premise"), html.Div([
-            html.Strong("premise: scenario-updated LCA data"), html.Span("Transform suppliers · export scenario years")])],
+            html.Strong([tool_link("premise"), ": scenario-updated LCA data"]), html.Span("Transform suppliers · export scenario years")])],
                  className="route-workflow-card route-premise-card"),
         html.Div("↓", className="route-flow-arrow", **{"aria-hidden": "true"}),
         html.Div([
@@ -78,7 +78,7 @@ def _workflow():
         ], className="route-workflow-card route-package-card"),
         html.Div("↓", className="route-flow-arrow", **{"aria-hidden": "true"}),
         html.Div([logo("trails", "route-trails"), html.Div([
-            html.Strong("TRAILS: route in time → solve by year"),
+            html.Strong([tool_link("trails"), ": route in time → solve by year"]),
             html.Span("Interpolate backgrounds · retain the remaining supply chain")])],
                  className="route-workflow-card route-trails-card"),
     ], className="route-data-workflow")

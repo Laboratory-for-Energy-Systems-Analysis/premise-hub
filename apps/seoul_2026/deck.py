@@ -9,6 +9,9 @@ from . import contributions as attribution
 from .technical import erw_timing, root_attribution
 from .editorial import clean_audience_footer
 from .speaker import POINTS
+from .scenario_backups import ssp_narratives, climate_trajectories
+from .scenario_labels import warming_labels
+from .branding import tool_link
 from .visuals import (
     case_ribbon,
     carbon_atlas,
@@ -716,6 +719,41 @@ BACKUPS = [
         "treatments.",
     },
 ]
+BACKUPS.extend([
+    {
+        "key": "ssp-narratives",
+        "title": "Five SSPs: the development stories behind the labels",
+        "phase": "Backup · SSP narratives",
+        "seconds": 0,
+        "cue": "Compare institutions, demand and technology before adding climate policy.",
+        "notes": "Adapted from the IAM workshop SSP1–SSP3 and SSP4–SSP5 narrative lessons. "
+        "SSP1 combines inclusive development and resource efficiency; SSP2 continues uneven historical trends; "
+        "SSP3 emphasises security and regional fragmentation; SSP4 concentrates capabilities among elites; "
+        "SSP5 combines strong development with fossil-intensive demand. The qualitative mitigation/adaptation "
+        "challenge pairs are low/low, medium/medium, high/high, low/high and high/low respectively. "
+        "These describe relative socioeconomic challenges, not guaranteed policy outcomes or a ranking of "
+        "scenario probabilities. Some SSP/forcing combinations are infeasible in particular models. "
+        "Sources: O’Neill et al. (2017), DOI 10.1016/j.gloenvcha.2015.01.004; IPCC SRCCL Box SPM.1.",
+    },
+    {
+        "key": "climate-trajectories",
+        "title": "RCPs and emissions pathways: read the whole trajectory",
+        "phase": "Backup · climate trajectories",
+        "seconds": 0,
+        "cue": "Separate forcing levels from emissions histories and temperature responses.",
+        "notes": "Adapted from the IAM workshop RCP forcing lesson and the AR6 illustrative set on slide 10. "
+        "CMIP5 RCP2.6 peaks near 3 W/m² then declines; RCP4.5 and RCP6.0 stabilise without overshoot "
+        "after 2100; RCP8.5 keeps rising. RCPs do not define unique socioeconomic narratives. "
+        "The AR6 examples combine SSP stories with forcing pathways; 1.9 and 7.0 are not members of "
+        "the original four-RCP set. CO₂ trends describe global net anthropogenic emissions, not all "
+        "greenhouse gases and not an individual plant. The suffix is approximate forcing in 2100, "
+        "not GMST or an exact equivalence between framework generations. Equal endpoint forcing "
+        "does not imply equal peak temperature or cumulative impacts. The lecture's warming labels "
+        "refer instead to its own stored MAGICC7 median GMST in 2100: SSP2-NPi 2.5689 °C and "
+        "SSP2-PkBudg1000 1.7560 °C above 1850–1900. They are not renamed AR6 illustrative scenarios. "
+        "Sources: van Vuuren et al. (2011), DOI 10.1007/s10584-011-0148-z; IPCC AR6 WGI Box SPM.1/Figure SPM.4.",
+    },
+])
 # The origin view is an alternative partition; it is never added to stage roots.
 for _slide in SLIDES:
     if _slide["key"] in ("current", "future"):
@@ -1111,6 +1149,20 @@ def _workflow():
     return workflow_map()
 
 
+def _supplier_lesson(print_mode=False):
+    return html.Div([
+        html.Div([
+            tool_link("premise", "premise documentation ↗"),
+            html.A("Open scenario explorer ↗", href="/scenarios/", target="_blank",
+                   rel="noopener noreferrer", className="scenario-explorer-link"),
+        ], className="supplier-lesson-links"),
+        teaching.lesson_switch("Scenario to inventory", [
+            ("Explore supply mixes", short._premise(print_mode)),
+            ("Trace an input", teaching.supplier_trace()),
+        ], print_mode=print_mode),
+    ], className="supplier-lesson")
+
+
 def _pulse_views(print_mode, pulse_view):
     if print_mode:
         return pulse_lesson.explorer(True) if pulse_view=="cases" else pulse_lesson.method_overview(True)
@@ -1159,13 +1211,10 @@ def content(index, print_mode=False, process_case=None, pulse_view=None):
                 "source",
             ),
         ),
-        "scenario": scenario_layers,
-        "suppliers": lambda: teaching.lesson_switch(
-            "Scenario to inventory", [
-                ("Trace an input", teaching.supplier_trace()),
-                ("Explore supply mixes", short._premise(print_mode)),
-            ], print_mode=print_mode,
-        ),
+        "scenario": lambda: scenario_layers(SLIDE_INDEX["ssp-narratives"], SLIDE_INDEX["climate-trajectories"]),
+        "ssp-narratives": lambda: ssp_narratives(SLIDE_INDEX["scenario"], SLIDE_INDEX["climate-trajectories"]),
+        "climate-trajectories": lambda: climate_trajectories(SLIDE_INDEX["scenario"], SLIDE_INDEX["ssp-narratives"]),
+        "suppliers": lambda: _supplier_lesson(print_mode),
         "future": lambda: attribution.future_comparison(print_mode),
         "pause-future": lambda: _discussion(2),
         "clocks": lambda: stack(
@@ -1312,7 +1361,8 @@ def content(index, print_mode=False, process_case=None, pulse_view=None):
             ),
         ),
     }
-    return _rewrite(renderers[key]())
+    component = _rewrite(renderers[key]())
+    return warming_labels(component) if index >= SLIDE_INDEX["scenario"] else component
 
 
 def render_slide(index, *, print_mode=False, process_case=None, pulse_view=None):

@@ -170,8 +170,8 @@ def main():
                 page.get_by_role("tab", name="Trace an input", exact=True).click()
                 assert page.locator(".supplier-trace").is_visible()
             if key == "future":
-                for pathway, label in (("SSP2-NPi", "NPi"),
-                                        ("SSP2-PkBudg1000", "PkBudg1000 (default)")):
+                for pathway, label in (("SSP2-NPi", "~2.6 °C in 2100"),
+                                        ("SSP2-PkBudg1000", "<2 °C in 2100 (default)")):
                     page.get_by_label(label, exact=True).check()
                     page.wait_for_function(
                         "p => [0,1,2,3].every(i => document.querySelector('#future-case-'+i+' .js-plotly-plot')?.layout.meta.bars_pathway === p)",
@@ -181,7 +181,7 @@ def main():
                         chart = page.locator(f"#future-case-{i} .js-plotly-plot")
                         assert chart.evaluate("e => e.layout.meta.years.join(',')") == "2025,2035,2050"
                         assert chart.evaluate("e => e.data.filter(t => t.type==='scatter').map(t => t.name)") == [
-                            "NPi net", "PkBudg1000 net", "2025 reference net"
+                            "~2.6 °C in 2100 net", "<2 °C in 2100 net", "2025 reference net"
                         ]
                         assert page.locator(f"#future-score-{i}").inner_text().startswith("2050: ")
                     page.screenshot(path=args.output / f"future-{pathway}.png")

@@ -122,6 +122,14 @@ def presenter():
     )
 
 
+@server.get("/lecture.pdf")
+def lecture_pdf():
+    suffix = "_with_backup" if request.args.get("backups") == "yes" else ""
+    return send_from_directory(
+        ROOT / "downloads", f"{UPLOAD_NAME}{suffix}.pdf", as_attachment=True
+    )
+
+
 @server.get("/erw-review")
 def erw_review():
     import json
@@ -223,10 +231,17 @@ app.layout = html.Div(
                 ),
                 html.Div(
                     [
-                        html.Button(
+                        html.A(
                             "↓ Export PDF",
                             id="pdf-button",
                             className="nav-button pdf-export-button",
+                            href=REQUESTS_PREFIX + "lecture.pdf",
+                            download=UPLOAD_NAME + ".pdf",
+                        ),
+                        html.Button(
+                            "Print…",
+                            id="print-button",
+                            className="footer-link",
                         ),
                         dcc.Checklist(
                             id="print-backups",
@@ -422,10 +437,10 @@ def update_equivalence(window):
 @app.callback(
     Output("print-deck", "children"),
     Output("print-trigger", "data"),
-    Input("pdf-button", "n_clicks"),
+    Input("print-button", "n_clicks"),
     State("print-backups", "value"),
     prevent_initial_call=True,
-    running=[(Output("pdf-button", "disabled"), True, False)],
+    running=[(Output("print-button", "disabled"), True, False)],
 )
 def prepare_pdf(clicks, backups):
     if not clicks:
@@ -451,6 +466,18 @@ def prepare_pdf(clicks, backups):
     )
 
 
+app.clientside_callback(
+    f"""function (backups) {{
+        const full = (backups || []).includes('yes');
+        return [
+            '{REQUESTS_PREFIX}lecture.pdf' + (full ? '?backups=yes' : ''),
+            '{UPLOAD_NAME}' + (full ? '_with_backup' : '') + '.pdf'
+        ];
+    }}""",
+    Output("pdf-button", "href"),
+    Output("pdf-button", "download"),
+    Input("print-backups", "value"),
+)
 app.clientside_callback(
     ClientsideFunction(namespace="snu", function_name="syncSlide"),
     Output("presenter-sync", "data"),

@@ -388,10 +388,16 @@ history. Interactive views compare annual/cumulative inventory,
 move a removal pulse, select a shared climate calendar window, and match each
 of the four project curves with a dated CO₂ reference pulse.
 
-Export PDF prepares the 23 core slides as 27 pages at their default states, waits for charts
-and images, then opens the print dialog. **Include backup** exports 33 pages. Slide 5 expands to four full-size process-diagram pages; slide 20 exports its explanation and worked examples as two pages.
-Select Save as PDF, landscape, no headers/footers. The print stylesheet defines
-16:9 pages. Live selections reset to the documented PDF defaults.
+**Export PDF** directly downloads the prepared 27-page core deck;
+**Include backup** selects the 35-page full deck. These files work without a
+browser print dialog. Slide 5 expands to four process-diagram pages, and the
+pulse-equivalence slide exports its explanation and worked examples separately.
+The separate **Print…** control renders the deck in the browser and opens the
+print dialog: select Save as PDF, landscape, no headers/footers. Both exports
+use 16:9 pages and the documented defaults rather than live selections.
+
+After editing slides, refresh the committed PDFs in `downloads/` by running
+`python scripts/visual_check_seoul.py --url http://127.0.0.1:8057/seoul-2026/ --pdf-output apps/seoul_2026/downloads`.
 
 ## Reused teaching material
 

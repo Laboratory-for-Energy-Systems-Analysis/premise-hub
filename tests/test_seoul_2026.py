@@ -146,6 +146,21 @@ def test_pdf_defaults_and_backup_pages():
     assert "case-pulse-equivalence" in repr(pages[1])
 
 
+@pytest.mark.parametrize("backups,suffix", [(False, ""), (True, "_with_backup")])
+def test_pdf_download(backups, suffix):
+    from apps.seoul_2026.layout import UPLOAD_NAME
+
+    client = Client(application, Response)
+    response = client.get("/seoul-2026/lecture.pdf" + ("?backups=yes" if backups else ""))
+    assert response.status_code == 200
+    assert response.mimetype == "application/pdf"
+    assert response.data.startswith(b"%PDF-")
+    assert len(response.data) > 100_000
+    assert response.headers["Content-Disposition"] == (
+        f"attachment; filename={UPLOAD_NAME}{suffix}.pdf"
+    )
+
+
 def test_scenario_detail_links_return_to_slide_ten_and_backups_are_untimed():
     from apps.seoul_2026.deck import BACKUPS, presenter_slides
 

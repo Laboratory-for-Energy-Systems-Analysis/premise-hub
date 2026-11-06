@@ -156,7 +156,7 @@
             if (ready) break;
             await new Promise(resolve => setTimeout(resolve, 100));
           }
-          if (!ready) throw new Error("The charts did not finish rendering. Please try Export PDF again.");
+          if (!ready) throw new Error("The charts did not finish rendering. Please try Print again or use Export PDF.");
           for (const plot of deck.querySelectorAll(".js-plotly-plot")) {
             await window.Plotly.Plots.resize(plot);
           }

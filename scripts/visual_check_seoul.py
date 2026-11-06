@@ -18,8 +18,11 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--url", default="http://127.0.0.1:8057/seoul-2026/")
     parser.add_argument("--output", type=Path, default=Path("build/seoul-review"))
+    parser.add_argument("--pdf-output", type=Path, help="Destination for the two PDFs (defaults to --output)")
     args = parser.parse_args()
     args.output.mkdir(parents=True, exist_ok=True)
+    pdf_output = args.pdf_output or args.output
+    pdf_output.mkdir(parents=True, exist_ok=True)
     with urllib.request.urlopen(args.url + "health") as response:
         health = json.load(response)
     all_count = health["all_slides"]
@@ -314,9 +317,14 @@ def main():
         page.wait_for_function("location.hash === '#slide-1'")
         page.reload(wait_until="networkidle")
         page.locator(".snu-slide-1").wait_for()
-        # Print all core slides with the actual Export PDF control.
+        # Verify the actual downloads independently of browser printing.
+        with page.expect_download() as exported:
+            page.locator("#pdf-button").click()
+        assert exported.value.suggested_filename == "SNU_2026_Romain_Sacchi_Time_explicit_LCA.pdf"
+        assert exported.value.failure() is None
+        # Render fresh PDF files through the separate Print control.
         page.evaluate("window.print = () => { window.__printCalled = true; }")
-        page.locator("#pdf-button").click()
+        page.locator("#print-button").click()
         page.wait_for_function(
             "document.querySelector('#print-deck')?.dataset.ready==='true'",
             timeout=60000,
@@ -343,14 +351,19 @@ def main():
         assert len(identifiers) == len(set(identifiers))
         page.emulate_media(media="print")
         page.pdf(
-            path=str(args.output / "SNU_2026_Romain_Sacchi_Time_explicit_LCA.pdf"),
+            path=str(pdf_output / "SNU_2026_Romain_Sacchi_Time_explicit_LCA.pdf"),
             print_background=True,
             prefer_css_page_size=True,
         )
         page.emulate_media(media="screen")
         page.locator("#print-backups input").check()
+        page.wait_for_function("document.querySelector('#pdf-button').search === '?backups=yes'")
+        with page.expect_download() as exported:
+            page.locator("#pdf-button").click()
+        assert exported.value.suggested_filename == "SNU_2026_Romain_Sacchi_Time_explicit_LCA_with_backup.pdf"
+        assert exported.value.failure() is None
         page.evaluate("window.__printCalled = false")
-        page.locator("#pdf-button").click()
+        page.locator("#print-button").click()
         page.wait_for_function(
             "n=>document.querySelectorAll('#print-deck>.snu-slide').length===n && document.querySelector('#print-deck')?.dataset.ready==='true' && window.__printCalled",
             arg=pdf_all_count,
@@ -359,7 +372,7 @@ def main():
         page.emulate_media(media="print")
         page.pdf(
             path=str(
-                args.output / "SNU_2026_Romain_Sacchi_Time_explicit_LCA_with_backup.pdf"
+                pdf_output / "SNU_2026_Romain_Sacchi_Time_explicit_LCA_with_backup.pdf"
             ),
             print_background=True,
             prefer_css_page_size=True,

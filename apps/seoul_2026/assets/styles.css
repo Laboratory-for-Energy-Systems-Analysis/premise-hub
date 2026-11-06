@@ -7,6 +7,7 @@
 .snu-app .chapter-button[aria-current="page"] { background:#e5f2f0; color:var(--psi-deep); }
 .snu-app .app-footer { grid-template-columns:auto auto minmax(0,1fr) auto; gap:14px; }
 .snu-app .setac-footer-tools { gap:18px; font-size:12px; }
+.snu-app a.pdf-export-button { text-decoration:none; }
 .snu-slide { gap:1.1cqw; padding:1.65cqw 2.3cqw 1.5cqw; }
 .snu-slide h1 { font-size:3.1cqw; line-height:1.08; max-width:none; }
 .snu-slide .slide-eyebrow { font-size:1cqw; margin-bottom:.5cqw; }

@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import argparse
 import gc
+import hashlib
 import importlib
 import json
 import os
@@ -67,7 +68,7 @@ def profile(name):
     if name == "scenario_explorer":
         frame = app.get_dataset(app.DEFAULT_DATASET)
         report["dataset_mib"] = round(frame.memory_usage(deep=True).sum() / 1024**2, 1)
-        # Exercise a cached hit too: SimpleCache deserializes another DataFrame.
+        # Exercise a cached hit too; this previously deserialized another frame.
         second = app.get_dataset(app.DEFAULT_DATASET)
         assert len(second) == len(frame)
         del frame, second
@@ -94,8 +95,11 @@ def profile(name):
             slide = render(index)
             payload = json.dumps(slide, cls=PlotlyJSONEncoder)
             size = len(payload)
+            digest = hashlib.sha256(payload.encode()).hexdigest()
             del slide, payload
-            report["slides"].append({"index": index, "json_bytes": size, **memory()})
+            report["slides"].append(
+                {"index": index, "json_bytes": size, "sha256": digest, **memory()}
+            )
     report["warm"] = memory()
     report["seconds"] = round(time.monotonic() - started, 2)
     return report
@@ -117,6 +121,9 @@ def main():
             cwd=ROOT,
             capture_output=True,
             text=True,
+            # Some figure legends iterate sets. Keep their order repeatable so
+            # serialized slide hashes can be compared across profiling runs.
+            env={**os.environ, "PYTHONHASHSEED": "0"},
         )
         if child.returncode:
             print(child.stdout + child.stderr, file=sys.stderr)

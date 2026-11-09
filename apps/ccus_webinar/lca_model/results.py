@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
+from collections.abc import Sequence
 from hashlib import sha256
 import csv
 import json
@@ -53,7 +54,7 @@ class ResultBundle:
     bundle_id: str
     message: str
     manifest: dict
-    tables: dict[str, tuple[dict, ...]]
+    tables: dict[str, Sequence[dict]]
     payloads: dict[str, Any] = field(default_factory=dict)
     arrays: dict[str, dict[str, Any]] = field(default_factory=dict)
 

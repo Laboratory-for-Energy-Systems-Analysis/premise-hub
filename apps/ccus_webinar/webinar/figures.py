@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from collections import defaultdict
+from collections.abc import Sequence
 from itertools import accumulate
 
 import plotly.graph_objects as go
@@ -98,7 +99,7 @@ def _base_layout(height: int, margin: dict | None = None) -> dict:
     }
 
 
-def _table(bundle, *names: str) -> tuple[dict, ...]:
+def _table(bundle, *names: str) -> Sequence[dict]:
     for name in names:
         rows = bundle.tables.get(name, ())
         if rows:

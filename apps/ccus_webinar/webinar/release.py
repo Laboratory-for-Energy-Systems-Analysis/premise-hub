@@ -8,6 +8,7 @@ import json
 import gzip
 from pathlib import Path
 from ..lca_model.results import ResultBundle, REQUIRED_GATES, file_sha256
+from .tables import ColumnTable
 
 APP = Path(__file__).resolve().parents[1]
 PORTABLE_MANIFEST = APP/'data/runtime/manifest.json'
@@ -91,7 +92,12 @@ def load_release_bundle(key='main'):
         raw = _read_public_json(path)
         if set(raw.get('payloads', {})) - {'current_static_sensitivity'}:
             raise ValueError('Unapproved public payload')
-        tables = {k:tuple(v) for k,v in raw['tables'].items()}
+        tables = raw['tables']
+        for name in tables:
+            rows = tables[name]
+            # Release old row dictionaries as each table is packed. Smaller
+            # tables keep the existing tuple representation.
+            tables[name] = ColumnTable(rows) if len(rows) >= 1000 else tuple(rows)
         required = MAIN_TABLES if key=='main' else {'static_totals','static_subprocesses'}
         if not required <= tables.keys() or any(not tables[k] for k in required):
             raise ValueError('Missing released tables')

@@ -4,11 +4,99 @@ import csv
 import gzip
 import importlib.util
 import json
+import math
 from pathlib import Path
 
 import pytest
 
-from apps.ccus_webinar.webinar.release import _read_public_json
+from apps.ccus_webinar.webinar.release import (
+    APP,
+    _read_public_json,
+    load_release_bundle,
+)
+from apps.ccus_webinar.webinar.tables import ColumnTable
+
+
+@pytest.mark.parametrize(
+    "rows",
+    [
+        [],
+        [{}, {}],
+        [{"a": 1}, {"b": None}],
+        [
+            {
+                "label": "first",
+                "year": 2030,
+                "value": -0.0,
+                "flag": True,
+                "missing": None,
+            },
+            {
+                "label": "second",
+                "year": 2050,
+                "value": 1.23456789012345,
+                "flag": False,
+                "missing": None,
+            },
+        ],
+        [{"number": 2**100}, {"number": 1}],
+        [{"value": 1}, {"value": 1.0}],
+    ],
+)
+def test_column_table_preserves_rows_types_slices_and_independent_reads(rows):
+    table = ColumnTable(rows)
+    assert len(table) == len(rows)
+    assert list(table) == rows
+    assert table[:] == tuple(rows)
+    assert table[::-1] == tuple(reversed(rows))
+    for index, expected in enumerate(rows):
+        assert table[index] == expected
+        assert {key: type(value) for key, value in table[index].items()} == {
+            key: type(value) for key, value in expected.items()
+        }
+        modified = table[index]
+        modified["new"] = "changed"
+        assert table[index] == expected
+    if rows:
+        assert table[-1] == rows[-1]
+    with pytest.raises(IndexError):
+        table[len(rows)]
+    with pytest.raises(IndexError):
+        table[-len(rows) - 1]
+
+
+def test_column_table_preserves_nonfinite_values_and_signed_zero():
+    table = ColumnTable(
+        [{"value": float("nan")}, {"value": float("inf")}, {"value": -0.0}]
+    )
+    assert math.isnan(table[0]["value"])
+    assert table[1]["value"] == float("inf")
+    assert math.copysign(1, table[2]["value"]) == -1
+
+
+@pytest.mark.parametrize(
+    "key",
+    [
+        "main",
+        "2035-SSP2-NPi",
+        "2035-SSP2-PkBudg1000",
+        "2050-SSP2-NPi",
+        "2050-SSP2-PkBudg1000",
+    ],
+)
+def test_compact_release_matches_every_source_row_and_payload(key):
+    bundle = load_release_bundle(key)
+    assert bundle.approved
+    path = APP / bundle.manifest["bundles"][key]["path"]
+    with gzip.open(path, "rt", encoding="utf-8") as stream:
+        source = json.load(stream)
+    assert bundle.tables.keys() == source["tables"].keys()
+    for name, expected in source["tables"].items():
+        actual = bundle.tables[name]
+        assert len(actual) == len(expected)
+        assert all(row == original for row, original in zip(actual, expected)), name
+    assert bundle.payloads == source["payloads"]
+    assert bundle.arrays == source.get("arrays", {})
 
 
 @pytest.mark.parametrize("compressed", [False, True])

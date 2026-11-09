@@ -3,7 +3,9 @@ from __future__ import annotations
 import json
 import os
 import re
+from functools import lru_cache
 from pathlib import Path
+from threading import Lock
 from urllib.parse import parse_qs, urlencode, urlsplit, urlunsplit
 
 import dash
@@ -15,7 +17,6 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 import yaml
-from flask_caching import Cache
 
 APP_ROOT = Path(__file__).resolve().parent
 DATA_DIR = APP_ROOT / "data"
@@ -87,14 +88,7 @@ app = dash.Dash(
 load_figure_template("LUX")
 server = app.server
 
-cache = Cache(
-    server,
-    config={
-        "CACHE_TYPE": "SimpleCache",
-        "CACHE_DEFAULT_TIMEOUT": 600,
-        "CACHE_THRESHOLD": 3,
-    },
-)
+_DATASET_LOCK = Lock()
 
 COLUMN_DTYPES = {
     "region": "category",
@@ -110,8 +104,8 @@ COLUMN_DTYPES = {
 }
 
 
-@cache.memoize(timeout=600)
-def get_dataset(dataset_id: str) -> pd.DataFrame:
+@lru_cache(maxsize=1)
+def _load_dataset(dataset_id: str) -> pd.DataFrame:
     path = dataset_path(dataset_id)
     print(f"[LOAD] Reading {path.name}")
     frame = pd.read_csv(path, dtype=COLUMN_DTYPES)
@@ -120,6 +114,17 @@ def get_dataset(dataset_id: str) -> pd.DataFrame:
             ["reported"] * len(frame), categories=["reported", "derived"]
         )
     return frame
+
+
+def get_dataset(dataset_id: str) -> pd.DataFrame:
+    """Share one immutable deployed dataset; callers copy before modifying it.
+
+    Hold the lock around the cache lookup as well as the load so simultaneous
+    first requests cannot parse duplicate full datasets. Changing versions evicts
+    the previous cached reference; active callbacks keep their own references.
+    """
+    with _DATASET_LOCK:
+        return _load_dataset(str(dataset_id))
 
 
 def get_all_variables() -> list[str]:
@@ -1478,7 +1483,7 @@ def export_selected(n_clicks: int, selected_pairs: object, dataset_id: str):
     if not n_clicks:
         raise PreventUpdate
     pairs = normalize_pairs(selected_pairs)
-    frame = get_dataset(dataset_id).copy()
+    frame = get_dataset(dataset_id)
     pair_mask = pd.Series(False, index=frame.index)
     for pair in pairs:
         pair_mask |= frame["model"].eq(pair["model"]) & frame["scenario"].eq(

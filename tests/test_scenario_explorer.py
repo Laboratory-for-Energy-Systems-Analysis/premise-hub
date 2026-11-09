@@ -90,6 +90,41 @@ def test_loader_adds_provenance_to_historical_data() -> None:
     } <= set(current["sector"].astype(str).unique())
 
 
+def test_dataset_cache_shares_single_load_and_evicts_previous_version(monkeypatch):
+    import importlib
+    from concurrent.futures import ThreadPoolExecutor
+    from threading import Event
+
+    module = importlib.import_module("apps.scenario_explorer.app")
+    loaded = []
+    started, release = Event(), Event()
+
+    def read(path, **kwargs):
+        loaded.append(path)
+        started.set()
+        assert release.wait(5)
+        return pd.DataFrame({"region": ["World"]})
+
+    module._load_dataset.cache_clear()
+    monkeypatch.setattr(module, "dataset_path", lambda key: Path(key))
+    monkeypatch.setattr(module.pd, "read_csv", read)
+    try:
+        with ThreadPoolExecutor(max_workers=4) as pool:
+            futures = [pool.submit(get_dataset, "first") for _ in range(4)]
+            assert started.wait(5)
+            release.set()
+            frames = [future.result() for future in futures]
+        assert len(loaded) == 1
+        assert all(frame is frames[0] for frame in frames)
+        assert get_dataset("second") is not frames[0]
+        assert get_dataset("first") is not frames[0]
+        assert len(loaded) == 3
+        assert module._load_dataset.cache_info().currsize == 1
+    finally:
+        release.set()
+        module._load_dataset.cache_clear()
+
+
 def test_current_dataset_integrity_and_derived_world_equality() -> None:
     frame = get_dataset(DEFAULT_DATASET)
     keys = ["region", "year", "variables", "sector", "model", "scenario"]

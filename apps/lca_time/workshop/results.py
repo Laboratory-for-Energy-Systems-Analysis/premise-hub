@@ -434,17 +434,20 @@ def _cohort_fair_response_index() -> (
     """Index the larger response table once so slide toggles stay immediate."""
 
     indexed: dict[tuple[str, str, str, float], dict[str, dict[int, float]]] = {}
-    for row in cohort_fair_response_rows():
-        key = (
-            row["case"],
-            row["metric"],
-            row["contribution_view"],
-            float(row["quantile"]),
-        )
-        contributor = row["contributor"]
-        year = int(row["response_year"])
-        annual = indexed.setdefault(key, {}).setdefault(contributor, {})
-        annual[year] = annual.get(year, 0.0) + float(row["value_per_net_tonne"])
+    # Do not populate the raw-row cache as a side effect. The CSV is much larger
+    # as Python string dictionaries, and the presentation only needs this index.
+    with COHORT_FAIR_RESPONSES.open(encoding="utf-8", newline="") as stream:
+        for row in csv.DictReader(stream):
+            key = (
+                row["case"],
+                row["metric"],
+                row["contribution_view"],
+                float(row["quantile"]),
+            )
+            contributor = row["contributor"]
+            year = int(row["response_year"])
+            annual = indexed.setdefault(key, {}).setdefault(contributor, {})
+            annual[year] = annual.get(year, 0.0) + float(row["value_per_net_tonne"])
     return indexed
 
 
@@ -501,6 +504,19 @@ def co2_reference_pulse_rows() -> tuple[dict[str, str], ...]:
         return tuple(csv.DictReader(stream))
 
 
+@lru_cache(maxsize=1)
+def _co2_reference_pulse_index():
+    """Keep numeric trajectories rather than a second large cache of CSV rows."""
+    indexed = {}
+    with CO2_REFERENCE_PULSE.open(encoding="utf-8", newline="") as stream:
+        for row in csv.DictReader(stream):
+            key = (row["metric"], float(row["quantile"]), int(row["pulse_year"]))
+            indexed.setdefault(key, {})[int(row["response_year"])] = float(
+                row["value_per_kg_co2_pulse"]
+            )
+    return {key: tuple(sorted(values.items())) for key, values in indexed.items()}
+
+
 @lru_cache(maxsize=None)
 def co2_reference_pulse_series(
     metric: str,
@@ -509,19 +525,15 @@ def co2_reference_pulse_series(
 ) -> tuple[tuple[int, float], ...]:
     """Return the response to one kilogram of CO2 in one reference year."""
 
-    values = {
-        int(row["response_year"]): float(row["value_per_kg_co2_pulse"])
-        for row in co2_reference_pulse_rows()
-        if row["metric"] == metric
-        and float(row["quantile"]) == float(quantile)
-        and int(row["pulse_year"]) == int(pulse_year)
-    }
+    values = _co2_reference_pulse_index().get(
+        (metric, float(quantile), int(pulse_year)), ()
+    )
     if not values:
         raise LookupError(
             "No reference-pulse response for "
             f"{metric}, quantile {quantile}, pulse year {pulse_year}."
         )
-    return tuple(sorted(values.items()))
+    return values
 
 
 def _integrate_annual_window(

@@ -17,6 +17,26 @@ MAIN_TABLES = {'static_totals', 'static_contributions', 'static_subprocesses',
 EXPECTED_BUNDLES = {'main', *(f'{y}-{p}' for y in (2035,2050) for p in ('SSP2-NPi','SSP2-PkBudg1000'))}
 
 
+def _read_public_json(path):
+    """Share repeated row labels without retaining a decompressed byte buffer.
+
+    The public export repeats scenario, stage and provenance strings across
+    hundreds of thousands of rows. Sharing equal strings preserves the ordinary
+    dict/list API and every value; the pool lives only for this decode.
+    """
+    strings = {}
+
+    def share_labels(row):
+        for key, value in row.items():
+            if isinstance(value, str):
+                row[key] = strings.setdefault(value, value)
+        return row
+
+    opener = gzip.open if path.suffix == '.gz' else open
+    with opener(path, 'rt', encoding='utf-8') as stream:
+        return json.load(stream, object_hook=share_labels)
+
+
 def safe_path(root, name):
     p = (root/name).resolve()
     if Path(name).is_absolute() or not p.is_relative_to(root.resolve()):
@@ -68,8 +88,7 @@ def load_release_bundle(key='main'):
         if meta.get('distribution', {}).get('kind') != 'public presentation export':
             raise ValueError('A privacy-reviewed public export is required')
         path = safe_path(APP, meta['bundles'][key]['path'])
-        content = gzip.decompress(path.read_bytes()) if path.suffix == '.gz' else path.read_bytes()
-        raw = json.loads(content)
+        raw = _read_public_json(path)
         if set(raw.get('payloads', {})) - {'current_static_sensitivity'}:
             raise ValueError('Unapproved public payload')
         tables = {k:tuple(v) for k,v in raw['tables'].items()}

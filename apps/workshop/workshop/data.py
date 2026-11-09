@@ -23,7 +23,13 @@ from .config import (
 
 @lru_cache(maxsize=1)
 def pathways() -> pd.DataFrame:
-    frame = pd.read_csv(PATHWAY_FILE)
+    # Repeated labels dominate this table. Categories retain the exact labels
+    # and numeric precision while avoiding a separate Python string per cell.
+    labels = (
+        "model", "model_version", "scenario", "region", "sector", "variable",
+        "display_unit", "source_file_id",
+    )
+    frame = pd.read_csv(PATHWAY_FILE, dtype={column: "category" for column in labels})
     frame["year"] = frame["year"].astype(int)
     frame["display_value"] = frame["display_value"].astype(float)
     return frame
@@ -201,7 +207,7 @@ def sector_mix(
     grouped = subset.groupby(["scenario", "technology"], as_index=False, observed=True)[
         "display_value"
     ].sum()
-    totals = grouped.groupby("scenario")["display_value"].transform("sum")
+    totals = grouped.groupby("scenario", observed=True)["display_value"].transform("sum")
     grouped["share"] = grouped["display_value"] / totals.where(totals != 0)
     return grouped
 

@@ -100,6 +100,20 @@ def profile(name):
             report["slides"].append(
                 {"index": index, "json_bytes": size, "sha256": digest, **memory()}
             )
+        if name == "seoul_2026":
+            # Slide serialization only emits iframe URLs. Exercise the actual
+            # initial graph responses too; browsers load them on case switches.
+            from apps.seoul_2026.routing import SLUGS, shallow_route_json
+
+            report["routing"] = []
+            for slug in SLUGS.values():
+                payload = shallow_route_json(slug)
+                digest = hashlib.sha256(payload.encode()).hexdigest()
+                size = len(payload)
+                del payload
+                report["routing"].append(
+                    {"slug": slug, "json_bytes": size, "sha256": digest, **memory()}
+                )
     report["warm"] = memory()
     report["seconds"] = round(time.monotonic() - started, 2)
     return report

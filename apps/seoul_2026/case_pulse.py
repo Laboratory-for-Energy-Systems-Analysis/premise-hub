@@ -56,14 +56,11 @@ def released_references():
     grouped = {year:tuple(sorted(points)) for year,points in grouped.items()}
     native = dict(grouped[2030])
     checked = 0
-    for row in results.co2_reference_pulse_rows():
-        if row["metric"] != "radiative forcing" or float(row["quantile"]) != 50:
-            continue
-        if int(row["pulse_year"]) != 2030:
-            continue
-        year = float(row["response_year"])+.5
+    checked_series = results.co2_reference_pulse_series("radiative forcing", 50, 2030)
+    for response_year, value in checked_series:
+        year = response_year+.5
         if year in native:
-            if not np.isclose(native[year],float(row["value_per_kg_co2_pulse"]),rtol=1e-10,atol=1e-28):
+            if not np.isclose(native[year],value,rtol=1e-10,atol=1e-28):
                 raise ValueError("SETAC and cement reference pulse conventions no longer agree")
             checked += 1
     if checked < 200:

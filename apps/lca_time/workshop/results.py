@@ -4,6 +4,7 @@ import csv
 import json
 from functools import lru_cache
 from pathlib import Path
+from threading import Lock
 
 ROOT = Path(__file__).resolve().parents[1]
 STATIC_RESULTS = ROOT / "data" / "processed" / "static_lcia.csv"
@@ -27,6 +28,7 @@ COHORT_PULSE_EQUIVALENCE_GRID = (
 )
 FOREST_POOL_SENSITIVITY = ROOT / "data" / "forest_pool_sensitivity.json"
 NET_REMOVAL_KG = 1000.0
+_REFERENCE_INDEX_LOCK = Lock()
 
 
 @lru_cache(maxsize=1)
@@ -504,14 +506,20 @@ def co2_reference_pulse_rows() -> tuple[dict[str, str], ...]:
         return tuple(csv.DictReader(stream))
 
 
-@lru_cache(maxsize=1)
-def _co2_reference_pulse_index():
-    """Keep numeric trajectories rather than a second large cache of CSV rows."""
+@lru_cache(maxsize=2)
+def _co2_reference_pulse_index(metric, quantile):
+    """Index the requested response family, without retaining unused quantiles.
+
+    Seoul's pulse lessons use median radiative forcing, not all metrics and
+    ensemble bounds. Keep two recently used families for the shared readers.
+    """
     indexed = {}
     with CO2_REFERENCE_PULSE.open(encoding="utf-8", newline="") as stream:
         for row in csv.DictReader(stream):
-            key = (row["metric"], float(row["quantile"]), int(row["pulse_year"]))
-            indexed.setdefault(key, {})[int(row["response_year"])] = float(
+            if row["metric"] != metric or float(row["quantile"]) != quantile:
+                continue
+            annual = indexed.setdefault(int(row["pulse_year"]), {})
+            annual[int(row["response_year"])] = float(
                 row["value_per_kg_co2_pulse"]
             )
     return {key: tuple(sorted(values.items())) for key, values in indexed.items()}
@@ -525,9 +533,10 @@ def co2_reference_pulse_series(
 ) -> tuple[tuple[int, float], ...]:
     """Return the response to one kilogram of CO2 in one reference year."""
 
-    values = _co2_reference_pulse_index().get(
-        (metric, float(quantile), int(pulse_year)), ()
-    )
+    with _REFERENCE_INDEX_LOCK:
+        values = _co2_reference_pulse_index(metric, float(quantile)).get(
+            int(pulse_year), ()
+        )
     if not values:
         raise LookupError(
             "No reference-pulse response for "

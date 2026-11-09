@@ -7,6 +7,7 @@ from functools import lru_cache
 import json
 import gzip
 from pathlib import Path
+from threading import Lock
 from ..lca_model.results import ResultBundle, REQUIRED_GATES, file_sha256
 from .tables import ColumnTable
 
@@ -16,6 +17,7 @@ MANIFEST = PORTABLE_MANIFEST
 MAIN_TABLES = {'static_totals', 'static_contributions', 'static_subprocesses',
     'temporal_totals', 'temporal_contributions', 'fair_responses', 'pulse_equivalence', 'pulse_reference'}
 EXPECTED_BUNDLES = {'main', *(f'{y}-{p}' for y in (2035,2050) for p in ('SSP2-NPi','SSP2-PkBudg1000'))}
+_BUNDLE_LOCK = Lock()
 
 
 def _read_public_json(path):
@@ -81,7 +83,7 @@ def release_manifest():
 
 
 @lru_cache(maxsize=5)
-def load_release_bundle(key='main'):
+def _cached_release_bundle(key):
     if not MANIFEST.exists():
         return None
     try:
@@ -109,3 +111,18 @@ def load_release_bundle(key='main'):
             tables, raw['payloads'], raw.get('arrays', {}))
     except (OSError, ValueError, KeyError, TypeError) as exc:
         return ResultBundle('stale','webinar-release-invalid',str(exc),{}, {})
+
+
+def load_release_bundle(key='main'):
+    """Share one cached object across default, positional and keyword calls.
+
+    CCUS requests the default and Seoul explicitly requests ``"main"``. Passing
+    both through one canonical call avoids decoding and retaining the main
+    export twice. The lock also prevents duplicate concurrent cold loads.
+    """
+    with _BUNDLE_LOCK:
+        return _cached_release_bundle(key)
+
+
+load_release_bundle.cache_info = _cached_release_bundle.cache_info
+load_release_bundle.cache_clear = _cached_release_bundle.cache_clear

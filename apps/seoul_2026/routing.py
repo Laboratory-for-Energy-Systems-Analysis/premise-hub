@@ -6,6 +6,7 @@ level four is fetched on demand. Iframes load only for the active technology.
 """
 
 import base64
+import gzip
 import hashlib
 import json
 from functools import lru_cache
@@ -21,6 +22,22 @@ SLUGS = dict(zip(CASES, ("daccs", "beccs", "erw", "cement")))
 
 
 ROUTING_MANIFEST_SHA256 = "d56aff79198e809c5f4b022c9fdf02d8794016ec27ae03b58adf9f7f2f0974b1"
+# Exact response bytes extracted from the unchanged, verified full exports by
+# scripts/build_seoul_route_previews.py. Pinning prevents stale projections.
+SHALLOW_ROUTE_SHA256 = {
+    "daccs": "306fbb388d41574954c88ef14f8e1cadc1db61c5508173e9e9a46df905db1e46",
+    "beccs": "8b43b9157b1d62a74ff7ccc5b00b404f92981a4df2307ea36dc75cbb22fd5d0c",
+    "erw": "5e6488b0b3843ddd7012aba717bc7212b31dbc4b7bafe9fbf3b6b28a42d48b0a",
+    "cement": "b7a470a90fa55492e8a3701a2b8527ea79e8cec83800915c7fcde8f2eceee974",
+}
+
+
+def _file_sha256(path):
+    digest = hashlib.sha256()
+    with path.open("rb") as stream:
+        for block in iter(lambda: stream.read(1024 * 1024), b""):
+            digest.update(block)
+    return digest.hexdigest()
 
 
 @lru_cache(maxsize=8)
@@ -34,7 +51,7 @@ def verified_route_path(slug, extension):
     manifest = json.loads(raw)
     path = folder / f"{slug}.{extension}"
     expected = manifest["cases"][slug]["graph_sha256" if extension == "json" else "preview_sha256"]
-    if hashlib.sha256(path.read_bytes()).hexdigest() != expected:
+    if _file_sha256(path) != expected:
         raise ValueError("Routing graph asset differs from its checked export")
     return path
 
@@ -42,13 +59,14 @@ def verified_route_path(slug, extension):
 @lru_cache(maxsize=4)
 def shallow_route_json(slug):
     """Serve only levels zero to three until the viewer requests level four."""
-    graph = json.loads(verified_route_path(slug, "json").read_text())
-    graph["nodes"] = [n for n in graph["nodes"] if n["depth"] <= 3]
-    ids = {n["id"] for n in graph["nodes"]}
-    graph["edges"] = [e for e in graph["edges"] if e["source"] in ids and e["target"] in ids]
-    # Original provenance/counts still describe the unchanged full export.
-    graph["loaded_max_depth"] = 3
-    return json.dumps(graph, separators=(",", ":"))
+    source = verified_route_path(slug, "json")
+    path = source.with_name(f"{slug}-depth3.json.gz")
+    payload = gzip.decompress(path.read_bytes())
+    if hashlib.sha256(payload).hexdigest() != SHALLOW_ROUTE_SHA256[slug]:
+        raise ValueError("Routing preview differs from its checked projection")
+    # No JSON object tree is built on the server. Keep the original provenance,
+    # counts, node/edge ordering and response text byte-for-byte intact.
+    return payload.decode("utf-8")
 
 
 def _workflow():

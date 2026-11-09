@@ -99,6 +99,101 @@ def test_compact_release_matches_every_source_row_and_payload(key):
     assert bundle.arrays == source.get("arrays", {})
 
 
+def test_default_and_explicit_release_requests_share_one_bundle():
+    assert load_release_bundle() is load_release_bundle("main")
+    assert load_release_bundle(key="main") is load_release_bundle()
+
+
+def test_routing_preview_does_not_parse_full_graph(monkeypatch):
+    import hashlib
+    from apps.seoul_2026 import routing
+
+    routing.verified_route_path("beccs", "json")
+    routing.shallow_route_json.cache_clear()
+
+    def forbidden(*args, **kwargs):
+        raise AssertionError("A routing preview must not build a full JSON object tree")
+
+    monkeypatch.setattr(routing.json, "loads", forbidden)
+    try:
+        payload = routing.shallow_route_json("beccs")
+        assert (
+            hashlib.sha256(payload.encode()).hexdigest()
+            == routing.SHALLOW_ROUTE_SHA256["beccs"]
+        )
+    finally:
+        routing.shallow_route_json.cache_clear()
+
+
+def test_routing_preview_fails_closed_when_changed(tmp_path, monkeypatch):
+    from apps.seoul_2026 import routing
+
+    source = tmp_path / "beccs.json"
+    (tmp_path / "beccs-depth3.json.gz").write_bytes(gzip.compress(b"{}"))
+    monkeypatch.setattr(routing, "verified_route_path", lambda *args: source)
+    routing.shallow_route_json.cache_clear()
+    try:
+        with pytest.raises(ValueError, match="checked projection"):
+            routing.shallow_route_json("beccs")
+    finally:
+        routing.shallow_route_json.cache_clear()
+
+
+def test_release_cache_loads_main_once_under_concurrency_and_keeps_all_states(
+    tmp_path, monkeypatch
+):
+    from concurrent.futures import ThreadPoolExecutor
+    from threading import Event
+    from apps.ccus_webinar.webinar import release
+
+    spec = importlib.util.spec_from_file_location(
+        "apps.ccus_webinar.webinar._cache_test", release.__file__
+    )
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    manifest_path = tmp_path / "manifest.json"
+    manifest_path.write_text("{}")
+    monkeypatch.setattr(module, "MANIFEST", manifest_path)
+    metadata = {
+        "distribution": {"kind": "public presentation export"},
+        "bundle_id": "cache-test",
+        "bundles": {key: {"path": f"{key}.json.gz"} for key in module.EXPECTED_BUNDLES},
+    }
+    monkeypatch.setattr(module, "release_manifest", lambda: metadata)
+    loaded = []
+    started, finish = Event(), Event()
+
+    def read(path):
+        loaded.append(path.name)
+        started.set()
+        assert finish.wait(5)
+        return {
+            "tables": {
+                name: [{"system": s} for s in ("BAU", "CCS", "CCUS")]
+                for name in module.MAIN_TABLES
+            },
+            "payloads": {},
+        }
+
+    monkeypatch.setattr(module, "_read_public_json", read)
+    with ThreadPoolExecutor(max_workers=4) as pool:
+        calls = [
+            pool.submit(module.load_release_bundle),
+            pool.submit(module.load_release_bundle, "main"),
+            pool.submit(module.load_release_bundle, key="main"),
+            pool.submit(module.load_release_bundle),
+        ]
+        assert started.wait(5)
+        finish.set()
+        bundles = [call.result() for call in calls]
+    assert all(bundle is bundles[0] for bundle in bundles)
+    assert loaded == ["main.json.gz"]
+    for key in sorted(module.EXPECTED_BUNDLES - {"main"}):
+        assert module.load_release_bundle(key).approved
+    assert module.load_release_bundle() is bundles[0]
+    assert len(loaded) == module.load_release_bundle.cache_info().currsize == 5
+
+
 @pytest.mark.parametrize("compressed", [False, True])
 def test_public_json_shares_labels_without_changing_values(tmp_path, compressed):
     label = "Repeated scenario and provenance label"
@@ -198,8 +293,15 @@ def test_reference_index_preserves_selection_sorting_and_duplicate_years(
     )
     assert reader.co2_reference_pulse_series("radiative forcing", 2.5) == ((2030, 0.5),)
     assert reader.co2_reference_pulse_rows.cache_info().currsize == 0
+    assert reader._co2_reference_pulse_index("radiative forcing", 50) == {
+        2030: ((2030, 3.0), (2031, 2.0))
+    }
+    assert reader._co2_reference_pulse_index("radiative forcing", 2.5) == {
+        2030: ((2030, 0.5),)
+    }
     with pytest.raises(LookupError):
         reader.co2_reference_pulse_series("temperature")
+    assert reader._co2_reference_pulse_index.cache_info().currsize == 2
 
 
 def test_workshop_categories_preserve_complete_source_table():

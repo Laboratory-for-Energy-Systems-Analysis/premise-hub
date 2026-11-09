@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 64" role="img" aria-labelledby="title">
+  <title id="title">City bus</title>
+  <rect width="96" height="64" rx="14" fill="#eaf5f5"/>
+  <rect x="10" y="13" width="76" height="39" rx="8" fill="#fff" stroke="#0b3b52" stroke-width="3.5"/>
+  <path d="M18 21h58v15H18Z" fill="#79c8c1" opacity=".72"/>
+  <path d="M36 21v15M55 21v15M76 18v27" stroke="#0b3b52" stroke-width="2.5"/>
+  <path d="M17 43h62" stroke="#168b87" stroke-width="4"/>
+  <circle cx="27" cy="52" r="7" fill="#0b3b52"/><circle cx="69" cy="52" r="7" fill="#0b3b52"/>
+  <circle cx="27" cy="52" r="2.5" fill="#fff"/><circle cx="69" cy="52" r="2.5" fill="#fff"/>
+</svg>

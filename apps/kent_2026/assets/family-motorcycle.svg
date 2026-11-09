@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 64" role="img" aria-labelledby="title">
+  <title id="title">Motorcycle</title>
+  <rect width="96" height="64" rx="14" fill="#eaf5f5"/>
+  <g fill="none" stroke="#0b3b52" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="24" cy="44" r="11" fill="#fff"/><circle cx="73" cy="44" r="11" fill="#fff"/>
+    <path d="M24 44h18l10-15h12l9 15M42 44 34 28h-8M52 29l-8-7"/>
+  </g>
+  <path d="M41 27h19c3 0 5 2 5 5H45Z" fill="#168b87"/>
+  <circle cx="24" cy="44" r="3" fill="#168b87"/><circle cx="73" cy="44" r="3" fill="#168b87"/>
+</svg>

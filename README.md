@@ -18,6 +18,9 @@ The deployed service exposes:
 - `/seoul-2026/` — the Seoul National University guest lecture: 70 minutes of
   teaching and 20 minutes of discussion, with equations, CDR examples,
   speaker notes, phase timers and PDF export;
+- `/kent-2026/` — the 16-slide University of Kent webinar on time-explicit
+  passenger-car replacement decisions, with precomputed carculator results,
+  presenter notes and PDF export;
 - `/health` — a lightweight service health endpoint.
 
 The presentations are public. Their dates and routes are defined in
@@ -29,8 +32,10 @@ Create a Python 3.13 environment, install the runtime and development
 dependencies, and start the combined WSGI application:
 
 ```bash
-python -m pip install -r requirements.txt -r requirements-dev.txt
-gunicorn portal.wsgi:application --workers 1 --threads 4 --bind 127.0.0.1:8050
+python3.13 -m venv .venv
+.venv/bin/python -m pip install -r requirements.txt -r requirements-dev.txt
+.venv/bin/python -m playwright install chromium
+.venv/bin/python -m gunicorn portal.wsgi:application --workers 1 --threads 4 --bind 127.0.0.1:8050
 ```
 
 Open <http://127.0.0.1:8050>. The individual Dash applications can also be

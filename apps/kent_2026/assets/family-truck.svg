@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 64" role="img" aria-labelledby="title">
+  <title id="title">Truck</title>
+  <rect width="96" height="64" rx="14" fill="#eaf5f5"/>
+  <path d="M9 17h48v32H9Z" fill="#fff" stroke="#0b3b52" stroke-width="3.5" stroke-linejoin="round"/>
+  <path d="M57 27h18l11 12v10H57Z" fill="#fff" stroke="#0b3b52" stroke-width="3.5" stroke-linejoin="round"/>
+  <path d="M65 31h8l7 8H65Z" fill="#79c8c1"/>
+  <path d="M14 23h38" stroke="#168b87" stroke-width="4"/>
+  <circle cx="26" cy="50" r="8" fill="#0b3b52"/><circle cx="72" cy="50" r="8" fill="#0b3b52"/>
+  <circle cx="26" cy="50" r="3" fill="#fff"/><circle cx="72" cy="50" r="3" fill="#fff"/>
+</svg>

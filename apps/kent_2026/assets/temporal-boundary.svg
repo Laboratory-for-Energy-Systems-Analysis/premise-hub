@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1240 410" role="img" aria-labelledby="title desc">
+  <title id="title">Boundary between calendar-year inventory timing and dynamic climate response</title>
+  <desc id="desc">The model dates foreground life-cycle events and annual characterization, but does not model atmospheric fate, radiative forcing, recursive supplier timing, or evolving fuel recipes.</desc>
+  <defs><symbol id="i-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01M16 18h.01"/></symbol><style>.k{font:800 13px Arial,sans-serif;letter-spacing:1.5px}.h{font:700 25px Arial,sans-serif;fill:#173f4d}.t{font:14px Arial,sans-serif;fill:#506770}.small{font:12px Arial,sans-serif;fill:#60757d}.line{fill:none;stroke:#168b87;stroke-width:4;stroke-linecap:round}</style></defs>
+  <rect x="8" y="8" width="570" height="394" rx="20" fill="#f1f8f7" stroke="#9fcfc9" stroke-width="2"/>
+  <rect x="662" y="8" width="570" height="394" rx="20" fill="#fbf8f1" stroke="#e3c77e" stroke-width="2"/>
+  <text class="k" x="36" y="40" fill="#168b87">MODELED</text><text class="h" x="36" y="72">Calendar-year inventory timing</text>
+  <g transform="translate(36 98)">
+    <rect x="0" y="0" width="128" height="112" rx="15" fill="#fff" stroke="#9fcfc9" stroke-width="2"/>
+    <use href="#i-calendar" x="30" y="16" width="68" height="68" style="color:#168b87"/>
+    <path class="line" d="M154 56H494"/><circle cx="154" cy="56" r="10" fill="#5b95c5"/><circle cx="254" cy="56" r="7" fill="#168b87"/><circle cx="344" cy="56" r="7" fill="#168b87"/><circle cx="444" cy="56" r="10" fill="#f2ab45"/>
+    <text class="small" x="139" y="85">make</text><text class="small" x="235" y="85">drive</text><text class="small" x="318" y="85">maintain</text><text class="small" x="423" y="85">end-of-life</text>
+  </g>
+  <g transform="translate(36 244)">
+    <rect width="506" height="128" rx="14" fill="#fff" stroke="#c8deda"/>
+    <text class="t" x="20" y="30">✓ vehicle and component manufacture</text><text class="t" x="20" y="58">✓ annual fuel or charging</text><text class="t" x="20" y="86">✓ maintenance, replacement and foreground EoL</text><text class="t" x="20" y="114">✓ annual characterization of exposed events</text>
+  </g>
+
+  <g transform="translate(592 145)"><circle cx="28" cy="28" r="28" fill="#d86565"/><text x="28" y="37" text-anchor="middle" font-family="Arial" font-size="29" font-weight="800" fill="#fff">≠</text><text x="28" y="77" text-anchor="middle" font-family="Arial" font-size="11" font-weight="700" fill="#8b4d4d">BOUNDARY</text></g>
+
+  <text class="k" x="690" y="40" fill="#d99508">NOT CLAIMED</text><text class="h" x="690" y="72">Dynamic response or recursive timing</text>
+  <g transform="translate(690 96)">
+    <rect width="238" height="126" rx="14" fill="#fff" stroke="#ead9ad"/>
+    <text class="small" x="16" y="24">atmospheric response</text><path d="M18 99h202M21 38v61" stroke="#b8c5c9" stroke-width="2"/><path d="M23 91c29-70 50-55 73-28s38 22 55 4 37-26 63-25" fill="none" stroke="#d86565" stroke-width="4"/><path d="M23 91c34-19 55-27 81-29s58-2 110-6" fill="none" stroke="#5b95c5" stroke-width="4"/><text class="small" x="19" y="117">FaIR · RF · CO₂-pulse-eq.</text>
+    <rect x="260" width="246" height="126" rx="14" fill="#fff" stroke="#ead9ad"/>
+    <text class="small" x="276" y="24">supplier internals</text><g transform="translate(280 38)"><rect width="67" height="57" rx="7" fill="#eef3f4" stroke="#9fb3ba"/><rect x="85" width="67" height="57" rx="7" fill="#eef3f4" stroke="#9fb3ba"/><rect x="170" width="50" height="57" rx="7" fill="#eef3f4" stroke="#9fb3ba"/><path d="M67 29h18M152 29h18" stroke="#d86565" stroke-width="3" stroke-dasharray="5 4"/><text x="34" y="34" text-anchor="middle" font-family="Arial" font-size="12" fill="#60757d">tier 1</text><text x="118" y="34" text-anchor="middle" font-family="Arial" font-size="12" fill="#60757d">tier 2</text><text x="195" y="34" text-anchor="middle" font-family="Arial" font-size="12" fill="#60757d">…</text></g><text class="small" x="276" y="115">no recursive temporal propagation</text>
+  </g>
+  <g transform="translate(690 244)">
+    <rect width="506" height="128" rx="14" fill="#fff" stroke="#ead9ad"/>
+    <text class="t" x="20" y="30">× atmospheric fate and radiative forcing</text><text class="t" x="20" y="58">× FaIR or CO₂-pulse equivalence</text><text class="t" x="20" y="86">× recursive timing inside background suppliers</text><text class="t" x="20" y="114">× annually evolving fuel recipes or brand forecasts</text>
+  </g>
+</svg>

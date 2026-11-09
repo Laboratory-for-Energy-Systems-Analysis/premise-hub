@@ -1,0 +1,275 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-11-08T14:02:51.042559+00:00",
+  "carculator": {
+    "path": "/Users/tagger/github/carculator",
+    "commit": "de0ed41daa67f33754bbb6a6640f1ece5dceb775",
+    "dirty": false
+  },
+  "carculator_utils": {
+    "path": "/Users/tagger/github/carculator_utils",
+    "commit": "074827e6c63a4a6ad4257c005b4119cb8665f6be",
+    "dirty": false
+  },
+  "configuration": {
+    "country": "US",
+    "cycle": "WLTC",
+    "method": "EF v3.1 midpoint",
+    "functional_unit": "vehicle-km",
+    "years": [
+      2020,
+      2060
+    ],
+    "native_model_years": [
+      2020,
+      2025,
+      2030,
+      2040,
+      2050
+    ],
+    "post_2050": "2050 vehicle specifications held constant",
+    "direct_cohort_anchors": [
+      2020,
+      2025,
+      2030,
+      2035,
+      2040,
+      2050,
+      2060
+    ],
+    "between_anchor_profiles": "linear interpolation by lifecycle-event age and stage",
+    "backgrounds": {
+      "baseline": [
+        "SSP2-NPi",
+        "geco-2025-reference"
+      ],
+      "transition": [
+        "SSP2-PkBudg1000",
+        "geco-2025-ndc-lts"
+      ],
+      "rapid": [
+        "SSP2-PkBudg650",
+        "geco-2025-1.5c"
+      ],
+      "electricity_ndc": [
+        "SSP2-NPi",
+        "geco-2025-ndc-lts"
+      ],
+      "electricity_15c": [
+        "SSP2-NPi",
+        "geco-2025-1.5c"
+      ],
+      "fuel_e85": [
+        "SSP2-NPi",
+        "geco-2025-reference"
+      ],
+      "fuel_synthetic": [
+        "SSP2-NPi",
+        "geco-2025-reference"
+      ],
+      "fuel_hydrogen": [
+        "SSP2-NPi",
+        "geco-2025-reference"
+      ],
+      "fuel_e20": [
+        "SSP2-NPi",
+        "geco-2025-reference"
+      ],
+      "fuel_e50": [
+        "SSP2-NPi",
+        "geco-2025-reference"
+      ]
+    },
+    "fuel_routes": {
+      "default_petrol": "carculator US default petrol blend",
+      "e85": "85% corn-starch ethanol by volume; balance petrol",
+      "synthetic_petrol": "methanol route; electrolytic hydrogen; cement-plant CO2; energy allocation",
+      "hydrogen": "natural-gas steam methane reforming",
+      "e20": "20% corn-starch ethanol by volume; balance petrol",
+      "e50": "50% corn-starch ethanol by volume; balance petrol"
+    },
+    "omitted_as_unsupported": [
+      "DAC synthetic petrol",
+      "dedicated solar-PV charging"
+    ],
+    "battery_replacements": 0
+  },
+  "temporal_coverage_example": {
+    "vehicle_family": "car",
+    "cohort_years": [
+      2060
+    ],
+    "calendar_years": [
+      2058,
+      2100
+    ],
+    "event_count": 161,
+    "stage_event_counts": {
+      "manufacturing": 15,
+      "use": 139,
+      "maintenance": 2,
+      "replacement": 0,
+      "end of life": 5
+    },
+    "source_groups": [
+      "EoL",
+      "direct - exhaust",
+      "direct - non-exhaust",
+      "energy chain",
+      "energy storage",
+      "glider",
+      "maintenance",
+      "powertrain",
+      "road"
+    ],
+    "components": [
+      "EoL",
+      "battery",
+      "direct - exhaust",
+      "direct - non-exhaust",
+      "energy chain",
+      "energy storage",
+      "glider",
+      "maintenance",
+      "powertrain",
+      "road"
+    ],
+    "background_scenario": "SSP2-NPi",
+    "background_years": [
+      2005,
+      2010,
+      2020,
+      2030,
+      2040,
+      2050
+    ],
+    "electricity_years": [
+      1985,
+      1986,
+      1987,
+      1988,
+      1989,
+      1990,
+      1991,
+      1992,
+      1993,
+      1994,
+      1995,
+      1996,
+      1997,
+      1998,
+      1999,
+      2000,
+      2001,
+      2002,
+      2003,
+      2004,
+      2005,
+      2006,
+      2007,
+      2008,
+      2009,
+      2010,
+      2011,
+      2012,
+      2013,
+      2014,
+      2015,
+      2016,
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025,
+      2026,
+      2027,
+      2028,
+      2029,
+      2030,
+      2031,
+      2032,
+      2033,
+      2034,
+      2035,
+      2036,
+      2037,
+      2038,
+      2039,
+      2040,
+      2041,
+      2042,
+      2043,
+      2044,
+      2045,
+      2046,
+      2047,
+      2048,
+      2049,
+      2050,
+      2051,
+      2052,
+      2053,
+      2054,
+      2055,
+      2056,
+      2057,
+      2058,
+      2059,
+      2060,
+      2061,
+      2062,
+      2063,
+      2064,
+      2065,
+      2066,
+      2067,
+      2068,
+      2069,
+      2070
+    ],
+    "background_horizon": "hold",
+    "electricity_horizon": "hold",
+    "manufacturing_profiles": {
+      "vehicle": {
+        "-1": 1.0
+      },
+      "glider": {
+        "-1": 1.0
+      },
+      "powertrain": {
+        "-2": 1.0
+      },
+      "battery": {
+        "-2": 1.0
+      },
+      "fuel cell": {
+        "-2": 1.0
+      },
+      "energy storage": {
+        "-2": 1.0
+      },
+      "charger": {
+        "-2": 1.0
+      }
+    },
+    "service_intervals_km": {},
+    "maintenance_interval_years": null,
+    "resolved_maintenance_interval_years": {
+      "Medium - BEV": [
+        2.0
+      ],
+      "Medium - ICEV-p": [
+        1.0
+      ]
+    },
+    "direct_exchange_coverage": "all non-structural direct vehicle and transport exchanges",
+    "embedded_end_of_life": "background-supplier end-of-life remains with its supplier event"
+  },
+  "results_sha256": "5f08751589b267f9f704d21a9614513bb0afc3a24608ac0db1ed24504f1a00c6",
+  "slide9_sensitivity_sha256": "35a6550d2a94a5d24c5878e88346c7625dacda76d67e89f077ba31afa8eb39c3",
+  "slide10_landscape_sha256": "c624989df19a3720b21de37fd2a310c7816d55bcc7a8a3aafe464430c7e59879"
+}

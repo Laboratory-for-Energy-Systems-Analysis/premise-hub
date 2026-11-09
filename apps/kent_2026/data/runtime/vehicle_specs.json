@@ -1,0 +1,40 @@
+{
+  "provenance": "Current local carculator checkout; generic US vehicles, model year 2026, WLTC, interpolated specifications",
+  "vehicles": [
+    {
+      "label": "Medium gasoline",
+      "mass_kg": 1563,
+      "ttw_efficiency_pct": 14,
+      "range_km": 852,
+      "battery_kwh": null
+    },
+    {
+      "label": "Small BEV",
+      "mass_kg": 1295,
+      "ttw_efficiency_pct": 69,
+      "range_km": 459,
+      "battery_kwh": 72
+    },
+    {
+      "label": "Medium BEV",
+      "mass_kg": 1755,
+      "ttw_efficiency_pct": 67,
+      "range_km": 533,
+      "battery_kwh": 99
+    },
+    {
+      "label": "Large/SUV BEV",
+      "mass_kg": 2210,
+      "ttw_efficiency_pct": 69,
+      "range_km": 705,
+      "battery_kwh": 164
+    },
+    {
+      "label": "FCEV · SMR H₂",
+      "mass_kg": 1756,
+      "ttw_efficiency_pct": 37,
+      "range_km": 613,
+      "battery_kwh": null
+    }
+  ]
+}

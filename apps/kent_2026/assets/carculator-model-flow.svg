@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 5 1240 460" role="img" aria-labelledby="title desc">
+  <title id="title">carculator model architecture</title>
+  <desc id="desc">Vehicle parameters enter three transparent calculation layers and produce energy, a network of linked inventory datasets, midpoint impacts, and annual-profile outputs.</desc>
+  <defs>
+    <linearGradient id="engine" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#eef7f8"/><stop offset="1" stop-color="#dcecee"/></linearGradient>
+    <linearGradient id="output" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fbfcfd"/><stop offset="1" stop-color="#eff5f6"/></linearGradient>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4 0 8Z" fill="#168b87"/></marker>
+    <symbol id="i-car-front" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="m21 9-2 1-1.5-3.7A2 2 0 0 0 15.6 5H8.4a2 2 0 0 0-1.9 1.3L5 10 3 9"/><rect width="18" height="8" x="3" y="10" rx="2"/><path d="M7 14h.01M17 14h.01M5 18v2M19 18v2"/></symbol>
+    <symbol id="i-powertrain" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m13.5 4.5-5 8H12l-1.5 7 5-9H12Z"/><path d="M3 12h2M19 12h2M12 3v2M12 19v2"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01M16 18h.01"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20M2 12h20"/></symbol>
+    <symbol id="i-database" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5M3 12A9 3 0 0 0 21 12"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V15M9 20v-8M14 20v-5M19 20V8"/><path d="m3 12 5-5 5 3 8-7"/></symbol>
+    <style>
+      .eyebrow{font:800 13px Arial,sans-serif;letter-spacing:1.8px;fill:#2b6f85}.head{font:700 24px Arial,sans-serif;fill:#173f4d}.label{font:700 17px Arial,sans-serif;fill:#173f4d}.outlabel{font:700 15px Arial,sans-serif;fill:#173f4d}.small{font:13px Arial,sans-serif;fill:#60757d}.micro{font:11px Arial,sans-serif;fill:#60757d}.metric{font:800 12px Arial,sans-serif;fill:#173f4d}.wire{fill:none;stroke:#168b87;stroke-width:3;stroke-linecap:round;marker-end:url(#arrow)}.hair{fill:none;stroke:#b5c8ce;stroke-width:2}.out{fill:url(#output);stroke:#c5d7dc;stroke-width:1.5}
+    </style>
+  </defs>
+
+  <g transform="translate(12 10)">
+    <text class="eyebrow" x="0" y="18">PARAMETERS</text><text class="head" x="0" y="50">Define the vehicle</text>
+    <g transform="translate(0 78)">
+      <path class="hair" d="M47 56V289" stroke-dasharray="4 6"/>
+      <g transform="translate(0 0)">
+        <circle cx="47" cy="34" r="28" fill="#e4f2f6" stroke="#b8d2da"/><use href="#i-car-front" x="27" y="14" width="40" height="40" style="color:#2b6f85"/>
+        <text class="label" x="94" y="32">Size class</text><text class="small" x="94" y="54">small · medium · SUV</text>
+      </g>
+      <g transform="translate(0 86)">
+        <circle cx="47" cy="34" r="28" fill="#e1f3f1" stroke="#add8d3"/><use href="#i-powertrain" x="27" y="14" width="40" height="40" style="color:#168b87"/>
+        <text class="label" x="94" y="32">Powertrain</text><text class="small" x="94" y="54">ICEV · HEV · BEV · FCEV</text>
+      </g>
+      <g transform="translate(0 172)">
+        <circle cx="47" cy="34" r="28" fill="#fbf0d5" stroke="#ecd394"/><use href="#i-calendar" x="27" y="14" width="40" height="40" style="color:#d99614"/>
+        <text class="label" x="94" y="32">Cohort year</text><text class="small" x="94" y="54">technology of manufacture</text>
+      </g>
+      <g transform="translate(0 258)">
+        <circle cx="47" cy="34" r="28" fill="#eee8f5" stroke="#d6c5e7"/><use href="#i-globe" x="27" y="14" width="40" height="40" style="color:#7656a8"/>
+        <text class="label" x="94" y="32">Region + scenario</text><text class="small" x="94" y="54">US supply systems through time</text>
+      </g>
+    </g>
+  </g>
+
+  <path class="wire" d="M319 230H374"/>
+
+  <g transform="translate(382 10)">
+    <text class="eyebrow" x="0" y="18">CALCULATION CORE</text><text class="head" x="0" y="50">Resolve the mechanisms</text>
+    <rect x="0" y="78" width="440" height="330" rx="24" fill="url(#engine)" stroke="#abc9cf" stroke-width="2"/>
+    <g transform="translate(25 101)">
+      <circle cx="34" cy="34" r="28" fill="#fff" stroke="#9dbdc5" stroke-width="2"/><use href="#i-car-front" x="14" y="14" width="40" height="40" style="color:#2b6f85"/>
+      <text class="label" x="82" y="28">1 · Vehicle engineering</text><text class="small" x="82" y="49">mass sizing · road load · powertrain losses</text>
+    </g>
+    <path class="hair" d="M59 162v38"/><circle cx="59" cy="181" r="4" fill="#168b87"/>
+    <g transform="translate(25 200)">
+      <circle cx="34" cy="34" r="28" fill="#fff" stroke="#9dbdc5" stroke-width="2"/><use href="#i-database" x="14" y="14" width="40" height="40" style="color:#2b6f85"/>
+      <text class="label" x="82" y="28">2 · Linked life-cycle inventory</text><text class="small" x="82" y="49">vehicle · battery · energy · maintenance · EoL</text>
+    </g>
+    <path class="hair" d="M59 261v38"/><circle cx="59" cy="280" r="4" fill="#168b87"/>
+    <g transform="translate(25 299)">
+      <circle cx="34" cy="34" r="28" fill="#fff" stroke="#9dbdc5" stroke-width="2"/><use href="#i-chart" x="14" y="14" width="40" height="40" style="color:#2b6f85"/>
+      <text class="label" x="82" y="24">3 · Prospective impacts + timing</text>
+      <text class="small" x="82" y="46">IAM-backed LCA databases via premise</text>
+      <text class="small" x="82" y="65">EF midpoints · life-cycle stage · calendar year</text>
+    </g>
+  </g>
+
+  <path class="wire" d="M829 230H884"/>
+
+  <g transform="translate(892 10)">
+    <text class="eyebrow" x="0" y="18">OUTPUTS</text><text class="head" x="0" y="50">Inspect and export</text>
+    <g transform="translate(0 78)">
+      <rect class="out" width="164" height="145" rx="15"/><rect width="164" height="5" rx="3" fill="#5b95c5"/>
+      <text class="outlabel" x="14" y="28">Energy results</text><text class="micro" x="14" y="46">consumption · range</text>
+      <path d="M14 102h136" stroke="#a6bbc1" stroke-width="1.5"/><path d="M18 97c15-2 24-32 39-24s20 28 34 9 26-27 45-43" fill="none" stroke="#5b95c5" stroke-width="3.5" stroke-linecap="round"/><circle cx="136" cy="39" r="4" fill="#5b95c5"/>
+      <rect x="14" y="112" width="42" height="20" rx="10" fill="#e3eef5"/><text class="micro" x="35" y="126" text-anchor="middle">TTW</text>
+      <rect x="62" y="112" width="88" height="20" rx="10" fill="#e5f3f1"/><text class="micro" x="106" y="126" text-anchor="middle">driving cycle</text>
+    </g>
+    <g transform="translate(174 78)">
+      <rect class="out" width="164" height="145" rx="15"/><rect width="164" height="5" rx="3" fill="#168b87"/>
+      <text class="outlabel" x="14" y="28">Inventory export</text><text class="micro" x="14" y="46">exchange-level LCI</text>
+      <g transform="translate(12 56)">
+        <path d="M70 31 21 9M70 31l49-22M70 31 21 56M70 31l49 25" fill="none" stroke="#8dafb7" stroke-width="1.6"/>
+        <circle cx="46" cy="20" r="2.5" fill="#168b87"/><circle cx="94" cy="20" r="2.5" fill="#168b87"/><circle cx="46" cy="43" r="2.5" fill="#168b87"/><circle cx="94" cy="43" r="2.5" fill="#168b87"/>
+        <rect x="48" y="20" width="44" height="22" rx="6" fill="#168b87"/><text x="70" y="34.5" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="800" fill="#fff">vehicle</text>
+        <rect x="0" y="0" width="42" height="18" rx="5" fill="#e3eef5" stroke="#8fb8cc"/><text x="21" y="12.5" text-anchor="middle" font-family="Arial,sans-serif" font-size="8.5" font-weight="700" fill="#173f4d">battery</text>
+        <rect x="98" y="0" width="42" height="18" rx="5" fill="#e1f3f1" stroke="#8fc9c3"/><text x="119" y="12.5" text-anchor="middle" font-family="Arial,sans-serif" font-size="8.5" font-weight="700" fill="#173f4d">energy</text>
+        <rect x="0" y="47" width="42" height="18" rx="5" fill="#eee8f5" stroke="#baa5d1"/><text x="21" y="59.5" text-anchor="middle" font-family="Arial,sans-serif" font-size="8.5" font-weight="700" fill="#173f4d">upkeep</text>
+        <rect x="98" y="47" width="42" height="18" rx="5" fill="#fbf0d5" stroke="#e5c579"/><text x="119" y="59.5" text-anchor="middle" font-family="Arial,sans-serif" font-size="8.5" font-weight="700" fill="#173f4d">EoL</text>
+      </g>
+      <text x="82" y="135" text-anchor="middle" font-family="Arial,sans-serif" font-size="9.5" font-weight="700" fill="#60757d">linked datasets + exchanges</text>
+    </g>
+    <g transform="translate(0 235)">
+      <rect class="out" width="164" height="145" rx="15"/><rect width="164" height="5" rx="3" fill="#f2ab45"/>
+      <text class="outlabel" x="14" y="28">25 EF midpoints</text><text class="micro" x="14" y="46">climate · PM · resources</text>
+      <g transform="translate(17 57)"><path d="M0 61h130" stroke="#9db1b8" stroke-width="1.5"/><rect x="4" y="36" width="20" height="25" rx="3" fill="#62c3ba"/><rect x="34" y="17" width="20" height="44" rx="3" fill="#5b95c5"/><rect x="64" y="1" width="20" height="60" rx="3" fill="#f2ab45"/><rect x="94" y="29" width="20" height="32" rx="3" fill="#b98bd0"/></g>
+      <rect x="14" y="124" width="58" height="15" rx="7.5" fill="#e6f0f3"/><text class="micro" x="43" y="135" text-anchor="middle">per vkm</text>
+      <rect x="78" y="124" width="72" height="15" rx="7.5" fill="#f5edd9"/><text class="micro" x="114" y="135" text-anchor="middle">per vehicle</text>
+    </g>
+    <g transform="translate(174 235)">
+      <rect class="out" width="164" height="145" rx="15"/><rect width="164" height="5" rx="3" fill="#7656a8"/>
+      <text class="outlabel" x="14" y="28">Annual profile</text><text class="micro" x="14" y="46">production · use · EoL</text>
+      <g transform="translate(14 57)"><path d="M0 65h136" stroke="#9db1b8" stroke-width="1.5"/><rect x="4" y="5" width="16" height="60" rx="3" fill="#5b95c5"/><rect x="29" y="47" width="10" height="18" rx="2" fill="#168b87"/><rect x="47" y="43" width="10" height="22" rx="2" fill="#168b87"/><rect x="65" y="47" width="10" height="18" rx="2" fill="#168b87"/><rect x="83" y="45" width="10" height="20" rx="2" fill="#168b87"/><rect x="112" y="31" width="16" height="34" rx="3" fill="#f2ab45"/><text class="micro" x="0" y="78">2026</text><text class="micro" x="108" y="78">2043</text></g>
+    </g>
+  </g>
+</svg>

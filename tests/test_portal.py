@@ -36,6 +36,8 @@ def test_landing_and_health() -> None:
     assert "/static/premise-logo-transparent.png" in landing.text
     assert "premise-logo.png" not in landing.text
     assert "Presentations" in landing.text
+    assert "Keep It or Replace It?" in landing.text
+    assert "/kent-2026/" in landing.text
     assert "IAM scenarios workshop" in landing.text
     assert "LCA through time" in landing.text
     assert "Interactive Brightway ecosystem" in landing.text
@@ -74,6 +76,7 @@ def test_landing_and_health() -> None:
             "lca_time": "ok",
             "setac_2026": "ok",
             "seoul_2026": "ok",
+            "kent_2026": "ok",
             "scenarios": "ok",
             "workshop": "ok",
         },
@@ -147,12 +150,16 @@ def test_resource_catalog_contract() -> None:
 def test_presentation_catalog_contract() -> None:
     catalog = presentations()
     assert [item["id"] for item in catalog] == [
+        "kent-car-replacement-2026-11-12",
         "seoul-time-explicit-lca-2026-10-30",
         "setac-time-explicit-lca-2026-10-19",
         "cement-ccs-ccus-2026-09-11",
         "iam-workshop-2026-09-03",
         "lca-through-time-2026-08-27",
     ]
+    assert catalog[0]["date"] == "2026-11-12"
+    assert catalog[0]["href"] == "/kent-2026/"
+    catalog = catalog[1:]
     assert catalog[0]["date"] == "2026-10-30"
     assert catalog[0]["href"] == "/seoul-2026/"
     catalog = catalog[1:]

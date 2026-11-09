@@ -1,6 +1,12 @@
 # Add new presentations here using an ISO date (YYYY-MM-DD). The home page
 # displays the newest entries first and becomes vertically scrollable as the
 # catalog grows. Use kind: external only with an HTTPS href.
+- id: kent-car-replacement-2026-11-12
+  title: "Keep It or Replace It? Car Replacement Decisions in a Changing Energy System"
+  summary: University of Kent webinar. A carculator-only, calendar-year LCA of when keeping an existing gasoline car or replacing it with a new vehicle has the lower impact—and why the boundary moves.
+  date: 2026-11-12
+  href: /kent-2026/
+  kind: hosted
 - id: seoul-time-explicit-lca-2026-10-30
   title: Why timing matters in life cycle assessment
   summary: Seoul National University graduate lecture. Follow DACCS, BECCS, coastal ERW and cement CCS through current, prospective static and time-explicit LCA, with IAM visuals, speaker notes and a 70-minute teaching plan.

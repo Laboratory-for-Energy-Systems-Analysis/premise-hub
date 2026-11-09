@@ -72,6 +72,7 @@ def create_landing_app() -> Flask:
                     "lca_time": "ok",
                     "setac_2026": "ok",
                     "seoul_2026": "ok",
+                    "kent_2026": "ok",
                     "scenarios": "ok",
                     "workshop": "ok",
                 },

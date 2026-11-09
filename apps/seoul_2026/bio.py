@@ -68,7 +68,7 @@ def swiss_map_uri():
     return svg_uri(body,360,235,"Switzerland with PSI marked near Villigen, between Basel and Zürich")
 
 
-def introduction():
+def introduction(carculator_logo_src=None):
     interests = (
         ("power", "Industrial ecology", "Future energy & mobility systems", "#008a82"),
         ("response", "Time & climate", "Prospective + dynamic LCA", "#3292b5"),
@@ -117,7 +117,11 @@ def introduction():
                 html.Div([
                     _link([
                         logo(mark,"bio-project-mark") if mark in ("premise","trails","edges") else
-                        html.Img(src=svg_uri(icon_svg(mark,"#527b90"),64,64,name),alt="",className="bio-project-mark"),
+                        html.Img(
+                            src=carculator_logo_src or svg_uri(icon_svg(mark,"#527b90"),64,64,name),
+                            alt="carculator" if carculator_logo_src else "",
+                            className="bio-project-mark bio-project-mark-carculator" if carculator_logo_src else "bio-project-mark",
+                        ),
                         html.Div([html.Strong(name),html.Span(detail)]),
                         html.B("↗",**{"aria-hidden":"true"}),
                     ],href,className="bio-project") for name,detail,href,mark in PROJECTS

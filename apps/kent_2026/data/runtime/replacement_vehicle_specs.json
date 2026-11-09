@@ -1,0 +1,11 @@
+{
+  "provenance": "Current local carculator checkout; generic medium US passenger cars; WLTC; 12,000 km/year; 200,000 km lifetime",
+  "post_2050": "2050 vehicle specifications held constant",
+  "vehicles": [
+    {"year": 2020, "label": "Current gasoline", "power_kw": 126, "battery_kwh": null, "mass_kg": 1578, "energy_value": 8.7, "energy_unit": "L/100 km"},
+    {"year": 2027, "label": "BEV #1 · replace", "power_kw": 140, "battery_kwh": 100, "mass_kg": 1753, "energy_value": 16.7, "energy_unit": "kWh/100 km"},
+    {"year": 2036, "label": "BEV #1 · keep", "power_kw": 139, "battery_kwh": 107, "mass_kg": 1739, "energy_value": 15.5, "energy_unit": "kWh/100 km"},
+    {"year": 2043, "label": "BEV #2 · replace", "power_kw": 139, "battery_kwh": 114, "mass_kg": 1733, "energy_value": 15.0, "energy_unit": "kWh/100 km"},
+    {"year": "2053+", "label": "Later BEVs · incl. 2060", "power_kw": 139, "battery_kwh": 122, "mass_kg": 1733, "energy_value": 15.0, "energy_unit": "kWh/100 km"}
+  ]
+}

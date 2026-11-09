@@ -1,0 +1,127 @@
+{
+  "scope": {
+    "year": 2025,
+    "country": "US",
+    "method": "EF 3.1 midpoint",
+    "indicator": "climate change",
+    "scenario": "SSP2-NPi",
+    "electricity": "geco-2025-reference"
+  },
+  "contribution_stages": [
+    "vehicle production",
+    "energy supply",
+    "direct emissions",
+    "maintenance and road",
+    "end of life"
+  ],
+  "families": [
+    {
+      "key": "two-wheelers",
+      "label": "Two-wheelers",
+      "model": "5 representative configurations",
+      "unit": "g CO2-eq / pkm",
+      "icon": "family-motorcycle.svg",
+      "candidates": [
+        {"label": "E-bike", "detail": "Bicycle <25 · BEV", "powertrain": "BEV", "total": 20.590, "contributions": {"vehicle production": 11.680, "energy supply": 3.682, "direct emissions": 0.0, "maintenance and road": 4.515, "end of life": 0.713}},
+        {"label": "E-scoot.", "detail": "Kick-scooter · BEV", "powertrain": "BEV", "total": 85.809, "contributions": {"vehicle production": 77.722, "energy supply": 3.021, "direct emissions": 0.0, "maintenance and road": 2.173, "end of life": 2.894}},
+        {"label": "E-moto.", "detail": "Motorcycle 11–35 kW · BEV", "powertrain": "BEV", "total": 75.448, "contributions": {"vehicle production": 27.722, "energy supply": 39.869, "direct emissions": 0.0, "maintenance and road": 7.195, "end of life": 0.663}},
+        {"label": "P scooter", "detail": "Scooter <4 kW · petrol", "powertrain": "ICEV", "total": 78.257, "contributions": {"vehicle production": 14.616, "energy supply": 11.710, "direct emissions": 35.051, "maintenance and road": 16.880, "end of life": 0.0}},
+        {"label": "P moto.", "detail": "Motorcycle 11–35 kW · petrol", "powertrain": "ICEV", "total": 182.807, "contributions": {"vehicle production": 11.315, "energy supply": 38.798, "direct emissions": 116.838, "maintenance and road": 15.856, "end of life": 0.0}}
+      ],
+      "options": [
+        {"label": "ICEV", "detail": "petrol", "powertrain": "ICEV", "value": 182.80703103435735},
+        {"label": "BEV", "detail": "grid electricity", "powertrain": "BEV", "value": 75.44794634858663},
+        {"label": "FCEV", "detail": "not modeled", "powertrain": "FCEV", "value": null}
+      ]
+    },
+    {
+      "key": "cars",
+      "label": "Passenger cars",
+      "model": "Medium car",
+      "unit": "g CO2-eq / pkm",
+      "icon": "family-car.svg",
+      "candidates": [
+        {"label": "Gasoline", "detail": "Medium · ICEV-p", "powertrain": "ICEV", "total": 199.406, "contributions": {"vehicle production": 34.066, "energy supply": 37.698, "direct emissions": 111.062, "maintenance and road": 16.141, "end of life": 0.439}},
+        {"label": "Diesel", "detail": "Medium · ICEV-d", "powertrain": "ICEV", "total": 153.702, "contributions": {"vehicle production": 34.604, "energy supply": 23.784, "direct emissions": 78.527, "maintenance and road": 16.331, "end of life": 0.455}},
+        {"label": "Hybrid", "detail": "Medium · HEV-p", "powertrain": "HYBRID", "total": 150.304, "contributions": {"vehicle production": 37.001, "energy supply": 24.451, "direct emissions": 72.062, "maintenance and road": 16.399, "end of life": 0.391}},
+        {"label": "BEV", "detail": "Medium · battery electric", "powertrain": "BEV", "total": 119.909, "contributions": {"vehicle production": 55.340, "energy supply": 48.458, "direct emissions": 0.0, "maintenance and road": 14.996, "end of life": 1.116}},
+        {"label": "FCEV (NG)", "detail": "Medium · SMR hydrogen", "powertrain": "FCEV", "total": 123.742, "contributions": {"vehicle production": 55.218, "energy supply": 49.807, "direct emissions": 0.0, "maintenance and road": 17.610, "end of life": 1.107}}
+      ],
+      "options": [
+        {"label": "ICEV", "detail": "gasoline", "powertrain": "ICEV", "value": 199.40574609048684},
+        {"label": "BEV", "detail": "grid electricity", "powertrain": "BEV", "value": 119.90944310008133},
+        {"label": "FCEV", "detail": "SMR hydrogen", "powertrain": "FCEV", "value": 123.74229373794229}
+      ]
+    },
+    {
+      "key": "buses",
+      "label": "City buses",
+      "model": "13 m city bus · 10 passengers",
+      "unit": "g CO2-eq / pkm",
+      "icon": "family-bus.svg",
+      "candidates": [
+        {"label": "Diesel", "detail": "13 m city · ICEV-d", "powertrain": "ICEV", "total": 146.182, "contributions": {"vehicle production": 8.962, "energy supply": 28.898, "direct emissions": 94.412, "maintenance and road": 13.713, "end of life": 0.198}},
+        {"label": "Gas", "detail": "13 m city · ICEV-g", "powertrain": "ICEV", "total": 114.499, "contributions": {"vehicle production": 9.058, "energy supply": 16.399, "direct emissions": 75.022, "maintenance and road": 13.821, "end of life": 0.198}},
+        {"label": "Hybrid", "detail": "13 m city · HEV-d", "powertrain": "HYBRID", "total": 110.498, "contributions": {"vehicle production": 9.032, "energy supply": 20.540, "direct emissions": 67.104, "maintenance and road": 13.625, "end of life": 0.198}},
+        {"label": "Depot", "detail": "BEV · depot charging", "powertrain": "BEV", "total": 87.946, "contributions": {"vehicle production": 15.363, "energy supply": 57.854, "direct emissions": 0.0, "maintenance and road": 14.189, "end of life": 0.540}},
+        {"label": "Opp.", "detail": "BEV · opportunity charging", "powertrain": "BEV", "total": 84.803, "contributions": {"vehicle production": 16.231, "energy supply": 53.821, "direct emissions": 0.0, "maintenance and road": 14.207, "end of life": 0.543}},
+        {"label": "Trolley", "detail": "BEV · in-motion charging", "powertrain": "BEV", "total": 71.704, "contributions": {"vehicle production": 9.497, "energy supply": 49.627, "direct emissions": 0.0, "maintenance and road": 12.282, "end of life": 0.298}},
+        {"label": "FCEV (NG)", "detail": "13 m city · SMR hydrogen", "powertrain": "FCEV", "total": 70.371, "contributions": {"vehicle production": 10.719, "energy supply": 45.610, "direct emissions": 0.0, "maintenance and road": 13.808, "end of life": 0.234}}
+      ],
+      "options": [
+        {"label": "ICEV", "detail": "diesel", "powertrain": "ICEV", "value": 146.18247784063803},
+        {"label": "BEV", "detail": "depot charging", "powertrain": "BEV", "value": 87.94572315922228},
+        {"label": "FCEV", "detail": "SMR hydrogen", "powertrain": "FCEV", "value": 70.3709300083415}
+      ]
+    },
+    {
+      "key": "trucks",
+      "label": "Trucks",
+      "model": "40 t · regional delivery",
+      "unit": "g CO2-eq / tkm",
+      "icon": "family-truck.svg",
+      "candidates": [
+        {"label": "Diesel", "detail": "40 t · ICEV-d", "powertrain": "ICEV", "total": 140.021, "contributions": {"vehicle production": 9.197, "energy supply": 23.883, "direct emissions": 86.144, "maintenance and road": 20.585, "end of life": 0.212}},
+        {"label": "Gas", "detail": "40 t · ICEV-g", "powertrain": "ICEV", "total": 113.290, "contributions": {"vehicle production": 9.399, "energy supply": 14.873, "direct emissions": 68.038, "maintenance and road": 20.767, "end of life": 0.212}},
+        {"label": "Hybrid", "detail": "40 t · HEV-d", "powertrain": "HYBRID", "total": 128.837, "contributions": {"vehicle production": 9.726, "energy supply": 21.318, "direct emissions": 76.891, "maintenance and road": 20.655, "end of life": 0.248}},
+        {"label": "BEV", "detail": "40 t · battery electric", "powertrain": "BEV", "total": 89.059, "contributions": {"vehicle production": 13.941, "energy supply": 52.985, "direct emissions": 0.0, "maintenance and road": 21.638, "end of life": 0.495}},
+        {"label": "FCEV (NG)", "detail": "40 t · SMR hydrogen", "powertrain": "FCEV", "total": 88.654, "contributions": {"vehicle production": 11.999, "energy supply": 55.675, "direct emissions": 0.0, "maintenance and road": 20.690, "end of life": 0.290}}
+      ],
+      "options": [
+        {"label": "ICEV", "detail": "diesel", "powertrain": "ICEV", "value": 140.02144705006734},
+        {"label": "BEV", "detail": "grid electricity", "powertrain": "BEV", "value": 89.05869896574389},
+        {"label": "FCEV", "detail": "SMR hydrogen", "powertrain": "FCEV", "value": 88.6536264386618}
+      ]
+    }
+  ],
+  "electricity_sensitivity": {
+    "x_unit": "g CO2-eq / kWh delivered",
+    "y_unit": "g CO2-eq / pkm",
+    "reference_intensity": 449.29186810850484,
+    "reference_label": "2025 US lifetime-average charging mix",
+    "bev_specification": {
+      "size": "Medium",
+      "annual_km": 12000,
+      "lifetime_km": 200000,
+      "power_kw": 140.49945068359375,
+      "battery_kwh": 84.0999984741211,
+      "grid_kwh_per_vkm": 0.1695252507925034
+    },
+    "low_intensity": 19.88109654193966,
+    "high_intensity": 1229.6080893833873,
+    "series": [
+      {"label": "Gasoline ICEV", "powertrain": "ICEV", "low_score": 199.04545326014815, "high_score": 200.0604372491443},
+      {"label": "Synthetic gasoline ICEV", "powertrain": "SYNTHETIC", "low_score": 132.48663521905982, "high_score": 1414.0003206176214},
+      {"label": "BEV", "powertrain": "BEV", "low_score": 74.41194903379306, "high_score": 202.5864920312857},
+      {"label": "FCEV · electrolytic H2", "powertrain": "FCEV", "low_score": 83.63274487674975, "high_score": 439.2440487848499}
+    ]
+  },
+  "provenance": {
+    "carculator": "de0ed41daa67",
+    "carculator_two_wheeler": "828681d800b6",
+    "carculator_bus": "92cf8e972771",
+    "carculator_truck": "44991b63766d",
+    "carculator_utils": "074827e6c63a",
+    "notes": "Current local model code; documentation-only working-tree edits in the two-wheeler, bus and truck checkouts. Bus HVAC uses a 15 C representative ambient temperature. Bus candidates include depot, opportunity and in-motion/trolleybus BEV architectures. Top-row FCEVs use the default natural-gas SMR hydrogen route. The electricity sensitivity uses convex wind/coal supply mixes; synthetic gasoline uses electrolytic hydrogen and cement-plant CO2."
+  }
+}

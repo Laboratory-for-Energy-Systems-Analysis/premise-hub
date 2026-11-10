@@ -1,0 +1,73 @@
+{
+  "target": "https://premisedash-6f5a0259c487.herokuapp.com/seoul-2026/",
+  "release": "v107",
+  "commit": "fc15abd1",
+  "dyno": "Basic, 512 MB; 1 worker, 4 threads",
+  "test": "browser-captured HTTP callback replay; warm Seoul presentation",
+  "stage_duration_seconds": 120,
+  "reading_pause_seconds": [
+    15,
+    25
+  ],
+  "ramp_users_per_second": 2,
+  "stages": [
+    {
+      "users": 10,
+      "unique_visitors": 10,
+      "duration_seconds": 120.24,
+      "requests": 221,
+      "errors": 0,
+      "request_p95_seconds": 0.801,
+      "slide_action_p95_seconds": 1.526,
+      "peak_sampled_total_memory_mb": 224.18,
+      "peak_sampled_rss_mb": 221.91,
+      "peak_sampled_swap_mb": 0,
+      "requests_per_second": 1.84,
+      "stopped_reason": []
+    },
+    {
+      "users": 25,
+      "unique_visitors": 25,
+      "duration_seconds": 120.44,
+      "requests": 531,
+      "errors": 0,
+      "request_p95_seconds": 0.912,
+      "slide_action_p95_seconds": 1.753,
+      "peak_sampled_total_memory_mb": 230.01,
+      "peak_sampled_rss_mb": 227.74,
+      "peak_sampled_swap_mb": 0,
+      "requests_per_second": 4.41,
+      "stopped_reason": []
+    },
+    {
+      "users": 50,
+      "unique_visitors": 50,
+      "duration_seconds": 120.7,
+      "requests": 992,
+      "errors": 0,
+      "request_p95_seconds": 1.312,
+      "slide_action_p95_seconds": 2.491,
+      "peak_sampled_total_memory_mb": 233.66,
+      "peak_sampled_rss_mb": 231.39,
+      "peak_sampled_swap_mb": 0,
+      "requests_per_second": 8.22,
+      "stopped_reason": []
+    }
+  ],
+  "total_requests": 1744,
+  "total_errors": 0,
+  "largest_completed_stage": 50,
+  "limitations": [
+    "Two-minute stages including ramp-up; not a long soak test",
+    "Sequential callback replay excludes browser rendering and initial static assets",
+    "No simultaneous classroom-wide click burst, PDF printing, full-depth graph downloads or mixed-app load",
+    "Memory samples can miss short peaks; R14/R15 warnings monitored separately"
+  ],
+  "runtime_memory_logging_left_enabled": true,
+  "runtime_warnings": {
+    "R14": 0,
+    "R15": 0,
+    "crashes": 0
+  },
+  "health_after_test": "ok"
+}

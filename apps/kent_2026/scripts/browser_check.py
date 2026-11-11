@@ -103,7 +103,7 @@ def main():
             assert client.get(mount).status_code == 200
             assert client.get(mount + "presenter").status_code == 200
             health = client.get(mount + "health").get_json()
-        assert health["core_slides"] == 11
+        assert health["core_slides"] == 12
         page.goto(base, wait_until="networkidle")
         for index in range(health["core_slides"]):
             slide = page.locator(f"#stage #slide-{index}")
@@ -169,13 +169,8 @@ def main():
                 else:
                     page.locator("#next-button").click()
         assert page.locator("#next-button").is_disabled()
-        page.locator("#backup-button").click()
-        for index in range(health["backup_slides"]):
-            page.locator(f"#stage #slide-{health['core_slides'] + index}").wait_for()
-            page.screenshot(path=str(args.output / f"backup-{index+1:02d}.png"))
-            if index < health["backup_slides"] - 1:
-                page.locator("#next-button").click()
-        page.locator("#print-backups input").uncheck()
+        assert health["backup_slides"] == 0
+        assert page.locator("#backup-button, #print-backups").count() == 0
         # Mount the deterministic print deck without invoking a native dialog.
         page.evaluate("window.print = () => { window.__printed = true; }")
         page.locator("#pdf-button").click()

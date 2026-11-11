@@ -35,16 +35,11 @@ SLIDES = [
     dict(title="Same service, different calendar-year pulses", phase="Keep above · replace below · EF 3.1 climate change", seconds=120, cue="Read the pathways in parallel: identical mobility service, different vehicle-production schedules and operating profiles.", notes="The upper panel keeps the original gasoline car to its 200,000-kilometre retirement, then introduces BEV successors in 2036 and 2053. The lower panel transfers the original car after 2026 and introduces BEVs in 2027, 2043 and 2060. Both panels include the shared 2018 component-production and 2019 assembly history, provide 12,000 kilometres per year through 2060, and use identical axes. This is calendar assignment of carculator inventory impacts, not atmospheric dynamic LCA."),
     dict(title="When does replacement pay back?", phase="256 precomputed cases · EF 3.1 climate change + particulate matter", seconds=150, cue="Move one assumption at a time, then switch indicators: the crossing and even the preferred pathway can change.", notes="The four sliders select among 256 audited or explicitly interpolated cases. Lifetime and annual mileage affect vehicle turnover. The energy-system choice combines the REMIND background with the corresponding calendar-year GECO charging mix: SSP2-NPi plus Reference, an interpolated midpoint, SSP2-PkBudg1000 plus NDC/LTS, and SSP2-PkBudg650 plus 1.5°C. Petrol, E20, E50 and E85 compare the reference blend with first-generation corn-starch ethanol. The indicator switch contrasts EF 3.1 climate change with particulate matter formation, whose unit is disease incidence. Under the baseline, climate replacement crosses in 2034 and ends 6.7 tonnes CO2-equivalent lower, while particulate-matter impact is higher for replacement by 0.595 × 10⁻³ disease incidences."),
     dict(title="Replacement is robust in some regimes—and conditional in others", phase="Decision frontier · annual driving × charging carbon intensity", seconds=160, cue="Lead with the default 2026 conclusion: at 12,000 kilometres per year, replacement is lower across the tested electricity range; at 5,000 kilometres, the answer crosses from replacement to keeping as charging becomes more carbon intensive.", notes="The matrix reports REPLACE minus KEEP in tonnes CO2-equivalent. Negative values favor replacement, positive values favor keeping, and differences within plus or minus 2 tonnes are labeled close calls. Under the default 2026 decision, 200,000-kilometre lifetime and 2040 evaluation year, the typical 12,000-kilometre case favors replacement by about 12 to 26 tonnes across the tested charging intensities. At 5,000 kilometres per year, very clean electricity supports replacement while carbon-intensive electricity supports keeping. The replacement-year control shows that timing changes the frontier; grey cells mean the current car has already reached its assumed lifetime, so replacement is no longer a discretionary early swap."),
-    dict(key="thanks", title="Thank you", phase="Questions + discussion", seconds=120, cue="Close on the conditional answer, leave the decision drivers and contact details visible, and invite questions.", notes="The closing slide reuses the two-column conclusion and contact composition from the Seoul presentation. Recap that dated life-cycle events make the replacement question explicit; vehicle use, lifetime, energy pathways, indicators and evaluation horizons can change the outcome. Do not include project or funding acknowledgements."),
+    dict(key="conclusions", title="Conclusions and limitations", phase="Decision drivers · interpretation · limitations", seconds=90, cue="Recap the decision drivers and explain the four limitations before the final takeaway.", notes="Recap that dated life-cycle events make the replacement question explicit; vehicle use, lifetime, energy pathways, indicators and evaluation horizons can change the outcome. State the limitations: the original vehicle's fate after transfer is unknown and excluded, and impacts under a second owner are not allocated to the first owner. Future changes in recycled content in metal supply mixes are not modeled, which is relevant for battery manufacturing. We model a departure from a steady-state energy system using average electricity mixes; a consequential approach could give a different answer. Standard GWP100 assesses each emission over the 100 years following that emission, so later emissions are implicitly evaluated to later calendar endpoints. Placing GWP-weighted emissions on a timeline does not resolve this mismatch with a fixed decision window. For that question, prefer time-resolved radiative forcing integrated over one explicit calendar window, with CO2-pulse equivalence referenced to a pulse in the decision year and evaluated over the same window. State the window and reference-pulse year with the result. This is a recommended extension; the present carculator results do not calculate these dynamic climate metrics. Methodological source: Levasseur et al. (2010), https://doi.org/10.1021/es9030003; GWP definition: IPCC AR6 WGI Chapter 7, https://www.ipcc.ch/report/ar6/wg1/chapter/chapter-7/."),
+    dict(key="thanks", title="Thank you", phase="Questions + discussion", seconds=30, cue="Thank the audience and invite questions with the contact details visible.", notes="Leave the questions and contact slide visible for discussion. Do not include project or funding acknowledgements."),
 ]
 
-BACKUPS = [
-    dict(title="Backup · Modeling contract", phase="Owner boundary and sequence logic", seconds=0, cue="Use when questions concern resale, end-of-life, or equal service.", notes="Replacement occurs after the selected year. Later impacts of the transferred original car are excluded. Every new owner vehicle is modeled through its events that occur by 2060. If a mileage threshold is reached partway through a year, the successor supplies the remaining kilometres in the same annual bin; use and maintenance are prorated and foreground end-of-life follows actual final use."),
-    dict(title="Backup · EF 3.1 midpoint coverage", phase="All 25 categories calculated", seconds=0, cue="The core selects climate and PM; the complete category list is retained here.", notes="All EF midpoint categories are calculated by the precomputation. Only climate and PM are used in the core narrative."),
-    dict(title="Backup · Model years and horizons", phase="Interpolation and endpoint handling", seconds=0, cue="Distinguish vehicle specification interpolation from calendar-year characterization.", notes="Vehicle specifications are interpolated between native years 2020, 2025, 2030, 2040 and 2050. For later cohorts, endpoint-only vehicle and background inputs are held where necessary and documented in the manifest."),
-    dict(title="Backup · Reproducibility", phase="Local source checkouts · hashed artifacts", seconds=0, cue="Show commits, dirty-state disclosure and the runtime boundary.", notes="The generator records source commits and dirty flags without modifying either development checkout. The browser reads only the hashed JSON bundle."),
-]
-ALL_SLIDES = SLIDES + BACKUPS
+ALL_SLIDES = SLIDES
 CORE_COUNT = len(SLIDES)
 
 
@@ -88,8 +83,8 @@ def baseline_case():
     return results.ownership_case()
 
 
-def kent_thank_you():
-    """Kent adaptation of the Seoul two-column conclusion/contact slide."""
+def kent_conclusions():
+    """Decision drivers, takeaways and limitations on a dedicated slide."""
     drivers = (
         ("Vehicle", "Age, size, powertrain and the replacement option"),
         ("Service", "Annual distance, lifetime mileage and occupancy"),
@@ -98,20 +93,34 @@ def kent_thank_you():
     )
     return html.Div([
         html.Div([
+            html.H3("What conditions the answer?"),
             html.Div([
-                html.H3("What conditions the answer?"),
-                html.Div([
-                    html.Div([html.Strong(label), html.Span(detail)])
-                    for label, detail in drivers
-                ], className="closing-driver-grid"),
-            ], className="closing-driver-frame"),
-            html.Ul([
-                html.Li([html.Strong("Put impacts on a timeline:"), " making a car happens first; driving and maintenance come later."]),
-                html.Li([html.Strong("Compare like with like:"), " both choices must provide the same amount of travel over the same years."]),
-                html.Li([html.Strong("Change the assumptions:"), " how far you drive, how long cars last, the energy supply and the indicator can change the result."]),
-                html.Li([html.Strong("There is no single answer:"), " replacing the car can be better in some cases, while keeping it can be better in others."]),
+                html.Div([html.Strong(label), html.Span(detail)])
+                for label, detail in drivers
+            ], className="closing-driver-grid"),
+        ], className="closing-driver-frame"),
+        html.Ul([
+            html.Li([html.Strong("Put impacts on a timeline:"), " making a car happens first; driving and maintenance come later."]),
+            html.Li([html.Strong("Compare like with like:"), " both choices must provide the same amount of travel over the same years."]),
+            html.Li([html.Strong("Change the assumptions:"), " how far you drive, how long cars last, the energy supply and the indicator can change the result."]),
+        ], className="closing-takeaways"),
+        html.Section([
+            html.H3("Limitations"),
+            html.Ol([
+                html.Li([html.Strong("Fate of the first car:"), " its fate after transfer is unknown and excluded. Impacts under a second owner are not allocated to the first owner."]),
+                html.Li([html.Strong("Recycled content:"), " future changes in recycled content in metal supply mixes are not modeled, including for battery manufacturing."]),
+                html.Li([html.Strong("Average electricity mixes:"), " we model a departure from a steady-state energy system using average mixes. A consequential approach could give a different answer."]),
+                html.Li([html.Strong("Climate assessment window:"), " GWP100 gives each emission a new 100-year horizon, shifting the endpoint as emissions occur later. For a fixed decision window, prefer integrated radiative forcing and CO₂-pulse equivalence."]),
             ], className="closing-takeaways"),
-        ], className="closing-summary"),
+        ], className="closing-limitations"),
+        html.Ul([
+            html.Li([html.Strong("There is no single answer:"), " replacing the car can be better in some cases, while keeping it can be better in others."]),
+        ], className="closing-takeaways"),
+    ], className="closing-summary")
+
+
+def kent_thank_you():
+    return html.Div([
         html.Div([
             html.Div([
                 html.Span("University of Kent · 12 November 2026", className="small-label"),
@@ -318,7 +327,7 @@ def sensitivity_ladder(state="baseline"):
 
 def render_slide(index, print_mode=False, map_state="baseline", indicator="climate change"):
     slide = ALL_SLIDES[index]
-    head = title_block(slide, index + 1 if index < CORE_COUNT else index - CORE_COUNT + 1)
+    head = title_block(slide, index + 1)
     original_index = index - 1 if index >= 2 else index
     if index == 0:
         body = [
@@ -335,6 +344,8 @@ def render_slide(index, print_mode=False, map_state="baseline", indicator="clima
         body = presenter_introduction(prefix + "assets/carculator-logo.svg")
     elif slide.get("key") == "thanks":
         body = kent_thank_you()
+    elif slide.get("key") == "conclusions":
+        body = kent_conclusions()
     elif original_index == 1:
         body = html.Div([
             html.Div([
@@ -713,19 +724,10 @@ def render_slide(index, print_mode=False, map_state="baseline", indicator="clima
             asset_image("decision-dependencies.svg", "Four connected dependencies around the keep-or-replace decision boundary", "decision-dependencies-visual"),
             html.Div([html.Strong("It depends."), html.Span("But the dependency can be made explicit, calculated and audited."), html.A("romain.sacchi@psi.ch", href="mailto:romain.sacchi@psi.ch")], className="closing-line"),
         ], className="closing-visual-layout")
-    elif index == CORE_COUNT:
-        body = html.Div([html.Div([html.H3("Keep path"), html.Ol([html.Li("Include original events through natural retirement"), html.Li("Fill any final-year mileage remainder with the successor"), html.Li("Repeat until 2060")])], className="method-card"), html.Div([html.H3("Replace path"), html.Ol([html.Li("Include original events only through decision year"), html.Li("Exclude transferred-car later burdens"), html.Li("Add and repeat successors for exactly the same annual service")])], className="method-card")], className="scope-grid")
-    elif index == CORE_COUNT + 1:
-        categories = results.ef_categories()
-        body = html.Div([html.Div([html.Strong(item["category"]), html.Span(item["unit"])], className="category-row") for item in categories], className="category-grid")
-    elif index == CORE_COUNT + 2:
-        body = html.Div([metric("7", "direct cohort anchors", "2020 · 2025 · 2030 · 2035 · 2040 · 2050 · 2060"), metric("annual", "event resolution", "whole calendar years"), metric("2050", "vehicle/background endpoint", "held where source tables end"), metric("2070", "electricity data horizon", "endpoint held afterward"), html.Div("Vehicle inputs are interpolated to each anchor; between anchors, characterized stage profiles are interpolated by lifecycle-event age. This does not create manufacturer-specific cars.", className="boundary-note")], className="metric-grid")
     else:
-        manifest = results.manifest()
-        body = html.Div([metric(manifest["carculator"]["commit"][:8], "carculator commit", "dirty checkout disclosed" if manifest["carculator"]["dirty"] else "clean checkout"), metric(manifest["carculator_utils"]["commit"][:8], "carculator_utils commit", "dirty checkout disclosed" if manifest["carculator_utils"]["dirty"] else "clean checkout"), metric(manifest["results_sha256"][:12], "result SHA-256", "full hash in manifest"), metric("JSON only", "browser runtime", "no live LCA calculation"), html.Div("Rebuild command and assumptions are documented in apps/kent_2026/README.md.", className="boundary-note")], className="metric-grid")
+        raise ValueError(f"No content defined for slide {index}")
 
-    number = index + 1 if index < CORE_COUNT else index - CORE_COUNT + 1
-    number_label = f"{number:02d} / {CORE_COUNT:02d}" if index < CORE_COUNT else f"B{number:02d}"
+    number_label = f"{index + 1:02d} / {CORE_COUNT:02d}"
     classes = ["slide", "presentation-slide", "kent-slide", f"kent-slide-{index + 1}"]
     if index == 0:
         classes.append("cover-slide")
@@ -733,6 +735,9 @@ def render_slide(index, print_mode=False, map_state="baseline", indicator="clima
     elif slide.get("key") == "thanks":
         classes.append("closing-slide")
         children = [body, html.Span(number_label, className="slide-number")]
+    elif slide.get("key") == "conclusions":
+        classes.append("conclusions-slide")
+        children = [head, html.Div(body, className="slide-body"), html.Span(number_label, className="slide-number")]
     else:
         children = [head, html.Div(body, className="slide-body"), html.Span(number_label, className="slide-number")]
     return html.Section(children, className=" ".join(classes), id=f"slide-{index}", **{"aria-label": slide["title"]})

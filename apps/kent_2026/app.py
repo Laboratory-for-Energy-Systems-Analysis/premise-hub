@@ -59,9 +59,8 @@ def presenter():
     )
 
 
-def pdf_deck(include_backups=False):
-    count = len(ALL_SLIDES) if include_backups else CORE_COUNT
-    return [render_slide(index, print_mode=True) for index in range(count)]
+def pdf_deck():
+    return [render_slide(index, print_mode=True) for index in range(CORE_COUNT)]
 
 
 def graph_count(component):
@@ -84,14 +83,14 @@ app.layout = html.Div([
             html.Img(src=REQUESTS_PREFIX + "shared/psi-mark.svg", className="psi-mark", alt="Paul Scherrer Institute PSI"),
             html.Div([html.Strong("PSI – Laboratory for Energy Systems Analyses"), html.Span("Kent Seminar · LCA of car replacement")], className="brand-copy"),
         ], href="/", className="brand-lockup"),
-        html.Nav([html.Button(label, id={"type": "kent-chapter", "slide": slide}, className="chapter-button") for label, slide in CHAPTERS] + [html.Button("Backup slides", id="backup-button", className="chapter-button")], className="chapter-nav", **{"aria-label": "Presentation chapters"}),
+        html.Nav([html.Button(label, id={"type": "kent-chapter", "slide": slide}, className="chapter-button") for label, slide in CHAPTERS], className="chapter-nav", **{"aria-label": "Presentation chapters"}),
         html.Div([html.Strong("University of Kent"), html.Span("12 November 2026"), html.Small("Passenger-car life-cycle assessment")], className="event-lockup kent-event"),
     ], className="app-header"),
     html.Div(html.Div(id="progress-fill", className="progress-fill"), className="progress-track"),
     html.Main(id="stage", className="slide-stage"),
     html.Footer([
         html.Button("← Back", id="previous-button", className="nav-button nav-secondary"),
-        html.Div([html.Button([html.Span("↓", className="pdf-export-icon"), html.Span("Export PDF")], id="pdf-button", className="nav-button pdf-export-button"), dcc.Checklist(id="print-backups", options=[{"label": "Include backup", "value": "yes"}], value=[], inline=True)], className="export-controls"),
+        html.Div(html.Button([html.Span("↓", className="pdf-export-icon"), html.Span("Export PDF")], id="pdf-button", className="nav-button pdf-export-button"), className="export-controls"),
         html.Div([html.Span(id="slide-counter"), html.Button("Full screen", id="fullscreen-button", className="footer-link")], className="footer-hint kent-footer-tools"),
         html.Button("Next →", id="next-button", className="nav-button nav-primary"),
     ], className="app-footer"),
@@ -109,33 +108,31 @@ def slide_index(value):
 
 @app.callback(
     Output("current-slide", "data"),
-    Input("previous-button", "n_clicks"), Input("next-button", "n_clicks"), Input("backup-button", "n_clicks"),
+    Input("previous-button", "n_clicks"), Input("next-button", "n_clicks"),
     Input({"type": "kent-chapter", "slide": ALL}, "n_clicks"), Input("location", "hash"),
     State("current-slide", "data"),
 )
-def navigate(previous, following, backup, chapters, fragment, current):
-    del previous, following, backup, chapters
+def navigate(previous, following, chapters, fragment, current):
+    del previous, following, chapters
     current = slide_index(current)
     trigger = ctx.triggered_id
     if isinstance(trigger, dict): return slide_index(trigger["slide"])
     if trigger == "previous-button": return max(0, current - 1)
-    if trigger == "next-button": return min(CORE_COUNT - 1 if current < CORE_COUNT else len(ALL_SLIDES) - 1, current + 1)
-    if trigger == "backup-button": return CORE_COUNT if current < CORE_COUNT else CORE_COUNT - 1
+    if trigger == "next-button": return min(CORE_COUNT - 1, current + 1)
     if fragment and fragment.startswith("#slide-"): return slide_index(fragment.removeprefix("#slide-"))
     return current
 
 
 @app.callback(
     Output("stage", "children"), Output("slide-counter", "children"), Output("previous-button", "disabled"), Output("next-button", "disabled"),
-    Output("backup-button", "children"), Output("progress-fill", "style"),
+    Output("progress-fill", "style"),
     Input("current-slide", "data"),
 )
 def show_slide(current):
     current = slide_index(current)
-    core = current < CORE_COUNT
-    label = f"{current + 1} / {CORE_COUNT}" if core else f"Backup {current - CORE_COUNT + 1} / {len(ALL_SLIDES) - CORE_COUNT}"
-    progress = current / max(1, CORE_COUNT - 1) if core else (current - CORE_COUNT) / max(1, len(ALL_SLIDES) - CORE_COUNT - 1)
-    return render_slide(current), label, current == 0, current == (CORE_COUNT - 1 if core else len(ALL_SLIDES) - 1), "Backup" if core else "Main deck", {"width": f"{100 * progress:.1f}%"}
+    label = f"{current + 1} / {CORE_COUNT}"
+    progress = current / max(1, CORE_COUNT - 1)
+    return render_slide(current), label, current == 0, current == CORE_COUNT - 1, {"width": f"{100 * progress:.1f}%"}
 
 
 @app.callback(
@@ -230,11 +227,10 @@ def update_hash(current):
 app.clientside_callback(ClientsideFunction(namespace="kent", function_name="syncSlide"), Output("presenter-sync", "data"), Input("current-slide", "data"))
 
 
-@app.callback(Output("print-deck", "children"), Output("print-trigger", "data"), Input("pdf-button", "n_clicks"), State("print-backups", "value"), prevent_initial_call=True)
-def prepare_pdf(clicks, backups):
+@app.callback(Output("print-deck", "children"), Output("print-trigger", "data"), Input("pdf-button", "n_clicks"), prevent_initial_call=True)
+def prepare_pdf(clicks):
     if not clicks: raise PreventUpdate
-    include = "yes" in (backups or [])
-    slides = pdf_deck(include)
+    slides = pdf_deck()
     return slides, {
         "click": clicks,
         "filename": UPLOAD_NAME,

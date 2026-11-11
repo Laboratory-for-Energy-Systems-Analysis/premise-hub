@@ -10,15 +10,15 @@ from apps.kent_2026.figures import annual_stage_figure, decision_matrix_figure
 
 
 def test_deck_contract():
-    assert CORE_COUNT == 11
-    assert len(ALL_SLIDES) == 15
+    assert CORE_COUNT == 12
+    assert len(ALL_SLIDES) == 12
     assert sum(slide["seconds"] for slide in SLIDES) <= 35 * 60
     assert all(slide["cue"] and slide["notes"] for slide in ALL_SLIDES)
 
 
 def test_health_and_presenter_routes():
     client = server.test_client()
-    assert client.get("/health").get_json() == {"status": "ok", "core_slides": 11, "backup_slides": 4}
+    assert client.get("/health").get_json() == {"status": "ok", "core_slides": 12, "backup_slides": 0}
     response = client.get("/presenter")
     assert response.status_code == 200
     assert b"21:45" in response.data

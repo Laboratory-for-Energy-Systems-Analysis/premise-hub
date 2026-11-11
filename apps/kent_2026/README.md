@@ -1,8 +1,7 @@
 # Kent Seminar 2026 — Keep It or Replace It?
 
 Browser-based webinar deck for the University of Kent seminar on 12 November
-2026. The core deck contains 10 slides paced for about 20 minutes, followed by four
-technical backup slides.
+2026. The deck contains 12 slides paced for about 20 minutes.
 
 The app is intentionally **carculator-only**. It uses carculator's annual
 lifecycle scheduling and calendar-year characterization, but does not claim
@@ -148,8 +147,7 @@ Then start the mounted portal from the repository root:
 
 Open `http://127.0.0.1:8050/` standalone or `/kent-2026/` through the portal.
 Arrow keys, Page Up/Down and space navigate. `/presenter` contains notes and a
-21:45 timer. Export PDF produces the 11 core pages by default; backup pages
-are optional.
+21:45 timer. Export PDF produces all 12 pages.
 
 After starting the combined portal, run the visual and PDF regression check:
 

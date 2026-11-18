@@ -22,7 +22,7 @@ class PresentationPasswordGate:
         *,
         presentation_id: str,
         title: str,
-        password_hash: str,
+        password_hash: str | None,
         mount_path: str,
     ) -> None:
         self.app = app
@@ -48,8 +48,10 @@ class PresentationPasswordGate:
         error = False
         if request.method == "POST" and request.path == "/":
             supplied_password = request.form.get("password", "")
-            if len(supplied_password) <= 1024 and check_password_hash(
-                self.password_hash, supplied_password
+            if (
+                self.password_hash
+                and len(supplied_password) <= 1024
+                and check_password_hash(self.password_hash, supplied_password)
             ):
                 response = Response(status=303)
                 response.headers["Location"] = self.login_path

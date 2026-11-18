@@ -77,6 +77,7 @@ def test_landing_and_health() -> None:
             "setac_2026": "ok",
             "seoul_2026": "ok",
             "kent_2026": "ok",
+            "mcv_2026": "ok",
             "scenarios": "ok",
             "workshop": "ok",
         },
@@ -150,6 +151,7 @@ def test_resource_catalog_contract() -> None:
 def test_presentation_catalog_contract() -> None:
     catalog = presentations()
     assert [item["id"] for item in catalog] == [
+        "mcv-biogenic-carbon-2026-11-25",
         "kent-car-replacement-2026-11-12",
         "seoul-time-explicit-lca-2026-10-30",
         "setac-time-explicit-lca-2026-10-19",
@@ -157,6 +159,9 @@ def test_presentation_catalog_contract() -> None:
         "iam-workshop-2026-09-03",
         "lca-through-time-2026-08-27",
     ]
+    assert catalog[0]["date"] == "2026-11-25"
+    assert catalog[0]["href"] == "/mcv-2026/"
+    catalog = catalog[1:]
     assert catalog[0]["date"] == "2026-11-12"
     assert catalog[0]["href"] == "/kent-2026/"
     catalog = catalog[1:]

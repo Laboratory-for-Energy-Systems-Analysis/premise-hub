@@ -10,3 +10,5 @@ os.environ.setdefault("WORKSHOP_REQUESTS_PREFIX", "/workshop/")
 os.environ.setdefault("SETAC_2026_REQUESTS_PREFIX", "/setac-2026/")
 os.environ.setdefault("SEOUL_2026_REQUESTS_PREFIX", "/seoul-2026/")
 os.environ.setdefault("KENT_2026_REQUESTS_PREFIX", "/kent-2026/")
+os.environ.setdefault("MCV_2026_REQUESTS_PREFIX", "/mcv-2026/")
+os.environ["MCV_2026_PASSWORD"] = "test-mcv-password"

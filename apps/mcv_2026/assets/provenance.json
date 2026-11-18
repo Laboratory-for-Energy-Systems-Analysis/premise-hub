@@ -1,0 +1,19 @@
+{
+  "mcv_logo": {
+    "source_page": "https://www.congres-mcv.com/",
+    "source_url": "https://www.congres-mcv.com/wp-content/uploads/2025/11/cropped-Logo-MCV-2026.png",
+    "retrieved": "2026-11-17",
+    "sha256": "72c0bf5dfd37a5ec3e4a5412d4780c0d35889b890907164c5f5795a78956c81f",
+    "modified": false,
+    "purpose": "Required congress mark on the title slide and exported pages"
+  },
+  "scientific_results": {
+    "source": "apps/setac_2026/data/regeneration.json",
+    "recomputed": false
+  },
+  "translated_diagrams": [
+    "apps/setac_2026/assets/trails-annual-matrices.svg",
+    "apps/setac_2026/assets/trails-temporal-routing.svg",
+    "apps/lca_time/assets/cover-iam-trajectories.svg"
+  ]
+}

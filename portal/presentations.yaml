@@ -1,6 +1,12 @@
 # Add new presentations here using an ISO date (YYYY-MM-DD). The home page
 # displays the newest entries first and becomes vertically scrollable as the
 # catalog grows. Use kind: external only with an HTTPS href.
+- id: mcv-biogenic-carbon-2026-11-25
+  title: "Élimination du CO₂ : une ACV prospective et dynamique couplée à un modèle climatique"
+  summary: "MCV2026, Lille · Carbone biogénique : du bilan GWP100 aux flux datés et au CO₂-pulse-eq. Comparaison BECCS–DACCS avec TRAILS et FaIR, en français."
+  date: 2026-11-25
+  href: /mcv-2026/
+  kind: hosted
 - id: kent-car-replacement-2026-11-12
   title: "Keep It or Replace It? Car Replacement Decisions in a Changing Energy System"
   summary: University of Kent webinar. A carculator-only, calendar-year LCA of when keeping an existing gasoline car or replacing it with a new vehicle has the lower impact—and why the boundary moves.

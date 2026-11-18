@@ -34,6 +34,13 @@ remain the property of their respective projects and institutions. Their
 inclusion identifies linked resources and does not place those marks under the
 repository's BSD license.
 
+The MCV2026 presentation uses the unchanged official congress logo from
+`https://www.congres-mcv.com/wp-content/uploads/2025/11/cropped-Logo-MCV-2026.png`,
+downloaded from the official congress homepage on 17 November 2026. It identifies
+the event and is required by its presentation guidelines. The logo remains
+the organizer's property and is not relicensed under BSD. Its source and hash
+are recorded in `apps/mcv_2026/assets/provenance.json`.
+
 The Seoul lecture identifies six widely used IAM families with unchanged marks
 from their model or institution websites: MAgPIE (PIK), IMAGE's PBL team mark,
 MESSAGEix/IIASA, GCAM's University of Maryland partner mark, AIM, and WITCH/RFF-CMCC.

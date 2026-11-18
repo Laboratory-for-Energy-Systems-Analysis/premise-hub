@@ -26,13 +26,13 @@ MCV_2026_REQUESTS_PREFIX=/ .venv/bin/python -m apps.mcv_2026.app
 Ouvrir `http://127.0.0.1:8050/`. La vue orateur est `/presenter` (ou
 `/mcv-2026/presenter` dans le portail). Les notes suivent les changements de
 diapositive dans un autre onglet du même navigateur. Minuteur manuel de 12 minutes.
-Navigation au clavier, plein écran, liens `#slide-0` à `#slide-13`. Les touches
+Navigation au clavier, plein écran, liens `#slide-0` à `#slide-15`. Les touches
 fléchées restent disponibles pour les contrôles quand ceux-ci ont le focus.
 La synchronisation utilise une clé MCV distincte de SETAC.
 
 Le parcours principal comporte **10 diapositives**, prévu pour **11 min 40 s**
 (20 s de marge ; cible de répétition, pas durée mesurée). Le bouton Annexes ouvre
-quatre pages supplémentaires ; la navigation principale s’arrête à la conclusion.
+six pages supplémentaires ; la navigation principale s’arrête à la conclusion.
 
 | Diapositive | Contenu | Temps |
 | --- | --- | --- |
@@ -47,8 +47,14 @@ quatre pages supplémentaires ; la navigation principale s’arrête à la concl
 | 9 | CO₂-pulse-eq et choix de fenêtre | 2:30 |
 | 10 | ISO/GHG Protocol, PEF et proposition de déclaration des flux datés | 1:15 |
 
-Annexes : hypothèses de référence ; scénarios et mix ; sources et versions ;
-sensibilité illustrative aux pertes forestières.
+Les six annexes couvrent les hypothèses de référence, les scénarios et les mix,
+la traçabilité, la sensibilité aux pertes forestières et les profils temporels.
+Les deux dernières tracent les poids du registre Premise 2.6.0 cité dans le
+supplément TRAILS (§ 4). Le fichier `data/asset_timing_profiles.json` conserve la
+révision, les identifiants des profils actifs, leurs sélecteurs et les
+identifiants des profils du chêne et de l’épicéa. Les deux profils de repousse
+ALIGNED sont tracés aux milieux des intervalles qui suivent la récolte, selon
+la convention illustrée dans la figure S4.2.1 du supplément.
 
 ## Message pour la session
 
@@ -128,7 +134,7 @@ Choisir PDF, paysage, sans en-têtes ni pieds de page. Le nom de dépôt est :
 
 `PrésentationMCV2026_146_Sacchi.pdf`
 
-La case **Avec annexes** ajoute quatre pages et le suffixe `_avec_annexes` au
+La case **Avec annexes** ajoute six pages et le suffixe `_avec_annexes` au
 nom du fichier. Chaque diapositive occupe une page 16:9. Les notes orateur restent dans la
 vue séparée. L’export ne soumet aucun fichier à Conftool.
 
@@ -137,8 +143,8 @@ vue séparée. L’export ne soumet aucun fichier à Conftool.
 .venv/bin/python apps/mcv_2026/scripts/browser_check.py --url http://127.0.0.1:8050/mcv-2026/
 ```
 
-Le contrôle Chromium vérifie les 14 pages à 1440×900 et 1280×720, les images,
+Le contrôle Chromium vérifie les 16 pages à 1440×900 et 1280×720, les images,
 la synchronisation des notes, les contrôles temporels et les scénarios, puis
-exporte les PDF de **10 et 14 pages** dans `build/mcv-2026/` avec captures et
+exporte les PDF de **10 et 16 pages** dans `build/mcv-2026/` avec captures et
 rapport de débordement. Le numéro d’abstract a été confirmé par le présentateur ;
 1085 dans le brief initial désigne le déposant.

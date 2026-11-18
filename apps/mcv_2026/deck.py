@@ -5,6 +5,7 @@ import os
 from dash import dcc, html
 
 from apps.setac_2026 import results
+from .asset_timing import biomass_profiles, construction_profiles
 from .consensus import DISCUSSION_QUESTION, closing
 from .fair_handoff import scenario_handoff
 from .figures import (
@@ -75,6 +76,12 @@ BACKUPS = [
         "Résultats SETAC régénérés le 14 octobre 2026 : premise 2.5.4 pour PkBudg1000, fond NPi 2.4.9.1 avec premier plan régénéré ; TRAILS 1.1.1 ; 841 configurations FaIR. Correction du signe de l’absorption évitée incluse. Les empreintes, audits et contrôles indépendants restent dans apps/setac_2026/data. Aucun nouveau résultat scientifique n’a été produit pour cette adaptation."),
     metadata("Sensibilité illustrative aux pertes de carbone forestier", "Annexe / GWP100 uniquement", 0, "Présenter cette correction comme illustrative, sans l’appliquer aux courbes FaIR.",
         "Correction positive correspondant à 10 % de l’absorption brute de repousse. Ce n’est pas un modèle forestier recalculé ni une estimation calibrée des pertes de sol, racines et résidus. Elle n’est propagée ni à FaIR ni aux équivalents d’impulsion, faute de profil temporel spécifique."),
+    metadata("De l’âge du parc aux dates de construction", "Annexe / Premise · profils activés dans le registre", 0,
+        "Comparer le parc photovoltaïque récent au nucléaire et au réseau. Lire les décalages par rapport à l’année du service.",
+        "Les barres reproduisent les décalages et poids du registre Premise 2.6.0 à la révision 422e34e01b91. EIA-860 décrit les groupes en service aux États-Unis en 2025, pondérés par la puissance nette estivale. Le SIGEIF décrit six classes d’âge du réseau basse tension de 66 communes françaises à fin 2023, pondérées par la longueur. Premise affecte les profils à des échanges précis entre activités appelantes et fournisseurs. Le registre distingue sources, profils et règles d’affectation. Une observation régionale directe prime sur le profil de substitution explicite. Le même profil d’âge est translaté avec l’année de service. L’âge observé du parc et la durée de vie supposée d’un actif neuf sont deux grandeurs distinctes. Les versions utilisées pour calculer les scores de l’exposé figurent dans l’annexe de traçabilité."),
+    metadata("Deux rythmes d’absorption après la récolte", "Annexe / Premise → TRAILS · flux de biosphère", 0,
+        "Comparer le chêne et l’épicéa à partir de la même récolte. Le maximum du profil du chêne arrive 20 ans plus tard.",
+        "Premise cible le flux de biosphère « Carbon dioxide, in air » des inventaires de production et inscrit les profils dans la matrice B. Les deux profils ALIGNED du registre décrivent la repousse après récolte. Le chêne est modélisé sur 123,5 ans, avec 123 intervalles annuels et un dernier demi-intervalle. Son maximum se situe à 61,5 ans, contre 41,5 ans sur les 83 ans de l’épicéa. Les ordonnées expriment une part du CO₂ absorbé dans chaque profil, dont les poids somment à 100 %. Pour comparer les quantités totales absorbées, il faut lire les valeurs de l’inventaire. Les poids sont placés aux milieux des intervalles. TRAILS arrondit les décalages fractionnaires et regroupe les poids par année."),
 ]
 ALL_SLIDES = SLIDES + BACKUPS
 
@@ -279,7 +286,8 @@ def render_slide(index, *, print_mode=False):
     meta = ALL_SLIDES[index]
     renderers = [_cover, _systems, _static, _time_bridge, lambda: _trails(print_mode),
         lambda: _temporal(print_mode), _question, lambda: _forcing(print_mode), lambda: _pulse(print_mode),
-        _closing, _accounting, lambda: _mixes(print_mode), _sources, _sensitivity]
+        _closing, _accounting, lambda: _mixes(print_mode), _sources, _sensitivity,
+        lambda: construction_profiles(graph), lambda: biomass_profiles(graph)]
     label = f"{index + 1:02d} / {CORE_COUNT:02d}" if index < CORE_COUNT else f"Annexe {index - CORE_COUNT + 1} / {len(BACKUPS)}"
     children = _cover() if index == 0 else [html.Div([html.Div(meta["phase"], className="slide-eyebrow"), html.H1(meta["title"])], className="slide-heading"), html.Div(renderers[index](), className="slide-body")]
     children.append(html.Div(label, className="slide-number"))

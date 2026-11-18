@@ -117,7 +117,7 @@ def test_inverse_pulse_interpretation_matches_reviewed_endpoint_scores(end, expe
 def test_print_deck_has_no_live_control_ids_and_includes_cover_logo():
     core, full = pdf_deck(), pdf_deck(True)
     assert len(core) == CORE_COUNT == 10
-    assert len(full) == 14
+    assert len(full) == 16
     assert sum(slide["seconds"] for slide in SLIDES) == 700
     pending = list(full)
     images = []
@@ -131,4 +131,4 @@ def test_print_deck_has_no_live_control_ids_and_includes_cover_logo():
             pending.extend(children)
         elif children is not None:
             pending.append(children)
-    assert sum(src.endswith("mcv-logo.png") for src in images) == 14
+    assert sum(src.endswith("mcv-logo.png") for src in images) == len(full)

@@ -36,6 +36,7 @@ def main():
             presenter = context.new_page()
             presenter.goto(base + "presenter", wait_until="networkidle")
             assert "11:40" in presenter.locator("h2").inner_text()
+            slide_count = presenter.locator("#selection option").count()
             page.bring_to_front()
 
             def go(index):
@@ -61,8 +62,8 @@ def main():
 
             for width, height, label in ((1440, 900, "desktop"), (1280, 720, "laptop")):
                 page.set_viewport_size({"width": width, "height": height})
-                for index in range(14):
-                    print(f"{label} {index+1}/14", flush=True)
+                for index in range(slide_count):
+                    print(f"{label} {index+1}/{slide_count}", flush=True)
                     go(index)
                     assert presenter.locator("#selection").input_value() == str(index)
                     assert presenter.locator("#cue-text").inner_text()
@@ -126,7 +127,7 @@ def main():
             page.evaluate("window.print = () => { window.__printCalled = true; };")
             for backups, filename, expected in (
                 (False, "PrésentationMCV2026_146_Sacchi.pdf", 10),
-                (True, "PrésentationMCV2026_146_Sacchi_avec_annexes.pdf", 14),
+                (True, "PrésentationMCV2026_146_Sacchi_avec_annexes.pdf", slide_count),
             ):
                 if backups:
                     page.locator("#print-backups input").check()
@@ -148,7 +149,7 @@ def main():
                 count = len(re.findall(rb"/Type\s*/Page\b", data))
                 assert count == expected, f"PDF has {count} pages, expected {expected}"
                 assert re.findall(rb"/MediaBox\s*\[([^]]+)\]", data) == [b"0 0 1152 648"] * expected
-            report = {"errors": errors, "failed_requests": failed_requests, "overflows": overflows, "core_slides": 10, "full_slides": 14}
+            report = {"errors": errors, "failed_requests": failed_requests, "overflows": overflows, "core_slides": 10, "full_slides": slide_count}
             (args.output / "browser-report.json").write_text(json.dumps(report, indent=2))
             print(json.dumps(report, indent=2))
             assert not errors and not failed_requests and not overflows

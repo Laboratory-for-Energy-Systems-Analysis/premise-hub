@@ -16,7 +16,7 @@ The deployed service exposes:
 - `/setac-2026/` — the twelve-slide, 12-minute SETAC CDR presentation, with
   presenter notes and a PDF fallback;
 - `/mcv-2026/` — the French MCV2026 adaptation on biogenic carbon, with ten
-  main slides, four appendices, speaker notes and PDF export;
+  main slides, six appendices, speaker notes and PDF export;
 - `/seoul-2026/` — the Seoul National University guest lecture: 70 minutes of
   teaching and 20 minutes of discussion, with equations, CDR examples,
   speaker notes, phase timers and PDF export;

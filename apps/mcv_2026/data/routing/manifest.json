@@ -1,0 +1,11 @@
+{
+  "files": {
+    "daccs.json.gz": "c6de7e127f1ce52f1259a6d43e98bc44a7ae260e31ccc6d00dc43d65b23fd092",
+    "daccs-depth3.json.gz": "93c33e5a1168ff85ad164ddc02642c5c37481d2fc65f8170628d4bbf12abef99",
+    "daccs.png": "52d8556f8e9b8badd7423c66a2ca73d59143a9422c7a7cf7a77787a170e1802f",
+    "beccs.json.gz": "b530295808811cb92acd93cee98567202908e18b57ad8346fbba76c87260823a",
+    "beccs-depth3.json.gz": "3ef22f35776b19325142d07fc564dc9b766c8b8357c38fe07901bc5882df3bee",
+    "beccs.png": "e31e04218f3718eeefa43688f1ebbee95eb2743c1fe3bffab6028d65de3626e7"
+  },
+  "package_sha256": "98e05501ceae5d5d76fabe28775c0b48b9ec713e1b226dce80da2e5dcfe5c2da"
+}

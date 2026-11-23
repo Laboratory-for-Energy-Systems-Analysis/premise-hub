@@ -36,9 +36,8 @@
 .route-network { flex:1; width:100%; min-height:0; object-fit:contain; }
 .route-frame { flex:1; min-height:0; width:100%; border:1px solid #c6dce5; border-radius:10px; background:#f8fbfc; }
 .route-case-title>a { color:#526e7b; font-size:1.05cqw; text-decoration:none; }
-.route-print-view { flex:1; min-height:0; display:flex; flex-direction:column; gap:.4cqw; }
-.route-print-service { padding:.5cqw .8cqw; color:var(--psi-deep); background:#edf5f3; font-size:1.15cqw; border-radius:6px; }
-.route-printed-graph { flex:1; width:100%; min-height:0; object-fit:contain; }
+.route-print-view { flex:1; min-height:0; display:grid; grid-template-rows:repeat(2,minmax(0,1fr)); gap:.4cqw; }
+.route-printed-graph { width:100%; height:100%; min-height:0; object-fit:contain; }
 .route-print-caption { font-size:1.02cqw; color:#526e7b; }
 .route-event-profile { display:flex; align-items:center; gap:.8cqw; padding:.6cqw .75cqw; border-left:4px solid var(--case-colour); border-radius:0 9px 9px 0; background:#f2f7f9; }
 .route-event-profile>img { width:2.7cqw; height:2.7cqw; flex-shrink:0; }
@@ -76,4 +75,3 @@
 .mcv-route-controls { display:flex; align-items:center; justify-content:space-between; gap:1cqw; flex-shrink:0; font-size:1.05cqw; }
 .mcv-route-controls a { font-size:1cqw; color:var(--muted); }
 .mcv-route-controls .segmented { gap:1cqw; }
-.route-right-pane>.route-printed-graph { flex:1; min-height:0; }

@@ -109,15 +109,34 @@ def fair_handoff_asset():
 
 @server.get("/routing/<case_slug>.<extension>")
 def temporal_routing_graph(case_slug, extension):
-    from .routing import french_graph_template, shallow_route_json, verified_route_path
+    from .routing import (
+        FOREST_DIESEL_CONTEXT, MAX_VIEW_DEPTH, SUBSTITUTION_NAMES, foreground_route, foreground_route_json,
+        foreground_template_options, french_graph_template,
+        route_json, verified_route_path,
+    )
 
     if case_slug not in {"daccs", "beccs"}:
         abort(404)
     if extension == "html":
-        return render_template_string(french_graph_template(), case_slug=case_slug)
-    if extension == "json" and request.args.get("depth") == "3":
-        return Response(shallow_route_json(case_slug), mimetype="application/json")
-    if extension in {"json", "png"}:
+        if request.args.get("layout") == "original":
+            return render_template_string(
+                french_graph_template(), case_slug=case_slug, max_depth=MAX_VIEW_DEPTH,
+                substitution_names=SUBSTITUTION_NAMES,
+                supply_context=FOREST_DIESEL_CONTEXT if case_slug == "beccs" else None,
+                layout_switch={"url": f"./{case_slug}.html", "label": "Premier plan"},
+            )
+        return render_template_string(
+            french_graph_template(), case_slug=case_slug,
+            layout_switch={"url": "?layout=original", "label": "Routage d’origine"},
+            **foreground_template_options(foreground_route(case_slug)),
+        )
+    if extension == "json":
+        if request.args.get("layout") == "foreground":
+            return Response(foreground_route_json(case_slug, request.args.get("depth") == "1"),
+                            mimetype="application/json")
+        return Response(route_json(case_slug, request.args.get("depth") == "3"),
+                        mimetype="application/json")
+    if extension == "png":
         path = verified_route_path(case_slug, extension)
         return send_from_directory(path.parent, path.name)
     abort(404)

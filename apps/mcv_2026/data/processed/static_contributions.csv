@@ -1,0 +1,313 @@
+provenance_id,contributor,contributor_type,score,unit,rank
+8a65fc9f96e4fec8faf7,"carbon dioxide, captured and stored, with a sorbent-based direct air capture system, 100ktCO2, with heat pump heat, and grid electricity | carbon dioxide, captured | ENC",activity,-1028.8065671920776,kg CO2-Eq,1
+8a65fc9f96e4fec8faf7,supply of forest residue | forest residue | ENC,activity,-387.0834700422481,kg CO2-Eq,2
+8a65fc9f96e4fec8faf7,"heat and power co-generation, wood chips, 6667 kW, state-of-the-art 2014 | electricity, high voltage | FI",activity,188.6865630389455,kg CO2-Eq,3
+8a65fc9f96e4fec8faf7,"heat and power co-generation, wood chips, 6667 kW, state-of-the-art 2014 | electricity, high voltage | SE",activity,149.32164875484182,kg CO2-Eq,4
+8a65fc9f96e4fec8faf7,"heat and power co-generation, wood chips, 6667 kW, state-of-the-art 2014 | electricity, high voltage | DK",activity,138.75625573029438,kg CO2-Eq,5
+8a65fc9f96e4fec8faf7,"carbon dioxide transport extension, pipeline 50 to 2000 km, LCSS 2026 | carbon dioxide transport extension | ENC",activity,28.8065847705421,kg CO2-Eq,6
+8a65fc9f96e4fec8faf7,"plywood production | wood chips, dry, measured as dry mass | ENC",activity,-11.318391051844655,kg CO2-Eq,7
+8a65fc9f96e4fec8faf7,"three and five layered board production | wood chips, dry, measured as dry mass | ENC",activity,-8.652666795498217,kg CO2-Eq,8
+8a65fc9f96e4fec8faf7,"electricity production, at biomass-fired IGCC power plant | electricity, high voltage | ENC",activity,7.8042380539746405,kg CO2-Eq,9
+8a65fc9f96e4fec8faf7,treatment of sewage sludge by anaerobic digestion | biogas | RoW,activity,-7.673903375253014,kg CO2-Eq,10
+8a65fc9f96e4fec8faf7,"electricity production, natural gas, subcritical, steam cycle | electricity, high voltage | ENC",activity,7.203254070044992,kg CO2-Eq,11
+8a65fc9f96e4fec8faf7,"hardwood forestry, beech, sustainable forest management | sawlog and veneer log, hardwood, with bark, green, measured as green volume under bark | ENC",activity,-5.7260543670066735,kg CO2-Eq,12
+8a65fc9f96e4fec8faf7,Other,activity,106.82181300677166,kg CO2-Eq,13
+8a65fc9f96e4fec8faf7,"Carbon dioxide, in air | natural resource | in air",biosphere flow,-1502.0028212056002,kg CO2-Eq,1
+8a65fc9f96e4fec8faf7,"Carbon dioxide, non-fossil | air | urban air close to ground",biosphere flow,479.45232906356085,kg CO2-Eq,2
+8a65fc9f96e4fec8faf7,"Carbon dioxide, non-fossil | air | unspecified",biosphere flow,103.88888113831577,kg CO2-Eq,3
+8a65fc9f96e4fec8faf7,"Carbon dioxide, fossil | air | non-urban air or from high stacks",biosphere flow,38.000629417245165,kg CO2-Eq,4
+8a65fc9f96e4fec8faf7,"Carbon dioxide, fossil | air | unspecified",biosphere flow,33.841521908173256,kg CO2-Eq,5
+8a65fc9f96e4fec8faf7,"Carbon dioxide, non-fossil, resource correction | natural resource | in air",biosphere flow,-32.80565654776362,kg CO2-Eq,6
+8a65fc9f96e4fec8faf7,"Carbon dioxide, fossil | air | urban air close to ground",biosphere flow,28.59631926850143,kg CO2-Eq,7
+8a65fc9f96e4fec8faf7,"Methane, fossil | air | non-urban air or from high stacks",biosphere flow,7.756912703382456,kg CO2-Eq,8
+8a65fc9f96e4fec8faf7,"Carbon dioxide, from soil or biomass stock | air | non-urban air or from high stacks",biosphere flow,5.935442372363695,kg CO2-Eq,9
+8a65fc9f96e4fec8faf7,"Carbon dioxide, non-fossil | air | non-urban air or from high stacks",biosphere flow,4.777246791577881,kg CO2-Eq,10
+8a65fc9f96e4fec8faf7,Dinitrogen monoxide | air | urban air close to ground,biosphere flow,3.9811582100919356,kg CO2-Eq,11
+8a65fc9f96e4fec8faf7,Sulfur hexafluoride | air | non-urban air or from high stacks,biosphere flow,2.6905229713843144,kg CO2-Eq,12
+8a65fc9f96e4fec8faf7,Other,biosphere flow,4.026818510253542,kg CO2-Eq,13
+00b0e1d12410f0f2747d,"forest carbon regrowth differential, existing spruce forest vs standing stock, LCSS 2026 | forest carbon regrowth service per kilogram wood harvested | SE",activity,-1143.1183516397093,kg CO2-Eq,1
+00b0e1d12410f0f2747d,"operation of new Nordic spruce CHP with post-combustion capture, excluding capture equipment, LCSS 2026 | gross biogenic carbon entering post-combustion capture | ENC",activity,122.21438487391455,kg CO2-Eq,2
+00b0e1d12410f0f2747d,supply of forest residue | forest residue | ENC,activity,90.27177525775188,kg CO2-Eq,3
+00b0e1d12410f0f2747d,"heat and power co-generation, wood chips, 6667 kW, state-of-the-art 2014 | electricity, high voltage | FI",activity,-41.505492655267005,kg CO2-Eq,4
+00b0e1d12410f0f2747d,"heat and power co-generation, wood chips, 6667 kW, state-of-the-art 2014 | electricity, high voltage | SE",activity,-32.84621521858264,kg CO2-Eq,5
+00b0e1d12410f0f2747d,"heat and power co-generation, wood chips, 6667 kW, state-of-the-art 2014 | electricity, high voltage | DK",activity,-30.522294011457397,kg CO2-Eq,6
+00b0e1d12410f0f2747d,"carbon dioxide transport extension, pipeline 50 to 2000 km, LCSS 2026 | carbon dioxide transport extension | ENC",activity,28.8065847705421,kg CO2-Eq,7
+00b0e1d12410f0f2747d,"wood chipping, mobile chipper, at forest road | wood chipping, chipper, mobile, diesel, at forest road | FI",activity,8.697380383940516,kg CO2-Eq,8
+00b0e1d12410f0f2747d,"harvesting, forestry harvester | harvesting, forestry harvester | FI",activity,6.07080863018708,kg CO2-Eq,9
+00b0e1d12410f0f2747d,farming and supply of rapeseed | rapeseed cultivation | ENC,activity,-5.6743344811885965,kg CO2-Eq,10
+00b0e1d12410f0f2747d,"heat production, softwood chips from forest, at furnace 1000kW | heat, district or industrial, other than natural gas | ENC",activity,-5.3156875128937955,kg CO2-Eq,11
+00b0e1d12410f0f2747d,"heat production, softwood chips from forest, at furnace 1000kW, state-of-the-art 2014 | heat, district or industrial, other than natural gas | ENC",activity,-4.982589211546275,kg CO2-Eq,12
+00b0e1d12410f0f2747d,Other,activity,47.82525242613584,kg CO2-Eq,13
+00b0e1d12410f0f2747d,"Carbon dioxide, in air | natural resource | in air",biosphere flow,-1041.5288445870997,kg CO2-Eq,1
+00b0e1d12410f0f2747d,"Carbon dioxide, fossil | air | non-urban air or from high stacks",biosphere flow,21.709237085209868,kg CO2-Eq,2
+00b0e1d12410f0f2747d,"Carbon dioxide, non-fossil | air | unspecified",biosphere flow,19.839975532905843,kg CO2-Eq,3
+00b0e1d12410f0f2747d,"Carbon dioxide, fossil | air | unspecified",biosphere flow,18.310512563130565,kg CO2-Eq,4
+00b0e1d12410f0f2747d,"Carbon dioxide, non-fossil, resource correction | natural resource | in air",biosphere flow,7.935368082434325,kg CO2-Eq,5
+00b0e1d12410f0f2747d,Dinitrogen monoxide | air | urban air close to ground,biosphere flow,6.907817997275545,kg CO2-Eq,6
+00b0e1d12410f0f2747d,"Methane, fossil | air | non-urban air or from high stacks",biosphere flow,3.739942615278648,kg CO2-Eq,7
+00b0e1d12410f0f2747d,"Carbon dioxide, non-fossil | air | urban air close to ground",biosphere flow,-3.0302054216788155,kg CO2-Eq,8
+00b0e1d12410f0f2747d,"Carbon dioxide, non-fossil | air | non-urban air or from high stacks",biosphere flow,2.8301496848992436,kg CO2-Eq,9
+00b0e1d12410f0f2747d,Dinitrogen monoxide | air | unspecified,biosphere flow,2.2063574412615448,kg CO2-Eq,10
+00b0e1d12410f0f2747d,"Carbon dioxide, fossil | air | urban air close to ground",biosphere flow,1.1166740719919241,kg CO2-Eq,11
+00b0e1d12410f0f2747d,"Carbon dioxide, from soil or biomass stock | air | non-urban air or from high stacks",biosphere flow,-1.0366088904904616,kg CO2-Eq,12
+00b0e1d12410f0f2747d,Other,biosphere flow,0.9208454367135243,kg CO2-Eq,13
+60e45f1ee4d099042007,"carbon dioxide, captured and stored, with a sorbent-based direct air capture system, 100ktCO2, with heat pump heat, and grid electricity | carbon dioxide, captured | ENC",activity,-1028.8065671920776,kg CO2-Eq,1
+60e45f1ee4d099042007,supply of forest residue | forest residue | ENC,activity,-234.49947774280994,kg CO2-Eq,2
+60e45f1ee4d099042007,"heat and power co-generation, wood chips, 6667 kW, state-of-the-art 2014 | electricity, high voltage | FI",activity,112.86725463302801,kg CO2-Eq,3
+60e45f1ee4d099042007,"heat and power co-generation, wood chips, 6667 kW, state-of-the-art 2014 | electricity, high voltage | SE",activity,89.3203510556849,kg CO2-Eq,4
+60e45f1ee4d099042007,"heat and power co-generation, wood chips, 6667 kW, state-of-the-art 2014 | electricity, high voltage | DK",activity,83.00027904153438,kg CO2-Eq,5
+60e45f1ee4d099042007,"carbon dioxide transport extension, pipeline 50 to 2000 km, LCSS 2026 | carbon dioxide transport extension | ENC",activity,28.8065847705421,kg CO2-Eq,6
+60e45f1ee4d099042007,treatment of sewage sludge by anaerobic digestion | biogas | RoW,activity,-7.241604299228818,kg CO2-Eq,7
+60e45f1ee4d099042007,"plywood production | wood chips, dry, measured as dry mass | ENC",activity,-6.168305285720653,kg CO2-Eq,8
+60e45f1ee4d099042007,"three and five layered board production | wood chips, dry, measured as dry mass | ENC",activity,-4.71553687143127,kg CO2-Eq,9
+60e45f1ee4d099042007,"natural gas venting from petroleum/natural gas production | natural gas, vented | GLO",activity,4.277734951966107,kg CO2-Eq,10
+60e45f1ee4d099042007,"electricity production, at biomass-fired IGCC power plant | electricity, high voltage | ENC",activity,4.247470338692251,kg CO2-Eq,11
+60e45f1ee4d099042007,"treatment of spent anion exchange resin from potable water production, municipal incineration | spent anion exchange resin from potable water production | GLO",activity,4.03992293844013,kg CO2-Eq,12
+60e45f1ee4d099042007,Other,activity,80.25404978666664,kg CO2-Eq,13
+60e45f1ee4d099042007,"Carbon dioxide, in air | natural resource | in air",biosphere flow,-1317.8624223636816,kg CO2-Eq,1
+60e45f1ee4d099042007,"Carbon dioxide, non-fossil | air | urban air close to ground",biosphere flow,288.5473072705676,kg CO2-Eq,2
+60e45f1ee4d099042007,"Carbon dioxide, non-fossil | air | unspecified",biosphere flow,74.72021800563412,kg CO2-Eq,3
+60e45f1ee4d099042007,"Carbon dioxide, fossil | air | unspecified",biosphere flow,27.414584152293536,kg CO2-Eq,4
+60e45f1ee4d099042007,"Carbon dioxide, fossil | air | non-urban air or from high stacks",biosphere flow,24.830576345400743,kg CO2-Eq,5
+60e45f1ee4d099042007,"Carbon dioxide, fossil | air | urban air close to ground",biosphere flow,24.614364820962813,kg CO2-Eq,6
+60e45f1ee4d099042007,"Carbon dioxide, non-fossil, resource correction | natural resource | in air",biosphere flow,-17.931173470146796,kg CO2-Eq,7
+60e45f1ee4d099042007,"Methane, fossil | air | non-urban air or from high stacks",biosphere flow,6.166376133050689,kg CO2-Eq,8
+60e45f1ee4d099042007,"Carbon dioxide, non-fossil | air | non-urban air or from high stacks",biosphere flow,4.252091453262698,kg CO2-Eq,9
+60e45f1ee4d099042007,"Carbon dioxide, from soil or biomass stock | air | non-urban air or from high stacks",biosphere flow,3.6382816587258757,kg CO2-Eq,10
+60e45f1ee4d099042007,Dinitrogen monoxide | air | urban air close to ground,biosphere flow,2.5761987921536167,kg CO2-Eq,11
+60e45f1ee4d099042007,Sulfur hexafluoride | air | non-urban air or from high stacks,biosphere flow,1.7489667697647162,kg CO2-Eq,12
+60e45f1ee4d099042007,Other,biosphere flow,2.6667865572965797,kg CO2-Eq,13
+da9565d9a4b27c611ad6,"forest carbon regrowth differential, existing spruce forest vs standing stock, LCSS 2026 | forest carbon regrowth service per kilogram wood harvested | SE",activity,-1143.1183516397093,kg CO2-Eq,1
+da9565d9a4b27c611ad6,"operation of new Nordic spruce CHP with post-combustion capture, excluding capture equipment, LCSS 2026 | gross biogenic carbon entering post-combustion capture | ENC",activity,122.21438487391455,kg CO2-Eq,2
+da9565d9a4b27c611ad6,supply of forest residue | forest residue | ENC,activity,79.4529452454279,kg CO2-Eq,3
+da9565d9a4b27c611ad6,"heat and power co-generation, wood chips, 6667 kW, state-of-the-art 2014 | electricity, high voltage | FI",activity,-38.67031178675276,kg CO2-Eq,4
+da9565d9a4b27c611ad6,"heat and power co-generation, wood chips, 6667 kW, state-of-the-art 2014 | electricity, high voltage | SE",activity,-30.602548700024336,kg CO2-Eq,5
+da9565d9a4b27c611ad6,"carbon dioxide transport extension, pipeline 50 to 2000 km, LCSS 2026 | carbon dioxide transport extension | ENC",activity,28.8065847705421,kg CO2-Eq,6
+da9565d9a4b27c611ad6,"heat and power co-generation, wood chips, 6667 kW, state-of-the-art 2014 | electricity, high voltage | DK",activity,-28.437359262075866,kg CO2-Eq,7
+da9565d9a4b27c611ad6,"wood chipping, mobile chipper, at forest road | wood chipping, chipper, mobile, diesel, at forest road | FI",activity,8.697380078412436,kg CO2-Eq,8
+da9565d9a4b27c611ad6,"hydrogen production, gaseous, 25 bar, from gasification of woody biomass in entrained flow gasifier, at gasification plant | hydrogen, gaseous, 25 bar | ENC",activity,7.293532622070791,kg CO2-Eq,9
+da9565d9a4b27c611ad6,"harvesting, forestry harvester | harvesting, forestry harvester | FI",activity,6.072707719863707,kg CO2-Eq,10
+da9565d9a4b27c611ad6,treatment of sewage sludge by anaerobic digestion | biogas | RoW,activity,4.766569832034803,kg CO2-Eq,11
+da9565d9a4b27c611ad6,"heat production, softwood chips from forest, at furnace 1000kW | heat, district or industrial, other than natural gas | ENC",activity,-4.738913738028093,kg CO2-Eq,12
+da9565d9a4b27c611ad6,Other,activity,25.703589221676594,kg CO2-Eq,13
+da9565d9a4b27c611ad6,"Carbon dioxide, in air | natural resource | in air",biosphere flow,-1049.3270110757896,kg CO2-Eq,1
+da9565d9a4b27c611ad6,"Carbon dioxide, non-fossil | air | unspecified",biosphere flow,22.714849387115247,kg CO2-Eq,2
+da9565d9a4b27c611ad6,"Carbon dioxide, fossil | air | non-urban air or from high stacks",biosphere flow,20.307513772737817,kg CO2-Eq,3
+da9565d9a4b27c611ad6,"Carbon dioxide, fossil | air | unspecified",biosphere flow,17.44637770974613,kg CO2-Eq,4
+da9565d9a4b27c611ad6,Dinitrogen monoxide | air | urban air close to ground,biosphere flow,6.904049584973701,kg CO2-Eq,5
+da9565d9a4b27c611ad6,"Carbon dioxide, non-fossil, resource correction | natural resource | in air",biosphere flow,6.323678847432899,kg CO2-Eq,6
+da9565d9a4b27c611ad6,"Carbon dioxide, non-fossil | air | urban air close to ground",biosphere flow,4.369282852251369,kg CO2-Eq,7
+da9565d9a4b27c611ad6,"Methane, fossil | air | non-urban air or from high stacks",biosphere flow,3.549214760580598,kg CO2-Eq,8
+da9565d9a4b27c611ad6,"Carbon dioxide, non-fossil | air | non-urban air or from high stacks",biosphere flow,2.393122869859142,kg CO2-Eq,9
+da9565d9a4b27c611ad6,"Carbon dioxide, fossil | air | urban air close to ground",biosphere flow,1.5543581465223537,kg CO2-Eq,10
+da9565d9a4b27c611ad6,Dinitrogen monoxide | air | unspecified,biosphere flow,1.3060462395009254,kg CO2-Eq,11
+da9565d9a4b27c611ad6,"Carbon dioxide, from soil or biomass stock | air | non-urban air or from high stacks",biosphere flow,-0.9698242963767605,kg CO2-Eq,12
+da9565d9a4b27c611ad6,Other,biosphere flow,0.8685504388020671,kg CO2-Eq,13
+d243f59313a52a164dfe,"carbon dioxide, captured and stored, with a sorbent-based direct air capture system, 100ktCO2, with heat pump heat, and grid electricity | carbon dioxide, captured | ENC",activity,-1028.8065671920776,kg CO2-Eq,1
+d243f59313a52a164dfe,supply of forest residue | forest residue | ENC,activity,-83.7436023643902,kg CO2-Eq,2
+d243f59313a52a164dfe,"heat and power co-generation, wood chips, 6667 kW, state-of-the-art 2014 | electricity, high voltage | FI",activity,41.06582703422494,kg CO2-Eq,3
+d243f59313a52a164dfe,"heat and power co-generation, wood chips, 6667 kW, state-of-the-art 2014 | electricity, high voltage | SE",activity,32.4988781062438,kg CO2-Eq,4
+d243f59313a52a164dfe,"heat and power co-generation, wood chips, 6667 kW, state-of-the-art 2014 | electricity, high voltage | DK",activity,30.19897429298913,kg CO2-Eq,5
+d243f59313a52a164dfe,"carbon dioxide transport extension, pipeline 50 to 2000 km, LCSS 2026 | carbon dioxide transport extension | ENC",activity,28.8065847705421,kg CO2-Eq,6
+d243f59313a52a164dfe,"treatment of spent anion exchange resin from potable water production, municipal incineration | spent anion exchange resin from potable water production | GLO",activity,4.039667869037723,kg CO2-Eq,7
+d243f59313a52a164dfe,treatment of sewage sludge by anaerobic digestion | biogas | RoW,activity,-3.7845443515050694,kg CO2-Eq,8
+d243f59313a52a164dfe,"natural gas venting from petroleum/natural gas production | natural gas, vented | GLO",activity,3.5830066502949083,kg CO2-Eq,9
+d243f59313a52a164dfe,"treatment of spent solvent mixture, hazardous waste incineration | spent solvent mixture | RoW",activity,2.9058260023331175,kg CO2-Eq,10
+d243f59313a52a164dfe,"syngas production, from natural gas | syngas, from natural gas | MEA",activity,2.576658969034755,kg CO2-Eq,11
+d243f59313a52a164dfe,"electricity production, hydro, reservoir, non-alpine region | electricity, high voltage | SE",activity,2.4841040491740434,kg CO2-Eq,12
+d243f59313a52a164dfe,Other,activity,53.78695538584836,kg CO2-Eq,13
+d243f59313a52a164dfe,"Carbon dioxide, in air | natural resource | in air",biosphere flow,-1138.7973524794245,kg CO2-Eq,1
+d243f59313a52a164dfe,"Carbon dioxide, non-fossil | air | urban air close to ground",biosphere flow,107.38585596318683,kg CO2-Eq,2
+d243f59313a52a164dfe,"Carbon dioxide, non-fossil | air | unspecified",biosphere flow,46.247523093251104,kg CO2-Eq,3
+d243f59313a52a164dfe,"Carbon dioxide, fossil | air | unspecified",biosphere flow,25.37329409347769,kg CO2-Eq,4
+d243f59313a52a164dfe,"Carbon dioxide, fossil | air | urban air close to ground",biosphere flow,23.393987558581525,kg CO2-Eq,5
+d243f59313a52a164dfe,"Carbon dioxide, fossil | air | non-urban air or from high stacks",biosphere flow,13.700734248353987,kg CO2-Eq,6
+d243f59313a52a164dfe,"Carbon dioxide, non-fossil, resource correction | natural resource | in air",biosphere flow,-7.285769910749482,kg CO2-Eq,7
+d243f59313a52a164dfe,"Methane, fossil | air | non-urban air or from high stacks",biosphere flow,5.005056529685309,kg CO2-Eq,8
+d243f59313a52a164dfe,"Carbon dioxide, from soil or biomass stock | air | non-urban air or from high stacks",biosphere flow,2.9135799026513665,kg CO2-Eq,9
+d243f59313a52a164dfe,"Carbon dioxide, non-fossil | air | non-urban air or from high stacks",biosphere flow,2.6143534353523434,kg CO2-Eq,10
+d243f59313a52a164dfe,Sulfur hexafluoride | air | non-urban air or from high stacks,biosphere flow,1.7828507724863767,kg CO2-Eq,11
+d243f59313a52a164dfe,Dinitrogen monoxide | air | urban air close to ground,biosphere flow,1.2841914803037582,kg CO2-Eq,12
+d243f59313a52a164dfe,Other,biosphere flow,1.9934645345878022,kg CO2-Eq,13
+91ef0c26be44ac0c3a64,"forest carbon regrowth differential, existing spruce forest vs standing stock, LCSS 2026 | forest carbon regrowth service per kilogram wood harvested | SE",activity,-1143.1183516397093,kg CO2-Eq,1
+91ef0c26be44ac0c3a64,"operation of new Nordic spruce CHP with post-combustion capture, excluding capture equipment, LCSS 2026 | gross biogenic carbon entering post-combustion capture | ENC",activity,122.21438487391455,kg CO2-Eq,2
+91ef0c26be44ac0c3a64,"carbon dioxide transport extension, pipeline 50 to 2000 km, LCSS 2026 | carbon dioxide transport extension | ENC",activity,28.8065847705421,kg CO2-Eq,3
+91ef0c26be44ac0c3a64,"hydrogen production, gaseous, 25 bar, from gasification of woody biomass in entrained flow gasifier, at gasification plant | hydrogen, gaseous, 25 bar | ENC",activity,15.056371753303798,kg CO2-Eq,4
+91ef0c26be44ac0c3a64,"heat and power co-generation, wood chips, 6667 kW, state-of-the-art 2014 | electricity, high voltage | FI",activity,-14.192271382099047,kg CO2-Eq,5
+91ef0c26be44ac0c3a64,"heat and power co-generation, wood chips, 6667 kW, state-of-the-art 2014 | electricity, high voltage | SE",activity,-11.231351464476397,kg CO2-Eq,6
+91ef0c26be44ac0c3a64,"heat and power co-generation, wood chips, 6667 kW, state-of-the-art 2014 | electricity, high voltage | DK",activity,-10.436707831792573,kg CO2-Eq,7
+91ef0c26be44ac0c3a64,"wood chipping, mobile chipper, at forest road | wood chipping, chipper, mobile, diesel, at forest road | FI",activity,8.697380151287009,kg CO2-Eq,8
+91ef0c26be44ac0c3a64,supply of forest residue | forest residue | ENC,activity,6.418571764122595,kg CO2-Eq,9
+91ef0c26be44ac0c3a64,"harvesting, forestry harvester | harvesting, forestry harvester | FI",activity,6.079324532765774,kg CO2-Eq,10
+91ef0c26be44ac0c3a64,"carbon monoxide, from RWGS, for Fischer Tropsch process, hydrogen from wood gasification | carbon monoxide, from RWGS | ENC",activity,-5.263432888670936,kg CO2-Eq,11
+91ef0c26be44ac0c3a64,"methanol production, biomass gasification | methanol, from biomass | ENC",activity,-4.8329981065092245,kg CO2-Eq,12
+91ef0c26be44ac0c3a64,Other,activity,26.956328039696555,kg CO2-Eq,13
+91ef0c26be44ac0c3a64,"Carbon dioxide, in air | natural resource | in air",biosphere flow,-1131.6692189272694,kg CO2-Eq,1
+91ef0c26be44ac0c3a64,"Carbon dioxide, non-fossil | air | urban air close to ground",biosphere flow,59.41650981799196,kg CO2-Eq,2
+91ef0c26be44ac0c3a64,"Carbon dioxide, non-fossil | air | unspecified",biosphere flow,45.39606150770314,kg CO2-Eq,3
+91ef0c26be44ac0c3a64,"Carbon dioxide, fossil | air | unspecified",biosphere flow,14.667385572570888,kg CO2-Eq,4
+91ef0c26be44ac0c3a64,"Carbon dioxide, fossil | air | non-urban air or from high stacks",biosphere flow,11.637128435943678,kg CO2-Eq,5
+91ef0c26be44ac0c3a64,"Carbon dioxide, non-fossil | air | non-urban air or from high stacks",biosphere flow,9.157897235075541,kg CO2-Eq,6
+91ef0c26be44ac0c3a64,Dinitrogen monoxide | air | urban air close to ground,biosphere flow,7.282580851189062,kg CO2-Eq,7
+91ef0c26be44ac0c3a64,"Carbon dioxide, fossil | air | urban air close to ground",biosphere flow,3.5143340293347713,kg CO2-Eq,8
+91ef0c26be44ac0c3a64,"Methane, fossil | air | non-urban air or from high stacks",biosphere flow,2.809214223978531,kg CO2-Eq,9
+91ef0c26be44ac0c3a64,"Carbon dioxide, non-fossil, resource correction | natural resource | in air",biosphere flow,1.624102051590581,kg CO2-Eq,10
+91ef0c26be44ac0c3a64,Dinitrogen monoxide | air | unspecified,biosphere flow,1.2790175447644538,kg CO2-Eq,11
+91ef0c26be44ac0c3a64,"Carbon dioxide, from soil or biomass stock | air | non-urban air or from high stacks",biosphere flow,-0.7491008678379526,kg CO2-Eq,12
+91ef0c26be44ac0c3a64,Other,biosphere flow,0.7879210973371372,kg CO2-Eq,13
+3ffc40b2f51ba8a60579,"carbon dioxide, captured and stored, with a sorbent-based direct air capture system, 100ktCO2, with heat pump heat, and grid electricity | carbon dioxide, captured | ENC",activity,-1028.8065671920776,kg CO2-Eq,1
+3ffc40b2f51ba8a60579,supply of forest residue | forest residue | ENC,activity,-387.0853420742741,kg CO2-Eq,2
+3ffc40b2f51ba8a60579,"heat and power co-generation, wood chips, 6667 kW, state-of-the-art 2014 | electricity, high voltage | FI",activity,188.68741967302577,kg CO2-Eq,3
+3ffc40b2f51ba8a60579,"heat and power co-generation, wood chips, 6667 kW, state-of-the-art 2014 | electricity, high voltage | SE",activity,149.3223267905282,kg CO2-Eq,4
+3ffc40b2f51ba8a60579,"heat and power co-generation, wood chips, 6667 kW, state-of-the-art 2014 | electricity, high voltage | DK",activity,138.75688568155113,kg CO2-Eq,5
+3ffc40b2f51ba8a60579,"carbon dioxide transport extension, pipeline 50 to 2000 km, LCSS 2026 | carbon dioxide transport extension | ENC",activity,28.8065847705421,kg CO2-Eq,6
+3ffc40b2f51ba8a60579,"plywood production | wood chips, dry, measured as dry mass | ENC",activity,-11.31844579518816,kg CO2-Eq,7
+3ffc40b2f51ba8a60579,"three and five layered board production | wood chips, dry, measured as dry mass | ENC",activity,-8.652708645608225,kg CO2-Eq,8
+3ffc40b2f51ba8a60579,"electricity production, at biomass-fired IGCC power plant | electricity, high voltage | ENC",activity,7.8042734850948,kg CO2-Eq,9
+3ffc40b2f51ba8a60579,treatment of sewage sludge by anaerobic digestion | biogas | RoW,activity,-7.6735804020142115,kg CO2-Eq,10
+3ffc40b2f51ba8a60579,"electricity production, natural gas, subcritical, steam cycle | electricity, high voltage | ENC",activity,7.203286772707153,kg CO2-Eq,11
+3ffc40b2f51ba8a60579,"hardwood forestry, beech, sustainable forest management | sawlog and veneer log, hardwood, with bark, green, measured as green volume under bark | ENC",activity,-5.726082182192172,kg CO2-Eq,12
+3ffc40b2f51ba8a60579,Other,activity,106.82779980923542,kg CO2-Eq,13
+3ffc40b2f51ba8a60579,"Carbon dioxide, in air | natural resource | in air",biosphere flow,-1502.005366944115,kg CO2-Eq,1
+3ffc40b2f51ba8a60579,"Carbon dioxide, non-fossil | air | urban air close to ground",biosphere flow,479.45474134857943,kg CO2-Eq,2
+3ffc40b2f51ba8a60579,"Carbon dioxide, non-fossil | air | unspecified",biosphere flow,103.8896758524503,kg CO2-Eq,3
+3ffc40b2f51ba8a60579,"Carbon dioxide, fossil | air | non-urban air or from high stacks",biosphere flow,38.00373061709429,kg CO2-Eq,4
+3ffc40b2f51ba8a60579,"Carbon dioxide, fossil | air | unspecified",biosphere flow,33.84243493956008,kg CO2-Eq,5
+3ffc40b2f51ba8a60579,"Carbon dioxide, non-fossil, resource correction | natural resource | in air",biosphere flow,-32.805893041762005,kg CO2-Eq,6
+3ffc40b2f51ba8a60579,"Carbon dioxide, fossil | air | urban air close to ground",biosphere flow,28.597281329077518,kg CO2-Eq,7
+3ffc40b2f51ba8a60579,"Methane, fossil | air | non-urban air or from high stacks",biosphere flow,7.757320847582398,kg CO2-Eq,8
+3ffc40b2f51ba8a60579,"Carbon dioxide, from soil or biomass stock | air | non-urban air or from high stacks",biosphere flow,5.9354452066180805,kg CO2-Eq,9
+3ffc40b2f51ba8a60579,"Carbon dioxide, non-fossil | air | non-urban air or from high stacks",biosphere flow,4.777282411547494,kg CO2-Eq,10
+3ffc40b2f51ba8a60579,Dinitrogen monoxide | air | urban air close to ground,biosphere flow,3.981166690553423,kg CO2-Eq,11
+3ffc40b2f51ba8a60579,Sulfur hexafluoride | air | non-urban air or from high stacks,biosphere flow,2.690546572778118,kg CO2-Eq,12
+3ffc40b2f51ba8a60579,Other,biosphere flow,4.027484861366956,kg CO2-Eq,13
+cdeaab3c7942d0cbeda8,"forest carbon regrowth differential, existing spruce forest vs standing stock, LCSS 2026 | forest carbon regrowth service per kilogram wood harvested | SE",activity,-1143.1183516397093,kg CO2-Eq,1
+cdeaab3c7942d0cbeda8,"operation of new Nordic spruce CHP with post-combustion capture, excluding capture equipment, LCSS 2026 | gross biogenic carbon entering post-combustion capture | ENC",activity,122.21438487391455,kg CO2-Eq,2
+cdeaab3c7942d0cbeda8,supply of forest residue | forest residue | ENC,activity,90.27182928760183,kg CO2-Eq,3
+cdeaab3c7942d0cbeda8,"heat and power co-generation, wood chips, 6667 kW, state-of-the-art 2014 | electricity, high voltage | FI",activity,-41.50530203147209,kg CO2-Eq,4
+cdeaab3c7942d0cbeda8,"heat and power co-generation, wood chips, 6667 kW, state-of-the-art 2014 | electricity, high voltage | SE",activity,-32.846064364477655,kg CO2-Eq,5
+cdeaab3c7942d0cbeda8,"heat and power co-generation, wood chips, 6667 kW, state-of-the-art 2014 | electricity, high voltage | DK",activity,-30.5221538306008,kg CO2-Eq,6
+cdeaab3c7942d0cbeda8,"carbon dioxide transport extension, pipeline 50 to 2000 km, LCSS 2026 | carbon dioxide transport extension | ENC",activity,28.8065847705421,kg CO2-Eq,7
+cdeaab3c7942d0cbeda8,"wood chipping, mobile chipper, at forest road | wood chipping, chipper, mobile, diesel, at forest road | FI",activity,8.69738038393449,kg CO2-Eq,8
+cdeaab3c7942d0cbeda8,"harvesting, forestry harvester | harvesting, forestry harvester | FI",activity,6.070808622328431,kg CO2-Eq,9
+cdeaab3c7942d0cbeda8,farming and supply of rapeseed | rapeseed cultivation | ENC,activity,-5.6733863129239275,kg CO2-Eq,10
+cdeaab3c7942d0cbeda8,"heat production, softwood chips from forest, at furnace 1000kW | heat, district or industrial, other than natural gas | ENC",activity,-5.31569483268704,kg CO2-Eq,11
+cdeaab3c7942d0cbeda8,"heat production, softwood chips from forest, at furnace 1000kW, state-of-the-art 2014 | heat, district or industrial, other than natural gas | ENC",activity,-4.982596072657421,kg CO2-Eq,12
+cdeaab3c7942d0cbeda8,Other,activity,47.82011568357446,kg CO2-Eq,13
+cdeaab3c7942d0cbeda8,"Carbon dioxide, in air | natural resource | in air",biosphere flow,-1041.5271779225027,kg CO2-Eq,1
+cdeaab3c7942d0cbeda8,"Carbon dioxide, fossil | air | non-urban air or from high stacks",biosphere flow,21.709233257718854,kg CO2-Eq,2
+cdeaab3c7942d0cbeda8,"Carbon dioxide, non-fossil | air | unspecified",biosphere flow,19.838066939776535,kg CO2-Eq,3
+cdeaab3c7942d0cbeda8,"Carbon dioxide, fossil | air | unspecified",biosphere flow,18.307795643150236,kg CO2-Eq,4
+cdeaab3c7942d0cbeda8,"Carbon dioxide, non-fossil, resource correction | natural resource | in air",biosphere flow,7.935360794408491,kg CO2-Eq,5
+cdeaab3c7942d0cbeda8,Dinitrogen monoxide | air | urban air close to ground,biosphere flow,6.90772211250163,kg CO2-Eq,6
+cdeaab3c7942d0cbeda8,"Methane, fossil | air | non-urban air or from high stacks",biosphere flow,3.739659483274884,kg CO2-Eq,7
+cdeaab3c7942d0cbeda8,"Carbon dioxide, non-fossil | air | urban air close to ground",biosphere flow,-3.029761829720573,kg CO2-Eq,8
+cdeaab3c7942d0cbeda8,"Carbon dioxide, non-fossil | air | non-urban air or from high stacks",biosphere flow,2.8301461221949884,kg CO2-Eq,9
+cdeaab3c7942d0cbeda8,Dinitrogen monoxide | air | unspecified,biosphere flow,2.206029662569641,kg CO2-Eq,10
+cdeaab3c7942d0cbeda8,"Carbon dioxide, fossil | air | urban air close to ground",biosphere flow,1.11650140560969,kg CO2-Eq,11
+cdeaab3c7942d0cbeda8,"Carbon dioxide, from soil or biomass stock | air | non-urban air or from high stacks",biosphere flow,-1.0366204156773617,kg CO2-Eq,12
+cdeaab3c7942d0cbeda8,Other,biosphere flow,0.9205992840730656,kg CO2-Eq,13
+f51b58819bcec90379b9,"carbon dioxide, captured and stored, with a sorbent-based direct air capture system, 100ktCO2, with heat pump heat, and grid electricity | carbon dioxide, captured | ENC",activity,-1028.8065671920776,kg CO2-Eq,1
+f51b58819bcec90379b9,supply of forest residue | forest residue | ENC,activity,-249.4664797714037,kg CO2-Eq,2
+f51b58819bcec90379b9,"heat and power co-generation, wood chips, 6667 kW, state-of-the-art 2014 | electricity, high voltage | FI",activity,118.44717741293816,kg CO2-Eq,3
+f51b58819bcec90379b9,"heat and power co-generation, wood chips, 6667 kW, state-of-the-art 2014 | electricity, high voltage | SE",activity,93.73613617172074,kg CO2-Eq,4
+f51b58819bcec90379b9,"heat and power co-generation, wood chips, 6667 kW, state-of-the-art 2014 | electricity, high voltage | DK",activity,87.10364606750286,kg CO2-Eq,5
+f51b58819bcec90379b9,"carbon dioxide transport extension, pipeline 50 to 2000 km, LCSS 2026 | carbon dioxide transport extension | ENC",activity,28.8065847705421,kg CO2-Eq,6
+f51b58819bcec90379b9,"electricity production, at biomass-fired IGCC power plant | electricity, high voltage | ENC",activity,9.875212437071179,kg CO2-Eq,7
+f51b58819bcec90379b9,"plywood production | wood chips, dry, measured as dry mass | ENC",activity,-7.004509629681599,kg CO2-Eq,8
+f51b58819bcec90379b9,treatment of sewage sludge by anaerobic digestion | biogas | RoW,activity,-6.876482423967028,kg CO2-Eq,9
+f51b58819bcec90379b9,"three and five layered board production | wood chips, dry, measured as dry mass | ENC",activity,-5.354797127425256,kg CO2-Eq,10
+f51b58819bcec90379b9,"natural gas venting from petroleum/natural gas production | natural gas, vented | GLO",activity,4.272211779090648,kg CO2-Eq,11
+f51b58819bcec90379b9,"treatment of spent anion exchange resin from potable water production, municipal incineration | spent anion exchange resin from potable water production | GLO",activity,4.039935231092786,kg CO2-Eq,12
+f51b58819bcec90379b9,Other,activity,76.63203787089557,kg CO2-Eq,13
+f51b58819bcec90379b9,"Carbon dioxide, in air | natural resource | in air",biosphere flow,-1335.8279101460475,kg CO2-Eq,1
+f51b58819bcec90379b9,"Carbon dioxide, non-fossil | air | urban air close to ground",biosphere flow,302.6845070351033,kg CO2-Eq,2
+f51b58819bcec90379b9,"Carbon dioxide, non-fossil | air | unspecified",biosphere flow,82.92717356955775,kg CO2-Eq,3
+f51b58819bcec90379b9,"Carbon dioxide, fossil | air | unspecified",biosphere flow,26.542900209964934,kg CO2-Eq,4
+f51b58819bcec90379b9,"Carbon dioxide, fossil | air | urban air close to ground",biosphere flow,24.365669858648236,kg CO2-Eq,5
+f51b58819bcec90379b9,"Carbon dioxide, fossil | air | non-urban air or from high stacks",biosphere flow,23.92484776225327,kg CO2-Eq,6
+f51b58819bcec90379b9,"Carbon dioxide, non-fossil, resource correction | natural resource | in air",biosphere flow,-20.355947081914387,kg CO2-Eq,7
+f51b58819bcec90379b9,"Methane, fossil | air | non-urban air or from high stacks",biosphere flow,6.028510893229823,kg CO2-Eq,8
+f51b58819bcec90379b9,"Carbon dioxide, non-fossil | air | non-urban air or from high stacks",biosphere flow,4.065934991841224,kg CO2-Eq,9
+f51b58819bcec90379b9,"Carbon dioxide, from soil or biomass stock | air | non-urban air or from high stacks",biosphere flow,3.9031910365846447,kg CO2-Eq,10
+f51b58819bcec90379b9,Dinitrogen monoxide | air | urban air close to ground,biosphere flow,2.6681236686900482,kg CO2-Eq,11
+f51b58819bcec90379b9,Sulfur hexafluoride | air | non-urban air or from high stacks,biosphere flow,1.7499049807247493,kg CO2-Eq,12
+f51b58819bcec90379b9,Other,biosphere flow,2.727198817669096,kg CO2-Eq,13
+fbedd33ae8de25f106dd,"forest carbon regrowth differential, existing spruce forest vs standing stock, LCSS 2026 | forest carbon regrowth service per kilogram wood harvested | SE",activity,-1143.1183516397093,kg CO2-Eq,1
+fbedd33ae8de25f106dd,"operation of new Nordic spruce CHP with post-combustion capture, excluding capture equipment, LCSS 2026 | gross biogenic carbon entering post-combustion capture | ENC",activity,122.21438487391455,kg CO2-Eq,2
+fbedd33ae8de25f106dd,supply of forest residue | forest residue | ENC,activity,83.89185611766106,kg CO2-Eq,3
+fbedd33ae8de25f106dd,"heat and power co-generation, wood chips, 6667 kW, state-of-the-art 2014 | electricity, high voltage | FI",activity,-40.808304654091856,kg CO2-Eq,4
+fbedd33ae8de25f106dd,"heat and power co-generation, wood chips, 6667 kW, state-of-the-art 2014 | electricity, high voltage | SE",activity,-32.29449205916945,kg CO2-Eq,5
+fbedd33ae8de25f106dd,"heat and power co-generation, wood chips, 6667 kW, state-of-the-art 2014 | electricity, high voltage | DK",activity,-30.009597550921267,kg CO2-Eq,6
+fbedd33ae8de25f106dd,"carbon dioxide transport extension, pipeline 50 to 2000 km, LCSS 2026 | carbon dioxide transport extension | ENC",activity,28.8065847705421,kg CO2-Eq,7
+fbedd33ae8de25f106dd,"wood chipping, mobile chipper, at forest road | wood chipping, chipper, mobile, diesel, at forest road | FI",activity,8.697379822986631,kg CO2-Eq,8
+fbedd33ae8de25f106dd,"hydrogen production, gaseous, 25 bar, from gasification of woody biomass in entrained flow gasifier, at gasification plant | hydrogen, gaseous, 25 bar | ENC",activity,7.7192060598331524,kg CO2-Eq,9
+fbedd33ae8de25f106dd,"harvesting, forestry harvester | harvesting, forestry harvester | FI",activity,6.071787358027682,kg CO2-Eq,10
+fbedd33ae8de25f106dd,treatment of sewage sludge by anaerobic digestion | biogas | RoW,activity,4.563118020728981,kg CO2-Eq,11
+fbedd33ae8de25f106dd,"heat production, softwood chips from forest, at furnace 1000kW | heat, district or industrial, other than natural gas | ENC",activity,-4.274719341213919,kg CO2-Eq,12
+fbedd33ae8de25f106dd,Other,activity,24.39928404912056,kg CO2-Eq,13
+fbedd33ae8de25f106dd,"Carbon dioxide, in air | natural resource | in air",biosphere flow,-1044.1173414348798,kg CO2-Eq,1
+fbedd33ae8de25f106dd,"Carbon dioxide, non-fossil | air | unspecified",biosphere flow,20.608856799431678,kg CO2-Eq,2
+fbedd33ae8de25f106dd,"Carbon dioxide, fossil | air | non-urban air or from high stacks",biosphere flow,19.81478977242065,kg CO2-Eq,3
+fbedd33ae8de25f106dd,"Carbon dioxide, fossil | air | unspecified",biosphere flow,16.73204014996931,kg CO2-Eq,4
+fbedd33ae8de25f106dd,"Carbon dioxide, non-fossil, resource correction | natural resource | in air",biosphere flow,7.146011834569315,kg CO2-Eq,5
+fbedd33ae8de25f106dd,Dinitrogen monoxide | air | urban air close to ground,biosphere flow,6.877143013259572,kg CO2-Eq,6
+fbedd33ae8de25f106dd,"Methane, fossil | air | non-urban air or from high stacks",biosphere flow,3.4674006542214815,kg CO2-Eq,7
+fbedd33ae8de25f106dd,"Carbon dioxide, non-fossil | air | non-urban air or from high stacks",biosphere flow,2.7061609673658324,kg CO2-Eq,8
+fbedd33ae8de25f106dd,"Carbon dioxide, fossil | air | urban air close to ground",biosphere flow,1.9757955399444174,kg CO2-Eq,9
+fbedd33ae8de25f106dd,Dinitrogen monoxide | air | unspecified,biosphere flow,1.371579718901241,kg CO2-Eq,10
+fbedd33ae8de25f106dd,"Carbon dioxide, from soil or biomass stock | air | non-urban air or from high stacks",biosphere flow,-1.0641960879125503,kg CO2-Eq,11
+fbedd33ae8de25f106dd,"Carbon dioxide, non-fossil | air | urban air close to ground",biosphere flow,-0.511850127165644,kg CO2-Eq,12
+fbedd33ae8de25f106dd,Other,biosphere flow,0.8517450275892728,kg CO2-Eq,13
+5662b2e8c61fa556c331,"carbon dioxide, captured and stored, with a sorbent-based direct air capture system, 100ktCO2, with heat pump heat, and grid electricity | carbon dioxide, captured | ENC",activity,-1028.8065671920776,kg CO2-Eq,1
+5662b2e8c61fa556c331,supply of forest residue | forest residue | ENC,activity,-89.22800791989411,kg CO2-Eq,2
+5662b2e8c61fa556c331,"heat and power co-generation, wood chips, 6667 kW, state-of-the-art 2014 | electricity, high voltage | FI",activity,43.44995377036998,kg CO2-Eq,3
+5662b2e8c61fa556c331,"heat and power co-generation, wood chips, 6667 kW, state-of-the-art 2014 | electricity, high voltage | SE",activity,34.385640755553034,kg CO2-Eq,4
+5662b2e8c61fa556c331,"heat and power co-generation, wood chips, 6667 kW, state-of-the-art 2014 | electricity, high voltage | DK",activity,31.952211313177525,kg CO2-Eq,5
+5662b2e8c61fa556c331,"carbon dioxide transport extension, pipeline 50 to 2000 km, LCSS 2026 | carbon dioxide transport extension | ENC",activity,28.8065847705421,kg CO2-Eq,6
+5662b2e8c61fa556c331,"electricity production, hydro, reservoir, non-alpine region | electricity, high voltage | SE",activity,4.980315229002517,kg CO2-Eq,7
+5662b2e8c61fa556c331,"treatment of spent anion exchange resin from potable water production, municipal incineration | spent anion exchange resin from potable water production | GLO",activity,4.039637005119954,kg CO2-Eq,8
+5662b2e8c61fa556c331,"natural gas venting from petroleum/natural gas production | natural gas, vented | GLO",activity,2.979288297012039,kg CO2-Eq,9
+5662b2e8c61fa556c331,"treatment of spent solvent mixture, hazardous waste incineration | spent solvent mixture | RoW",activity,2.9074047171846105,kg CO2-Eq,10
+5662b2e8c61fa556c331,"plywood production | wood chips, dry, measured as dry mass | ENC",activity,-2.673359695726351,kg CO2-Eq,11
+5662b2e8c61fa556c331,"three and five layered board production | wood chips, dry, measured as dry mass | ENC",activity,-2.0437260530828403,kg CO2-Eq,12
+5662b2e8c61fa556c331,Other,activity,38.19164165897463,kg CO2-Eq,13
+5662b2e8c61fa556c331,"Carbon dioxide, in air | natural resource | in air",biosphere flow,-1147.6620853645773,kg CO2-Eq,1
+5662b2e8c61fa556c331,"Carbon dioxide, non-fossil | air | urban air close to ground",biosphere flow,115.04684392022573,kg CO2-Eq,2
+5662b2e8c61fa556c331,"Carbon dioxide, non-fossil | air | unspecified",biosphere flow,48.553345770114205,kg CO2-Eq,3
+5662b2e8c61fa556c331,"Carbon dioxide, fossil | air | unspecified",biosphere flow,18.725052031240498,kg CO2-Eq,4
+5662b2e8c61fa556c331,"Carbon dioxide, fossil | air | urban air close to ground",biosphere flow,18.49928445584565,kg CO2-Eq,5
+5662b2e8c61fa556c331,"Carbon dioxide, non-fossil, resource correction | natural resource | in air",biosphere flow,-10.818426957651418,kg CO2-Eq,6
+5662b2e8c61fa556c331,"Carbon dioxide, fossil | air | non-urban air or from high stacks",biosphere flow,9.7695799968559,kg CO2-Eq,7
+5662b2e8c61fa556c331,"Carbon dioxide, from soil or biomass stock | air | non-urban air or from high stacks",biosphere flow,5.686558392948041,kg CO2-Eq,8
+5662b2e8c61fa556c331,"Methane, fossil | air | non-urban air or from high stacks",biosphere flow,3.7742430095888317,kg CO2-Eq,9
+5662b2e8c61fa556c331,"Carbon dioxide, non-fossil | air | non-urban air or from high stacks",biosphere flow,1.9782415286947175,kg CO2-Eq,10
+5662b2e8c61fa556c331,Sulfur hexafluoride | air | non-urban air or from high stacks,biosphere flow,1.8006119369254057,kg CO2-Eq,11
+5662b2e8c61fa556c331,Dinitrogen monoxide | air | urban air close to ground,biosphere flow,1.265403484091023,kg CO2-Eq,12
+5662b2e8c61fa556c331,Other,biosphere flow,2.3223644518557647,kg CO2-Eq,13
+e81a7c4f58b9dbeef603,"forest carbon regrowth differential, existing spruce forest vs standing stock, LCSS 2026 | forest carbon regrowth service per kilogram wood harvested | SE",activity,-1143.1183516397093,kg CO2-Eq,1
+e81a7c4f58b9dbeef603,"operation of new Nordic spruce CHP with post-combustion capture, excluding capture equipment, LCSS 2026 | gross biogenic carbon entering post-combustion capture | ENC",activity,122.21438487391455,kg CO2-Eq,2
+e81a7c4f58b9dbeef603,"carbon dioxide transport extension, pipeline 50 to 2000 km, LCSS 2026 | carbon dioxide transport extension | ENC",activity,28.8065847705421,kg CO2-Eq,3
+e81a7c4f58b9dbeef603,"hydrogen production, gaseous, 25 bar, from gasification of woody biomass in entrained flow gasifier, at gasification plant | hydrogen, gaseous, 25 bar | ENC",activity,21.09637543125185,kg CO2-Eq,4
+e81a7c4f58b9dbeef603,"heat and power co-generation, wood chips, 6667 kW, state-of-the-art 2014 | electricity, high voltage | FI",activity,-15.0085186764192,kg CO2-Eq,5
+e81a7c4f58b9dbeef603,"heat and power co-generation, wood chips, 6667 kW, state-of-the-art 2014 | electricity, high voltage | SE",activity,-11.87731176725315,kg CO2-Eq,6
+e81a7c4f58b9dbeef603,"heat and power co-generation, wood chips, 6667 kW, state-of-the-art 2014 | electricity, high voltage | DK",activity,-11.036959044447661,kg CO2-Eq,7
+e81a7c4f58b9dbeef603,"wood chipping, mobile chipper, at forest road | wood chipping, chipper, mobile, diesel, at forest road | FI",activity,8.697380247469564,kg CO2-Eq,8
+e81a7c4f58b9dbeef603,"methanol production, biomass gasification | methanol, from biomass | ENC",activity,-8.589340376964874,kg CO2-Eq,9
+e81a7c4f58b9dbeef603,"carbon monoxide, from RWGS, for Fischer Tropsch process, hydrogen from wood gasification | carbon monoxide, from RWGS | ENC",activity,-7.400429154941512,kg CO2-Eq,10
+e81a7c4f58b9dbeef603,"harvesting, forestry harvester | harvesting, forestry harvester | FI",activity,6.079595926755665,kg CO2-Eq,11
+e81a7c4f58b9dbeef603,"heat, residential, by combustion of methanol using boiler, distributed by truck, produced with biomass | heat, from residential heating system | ENC",activity,-4.26287885059566,kg CO2-Eq,12
+e81a7c4f58b9dbeef603,Other,activity,27.50015117736062,kg CO2-Eq,13
+e81a7c4f58b9dbeef603,"Carbon dioxide, in air | natural resource | in air",biosphere flow,-1134.5330978873387,kg CO2-Eq,1
+e81a7c4f58b9dbeef603,"Carbon dioxide, non-fossil | air | urban air close to ground",biosphere flow,51.333884096920336,kg CO2-Eq,2
+e81a7c4f58b9dbeef603,"Carbon dioxide, non-fossil | air | unspecified",biosphere flow,50.124080007098044,kg CO2-Eq,3
+e81a7c4f58b9dbeef603,"Carbon dioxide, non-fossil | air | non-urban air or from high stacks",biosphere flow,12.332252730017938,kg CO2-Eq,4
+e81a7c4f58b9dbeef603,"Carbon dioxide, fossil | air | unspecified",biosphere flow,8.884674597949841,kg CO2-Eq,5
+e81a7c4f58b9dbeef603,"Carbon dioxide, fossil | air | non-urban air or from high stacks",biosphere flow,7.985319853972991,kg CO2-Eq,6
+e81a7c4f58b9dbeef603,Dinitrogen monoxide | air | urban air close to ground,biosphere flow,7.2929739258867645,kg CO2-Eq,7
+e81a7c4f58b9dbeef603,"Carbon dioxide, fossil | air | urban air close to ground",biosphere flow,4.8532583208222535,kg CO2-Eq,8
+e81a7c4f58b9dbeef603,"Carbon dioxide, non-fossil, resource correction | natural resource | in air",biosphere flow,2.489944013151304,kg CO2-Eq,9
+e81a7c4f58b9dbeef603,"Methane, fossil | air | non-urban air or from high stacks",biosphere flow,1.991714142272971,kg CO2-Eq,10
+e81a7c4f58b9dbeef603,"Carbon dioxide, from soil or biomass stock | air | non-urban air or from high stacks",biosphere flow,-1.6788676104398843,kg CO2-Eq,11
+e81a7c4f58b9dbeef603,Dinitrogen monoxide | air | unspecified,biosphere flow,1.3405249328374225,kg CO2-Eq,12
+e81a7c4f58b9dbeef603,Other,biosphere flow,0.6840217938156106,kg CO2-Eq,13

@@ -1,12 +1,11 @@
-"""French display layer over SETAC's verified figures; numerical data are shared.
+"""French display layer over MCV's regenerated results."""
 
-Only displayed strings are translated. Scenario identifiers, metadata, dates,
-normalization, ensemble calculations and source inventories remain unchanged.
-"""
 
 import plotly.graph_objects as go
 
-from apps.setac_2026 import figures as source
+from ._source import load
+
+source = load("figures")
 
 CASES = source.CASES
 PATHWAYS = source.PATHWAYS
@@ -124,7 +123,14 @@ def prospective_figure():
 
 
 def temporal_figure(view="stacked"):
-    return localize(source.temporal_figure(view))
+    figure = localize(source.temporal_figure(view))
+    first = min(source.temporal_years())
+    last = max(source.temporal_years())
+    figure.update_xaxes(
+        range=[first, last],
+        tickvals=sorted({first, 1950, 2000, 2030, 2090, regrowth_end(), last}),
+    )
+    return figure
 
 
 def forcing_figure(end=2300):

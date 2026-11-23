@@ -4,7 +4,9 @@ from functools import lru_cache
 import re
 import xml.etree.ElementTree as ET
 
-from apps.setac_2026.system_flows import system_flow_svg as source_svg
+from ._source import load
+
+source_svg = load("system_flows").system_flow_svg
 
 NS = "http://www.w3.org/2000/svg"
 ET.register_namespace("", NS)
@@ -92,7 +94,7 @@ def system_flow_svg():
     root = ET.fromstring(source_svg())
     space_supply_chains(root)
     root.find(f"{{{NS}}}title").text = "BECCS et DACCS : flux de matière, d’énergie et de CO₂"
-    root.find(f"{{{NS}}}desc").text = "Flux sélectionnés par tonne nette stockée après les pertes au transport, repris de l’inventaire SETAC vérifié."
+    root.find(f"{{{NS}}}desc").text = "Flux sélectionnés par tonne nette stockée après les pertes au transport, calculés sur le fond MCV SSP2-NPi de 2025."
     for element in root.iter(f"{{{NS}}}text"):
         value = element.text or ""
         for original, translated in sorted(LABELS.items(), key=lambda item: -len(item[0])):

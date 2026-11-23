@@ -1,1 +1,1 @@
-"""Présentation MCV2026, adaptée des résultats vérifiés de SETAC 2026."""
+"""Présentation MCV2026 et résultats recalculés avec les millésimes IAM."""

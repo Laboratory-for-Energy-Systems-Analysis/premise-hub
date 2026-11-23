@@ -12,7 +12,7 @@ import json
 
 from apps.lca_time.workshop import results as shared_results
 
-ROOT = Path(__file__).resolve().parent
+ROOT = globals().get("ROOT", Path(__file__).resolve().parent)
 _spec = spec_from_file_location(f"{__name__}._reader", shared_results.__file__)
 _reader = module_from_spec(_spec)
 _spec.loader.exec_module(_reader)

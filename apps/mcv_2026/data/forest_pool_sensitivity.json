@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "name": "BECCS post-harvest forest-pool screening sensitivity",
+  "scope": "Presentation-level screening calculation; not a calibrated forest carbon model",
+  "stress_test_fraction_of_gross_regrowth": 0.1,
+  "included_in_baseline": false,
+  "screened_pools": [
+    "harvest residues and dead organic matter",
+    "roots",
+    "soil organic carbon"
+  ],
+  "timing_treatment": "Not propagated into the FaIR response until a site-specific flux magnitude and time profile are available",
+  "references": [
+    {
+      "citation": "Wanielik, Bl\u00f6meke and Herrmann (2025), Analysis of static and dynamic modelling approaches for temporal carbon sequestration in Life Cycle Assessment of harvested wood products",
+      "doi": "10.1016/j.procir.2025.01.089"
+    },
+    {
+      "citation": "Menichetti et al. (2025), Norway spruce clear-cut residue and soil-carbon study",
+      "url": "https://pub.epsilon.slu.se/37940/1/menichetti-l-et-al-20250721.pdf"
+    }
+  ]
+}

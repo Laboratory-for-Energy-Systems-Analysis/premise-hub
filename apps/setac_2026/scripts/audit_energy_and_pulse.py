@@ -152,7 +152,7 @@ def energy(workspace, package):
     print(f"Wrote {len(rows)} energy flow contributions", flush=True)
 
 
-def pulse(workspace, package):
+def pulse(workspace, package, templates=None):
     import numpy as np
     import pandas as pd
     from trails.fair_io import DEFAULT_CONFIGS_CSV, load_emissions_csv
@@ -182,10 +182,11 @@ def pulse(workspace, package):
         "config_count": len(settings["config_names"]),
         "cases": {},
     }
-    templates = {}
-    with (output / "cohort_fair_responses.csv").open(newline="") as stream:
-        for row in csv.DictReader(stream):
-            templates.setdefault((row["case"], row["metric"]), row)
+    if templates is None:
+        templates = {}
+        with (output / "cohort_fair_responses.csv").open(newline="") as stream:
+            for row in csv.DictReader(stream):
+                templates.setdefault((row["case"], row["metric"]), row)
     total_rows = []
     ensembles = {}
     timestamp = datetime.now(timezone.utc).isoformat()

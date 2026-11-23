@@ -67,17 +67,17 @@ après récolte. Ces hypothèses ne représentent pas tous les devenirs forestie
 
 Le bilan physique stocké, la somme GWP100 et le CO₂-pulse-eq sont distingués.
 La démonstration compare **le même inventaire daté de cohorte 2030**, sous
-SSP2-PkBudg1000 : environ −976 / −911 kg CO₂-eq (BECCS / DACCS), et
-−219 / −792 kg CO₂-pulse-eq sur 2020–2100, impulsion de référence 2030,
-par tonne nette stockée. À 2300, les équivalents sont −823 / −889 :
+SSP2-PkBudg1000 : environ −972 / −897 kg CO₂-eq (BECCS / DACCS), et
+−224 / −778 kg CO₂-pulse-eq sur 2020–2100, impulsion de référence 2030,
+par tonne nette stockée. À 2300, les équivalents sont −821 / −875 :
 aucune inversion de classement entre ces deux bornes.
 
 La diapositive 9 donne aussi la lecture inverse, calculée à partir du score non
 arrondi : tonnes nettes à retirer et stocker = −1000 / score par tonne nette.
 Pour égaler le forçage intégré d’un retrait ponctuel de 1 t CO₂ en 2030 sur
-2020–2100, il faut environ **4,57 t nettes BECCS** ou **1,26 t nettes DACCS**.
+2020–2100, il faut environ **4,47 t nettes BECCS** ou **1,29 t nettes DACCS**.
 Les quantités suivent les réglages de fenêtre et de référence ; à 2300, elles
-sont de 1,22 et 1,13 t. La mise à l’échelle conserve le profil du projet et suppose
+sont de 1,22 et 1,14 t. La mise à l’échelle conserve le profil du projet et suppose
 une réponse proportionnelle. Les valeurs sont des tonnes nettes stockées, pas
 du captage brut. Un score nul ou réchauffant n’est pas inversé en une cible de retrait.
 
@@ -95,19 +95,25 @@ trajectoire de température.
 
 ## Résultats et réutilisation
 
-Les données et calculs sont ceux de [`../setac_2026/`](../setac_2026/README.md),
-régénérés le 14 octobre 2026 et vérifiés par ses audits. `figures.py` adapte
-uniquement les libellés et la mise en page des figures d’origine ; aucune copie
-des inventaires ou recalculation scientifique n’est introduite. Les scénarios,
-années, métadonnées et paramètres des ensembles restent identiques. Le PDF et
-les captures demandent seulement les artefacts publics présents dans le dépôt.
+Les résultats MCV sont recalculés avec les fonds REMIND-EU SSP2-NPi et
+SSP2-PkBudg1000, générés avec premise 2.6.0 pour ecoinvent 3.12 cut-off.
+La diapositive sur TRAILS ouvre le réseau daté du premier plan, pour DACCS ou
+BECCS. Les activités de coordination de la cohorte sont repliées dans la
+racine de la visualisation. Les échanges datés de construction, d’exploitation
+et de fin de vie sont ainsi visibles dès le premier niveau. Le lien « Routage
+d’origine » ouvre l’export TRAILS avec les profondeurs de calcul.
 
-Les empreintes et audits restent dans `apps/setac_2026/data/`. Ils incluent la
-correction du signe de l’absorption évitée dans le couplage FaIR. Les équivalents
-sont calculés configuration par configuration, puis résumés par leur médiane ;
-ils ne sont pas des rapports d’aires sous les courbes médianes affichées.
-La sensibilité forestière de 10 % reste une illustration GWP100 distincte,
-non propagée à FaIR ou aux équivalents d’impulsion.
+Le routage des cohortes de 2030 utilise quatre niveaux. Les branches sont
+identifiées pendant le routage, avant la combinaison des demandes signées.
+Les dates de construction des fournisseurs remontent à 1906. Les fonds hors
+des années d’ancrage utilisent la matrice de l’année limite. Le premier lien
+de construction IAM de DACCS est atteint au niveau six dans la comparaison
+de sensibilité au routage.
+
+Les empreintes et les agrégats sont dans `apps/mcv_2026/data/`. Les équivalents
+d’impulsion préservent le signe de l’absorption évitée et sont calculés dans
+chacune des 841 configurations FaIR avant d’en prendre la médiane. La
+sensibilité forestière de 10 % s’applique au GWP100 daté.
 
 La charte et les composants sont adaptés de SETAC et de `lca_time`. La diapositive 4
 utilise un schéma SVG natif (`time_bridge.py`) : le bilan agrégé à gauche se
@@ -120,11 +126,62 @@ dans `assets/provenance.json`. Les schémas SVG existants sont traduits en fran�
 la diapositive 17 de Séoul : quatre frises en grille 2×2, avec leurs avertissements
 sur les illustrations schématiques et leurs sources méthodologiques. La diapositive 5
 adapte la diapositive 15 de Séoul : transfert des données à gauche et véritable
-graphe temporel TRAILS à droite, avec sélecteur DACCS/BECCS. Le lecteur reprend
-les graphes publics vérifiés et leur chargement progressif (niveaux 0–3 puis 4),
-sans copier les données ni modifier les calculs. Les noms des activités restent
-ceux des bases sources. Le PDF utilise la capture DACCS vérifiée de Séoul.
+graphe temporel TRAILS à droite, avec sélecteur DACCS/BECCS. Le lecteur ouvre
+le premier plan aux niveaux 0–1. Le menu charge les niveaux suivants à la
+demande, jusqu’au niveau 3. Les noms des activités viennent des bases sources.
+Le PDF présente une capture de chaque graphe du premier plan.
 Le financement Horizon Europe UPTAKE, convention 101081521, est conservé.
+
+## Comparaison des millésimes de construction
+
+Les archives REMIND-EU préparées pour cette comparaison utilisent les mêmes
+années d’ancrage (2005–2100) et ecoinvent 3.12 cut-off. Garder les manifestes de
+construction à côté des archives. Dans l’environnement TRAILS, préparer les
+inventaires et extraire les résultats statiques avec les deux nouveaux fonds.
+
+```sh
+python apps/setac_2026/scripts/regenerate_results.py \
+  --source-project /path/to/FSLCI_workshop_2026 \
+  --package /path/to/pkbudg1000-with-vintages.zip \
+  --comparison-package /path/to/npi-with-vintages.zip \
+  --workspace build/mcv-vintages/workbench \
+  --steps prepare foreground static mixes
+```
+
+Pour isoler l’effet de la datation de la construction sur les cohortes 2030,
+lancer le calcul deux fois avec la même archive PkBudg1000 et les mêmes fichiers
+de premier plan. Le témoin utilise l’année de service pour les échanges
+auxquels les millésimes IAM attribuent une date de construction. Le rapport
+donne les liens de construction atteints, la somme GWP100 datée et le
+CO₂-pulse-eq de forçage sur 2020–2100 pour une impulsion de référence en 2030.
+
+```sh
+python apps/mcv_2026/scripts/compare_vintages.py \
+  --workspace build/mcv-vintages/workbench \
+  --package /path/to/pkbudg1000-with-vintages.zip \
+  --output build/mcv-vintages/vintages-on.json
+```
+
+Ajouter `--without-vintages` et utiliser un fichier de sortie distinct pour
+le témoin. `--routing-only` permet
+de vérifier les liens avant le calcul de l’inventaire. Le calcul utilise quatre
+niveaux de routage par défaut et regroupe les demandes identiques sans seuil
+de coupure. Les totaux utilisent l’attribution native de TRAILS. Le rapport
+indique aussi le premier lien daté
+atteignable au-delà de ces quatre niveaux quand le scénario en fournit un.
+
+Pour générer les données affichées, ajouter les étapes `attribution system
+reference` à la préparation du répertoire de calcul. Exécuter
+`regenerate_cohorts.py` pour chaque cas, puis `finalize_cohorts.py` avec le
+rapport de contrôle à quatre niveaux. Cette étape vérifie les sommes des
+branches, la séparation des flux énergétiques et les équivalents d’impulsion
+avant de copier les agrégats dans `apps/mcv_2026/data`. Lancer ensuite
+`stage_routes.py` dans l’environnement du portail pour préparer les graphes et
+leurs captures d’impression.
+
+Le profil de repousse BECCS est lu dans le paquet avant l’import TRAILS. Les
+milieux d’année +0,5 à +82,5 sont affectés à leurs classes annuelles +0 à +82.
+Chaque récolte conserve ainsi les 83 poids d’origine.
 
 ## PDF et vérification
 

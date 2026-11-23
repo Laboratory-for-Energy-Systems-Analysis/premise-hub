@@ -346,7 +346,7 @@ def scenario_context_note(indicator, region):
 @lru_cache(maxsize=1)
 def sector_mix_rows():
     """Read ENC market shares extracted from the original scenario packages."""
-    with (Path(__file__).parent / "data/sector_mixes.csv").open(newline="") as stream:
+    with results.SCENARIO_SECTOR_MIXES.open(newline="") as stream:
         return tuple(csv.DictReader(stream))
 
 

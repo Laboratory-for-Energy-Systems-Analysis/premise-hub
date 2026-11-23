@@ -73,19 +73,73 @@ def main():
             page.set_viewport_size({"width": 1440, "height": 900})
             go(4)
             routing = page.frame_locator("#mcv-route-frame")
+
+            def check_network():
+                routing.locator("body[data-ready=true] canvas").wait_for()
+                assert "Niveau 0" in routing.locator("#service").inner_text()
+                assert routing.locator("#depth").input_value() == "1"
+                assert "Activités de coordination" in routing.locator("#status").inner_text()
+                assert routing.locator("#branch option").all_text_contents() == [
+                    "Toutes les branches", "Construction · 2027–2029",
+                    "Exploitation · 2030–2049", "Fin de vie · 2050",
+                ]
+                routing.locator("#branch").select_option("end-of-life")
+                assert routing.locator("#network").evaluate("""() => window.trailsGraph.nodes
+                    .every(n => n.depth === 0 || n.year === 2050)""")
+                routing.locator("#branch").select_option("all")
+
+            def high_voltage_labels():
+                return set(routing.locator("#network").evaluate("""() => {
+                    const {nodes, activityName} = window.trailsGraph;
+                    return nodes.filter(n => n.name === 'market group for electricity, high voltage').map(activityName);
+                }"""))
+
+            check_network()
+            assert routing.locator("#network").evaluate("""async () => {
+                const expected = ['Construction DACCS', 'Électricité consommée', 'Fin de vie DACCS'];
+                for (let frame = 0; frame < 60; frame++) {
+                    const labels = window.trailsGraph.activityLabels.map(label => label.name);
+                    if (expected.every(name => labels.includes(name))) return true;
+                    await new Promise(resolve => requestAnimationFrame(resolve));
+                }
+                return false;
+            }""")
+            routing.locator("#depth").select_option("2")
             routing.locator("body[data-ready=true]").wait_for()
-            assert "Niveau 0" in routing.locator("#service").inner_text()
+            assert "niveaux 0–2" in routing.locator("#status").inner_text()
+            assert high_voltage_labels() == {"Électricité de réseau · haute tension"}
+            routing.get_by_role("link", name="Routage d’origine").click()
+            routing.locator("body[data-ready=true]").wait_for()
+            assert routing.locator("#depth").input_value() == "3"
             routing.locator("#view").select_option("grouped")
-            assert routing.locator("#status").inner_text().find("groupes d’activités") >= 0
+            assert "groupes d’activités" in routing.locator("#status").inner_text()
+            routing.get_by_role("link", name="Premier plan").click()
+            check_network()
             page.get_by_role("radio", name="BECCS", exact=True).check()
             page.wait_for_function("() => document.querySelector('#mcv-route-frame').getAttribute('src').endsWith('/beccs.html')")
-            routing.locator("body[data-ready=true]").wait_for()
+            routing.get_by_role("link", name="Routage d’origine").wait_for()
+            check_network()
+            assert high_voltage_labels() == {"Électricité évitée"}
+            assert routing.locator("#network").evaluate("""() => window.trailsGraph.nodes.some(n =>
+                n.name.startsWith('forest carbon regrowth differential') && n.depth === 1)""")
+            page.screenshot(path=str(args.output / "routing-beccs-foreground.png"))
             routing.locator("#view").select_option("grouped")
-            routing.locator("#depth").select_option("4")
+            assert high_voltage_labels() == {"Électricité évitée"}
+            assert routing.locator("#depth option").all_text_contents() == ["0", "0–1", "0–2", "0–3"]
+            routing.locator("#depth").select_option("3")
             routing.locator("body[data-ready=true]").wait_for(timeout=30000)
-            assert routing.locator("#depth").input_value() == "4"
-            branch = routing.locator("#branch option").nth(1).get_attribute("value")
-            routing.locator("#branch").select_option(branch)
+            assert routing.locator("#depth").input_value() == "3"
+            assert high_voltage_labels() == {"Électricité évitée", "Électricité de réseau · haute tension"}
+            assert routing.locator("#network").evaluate("""() => {
+                const {nodes, network, activityName} = window.trailsGraph;
+                const forest = nodes.find(n => n.supplyContext && n.years.includes(2131));
+                const other = nodes.find(n => n.name === forest?.name && !n.supplyContext);
+                if (!forest || !other || activityName(forest) === activityName(other)) return false;
+                network.emit('click', {nodes: [forest.id]});
+                return true;
+            }""")
+            assert "La récolte de 2049 prolonge cette demande jusqu’en 2131" in routing.locator("#info").inner_text()
+            routing.locator("#branch").select_option("construction")
             page.screenshot(path=str(args.output / "routing-beccs.png"))
             go(5)
             page.get_by_text("Courbes séparées", exact=True).click()
@@ -101,7 +155,7 @@ def main():
             page.wait_for_function("() => document.querySelector('#pulse-chart .js-plotly-plot')._fullLayout.meta.end===2300")
             assert "2020–2300" in page.locator("#pulse-takeaway").inner_text()
             assert "1,22 t nettes de CO₂" in page.locator("#pulse-takeaway").inner_text()
-            assert "1,13 t nettes de CO₂" in page.locator("#pulse-takeaway").inner_text()
+            assert "1,14 t nettes de CO₂" in page.locator("#pulse-takeaway").inner_text()
             page.screenshot(path=str(args.output / "pulse-2300.png"))
             handles.nth(0).focus()
             handles.nth(0).press("Home")

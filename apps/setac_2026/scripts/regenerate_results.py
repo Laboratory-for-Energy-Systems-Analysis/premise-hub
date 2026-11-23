@@ -10,6 +10,7 @@ from __future__ import annotations
 import argparse
 import csv
 import hashlib
+from io import TextIOWrapper
 import json
 import math
 from collections import defaultdict
@@ -51,7 +52,42 @@ def replace_once(path, before, after):
     path.write_text(source.replace(before, after, 1))
 
 
-def prepare(source, package, workspace):
+def annual_forest_uptake_profile(archive, scenario, forest):
+    """Read the original spruce-growth midpoints before TRAILS rounds them."""
+    prefix = f"inventories/{scenario['model']}/{scenario['pathway']}/{forest['source_year']}"
+
+    def rows(filename):
+        with archive.open(f"{prefix}/{filename}") as raw:
+            yield from csv.DictReader(TextIOWrapper(raw, newline=""), delimiter=";")
+
+    source, = [
+        row["index"] for row in rows("A_matrix_index.csv")
+        if (row["name"], row["reference product"], row["location"])
+        == (forest["source_name"], forest["source_reference_product"], forest["source_location"])
+    ]
+    carbon_flows = {
+        row["index"] for row in rows("B_matrix_index.csv")
+        if row["name"] == "Carbon dioxide, in air"
+    }
+    uptake, = [
+        row for row in rows("B_matrix.csv")
+        if row["index of activity"] == source and row["index of biosphere flow"] in carbon_flows
+    ]
+    if uptake["temporal_distribution"] != "6":
+        raise ValueError("Expected an empirical spruce uptake profile")
+    midpoints = json.loads(uptake["temporal_offsets"])
+    weights = json.loads(uptake["temporal_weights"])
+    # Midpoint +0.5 belongs to the harvest year's interval [0, 1).
+    bins = sorted((math.floor(midpoint), weight) for midpoint, weight in zip(midpoints, weights, strict=True))
+    offsets, annual_weights = map(list, zip(*bins, strict=True))
+    if offsets != list(range(int(forest["rotation_years"]))) or any(
+        not math.isfinite(weight) or weight <= 0 for weight in annual_weights
+    ) or not math.isclose(math.fsum(annual_weights), 1, abs_tol=1e-10):
+        raise ValueError("Expected one normalized spruce uptake weight per rotation year")
+    return {"offsets": offsets, "weights": annual_weights}
+
+
+def prepare(source, package, workspace, comparison_package=None):
     build = json.loads(package.with_name("build_manifest.json").read_text())
     digest = sha256(package)
     if digest != build["archive_sha256"]:
@@ -84,11 +120,14 @@ def prepare(source, package, workspace):
         note="Regenerated REMIND-EU package with post-harvest uptake.",
     )
     # The activity identity, rather than its old integer position, selects the forest.
-    config["beccs"]["forest_feedstock"].pop("source_activity_index", None)
-    config["beccs"]["forest_feedstock"]["temporal_stage_assumptions"][
-        "carbon_uptake"
-    ] = (
-        "Native post-harvest empirical offsets and weights retained; no second shift. "
+    forest = config["beccs"]["forest_feedstock"]
+    forest.pop("source_activity_index", None)
+    with zipfile.ZipFile(package) as archive:
+        forest["post_harvest_uptake_profile"] = annual_forest_uptake_profile(
+            archive, build["scenario"], forest
+        )
+    forest["temporal_stage_assumptions"]["carbon_uptake"] = (
+        "Original post-harvest midpoints assigned to their containing annual bins. "
         "Uptake amount retains the reviewed CHP biogenic-carbon balance."
     )
     (inventory_dir / "parameters.json").write_text(json.dumps(config, indent=2) + "\n")
@@ -103,6 +142,23 @@ def prepare(source, package, workspace):
                 size_bytes=package.stat().st_size,
                 premise_version=".".join(map(str, build["premise_version"])),
             )
+        elif record["pathway"] == "SSP2-NPi" and comparison_package is not None:
+            with zipfile.ZipFile(comparison_package) as archive:
+                descriptor = json.loads(archive.read("datapackage.json"))
+                identities = {
+                    (entry["model"], entry["pathway"])
+                    for entry in descriptor["scenarios"]
+                }
+                if identities != {("remind-eu", "SSP2-NPi")}:
+                    raise ValueError(f"Invalid NPi comparison package: {identities}")
+            record.update(
+                path=str(comparison_package),
+                sha256=sha256(comparison_package),
+                size_bytes=comparison_package.stat().st_size,
+                premise_version=".".join(
+                    part.strip() for part in descriptor["premise version"].strip("()").split(",")
+                ),
+            )
         if sha256(record["path"]) != record["sha256"]:
             raise ValueError(f"Package checksum mismatch: {record['pathway']}")
     (workspace / "data/trails_packages_manifest.json").write_text(
@@ -112,17 +168,47 @@ def prepare(source, package, workspace):
     foreground = workspace / "scripts/prepare_foreground_inventories.py"
     replace_once(
         foreground,
+        "    item: dict[str, Any], *, rotation_years: int\n"
+        ') -> None:\n    """Shift the empirical uptake profile to post-harvest regrowth."""',
+        "    item: dict[str, Any], *, profile: dict[str, list]\n"
+        ') -> None:\n    """Write the original weights on the annual post-harvest calendar."""',
+    )
+    replace_once(
+        foreground,
+        '    offsets = json.loads(str(item["temporal_offsets"]))\n'
         "    shifted = [int(offset) + int(rotation_years) for offset in offsets]\n"
-        "    if min(shifted) < 1 or max(shifted) != int(rotation_years):",
-        "    shifted = [float(offset) for offset in offsets]\n"
-        "    if min(shifted) < 0 or max(shifted) > int(rotation_years):",
+        "    if min(shifted) < 1 or max(shifted) != int(rotation_years):\n"
+        "        raise ValueError(\n"
+        '            "Unexpected post-harvest regrowth support: "\n'
+        '            f"{min(shifted)}..{max(shifted)}."\n'
+        "        )\n"
+        '    item["temporal_offsets"] = json.dumps(shifted, separators=(",", ":"))\n'
+        '    item["temporal_min"] = min(shifted)\n'
+        '    item["temporal_max"] = max(shifted)',
+        '    offsets = profile["offsets"]\n'
+        '    item["temporal_offsets"] = json.dumps(offsets, separators=(",", ":"))\n'
+        '    item["temporal_weights"] = json.dumps(profile["weights"], separators=(",", ":"))\n'
+        '    item["temporal_min"] = min(offsets)\n'
+        '    item["temporal_max"] = max(offsets)',
+    )
+    replace_once(
+        foreground,
+        '                item, rotation_years=int(forest["rotation_years"])\n'
+        "            )\n            regrowth_exchanges.append(item)",
+        '                item, profile=forest["post_harvest_uptake_profile"]\n'
+        "            )\n            regrowth_exchanges.append(item)",
     )
     replace_once(
         foreground,
         '"Greenfield differential stage: empirical Norway-spruce regrowth "\n'
         '            f"during years +1 through +{rotation_years}; historical uptake "',
         '"Greenfield differential stage: native post-harvest Norway-spruce regrowth "\n'
-        '            f"at offsets {min(shifted)} through {max(shifted)}; historical uptake "',
+        '            f"in annual bins {min(offsets)} through {max(offsets)}; historical uptake "',
+    )
+    replace_once(
+        foreground,
+        '            "The source empirical weights are shifted to years +1 through +83; "',
+        '            "Each source midpoint is assigned to its containing annual bin; "',
     )
     # The selected forest source year is an anchor; annual interpolation is unnecessary here.
     replace_once(
@@ -149,8 +235,12 @@ def prepare(source, package, workspace):
             for p in sorted((source / "scripts").glob("*.py"))
         },
         "notes": [
-            "Static NPi comparison retains its original background package and uses the regenerated foreground.",
-            "Forest uptake offsets are already post-harvest and are copied without a second rotation shift.",
+            (
+                "Static NPi comparison uses the supplied NPi background and regenerated foreground."
+                if comparison_package is not None
+                else "Static NPi comparison retains its original background package and uses the regenerated foreground."
+            ),
+            "The spruce uptake profile is read before TRAILS imports it. Each original midpoint is assigned to its containing annual bin and its weight is preserved.",
             "Reviewed functional units, transport, standing-forest reference and cohort routing schedule are retained.",
             "Original calculation project and long lca_time presentation are not modified.",
         ],
@@ -190,6 +280,9 @@ def publish(workspace):
     destination = APP / "data/processed"
     run = json.loads((workspace / "regeneration.json").read_text())
     expected_package = run["new_package"]["archive_sha256"]
+    iam_hash = run["new_package"].get("encrypted_iam_sha256")
+    if iam_hash is None:
+        raise ValueError("Publishing requires the IAM checksum used by the scenario and steel audits.")
     foreground = sha256(
         workspace / "data/inventories/generated/lcss2026-foreground.xlsx"
     )
@@ -369,7 +462,6 @@ def publish(workspace):
     )
     steel_path = APP / "data/steel_mix_audit.json"
     steel_audit = json.loads(steel_path.read_text())
-    iam_hash = run["new_package"]["encrypted_iam_sha256"]
     assert {
         r["iam_encrypted_sha256"]
         for r in steel_audit["rows"]
@@ -471,6 +563,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--source-project", type=Path, required=True)
     parser.add_argument("--package", type=Path, required=True)
+    parser.add_argument("--comparison-package", type=Path)
     parser.add_argument("--workspace", type=Path, required=True)
     parser.add_argument("--steps", nargs="+", choices=STEPS, default=list(STEPS))
     args = parser.parse_args()
@@ -480,7 +573,10 @@ def main():
     for step in args.steps:
         print(f"=== {step} ===", flush=True)
         if step == "prepare":
-            prepare(source, package, workspace)
+            comparison = (
+                args.comparison_package.resolve() if args.comparison_package else None
+            )
+            prepare(source, package, workspace, comparison_package=comparison)
             continue
         if step == "mixes":
             extract_mixes(workspace)

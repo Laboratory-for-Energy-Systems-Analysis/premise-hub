@@ -30,6 +30,9 @@ def test_french_figures_preserve_source_data_and_metadata(name, args):
         for key in ("x", "y", "base", "meta", "stackgroup", "fillpattern", "marker"):
             assert json.dumps(a.get(key), sort_keys=True) == json.dumps(b.get(key), sort_keys=True)
     assert before["layout"].get("meta") == after["layout"].get("meta")
+    if name == "temporal_figure":
+        for axis in ("xaxis", "xaxis2"):
+            assert after["layout"][axis]["range"] == [2000, 2130]
 
 
 def test_mcv_result_reader_is_independent_of_setac():
@@ -58,38 +61,23 @@ def test_spruce_uptake_preserves_each_annual_midpoint_weight():
     assert profile == {"offsets": [0, 1, 2, 3], "weights": [0.1, 0.2, 0.3, 0.4]}
 
 
-def test_password_gate_protects_all_mcv_routes():
-    client = Client(application, Response)
-    for path in ("/", "/presenter", "/_dash-layout", "/_dash-dependencies",
-                 "/assets/mcv-logo.png", "/fair-handoff.svg", "/system-flows.svg",
-                 "/routing/beccs.json", "/shared/styles.css"):
-        response = client.get("/mcv-2026" + path)
-        assert response.status_code == 401, path
-        assert response.headers["Cache-Control"] == "no-store"
-    assert client.post("/mcv-2026/_dash-update-component", json={}).status_code == 401
-    assert client.post("/mcv-2026/", data={"password": "wrong"}).status_code == 401
-    assert client.get("/setac-2026/health").json["core_slides"] == 12
-
-
 @pytest.fixture
 def mcv_client():
-    client = Client(application, Response)
-    login = client.post("/mcv-2026/", data={"password": "test-mcv-password"})
-    assert login.status_code == 303
-    assert login.headers["Location"] == "/mcv-2026/"
-    assert "HttpOnly" in login.headers["Set-Cookie"]
-    return client
+    return Client(application, Response, use_cookies=False)
 
 
 def test_mounted_deck_presenter_assets_and_callback(mcv_client):
     client = mcv_client
     for path in ("/", "/presenter", "/health", "/_dash-layout", "/_dash-dependencies",
-                 "/assets/mcv-logo.png", "/shared/styles.css", "/system-flows.svg"):
+                 "/assets/mcv-logo.png", "/shared/styles.css", "/system-flows.svg", "/fair-handoff.svg"):
         response = client.get("/mcv-2026" + path)
         assert response.status_code == 200, path
         assert response.headers["Cache-Control"] == "private, no-store"
-    assert b'<html lang="fr">' in client.get("/mcv-2026/").data
-    assert "/mcv-2026/_dash-component-suites/" in client.get("/mcv-2026/").text
+        assert "Set-Cookie" not in response.headers
+    index = client.get("/mcv-2026/").text
+    assert 'name="password"' not in index
+    assert '<html lang="fr">' in index
+    assert "/mcv-2026/_dash-component-suites/" in index
     assert "11:40" in client.get("/mcv-2026/presenter").text
     response = client.post("/mcv-2026/_dash-update-component", json={
         "output": "forcing-chart.figure", "outputs": {"id": "forcing-chart", "property": "figure"},
@@ -211,7 +199,7 @@ def test_inverse_pulse_interpretation_matches_endpoint_scores(end):
 def test_print_deck_has_no_live_control_ids_and_includes_cover_logo():
     core, full = pdf_deck(), pdf_deck(True)
     assert len(core) == CORE_COUNT == 10
-    assert len(full) == 16
+    assert len(full) == 17
     assert sum(slide["seconds"] for slide in SLIDES) == 700
     pending = list(full)
     images = []

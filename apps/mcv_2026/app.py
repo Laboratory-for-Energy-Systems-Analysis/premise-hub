@@ -6,9 +6,6 @@ from pathlib import Path
 from dash import ALL, ClientsideFunction, Dash, Input, Output, State, ctx, dcc, html
 from dash.exceptions import PreventUpdate
 from flask import Response, abort, render_template, render_template_string, request, send_from_directory
-from werkzeug.security import generate_password_hash
-
-from portal.auth import PresentationPasswordGate
 
 from .deck import (
     ALL_SLIDES,
@@ -66,14 +63,6 @@ app = Dash(
     external_stylesheets=[REQUESTS_PREFIX + "shared/styles.css"],
 )
 server = app.server
-mcv_password = os.getenv("MCV_2026_PASSWORD")
-server.wsgi_app = PresentationPasswordGate(
-    server.wsgi_app,
-    presentation_id="mcv-biogenic-carbon-2026-11-25",
-    title="Élimination du CO₂ : une ACV prospective et dynamique couplée à un modèle climatique",
-    password_hash=generate_password_hash(mcv_password) if mcv_password else None,
-    mount_path=REQUESTS_PREFIX,
-)
 app.index_string = app.index_string.replace('<html>', '<html lang="fr">')
 
 

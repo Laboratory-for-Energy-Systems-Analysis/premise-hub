@@ -312,12 +312,12 @@ button:focus-visible,a:focus-visible { outline:3px solid var(--amber); outline-o
 .asset-profile-flow { display:flex; justify-content:center; align-items:center; gap:1.5cqw; padding:.75cqw 1cqw; border-radius:10px; background:#e5f2f0; color:var(--psi-deep); font-size:1.24cqw; }
 .asset-profile-flow span { color:var(--teal); font-size:1.55cqw; font-weight:750; }
 .asset-profile-grid { display:grid; gap:1.05cqw; min-height:0; }
-.asset-profile-grid.construction { grid-template-columns:repeat(3,minmax(0,1fr)); }
-.asset-profile-grid.biomass { grid-template-columns:repeat(2,minmax(0,1fr)); }
+.asset-profile-grid.biomass, .asset-profile-grid.stock-vintages { grid-template-columns:repeat(2,minmax(0,1fr)); }
 .asset-profile-card { display:grid; grid-template-rows:auto minmax(0,1fr) auto; gap:.65cqw; min-width:0; min-height:0; margin:0; padding:1cqw; border:1px solid var(--line); border-radius:12px; background:#fbfdfd; }
-.mcv-slide .asset-profile-heading h2 { margin:0 0 .28cqw; font-size:1.65cqw; }
 .mcv-slide .asset-profile-species { margin:0; font-size:1.65cqw; }
-.mcv-slide .asset-profile-heading p { margin:0; color:var(--muted); font-size:1.17cqw; }
 .asset-profile-card figcaption { display:flex; flex-wrap:wrap; align-items:baseline; gap:.45cqw; padding:.7cqw .85cqw; border-radius:8px; background:var(--surface-soft); color:var(--muted); font-size:1.14cqw; }
 .asset-profile-card figcaption strong { color:var(--psi-deep); font-size:1.8cqw; }
-.biomass .asset-profile-card figcaption small { margin-left:auto; font-size:1.12cqw; font-weight:700; color:var(--psi-deep); }
+.asset-profile-card figcaption small { margin-left:auto; font-size:1.12cqw; font-weight:700; color:var(--psi-deep); }
+.stock-vintage-legend { display:flex; flex-wrap:wrap; align-items:center; gap:.55cqw 1.3cqw; padding:.55cqw .25cqw; color:var(--psi-deep); font-size:1.12cqw; }
+.stock-vintage-legend span { display:inline-flex; align-items:center; gap:.4cqw; white-space:nowrap; }
+.stock-vintage-legend span::before { content:""; width:.85cqw; height:.85cqw; border-radius:2px; background:var(--vintage-colour); }

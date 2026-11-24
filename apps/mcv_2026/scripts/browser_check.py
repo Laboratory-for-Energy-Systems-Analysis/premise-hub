@@ -2,7 +2,6 @@
 
 import argparse
 import json
-import os
 from pathlib import Path
 import re
 
@@ -22,15 +21,9 @@ def main():
         try:
             context = browser.new_context(viewport={"width": 1440, "height": 900})
             page = context.new_page()
-            if context.request.get(base).status == 401:
-                password = os.getenv("MCV_2026_PASSWORD")
-                if not password:
-                    raise RuntimeError("Set MCV_2026_PASSWORD to unlock the presentation")
-                login = context.request.post(base, form={"password": password})
-                assert login.ok, "Presentation login failed"
             page.on("pageerror", lambda error: errors.append(str(error)))
             page.on("response", lambda response: failed_requests.append(f"{response.status} {response.url}") if response.status >= 400 else None)
-            page.goto(base, wait_until="networkidle")
+            assert page.goto(base, wait_until="networkidle").ok
             page.locator("#stage .mcv-slide-1").wait_for()
             assert page.locator("html").get_attribute("lang") == "fr"
             presenter = context.new_page()
@@ -142,9 +135,13 @@ def main():
             routing.locator("#branch").select_option("construction")
             page.screenshot(path=str(args.output / "routing-beccs.png"))
             go(5)
-            page.get_by_text("Courbes séparées", exact=True).click()
-            page.wait_for_function("() => document.querySelector('#temporal-chart .js-plotly-plot')._fullLayout.meta.view === 'unstacked'")
-            page.get_by_text("Aires empilées", exact=True).click()
+            for label, view in (("Courbes séparées", "unstacked"), ("Aires empilées", "stacked")):
+                page.get_by_text(label, exact=True).click()
+                page.wait_for_function("""view => {
+                    const layout = document.querySelector('#temporal-chart .js-plotly-plot')._fullLayout;
+                    return layout.meta.view === view && [layout.xaxis, layout.xaxis2]
+                        .every(axis => axis.range[0] === 2000 && axis.range[1] === 2130);
+                }""", arg=view)
             go(7)
             page.get_by_role("radio", name="Jusqu’en 2140", exact=True).check()
             page.wait_for_function("() => document.querySelector('#forcing-chart .js-plotly-plot')._fullLayout.xaxis.range[1]===2140")
@@ -190,6 +187,9 @@ def main():
                 page.wait_for_function("() => window.__printCalled && document.querySelector('#print-deck').dataset.ready==='true'", timeout=60000)
                 assert page.title() == Path(filename).stem
                 assert page.locator("#print-deck>.slide").count() == expected
+                assert page.locator("#print-deck .mcv-slide-6 .js-plotly-plot").evaluate(
+                    "e => [e._fullLayout.xaxis.range, e._fullLayout.xaxis2.range]"
+                ) == [[2000, 2130], [2000, 2130]]
                 assert page.locator("#print-deck #pulse-window").count() == 0
                 assert page.locator("#print-deck .pulse-results .js-plotly-plot").evaluate("e => e._fullLayout.meta") == {"start": 2020, "reference": 2030, "end": 2100}
                 ids = page.locator("[id]").evaluate_all("els=>els.map(e=>e.id)")

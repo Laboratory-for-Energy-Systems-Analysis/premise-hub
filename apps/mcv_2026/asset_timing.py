@@ -1,4 +1,4 @@
-"""Annex figures using the temporal profiles from the Premise revision cited by TRAILS."""
+"""Annex charts for FLODyM stocks and the Premise biomass profiles."""
 
 import json
 from pathlib import Path
@@ -10,9 +10,6 @@ import plotly.graph_objects as go
 DATA = json.loads((Path(__file__).parent / "data" / "asset_timing_profiles.json").read_text())
 PROFILES = DATA["profiles"]
 REGISTRY = f"https://github.com/polca/premise/tree/{DATA['commit']}/premise/data/trails/temporal"
-BLUE = "#087ca1"
-TEAL = "#008a82"
-PURPLE = "#7c699d"
 AMBER = "#a86a2b"
 GREEN = "#3e7654"
 
@@ -62,38 +59,66 @@ def source_line(description):
     ], className="source")
 
 
-def construction_profiles(graph):
-    cards = []
-    for key, title, weighting, color in (
-        ("photovoltaic", "Photovoltaïque", "États-Unis · puissance nette estivale", TEAL),
-        ("nuclear", "Nucléaire", "États-Unis · puissance nette estivale", BLUE),
-        ("low_voltage", "Réseau basse tension", "France · longueur du réseau · SIGEIF", PURPLE),
-    ):
-        profile = PROFILES[key]
-        mean = -sum(year * weight for year, weight in zip(profile["offsets"], profile["weights"], strict=True))
-        mean_age = f"{mean:.1f}".replace(".", ",")
-        figure = profile_figure(
-            [profile_bars(profile, title, color, width=1.8 if key == "low_voltage" else .88)],
-            x_range=[-80, 3], x_ticks=[-80, -60, -40, -20, 0],
-            y_range=[0, .4], y_ticks=[0, .1, .2, .3, .4],
-            x_title="Décalage avant le service (ans)",
-        )
-        cards.append(html.Figure([
-            html.Div([html.H2(title), html.P(weighting)], className="asset-profile-heading"),
-            graph(figure),
-            html.Figcaption([html.Strong(f"{mean_age} ans"), " d’âge moyen pondéré"]),
-        ], className="asset-profile-card"))
+STOCK = json.loads((Path(__file__).parent / "data" / "stock_vintage_examples.json").read_text())
+BAND_COLOURS = ("#405872", "#247da2", "#74b4ce", "#1e806e", "#90bd91", "#bb7547")
+BAND_ENDS = STOCK["build_band_end_years"]
+BUILD_BANDS = [
+    f"Avant {BAND_ENDS[0] + 1}",
+    *(f"{start + 1}–{end}" for start, end in zip(BAND_ENDS, BAND_ENDS[1:])),
+]
 
+
+def stock_vintages(graph, examples):
+    years = STOCK["years"]
+    summary_year = STOCK["summary_year"]
+    summary_index = years.index(summary_year)
+    cards = []
+    for key, title, unit in examples:
+        case = STOCK["cases"][key]
+        figure = go.Figure([
+            go.Scatter(
+                x=years, y=values, stackgroup="stock", mode="lines",
+                line=dict(color=colour, width=.7), fillcolor=colour, name=band,
+                hovertemplate=f"%{{x}} · %{{y:.2f}} {unit}<extra>{band}</extra>",
+            )
+            for band, colour, values in zip(BUILD_BANDS, BAND_COLOURS, case["stock"], strict=True)
+        ])
+        figure.update_layout(
+            template="none", separators=", ", showlegend=False,
+            font=dict(family="Arial, sans-serif", size=13, color="#395663"),
+            margin=dict(l=55, r=18, t=12, b=45), hovermode="x",
+            xaxis=dict(
+                range=[years[0], years[-1]], tickvals=[2005, 2025, 2050, 2075, 2100],
+                title=dict(text="Année du parc en service", standoff=8), fixedrange=True,
+            ),
+            yaxis=dict(
+                title=dict(text=unit, standoff=5), rangemode="tozero", fixedrange=True,
+                gridcolor="#dce8eb", zeroline=False,
+            ),
+        )
+        figure.add_vline(x=summary_year, line_color="#314f5e", line_dash="dot", line_width=1)
+        total = sum(values[summary_index] for values in case["stock"])
+        total_label = f"{total:.1f}".replace(".", ",")
+        age_label = f"{case['mean_age_at_summary_year']:.1f}".replace(".", ",")
+        cards.append(html.Figure([
+            html.H2(title, className="asset-profile-species"),
+            graph(figure),
+            html.Figcaption([
+                f"Parc en {summary_year}", html.Strong(f"{total_label} {unit}"),
+                html.Small(f"Âge moyen pondéré de {age_label} ans"),
+            ]),
+        ], className="asset-profile-card"))
     return html.Div([
         html.Div([
-            html.Strong("Âges du parc en service"),
-            html.Span("→", **{"aria-hidden": "true"}),
-            html.Strong("Décalages −âge et poids normalisés"),
-            html.Span("→", **{"aria-hidden": "true"}),
-            html.Strong("Profil de l’échange service → fournisseur d’actif"),
-        ], className="asset-profile-flow"),
-        html.Div(cards, className="asset-profile-grid construction"),
-        source_line("Poids en % du total dans chaque panneau. Le zéro est l’année du service. Sources · EIA-860 (2025) et SIGEIF (2023), supplément TRAILS, fig. 5 et 8."),
+            html.Strong("Mise en service"),
+            *[html.Span(band, style={"--vintage-colour": colour})
+              for band, colour in zip(BUILD_BANDS, BAND_COLOURS, strict=True)],
+        ], className="stock-vintage-legend"),
+        html.Div(cards, className="asset-profile-grid stock-vintages"),
+        html.P([
+            html.A("iam-preprocessor", href="https://github.com/romainsacchi/iam-preprocessor"),
+            f" · FLODyM · {STOCK['model']} {STOCK['scenario']} · stock en fin d’année",
+        ], className="source"),
     ], className="asset-profile-layout")
 
 

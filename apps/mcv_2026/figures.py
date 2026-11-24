@@ -124,11 +124,9 @@ def prospective_figure():
 
 def temporal_figure(view="stacked"):
     figure = localize(source.temporal_figure(view))
-    first = min(source.temporal_years())
-    last = max(source.temporal_years())
     figure.update_xaxes(
-        range=[first, last],
-        tickvals=sorted({first, 1950, 2000, 2030, 2090, regrowth_end(), last}),
+        range=[2000, 2130],
+        tickvals=[2000, 2030, 2060, 2090, 2130],
     )
     return figure
 
